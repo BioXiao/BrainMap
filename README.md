@@ -7,7 +7,6 @@ Mouse lncRNA Brain Map Project Data and Analysis
 - >= TopHat 2.0.11
 - >= Cufflinks 2.2.1
 - >= cummeRBund 2.2
-- 
 ## Overview
 
 ## Workflow
