@@ -1,13 +1,13 @@
 #!/bin/bash
 #
 ################
-#Master Alignment script for fastq files specifically from BrainMap project
+# Creates .cxb file from individual bam + ref_gtf
 ################
 #
 
-#Usage
-# alignreads.sh samplename read1.fq.gz read2.fq.gz
-#
+# Usage
+# doquant.sh samplename bam_file.bam
+
 
 
 #Setup
@@ -18,22 +18,21 @@ RUN_TIME=600
 
 PROJECT_ROOT = "/n/rinn_data1/seq/lgoff/Projects/BrainMap"
 
-READS_ROOT=$PROJECT_ROOT/data/fastq
 ALIGN_ROOT=$PROJECT_ROOT/data/bam
+QUANT_ROOT=$PROJECT_ROOT/data/quants
 
 TMP_DIR=/n/scratch2/rinn_lab/lgoff
 
-BOWTIE_INDEX = "$PROJECT_ROOT/data/indexes/mm9_brainmap"
+BOWTIE_INDEX = $PROJECT_ROOT/data/indexes/mm9_brainmap
 
-REF_GTF = "$PROJECT_ROOT/data/annotation/mm9_ucsc_and_linc_DB_2.0.gtf"
+REF_GTF = $PROJECT_ROOT/data/annotation/mm9_ucsc_and_linc_DB_2.0.gtf
 
-LOGBASE = "$PROJECT_ROOT/logs"
+LOGBASE = $PROJECT_ROOT/logs
 
 #ARGUMENTS
 SAMPLE_NAME = $1
 
-READ1 = $2
-READ2 = $3
+BAMFILE = $2
 
 #Main
 LOGDIR = $LOGBASE/alignments/$SAMPLE_NAME
