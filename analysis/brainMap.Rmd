@@ -1,0 +1,14 @@
+Master Script for PNAS BrainMap Study
+=====================================
+
+#Setup and Imports
+```{r setwd}
+basedir = "/Volumes/Odyssey/seq/lgoff/Projects/BrainMap/analysis"
+#basedir = "/n/rinn_data1/seq/lgoff/Projects/BrainMap/analysis"
+setwd(basedir)
+```
+
+```{r init}
+library(cummeRbund)
+library(ggplot2)
+```
