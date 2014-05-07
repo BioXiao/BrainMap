@@ -42,6 +42,6 @@ OUTDIR = $ALIGN_ROOT/$SAMPLE_NAME
 mkdir -p $OUTDIR
 
 echo "#$SAMPLE_NAME"
-sbatch -J $SAMPLE_NAME -t $RUN_TIME --mem-per-cpu=$MAX_MEM -n $NUM_THREADS -p $QUEUE --mail-type=END --wrap=\"tophat $REF_GTF -p $NUM_THREADS -o $OUTDIR $BOWTIE_INDEX $READ1 $READ2 >$LOGDIR/$SAMPLE_NAME.out 2>$LOGDIR/$SAMPLE_NAME.err\"
+sbatch -J $SAMPLE_NAME -t $RUN_TIME --mem-per-cpu=$MAX_MEM -n $NUM_THREADS -p $QUEUE --mail-type=END --wrap=\"cuffquant --no-update-check -p $NUM_THREADS -o $QUANT_ROOT/$SAMPLE_NAME $REF_GTF $BAMFILE >$LOGDIR/$SAMPLE_NAME.quant.out 2>$LOGDIR/$SAMPLE_NAME.quant.err\"
 
 
