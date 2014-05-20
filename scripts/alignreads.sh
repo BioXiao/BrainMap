@@ -23,7 +23,8 @@ TMP_DIR=/n/regal/Rinn/loyalgoff
 
 BOWTIE_INDEX = "$PROJECT_ROOT/data/indexes/mm9_brainmap"
 
-REF_GTF = "$PROJECT_ROOT/data/annotation/mm9_ucsc_and_linc_DB_2.0.gtf"
+#REF_GTF = "-G $PROJECT_ROOT/data/annotation/mm9_ucsc_and_linc_DB_2.0.gtf"
+REF_GTF = ""
 
 LOGBASE = "$PROJECT_ROOT/logs"
 
@@ -41,6 +42,6 @@ OUTDIR = $ALIGN_ROOT/$SAMPLE_NAME
 mkdir -p $OUTDIR
 
 echo "#$SAMPLE_NAME"
-sbatch -J $SAMPLE_NAME -t $RUN_TIME --mem-per-cpu=$MAX_MEM -n $NUM_THREADS -p $QUEUE --mail-type=END --wrap=\"tophat $REF_GTF -p $NUM_THREADS -o $OUTDIR $BOWTIE_INDEX $READ1 $READ2 >$LOGDIR/$SAMPLE_NAME.out 2>$LOGDIR/$SAMPLE_NAME.err\"
+sbatch -J $SAMPLE_NAME -t $RUN_TIME --mem-per-cpu=$MAX_MEM -n $NUM_THREADS -p $QUEUE --mail-type=END --wrap="tophat $REF_GTF -p $NUM_THREADS -o $OUTDIR $BOWTIE_INDEX $READ1 $READ2 >$LOGDIR/$SAMPLE_NAME.out 2>$LOGDIR/$SAMPLE_NAME.err" >$LOGDIR/slurm/${SAMPLE_NAME}_align.out 2>$LOGDIR/slurm/${SAMPLE_NAME}_align.err
 
 
