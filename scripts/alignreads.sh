@@ -6,7 +6,7 @@
 #
 
 #Usage
-# alignreads.sh samplename read1.fq.gz read2.fq.gz
+# alignreads.sh samplename read1.fq.gz[,read1_2.fq.gz] read2.fq.gz[,read2_2.fq.gz]
 #
 
 
@@ -18,10 +18,10 @@ RUN_TIME=600
 
 PROJECT_ROOT = "/n/rinn_data1/seq/lgoff/Projects/BrainMap"
 
-READS_ROOT=$PROJECT_ROOT/data/fastq
+#READS_ROOT=$PROJECT_ROOT/data/fastq
 ALIGN_ROOT=$PROJECT_ROOT/data/bam
 
-TMP_DIR=/n/scratch2/rinn_lab/lgoff
+TMP_DIR=/n/regal/Rinn/loyalgoff
 
 BOWTIE_INDEX = "$PROJECT_ROOT/data/indexes/mm9_brainmap"
 
