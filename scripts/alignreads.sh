@@ -6,7 +6,7 @@
 #
 
 #Usage
-# alignreads.sh samplename read1.fq.gz read2.fq.gz
+# alignreads.sh samplename read1.fq.gz[,read1_rep2.fq.gz] read2.fq.gz[,read2_rep2.fq.gz]
 #
 
 
