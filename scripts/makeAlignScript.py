@@ -28,4 +28,4 @@ outHandle = open(project_root+"scripts/alignScript.sh",'w')
 
 for sample in samples.keys():
 	print >>outHandle, "#%s" % sample
-	print >>outHandle, "alignreads.sh %s %s %s\n" % (sample,",".join(samples[sample]['R1']),",".join(samples[sample]['R2']))
+	print >>outHandle, "./alignreads.sh %s %s %s\n" % (sample,",".join(samples[sample]['R1']),",".join(samples[sample]['R2']))
