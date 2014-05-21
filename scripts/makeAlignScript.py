@@ -19,13 +19,21 @@ samples = {}
 for line in fastq_file_handle:
 	line = dict(zip(headerVals,line.rstrip().split("\t")))
 	samples.setdefault(line['sample_id'],{}).setdefault(line['read_id'],[]).append(line['filename'])
+	#samples[line['sample_id']]['aligned'] = False
+	#print line['aligned']
+	if not all((line['aligned']=='True',samples[line['sample_id']].setdefault('aligned',True))):
+		samples[line['sample_id']]['aligned'] = False
+
 
 #pp(samples)
 
 #Write alignment script
 outHandle = open(project_root+"scripts/alignScript.sh",'w')
 
+sampleNames = [x for x in samples.keys() if not samples[x]['aligned']]
 
-for sample in samples.keys():
+sampleNames.sort()
+
+for sample in sampleNames:
 	print >>outHandle, "#%s" % sample
 	print >>outHandle, "./alignreads.sh %s %s %s\n" % (sample,",".join(samples[sample]['R1']),",".join(samples[sample]['R2']))

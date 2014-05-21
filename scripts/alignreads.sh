@@ -12,7 +12,7 @@
 QUEUE=serial_requeue #unrestricted #or general OR serial_requeue
 NUM_THREADS=8
 MAX_MEM=8000
-RUN_TIME=600
+RUN_TIME=1200
 
 PROJECT_ROOT="/n/rinn_data1/seq/lgoff/Projects/BrainMap"
 
