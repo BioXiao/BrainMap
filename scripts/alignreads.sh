@@ -19,7 +19,7 @@ PROJECT_ROOT="/n/rinn_data1/seq/lgoff/Projects/BrainMap"
 #READS_ROOT=$PROJECT_ROOT/data/fastq
 ALIGN_ROOT=$PROJECT_ROOT/data/bam
 
-TMP_DIR=/n/regal/Rinn/loyalgoff
+TMP_DIR=/n/regal/rinn_lab/lgoff/BrainMap
 
 BOWTIE_INDEX="$PROJECT_ROOT/data/indexes/mm9_brainmap"
 
@@ -41,7 +41,15 @@ mkdir -p $LOGDIR
 OUTDIR=$ALIGN_ROOT/$SAMPLE_NAME
 mkdir -p $OUTDIR
 
+SCRATCHDIR=$TMP_DIR/$SAMPLE_NAME
+mkdir -p $SCRATCHDIR
+
 echo "#$SAMPLE_NAME"
 sbatch -J $SAMPLE_NAME -t $RUN_TIME --mem-per-cpu=$MAX_MEM -n $NUM_THREADS -p $QUEUE --mail-type=FAIL --wrap="tophat $REF_GTF -p $NUM_THREADS -o $OUTDIR $BOWTIE_INDEX $READ1 $READ2 >$LOGDIR/$SAMPLE_NAME.out 2>$LOGDIR/$SAMPLE_NAME.err" >$LOGDIR/${SAMPLE_NAME}_align_slurm.out 2>$LOGDIR/${SAMPLE_NAME}_align_slurm.err
+
+
+#TODO
+# - remove coverage search (not necessary and probably wrong) ((--no-coverage-search))
+# - Use regal as scratch space. ( --tmp-dir $SCRATCHDIR )
 
 
