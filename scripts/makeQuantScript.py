@@ -23,7 +23,7 @@ for line in bam_file_handle:
 			'quantified':line['quantified']
 			}
 
-pp(samples)
+#pp(samples)
 
 #Write alignment script
 outHandle = open(project_root+"scripts/quantScript.sh",'w')
