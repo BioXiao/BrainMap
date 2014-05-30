@@ -1,3 +1,22 @@
-# Contrasts file for full BrainMap analysis
 condition_A	condition_B
-WT	lncSox2KO
+linc_Brn1a_Adult	WT_Adult
+linc_Brn1b_Adult	WT_Adult
+linc_Brn1b_E14	WT_E14
+linc_Cox2_Adult	WT_Adult
+linc_Egfr_Edon_Adult	WT_Adult
+linc_Enc1__Adult	WT_Adult
+linc_Enc1_E14	WT_E14
+linc_Evi1_Manr_E14	WT_E14
+linc_HoxA1_Haunt_Adult	WT_Adult
+linc_HoxA1_Haunt_E14	WT_E14
+linc_Insig2_Celr_Adult	WT_Adult
+linc_Insig2_Celr_E14	WT_E14
+linc_Irx5_Crnde_Adult	WT_Adult
+linc_Jarid1c_Kantr_Adult	WT_Adult
+linc_Jarid1c_kantr_E14	WT_E14
+linc_P21_Trp53cor_Adult	WT_Adult
+linc_p21_Trp53cor_E14	WT_E14
+linc_Sox2_Peril_Adult	WT_Adult
+linc_Sox2_Peril_E14	WT_E14
+Tug1_Adult	WT_Adult
+Tug1_E14	WT_E14
