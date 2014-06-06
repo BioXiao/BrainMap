@@ -21,7 +21,7 @@ QUANT_ROOT=$PROJECT_ROOT/data/quants
 
 TMP_DIR=/n/scratch2/rinn_lab/lgoff
 
-BOWTIE_INDEX=$PROJECT_ROOT/data/indexes/mm9_brainmap
+BOWTIE_INDEX=$PROJECT_ROOT/data/indexes/mm10/mm10_brainmap
 
 REF_GTF=$PROJECT_ROOT/data/annotation/BrainMap_ucsc_coding_AND_lnc_DB2.0.gtf
 

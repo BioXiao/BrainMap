@@ -15,7 +15,7 @@ LOGBASE=$PROJECT_ROOT/logs
 
 #Slurm
 QUEUE=serial_requeue #unrestricted #or general OR serial_requeue
-NUM_THREADS=8
+NUM_THREADS=10
 MAX_MEM=8000
 RUN_TIME=1200
 
@@ -32,7 +32,7 @@ OUTDIR=$DIFF_ROOT/unit_test
 mkdir -p $OUTDIR
 
 # Submit cuffdiff
-#sbatch -J "BrainMap_test_diff" -t $RUN_TIME --mem-per-cpu=$MAX_MEM -n $NUM_THREADS -p $QUEUE --mail-type=END --wrap="cuffdiff -C $CONTRASTFILE -o $OUTDIR --use-sample-sheet $REF_GTF $SAMPLESHEET >$LOGDIR/cuffdiff.out 2>$LOGDIR/cuffdiff.err" >$LOGDIR/slurm.out 2>$LOGDIR/slurm.err
+#sbatch -J "BrainMap_test_diff" -t $RUN_TIME --mem-per-cpu=$MAX_MEM -n $NUM_THREADS -p $QUEUE --mail-type=END --wrap="cuffdiff -p $NUM_THREADS -C $CONTRASTFILE -o $OUTDIR --use-sample-sheet $REF_GTF $SAMPLESHEET >$LOGDIR/cuffdiff.out 2>$LOGDIR/cuffdiff.err" >$LOGDIR/slurm.out 2>$LOGDIR/slurm.err
 
 #Choosing to run on valor as opposed to slurm queues due to size and number of comparisons
-cuffdiff -C $CONTRASTFILE -o $OUTDIR --use-sample-sheet $REF_GTF $SAMPLESHEET >$LOGDIR/cuffdiff.out
+cuffdiff -p $NUM_THREADS -C $CONTRASTFILE -o $OUTDIR --use-sample-sheet $REF_GTF $SAMPLESHEET >$LOGDIR/cuffdiff.out

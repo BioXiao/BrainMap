@@ -21,7 +21,7 @@ ALIGN_ROOT=$PROJECT_ROOT/data/bam
 
 TMP_DIR=/n/regal/rinn_lab/lgoff/BrainMap
 
-BOWTIE_INDEX="$PROJECT_ROOT/data/indexes/mm9_brainmap"
+BOWTIE_INDEX="$PROJECT_ROOT/data/indexes/mm10/mm10_brainmap"
 
 #REF_GTF="-G $PROJECT_ROOT/data/annotation/mm9_ucsc_and_linc_DB_2.0.gtf"
 REF_GTF=""
