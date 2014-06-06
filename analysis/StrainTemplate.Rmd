@@ -1,0 +1,85 @@
+Strain X KO vs WT (Embryonic or Adult)
+======================================
+
+```{r init}
+# Set knitr opts
+
+```
+
+```{r vars_and_setup,eval=TRUE,echo=FALSE,message=FALSE}
+# Helper functions
+
+# Constant variables
+alpha<-0.05
+
+```
+
+# Intialize
+```{r cummeRbund}
+
+cuff<-readCufflinks()
+
+
+```
+
+# Design Overview
+
+## Replicates
+
+# QC
+
+## Dispersion
+
+## Cross-replicate variability (fpkmSCVplot)
+
+## Volcano
+
+### Volcano matrix (replicates)
+
+## Scatterplot
+
+### Scatter matrix (replicates)
+
+## Distributions
+
+### Boxplot
+
+### Density
+
+# KO assessment
+
+## Endogenous lncRNA expression
+
+## LacZ expression
+
+## Digital Genotyping (LacZ vs Endogenous lncRNA)
+
+# Differential Analysis
+
+## Differential Genes
+
+## Differential Splicing
+
+## Differential Promoter usage
+
+# Gene/Pathway Analysis
+
+## GSEA
+
+## GO enrichment
+
+# Cis vs Trans (locally)
+``` {r cis_v_trans}
+window<-1000000
+
+```
+
+# Interesting Genes
+
+# Notes
+
+# Session Info
+```{r session}
+sessionInfo()
+```
+
