@@ -1,0 +1,293 @@
+Strain X KO vs WT (Embryonic or Adult)
+======================================
+
+```{r init}
+# Set knitr opts
+
+```
+
+```{r vars_and_setup,eval=TRUE,echo=FALSE,message=FALSE}
+# Helper functions
+library(cummeRbund)
+# Constant variables
+alpha<-0.05
+LINCRNA<-"Lypla1"
+#"linc-Sox2__mCW13.1"
+#alt linc-Sox2__mCW13.2
+```
+
+# Intialize
+```{r cummeRbund}
+
+setwd('/n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf//whole_brain/')
+
+cuff<-readCufflinks()
+
+
+```
+
+# Design Overview
+Whole brains from **strain** isolated by **operator**
+- wt=wtm1,wtf3,wtm8
+- ko=kom4,kof9,kof10
+- can we grab any notes from sample sheet here? 
+
+## Replicates
+
+```{r replicates}
+replicates(cuff)
+```
+
+# QC
+
+## Dispersion
+```{r dispersion}
+dispersionPlot(genes(cuff))
+```
+
+## Cross-replicate variability (fpkmSCVplot)
+The squared coefficient of variation is a normalized measure of cross replicate variability that can be useful for evaluating the quality your RNA-seq data. Differences in CV 2 can result in lower numbers of differentially expressed genes due to a higher degree of variability between replicate fpkm estimates.
+
+```{r CV}
+fpkmSCVPlot(genes(cuff))
+fpkmSCVPlot(isoforms(cuff))
+```
+
+## Volcano
+```{r volcano}
+csVolcano(genes(cuff),"wt","ko")
+```
+
+### Volcano matrix (replicates)
+```{r}
+csVolcanoMatrix(genes(cuff),replicates=T)
+```
+
+## MvA plot
+```{r MvA}
+MAplot(genes(cuff),"wt","ko")
+```
+   
+### MvA plot counts
+```{r MvA counts}
+MAplot(genes(cuff),"wt","ko",useCount=T)
+```
+
+## Scatterplot
+```{r scatterplot}
+csScatterMatrix(genes(cuff))
+```
+
+### Scatter matrix (replicates)
+```{r scatterplot matrix}
+csScatterMatrix(genes(cuff),replicates=T)
+```
+
+
+## Distributions
+
+### Boxplot
+```{r boxplot}
+csBoxplot(genes(cuff))
+csBoxplot(genes(cuff),replicates=T)
+csBoxplot(isoforms(cuff))
+```
+
+### Density
+```{r density}
+csDensity(genes(cuff))
+csDensity(genes(cuff),replicates=T)
+```
+
+
+## Clustering
+
+### Replicate Clusters
+```{r replicate clusters}
+csDendro(genes(cuff),replicates=T)
+```
+
+### PCA
+```{r PCA}
+PCAplot(genes(cuff),"PC2","PC3", replicates=T)
+```
+
+### MDS 
+```{r MDS}
+MDSplot(genes(cuff),replicates=T)
+```
+
+### Distance Heat Map (?not sure it goes here..)
+```{r R distance heatmap }
+csDistHeat(genes(cuff))
+csDistHeat(genes(cuff), replicates=T)
+```
+
+
+# KO assessment
+```{r KO assessment,eval=TRUE,echo=FALSE,message=FALSE}
+sig<-getSig(cuff,alpha=alpha)
+sigIsoIDs<-getSig(cuff,alpha=alpha, level="isoforms")
+       
+sigGenes<-getGenes(cuff,sig)
+sigIsoforms<-getGenes(cuff,sigIsoIDs)       
+
+gene_annotations<-annotation(sigGenes)
+```
+
+## Endogenous lncRNA expression
+```{r Enodenous lncRNA}
+myGeneID<-LINCRNA
+myGene<-getGene(cuff, myGeneID)
+fpkm(myGene)
+fpkm(isoforms(myGene))
+       
+expressionPlot(myGene)
+expressionPlot(myGene, replicates=TRUE)
+       
+expressionPlot(isoforms(myGene))
+expressionPlot(isoforms(myGene), replicates=T)
+       
+expressionPlot(CDS(myGene))
+expressionPlot(CDS(myGene),replicates=T)
+
+expressionPlot(TSS(myGene))
+expressionPlot(TSS(myGene),replicates=T)
+       
+expressionBarplot(myGene)
+expressionBarplot(myGene,replicates=T)
+
+expressionBarplot(isoforms(myGene))     
+expressionBarplot(isoforms(myGene), replicates=T)
+```
+
+More variants? isoforms, genes, replicates, CDS, TSS, etc etc etc? 
+
+
+## LacZ expression
+```{r LacZ expression}
+myGeneID<-LacZ
+myGene<-getGene(cuff, myGeneId)
+fpkm(myGene)
+fpkm(isoforms(myGene))
+       
+expressionPlot(myGene)
+expressionPlot(myGene, replicates=TRUE)
+       
+expressionPlot(isoforms(myGene))
+expressionPlot(isoforms(myGene), replicates=T)
+       
+expressionPlot(CDS(myGene))
+expressionPlot(CDS(myGene),replicates=T)
+
+expressionPlot(TSS(myGene))
+expressionPlot(TSS(myGene),replicates=T)
+       
+expressionBarplot(myGene)
+expressionBarplot(myGene,replicates=T)
+
+expressionBarplot(isoforms(myGene))     
+expressionBarplot(isoforms(myGene), replicates=T)
+```
+
+
+## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
+```{r Digital Genotyping}
+genotypingGeneIDs<-c(LINCRNA,"LacZ","Eif2s3y")
+genotypingGenes<-getGenes(cuff,genotypingGeneIDs)
+       
+ExpressionBarplot(genotypingGenes)
+ExpressionBarplot(genotypingGenes,replicates=T)
+```
+
+
+# Differential Analysis
+
+
+## Differential Genes
+
+With alpha set to **alpha**, there are the following **number** sig diff genes
+
+```{r differential genes intro}
+length(sig)
+gene_annotation$gene_short_name
+```
+
+### Matrix of gene significant differences between conditions
+```{r sigMatrix}
+sigMatrix(cuff, level="genes", alpha=alpha)
+sigMatrix(cuff, level="genes", alpha=alpha, replicates=T)
+sigMatrix(cuff, level="isoforms",alpha=alpha)
+sigMatrix(cuff, level="isoforms",alpha=alpha, replicates=T)       
+```
+
+### Replicate Clustering by significant genes 
+```{r sigDendro}
+csDendro(sigGenes, replicates=T)
+```
+
+### Significant gene expression differences between conditions
+```{r sigExpression}
+csHeatmap(sigGenes, cluster="both",replicates=T)
+expressionPlot(sigGenes)
+       #MOAR PLOTS! 
+```
+
+
+### Expression-level significance relationship
+```{r expression-sig relationship}
+csScatter(sigGenes, "wt", "ko", smooth=T)
+csScatter(sigGenes, "wt", "ko",replicates=T, smooth=T)
+csVolcano(sigGenes, "wt", "ko")
+csVolcano(sigGenes, "wt", "ko",replicates=T)
+
+```
+    
+
+
+
+
+
+## Differential Splicing
+
+## Differential Promoter usage
+
+
+
+
+
+
+# Gene/Pathway Analysis
+
+## GSEA
+
+## GO enrichment
+
+# Cis vs Trans (locally)
+``` {r cis_v_trans}
+window<-1000000
+
+```
+
+
+
+
+
+
+
+
+
+# Interesting Genes
+Hand pick these after initial round of analysis?
+
+# Notes
+
+# Session Info
+```{r session}
+sessionInfo()
+```
+
+#Run Info
+```{r runInfo}
+runInfo(cuff)
+```
