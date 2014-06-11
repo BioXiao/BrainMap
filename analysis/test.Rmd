@@ -1,0 +1,71 @@
+TEST
+======================================
+
+```{r init}
+# Set knitr opts
+
+```
+
+
+```{r vars_and_setup,eval=TRUE,echo=FALSE,message=FALSE}
+# Helper functions
+#library(cummeRbund)
+library(xtable)
+library(limma)
+library(GSA)
+library(gplots)
+library(marray)
+
+#HOW TO SUPRESS THE BIG LIST HERE...? 
+reactome_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.reactome.v4.0.symbols.gmt")
+biocarta_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.biocarta.v4.0.symbols.gmt")
+
+#new cummerbund
+#source("http://bioconductor.org/biocLite.R")
+#biocLite('cummeRbund')
+library(cummeRbund)
+
+
+
+# Constant variables
+alpha<-0.05
+LINCRNA<-"Lypla1"
+#"linc-Sox2__mCW13.1"
+#alt linc-Sox2__mCW13.2
+
+```
+
+# Intialize
+```{r cummeRbund}
+setwd('/n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf/whole_brain/')
+cuff<-readCufflinks()
+
+```
+
+# Design Overview
+Whole brains from **strain** isolated by **operator**
+- wt=wtm1,wtf3,wtm8
+- ko=kom4,kof9,kof10
+- can we grab any notes from sample sheet here? 
+
+cuff
+CuffSet instance with:
+   2 samples
+   31926 genes
+	 77340 isoforms
+	 45508 TSS
+	 0 CDS
+	 31926 promoters
+	 45508 splicing
+	 0 relCDS
+
+
+## Replicates
+
+```{r replicates}
+#print.xtable(xtable(replicates(cuff),type="html"))
+r<-replicates(cuff)[,2:7]
+print(xtable(r),type="html")
+xtable(r)
+
+```
