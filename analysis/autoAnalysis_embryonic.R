@@ -20,4 +20,4 @@ for dir %in% output_directories{
 
 library(knitr)
 strain <- "PERIL!"
-knit2html('test.Rmd',output='strain.md')
+knit2html('test.Rmd',output=strain.md)
