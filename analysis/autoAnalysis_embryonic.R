@@ -3,16 +3,18 @@
 
 # read in xlsx master sheet
 
-Need:
-  Strain
-  cuffdiff output file 
-  samples (wt1 = wtm4?)
-  operator
-  any notes
-
-Additional info, by sample:
-    RNA quality, library concentration, flow cell 
+# list of output directories 
 
 
-# use this to populate StrainTemplate_embryonic
+# use this to populate StrainTemplate_embryonic 
+
+
 # automatically generate reports for each strain 
+#want to be able to do autoAnalysis() or autoAnalysis(dir,comparison)
+for dir %in% output_directories{
+  knit_expand(StrainTemplate_embryonic.Rmd,dir)
+  #save to that output folder with name StrainName_embryonic_autoReport.Rmd
+}
+
+#knit2html
+

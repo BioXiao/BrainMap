@@ -2,961 +2,76 @@ Strain X KO vs WT (Embryonic or Adult)
 ======================================
 
 
-```r
-# Set knitr opts
-```
 
 
 
-```
-## 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001011021031041051061071081091101111121131141151161171181191201211221231241251261271281291301311321331341351361371381391401411421431441451461471481491501511521531541551561571581591601611621631641651661671681691701711721731741751761771781791801811821831841851861871881891901911921931941951961971981992002012022032042052062072082092102112122132142152162172182192202212222232242252262272282292302312322332342352362372382392402412422432442452462472482492502512522532542552562572582592602612622632642652662672682692702712722732742752762772782792802812822832842852862872882892902912922932942952962972982993003013023033043053063073083093103113123133143153163173183193203213223233243253263273283293303313323333343353363373383393403413423433443453463473483493503513523533543553563573583593603613623633643653663673683693703713723733743753763773783793803813823833843853863873883893903913923933943953963973983994004014024034044054064074084094104114124134144154164174184194204214224234244254264274284294304314324334344354364374384394404414424434444454464474484494504514524534544554564574584594604614624634644654664674684694704714724734744754764774784794804814824834844854864874884894904914924934944954964974984995005015025035045055065075085095105115125135145155165175185195205215225235245255265275285295305315325335345355365375385395405415425435445455465475485495505515525535545555565575585595605615625635645655665675685695705715725735745755765775785795805815825835845855865875885895905915925935945955965975985996006016026036046056066076086096106116126136146156166176186196206216226236246256266276286296306316326336346356366376386396406416426436446456466476486496506516526536546556566576586596606616626636646656666676686696706716726736741
-## 2
-## 3
-## 4
-## 5
-## 6
-## 7
-## 8
-## 9
-## 10
-## 11
-## 12
-## 13
-## 14
-## 15
-## 16
-## 17
-## 18
-## 19
-## 20
-## 21
-## 22
-## 23
-## 24
-## 25
-## 26
-## 27
-## 28
-## 29
-## 30
-## 31
-## 32
-## 33
-## 34
-## 35
-## 36
-## 37
-## 38
-## 39
-## 40
-## 41
-## 42
-## 43
-## 44
-## 45
-## 46
-## 47
-## 48
-## 49
-## 50
-## 51
-## 52
-## 53
-## 54
-## 55
-## 56
-## 57
-## 58
-## 59
-## 60
-## 61
-## 62
-## 63
-## 64
-## 65
-## 66
-## 67
-## 68
-## 69
-## 70
-## 71
-## 72
-## 73
-## 74
-## 75
-## 76
-## 77
-## 78
-## 79
-## 80
-## 81
-## 82
-## 83
-## 84
-## 85
-## 86
-## 87
-## 88
-## 89
-## 90
-## 91
-## 92
-## 93
-## 94
-## 95
-## 96
-## 97
-## 98
-## 99
-## 100
-## 101
-## 102
-## 103
-## 104
-## 105
-## 106
-## 107
-## 108
-## 109
-## 110
-## 111
-## 112
-## 113
-## 114
-## 115
-## 116
-## 117
-## 118
-## 119
-## 120
-## 121
-## 122
-## 123
-## 124
-## 125
-## 126
-## 127
-## 128
-## 129
-## 130
-## 131
-## 132
-## 133
-## 134
-## 135
-## 136
-## 137
-## 138
-## 139
-## 140
-## 141
-## 142
-## 143
-## 144
-## 145
-## 146
-## 147
-## 148
-## 149
-## 150
-## 151
-## 152
-## 153
-## 154
-## 155
-## 156
-## 157
-## 158
-## 159
-## 160
-## 161
-## 162
-## 163
-## 164
-## 165
-## 166
-## 167
-## 168
-## 169
-## 170
-## 171
-## 172
-## 173
-## 174
-## 175
-## 176
-## 177
-## 178
-## 179
-## 180
-## 181
-## 182
-## 183
-## 184
-## 185
-## 186
-## 187
-## 188
-## 189
-## 190
-## 191
-## 192
-## 193
-## 194
-## 195
-## 196
-## 197
-## 198
-## 199
-## 200
-## 201
-## 202
-## 203
-## 204
-## 205
-## 206
-## 207
-## 208
-## 209
-## 210
-## 211
-## 212
-## 213
-## 214
-## 215
-## 216
-## 217
-## 218
-## 219
-## 220
-## 221
-## 222
-## 223
-## 224
-## 225
-## 226
-## 227
-## 228
-## 229
-## 230
-## 231
-## 232
-## 233
-## 234
-## 235
-## 236
-## 237
-## 238
-## 239
-## 240
-## 241
-## 242
-## 243
-## 244
-## 245
-## 246
-## 247
-## 248
-## 249
-## 250
-## 251
-## 252
-## 253
-## 254
-## 255
-## 256
-## 257
-## 258
-## 259
-## 260
-## 261
-## 262
-## 263
-## 264
-## 265
-## 266
-## 267
-## 268
-## 269
-## 270
-## 271
-## 272
-## 273
-## 274
-## 275
-## 276
-## 277
-## 278
-## 279
-## 280
-## 281
-## 282
-## 283
-## 284
-## 285
-## 286
-## 287
-## 288
-## 289
-## 290
-## 291
-## 292
-## 293
-## 294
-## 295
-## 296
-## 297
-## 298
-## 299
-## 300
-## 301
-## 302
-## 303
-## 304
-## 305
-## 306
-## 307
-## 308
-## 309
-## 310
-## 311
-## 312
-## 313
-## 314
-## 315
-## 316
-## 317
-## 318
-## 319
-## 320
-## 321
-## 322
-## 323
-## 324
-## 325
-## 326
-## 327
-## 328
-## 329
-## 330
-## 331
-## 332
-## 333
-## 334
-## 335
-## 336
-## 337
-## 338
-## 339
-## 340
-## 341
-## 342
-## 343
-## 344
-## 345
-## 346
-## 347
-## 348
-## 349
-## 350
-## 351
-## 352
-## 353
-## 354
-## 355
-## 356
-## 357
-## 358
-## 359
-## 360
-## 361
-## 362
-## 363
-## 364
-## 365
-## 366
-## 367
-## 368
-## 369
-## 370
-## 371
-## 372
-## 373
-## 374
-## 375
-## 376
-## 377
-## 378
-## 379
-## 380
-## 381
-## 382
-## 383
-## 384
-## 385
-## 386
-## 387
-## 388
-## 389
-## 390
-## 391
-## 392
-## 393
-## 394
-## 395
-## 396
-## 397
-## 398
-## 399
-## 400
-## 401
-## 402
-## 403
-## 404
-## 405
-## 406
-## 407
-## 408
-## 409
-## 410
-## 411
-## 412
-## 413
-## 414
-## 415
-## 416
-## 417
-## 418
-## 419
-## 420
-## 421
-## 422
-## 423
-## 424
-## 425
-## 426
-## 427
-## 428
-## 429
-## 430
-## 431
-## 432
-## 433
-## 434
-## 435
-## 436
-## 437
-## 438
-## 439
-## 440
-## 441
-## 442
-## 443
-## 444
-## 445
-## 446
-## 447
-## 448
-## 449
-## 450
-## 451
-## 452
-## 453
-## 454
-## 455
-## 456
-## 457
-## 458
-## 459
-## 460
-## 461
-## 462
-## 463
-## 464
-## 465
-## 466
-## 467
-## 468
-## 469
-## 470
-## 471
-## 472
-## 473
-## 474
-## 475
-## 476
-## 477
-## 478
-## 479
-## 480
-## 481
-## 482
-## 483
-## 484
-## 485
-## 486
-## 487
-## 488
-## 489
-## 490
-## 491
-## 492
-## 493
-## 494
-## 495
-## 496
-## 497
-## 498
-## 499
-## 500
-## 501
-## 502
-## 503
-## 504
-## 505
-## 506
-## 507
-## 508
-## 509
-## 510
-## 511
-## 512
-## 513
-## 514
-## 515
-## 516
-## 517
-## 518
-## 519
-## 520
-## 521
-## 522
-## 523
-## 524
-## 525
-## 526
-## 527
-## 528
-## 529
-## 530
-## 531
-## 532
-## 533
-## 534
-## 535
-## 536
-## 537
-## 538
-## 539
-## 540
-## 541
-## 542
-## 543
-## 544
-## 545
-## 546
-## 547
-## 548
-## 549
-## 550
-## 551
-## 552
-## 553
-## 554
-## 555
-## 556
-## 557
-## 558
-## 559
-## 560
-## 561
-## 562
-## 563
-## 564
-## 565
-## 566
-## 567
-## 568
-## 569
-## 570
-## 571
-## 572
-## 573
-## 574
-## 575
-## 576
-## 577
-## 578
-## 579
-## 580
-## 581
-## 582
-## 583
-## 584
-## 585
-## 586
-## 587
-## 588
-## 589
-## 590
-## 591
-## 592
-## 593
-## 594
-## 595
-## 596
-## 597
-## 598
-## 599
-## 600
-## 601
-## 602
-## 603
-## 604
-## 605
-## 606
-## 607
-## 608
-## 609
-## 610
-## 611
-## 612
-## 613
-## 614
-## 615
-## 616
-## 617
-## 618
-## 619
-## 620
-## 621
-## 622
-## 623
-## 624
-## 625
-## 626
-## 627
-## 628
-## 629
-## 630
-## 631
-## 632
-## 633
-## 634
-## 635
-## 636
-## 637
-## 638
-## 639
-## 640
-## 641
-## 642
-## 643
-## 644
-## 645
-## 646
-## 647
-## 648
-## 649
-## 650
-## 651
-## 652
-## 653
-## 654
-## 655
-## 656
-## 657
-## 658
-## 659
-## 660
-## 661
-## 662
-## 663
-## 664
-## 665
-## 666
-## 667
-## 668
-## 669
-## 670
-## 671
-## 672
-## 673
-```
-
-```
-## 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001011021031041051061071081091101111121131141151161171181191201211221231241251261271281291301311321331341351361371381391401411421431441451461471481491501511521531541551561571581591601611621631641651661671681691701711721731741751761771781791801811821831841851861871881891901911921931941951961971981992002012022032042052062072082092102112122132142152162171
-## 2
-## 3
-## 4
-## 5
-## 6
-## 7
-## 8
-## 9
-## 10
-## 11
-## 12
-## 13
-## 14
-## 15
-## 16
-## 17
-## 18
-## 19
-## 20
-## 21
-## 22
-## 23
-## 24
-## 25
-## 26
-## 27
-## 28
-## 29
-## 30
-## 31
-## 32
-## 33
-## 34
-## 35
-## 36
-## 37
-## 38
-## 39
-## 40
-## 41
-## 42
-## 43
-## 44
-## 45
-## 46
-## 47
-## 48
-## 49
-## 50
-## 51
-## 52
-## 53
-## 54
-## 55
-## 56
-## 57
-## 58
-## 59
-## 60
-## 61
-## 62
-## 63
-## 64
-## 65
-## 66
-## 67
-## 68
-## 69
-## 70
-## 71
-## 72
-## 73
-## 74
-## 75
-## 76
-## 77
-## 78
-## 79
-## 80
-## 81
-## 82
-## 83
-## 84
-## 85
-## 86
-## 87
-## 88
-## 89
-## 90
-## 91
-## 92
-## 93
-## 94
-## 95
-## 96
-## 97
-## 98
-## 99
-## 100
-## 101
-## 102
-## 103
-## 104
-## 105
-## 106
-## 107
-## 108
-## 109
-## 110
-## 111
-## 112
-## 113
-## 114
-## 115
-## 116
-## 117
-## 118
-## 119
-## 120
-## 121
-## 122
-## 123
-## 124
-## 125
-## 126
-## 127
-## 128
-## 129
-## 130
-## 131
-## 132
-## 133
-## 134
-## 135
-## 136
-## 137
-## 138
-## 139
-## 140
-## 141
-## 142
-## 143
-## 144
-## 145
-## 146
-## 147
-## 148
-## 149
-## 150
-## 151
-## 152
-## 153
-## 154
-## 155
-## 156
-## 157
-## 158
-## 159
-## 160
-## 161
-## 162
-## 163
-## 164
-## 165
-## 166
-## 167
-## 168
-## 169
-## 170
-## 171
-## 172
-## 173
-## 174
-## 175
-## 176
-## 177
-## 178
-## 179
-## 180
-## 181
-## 182
-## 183
-## 184
-## 185
-## 186
-## 187
-## 188
-## 189
-## 190
-## 191
-## 192
-## 193
-## 194
-## 195
-## 196
-## 197
-## 198
-## 199
-## 200
-## 201
-## 202
-## 203
-## 204
-## 205
-## 206
-## 207
-## 208
-## 209
-## 210
-## 211
-## 212
-## 213
-## 214
-## 215
-## 216
-```
 
 # Intialize
 
-```r
-setwd('/n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf/whole_brain/')
-cuff<-readCufflinks()
-```
 
 # Design Overview
-Whole brains from **strain** isolated by **operator**
-- wt=wtm1,wtf3,wtm8
-- ko=kom4,kof9,kof10
-- can we grab any notes from sample sheet here? 
 
+This file shows the wt-v-ko comparison for . 
+
+Samples used are:
+
+```r
+samples
+```
+
+```
+##                                                                           9
+## c......n....rinn_data1....users....agroff....seq....PERIL....data...   bams
+## c......n....rinn_data1....users....agroff....seq....PERIL....data....1 bams
+## c......n....rinn_data1....users....agroff....seq....PERIL....data....2 bams
+## c......n....rinn_data1....users....agroff....seq....PERIL....data....3 bams
+## c......n....rinn_data1....users....agroff....seq....PERIL....data....4 bams
+## c......n....rinn_data1....users....agroff....seq....PERIL....data....5 bams
+```
+
+
+Cuff overview:
+
+```r
 cuff
-CuffSet instance with:
-   2 samples
-	 31926 genes
-	 77340 isoforms
-	 45508 TSS
-	 0 CDS
-	 31926 promoters
-	 45508 splicing
-	 0 relCDS
+```
 
+```
+## CuffSet instance with:
+## 	 2 samples
+## 	 31926 genes
+## 	 77340 isoforms
+## 	 45508 TSS
+## 	 0 CDS
+## 	 31926 promoters
+## 	 45508 splicing
+## 	 0 relCDS
+```
 
 ## Replicates
 
-
 ```r
-replicates(cuff)
+print(xtable(replicates(cuff),type="html"))
 ```
 
 ```
-##                                                                                                                     file
-## 1  /n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR716_Peril_L43_E14-5_whole_brain_wtM1_CAGATC/accepted_hits.bam
-## 2  /n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR717_Peril_L43_E14-5_whole_brain_wtF3_ACTTGA/accepted_hits.bam
-## 3  /n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR719_Peril_L43_E14-5_whole_brain_wtM8_TAGCTT/accepted_hits.bam
-## 4  /n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR718_Peril_L43_E14-5_whole_brain_koM4_GATCAG/accepted_hits.bam
-## 5  /n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR720_Peril_L43_E14-5_whole_brain_koF9_GGCTAC/accepted_hits.bam
-## 6 /n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR721_Peril_L43_E14-5_whole_brain_koF10_CTTGTA/accepted_hits.bam
-##   sample_name replicate rep_name total_mass norm_mass internal_scale
-## 1          wt         0     wt_0   28383700  25891500         1.0940
-## 2          wt         1     wt_1   27709200  25891500         1.0805
-## 3          wt         2     wt_2   24704700  25891500         0.9365
-## 4          ko         0     ko_0   30022300  25891500         1.1700
-## 5          ko         1     ko_1   21295400  25891500         0.8206
-## 6          ko         2     ko_2   24554000  25891500         0.9521
-##   external_scale
-## 1              1
-## 2              1
-## 3              1
-## 4              1
-## 5              1
-## 6              1
+## % latex table generated in R 3.0.2 by xtable 1.7-3 package
+## % Wed Jun 11 16:56:32 2014
+## \begin{table}[ht]
+## \centering
+## \begin{tabular}{rllrlrrrr}
+##   \hline
+##  & file & sample\_name & replicate & rep\_name & total\_mass & norm\_mass & internal\_scale & external\_scale \\ 
+##   \hline
+## 1 & /n/rinn\_data1/users/agroff/seq/PERIL/data/bams/Sample\_JR722\_Peril\_L43\_E14-5\_kidney\_both\_lobeswtM1\_ACTGAT/accepted\_hits.bam & wt &   0 & wt\_0 & 32567800.00 & 28714000.00 & 1.13 & 1.00 \\ 
+##   2 & /n/rinn\_data1/users/agroff/seq/PERIL/data/bams/Sample\_JR723\_Peril\_L43\_E14-5\_kidney\_both\_lobes\_wtf3\_AGTCAA/accepted\_hits.bam & wt &   1 & wt\_1 & 24846400.00 & 28714000.00 & 0.88 & 1.00 \\ 
+##   3 & /n/rinn\_data1/users/agroff/seq/PERIL/data/bams/Sample\_JR725\_Peril\_L43\_E14-5\_kidney\_both\_lobes\_wtm8\_ATGTCA/accepted\_hits.bam & wt &   2 & wt\_2 & 18152700.00 & 28714000.00 & 0.61 & 1.00 \\ 
+##   4 & /n/rinn\_data1/users/agroff/seq/PERIL/data/bams/Sample\_JR724\_Peril\_L43\_E14-5\_kidney\_both\_lobes\_kom7\_AGTTCC/accepted\_hits.bam & ko &   0 & ko\_0 & 21233900.00 & 28714000.00 & 0.75 & 1.00 \\ 
+##   5 & /n/rinn\_data1/users/agroff/seq/PERIL/data/bams/Sample\_JR726\_Peril\_L43\_E14-5\_kidney\_both\_lobes\_kof9\_CCGTCC/accepted\_hits.bam & ko &   1 & ko\_1 & 41738700.00 & 28714000.00 & 1.43 & 1.00 \\ 
+##   6 & /n/rinn\_data1/users/agroff/seq/PERIL/data/bams/Sample\_JR727\_Peril\_L43\_E14-5\_kidney\_both\_lobes\_kof10\_ATTCCT/accepted\_hits.bam & ko &   2 & ko\_2 & 43552300.00 & 28714000.00 & 1.52 & 1.00 \\ 
+##    \hline
+## \end{tabular}
+## \end{table}
 ```
 
 # QC
@@ -1009,7 +124,7 @@ csVolcano(genes(cuff),"wt","ko")
 csVolcanoMatrix(genes(cuff),replicates=T)
 ```
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1.png) 
+![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3.png) 
 
 ## MvA plot
 
@@ -1018,7 +133,7 @@ MAplot(genes(cuff),"wt","ko")
 ```
 
 ```
-## Warning: Removed 7410 rows containing missing values (geom_point).
+## Warning: Removed 7893 rows containing missing values (geom_point).
 ```
 
 ![plot of chunk MvA](figure/MvA.png) 
@@ -1030,7 +145,7 @@ MAplot(genes(cuff),"wt","ko",useCount=T)
 ```
 
 ```
-## Warning: Removed 7410 rows containing missing values (geom_point).
+## Warning: Removed 7893 rows containing missing values (geom_point).
 ```
 
 ![plot of chunk MvA counts](figure/MvA counts.png) 
@@ -1081,8 +196,8 @@ csDensity(genes(cuff))
 ```
 
 ```
-## Warning: Removed 8487 rows containing non-finite values (stat_density).
-## Warning: Removed 8646 rows containing non-finite values (stat_density).
+## Warning: Removed 9343 rows containing non-finite values (stat_density).
+## Warning: Removed 8875 rows containing non-finite values (stat_density).
 ```
 
 ![plot of chunk density](figure/density1.png) 
@@ -1092,12 +207,12 @@ csDensity(genes(cuff),replicates=T)
 ```
 
 ```
-## Warning: Removed 10396 rows containing non-finite values (stat_density).
-## Warning: Removed 10329 rows containing non-finite values (stat_density).
-## Warning: Removed 10816 rows containing non-finite values (stat_density).
-## Warning: Removed 10341 rows containing non-finite values (stat_density).
-## Warning: Removed 10985 rows containing non-finite values (stat_density).
-## Warning: Removed 10732 rows containing non-finite values (stat_density).
+## Warning: Removed 11122 rows containing non-finite values (stat_density).
+## Warning: Removed 11165 rows containing non-finite values (stat_density).
+## Warning: Removed 12245 rows containing non-finite values (stat_density).
+## Warning: Removed 11606 rows containing non-finite values (stat_density).
+## Warning: Removed 10794 rows containing non-finite values (stat_density).
+## Warning: Removed 10546 rows containing non-finite values (stat_density).
 ```
 
 ![plot of chunk density](figure/density2.png) 
@@ -1114,7 +229,7 @@ csDendro(genes(cuff),replicates=T)
 ![plot of chunk replicate clusters](figure/replicate clusters.png) 
 
 ```
-## 'dendrogram' with 2 branches and 6 members total, at height 0.06655
+## 'dendrogram' with 2 branches and 6 members total, at height 0.07842
 ```
 
 ### PCA
@@ -1156,13 +271,18 @@ csDistHeat(genes(cuff), replicates=T)
 ```r
 myGeneID<-LINCRNA
 myGene<-getGene(cuff, myGeneID)
+```
+
+```
+## Error: invalid class "CuffGene" object: FALSE
+```
+
+```r
 fpkm(myGene)
 ```
 
 ```
-##       gene_id sample_name  fpkm conf_hi conf_lo quant_status
-## 1 XLOC_000004          ko 21.47   25.41   17.54           OK
-## 2 XLOC_000004          wt 21.50   25.43   17.57           OK
+## Error: error in evaluating the argument 'object' in selecting a method for function 'fpkm': Error: object 'myGene' not found
 ```
 
 ```r
@@ -1170,47 +290,51 @@ fpkm(isoforms(myGene))
 ```
 
 ```
-##       isoform_id sample_name    fpkm conf_hi conf_lo quant_status
-## 1 TCONS_00000008          ko  0.2898  0.8067    0.00           OK
-## 2 TCONS_00000009          ko 21.1837 25.0868   17.28           OK
-## 3 TCONS_00000008          wt  0.2852  0.8113    0.00           OK
-## 4 TCONS_00000009          wt 21.2131 25.1209   17.31           OK
+## Error: error in evaluating the argument 'object' in selecting a method for function 'fpkm': Error in isoforms(myGene) : 
+##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
 ```
 
 ```r
 expressionPlot(myGene)
 ```
 
-![plot of chunk Enodenous lncRNA](figure/Enodenous lncRNA1.png) 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error: object 'myGene' not found
+```
 
 ```r
 expressionPlot(myGene, replicates=TRUE)
 ```
 
-![plot of chunk Enodenous lncRNA](figure/Enodenous lncRNA2.png) 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error: object 'myGene' not found
+```
 
 ```r
 expressionPlot(isoforms(myGene))
 ```
 
-![plot of chunk Enodenous lncRNA](figure/Enodenous lncRNA3.png) 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in isoforms(myGene) : 
+##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
+```
 
 ```r
 expressionPlot(isoforms(myGene), replicates=T)
 ```
 
-![plot of chunk Enodenous lncRNA](figure/Enodenous lncRNA4.png) 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in isoforms(myGene) : 
+##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
+```
 
 ```r
 expressionPlot(CDS(myGene))
 ```
 
 ```
-## Warning: no non-missing arguments to max; returning -Inf
-```
-
-```
-## Error: replacement has 1 row, data has 0
+## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in CDS(myGene) : 
+##   error in evaluating the argument 'object' in selecting a method for function 'CDS': Error: object 'myGene' not found
 ```
 
 ```r
@@ -1218,48 +342,66 @@ expressionPlot(CDS(myGene),replicates=T)
 ```
 
 ```
-## Warning: no non-missing arguments to max; returning -Inf
-```
-
-```
-## Error: replacement has 1 row, data has 0
+## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in CDS(myGene) : 
+##   error in evaluating the argument 'object' in selecting a method for function 'CDS': Error: object 'myGene' not found
 ```
 
 ```r
 expressionPlot(TSS(myGene))
 ```
 
-![plot of chunk Enodenous lncRNA](figure/Enodenous lncRNA5.png) 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in TSS(myGene) : 
+##   error in evaluating the argument 'object' in selecting a method for function 'TSS': Error: object 'myGene' not found
+```
 
 ```r
 expressionPlot(TSS(myGene),replicates=T)
 ```
 
-![plot of chunk Enodenous lncRNA](figure/Enodenous lncRNA6.png) 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in TSS(myGene) : 
+##   error in evaluating the argument 'object' in selecting a method for function 'TSS': Error: object 'myGene' not found
+```
 
 ```r
 expressionBarplot(myGene)
 ```
 
-![plot of chunk Enodenous lncRNA](figure/Enodenous lncRNA7.png) 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error: object 'myGene' not found
+```
 
 ```r
 expressionBarplot(myGene,replicates=T)
 ```
 
-![plot of chunk Enodenous lncRNA](figure/Enodenous lncRNA8.png) 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error: object 'myGene' not found
+```
 
 ```r
 expressionBarplot(isoforms(myGene))     
 ```
 
-![plot of chunk Enodenous lncRNA](figure/Enodenous lncRNA9.png) 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error in isoforms(myGene) : 
+##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
+```
 
 ```r
 expressionBarplot(isoforms(myGene), replicates=T)
 ```
 
-![plot of chunk Enodenous lncRNA](figure/Enodenous lncRNA10.png) 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error in isoforms(myGene) : 
+##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
+```
+
+```r
+#include isoform/promoter etc here!!
+```
+
 
 ## LacZ expression
 
@@ -1284,9 +426,7 @@ fpkm(myGene)
 ```
 
 ```
-##       gene_id sample_name  fpkm conf_hi conf_lo quant_status
-## 1 XLOC_000004          ko 21.47   25.41   17.54           OK
-## 2 XLOC_000004          wt 21.50   25.43   17.57           OK
+## Error: error in evaluating the argument 'object' in selecting a method for function 'fpkm': Error: object 'myGene' not found
 ```
 
 ```r
@@ -1294,47 +434,51 @@ fpkm(isoforms(myGene))
 ```
 
 ```
-##       isoform_id sample_name    fpkm conf_hi conf_lo quant_status
-## 1 TCONS_00000008          ko  0.2898  0.8067    0.00           OK
-## 2 TCONS_00000009          ko 21.1837 25.0868   17.28           OK
-## 3 TCONS_00000008          wt  0.2852  0.8113    0.00           OK
-## 4 TCONS_00000009          wt 21.2131 25.1209   17.31           OK
+## Error: error in evaluating the argument 'object' in selecting a method for function 'fpkm': Error in isoforms(myGene) : 
+##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
 ```
 
 ```r
 expressionPlot(myGene)
 ```
 
-![plot of chunk LacZ expression](figure/LacZ expression1.png) 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error: object 'myGene' not found
+```
 
 ```r
 expressionPlot(myGene, replicates=TRUE)
 ```
 
-![plot of chunk LacZ expression](figure/LacZ expression2.png) 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error: object 'myGene' not found
+```
 
 ```r
 expressionPlot(isoforms(myGene))
 ```
 
-![plot of chunk LacZ expression](figure/LacZ expression3.png) 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in isoforms(myGene) : 
+##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
+```
 
 ```r
 expressionPlot(isoforms(myGene), replicates=T)
 ```
 
-![plot of chunk LacZ expression](figure/LacZ expression4.png) 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in isoforms(myGene) : 
+##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
+```
 
 ```r
 expressionPlot(CDS(myGene))
 ```
 
 ```
-## Warning: no non-missing arguments to max; returning -Inf
-```
-
-```
-## Error: replacement has 1 row, data has 0
+## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in CDS(myGene) : 
+##   error in evaluating the argument 'object' in selecting a method for function 'CDS': Error: object 'myGene' not found
 ```
 
 ```r
@@ -1342,48 +486,61 @@ expressionPlot(CDS(myGene),replicates=T)
 ```
 
 ```
-## Warning: no non-missing arguments to max; returning -Inf
-```
-
-```
-## Error: replacement has 1 row, data has 0
+## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in CDS(myGene) : 
+##   error in evaluating the argument 'object' in selecting a method for function 'CDS': Error: object 'myGene' not found
 ```
 
 ```r
 expressionPlot(TSS(myGene))
 ```
 
-![plot of chunk LacZ expression](figure/LacZ expression5.png) 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in TSS(myGene) : 
+##   error in evaluating the argument 'object' in selecting a method for function 'TSS': Error: object 'myGene' not found
+```
 
 ```r
 expressionPlot(TSS(myGene),replicates=T)
 ```
 
-![plot of chunk LacZ expression](figure/LacZ expression6.png) 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in TSS(myGene) : 
+##   error in evaluating the argument 'object' in selecting a method for function 'TSS': Error: object 'myGene' not found
+```
 
 ```r
 expressionBarplot(myGene)
 ```
 
-![plot of chunk LacZ expression](figure/LacZ expression7.png) 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error: object 'myGene' not found
+```
 
 ```r
 expressionBarplot(myGene,replicates=T)
 ```
 
-![plot of chunk LacZ expression](figure/LacZ expression8.png) 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error: object 'myGene' not found
+```
 
 ```r
 expressionBarplot(isoforms(myGene))     
 ```
 
-![plot of chunk LacZ expression](figure/LacZ expression9.png) 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error in isoforms(myGene) : 
+##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
+```
 
 ```r
 expressionBarplot(isoforms(myGene), replicates=T)
 ```
 
-![plot of chunk LacZ expression](figure/LacZ expression10.png) 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error in isoforms(myGene) : 
+##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
+```
 
 
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
@@ -1418,7 +575,7 @@ expressionBarplot(genotypingGenes,replicates=T)
 
 
 ## Differential Genes
-There are 24 significantly differentially expressed genes. They are:
+There are 95 significantly differentially expressed genes. They are:
 
 ```r
 print(xtable(geneAnnot$gene_short_name),type="html")
@@ -1476,7 +633,7 @@ csDendro(sigGenes, replicates=T)
 ![plot of chunk sigDendro](figure/sigDendro.png) 
 
 ```
-## 'dendrogram' with 2 branches and 6 members total, at height 0.3084
+## 'dendrogram' with 2 branches and 6 members total, at height 0.2567
 ```
 
 ### Significant gene expression differences between conditions
@@ -1530,67 +687,40 @@ Per isoform difference between conditions:
 ```r
 isoformSigIDs<-getSig(cuff,level="isoforms",alpha=0.1)
 isoformSigGenes<-getGenes(cuff,isoformSigIDs)
-annotation(isoformSigGenes)
+isoAnnot<-annotation(isoformSigGenes)
+print(xtable(isoAnnot$gene_short_name),type="html")
 ```
 
 ```
-##        gene_id class_code nearest_ref_id gene_short_name
-## 1  XLOC_003885       <NA>           <NA>       Hist3h2ba
-## 2  XLOC_003950       <NA>           <NA>            Pirt
-## 3  XLOC_004374       <NA>           <NA>           Arl4d
-## 4  XLOC_004617       <NA>           <NA>     Pol mu,Polm
-## 5  XLOC_010055       <NA>           <NA>            Prph
-## 6  XLOC_015492       <NA>           <NA>             Sp9
-## 7  XLOC_015657       <NA>           <NA>         C1qtnf4
-## 8  XLOC_016592       <NA>           <NA>            Lhx6
-## 9  XLOC_016713       <NA>           <NA>            Dlx1
-## 10 XLOC_016714       <NA>           <NA>            Dlx2
-## 11 XLOC_016796       <NA>           <NA>           P2rx3
-## 12 XLOC_016985       <NA>           <NA>         Gm13889
-## 13 XLOC_018553       <NA>           <NA>      Mcca,Mccc1
-## 14 XLOC_023878       <NA>           <NA>            Dlx5
-## 15 XLOC_025045       <NA>           <NA>          Zfp420
-## 16 XLOC_027648       <NA>           <NA>            Jund
-## 17 XLOC_030688       <NA>           <NA>          Pcsk1n
-## 18 XLOC_031822       <NA>           <NA>         Eif2s3y
-##                        locus length coverage
-## 1    chr11:58762412-58763032     NA       NA
-## 2    chr11:66725492-66742202     NA       NA
-## 3  chr11:101526854-101529146     NA       NA
-## 4      chr11:5727862-5738019     NA       NA
-## 5    chr15:98885604-98889409     NA       NA
-## 6     chr2:73109982-73113828     NA       NA
-## 7     chr2:90725942-90730683     NA       NA
-## 8     chr2:35937472-35960928     NA       NA
-## 9     chr2:71367501-71375948     NA       NA
-## 10    chr2:71381464-71384811     NA       NA
-## 11    chr2:84836708-84875991     NA       NA
-## 12    chr2:93795966-93797257     NA       NA
-## 13    chr3:35858230-35952469     NA       NA
-## 14      chr6:6827804-6832068     NA       NA
-## 15    chr7:30644997-30662321     NA       NA
-## 16    chr8:73221637-73224515     NA       NA
-## 17      chrX:7496947-7505733     NA       NA
-## 18        chrY:347054-365037     NA       NA
+## Error: no applicable method for 'xtable' applied to an object of class
+## "character"
 ```
 
-```r
-#make tables?
-```
-
-### Differential Splicing between conditions ()
+### Differential Splicing between conditions
 Per condition differences in isoforms #Does gene have diff piechart between conditions
 
 ```r
 splicingSigIDs<-getSig(cuff,level="splicing",alpha=0.05)
 splicingSigGenes<-getGenes(cuff,splicingSigIDs)
 spliceAnnot<-annotation(splicingSigGenes)
-print(xtable(spliceAnnot$gene_short_name), type="html")
+
+print(xtable(as.data.frame(spliceAnnot$gene_short_name)), type="html")
 ```
 
 ```
-## Error: no applicable method for 'xtable' applied to an object of class
-## "character"
+## <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
+## <!-- Wed Jun 11 17:00:14 2014 -->
+## <TABLE border=1>
+## <TR> <TH>  </TH> <TH> spliceAnnot$gene_short_name </TH>  </TR>
+##   <TR> <TD align="right"> 1 </TD> <TD> Cisk,Sgk3 </TD> </TR>
+##   <TR> <TD align="right"> 2 </TD> <TD> Terf1 </TD> </TR>
+##   <TR> <TD align="right"> 3 </TD> <TD> Timeless </TD> </TR>
+##   <TR> <TD align="right"> 4 </TD> <TD> Foxo3 </TD> </TR>
+##   <TR> <TD align="right"> 5 </TD> <TD> Myo10,myo 10 </TD> </TR>
+##   <TR> <TD align="right"> 6 </TD> <TD> NSR1,Scarf2 </TD> </TR>
+##   <TR> <TD align="right"> 7 </TD> <TD> Spry1 </TD> </TR>
+##   <TR> <TD align="right"> 8 </TD> <TD> Oasl1 </TD> </TR>
+##    </TABLE>
 ```
 
 ```r
@@ -1612,7 +742,7 @@ csHeatmap(isoforms(splicingSigGenes),cluster='row',method=dist)
 ## No id variables; using all as measure variables
 ```
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-21.png) 
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-41.png) 
 
 ```r
 csHeatmap(isoforms(isoformSigGenes),cluster='row',method=dist)
@@ -1623,7 +753,7 @@ csHeatmap(isoforms(isoformSigGenes),cluster='row',method=dist)
 ## No id variables; using all as measure variables
 ```
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-22.png) 
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-42.png) 
 
 ```r
   #IS THIS DIFFERENTIAL BETWEEN WT/KO OR ISOFORMS? WHETHER IN ONE CONDITION OR BOTH?
@@ -1636,13 +766,13 @@ csHeatmap(isoforms(isoformSigGenes),cluster='row',method=dist)
 
 
 ```r
-sigPromoterIDs<-getSig(cuff,alpha=0.1,level="TSS")
-sigPromoterGenes<-getGenes(cuff,sigPromoterIDs)
+tssSigIDs<-getSig(cuff,alpha=0.1,level="TSS")
+tssSigGenes<-getGenes(cuff,tssSigIDs)
 
 #promoter.unique.IDs<-setdiff(annotation(sigPromoterGenes)$gene_id,annotation(sigGenes)$gene_id)
 #promoter.unique.IDs
 
-id<-sigPromoterIDs[19]
+id<-tssSigIDs[19]
 gene<-getGene(cuff,id)
 csPie(gene) #how can you get a significantly different promoter but with no isoform diff? 
 ```
@@ -1650,7 +780,7 @@ csPie(gene) #how can you get a significantly different promoter but with no isof
 ![plot of chunk diff.TSS](figure/diff.TSS1.png) 
 
 ```r
-csHeatmap(sigPromoterGenes,cluster='row',method=dist)
+csHeatmap(tssSigGenes,cluster='row',method=dist)
 ```
 
 ```
@@ -1671,28 +801,16 @@ csHeatmap(sigPromoterGenes,cluster='row',method=dist)
 
 
 ```r
-sigPromoterIDs<-getSig(cuff,alpha=0.01,level="promoters")
+promoterSigIDs<-getSig(cuff,alpha=0.1,level="promoters")
 
-sigPromoterGenes<-getGenes(cuff,sigPromoterIDs)
-```
+promoterSigGenes<-getGenes(cuff,promoterSigIDs)
 
-```
-## Error: RS-DBI driver: (error in statement: near ")": syntax error)
-```
+#promoter.unique.IDs<-setdiff(annotation(sigPromoterGenes)$gene_id,annotation(sigGenes)$gene_id)
 
-```r
-promoter.unique.IDs<-setdiff(annotation(sigPromoterGenes)$gene_id,annotation(sigGenes)$gene_id)
+#promoter.unique.IDs
 
-promoter.unique.IDs
-```
-
-```
-## [1] "XLOC_002872" "XLOC_011024" "XLOC_018553"
-```
-
-```r
 pdf("sigPromoter_heatmap.pdf",width=10,height=20)
-csHeatmap(sigPromoterGenes,cluster='row',method=dist)
+csHeatmap(promoterSigGenes,cluster='row',method=dist)
 ```
 
 ```
@@ -1712,9 +830,9 @@ dev.off()
 ## Differential CDS? (unique protein coding isoforms)
 
 ```r
-sigCDSIDs<-getSig(cuff,alpha=0.1,level="relCDS")
+cdsSigIDs<-getSig(cuff,alpha=0.1,level="CDS")
 #sigCDSIDs<-getSig(cuff,alpha=0.1,level="CDS")
-sigCDSGenes<-getGenes(cuff,sigCDSIDs)
+cdsSigGenes<-getGenes(cuff,cdsSigIDs)
 ```
 
 ```
@@ -1722,29 +840,24 @@ sigCDSGenes<-getGenes(cuff,sigCDSIDs)
 ```
 
 ```r
-CDS.unique.IDs<-setdiff(annotation(sigCDSGenes)$gene_id,annotation(sigGenes)$gene_id)
+relcdsSigIDs<-getSig(cuff,alpha=0.1,level="relCDS")
+relcdsSigGenes<-getGenes(cuff,relcdsSigIDs)
 ```
 
 ```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'setdiff': Error in annotation(sigCDSGenes) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'annotation': Error: object 'sigCDSGenes' not found
-```
-
-```r
-CDS.unique.IDs
-```
-
-```
-## Error: object 'CDS.unique.IDs' not found
+## Error: RS-DBI driver: (error in statement: near ")": syntax error)
 ```
 
 ```r
+#CDS.unique.IDs<-setdiff(annotation(sigCDSGenes)$gene_id,annotation(sigGenes)$gene_id)
+#CDS.unique.IDs
+
 pdf("sigCDS_heatmap.pdf",width=10,height=20)
-csHeatmap(sigCDSGenes,cluster='row',method=dist)
+csHeatmap(cdsSigGenes,cluster='row',method=dist)
 ```
 
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'csHeatmap': Error: object 'sigCDSGenes' not found
+## Error: error in evaluating the argument 'object' in selecting a method for function 'csHeatmap': Error: object 'cdsSigGenes' not found
 ```
 
 ```r
@@ -1759,125 +872,13 @@ dev.off()
 
 
 
-
-```r
-master.diff<-union(annotation(sigGenes)$gene_id,union(annotation(splicingSigGenes)$gene_id,union(annotation(sigPromoterGenes)$gene_id,annotation(sigCDSGenes)$gene_id)))
-```
-
-```
-## Error: error in evaluating the argument 'y' in selecting a method for function 'union': Error in union(annotation(splicingSigGenes)$gene_id, union(annotation(sigPromoterGenes)$gene_id,  : 
-##   error in evaluating the argument 'y' in selecting a method for function 'union': Error in union(annotation(sigPromoterGenes)$gene_id, annotation(sigCDSGenes)$gene_id) : 
-##   error in evaluating the argument 'y' in selecting a method for function 'union': Error in annotation(sigCDSGenes) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'annotation': Error: object 'sigCDSGenes' not found
-```
-
-```r
-master.diff.df<-data.frame('gene_id'=master.diff)
-```
-
-```
-## Error: object 'master.diff' not found
-```
-
-```r
-master.diff.df$sigGene<-0
-```
-
-```
-## Error: object 'master.diff.df' not found
-```
-
-```r
-master.diff.df$sigGene[master.diff.df$gene_id %in% annotation(sigGenes)$gene_id]<-1
-```
-
-```
-## Error: object 'master.diff.df' not found
-```
-
-```r
-master.diff.df$sigSplicing<-0
-```
-
-```
-## Error: object 'master.diff.df' not found
-```
-
-```r
-master.diff.df$sigSplicing[master.diff.df$gene_id %in% annotation(splicingSigGenes)$gene_id]<-1
-```
-
-```
-## Error: object 'master.diff.df' not found
-```
-
-```r
-master.diff.df$sigPromoter<-0
-```
-
-```
-## Error: object 'master.diff.df' not found
-```
-
-```r
-master.diff.df$sigPromoter[master.diff.df$gene_id %in% annotation(sigPromoterGenes)$gene_id]<-1
-```
-
-```
-## Error: object 'master.diff.df' not found
-```
-
-```r
-master.diff.df$sigCDS<-0
-```
-
-```
-## Error: object 'master.diff.df' not found
-```
-
-```r
-master.diff.df$sigCDS[master.diff.df$gene_id %in% annotation(sigCDSGenes)$gene_id]<-1
-```
-
-```
-## Error: object 'master.diff.df' not found
-```
-
-```r
-write.table(master.diff.df,"Full_diff_gene_lists.tab",row.names=F,col.names=T,sep="\t")
-```
-
-```
-## Error: object 'master.diff.df' not found
-```
-
-
 ## Venn diagram overview of Differential changes
 
 ```r
 # Make venn diagram of DE genes, DE splicing, DE promoters, DE relCDS (See figure 2)
-# require(venneuler)
 
-# diff.venn<-venneuler(c(
-#     'Genes'=length(sigGeneIDs),
-#     'Splicing'=length(annotation(splicingSigGenes)$gene_id),
-#     'Promoters'=length(annotation(sigPromoterGenes)$gene_id),
-#     'CDS'=length(annotation(sigCDSGenes)$gene_id),
-#     'Genes&Splicing'=length(intersect(sigGeneIDs,annotation(splicingSigGenes)$gene_id)),
-#     'Genes&Promoters'=length(intersect(sigGeneIDs,annotation(sigPromoterGenes)$gene_id)),
-#     'Genes&CDS'=length(intersect(sigGeneIDs,annotation(sigCDSGenes)$gene_id)),
-#     'Splicing&Promoters'=length(intersect(annotation(splicingSigGenes)$gene_id,annotation(sigPromoterGenes)$gene_id)),
-#     'Splicing&CDS'=length(intersect(annotation(splicingSigGenes)$gene_id,annotation(sigCDSGenes)$gene_id)),
-#     'Promoters&CDS'=length(intersect(annotation(sigPromoterGenes)$gene_id,annotation(sigCDSGenes)$gene_id)),
-#     'Genes&Splicing&Promoters'=length(intersect(intersect(sigGeneIDs,annotation(splicingSigGenes)$gene_id),annotation(sigPromoterGenes)$gene_id)),
-#     'Genes&Splicing&CDS'=length(intersect(intersect(sigGeneIDs,annotation(splicingSigGenes)$gene_id),annotation(sigCDSGenes)$gene_id)),
-#     'Genes&Promoters&CDS'=length(intersect(intersect(sigGeneIDs,annotation(sigPromoterGenes)$gene_id),annotation(sigCDSGenes)$gene_id)),
-#     'Splicing&Promoters&CDS'=length(intersect(intersect(annotation(splicingSigGenes)$gene_id,annotation(sigPromoterGenes)$gene_id),annotation(sigCDSGenes)$gene_id)),
-#     'Genes&Splicing&Promoters&CDS'=length(intersect(intersect(intersect(sigGeneIDs,annotation(splicingSigGenes)$gene_id),annotation(sigPromoterGenes)$gene_id),annotation(sigCDSGenes)$gene_id))
-#   ))
-# plot(diff.venn)
-
-
+#install.packages("tiff")
+#library(tiff)
 require(VennDiagram)
 ```
 
@@ -1885,21 +886,22 @@ require(VennDiagram)
 ## Loading required package: VennDiagram
 ```
 
+```r
+venn<-venn.diagram(list(
+    'Genes'=sigGeneIDs,
+    'Splicing'=splicingSigIDs,
+    'Isoforms'=isoformSigIDs,
+    'Promoters'=promoterSigIDs,
+    'TSS'=tssSigIDs),filename=NULL)
 ```
-## Warning: there is no package called 'VennDiagram'
+
+```
+## Error: object 'sigGeneIDs' not found
 ```
 
 ```r
-    venn.diagram(list(
-    'Genes'=sigGeneIDs,
-    'Splicing'=annotation(splicingSigGenes)$gene_id,
-    'Promoters'=annotation(sigPromoterGenes)$gene_id,
-    'CDS'=annotation(sigCDSGenes)$gene_id),
-    filename="venn.png",height=1500,width=1500,resolution=500)
-```
-
-```
-## Error: could not find function "venn.diagram"
+#'CDS'=cdsSigIDs,
+#'relCDS'=relcdsSigIDs
 ```
 
 
@@ -1967,7 +969,7 @@ heatmap.2(-log10(t(biocarta_pvl_corrected[,which(colMins(biocarta_pvl_corrected)
 ## Error: figure margins too large
 ```
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3.png) 
+![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
 
 ```r
 heatmap.2(-log10(t(reactome_pvl_corrected[,which(colMins(reactome_pvl_corrected) < 0.01)])), trace="none", margins=c(5,30),col=InputCols,dendrogram="both",lhei = c(0.1,0.90))
@@ -2134,13 +1136,13 @@ sessionInfo()
 ## [8] methods   base     
 ## 
 ## other attached packages:
-##  [1] mgcv_1.7-29          nlme_3.1-117         cummeRbund_2.7.2    
-##  [4] Gviz_1.6.0           rtracklayer_1.22.7   GenomicRanges_1.14.4
-##  [7] XVector_0.2.0        IRanges_1.20.7       fastcluster_1.1.13  
-## [10] reshape2_1.4         ggplot2_1.0.0        RSQLite_0.11.4      
-## [13] DBI_0.2-7            BiocGenerics_0.8.0   marray_1.40.0       
-## [16] gplots_2.13.0        GSA_1.03             limma_3.18.13       
-## [19] xtable_1.7-3         knitr_1.6           
+##  [1] VennDiagram_1.6.5    mgcv_1.7-29          nlme_3.1-117        
+##  [4] marray_1.40.0        gplots_2.13.0        GSA_1.03            
+##  [7] limma_3.18.13        xtable_1.7-3         cummeRbund_2.7.2    
+## [10] Gviz_1.6.0           rtracklayer_1.22.7   GenomicRanges_1.14.4
+## [13] XVector_0.2.0        IRanges_1.20.7       fastcluster_1.1.13  
+## [16] reshape2_1.4         ggplot2_1.0.0        RSQLite_0.11.4      
+## [19] DBI_0.2-7            BiocGenerics_0.8.0   knitr_1.6           
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] AnnotationDbi_1.24.0   Biobase_2.22.0         biomaRt_2.18.0        
@@ -2171,9 +1173,9 @@ runInfo(cuff)
 ## 2       version
 ## 3  SVN_revision
 ## 4 boost_version
-##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          value
-## 1 cuffdiff -p 8 -o /n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf/whole_brain -L wt,ko /n/rinn_data1/users/agroff/annotation/mm9/ucsc_no_noncoding_AND_lincdb2.gtf /n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR716_Peril_L43_E14-5_whole_brain_wtM1_CAGATC/accepted_hits.bam,/n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR717_Peril_L43_E14-5_whole_brain_wtF3_ACTTGA/accepted_hits.bam,/n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR719_Peril_L43_E14-5_whole_brain_wtM8_TAGCTT/accepted_hits.bam /n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR718_Peril_L43_E14-5_whole_brain_koM4_GATCAG/accepted_hits.bam,/n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR720_Peril_L43_E14-5_whole_brain_koF9_GGCTAC/accepted_hits.bam,/n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR721_Peril_L43_E14-5_whole_brain_koF10_CTTGTA/accepted_hits.bam 
-## 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        2.2.1
-## 3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         4237
-## 4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       104700
+##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        value
+## 1 cuffdiff -p 8 -o /n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf/Kidney -L wt,ko /n/rinn_data1/users/agroff/annotation/mm9/ucsc_no_noncoding_AND_lincdb2.gtf /n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR722_Peril_L43_E14-5_kidney_both_lobeswtM1_ACTGAT/accepted_hits.bam,/n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR723_Peril_L43_E14-5_kidney_both_lobes_wtf3_AGTCAA/accepted_hits.bam,/n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR725_Peril_L43_E14-5_kidney_both_lobes_wtm8_ATGTCA/accepted_hits.bam /n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR724_Peril_L43_E14-5_kidney_both_lobes_kom7_AGTTCC/accepted_hits.bam,/n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR726_Peril_L43_E14-5_kidney_both_lobes_kof9_CCGTCC/accepted_hits.bam,/n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR727_Peril_L43_E14-5_kidney_both_lobes_kof10_ATTCCT/accepted_hits.bam 
+## 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      2.2.1
+## 3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       4237
+## 4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     104700
 ```
