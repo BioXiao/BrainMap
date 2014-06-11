@@ -18,3 +18,6 @@ for dir %in% output_directories{
 
 #knit2html
 
+library(knitr)
+strain <- "PERIL!"
+knit2html('test.Rmd',output='strain.md')

@@ -41,9 +41,8 @@ samples<-as.data.frame(t(files[9,]))
 
 #look up strain, litter, sex, notes in master sheet 
 
-strain<-""
 LINCRNA<-strain
-
+LINCRNA
 ```
 
 # Design Overview
