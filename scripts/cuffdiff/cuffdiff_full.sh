@@ -5,7 +5,7 @@
 
 #Setup
 PROJECT_ROOT=/n/rinn_data1/seq/lgoff/Projects/BrainMap
-DIFF_ROOT=$PROJECT_ROOT/data/diffs
+DIFF_ROOT=$PROJECT_ROOT/analysis
 SAMPLESHEET="brainMap_sample_sheet.tab"
 CONTRASTFILE="brainMap_contrasts_full.tab"
 
