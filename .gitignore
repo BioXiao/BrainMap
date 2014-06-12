@@ -8,4 +8,7 @@
 ._DS_Store
 .DS_Store
 .Rproj.user
-flowcells/
+data/flowcells/
+data/indexes/
+/data/bam/
+/data/quants
