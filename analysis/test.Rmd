@@ -1,15 +1,12 @@
-TEST
+`r strain` KO vs WT (Embryonic)
 ======================================
-
-```{r arguments, echo=FALSE}
-
-dir<-"/n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf/Kidney/"
-
-```
 
 ```{r init, echo=FALSE}
 # Set knitr opts
-
+dir
+print(dir)
+class(dir)
+mode(dir)
 ```
 
 ```{r vars_and_setup,echo=FALSE,results='hide',message=FALSE}
@@ -42,7 +39,7 @@ samples<-as.data.frame(t(files[9,]))
 #look up strain, litter, sex, notes in master sheet 
 
 LINCRNA<-strain
-LINCRNA
+
 ```
 
 # Design Overview

@@ -3,7 +3,10 @@
 
 ```{r init, echo=FALSE}
 # Set knitr opts
-
+dir
+print(dir)
+class(dir)
+mode(dir)
 ```
 
 ```{r vars_and_setup,echo=FALSE,results='hide',message=FALSE}
