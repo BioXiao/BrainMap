@@ -10,9 +10,12 @@
 ```{r init, echo=FALSE}
 # Set knitr opts
 
-path<-paste("figure/",strain, sep="")
-fig.path<-path
+path<-paste("figure/",strain,"/", sep="")
+opts_chunk$set(fig.path=path)
+
+
 ### THINGS TO CACHE GO HERE AND NOWHERE ELSE 
+
 ```
 
 ```{r vars_and_setup,echo=FALSE,results='hide',message=FALSE}
@@ -241,8 +244,10 @@ expressionBarplot(genotypingGenes,replicates=T)
 # Differential Analysis
 
 
-## Differential Genes
-There are `r length(sigGenes)` significantly differentially expressed genes. They are:
+## Differential Genes 
+
+There are `r length(sig)` significantly differentially expressed genes. They are:
+
 ```{r sigdiffGenetable}
 
 print(xtable(geneAnnot$gene_short_name),type="html")
@@ -260,7 +265,9 @@ sigMatrix(cuff, level="isoforms",alpha=alpha, replicates=T)
 
 ### Replicate Clustering by significant genes 
 ```{r sigDendro}
+
 csDendro(sigGenes, replicates=T)
+
 ```
 
 ### Significant gene expression differences between conditions

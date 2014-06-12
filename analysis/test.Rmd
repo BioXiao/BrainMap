@@ -58,19 +58,19 @@ LINCRNA<-strain
 This file shows the wt-v-ko comparison for `r strain`. 
 
 Samples used are:
-```{r}
-samples
+```{r, results='asis'}
+print(xtable(samples),type="html")
 ```
 
 
 Cuff overview:
 ```{r}
-cuff
+print(xtable(cuff),type="html")
 ```
 
 ## Replicates (MAKE TABLES PRETTY >:| )
-```{r replicates, results='markup'}
-print(xtable(replicates(cuff),type="html"))
+```{r replicates, results='asis'}
+print(xtable(replicates(cuff)),type="html")
 ```
 
 # QC
@@ -87,7 +87,5 @@ dispersionPlot(genes(cuff))
 
 csDendro(genes(cuff),replicates=TRUE)
 
-new.env()
-rm(cuff)
 
 ```
