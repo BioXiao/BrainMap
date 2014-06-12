@@ -61,7 +61,7 @@ print(xtable(replicates(cuff),type="html"))
 
 ```
 ## % latex table generated in R 3.0.2 by xtable 1.7-3 package
-## % Thu Jun 12 10:56:40 2014
+## % Thu Jun 12 11:06:02 2014
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{rllrlrrrr}
@@ -103,4 +103,12 @@ csDendro(genes(cuff),replicates=TRUE)
 
 ```
 ## 'dendrogram' with 2 branches and 6 members total, at height 0.06655
+```
+
+```r
+new.env()
+```
+
+```
+## <environment: 0x1790fd50>
 ```

@@ -10,6 +10,7 @@
 ```{r init, echo=FALSE}
 # Set knitr opts
 
+
 ```
 
 ```{r vars_and_setup,echo=FALSE,results='hide',message=FALSE}
@@ -78,5 +79,7 @@ from cummerbund manual: Overdispersion is a common problem in RNA-Seq data. As o
 dispersionPlot(genes(cuff))
 
 csDendro(genes(cuff),replicates=TRUE)
+
+new.env()
 
 ```
