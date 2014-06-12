@@ -31,5 +31,5 @@ test_master_sheet<-(rbind(test1,test2,test3))
 for(i in seq(1,(dim(test_master_sheet)[1]))){
   strain <-test_master_sheet[i,1]
   dir<-test_master_sheet[i,2]
-  knit2html('test.Rmd',output=paste(strain,".md", sep=""))
+  knit2html('StrainTemplate_embryonic.Rmd',output=paste(strain,".md", sep=""))
 }
