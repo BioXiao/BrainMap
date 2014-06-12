@@ -1,10 +1,5 @@
-Strain X KO vs WT (Embryonic or Adult)
+`r strain` KO vs WT (Embryonic)
 ======================================
-```{r arguments, echo=FALSE}
-
-dir<-"/n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf/Kidney/"
-
-```
 
 ```{r init, echo=FALSE}
 # Set knitr opts
@@ -40,7 +35,6 @@ samples<-as.data.frame(t(files[9,]))
 
 #look up strain, litter, sex, notes in master sheet 
 
-strain<-""
 LINCRNA<-strain
 
 ```

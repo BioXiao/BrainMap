@@ -1,4 +1,4 @@
-peril_kidney KO vs WT (Embryonic)
+peril_wholebrain KO vs WT (Embryonic)
 ======================================
 
 
@@ -13,7 +13,7 @@ peril_kidney KO vs WT (Embryonic)
 
 # Design Overview
 
-This file shows the wt-v-ko comparison for peril_kidney. 
+This file shows the wt-v-ko comparison for peril_wholebrain. 
 
 Samples used are:
 
@@ -53,7 +53,7 @@ print(xtable(replicates(cuff),type="html"))
 
 ```
 ## % latex table generated in R 3.0.2 by xtable 1.7-3 package
-## % Wed Jun 11 20:43:09 2014
+## % Wed Jun 11 20:43:21 2014
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{rrlrlrrrr}
@@ -719,7 +719,7 @@ print(xtable(as.data.frame(spliceAnnot$gene_short_name)), type="html")
 
 ```
 ## <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-## <!-- Wed Jun 11 20:43:19 2014 -->
+## <!-- Wed Jun 11 20:43:30 2014 -->
 ## <TABLE border=1>
 ## <TR> <TH>  </TH> <TH> spliceAnnot$gene_short_name </TH>  </TR>
 ##   <TR> <TD align="right"> 1 </TD> <TD> Cisk,Sgk3 </TD> </TR>

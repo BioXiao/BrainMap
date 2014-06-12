@@ -1,6 +1,5 @@
-Strain X KO vs WT (Embryonic or Adult)
+peril_GEOB KO vs WT (Embryonic)
 ======================================
-
 
 
 
@@ -8,10 +7,13 @@ Strain X KO vs WT (Embryonic or Adult)
 
 # Intialize
 
+```
+## Error: character argument expected
+```
 
 # Design Overview
 
-This file shows the wt-v-ko comparison for . 
+This file shows the wt-v-ko comparison for peril_GEOB. 
 
 Samples used are:
 
@@ -20,13 +22,8 @@ samples
 ```
 
 ```
-##                                                                           9
-## c......n....rinn_data1....users....agroff....seq....PERIL....data...   bams
-## c......n....rinn_data1....users....agroff....seq....PERIL....data....1 bams
-## c......n....rinn_data1....users....agroff....seq....PERIL....data....2 bams
-## c......n....rinn_data1....users....agroff....seq....PERIL....data....3 bams
-## c......n....rinn_data1....users....agroff....seq....PERIL....data....4 bams
-## c......n....rinn_data1....users....agroff....seq....PERIL....data....5 bams
+## [1] NA
+## <0 rows> (or 0-length row.names)
 ```
 
 
@@ -38,13 +35,13 @@ cuff
 
 ```
 ## CuffSet instance with:
-## 	 2 samples
-## 	 31926 genes
-## 	 77340 isoforms
-## 	 45508 TSS
+## 	 0 samples
+## 	 0 genes
+## 	 0 isoforms
+## 	 0 TSS
 ## 	 0 CDS
-## 	 31926 promoters
-## 	 45508 splicing
+## 	 0 promoters
+## 	 0 splicing
 ## 	 0 relCDS
 ```
 
@@ -56,20 +53,14 @@ print(xtable(replicates(cuff),type="html"))
 
 ```
 ## % latex table generated in R 3.0.2 by xtable 1.7-3 package
-## % Wed Jun 11 20:13:24 2014
+## % Wed Jun 11 20:42:56 2014
 ## \begin{table}[ht]
 ## \centering
-## \begin{tabular}{rllrlrrrr}
+## \begin{tabular}{rrlrlrrrr}
 ##   \hline
 ##  & file & sample\_name & replicate & rep\_name & total\_mass & norm\_mass & internal\_scale & external\_scale \\ 
 ##   \hline
-## 1 & /n/rinn\_data1/users/agroff/seq/PERIL/data/bams/Sample\_JR722\_Peril\_L43\_E14-5\_kidney\_both\_lobeswtM1\_ACTGAT/accepted\_hits.bam & wt &   0 & wt\_0 & 32567800.00 & 28714000.00 & 1.13 & 1.00 \\ 
-##   2 & /n/rinn\_data1/users/agroff/seq/PERIL/data/bams/Sample\_JR723\_Peril\_L43\_E14-5\_kidney\_both\_lobes\_wtf3\_AGTCAA/accepted\_hits.bam & wt &   1 & wt\_1 & 24846400.00 & 28714000.00 & 0.88 & 1.00 \\ 
-##   3 & /n/rinn\_data1/users/agroff/seq/PERIL/data/bams/Sample\_JR725\_Peril\_L43\_E14-5\_kidney\_both\_lobes\_wtm8\_ATGTCA/accepted\_hits.bam & wt &   2 & wt\_2 & 18152700.00 & 28714000.00 & 0.61 & 1.00 \\ 
-##   4 & /n/rinn\_data1/users/agroff/seq/PERIL/data/bams/Sample\_JR724\_Peril\_L43\_E14-5\_kidney\_both\_lobes\_kom7\_AGTTCC/accepted\_hits.bam & ko &   0 & ko\_0 & 21233900.00 & 28714000.00 & 0.75 & 1.00 \\ 
-##   5 & /n/rinn\_data1/users/agroff/seq/PERIL/data/bams/Sample\_JR726\_Peril\_L43\_E14-5\_kidney\_both\_lobes\_kof9\_CCGTCC/accepted\_hits.bam & ko &   1 & ko\_1 & 41738700.00 & 28714000.00 & 1.43 & 1.00 \\ 
-##   6 & /n/rinn\_data1/users/agroff/seq/PERIL/data/bams/Sample\_JR727\_Peril\_L43\_E14-5\_kidney\_both\_lobes\_kof10\_ATTCCT/accepted\_hits.bam & ko &   2 & ko\_2 & 43552300.00 & 28714000.00 & 1.52 & 1.00 \\ 
-##    \hline
+## \hline
 ## \end{tabular}
 ## \end{table}
 ```
@@ -82,7 +73,9 @@ print(xtable(replicates(cuff),type="html"))
 dispersionPlot(genes(cuff))
 ```
 
-![plot of chunk dispersion](figure/dispersion.png) 
+```
+## Error: RS-DBI driver: (error in statement: near ")": syntax error)
+```
 
 ## Cross-replicate variability (fpkmSCVplot)
 The squared coefficient of variation is a normalized measure of cross replicate variability that can be useful for evaluating the quality your RNA-seq data. Differences in CV 2 can result in lower numbers of differentially expressed genes due to a higher degree of variability between replicate fpkm estimates.
@@ -93,22 +86,16 @@ fpkmSCVPlot(genes(cuff))
 ```
 
 ```
-## Scale for 'x' is already present. Adding another scale for 'x', which will replace the existing scale.
-## geom_smooth: method="auto" and size of largest group is >=1000, so using gam with formula: y ~ s(x, bs = "cs"). Use 'method = x' to change the smoothing method.
+## Error: RS-DBI driver: (error in statement: near ")": syntax error)
 ```
-
-![plot of chunk CV](figure/CV1.png) 
 
 ```r
 fpkmSCVPlot(isoforms(cuff))
 ```
 
 ```
-## Scale for 'x' is already present. Adding another scale for 'x', which will replace the existing scale.
-## geom_smooth: method="auto" and size of largest group is >=1000, so using gam with formula: y ~ s(x, bs = "cs"). Use 'method = x' to change the smoothing method.
+## Error: RS-DBI driver: (error in statement: near ")": syntax error)
 ```
-
-![plot of chunk CV](figure/CV2.png) 
 
 ## Volcano
 
@@ -116,7 +103,9 @@ fpkmSCVPlot(isoforms(cuff))
 csVolcano(genes(cuff),"wt","ko")
 ```
 
-![plot of chunk volcano](figure/volcano.png) 
+```
+## Error: One or more values of 'x' or 'y' are not valid sample names!
+```
 
 ### Volcano matrix (replicates)
 
@@ -124,7 +113,9 @@ csVolcano(genes(cuff),"wt","ko")
 csVolcanoMatrix(genes(cuff),replicates=T)
 ```
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3.png) 
+```
+## Error: replacement has 1 row, data has 0
+```
 
 ## MvA plot
 
@@ -133,10 +124,8 @@ MAplot(genes(cuff),"wt","ko")
 ```
 
 ```
-## Warning: Removed 7893 rows containing missing values (geom_point).
+## Error: non-numeric argument to binary operator
 ```
-
-![plot of chunk MvA](figure/MvA.png) 
    
 ### MvA plot counts
 
@@ -145,10 +134,8 @@ MAplot(genes(cuff),"wt","ko",useCount=T)
 ```
 
 ```
-## Warning: Removed 7893 rows containing missing values (geom_point).
+## Error: non-numeric argument to binary operator
 ```
-
-![plot of chunk MvA counts](figure/MvA counts.png) 
 
 ## Scatterplot
 
@@ -156,7 +143,9 @@ MAplot(genes(cuff),"wt","ko",useCount=T)
 csScatterMatrix(genes(cuff))
 ```
 
-![plot of chunk scatterplot](figure/scatterplot.png) 
+```
+## Error: RS-DBI driver: (error in statement: near "from": syntax error)
+```
 
 ### Scatter matrix (replicates)
 
@@ -164,7 +153,9 @@ csScatterMatrix(genes(cuff))
 csScatterMatrix(genes(cuff),replicates=T)
 ```
 
-![plot of chunk scatterplot matrix](figure/scatterplot matrix.png) 
+```
+## Error: RS-DBI driver: (error in statement: near "from": syntax error)
+```
 
 
 ## Distributions
@@ -175,19 +166,25 @@ csScatterMatrix(genes(cuff),replicates=T)
 csBoxplot(genes(cuff))
 ```
 
-![plot of chunk boxplot](figure/boxplot1.png) 
+```
+## Error: RS-DBI driver: (error in statement: near ")": syntax error)
+```
 
 ```r
 csBoxplot(genes(cuff),replicates=T)
 ```
 
-![plot of chunk boxplot](figure/boxplot2.png) 
+```
+## Error: RS-DBI driver: (error in statement: near ")": syntax error)
+```
 
 ```r
 csBoxplot(isoforms(cuff))
 ```
 
-![plot of chunk boxplot](figure/boxplot3.png) 
+```
+## Error: RS-DBI driver: (error in statement: near ")": syntax error)
+```
 
 ### Density
 
@@ -196,26 +193,16 @@ csDensity(genes(cuff))
 ```
 
 ```
-## Warning: Removed 9343 rows containing non-finite values (stat_density).
-## Warning: Removed 8875 rows containing non-finite values (stat_density).
+## Error: RS-DBI driver: (error in statement: near ")": syntax error)
 ```
-
-![plot of chunk density](figure/density1.png) 
 
 ```r
 csDensity(genes(cuff),replicates=T)
 ```
 
 ```
-## Warning: Removed 11122 rows containing non-finite values (stat_density).
-## Warning: Removed 11165 rows containing non-finite values (stat_density).
-## Warning: Removed 12245 rows containing non-finite values (stat_density).
-## Warning: Removed 11606 rows containing non-finite values (stat_density).
-## Warning: Removed 10794 rows containing non-finite values (stat_density).
-## Warning: Removed 10546 rows containing non-finite values (stat_density).
+## Error: RS-DBI driver: (error in statement: near ")": syntax error)
 ```
-
-![plot of chunk density](figure/density2.png) 
 
 
 ## Clustering
@@ -226,10 +213,8 @@ csDensity(genes(cuff),replicates=T)
 csDendro(genes(cuff),replicates=T)
 ```
 
-![plot of chunk replicate clusters](figure/replicate clusters.png) 
-
 ```
-## 'dendrogram' with 2 branches and 6 members total, at height 0.07842
+## Error: RS-DBI driver: (error in statement: near "from": syntax error)
 ```
 
 ### PCA
@@ -238,7 +223,9 @@ csDendro(genes(cuff),replicates=T)
 PCAplot(genes(cuff),"PC2","PC3", replicates=T)
 ```
 
-![plot of chunk PCA](figure/PCA.png) 
+```
+## Error: RS-DBI driver: (error in statement: near "from": syntax error)
+```
 
 ### MDS 
 
@@ -246,7 +233,9 @@ PCAplot(genes(cuff),"PC2","PC3", replicates=T)
 MDSplot(genes(cuff),replicates=T)
 ```
 
-![plot of chunk MDS](figure/MDS.png) 
+```
+## Error: RS-DBI driver: (error in statement: near "from": syntax error)
+```
 
 ### Distance Heat Map (?not sure it goes here..)
 
@@ -254,17 +243,24 @@ MDSplot(genes(cuff),replicates=T)
 csDistHeat(genes(cuff))
 ```
 
-![plot of chunk R distance heatmap](figure/R distance heatmap1.png) 
+```
+## Error: RS-DBI driver: (error in statement: near "from": syntax error)
+```
 
 ```r
 csDistHeat(genes(cuff), replicates=T)
 ```
 
-![plot of chunk R distance heatmap](figure/R distance heatmap2.png) 
+```
+## Error: RS-DBI driver: (error in statement: near "from": syntax error)
+```
 
 
 # KO assessment
 
+```
+## Error: RS-DBI driver: (error in statement: near ")": syntax error)
+```
 
 ## Endogenous lncRNA expression
 
@@ -274,7 +270,7 @@ myGene<-getGene(cuff, myGeneID)
 ```
 
 ```
-## Error: invalid class "CuffGene" object: FALSE
+## Error: RS-DBI driver: (error in statement: near ")": syntax error)
 ```
 
 ```r
@@ -548,7 +544,14 @@ expressionBarplot(isoforms(myGene), replicates=T)
 ```r
 genotypingGeneIDs<-c(LINCRNA,"LacZ","Eif2s3y")
 genotypingGenes<-getGenes(cuff,genotypingGeneIDs)
-       
+```
+
+```
+## Error: RS-DBI driver: (RS_SQLite_exec: could not execute1: cannot start a
+## transaction within a transaction)
+```
+
+```r
 expressionBarplot(genotypingGenes)
 ```
 
@@ -702,6 +705,13 @@ Per condition differences in isoforms #Does gene have diff piechart between cond
 ```r
 splicingSigIDs<-getSig(cuff,level="splicing",alpha=0.05)
 splicingSigGenes<-getGenes(cuff,splicingSigIDs)
+```
+
+```
+## Error: RS-DBI driver: (error in statement: near ")": syntax error)
+```
+
+```r
 spliceAnnot<-annotation(splicingSigGenes)
 
 print(xtable(as.data.frame(spliceAnnot$gene_short_name)), type="html")
@@ -709,7 +719,7 @@ print(xtable(as.data.frame(spliceAnnot$gene_short_name)), type="html")
 
 ```
 ## <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-## <!-- Wed Jun 11 20:17:08 2014 -->
+## <!-- Wed Jun 11 20:43:06 2014 -->
 ## <TABLE border=1>
 ## <TR> <TH>  </TH> <TH> spliceAnnot$gene_short_name </TH>  </TR>
 ##   <TR> <TD align="right"> 1 </TD> <TD> Cisk,Sgk3 </TD> </TR>
@@ -880,13 +890,6 @@ dev.off()
 #install.packages("tiff")
 #library(tiff)
 require(VennDiagram)
-```
-
-```
-## Loading required package: VennDiagram
-```
-
-```r
 venn<-venn.diagram(list(
     'Genes'=sigGeneIDs,
     'Splicing'=splicingSigIDs,
@@ -966,17 +969,15 @@ heatmap.2(-log10(t(biocarta_pvl_corrected[,which(colMins(biocarta_pvl_corrected)
 ```
 
 ```
-## Error: figure margins too large
+## Error: `x' must have at least 2 rows and 2 columns
 ```
-
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
 
 ```r
 heatmap.2(-log10(t(reactome_pvl_corrected[,which(colMins(reactome_pvl_corrected) < 0.01)])), trace="none", margins=c(5,30),col=InputCols,dendrogram="both",lhei = c(0.1,0.90))
 ```
 
 ```
-## Error: NaN dissimilarity value.
+## Error: `x' must have at least 2 rows and 2 columns
 ```
 
 ## GO enrichment (cluster profiler?)
@@ -1154,11 +1155,12 @@ sessionInfo()
 ## [19] gtools_3.4.1           Hmisc_3.14-4           KernSmooth_2.23-12    
 ## [22] labeling_0.2           lattice_0.20-29        latticeExtra_0.6-26   
 ## [25] markdown_0.7           MASS_7.3-33            Matrix_1.1-3          
-## [28] munsell_0.4.2          plyr_1.8.1             proto_0.3-10          
-## [31] RColorBrewer_1.0-5     Rcpp_0.11.1            RCurl_1.95-4.1        
-## [34] Rsamtools_1.14.3       scales_0.2.4           splines_3.0.2         
-## [37] stats4_3.0.2           stringr_0.6.2          survival_2.37-7       
-## [40] tools_3.0.2            XML_3.98-1.1           zlibbioc_1.8.0
+## [28] mime_0.1.1             munsell_0.4.2          plyr_1.8.1            
+## [31] proto_0.3-10           RColorBrewer_1.0-5     Rcpp_0.11.1           
+## [34] RCurl_1.95-4.1         Rsamtools_1.14.3       scales_0.2.4          
+## [37] splines_3.0.2          stats4_3.0.2           stringr_0.6.2         
+## [40] survival_2.37-7        tools_3.0.2            XML_3.98-1.1          
+## [43] zlibbioc_1.8.0
 ```
 
 #Run Info
@@ -1168,14 +1170,6 @@ runInfo(cuff)
 ```
 
 ```
-##           param
-## 1      cmd_line
-## 2       version
-## 3  SVN_revision
-## 4 boost_version
-##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        value
-## 1 cuffdiff -p 8 -o /n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf/Kidney -L wt,ko /n/rinn_data1/users/agroff/annotation/mm9/ucsc_no_noncoding_AND_lincdb2.gtf /n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR722_Peril_L43_E14-5_kidney_both_lobeswtM1_ACTGAT/accepted_hits.bam,/n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR723_Peril_L43_E14-5_kidney_both_lobes_wtf3_AGTCAA/accepted_hits.bam,/n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR725_Peril_L43_E14-5_kidney_both_lobes_wtm8_ATGTCA/accepted_hits.bam /n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR724_Peril_L43_E14-5_kidney_both_lobes_kom7_AGTTCC/accepted_hits.bam,/n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR726_Peril_L43_E14-5_kidney_both_lobes_kof9_CCGTCC/accepted_hits.bam,/n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR727_Peril_L43_E14-5_kidney_both_lobes_kof10_ATTCCT/accepted_hits.bam 
-## 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      2.2.1
-## 3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       4237
-## 4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     104700
+## [1] param value
+## <0 rows> (or 0-length row.names)
 ```

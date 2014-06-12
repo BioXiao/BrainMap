@@ -30,7 +30,7 @@ test_master_sheet<-data.frame(rbind(test1,test2,test3))
 
 for(i in seq(1,length(test_master_sheet)+1)){
   print(i)
-  #strain <-test_master_sheet[i,1]
- # dir<-test_master_sheet[i,2]
-#  knit2html('StrainTemplate_embryonic.Rmd',output=paste(strain,".md", sep=""))
+  strain <-test_master_sheet[i,1]
+  dir<-test_master_sheet[i,2]
+  knit2html('StrainTemplate_embryonic.Rmd',output=paste(strain,".md", sep=""))
 }
