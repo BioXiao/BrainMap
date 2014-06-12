@@ -58,7 +58,7 @@ LINCRNA<-strain
 This file shows the wt-v-ko comparison for `r strain`. 
 
 Samples used are:
-```{r}
+```{r, results='asis'}
 print(xtable(samples),type="html")
 ```
 

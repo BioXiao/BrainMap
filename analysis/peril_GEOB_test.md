@@ -24,17 +24,15 @@ Samples used are:
 print(xtable(samples),type="html")
 ```
 
-```
-## <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-## <!-- Thu Jun 12 13:08:38 2014 -->
-## <TABLE border=1>
-## <TR> <TH>  </TH> <TH> 9 </TH>  </TR>
-##   <TR> <TD align="right"> c......n....rinn_data1....users....agroff....seq....PERIL....data... </TD> <TD> bams </TD> </TR>
-##   <TR> <TD align="right"> c......n....rinn_data1....users....agroff....seq....PERIL....data....1 </TD> <TD> bams </TD> </TR>
-##   <TR> <TD align="right"> c......n....rinn_data1....users....agroff....seq....PERIL....data....2 </TD> <TD> bams </TD> </TR>
-##   <TR> <TD align="right"> c......n....rinn_data1....users....agroff....seq....PERIL....data....3 </TD> <TD> bams </TD> </TR>
-##    </TABLE>
-```
+<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
+<!-- Thu Jun 12 13:11:37 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> 9 </TH>  </TR>
+  <TR> <TD align="right"> c......n....rinn_data1....users....agroff....seq....PERIL....data... </TD> <TD> bams </TD> </TR>
+  <TR> <TD align="right"> c......n....rinn_data1....users....agroff....seq....PERIL....data....1 </TD> <TD> bams </TD> </TR>
+  <TR> <TD align="right"> c......n....rinn_data1....users....agroff....seq....PERIL....data....2 </TD> <TD> bams </TD> </TR>
+  <TR> <TD align="right"> c......n....rinn_data1....users....agroff....seq....PERIL....data....3 </TD> <TD> bams </TD> </TR>
+   </TABLE>
 
 
 Cuff overview:
@@ -55,7 +53,7 @@ print(xtable(replicates(cuff)),type="html")
 ```
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Thu Jun 12 13:08:38 2014 -->
+<!-- Thu Jun 12 13:11:37 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR710_Peril_L46_E14-5_GE_and_OB_wtm1_ATCACG/accepted_hits.bam </TD> <TD> wt </TD> <TD align="right">   0 </TD> <TD> wt_0 </TD> <TD align="right"> 19373200.00 </TD> <TD align="right"> 21401800.00 </TD> <TD align="right"> 0.90 </TD> <TD align="right"> 1.00 </TD> </TR>
