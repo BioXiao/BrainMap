@@ -380,21 +380,21 @@ dev.off()
 ```
 
 
-
-
+```{r overview.venn,echo=FALSE}
 ## Venn diagram overview of Differential changes
-```{r overview.venn}
+
+
 # Make venn diagram of DE genes, DE splicing, DE promoters, DE relCDS (See figure 2)
 
 #install.packages("tiff")
 #library(tiff)
-require(VennDiagram)
-venn<-venn.diagram(list(
-    'Genes'=sigGeneIDs,
-    'Splicing'=splicingSigIDs,
-    'Isoforms'=isoformSigIDs,
-    'Promoters'=promoterSigIDs,
-    'TSS'=tssSigIDs),filename=NULL)
+#require(VennDiagram)
+#venn<-venn.diagram(list(
+#    'Genes'=sigGeneIDs,
+#    'Splicing'=splicingSigIDs,
+#    'Isoforms'=isoformSigIDs,
+#    'Promoters'=promoterSigIDs,
+#    'TSS'=tssSigIDs),filename=NULL)
 
 #'CDS'=cdsSigIDs,
 #'relCDS'=relcdsSigIDs
@@ -454,6 +454,7 @@ reactome_pvl_mat <- get_gene_set_p_vals(Input.df, reactome_gs,alternative="mixed
 reactome_pvl_corrected <- get_gene_set_q_vals(reactome_pvl_mat)
 reactome_pvl_corrected<-rbind(reactome_pvl_corrected,reactome_pvl_corrected)
 
+
 biocarta_pvl_mat <- get_gene_set_p_vals(Input.df, biocarta_gs, alternative="mixed")
 biocarta_pvl_corrected <- get_gene_set_q_vals(biocarta_pvl_mat)
 biocarta_pvl_corrected<-rbind(biocarta_pvl_corrected,biocarta_pvl_corrected)
@@ -462,16 +463,56 @@ biocarta_pvl_corrected<-rbind(biocarta_pvl_corrected,biocarta_pvl_corrected)
 #two options, print as pdf, and adjust size in separate code block
 #make minimum height and then increment scaled by number of rows to return 
 
-heatmap.2(-log10(t(biocarta_pvl_corrected[,which(colMins(biocarta_pvl_corrected) < 0.01)])), trace="none", margins=c(5,30),col=InputCols,dendrogram="both",lhei = c(0.1,0.90))
-heatmap.2(-log10(t(reactome_pvl_corrected[,which(colMins(reactome_pvl_corrected) < 0.01)])), trace="none", margins=c(5,30),col=InputCols,dendrogram="both",lhei = c(0.1,0.90))
+x<-(-log10(t(biocarta_pvl_corrected[,which(colMins(biocarta_pvl_corrected) < 0.01)])))
+
+labels<-strsplit(rownames(x),"_")
+l<-lapply(labels,function(x){return(x[[2]])})
+labels<-unlist(l)
+
+
+pdf("components_GSEA_biocarta.pdf",width=10,height=30)
+heatmap.2(x, trace="none", margins=c(5,30), col=InputCols, labRow=labels,dendrogram="both",lhei =c(0.1,0.9))
+
+dev.off()
+
+pdf("components_GSEA_reactome.pdf",width=10,height=30)
+
+x<-(-log10(t(reactome_pvl_corrected[,which(colMins(reactome_pvl_corrected) < 0.01)])))
+noinfinitiesx<-x[which(x!="Inf")]
+x_max<-max(noinfinitiesx)+100
+x[x=="Inf"]<-x_max
+
+heatmap.2(x, trace="none", margins=c(5,30),col=InputCols,dendrogram="both",lhei = c(0.1,0.90))
+dev.off()
+ 
+
+
+
 ```
 
 ## GO enrichment (cluster profiler?)
 
+Description/explanation of what's here, and justify all choices. 
 
-```{r GO setup}
+```{r init}
+#source("http://bioconductor.org/biocLite.R")
+#biocLite("ReactomePA")
 
+
+library(cummeRbund)
+library(ReactomePA)
+library(DOSE)
+
+setwd('/n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf/whole_brain/')
+cuff<-readCufflinks()
+
+sigGeneIDs<-getSig(cuff, alpha=0.05)
+sigGenes<-getGenes(cuff,sigGeneIDs)
+geneAnnot<-annotation(sigGenes)
 geneNames<-geneAnnot$gene_short_name
+sigDiff<-diffData(sigGenes)
+sigDiff$foldChange<-sigDiff$value_1/sigDiff$value_2
+
 
 # Top genes by test stat
 #diff<-diffData(genes(cuff))
@@ -502,6 +543,8 @@ require(biomaRt)
 
 library(clusterProfiler)
 
+
+#http://www.bioconductor.org/packages/release/bioc/vignettes/biomaRt/inst/doc/biomaRt.pdf
 ensembl <- useMart("ENSEMBL_MART_ENSEMBL","mmusculus_gene_ensembl", 
 host="www.ensembl.org")
 
@@ -530,11 +573,9 @@ goMF<-enrichGO(gene=sigEZ, organism="mouse",ont="MF",pvalueCutoff=0.01,readable=
 
 goCC<-enrichGO(gene=sigEZ, organism="mouse",ont="CC",pvalueCutoff=0.01,readable=T)
 
-#kegg<-enrichKEGG(gene=sigEZ, organism="mouse",pvalueCutoff=0.01, readable=T)
+kegg<-enrichKEGG(gene=sigEZ, organism="mouse",pvalueCutoff=1, readable=T)
 
-#disease<-enrichDO(gene=sigEZ, organism="mouse",pvalueCutoff=0.01, readable=T)
-
-#pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T)
+pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T)
 
 ```
 
@@ -551,7 +592,7 @@ goCC<-enrichGO(gene=sigEZ, organism="mouse",ont="CC",pvalueCutoff=0.01,readable=
 #barplot(goCC, showCategory=12)
 
 #WHY DONT THESE FUNCTIONS WORK? 
-#cnetplot(goBP, categorySize = "pvalue", foldChange = geneList)
+#cnetplot(goBP, categorySize = "pvalue", foldChange = geneList) #NEEDS foldChange values which requres exact entrez gene mapping (cant lose values); this requires a map. too much hassle for now. 
 #cnetplot(goBP, categorySize = "geneNum", foldChange = geneList)
 
 #cluster.enrichKEGG<-compareCluster(sigEZ,fun="enrichKEGG",organism="mouse",qvalueCutoff=0.01)
@@ -568,8 +609,6 @@ plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) 
 detach("package:biomaRt")
 
 ```
-
-
 
 # Cis vs Trans (locally)
 ``` {r cis_v_trans}
