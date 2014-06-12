@@ -3,32 +3,27 @@ peril_wholebrain KO vs WT (Embryonic)
 
 
 ```
-##                                                                            test3 
-## /n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf/whole_brain 
-## 3 Levels: /n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf/GE_OB/ ...
+##                                                                              test3 
+## "/n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf/whole_brain"
 ```
 
 ```
-##                                                                            test3 
-## /n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf/whole_brain 
-## 3 Levels: /n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf/GE_OB/ ...
+##                                                                              test3 
+## "/n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf/whole_brain"
 ```
 
 ```
-## [1] "factor"
+## [1] "character"
 ```
 
 ```
-## [1] "numeric"
+## [1] "character"
 ```
 
 
 
 # Intialize
 
-```
-## Error: character argument expected
-```
 
 # Design Overview
 
@@ -41,8 +36,13 @@ samples
 ```
 
 ```
-## [1] NA
-## <0 rows> (or 0-length row.names)
+##                                                                           9
+## c......n....rinn_data1....users....agroff....seq....PERIL....data...   bams
+## c......n....rinn_data1....users....agroff....seq....PERIL....data....1 bams
+## c......n....rinn_data1....users....agroff....seq....PERIL....data....2 bams
+## c......n....rinn_data1....users....agroff....seq....PERIL....data....3 bams
+## c......n....rinn_data1....users....agroff....seq....PERIL....data....4 bams
+## c......n....rinn_data1....users....agroff....seq....PERIL....data....5 bams
 ```
 
 
@@ -54,13 +54,13 @@ cuff
 
 ```
 ## CuffSet instance with:
-## 	 0 samples
-## 	 0 genes
-## 	 0 isoforms
-## 	 0 TSS
+## 	 2 samples
+## 	 31926 genes
+## 	 77340 isoforms
+## 	 45508 TSS
 ## 	 0 CDS
-## 	 0 promoters
-## 	 0 splicing
+## 	 31926 promoters
+## 	 45508 splicing
 ## 	 0 relCDS
 ```
 
@@ -72,14 +72,20 @@ print(xtable(replicates(cuff),type="html"))
 
 ```
 ## % latex table generated in R 3.0.2 by xtable 1.7-3 package
-## % Wed Jun 11 21:06:43 2014
+## % Wed Jun 11 21:22:15 2014
 ## \begin{table}[ht]
 ## \centering
-## \begin{tabular}{rrlrlrrrr}
+## \begin{tabular}{rllrlrrrr}
 ##   \hline
 ##  & file & sample\_name & replicate & rep\_name & total\_mass & norm\_mass & internal\_scale & external\_scale \\ 
 ##   \hline
-## \hline
+## 1 & /n/rinn\_data1/users/agroff/seq/PERIL/data/bams/Sample\_JR716\_Peril\_L43\_E14-5\_whole\_brain\_wtM1\_CAGATC/accepted\_hits.bam & wt &   0 & wt\_0 & 28383700.00 & 25891500.00 & 1.09 & 1.00 \\ 
+##   2 & /n/rinn\_data1/users/agroff/seq/PERIL/data/bams/Sample\_JR717\_Peril\_L43\_E14-5\_whole\_brain\_wtF3\_ACTTGA/accepted\_hits.bam & wt &   1 & wt\_1 & 27709200.00 & 25891500.00 & 1.08 & 1.00 \\ 
+##   3 & /n/rinn\_data1/users/agroff/seq/PERIL/data/bams/Sample\_JR719\_Peril\_L43\_E14-5\_whole\_brain\_wtM8\_TAGCTT/accepted\_hits.bam & wt &   2 & wt\_2 & 24704700.00 & 25891500.00 & 0.94 & 1.00 \\ 
+##   4 & /n/rinn\_data1/users/agroff/seq/PERIL/data/bams/Sample\_JR718\_Peril\_L43\_E14-5\_whole\_brain\_koM4\_GATCAG/accepted\_hits.bam & ko &   0 & ko\_0 & 30022300.00 & 25891500.00 & 1.17 & 1.00 \\ 
+##   5 & /n/rinn\_data1/users/agroff/seq/PERIL/data/bams/Sample\_JR720\_Peril\_L43\_E14-5\_whole\_brain\_koF9\_GGCTAC/accepted\_hits.bam & ko &   1 & ko\_1 & 21295400.00 & 25891500.00 & 0.82 & 1.00 \\ 
+##   6 & /n/rinn\_data1/users/agroff/seq/PERIL/data/bams/Sample\_JR721\_Peril\_L43\_E14-5\_whole\_brain\_koF10\_CTTGTA/accepted\_hits.bam & ko &   2 & ko\_2 & 24554000.00 & 25891500.00 & 0.95 & 1.00 \\ 
+##    \hline
 ## \end{tabular}
 ## \end{table}
 ```

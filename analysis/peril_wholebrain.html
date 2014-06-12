@@ -192,26 +192,21 @@ hr {
 <body>
 <h1>peril_wholebrain KO vs WT (Embryonic)</h1>
 
-<pre><code>##                                                                            test3 
-## /n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf/whole_brain 
-## 3 Levels: /n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf/GE_OB/ ...
+<pre><code>##                                                                              test3 
+## &quot;/n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf/whole_brain&quot;
 </code></pre>
 
-<pre><code>##                                                                            test3 
-## /n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf/whole_brain 
-## 3 Levels: /n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf/GE_OB/ ...
+<pre><code>##                                                                              test3 
+## &quot;/n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf/whole_brain&quot;
 </code></pre>
 
-<pre><code>## [1] &quot;factor&quot;
+<pre><code>## [1] &quot;character&quot;
 </code></pre>
 
-<pre><code>## [1] &quot;numeric&quot;
+<pre><code>## [1] &quot;character&quot;
 </code></pre>
 
 <h1>Intialize</h1>
-
-<pre><code>## Error: character argument expected
-</code></pre>
 
 <h1>Design Overview</h1>
 
@@ -222,8 +217,13 @@ hr {
 <pre><code class="r">samples
 </code></pre>
 
-<pre><code>## [1] NA
-## &lt;0 rows&gt; (or 0-length row.names)
+<pre><code>##                                                                           9
+## c......n....rinn_data1....users....agroff....seq....PERIL....data...   bams
+## c......n....rinn_data1....users....agroff....seq....PERIL....data....1 bams
+## c......n....rinn_data1....users....agroff....seq....PERIL....data....2 bams
+## c......n....rinn_data1....users....agroff....seq....PERIL....data....3 bams
+## c......n....rinn_data1....users....agroff....seq....PERIL....data....4 bams
+## c......n....rinn_data1....users....agroff....seq....PERIL....data....5 bams
 </code></pre>
 
 <p>Cuff overview:</p>
@@ -232,13 +232,13 @@ hr {
 </code></pre>
 
 <pre><code>## CuffSet instance with:
-##   0 samples
-##   0 genes
-##   0 isoforms
-##   0 TSS
+##   2 samples
+##   31926 genes
+##   77340 isoforms
+##   45508 TSS
 ##   0 CDS
-##   0 promoters
-##   0 splicing
+##   31926 promoters
+##   45508 splicing
 ##   0 relCDS
 </code></pre>
 
@@ -248,14 +248,20 @@ hr {
 </code></pre>
 
 <pre><code>## % latex table generated in R 3.0.2 by xtable 1.7-3 package
-## % Wed Jun 11 21:06:43 2014
+## % Wed Jun 11 21:22:15 2014
 ## \begin{table}[ht]
 ## \centering
-## \begin{tabular}{rrlrlrrrr}
+## \begin{tabular}{rllrlrrrr}
 ##   \hline
 ##  &amp; file &amp; sample\_name &amp; replicate &amp; rep\_name &amp; total\_mass &amp; norm\_mass &amp; internal\_scale &amp; external\_scale \\ 
 ##   \hline
-## \hline
+## 1 &amp; /n/rinn\_data1/users/agroff/seq/PERIL/data/bams/Sample\_JR716\_Peril\_L43\_E14-5\_whole\_brain\_wtM1\_CAGATC/accepted\_hits.bam &amp; wt &amp;   0 &amp; wt\_0 &amp; 28383700.00 &amp; 25891500.00 &amp; 1.09 &amp; 1.00 \\ 
+##   2 &amp; /n/rinn\_data1/users/agroff/seq/PERIL/data/bams/Sample\_JR717\_Peril\_L43\_E14-5\_whole\_brain\_wtF3\_ACTTGA/accepted\_hits.bam &amp; wt &amp;   1 &amp; wt\_1 &amp; 27709200.00 &amp; 25891500.00 &amp; 1.08 &amp; 1.00 \\ 
+##   3 &amp; /n/rinn\_data1/users/agroff/seq/PERIL/data/bams/Sample\_JR719\_Peril\_L43\_E14-5\_whole\_brain\_wtM8\_TAGCTT/accepted\_hits.bam &amp; wt &amp;   2 &amp; wt\_2 &amp; 24704700.00 &amp; 25891500.00 &amp; 0.94 &amp; 1.00 \\ 
+##   4 &amp; /n/rinn\_data1/users/agroff/seq/PERIL/data/bams/Sample\_JR718\_Peril\_L43\_E14-5\_whole\_brain\_koM4\_GATCAG/accepted\_hits.bam &amp; ko &amp;   0 &amp; ko\_0 &amp; 30022300.00 &amp; 25891500.00 &amp; 1.17 &amp; 1.00 \\ 
+##   5 &amp; /n/rinn\_data1/users/agroff/seq/PERIL/data/bams/Sample\_JR720\_Peril\_L43\_E14-5\_whole\_brain\_koF9\_GGCTAC/accepted\_hits.bam &amp; ko &amp;   1 &amp; ko\_1 &amp; 21295400.00 &amp; 25891500.00 &amp; 0.82 &amp; 1.00 \\ 
+##   6 &amp; /n/rinn\_data1/users/agroff/seq/PERIL/data/bams/Sample\_JR721\_Peril\_L43\_E14-5\_whole\_brain\_koF10\_CTTGTA/accepted\_hits.bam &amp; ko &amp;   2 &amp; ko\_2 &amp; 24554000.00 &amp; 25891500.00 &amp; 0.95 &amp; 1.00 \\ 
+##    \hline
 ## \end{tabular}
 ## \end{table}
 </code></pre>
