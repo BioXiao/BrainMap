@@ -9,7 +9,7 @@ library(knitr)
 
 # use this to populate StrainTemplate_embryonic 
 # automatically generate reports for each strain 
-for(i in seq(1,(dim(test_master_sheet)[1]))){
+for(i in seq(1,(dim(mastersheet)[1]))){
   strain <-mastersheet[i,1]
   dir<-mastersheet[i,2]
   print(dir)
@@ -34,8 +34,8 @@ test3<-c("peril_wholebrain","/n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuf
 test_master_sheet<-(rbind(test1,test2,test3))
 
 for(i in seq(1,(dim(test_master_sheet)[1]))){
-  strain <-mastersheet[i,1]
-  dir<-mastersheet[i,2]
+  strain <-test_master_sheet[i,1]
+  dir<-test_master_sheet[i,2]
   print(dir)
   print(strain)
   #dir correct but not reading correct db? (GEOB has 3 samples)
