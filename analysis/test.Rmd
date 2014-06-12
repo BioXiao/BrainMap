@@ -69,8 +69,8 @@ cuff
 ```
 
 ## Replicates (MAKE TABLES PRETTY >:| )
-```{r replicates, results='markup'}
-print(xtable(replicates(cuff),type="html"))
+```{r replicates, results='asis'}
+print(xtable(replicates(cuff)),type="html")
 ```
 
 # QC

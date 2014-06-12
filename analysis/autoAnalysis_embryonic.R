@@ -39,7 +39,7 @@ for(i in seq(1,(dim(test_master_sheet)[1]))){
   print(dir)
   print(strain)
   #knit2html('test.Rmd',output=paste(strain,".md", sep=""), quiet=TRUE)
-  knit2html('StrainTemplate_embryonic.Rmd',output=paste(strain,".md", sep=""), quiet=TRUE)
+  knit2html('test.Rmd',output=paste(strain,"_test.md", sep=""), quiet=TRUE)
   
   print(dir)
   print(strain)
