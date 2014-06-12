@@ -9,7 +9,7 @@
 
 ```{r init, echo=FALSE}
 # Set knitr opts
-path<-paste("figure/",strain, sep="")
+path<-paste("figure/",strain,"/", sep="")
 opts_chunk$set(fig.path=path)
 
 
