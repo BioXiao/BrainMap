@@ -469,6 +469,7 @@ labels<-strsplit(rownames(x),"_")
 l<-lapply(labels,function(x){return(x[[2]])})
 labels<-unlist(l)
 
+setwd('/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis')
 
 pdf("components_GSEA_biocarta.pdf",width=10,height=30)
 heatmap.2(x, trace="none", margins=c(5,30), col=InputCols, labRow=labels,dendrogram="both",lhei =c(0.1,0.9))
