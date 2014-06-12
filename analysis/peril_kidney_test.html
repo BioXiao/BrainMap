@@ -208,32 +208,29 @@ hr {
 
 <p>Samples used are:</p>
 
-<pre><code class="r">samples
+<pre><code class="r">print(xtable(samples),type=&quot;html&quot;)
 </code></pre>
 
-<pre><code>##                                                                           9
-## c......n....rinn_data1....users....agroff....seq....PERIL....data...   bams
-## c......n....rinn_data1....users....agroff....seq....PERIL....data....1 bams
-## c......n....rinn_data1....users....agroff....seq....PERIL....data....2 bams
-## c......n....rinn_data1....users....agroff....seq....PERIL....data....3 bams
-## c......n....rinn_data1....users....agroff....seq....PERIL....data....4 bams
-## c......n....rinn_data1....users....agroff....seq....PERIL....data....5 bams
+<pre><code>## &lt;!-- html table generated in R 3.0.2 by xtable 1.7-3 package --&gt;
+## &lt;!-- Thu Jun 12 13:08:44 2014 --&gt;
+## &lt;TABLE border=1&gt;
+## &lt;TR&gt; &lt;TH&gt;  &lt;/TH&gt; &lt;TH&gt; 9 &lt;/TH&gt;  &lt;/TR&gt;
+##   &lt;TR&gt; &lt;TD align=&quot;right&quot;&gt; c......n....rinn_data1....users....agroff....seq....PERIL....data... &lt;/TD&gt; &lt;TD&gt; bams &lt;/TD&gt; &lt;/TR&gt;
+##   &lt;TR&gt; &lt;TD align=&quot;right&quot;&gt; c......n....rinn_data1....users....agroff....seq....PERIL....data....1 &lt;/TD&gt; &lt;TD&gt; bams &lt;/TD&gt; &lt;/TR&gt;
+##   &lt;TR&gt; &lt;TD align=&quot;right&quot;&gt; c......n....rinn_data1....users....agroff....seq....PERIL....data....2 &lt;/TD&gt; &lt;TD&gt; bams &lt;/TD&gt; &lt;/TR&gt;
+##   &lt;TR&gt; &lt;TD align=&quot;right&quot;&gt; c......n....rinn_data1....users....agroff....seq....PERIL....data....3 &lt;/TD&gt; &lt;TD&gt; bams &lt;/TD&gt; &lt;/TR&gt;
+##   &lt;TR&gt; &lt;TD align=&quot;right&quot;&gt; c......n....rinn_data1....users....agroff....seq....PERIL....data....4 &lt;/TD&gt; &lt;TD&gt; bams &lt;/TD&gt; &lt;/TR&gt;
+##   &lt;TR&gt; &lt;TD align=&quot;right&quot;&gt; c......n....rinn_data1....users....agroff....seq....PERIL....data....5 &lt;/TD&gt; &lt;TD&gt; bams &lt;/TD&gt; &lt;/TR&gt;
+##    &lt;/TABLE&gt;
 </code></pre>
 
 <p>Cuff overview:</p>
 
-<pre><code class="r">cuff
+<pre><code class="r">print(xtable(cuff),type=&quot;html&quot;)
 </code></pre>
 
-<pre><code>## CuffSet instance with:
-##   2 samples
-##   31926 genes
-##   77340 isoforms
-##   45508 TSS
-##   0 CDS
-##   31926 promoters
-##   45508 splicing
-##   0 relCDS
+<pre><code>## Error: no applicable method for &#39;xtable&#39; applied to an object of class
+## &quot;CuffSet&quot;
 </code></pre>
 
 <h2>Replicates (MAKE TABLES PRETTY &gt;:| )</h2>
@@ -243,7 +240,7 @@ hr {
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
 
-<!-- Thu Jun 12 13:03:20 2014 -->
+<!-- Thu Jun 12 13:08:45 2014 -->
 
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>

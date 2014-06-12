@@ -244,8 +244,10 @@ expressionBarplot(genotypingGenes,replicates=T)
 # Differential Analysis
 
 
-## Differential Genes
+## Differential Genes 
+
 There are `r length(sig)` significantly differentially expressed genes. They are:
+
 ```{r sigdiffGenetable}
 
 print(xtable(geneAnnot$gene_short_name),type="html")

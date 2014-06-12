@@ -59,13 +59,13 @@ This file shows the wt-v-ko comparison for `r strain`.
 
 Samples used are:
 ```{r}
-samples
+print(xtable(samples),type="html")
 ```
 
 
 Cuff overview:
 ```{r}
-cuff
+print(xtable(cuff),type="html")
 ```
 
 ## Replicates (MAKE TABLES PRETTY >:| )
