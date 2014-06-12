@@ -9,6 +9,13 @@
 
 ```{r init, echo=FALSE}
 # Set knitr opts
+path<-paste("figure/",strain, sep="")
+opts_chunk$set(fig.path=path)
+
+
+### THINGS TO CACHE GO HERE AND NOWHERE ELSE 
+
+
 
 
 ```

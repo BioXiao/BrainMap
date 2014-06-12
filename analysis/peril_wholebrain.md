@@ -61,7 +61,7 @@ print(xtable(replicates(cuff),type="html"))
 
 ```
 ## % latex table generated in R 3.0.2 by xtable 1.7-3 package
-## % Thu Jun 12 11:12:35 2014
+## % Thu Jun 12 11:30:55 2014
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{rllrlrrrr}
@@ -93,13 +93,13 @@ from cummerbund manual: Overdispersion is a common problem in RNA-Seq data. As o
 dispersionPlot(genes(cuff))
 ```
 
-![plot of chunk dispersion](figure/dispersion1.png) 
+![plot of chunk dispersion](figure/peril_wholebraindispersion1.png) 
 
 ```r
 csDendro(genes(cuff),replicates=TRUE)
 ```
 
-![plot of chunk dispersion](figure/dispersion2.png) 
+![plot of chunk dispersion](figure/peril_wholebraindispersion2.png) 
 
 ```
 ## 'dendrogram' with 2 branches and 6 members total, at height 0.06655
@@ -110,7 +110,7 @@ new.env()
 ```
 
 ```
-## <environment: 0x176d3230>
+## <environment: 0x176d2840>
 ```
 
 ```r

@@ -10,6 +10,9 @@
 ```{r init, echo=FALSE}
 # Set knitr opts
 
+path<-paste("figure/",strain, sep="")
+fig.path<-path
+### THINGS TO CACHE GO HERE AND NOWHERE ELSE 
 ```
 
 ```{r vars_and_setup,echo=FALSE,results='hide',message=FALSE}

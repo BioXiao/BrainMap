@@ -36,7 +36,7 @@ test_master_sheet<-(rbind(test1,test2,test3))
 for(i in seq(1,(dim(test_master_sheet)[1]))){
   strain <-test_master_sheet[i,1]
   dir<-test_master_sheet[i,2]
-  #print(dir)
+  print(dir)
   #print(strain)
   #dir correct but not reading correct db? (GEOB has 3 samples)
   knit2html('test.Rmd',output=paste(strain,".md", sep=""), quiet=TRUE)
