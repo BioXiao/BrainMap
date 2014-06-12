@@ -81,5 +81,6 @@ dispersionPlot(genes(cuff))
 csDendro(genes(cuff),replicates=TRUE)
 
 new.env()
+rm(cuff)
 
 ```

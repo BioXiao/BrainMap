@@ -61,7 +61,7 @@ print(xtable(replicates(cuff),type="html"))
 
 ```
 ## % latex table generated in R 3.0.2 by xtable 1.7-3 package
-## % Thu Jun 12 11:06:02 2014
+## % Thu Jun 12 11:08:25 2014
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{rllrlrrrr}
@@ -110,5 +110,9 @@ new.env()
 ```
 
 ```
-## <environment: 0x1790fd50>
+## <environment: 0x176a1268>
+```
+
+```r
+rm(cuff)
 ```
