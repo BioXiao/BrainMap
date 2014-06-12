@@ -1,6 +1,12 @@
 `r strain` KO vs WT (Embryonic)
 ======================================
 
+# questions
+- overdispersion
+- get tables to work
+- counts
+
+
 ```{r init, echo=FALSE}
 # Set knitr opts
 
@@ -54,7 +60,23 @@ Cuff overview:
 cuff
 ```
 
-## Replicates
+## Replicates (MAKE TABLES PRETTY >:| )
 ```{r replicates, results='markup'}
 print(xtable(replicates(cuff),type="html"))
+```
+
+# QC
+
+## Dispersion
+
+This shows count (WHAT IS COUNT? fragment counts? per gene?) vs dispersion (of those counts), or the spread in measurements for a particular gene across replicates. 
+
+from cummerbund manual: Overdispersion is a common problem in RNA-Seq data. As of cufflinks v2.0 mean counts, variance, and dispersion are all emitted, allowing you to visualize the estimated overdispersion for each sample as a quality control measure. - See more at: http://compbio.mit.edu/cummeRbund/manual_2_0.html#sthash.9YRYxwRV.dpuf
+
+
+```{r dispersion}
+dispersionPlot(genes(cuff))
+
+csDendro(genes(cuff),replicates=TRUE)
+
 ```

@@ -12,7 +12,12 @@ library(knitr)
 for(i in seq(1,(dim(test_master_sheet)[1]))){
   strain <-mastersheet[i,1]
   dir<-mastersheet[i,2]
-  knit2html('StrainTemplate_embryonic.Rmd',output=paste(strain,".md", sep=""))
+  print(dir)
+  print(strain)
+  #dir correct but not reading correct db? (GEOB has 3 samples)
+  knit2html('StrainTemplate_embryonic.Rmd',output=paste(strain,".md", sep=""), quiet=TRUE)
+  print(dir)
+  print(strain)
 }
 
 #want to be able to do autoAnalysis() or autoAnalysis(dir,comparison)
@@ -29,7 +34,12 @@ test3<-c("peril_wholebrain","/n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuf
 test_master_sheet<-(rbind(test1,test2,test3))
 
 for(i in seq(1,(dim(test_master_sheet)[1]))){
-  strain <-test_master_sheet[i,1]
-  dir<-test_master_sheet[i,2]
-  knit2html('StrainTemplate_embryonic.Rmd',output=paste(strain,".md", sep=""))
+  strain <-mastersheet[i,1]
+  dir<-mastersheet[i,2]
+  print(dir)
+  print(strain)
+  #dir correct but not reading correct db? (GEOB has 3 samples)
+  knit2html('test.Rmd',output=paste(strain,".md", sep=""), quiet=TRUE)
+  print(dir)
+  print(strain)
 }

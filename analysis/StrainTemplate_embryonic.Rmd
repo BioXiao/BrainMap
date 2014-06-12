@@ -1,6 +1,12 @@
 `r strain` KO vs WT (Embryonic)
 ======================================
 
+# questions
+- overdispersion
+- get tables to work
+- counts
+
+
 ```{r init, echo=FALSE}
 # Set knitr opts
 
@@ -54,7 +60,7 @@ Cuff overview:
 cuff
 ```
 
-## Replicates
+## Replicates (MAKE TABLES PRETTY >:| )
 ```{r replicates, results='markup'}
 print(xtable(replicates(cuff),type="html"))
 ```
@@ -62,6 +68,12 @@ print(xtable(replicates(cuff),type="html"))
 # QC
 
 ## Dispersion
+
+This shows count (WHAT IS COUNT? fragment counts? per gene?) vs dispersion (of those counts), or the spread in measurements for a particular gene across replicates. 
+
+from cummerbund manual: Overdispersion is a common problem in RNA-Seq data. As of cufflinks v2.0 mean counts, variance, and dispersion are all emitted, allowing you to visualize the estimated overdispersion for each sample as a quality control measure. - See more at: http://compbio.mit.edu/cummeRbund/manual_2_0.html#sthash.9YRYxwRV.dpuf
+
+
 ```{r dispersion}
 dispersionPlot(genes(cuff))
 ```
@@ -435,6 +447,10 @@ reactome_pvl_corrected<-rbind(reactome_pvl_corrected,reactome_pvl_corrected)
 biocarta_pvl_mat <- get_gene_set_p_vals(Input.df, biocarta_gs, alternative="mixed")
 biocarta_pvl_corrected <- get_gene_set_q_vals(biocarta_pvl_mat)
 biocarta_pvl_corrected<-rbind(biocarta_pvl_corrected,biocarta_pvl_corrected)
+
+
+#two options, print as pdf, and adjust size in separate code block
+#make minimum height and then increment scaled by number of rows to return 
 
 heatmap.2(-log10(t(biocarta_pvl_corrected[,which(colMins(biocarta_pvl_corrected) < 0.01)])), trace="none", margins=c(5,30),col=InputCols,dendrogram="both",lhei = c(0.1,0.90))
 heatmap.2(-log10(t(reactome_pvl_corrected[,which(colMins(reactome_pvl_corrected) < 0.01)])), trace="none", margins=c(5,30),col=InputCols,dendrogram="both",lhei = c(0.1,0.90))
