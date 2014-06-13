@@ -61,7 +61,7 @@ print(xtable(replicates(cuff),type="html"))
 
 ```
 ## % latex table generated in R 3.0.2 by xtable 1.7-3 package
-## % Thu Jun 12 12:11:05 2014
+## % Fri Jun 13 00:29:17 2014
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{rllrlrrrr}
@@ -262,20 +262,13 @@ MDSplot(genes(cuff),replicates=T)
 ### Distance Heat Map (?not sure it goes here..)
 
 ```r
-csDistHeat(genes(cuff))
-```
-
-![plot of chunk R distance heatmap](figure/peril_wholebrain/R distance heatmap1.png) 
-
-```r
 csDistHeat(genes(cuff), replicates=T)
 ```
 
-![plot of chunk R distance heatmap](figure/peril_wholebrain/R distance heatmap2.png) 
+![plot of chunk R distance heatmap](figure/peril_wholebrain/R distance heatmap.png) 
 
 
 # KO assessment
-
 
 ## Endogenous lncRNA expression
 
@@ -289,129 +282,86 @@ myGene<-getGene(cuff, myGeneID)
 ```
 
 ```r
-fpkm(myGene)
+print(xtable(fpkm(myGene)),type="html")
 ```
 
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'fpkm': Error: object 'myGene' not found
-```
+<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
+<!-- Fri Jun 13 00:32:35 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> gene_id </TH> <TH> sample_name </TH> <TH> fpkm </TH> <TH> conf_hi </TH> <TH> conf_lo </TH> <TH> quant_status </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> XLOC_009627 </TD> <TD> ko </TD> <TD align="right"> 17.92 </TD> <TD align="right"> 21.23 </TD> <TD align="right"> 14.61 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> XLOC_009627 </TD> <TD> wt </TD> <TD align="right"> 17.00 </TD> <TD align="right"> 20.25 </TD> <TD align="right"> 13.76 </TD> <TD> OK </TD> </TR>
+   </TABLE>
 
 ```r
-fpkm(isoforms(myGene))
+print(xtable(fpkm(isoforms(myGene))), type="html")
 ```
 
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'fpkm': Error in isoforms(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
-```
+<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
+<!-- Fri Jun 13 00:32:35 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> isoform_id </TH> <TH> sample_name </TH> <TH> fpkm </TH> <TH> conf_hi </TH> <TH> conf_lo </TH> <TH> quant_status </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> TCONS_00023476 </TD> <TD> ko </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.09 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> TCONS_00023477 </TD> <TD> ko </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.03 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 3 </TD> <TD> TCONS_00023478 </TD> <TD> ko </TD> <TD align="right"> 0.12 </TD> <TD align="right"> 0.55 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 4 </TD> <TD> TCONS_00023479 </TD> <TD> ko </TD> <TD align="right"> 16.72 </TD> <TD align="right"> 20.06 </TD> <TD align="right"> 13.39 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 5 </TD> <TD> TCONS_00023480 </TD> <TD> ko </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.15 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 6 </TD> <TD> TCONS_00023481 </TD> <TD> ko </TD> <TD align="right"> 1.08 </TD> <TD align="right"> 3.09 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 7 </TD> <TD> TCONS_00023476 </TD> <TD> wt </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.09 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 8 </TD> <TD> TCONS_00023477 </TD> <TD> wt </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.03 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 9 </TD> <TD> TCONS_00023478 </TD> <TD> wt </TD> <TD align="right"> 1.42 </TD> <TD align="right"> 2.87 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 10 </TD> <TD> TCONS_00023479 </TD> <TD> wt </TD> <TD align="right"> 14.09 </TD> <TD align="right"> 17.67 </TD> <TD align="right"> 10.51 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 11 </TD> <TD> TCONS_00023480 </TD> <TD> wt </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.15 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 12 </TD> <TD> TCONS_00023481 </TD> <TD> wt </TD> <TD align="right"> 1.49 </TD> <TD align="right"> 5.09 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+   </TABLE>
 
 ```r
 expressionPlot(myGene)
 ```
 
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error: object 'myGene' not found
-```
+![plot of chunk Enodenous lncRNA tables](figure/peril_wholebrain/Enodenous lncRNA tables1.png) 
 
 ```r
 expressionPlot(myGene, replicates=TRUE)
 ```
 
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error: object 'myGene' not found
-```
+![plot of chunk Enodenous lncRNA tables](figure/peril_wholebrain/Enodenous lncRNA tables2.png) 
 
 ```r
 expressionPlot(isoforms(myGene))
 ```
 
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in isoforms(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
-```
+![plot of chunk Enodenous lncRNA tables](figure/peril_wholebrain/Enodenous lncRNA tables3.png) 
 
 ```r
 expressionPlot(isoforms(myGene), replicates=T)
 ```
 
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in isoforms(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
-```
-
-```r
-expressionPlot(CDS(myGene))
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in CDS(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'CDS': Error: object 'myGene' not found
-```
-
-```r
-expressionPlot(CDS(myGene),replicates=T)
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in CDS(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'CDS': Error: object 'myGene' not found
-```
-
-```r
-expressionPlot(TSS(myGene))
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in TSS(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'TSS': Error: object 'myGene' not found
-```
-
-```r
-expressionPlot(TSS(myGene),replicates=T)
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in TSS(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'TSS': Error: object 'myGene' not found
-```
+![plot of chunk Enodenous lncRNA tables](figure/peril_wholebrain/Enodenous lncRNA tables4.png) 
 
 ```r
 expressionBarplot(myGene)
 ```
 
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error: object 'myGene' not found
-```
+![plot of chunk Enodenous lncRNA tables](figure/peril_wholebrain/Enodenous lncRNA tables5.png) 
 
 ```r
 expressionBarplot(myGene,replicates=T)
 ```
 
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error: object 'myGene' not found
-```
+![plot of chunk Enodenous lncRNA tables](figure/peril_wholebrain/Enodenous lncRNA tables6.png) 
 
 ```r
 expressionBarplot(isoforms(myGene))     
 ```
 
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error in isoforms(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
-```
+![plot of chunk Enodenous lncRNA tables](figure/peril_wholebrain/Enodenous lncRNA tables7.png) 
 
 ```r
 expressionBarplot(isoforms(myGene), replicates=T)
 ```
 
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error in isoforms(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
-```
-
-```r
-#include isoform/promoter etc here!!
-```
+![plot of chunk Enodenous lncRNA tables](figure/peril_wholebrain/Enodenous lncRNA tables8.png) 
 
 
 ## LacZ expression
@@ -433,125 +383,40 @@ myGene<-getGene(cuff, myGeneId)
 ```
 
 ```r
-fpkm(myGene)
+print(xtable(fpkm(myGene)),type="html")
 ```
 
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'fpkm': Error: object 'myGene' not found
-```
-
-```r
-fpkm(isoforms(myGene))
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'fpkm': Error in isoforms(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
-```
+<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
+<!-- Fri Jun 13 00:32:45 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> gene_id </TH> <TH> sample_name </TH> <TH> fpkm </TH> <TH> conf_hi </TH> <TH> conf_lo </TH> <TH> quant_status </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> XLOC_009627 </TD> <TD> ko </TD> <TD align="right"> 17.92 </TD> <TD align="right"> 21.23 </TD> <TD align="right"> 14.61 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> XLOC_009627 </TD> <TD> wt </TD> <TD align="right"> 17.00 </TD> <TD align="right"> 20.25 </TD> <TD align="right"> 13.76 </TD> <TD> OK </TD> </TR>
+   </TABLE>
 
 ```r
 expressionPlot(myGene)
 ```
 
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error: object 'myGene' not found
-```
+![plot of chunk LacZ expression](figure/peril_wholebrain/LacZ expression1.png) 
 
 ```r
 expressionPlot(myGene, replicates=TRUE)
 ```
 
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error: object 'myGene' not found
-```
-
-```r
-expressionPlot(isoforms(myGene))
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in isoforms(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
-```
-
-```r
-expressionPlot(isoforms(myGene), replicates=T)
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in isoforms(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
-```
-
-```r
-expressionPlot(CDS(myGene))
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in CDS(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'CDS': Error: object 'myGene' not found
-```
-
-```r
-expressionPlot(CDS(myGene),replicates=T)
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in CDS(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'CDS': Error: object 'myGene' not found
-```
-
-```r
-expressionPlot(TSS(myGene))
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in TSS(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'TSS': Error: object 'myGene' not found
-```
-
-```r
-expressionPlot(TSS(myGene),replicates=T)
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in TSS(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'TSS': Error: object 'myGene' not found
-```
+![plot of chunk LacZ expression](figure/peril_wholebrain/LacZ expression2.png) 
 
 ```r
 expressionBarplot(myGene)
 ```
 
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error: object 'myGene' not found
-```
+![plot of chunk LacZ expression](figure/peril_wholebrain/LacZ expression3.png) 
 
 ```r
 expressionBarplot(myGene,replicates=T)
 ```
 
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error: object 'myGene' not found
-```
-
-```r
-expressionBarplot(isoforms(myGene))     
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error in isoforms(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
-```
-
-```r
-expressionBarplot(isoforms(myGene), replicates=T)
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error in isoforms(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
-```
+![plot of chunk LacZ expression](figure/peril_wholebrain/LacZ expression4.png) 
 
 
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
@@ -584,9 +449,17 @@ expressionBarplot(genotypingGenes,replicates=T)
 
 # Differential Analysis
 
+## Differential Genes 
 
-## Differential Genes
+
+```r
+sig<-getSig(cuff,alpha=alpha)       
+sigGenes<-getGenes(cuff,sig)
+geneAnnot<-annotation(sigGenes)
+```
+
 There are 24 significantly differentially expressed genes. They are:
+
 
 ```r
 print(xtable(geneAnnot$gene_short_name),type="html")
@@ -597,39 +470,15 @@ print(xtable(geneAnnot$gene_short_name),type="html")
 ## "character"
 ```
 
-```r
-#print(xtable((fpkmMatrix(sigPCGenes))),type = "html", include.rownames = T)
-```
-
 ### Matrix of gene significant differences between conditions
+(skip for Brainmap wt-v-ko comparisons)
+
 
 ```r
 sigMatrix(cuff, level="genes", alpha=alpha)
 ```
 
-![plot of chunk sigMatrix](figure/peril_wholebrain/sigMatrix1.png) 
-
-```r
-sigMatrix(cuff, level="genes", alpha=alpha, replicates=T)
-```
-
-```
-## Error: unused argument (replicates = T)
-```
-
-```r
-sigMatrix(cuff, level="isoforms",alpha=alpha)
-```
-
-![plot of chunk sigMatrix](figure/peril_wholebrain/sigMatrix2.png) 
-
-```r
-sigMatrix(cuff, level="isoforms",alpha=alpha, replicates=T)       
-```
-
-```
-## Error: unused argument (replicates = T)
-```
+![plot of chunk sigMatrix](figure/peril_wholebrain/sigMatrix.png) 
 
 ### Replicate Clustering by significant genes 
 
@@ -668,11 +517,34 @@ expressionPlot(sigGenes)
 ![plot of chunk sigExpression](figure/peril_wholebrain/sigExpression2.png) 
 
 ```r
-       #MOAR PLOTS! 
+expressionBarplot(sigGenes)
 ```
+
+```
+## Scale for 'colour' is already present. Adding another scale for 'colour', which will replace the existing scale.
+## ymax not defined: adjusting position using y instead
+```
+
+![plot of chunk sigExpression](figure/peril_wholebrain/sigExpression3.png) 
+
+An individual look at each of the significantly differentially regulated genes:
+
+
+```r
+plots<-lapply(sig,function(x){
+  myGene<-getGene(cuff,x)
+  return(expressionPlot(myGene,replicates=T))
+  })
+do.call(grid.arrange, plots)
+```
+
+![plot of chunk plot ALL OF THE SIGNIFICANT GENES](figure/peril_wholebrain/plot ALL OF THE SIGNIFICANT GENES.png) 
 
 
 ### Expression-level significance relationship
+
+**Interesting comments n stuff!**
+
 
 ```r
 csScatter(sigGenes, "wt", "ko", smooth=T)
@@ -696,9 +568,27 @@ csVolcano(sigGenes, "wt", "ko")
 Per isoform difference between conditions:
 
 ```r
-isoformSigIDs<-getSig(cuff,level="isoforms",alpha=0.1)
+sigMatrix(cuff, level="isoforms",alpha=alpha)
+```
+
+![plot of chunk diff.iso](figure/peril_wholebrain/diff.iso.png) 
+
+```r
+isoformSigIDs<-getSig(cuff,level="isoforms",alpha=alpha)
 isoformSigGenes<-getGenes(cuff,isoformSigIDs)
+```
+
+```
+## Error: RS-DBI driver: (error in statement: near ")": syntax error)
+```
+
+```r
 isoAnnot<-annotation(isoformSigGenes)
+```
+
+These isoforms are:
+
+```r
 print(xtable(isoAnnot$gene_short_name),type="html")
 ```
 
@@ -707,70 +597,6 @@ print(xtable(isoAnnot$gene_short_name),type="html")
 ## "character"
 ```
 
-### Differential Splicing between conditions
-Per condition differences in isoforms #Does gene have diff piechart between conditions
-
-```r
-splicingSigIDs<-getSig(cuff,level="splicing",alpha=0.05)
-splicingSigGenes<-getGenes(cuff,splicingSigIDs)
-spliceAnnot<-annotation(splicingSigGenes)
-
-print(xtable(as.data.frame(spliceAnnot$gene_short_name)), type="html")
-```
-
-```
-## <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-## <!-- Thu Jun 12 12:14:07 2014 -->
-## <TABLE border=1>
-## <TR> <TH>  </TH> <TH> spliceAnnot$gene_short_name </TH>  </TR>
-##   <TR> <TD align="right"> 1 </TD> <TD> Satb2 </TD> </TR>
-##   <TR> <TD align="right"> 2 </TD> <TD> Tmem104 </TD> </TR>
-##   <TR> <TD align="right"> 3 </TD> <TD> Pol mu,Polm </TD> </TR>
-##   <TR> <TD align="right"> 4 </TD> <TD> Rnf112 </TD> </TR>
-##   <TR> <TD align="right"> 5 </TD> <TD> Pde8b </TD> </TR>
-##   <TR> <TD align="right"> 6 </TD> <TD> Pxk </TD> </TR>
-##   <TR> <TD align="right"> 7 </TD> <TD> Nfatc4 </TD> </TR>
-##   <TR> <TD align="right"> 8 </TD> <TD> Scrib </TD> </TR>
-##   <TR> <TD align="right"> 9 </TD> <TD> Gnb1l,Wdvcf </TD> </TR>
-##   <TR> <TD align="right"> 10 </TD> <TD> Ephb3 </TD> </TR>
-##   <TR> <TD align="right"> 11 </TD> <TD> Kank1 </TD> </TR>
-##   <TR> <TD align="right"> 12 </TD> <TD> Ralgds,mKIAA1308 </TD> </TR>
-##   <TR> <TD align="right"> 13 </TD> <TD> Lrp1b </TD> </TR>
-##   <TR> <TD align="right"> 14 </TD> <TD> Dpp4 </TD> </TR>
-##   <TR> <TD align="right"> 15 </TD> <TD> EG381438,Gm5148 </TD> </TR>
-##   <TR> <TD align="right"> 16 </TD> <TD> Dnaja1,Mir207 </TD> </TR>
-##   <TR> <TD align="right"> 17 </TD> <TD> Col27a1,mKIAA1870 </TD> </TR>
-##   <TR> <TD align="right"> 18 </TD> <TD> 0610037D15Rik,Ccdc163 </TD> </TR>
-##   <TR> <TD align="right"> 19 </TD> <TD>  </TD> </TR>
-##   <TR> <TD align="right"> 20 </TD> <TD> Zfp420 </TD> </TR>
-##   <TR> <TD align="right"> 21 </TD> <TD> Arntl,bmal1b </TD> </TR>
-##   <TR> <TD align="right"> 22 </TD> <TD> Itgam </TD> </TR>
-##   <TR> <TD align="right"> 23 </TD> <TD> Vstm2b </TD> </TR>
-##   <TR> <TD align="right"> 24 </TD> <TD> Nup93 </TD> </TR>
-##   <TR> <TD align="right"> 25 </TD> <TD> Nfix </TD> </TR>
-##    </TABLE>
-```
-
-```r
-#Print csPie chart pannel
-#how to make ggplot panel? 
-#for(gene %in% splicingSigGenes){
-#  csPie(cuff,gene) 
-#}
-
-#splicing.unique.IDs<-setdiff(annotation(splicingSigGenes)$gene_id#,annotation(sigGenes)$gene_id)
-#splicing.unique.IDs
-
-#pdf("sigSplicing_heatmap.pdf",width=10,height=20)
-csHeatmap(isoforms(splicingSigGenes),cluster='row',method=dist)
-```
-
-```
-## Using tracking_id, sample_name as id variables
-## No id variables; using all as measure variables
-```
-
-![plot of chunk unnamed-chunk-4](figure/peril_wholebrain/unnamed-chunk-41.png) 
 
 ```r
 csHeatmap(isoforms(isoformSigGenes),cluster='row',method=dist)
@@ -781,34 +607,85 @@ csHeatmap(isoforms(isoformSigGenes),cluster='row',method=dist)
 ## No id variables; using all as measure variables
 ```
 
-![plot of chunk unnamed-chunk-4](figure/peril_wholebrain/unnamed-chunk-42.png) 
+![plot of chunk isoform heatmap](figure/peril_wholebrain/isoform heatmap.png) 
+
+### Differential Splicing between conditions
+
+Per condition differences in isoforms (Does gene have diff piechart between conditions?)
+
 
 ```r
-  #IS THIS DIFFERENTIAL BETWEEN WT/KO OR ISOFORMS? WHETHER IN ONE CONDITION OR BOTH?
+splicingSigIDs<-getSig(cuff,level="splicing",alpha=alpha)
+splicingSigGenes<-getGenes(cuff,splicingSigIDs)
+
+sigMatrix(cuff, level='splicing', alpha=alpha)
+```
+
+```
+## Error: no slot of name "tables" for this object of class "CuffDist"
+```
+
+```r
+spliceAnnot<-annotation(splicingSigGenes)
+```
+
+These genes are:
+
+```r
+print(xtable(as.data.frame(spliceAnnot$gene_short_name)), type="html")
+```
+
+<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
+<!-- Fri Jun 13 00:35:11 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> spliceAnnot$gene_short_name </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> Satb2 </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> Tmem104 </TD> </TR>
+  <TR> <TD align="right"> 3 </TD> <TD> Pol mu,Polm </TD> </TR>
+  <TR> <TD align="right"> 4 </TD> <TD> Rnf112 </TD> </TR>
+  <TR> <TD align="right"> 5 </TD> <TD> Pde8b </TD> </TR>
+  <TR> <TD align="right"> 6 </TD> <TD> Pxk </TD> </TR>
+  <TR> <TD align="right"> 7 </TD> <TD> Nfatc4 </TD> </TR>
+  <TR> <TD align="right"> 8 </TD> <TD> Scrib </TD> </TR>
+  <TR> <TD align="right"> 9 </TD> <TD> Gnb1l,Wdvcf </TD> </TR>
+  <TR> <TD align="right"> 10 </TD> <TD> Ephb3 </TD> </TR>
+  <TR> <TD align="right"> 11 </TD> <TD> Kank1 </TD> </TR>
+  <TR> <TD align="right"> 12 </TD> <TD> Ralgds,mKIAA1308 </TD> </TR>
+  <TR> <TD align="right"> 13 </TD> <TD> Lrp1b </TD> </TR>
+  <TR> <TD align="right"> 14 </TD> <TD> Dpp4 </TD> </TR>
+  <TR> <TD align="right"> 15 </TD> <TD> EG381438,Gm5148 </TD> </TR>
+  <TR> <TD align="right"> 16 </TD> <TD> Dnaja1,Mir207 </TD> </TR>
+  <TR> <TD align="right"> 17 </TD> <TD> Col27a1,mKIAA1870 </TD> </TR>
+  <TR> <TD align="right"> 18 </TD> <TD> 0610037D15Rik,Ccdc163 </TD> </TR>
+  <TR> <TD align="right"> 19 </TD> <TD>  </TD> </TR>
+  <TR> <TD align="right"> 20 </TD> <TD> Zfp420 </TD> </TR>
+  <TR> <TD align="right"> 21 </TD> <TD> Arntl,bmal1b </TD> </TR>
+  <TR> <TD align="right"> 22 </TD> <TD> Itgam </TD> </TR>
+  <TR> <TD align="right"> 23 </TD> <TD> Vstm2b </TD> </TR>
+  <TR> <TD align="right"> 24 </TD> <TD> Nup93 </TD> </TR>
+  <TR> <TD align="right"> 25 </TD> <TD> Nfix </TD> </TR>
+   </TABLE>
+
+
+```r
+#pdf("sigSplicing_heatmap.pdf",width=10,height=20)
+csHeatmap(isoforms(splicingSigGenes),cluster='row',method=dist)
+```
+
+```
+## Using tracking_id, sample_name as id variables
+## No id variables; using all as measure variables
+```
+
+![plot of chunk splicing heatmap by isoform](figure/peril_wholebrain/splicing heatmap by isoform.png) 
+
+```r
 #dev.off()
 ```
 
 
-
-## Differential Promoter usage (isoforms by tss)
-
-
 ```r
-tssSigIDs<-getSig(cuff,alpha=0.1,level="TSS")
-tssSigGenes<-getGenes(cuff,tssSigIDs)
-
-#promoter.unique.IDs<-setdiff(annotation(sigPromoterGenes)$gene_id,annotation(sigGenes)$gene_id)
-#promoter.unique.IDs
-
-id<-tssSigIDs[19]
-gene<-getGene(cuff,id)
-csPie(gene) #how can you get a significantly different promoter but with no isoform diff? 
-```
-
-![plot of chunk diff.TSS](figure/peril_wholebrain/diff.TSS1.png) 
-
-```r
-csHeatmap(tssSigGenes,cluster='row',method=dist)
+csHeatmap(splicingSigGenes,cluster='row',method=dist)
 ```
 
 ```
@@ -816,114 +693,36 @@ csHeatmap(tssSigGenes,cluster='row',method=dist)
 ## No id variables; using all as measure variables
 ```
 
-![plot of chunk diff.TSS](figure/peril_wholebrain/diff.TSS2.png) 
+![plot of chunk splicing heatmap by gene](figure/peril_wholebrain/splicing heatmap by gene.png) 
+
+The following are significantly differentially spliced genes (relative portion of isoform per condition): 
+
+# how do we rescale these plots?
 
 ```r
-#for(id %in% sigPromoterIDs){
-#  gene<-getGene(cuff,id)
-#  csPie(gene)
-#}
+csPiePlots<-lapply(splicingSigIDs,function(x){
+  myGene<-getGene(cuff,x)
+  csPie(myGene)
+})
+do.call(grid.arrange,csPiePlots)
 ```
 
-## Differential Promoter Usage (By "Promoters")
+![plot of chunk print all the splicing csPie tables](figure/peril_wholebrain/print all the splicing csPie tables.png) 
 
 
-```r
-promoterSigIDs<-getSig(cuff,alpha=0.1,level="promoters")
+## Differential Promoter usage (isoforms by tss) <- NOT USING IN BRAINMAP
 
-promoterSigGenes<-getGenes(cuff,promoterSigIDs)
 
-#promoter.unique.IDs<-setdiff(annotation(sigPromoterGenes)$gene_id,annotation(sigGenes)$gene_id)
 
-#promoter.unique.IDs
+## Differential Promoter Usage (By "Promoters") <- NOT USING IN BRAINMAP 
 
-pdf("sigPromoter_heatmap.pdf",width=10,height=20)
-csHeatmap(promoterSigGenes,cluster='row',method=dist)
-```
 
-```
-## Using tracking_id, sample_name as id variables
-## No id variables; using all as measure variables
-```
 
-```r
-dev.off()
-```
-
-```
-## pdf 
-##   2
-```
-
-## Differential CDS? (unique protein coding isoforms)
-
-```r
-cdsSigIDs<-getSig(cuff,alpha=0.1,level="CDS")
-#sigCDSIDs<-getSig(cuff,alpha=0.1,level="CDS")
-cdsSigGenes<-getGenes(cuff,cdsSigIDs)
-```
-
-```
-## Error: RS-DBI driver: (error in statement: near ")": syntax error)
-```
-
-```r
-relcdsSigIDs<-getSig(cuff,alpha=0.1,level="relCDS")
-relcdsSigGenes<-getGenes(cuff,relcdsSigIDs)
-```
-
-```
-## Error: RS-DBI driver: (error in statement: near ")": syntax error)
-```
-
-```r
-#CDS.unique.IDs<-setdiff(annotation(sigCDSGenes)$gene_id,annotation(sigGenes)$gene_id)
-#CDS.unique.IDs
-
-pdf("sigCDS_heatmap.pdf",width=10,height=20)
-csHeatmap(cdsSigGenes,cluster='row',method=dist)
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'csHeatmap': Error: object 'cdsSigGenes' not found
-```
-
-```r
-dev.off()
-```
-
-```
-## pdf 
-##   2
-```
+## Differential CDS? (unique protein coding isoforms) <-NOT IN BRAINMAP
 
 
 
 
-## Venn diagram overview of Differential changes
-
-```r
-# Make venn diagram of DE genes, DE splicing, DE promoters, DE relCDS (See figure 2)
-
-#install.packages("tiff")
-#library(tiff)
-require(VennDiagram)
-venn<-venn.diagram(list(
-    'Genes'=sigGeneIDs,
-    'Splicing'=splicingSigIDs,
-    'Isoforms'=isoformSigIDs,
-    'Promoters'=promoterSigIDs,
-    'TSS'=tssSigIDs),filename=NULL)
-```
-
-```
-## Error: object 'sigGeneIDs' not found
-```
-
-```r
-#'CDS'=cdsSigIDs,
-#'relCDS'=relcdsSigIDs
-```
 
 
 # Gene/Pathway Analysis
@@ -979,37 +778,81 @@ reactome_pvl_mat <- get_gene_set_p_vals(Input.df, reactome_gs,alternative="mixed
 reactome_pvl_corrected <- get_gene_set_q_vals(reactome_pvl_mat)
 reactome_pvl_corrected<-rbind(reactome_pvl_corrected,reactome_pvl_corrected)
 
+
 biocarta_pvl_mat <- get_gene_set_p_vals(Input.df, biocarta_gs, alternative="mixed")
 biocarta_pvl_corrected <- get_gene_set_q_vals(biocarta_pvl_mat)
 biocarta_pvl_corrected<-rbind(biocarta_pvl_corrected,biocarta_pvl_corrected)
+```
 
 
+```r
 #two options, print as pdf, and adjust size in separate code block
 #make minimum height and then increment scaled by number of rows to return 
 
-heatmap.2(-log10(t(biocarta_pvl_corrected[,which(colMins(biocarta_pvl_corrected) < 0.01)])), trace="none", margins=c(5,30),col=InputCols,dendrogram="both",lhei = c(0.1,0.90))
+x<-(-log10(t(biocarta_pvl_corrected[,which(colMins(biocarta_pvl_corrected) < 0.01)])))
+
+labels<-strsplit(rownames(x),"_")
+l<-lapply(labels,function(x){return(x[[2]])})
+labels<-unlist(l)
+
+setwd('/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis')
+
+pdf("components_GSEA_biocarta.pdf",width=10,height=30)
+heatmap.2(x, trace="none", margins=c(5,30), col=InputCols, labRow=labels,dendrogram="both",lhei =c(0.1,0.9))
+dev.off()
 ```
 
+![plot of chunk print GSEA biocarta](figure/peril_wholebrain/print GSEA biocarta.png) 
+
 ```
-## Error: figure margins too large
+## RStudioGD 
+##         2
 ```
 
-![plot of chunk unnamed-chunk-5](figure/peril_wholebrain/unnamed-chunk-5.png) 
 
 ```r
-heatmap.2(-log10(t(reactome_pvl_corrected[,which(colMins(reactome_pvl_corrected) < 0.01)])), trace="none", margins=c(5,30),col=InputCols,dendrogram="both",lhei = c(0.1,0.90))
+pdf("components_GSEA_reactome.pdf",width=10,height=30)
+
+x<-(-log10(t(reactome_pvl_corrected[,which(colMins(reactome_pvl_corrected) < 0.001)])))
+noinfinitiesx<-x[which(x!="Inf")]
+x_max<-max(noinfinitiesx)+100
+x[x=="Inf"]<-x_max
+labels<-strsplit(rownames(x),"_")
+l<-lapply(labels,function(x){return(x[-1])})
+labels<-as.vector(l)
+
+heatmap.2(x, trace="none", margins=c(5,30),col=InputCols,dendrogram="both",lhei = c(0.1,0.90))
+dev.off()
 ```
 
+![plot of chunk print GSEA reactome](figure/peril_wholebrain/print GSEA reactome.png) 
+
 ```
-## Error: NaN dissimilarity value.
+## RStudioGD 
+##         2
 ```
 
-## GO enrichment (cluster profiler?)
+## GO enrichment 
+Cluster profiler used to call enichments of significantly differentially regulated genes that map to Entrez IDs. 
 
+Description/explanation of what's here, and justify all choices. 
 
 
 ```r
+#source("http://bioconductor.org/biocLite.R")
+#biocLite("ReactomePA")
+
+library(ReactomePA)
+library(DOSE)
+
+
+sigGeneIDs<-getSig(cuff, alpha=0.05)
+sigGenes<-getGenes(cuff,sigGeneIDs)
+geneAnnot<-annotation(sigGenes)
 geneNames<-geneAnnot$gene_short_name
+sigDiff<-diffData(sigGenes)
+sigDiff$foldChange<-sigDiff$value_1/sigDiff$value_2
+
 
 # Top genes by test stat
 #diff<-diffData(genes(cuff))
@@ -1023,105 +866,53 @@ biomart to get entrez gene IDS
 clusterProfiler does GO enrichment 
 
 BP, MF, CC
-
 enrichKEGG
-enrichDO
 enrichPathway
-groupGO
 
-
-
-
-
-
-```r
-goBP<-enrichGO(gene=sigEZ, organism="mouse",ont="BP",pvalueCutoff=0.01,readable=T)
-```
 
 ```
-## Error: could not find function "enrichGO"
-```
-
-```r
-goMF<-enrichGO(gene=sigEZ, organism="mouse",ont="MF",pvalueCutoff=0.01,readable=T)
-```
-
-```
-## Error: could not find function "enrichGO"
-```
-
-```r
-goCC<-enrichGO(gene=sigEZ, organism="mouse",ont="CC",pvalueCutoff=0.01,readable=T)
-```
-
-```
-## Error: could not find function "enrichGO"
-```
-
-```r
-#kegg<-enrichKEGG(gene=sigEZ, organism="mouse",pvalueCutoff=0.01, readable=T)
-
-#disease<-enrichDO(gene=sigEZ, organism="mouse",pvalueCutoff=0.01, readable=T)
-
-#pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T)
+## Loading required package: biomaRt
+## 
+## Attaching package: 'biomaRt'
+## 
+## The following object is masked from 'package:cummeRbund':
+## 
+##     getGene
 ```
 
 
-```r
-#Simple method
-#plot(goBP)
-#plot(goMF)
-#plot(goCC)
 
-#Visualizing w clusterProfiler
-#barplot(goBP, drop = TRUE, showCategory = 12)
-#barplot(goBP, showCategory = 12)
-#barplot(goMF,showCategory=12)
-#barplot(goCC, showCategory=12)
+![plot of chunk GO figures](figure/peril_wholebrain/GO figures1.png) ![plot of chunk GO figures](figure/peril_wholebrain/GO figures2.png) 
 
-#WHY DONT THESE FUNCTIONS WORK? 
-#cnetplot(goBP, categorySize = "pvalue", foldChange = geneList)
-#cnetplot(goBP, categorySize = "geneNum", foldChange = geneList)
-
-#cluster.enrichKEGG<-compareCluster(sigEZ,fun="enrichKEGG",organism="mouse",qvalueCutoff=0.01)
-#require(ReactomePA)
-#cluster.enrichPathway<-compareCluster(sigEntrezNames,fun="enrichPathway",qvalueCutoff=0.01)
-
-plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched BP")
+```
+## Error: 'x' and 'units' must have length > 0
 ```
 
 ```
-## Error: object 'goBP' not found
-```
-
-```r
-plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched MF")
-```
-
-```
-## Error: object 'goMF' not found
-```
-
-```r
-plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched CC")
+## Warning: no non-missing arguments to min; returning Inf
+## Warning: no non-missing arguments to max; returning -Inf
+## Warning: no non-missing arguments to min; returning Inf
+## Warning: no non-missing arguments to max; returning -Inf
+## Warning: "showCategory" is not a graphical parameter
 ```
 
 ```
-## Error: object 'goCC' not found
+## Error: need finite 'xlim' values
 ```
 
-```r
-#plot(cluster.enrichKEGG,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched KEGG")
-#plot(cluster.enrichPathway,showCategory=20) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched Reactome")
+![plot of chunk GO figures](figure/peril_wholebrain/GO figures3.png) 
 
-detach("package:biomaRt")
+```
+## Warning: no non-missing arguments to min; returning Inf
+## Warning: no non-missing arguments to max; returning -Inf
+## Warning: no non-missing arguments to min; returning Inf
+## Warning: no non-missing arguments to max; returning -Inf
+## Warning: "showCategory" is not a graphical parameter
 ```
 
 ```
-## Error: invalid 'name' argument
+## Error: need finite 'xlim' values
 ```
-
-
 
 # Cis vs Trans (locally)
 
@@ -1129,8 +920,6 @@ detach("package:biomaRt")
 window<-1000000
 ```
 
-
-# Transcription Factor binding enrichment (for sigdiff genes...?)
 
 
 # Interesting Genes
@@ -1161,30 +950,35 @@ sessionInfo()
 ## [8] methods   base     
 ## 
 ## other attached packages:
-##  [1] VennDiagram_1.6.5    mgcv_1.7-29          nlme_3.1-117        
-##  [4] marray_1.40.0        gplots_2.13.0        GSA_1.03            
-##  [7] limma_3.18.13        xtable_1.7-3         cummeRbund_2.7.2    
-## [10] Gviz_1.6.0           rtracklayer_1.22.7   GenomicRanges_1.14.4
-## [13] XVector_0.2.0        IRanges_1.20.7       fastcluster_1.1.13  
-## [16] reshape2_1.4         ggplot2_1.0.0        RSQLite_0.11.4      
-## [19] DBI_0.2-7            BiocGenerics_0.8.0   knitr_1.6           
+##  [1] GO.db_2.10.1           org.Mm.eg.db_2.10.1    clusterProfiler_1.13.1
+##  [4] DOSE_2.0.0             ReactomePA_1.6.1       AnnotationDbi_1.24.0  
+##  [7] Biobase_2.22.0         VennDiagram_1.6.5      mgcv_1.7-29           
+## [10] nlme_3.1-117           marray_1.40.0          gplots_2.13.0         
+## [13] GSA_1.03               limma_3.18.13          xtable_1.7-3          
+## [16] knitr_1.6              gridExtra_0.9.1        gtable_0.1.2          
+## [19] cummeRbund_2.7.2       Gviz_1.6.0             rtracklayer_1.22.7    
+## [22] GenomicRanges_1.14.4   XVector_0.2.0          IRanges_1.20.7        
+## [25] fastcluster_1.1.13     reshape2_1.4           ggplot2_1.0.0         
+## [28] RSQLite_0.11.4         DBI_0.2-7              BiocGenerics_0.8.0    
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] AnnotationDbi_1.24.0   Biobase_2.22.0         biomaRt_2.18.0        
-##  [4] Biostrings_2.30.1      biovizBase_1.10.8      bitops_1.0-6          
-##  [7] BSgenome_1.30.0        caTools_1.17           cluster_1.15.2        
-## [10] codetools_0.2-8        colorspace_1.2-4       dichromat_2.0-0       
-## [13] digest_0.6.4           evaluate_0.5.5         formatR_0.10          
-## [16] Formula_1.1-1          gdata_2.13.3           GenomicFeatures_1.14.5
-## [19] gtable_0.1.2           gtools_3.4.1           Hmisc_3.14-4          
-## [22] KernSmooth_2.23-12     labeling_0.2           lattice_0.20-29       
-## [25] latticeExtra_0.6-26    markdown_0.7           MASS_7.3-33           
-## [28] Matrix_1.1-3           mime_0.1.1             munsell_0.4.2         
-## [31] plyr_1.8.1             proto_0.3-10           RColorBrewer_1.0-5    
-## [34] Rcpp_0.11.1            RCurl_1.95-4.1         Rsamtools_1.14.3      
-## [37] scales_0.2.4           splines_3.0.2          stats4_3.0.2          
-## [40] stringr_0.6.2          survival_2.37-7        tools_3.0.2           
-## [43] XML_3.98-1.1           zlibbioc_1.8.0
+##  [1] biomaRt_2.18.0         Biostrings_2.30.1      biovizBase_1.10.8     
+##  [4] bitops_1.0-6           BSgenome_1.30.0        caTools_1.17          
+##  [7] cluster_1.15.2         codetools_0.2-8        colorspace_1.2-4      
+## [10] dichromat_2.0-0        digest_0.6.4           DO.db_2.7             
+## [13] evaluate_0.5.5         formatR_0.10           Formula_1.1-1         
+## [16] gdata_2.13.3           GenomicFeatures_1.14.5 GOSemSim_1.20.3       
+## [19] graph_1.40.1           graphite_1.8.1         gtools_3.4.1          
+## [22] Hmisc_3.14-4           igraph_0.7.1           KEGG.db_2.10.1        
+## [25] KernSmooth_2.23-12     labeling_0.2           lattice_0.20-29       
+## [28] latticeExtra_0.6-26    markdown_0.7           MASS_7.3-33           
+## [31] Matrix_1.1-3           mime_0.1.1             munsell_0.4.2         
+## [34] org.Hs.eg.db_2.10.1    plyr_1.8.1             proto_0.3-10          
+## [37] qvalue_1.36.0          RColorBrewer_1.0-5     Rcpp_0.11.1           
+## [40] RCurl_1.95-4.1         reactome.db_1.46.1     Rsamtools_1.14.3      
+## [43] scales_0.2.4           splines_3.0.2          stats4_3.0.2          
+## [46] stringr_0.6.2          survival_2.37-7        tcltk_3.0.2           
+## [49] tools_3.0.2            XML_3.98-1.1           zlibbioc_1.8.0
 ```
 
 #Run Info
