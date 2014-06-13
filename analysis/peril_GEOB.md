@@ -11,6 +11,9 @@ peril_GEOB KO vs WT (Embryonic)
 
 
 
+```
+## Error: object 'alpha' not found
+```
 
 
 
@@ -23,7 +26,7 @@ This file shows the wt-v-ko comparison for peril_GEOB.
 
 Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 13 13:41:05 2014 -->
+<!-- Fri Jun 13 14:23:27 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 9 </TH>  </TR>
   <TR> <TD align="right"> c......n....rinn_data1....users....agroff....seq....PERIL....data... </TD> <TD> bams </TD> </TR>
@@ -49,7 +52,7 @@ Cuff overview:
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 13 13:41:06 2014 -->
+<!-- Fri Jun 13 14:23:28 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR710_Peril_L46_E14-5_GE_and_OB_wtm1_ATCACG/accepted_hits.bam </TD> <TD> wt </TD> <TD align="right">   0 </TD> <TD> wt_0 </TD> <TD align="right"> 19373200.00 </TD> <TD align="right"> 21401800.00 </TD> <TD align="right"> 0.90 </TD> <TD align="right"> 1.00 </TD> </TR>
@@ -274,12 +277,15 @@ Isoforms:
 ## Error: RS-DBI driver: (error in statement: near ")": syntax error)
 ```
 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'annotation': Error: object 'sigGenes' not found
+```
+
 There are 0 significantly differentially expressed genes. They are:
 
 
 ```
-## Error: no applicable method for 'xtable' applied to an object of class
-## "character"
+## Error: object 'geneAnnot' not found
 ```
 
 ### Matrix of gene significant differences between conditions
@@ -290,31 +296,23 @@ There are 0 significantly differentially expressed genes. They are:
 ### Replicate Clustering by significant genes 
 
 ```
-## Using tracking_id, rep_name as id variables
-```
-
-![plot of chunk sigDendro](figure/peril_GEOB/sigDendro.png) 
-
-```
-## 'dendrogram' with 2 branches and 6 members total, at height 0.3084
+## Error: error in evaluating the argument 'object' in selecting a method for function 'csDendro': Error: object 'sigGenes' not found
 ```
 
 ### Significant gene expression differences between conditions
 
 
 ```
-## Using tracking_id, rep_name as id variables
-## No id variables; using all as measure variables
+## Error: error in evaluating the argument 'object' in selecting a method for function 'csHeatmap': Error: object 'sigGenes' not found
 ```
 
-![plot of chunk sigExpression](figure/peril_GEOB/sigExpression1.png) ![plot of chunk sigExpression](figure/peril_GEOB/sigExpression2.png) 
-
 ```
-## Scale for 'colour' is already present. Adding another scale for 'colour', which will replace the existing scale.
-## ymax not defined: adjusting position using y instead
+## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error: object 'sigGenes' not found
 ```
 
-![plot of chunk sigExpression](figure/peril_GEOB/sigExpression3.png) 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error: object 'sigGenes' not found
+```
 
 An individual look at each of the significantly differentially regulated genes:
 
@@ -330,10 +328,12 @@ An individual look at each of the significantly differentially regulated genes:
 
 
 ```
-## Using tracking_id, sample_name as id variables
+## Error: error in evaluating the argument 'object' in selecting a method for function 'csScatter': Error: object 'sigGenes' not found
 ```
 
-![plot of chunk expression-sig relationship](figure/peril_GEOB/expression-sig relationship1.png) ![plot of chunk expression-sig relationship](figure/peril_GEOB/expression-sig relationship2.png) 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'csVolcano': Error: object 'sigGenes' not found
+```
 
 ## Differential Splicing
 
@@ -345,20 +345,21 @@ Per isoform difference between conditions:
 ## Error: RS-DBI driver: (error in statement: near ")": syntax error)
 ```
 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'annotation': Error: object 'isoformSigGenes' not found
+```
+
 These isoforms are:
 
 ```
-## Error: no applicable method for 'xtable' applied to an object of class
-## "character"
+## Error: object 'isoAnnot' not found
 ```
 
 
 ```
-## Using tracking_id, sample_name as id variables
-## No id variables; using all as measure variables
+## Error: error in evaluating the argument 'object' in selecting a method for function 'csHeatmap': Error in isoforms(isoformSigGenes) : 
+##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'isoformSigGenes' not found
 ```
-
-![plot of chunk isoform heatmap](figure/peril_GEOB/isoform heatmap.png) 
 
 ### Differential Splicing between conditions
 
@@ -373,55 +374,28 @@ Per condition differences in isoforms (Does gene have diff piechart between cond
 ## Error: no slot of name "tables" for this object of class "CuffDist"
 ```
 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'annotation': Error: object 'splicingSigGenes' not found
+```
+
 These genes are:
-<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 13 13:43:03 2014 -->
-<TABLE border=1>
-<TR> <TH>  </TH> <TH> spliceAnnot$gene_short_name </TH>  </TR>
-  <TR> <TD align="right"> 1 </TD> <TD> Satb2 </TD> </TR>
-  <TR> <TD align="right"> 2 </TD> <TD> Tmem104 </TD> </TR>
-  <TR> <TD align="right"> 3 </TD> <TD> Pol mu,Polm </TD> </TR>
-  <TR> <TD align="right"> 4 </TD> <TD> Rnf112 </TD> </TR>
-  <TR> <TD align="right"> 5 </TD> <TD> Pde8b </TD> </TR>
-  <TR> <TD align="right"> 6 </TD> <TD> Pxk </TD> </TR>
-  <TR> <TD align="right"> 7 </TD> <TD> Nfatc4 </TD> </TR>
-  <TR> <TD align="right"> 8 </TD> <TD> Scrib </TD> </TR>
-  <TR> <TD align="right"> 9 </TD> <TD> Gnb1l,Wdvcf </TD> </TR>
-  <TR> <TD align="right"> 10 </TD> <TD> Ephb3 </TD> </TR>
-  <TR> <TD align="right"> 11 </TD> <TD> Kank1 </TD> </TR>
-  <TR> <TD align="right"> 12 </TD> <TD> Ralgds,mKIAA1308 </TD> </TR>
-  <TR> <TD align="right"> 13 </TD> <TD> Lrp1b </TD> </TR>
-  <TR> <TD align="right"> 14 </TD> <TD> Dpp4 </TD> </TR>
-  <TR> <TD align="right"> 15 </TD> <TD> EG381438,Gm5148 </TD> </TR>
-  <TR> <TD align="right"> 16 </TD> <TD> Dnaja1,Mir207 </TD> </TR>
-  <TR> <TD align="right"> 17 </TD> <TD> Col27a1,mKIAA1870 </TD> </TR>
-  <TR> <TD align="right"> 18 </TD> <TD> 0610037D15Rik,Ccdc163 </TD> </TR>
-  <TR> <TD align="right"> 19 </TD> <TD>  </TD> </TR>
-  <TR> <TD align="right"> 20 </TD> <TD> Zfp420 </TD> </TR>
-  <TR> <TD align="right"> 21 </TD> <TD> Arntl,bmal1b </TD> </TR>
-  <TR> <TD align="right"> 22 </TD> <TD> Itgam </TD> </TR>
-  <TR> <TD align="right"> 23 </TD> <TD> Vstm2b </TD> </TR>
-  <TR> <TD align="right"> 24 </TD> <TD> Nup93 </TD> </TR>
-  <TR> <TD align="right"> 25 </TD> <TD> Nfix </TD> </TR>
-   </TABLE>
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'as.data.frame': Error: object 'spliceAnnot' not found
+```
 
 Splicing heatmap by isoform:
 
 ```
-## Using tracking_id, sample_name as id variables
-## No id variables; using all as measure variables
+## Error: error in evaluating the argument 'object' in selecting a method for function 'csHeatmap': Error in isoforms(splicingSigGenes) : 
+##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'splicingSigGenes' not found
 ```
-
-![plot of chunk splicing heatmap by isoform](figure/peril_GEOB/splicing heatmap by isoform.png) 
 
 Splicing heatmap by gene
 
 ```
-## Using tracking_id, sample_name as id variables
-## No id variables; using all as measure variables
+## Error: error in evaluating the argument 'object' in selecting a method for function 'csHeatmap': Error: object 'splicingSigGenes' not found
 ```
-
-![plot of chunk splicing heatmap by gene](figure/peril_GEOB/splicing heatmap by gene.png) 
 
 The following are significantly differentially spliced genes (relative portion of isoform per condition): 
 
@@ -452,9 +426,29 @@ The following are significantly differentially spliced genes (relative portion o
 
 
 
+
+```
+## Error: object 'noinfinitiesx' not found
+```
+
+```
+## Error: object 'x_max' not found
+```
+
 ![plot of chunk print GSEA biocarta](figure/peril_GEOB/print GSEA biocarta.png) 
 
-![plot of chunk print GSEA reactome](figure/peril_GEOB/print GSEA reactome.png) 
+
+```
+## Error: object 'noinfinitiesx' not found
+```
+
+```
+## Error: object 'x_max' not found
+```
+
+```
+## Error: NaN dissimilarity value.
+```
 
 ## GO enrichment 
 Cluster profiler used to call enichments of significantly differentially regulated genes that map to Entrez IDs. 
@@ -464,6 +458,22 @@ Description/explanation of what's here, and justify all choices.
 
 ```
 ## Error: RS-DBI driver: (error in statement: near ")": syntax error)
+```
+
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'annotation': Error: object 'sigGenes' not found
+```
+
+```
+## Error: object 'geneAnnot' not found
+```
+
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'diffData': Error: object 'sigGenes' not found
+```
+
+```
+## Error: object 'sigDiff' not found
 ```
 
 biomart to get entrez gene IDS
@@ -484,38 +494,58 @@ enrichPathway
 ##     getGene
 ```
 
-
-
-![plot of chunk GO figures](figure/peril_GEOB/GO figures1.png) ![plot of chunk GO figures](figure/peril_GEOB/GO figures2.png) 
-
 ```
-## Error: 'x' and 'units' must have length > 0
+## Error: object 'geneNames' not found
 ```
 
 ```
-## Warning: no non-missing arguments to min; returning Inf
-## Warning: no non-missing arguments to max; returning -Inf
-## Warning: no non-missing arguments to min; returning Inf
-## Warning: no non-missing arguments to max; returning -Inf
-## Warning: "showCategory" is not a graphical parameter
+## Error: object 'sigEntrez' not found
 ```
 
 ```
-## Error: need finite 'xlim' values
+## Error: error in evaluating the argument 'x' in selecting a method for function 'unlist': Error: object 'sigEZ' not found
 ```
 
-![plot of chunk GO figures](figure/peril_GEOB/GO figures3.png) 
 
 ```
-## Warning: no non-missing arguments to min; returning Inf
-## Warning: no non-missing arguments to max; returning -Inf
-## Warning: no non-missing arguments to min; returning Inf
-## Warning: no non-missing arguments to max; returning -Inf
-## Warning: "showCategory" is not a graphical parameter
+## Error: object 'sigEZ' not found
 ```
 
 ```
-## Error: need finite 'xlim' values
+## Error: object 'sigEZ' not found
+```
+
+```
+## Error: object 'sigEZ' not found
+```
+
+```
+## Error: object 'sigEZ' not found
+```
+
+```
+## Error: object 'sigEZ' not found
+```
+
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'goBP' not found
+```
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'goMF' not found
+```
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'goCC' not found
+```
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'kegg' not found
+```
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'pathway' not found
 ```
 
 # Cis vs Trans (locally)
@@ -551,12 +581,12 @@ Hand pick these after initial round of analysis?
 ##  [4] GO.db_2.10.1           DOSE_2.0.0             clusterProfiler_1.13.1
 ##  [7] AnnotationDbi_1.24.0   Biobase_2.22.0         mgcv_1.7-29           
 ## [10] nlme_3.1-117           gridExtra_0.9.1        gtable_0.1.2          
-## [13] knitr_1.6              marray_1.40.0          gplots_2.13.0         
-## [16] GSA_1.03               limma_3.18.13          xtable_1.7-3          
-## [19] cummeRbund_2.7.2       Gviz_1.6.0             rtracklayer_1.22.7    
-## [22] GenomicRanges_1.14.4   XVector_0.2.0          IRanges_1.20.7        
-## [25] fastcluster_1.1.13     reshape2_1.4           ggplot2_1.0.0         
-## [28] RSQLite_0.11.4         DBI_0.2-7              BiocGenerics_0.8.0    
+## [13] marray_1.40.0          gplots_2.13.0          GSA_1.03              
+## [16] limma_3.18.13          xtable_1.7-3           cummeRbund_2.7.2      
+## [19] Gviz_1.6.0             rtracklayer_1.22.7     GenomicRanges_1.14.4  
+## [22] XVector_0.2.0          IRanges_1.20.7         fastcluster_1.1.13    
+## [25] reshape2_1.4           ggplot2_1.0.0          RSQLite_0.11.4        
+## [28] DBI_0.2-7              BiocGenerics_0.8.0     knitr_1.6             
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] biomaRt_2.18.0         Biostrings_2.30.1      biovizBase_1.10.8     
@@ -568,14 +598,14 @@ Hand pick these after initial round of analysis?
 ## [19] graph_1.40.1           graphite_1.8.1         gtools_3.4.1          
 ## [22] Hmisc_3.14-4           igraph_0.7.1           KEGG.db_2.10.1        
 ## [25] KernSmooth_2.23-12     labeling_0.2           lattice_0.20-29       
-## [28] latticeExtra_0.6-26    markdown_0.7           MASS_7.3-33           
-## [31] Matrix_1.1-3           mime_0.1.1             munsell_0.4.2         
-## [34] org.Hs.eg.db_2.10.1    plyr_1.8.1             proto_0.3-10          
-## [37] qvalue_1.36.0          RColorBrewer_1.0-5     Rcpp_0.11.1           
-## [40] RCurl_1.95-4.1         reactome.db_1.46.1     Rsamtools_1.14.3      
-## [43] scales_0.2.4           splines_3.0.2          stats4_3.0.2          
-## [46] stringr_0.6.2          survival_2.37-7        tcltk_3.0.2           
-## [49] tools_3.0.2            XML_3.98-1.1           zlibbioc_1.8.0
+## [28] latticeExtra_0.6-26    MASS_7.3-33            Matrix_1.1-3          
+## [31] munsell_0.4.2          org.Hs.eg.db_2.10.1    plyr_1.8.1            
+## [34] proto_0.3-10           qvalue_1.36.0          RColorBrewer_1.0-5    
+## [37] Rcpp_0.11.1            RCurl_1.95-4.1         reactome.db_1.46.1    
+## [40] Rsamtools_1.14.3       scales_0.2.4           splines_3.0.2         
+## [43] stats4_3.0.2           stringr_0.6.2          survival_2.37-7       
+## [46] tcltk_3.0.2            tools_3.0.2            XML_3.98-1.1          
+## [49] zlibbioc_1.8.0
 ```
 
 #Run Info

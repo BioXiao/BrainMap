@@ -269,7 +269,7 @@ expressionBarplot(sigGenes)
 
 An individual look at each of the significantly differentially regulated genes:
 
-```{r plot ALL OF THE SIGNIFICANT GENES, fig.height=(20 + (1*(length(sig)))), fig.width=(20 + (.5*length(sig)))}
+```{r plot ALL OF THE SIGNIFICANT GENES, fig.height=(20 + (1*(length(sig)))), fig.width=(20 + (1*length(sig)))}
 plots<-lapply(sig,function(x){
   myGene<-getGene(cuff,x)
   return(expressionPlot(myGene,replicates=T))
@@ -486,7 +486,7 @@ biocarta_pvl_corrected <- get_gene_set_q_vals(biocarta_pvl_mat)
 biocarta_pvl_corrected<-rbind(biocarta_pvl_corrected,biocarta_pvl_corrected)
 ```
 
-```{r print GSEA biocarta, fig.height=40, fig.width=10}
+```{r print GSEA biocarta, fig.height=20, fig.width=10}
 #two options, print as pdf, and adjust size in separate code block
 #make minimum height and then increment scaled by number of rows to return 
 
@@ -506,7 +506,7 @@ x_max<-max(noinfinitiesx)+100
 x_ordered_subset[x_ordered_subset=="Inf"]<-x_max
 
 
-heatmap.2(x_ordered_subset, trace="none", margins=c(5,30), col=InputCols,dendrogram="row",lhei =c(0.1,0.9), labCol=c(""))
+heatmap.2(x_ordered_subset, trace="none", margins=c(5,20), col=InputCols,dendrogram="row",lhei =c(0.1,0.9), labCol=c(""))
 
 #dev.off()
 
@@ -514,7 +514,7 @@ heatmap.2(x_ordered_subset, trace="none", margins=c(5,30), col=InputCols,dendrog
 #heatmap.2(x_ordered_subset, trace="none", margins=c(5,30), col=InputCols,dendrogram="row",lhei =c(0.1,0.9), labCol=c(""))
 ```
 
-```{r print GSEA reactome, fig.width=10, fig.height=30}
+```{r print GSEA reactome, fig.width=10, fig.height=20}
 
 #print to file
 #pdf("components_GSEA_reactome.pdf",width=10,height=30)
@@ -530,7 +530,7 @@ x_max<-max(noinfinitiesx)+100
 x_ordered_subset[x_ordered_subset=="Inf"]<-x_max
 
 
-heatmap.2(x_ordered_subset, trace="none", margins=c(5,30),col=InputCols,dendrogram="both",lhei = c(0.1,0.90), labCol=c(""))
+heatmap.2(x_ordered_subset, trace="none", margins=c(5,20),col=InputCols,dendrogram="both",lhei = c(0.1,0.90), labCol=c(""))
 #cexRow = (0.2 + .5/log10(dim(x)[1]))
 #dev.off()
 
@@ -576,7 +576,7 @@ BP, MF, CC
 enrichKEGG
 enrichPathway
 
-```{r GO analysis setup and functions,fig.height=8,fig.width=8,echo=FALSE,eval=TRUE}
+```{r GO analysis setup and functions,echo=FALSE,eval=TRUE}
 library(clusterProfiler)
 require(biomaRt)
 #source("http://bioconductor.org/biocLite.R")
@@ -612,7 +612,7 @@ pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T
 
 ```
 
-```{r GO figures, fig.height=8,fig.width=8, echo=FALSE}
+```{r GO figures, echo=FALSE}
 #Visualizing w clusterProfiler
 #barplot(goBP, drop = TRUE, showCategory = 12)
 #barplot(goBP, showCategory = 12)
@@ -641,12 +641,13 @@ plot(pathway,showCategory=10) + ggtitle("Reactome pathway enrichment")
 detach("package:biomaRt")
 ```
 
+
 # Cis vs Trans (locally)
 ``` {r cis_v_trans}
 window<-1000000
 
-```
 
+```
 
 
 # Interesting Genes
