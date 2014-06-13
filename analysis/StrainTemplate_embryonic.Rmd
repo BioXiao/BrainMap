@@ -494,9 +494,17 @@ setwd('/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis')
 
 pdf("components_GSEA_biocarta.pdf",width=10,height=30)
 
-x<-(-log10(t(biocarta_pvl_corrected[,which(colMins(biocarta_pvl_corrected) < 0.0000001)])))
+#take top 50
+x<-(-log10(t(biocarta_pvl_corrected[,which(colMins(biocarta_pvl_corrected) < 0.001)])))
 
-heatmap.2(x, trace="none", margins=c(5,30), col=InputCols,dendrogram="row",lhei =c(0.1,0.9),key=FALSE, cexRow = (0.2 + .5/log10(dim(x)[1])), labCol=c(""))
+x_ordered<-x[order(x[,1], decreasing=TRUE),]
+x_ordered_subset<-x_ordered[1:50,]
+noinfinities_x<-x_ordered_subset[which(x_ordered_subset!="Inf")]
+x_max<-max(noinfinitiesx)+100
+x_ordered_subset[x_ordered_subset=="Inf"]<-x_max
+
+
+heatmap.2(x_ordered_subset, trace="none", margins=c(5,30), col=InputCols,dendrogram="row",lhei =c(0.1,0.9),key=FALSE, labCol=c(""))
 
 dev.off()
 ```
@@ -505,14 +513,19 @@ dev.off()
 
 pdf("components_GSEA_reactome.pdf",width=10,height=30)
 
-x<-(-log10(t(reactome_pvl_corrected[,which(colMins(reactome_pvl_corrected) < 0.0000000000000000000000001)])))
+#take top 50 because this is ridiculous
+#x<-(-log10(t(reactome_pvl_corrected[,which(colMins(reactome_pvl_corrected) < 0.0000000000000000000000001)])))
 
-noinfinitiesx<-x[which(x!="Inf")]
+x<-(-log10(t(reactome_pvl_corrected[,which(colMins(reactome_pvl_corrected) < 0.0001)])))
+x_ordered<-x[order(x[,1], decreasing=TRUE),]
+x_ordered_subset<-x_ordered[1:50,]
+noinfinities_x<-x_ordered_subset[which(x_ordered_subset!="Inf")]
 x_max<-max(noinfinitiesx)+100
-x[x=="Inf"]<-x_max
+x_ordered_subset[x_ordered_subset=="Inf"]<-x_max
 
 
-heatmap.2(x, trace="none", margins=c(5,30),col=InputCols,dendrogram="both",lhei = c(0.1,0.90), key=FALSE,cexRow = (0.2 + .5/log10(dim(x)[1])), labCol=c(""))
+heatmap.2(x_ordered_subset, trace="none", margins=c(5,30),col=InputCols,dendrogram="both",lhei = c(0.1,0.90), key=FALSE, labCol=c(""))
+#cexRow = (0.2 + .5/log10(dim(x)[1]))
 dev.off()
 ```
 
