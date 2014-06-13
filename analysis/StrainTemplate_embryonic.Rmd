@@ -489,32 +489,31 @@ biocarta_pvl_corrected<-rbind(biocarta_pvl_corrected,biocarta_pvl_corrected)
 #two options, print as pdf, and adjust size in separate code block
 #make minimum height and then increment scaled by number of rows to return 
 
-x<-(-log10(t(biocarta_pvl_corrected[,which(colMins(biocarta_pvl_corrected) < 0.000001)])))
 
 setwd('/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis')
 
 pdf("components_GSEA_biocarta.pdf",width=10,height=30)
 
-heatmap.2(x, trace="none", margins=c(5,30), col=InputCols,dendrogram="row",lhei =c(0.1,0.9),key=FALSE, cexRow = (0.2 + .5/log10(length(labels))), labCol=c(""))
+x<-(-log10(t(biocarta_pvl_corrected[,which(colMins(biocarta_pvl_corrected) < 0.0000001)])))
+
+heatmap.2(x, trace="none", margins=c(5,30), col=InputCols,dendrogram="row",lhei =c(0.1,0.9),key=FALSE, cexRow = (0.2 + .5/log10(dim(x)[1])), labCol=c(""))
 
 dev.off()
 ```
 
 ```{r print GSEA reactome, fig.width=10, fig.height=30}
-#pdf("components_GSEA_reactome.pdf",width=10,height=30)
 
-x<-(-log10(t(reactome_pvl_corrected[,which(colMins(reactome_pvl_corrected) < 0.001)])))
+pdf("components_GSEA_reactome.pdf",width=10,height=30)
+
+x<-(-log10(t(reactome_pvl_corrected[,which(colMins(reactome_pvl_corrected) < 0.0000000000000000000000001)])))
 
 noinfinitiesx<-x[which(x!="Inf")]
 x_max<-max(noinfinitiesx)+100
 x[x=="Inf"]<-x_max
 
-labels<-strsplit(rownames(x),"_")
-l<-lapply(labels,function(x){return(x[-1])})
-labels<-as.vector(l)
 
-heatmap.2(x, trace="none", margins=c(15,20),col=InputCols,dendrogram="both",lhei = c(0.9,0.10), key=FALSE)
-#dev.off()
+heatmap.2(x, trace="none", margins=c(5,30),col=InputCols,dendrogram="both",lhei = c(0.1,0.90), key=FALSE,cexRow = (0.2 + .5/log10(dim(x)[1])), labCol=c(""))
+dev.off()
 ```
 
 ## GO enrichment 
