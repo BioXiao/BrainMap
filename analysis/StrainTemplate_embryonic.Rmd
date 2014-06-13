@@ -13,6 +13,11 @@
 path<-paste("figure/",strain,"/", sep="")
 opts_chunk$set(fig.path=path)
 
+### OPTIONAL VAR OVERRIDE (where are my variables!!?)
+dir<-dir
+strain<-strain
+alpha<-alpha 
+
 
 ### THINGS TO CACHE GO HERE AND NOWHERE ELSE 
 
@@ -167,9 +172,6 @@ csDistHeat(genes(cuff), replicates=T)
 
 
 # KO assessment
-```{r KO assessment,eval=TRUE,echo=FALSE,message=FALSE}
-
-```
 
 ## Endogenous lncRNA expression
 ```{r Enodenous lncRNA tables, results='asis'}
@@ -235,9 +237,10 @@ print(xtable(geneAnnot$gene_short_name),type="html")
 ```
 
 ### Matrix of gene significant differences between conditions
+(skip for Brainmap wt-v-ko comparisons)
+
 ```{r sigMatrix}
-#sigMatrix(cuff, level="genes", alpha=alpha)
-sigMatrix(cuff, level="genes", alpha=alpha, replicates=T)       
+sigMatrix(cuff, level="genes", alpha=alpha)
 ```
 
 ### Replicate Clustering by significant genes 
@@ -252,19 +255,22 @@ csHeatmap(sigGenes, cluster="both",replicates=T)
 expressionPlot(sigGenes)
 expressionBarplot(sigGenes)
 ```
-```{r plot ALL OF THE SIGNIFICANT GENES, out.height=20, out.width=10}
 
+An individual look at each of the significantly differentially regulated genes:
+
+```{r plot ALL OF THE SIGNIFICANT GENES, fig.height=20, fig.width=20}
 plots<-lapply(sig,function(x){
   myGene<-getGene(cuff,x)
   return(expressionPlot(myGene,replicates=T))
   })
 do.call(grid.arrange, plots)
-
-
 ```
 
 
 ### Expression-level significance relationship
+
+**Interesting comments n stuff!**
+
 ```{r expression-sig relationship}
 csScatter(sigGenes, "wt", "ko", smooth=T)
 csVolcano(sigGenes, "wt", "ko")
@@ -275,102 +281,117 @@ csVolcano(sigGenes, "wt", "ko")
 ### Differential Isoforms between conditions
 Per isoform difference between conditions:
 ```{r diff.iso,eval=TRUE,cache=TRUE}
-
 sigMatrix(cuff, level="isoforms",alpha=alpha)
-sigMatrix(cuff, level="isoforms",alpha=alpha, replicates=T)
 
-
-isoformSigIDs<-getSig(cuff,level="isoforms",alpha=0.1)
+isoformSigIDs<-getSig(cuff,level="isoforms",alpha=alpha)
 isoformSigGenes<-getGenes(cuff,isoformSigIDs)
 isoAnnot<-annotation(isoformSigGenes)
+```
+
+These isoforms are:
+```{r diff iso annotations, results='asis'}
 print(xtable(isoAnnot$gene_short_name),type="html")
 ```
 
+```{r isoform heatmap}
+csHeatmap(isoforms(isoformSigGenes),cluster='row',method=dist)
+```
+
 ### Differential Splicing between conditions
-Per condition differences in isoforms #Does gene have diff piechart between conditions
-```{r}
-splicingSigIDs<-getSig(cuff,level="splicing",alpha=0.05)
+
+Per condition differences in isoforms (Does gene have diff piechart between conditions?)
+
+```{r diff splicing}
+splicingSigIDs<-getSig(cuff,level="splicing",alpha=alpha)
 splicingSigGenes<-getGenes(cuff,splicingSigIDs)
+
+sigMatrix(cuff, level='splicing', alpha=alpha)
+
 spliceAnnot<-annotation(splicingSigGenes)
+```
 
+These genes are:
+```{r diff splicing table of genes, results='asis'}
 print(xtable(as.data.frame(spliceAnnot$gene_short_name)), type="html")
+```
 
-
-#Print csPie chart pannel
-#how to make ggplot panel? 
-#for(gene %in% splicingSigGenes){
-#  csPie(cuff,gene) 
-#}
-
-#splicing.unique.IDs<-setdiff(annotation(splicingSigGenes)$gene_id#,annotation(sigGenes)$gene_id)
-#splicing.unique.IDs
-
+```{r splicing heatmap by isoform}
 #pdf("sigSplicing_heatmap.pdf",width=10,height=20)
 csHeatmap(isoforms(splicingSigGenes),cluster='row',method=dist)
-csHeatmap(isoforms(isoformSigGenes),cluster='row',method=dist)
-  #IS THIS DIFFERENTIAL BETWEEN WT/KO OR ISOFORMS? WHETHER IN ONE CONDITION OR BOTH?
 #dev.off()
 ```
 
+```{r splicing heatmap by gene}
+csHeatmap(splicingSigGenes,cluster='row',method=dist)
+```
+
+The following are significantly differentially spliced genes (relative portion of isoform per condition): 
+
+# how do we rescale these plots?
+```{r print all the splicing csPie tables}
+csPiePlots<-lapply(splicingSigIDs,function(x){
+  myGene<-getGene(cuff,x)
+  csPie(myGene)
+})
+do.call(grid.arrange,csPiePlots)
+```
 
 
-## Differential Promoter usage (isoforms by tss)
+## Differential Promoter usage (isoforms by tss) <- NOT USING IN BRAINMAP
 
-```{r diff.TSS,eval=TRUE,cache=TRUE}
-tssSigIDs<-getSig(cuff,alpha=0.1,level="TSS")
+```{r diff.TSS,eval=FALSE,echo=FALSE}
+tssSigIDs<-getSig(cuff,alpha=alpha,level="TSS")
 tssSigGenes<-getGenes(cuff,tssSigIDs)
 
-#promoter.unique.IDs<-setdiff(annotation(sigPromoterGenes)$gene_id,annotation(sigGenes)$gene_id)
-#promoter.unique.IDs
-
-id<-tssSigIDs[19]
-gene<-getGene(cuff,id)
-csPie(gene) #how can you get a significantly different promoter but with no isoform diff? 
-
 csHeatmap(tssSigGenes,cluster='row',method=dist)
-#for(id %in% sigPromoterIDs){
-#  gene<-getGene(cuff,id)
-#  csPie(gene)
-#}
+
+csPiePlots<-lapply(tssSigIDs,function(x){
+  myGene<-getGene(cuff,x)
+  csPie(myGene)
+})
+do.call(grid.arrange,csPiePlots)
 
 ```
 
-## Differential Promoter Usage (By "Promoters")
+## Differential Promoter Usage (By "Promoters") <- NOT USING IN BRAINMAP 
 
-```{r diff.promoters,eval=TRUE,cache=TRUE}
-promoterSigIDs<-getSig(cuff,alpha=0.1,level="promoters")
-
+```{r diff.promoters,eval=FALSE,echo=FALSE}
+promoterSigIDs<-getSig(cuff,alpha=alpha,level="promoters")
 promoterSigGenes<-getGenes(cuff,promoterSigIDs)
-
-#promoter.unique.IDs<-setdiff(annotation(sigPromoterGenes)$gene_id,annotation(sigGenes)$gene_id)
-
-#promoter.unique.IDs
 
 pdf("sigPromoter_heatmap.pdf",width=10,height=20)
 csHeatmap(promoterSigGenes,cluster='row',method=dist)
 dev.off()
 
+csPiePlots<-lapply(promoterSigIDs,function(x){
+  myGene<-getGene(cuff,x)
+  csPie(myGene)
+})
+do.call(grid.arrange,csPiePlots)
+
+
 ```
 
-## Differential CDS? (unique protein coding isoforms)
-```{r diff.CDS,eval=TRUE,cache=TRUE}
-cdsSigIDs<-getSig(cuff,alpha=0.1,level="CDS")
-#sigCDSIDs<-getSig(cuff,alpha=0.1,level="CDS")
+## Differential CDS? (unique protein coding isoforms) <-NOT IN BRAINMAP
+```{r diff.CDS,eval=FALSE, echo=FALSE}
+cdsSigIDs<-getSig(cuff,alpha=alpha,level="CDS")
 cdsSigGenes<-getGenes(cuff,cdsSigIDs)
 
-relcdsSigIDs<-getSig(cuff,alpha=0.1,level="relCDS")
+relcdsSigIDs<-getSig(cuff,alpha=alpha,level="relCDS")
 relcdsSigGenes<-getGenes(cuff,relcdsSigIDs)
 
-#CDS.unique.IDs<-setdiff(annotation(sigCDSGenes)$gene_id,annotation(sigGenes)$gene_id)
-#CDS.unique.IDs
 
 pdf("sigCDS_heatmap.pdf",width=10,height=20)
 csHeatmap(cdsSigGenes,cluster='row',method=dist)
 dev.off()
+
+pdf("sig_relCDS_heatmap.pdf",width=10,height=20)
+csHeatmap(relcdsSigGenes,cluster='row',method=dist)
+dev.off()
 ```
 
 
-```{r overview.venn,echo=FALSE}
+```{r overview.venn,echo=FALSE, eval=FALSE}
 ## Venn diagram overview of Differential changes
 
 
@@ -448,8 +469,9 @@ reactome_pvl_corrected<-rbind(reactome_pvl_corrected,reactome_pvl_corrected)
 biocarta_pvl_mat <- get_gene_set_p_vals(Input.df, biocarta_gs, alternative="mixed")
 biocarta_pvl_corrected <- get_gene_set_q_vals(biocarta_pvl_mat)
 biocarta_pvl_corrected<-rbind(biocarta_pvl_corrected,biocarta_pvl_corrected)
+```
 
-
+```{r print GSEA biocarta}
 #two options, print as pdf, and adjust size in separate code block
 #make minimum height and then increment scaled by number of rows to return 
 
@@ -465,7 +487,9 @@ pdf("components_GSEA_biocarta.pdf",width=10,height=30)
 heatmap.2(x, trace="none", margins=c(5,30), col=InputCols, labRow=labels,dendrogram="both",lhei =c(0.1,0.9))
 
 dev.off()
+```
 
+```{r print GSEA reactome}
 pdf("components_GSEA_reactome.pdf",width=10,height=30)
 
 x<-(-log10(t(reactome_pvl_corrected[,which(colMins(reactome_pvl_corrected) < 0.001)])))
@@ -479,17 +503,14 @@ labels<-as.vector(l)
 
 heatmap.2(x, trace="none", margins=c(5,30),col=InputCols,labRow=labels,dendrogram="both",lhei = c(0.1,0.90))
 dev.off()
- 
-
-
-
 ```
 
-## GO enrichment (cluster profiler?)
+## GO enrichment 
+Cluster profiler used to call enichments of significantly differentially regulated genes that map to Entrez IDs. 
 
 Description/explanation of what's here, and justify all choices. 
 
-```{r init}
+```{r GO setup}
 #source("http://bioconductor.org/biocLite.R")
 #biocLite("ReactomePA")
 
@@ -521,16 +542,12 @@ BP, MF, CC
 enrichKEGG
 enrichPathway
 
-```{r GO analysis setup and functions,cache=TRUE,fig.height=8,fig.width=8,echo=FALSE,eval=FALSE}
-
+```{r GO analysis setup and functions,fig.height=8,fig.width=8,echo=FALSE,eval=TRUE}
+library(clusterProfiler)
 require(biomaRt)
 #source("http://bioconductor.org/biocLite.R")
 #biocLite("clusterProfiler")
 #biocLite("org.Mm.eg.db")
-
-library(clusterProfiler)
-
-
 #http://www.bioconductor.org/packages/release/bioc/vignettes/biomaRt/inst/doc/biomaRt.pdf
 ensembl <- useMart("ENSEMBL_MART_ENSEMBL","mmusculus_gene_ensembl", 
 host="www.ensembl.org")
@@ -541,18 +558,13 @@ getEntrezIDs<-function (geneNames)
     tmp <- getBM(attributes = c("entrezgene"), filters = "mgi_symbol", values = geneNames, mart = ensembl)
     tmp
 }
-
-
 sigEntrez<-getEntrezIDs(geneNames)
 sigEZ<-strsplit(as.character(sigEntrez), ", ")
 sigEZ<-unlist(sigEZ)
-
 require(org.Mm.eg.db) #mapping of entrez IDs to genbank
-
 ```
 
-
-```{r GO enrichments}
+```{r GO enrichments, echo=FALSE}
 
 goBP<-enrichGO(gene=sigEZ, organism="mouse",ont="BP",pvalueCutoff=0.01,readable=T)
 
@@ -566,12 +578,7 @@ pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T
 
 ```
 
-```{r GO figures, fig.height=8,fig.width=8}
-#Simple method
-#plot(goBP)
-#plot(goMF)
-#plot(goCC)
-
+```{r GO figures, fig.height=8,fig.width=8, echo=FALSE}
 #Visualizing w clusterProfiler
 #barplot(goBP, drop = TRUE, showCategory = 12)
 #barplot(goBP, showCategory = 12)
@@ -590,11 +597,14 @@ plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) 
 plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched MF")
 plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched CC")
 
+plot(kegg, showCategory=10) + ggtitle("Kegg Pathways")
+
+plot(pathway,showCategory=10) + ggtitle("Reactome pathway enrichment")
+
+#Loyal plots
 #plot(cluster.enrichKEGG,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched KEGG")
 #plot(cluster.enrichPathway,showCategory=20) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched Reactome")
-
 detach("package:biomaRt")
-
 ```
 
 # Cis vs Trans (locally)
@@ -603,8 +613,6 @@ window<-1000000
 
 ```
 
-
-# Transcription Factor binding enrichment (for sigdiff genes...?)
 
 
 # Interesting Genes
