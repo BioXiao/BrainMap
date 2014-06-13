@@ -455,7 +455,7 @@ rowMins<-function(x){
 InputCols<-maPalette(low="white",high="red",k=100)
 ```
 
-```{r}
+```{r gsea}
 df.pop<-data.frame("short_name"=toupper(gene_names$gene_short_name),"test_stat"=gene_names$test_stat)
 row.names(df.pop)=population.diff$gene_id
 df.pop.ordered<-df.pop[order(df.pop$test_stat),]
@@ -471,7 +471,7 @@ biocarta_pvl_corrected <- get_gene_set_q_vals(biocarta_pvl_mat)
 biocarta_pvl_corrected<-rbind(biocarta_pvl_corrected,biocarta_pvl_corrected)
 ```
 
-```{r print GSEA biocarta}
+```{r print GSEA biocarta, fig.height=30, fig.width=10}
 #two options, print as pdf, and adjust size in separate code block
 #make minimum height and then increment scaled by number of rows to return 
 
@@ -485,15 +485,13 @@ setwd('/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis')
 
 pdf("components_GSEA_biocarta.pdf",width=10,height=30)
 heatmap.2(x, trace="none", margins=c(5,30), col=InputCols, labRow=labels,dendrogram="both",lhei =c(0.1,0.9))
-
 dev.off()
 ```
 
-```{r print GSEA reactome}
+```{r print GSEA reactome, fig.width=10, fig.height=30}
 pdf("components_GSEA_reactome.pdf",width=10,height=30)
 
 x<-(-log10(t(reactome_pvl_corrected[,which(colMins(reactome_pvl_corrected) < 0.001)])))
-
 noinfinitiesx<-x[which(x!="Inf")]
 x_max<-max(noinfinitiesx)+100
 x[x=="Inf"]<-x_max
@@ -501,7 +499,7 @@ labels<-strsplit(rownames(x),"_")
 l<-lapply(labels,function(x){return(x[-1])})
 labels<-as.vector(l)
 
-heatmap.2(x, trace="none", margins=c(5,30),col=InputCols,labRow=labels,dendrogram="both",lhei = c(0.1,0.90))
+heatmap.2(x, trace="none", margins=c(5,30),col=InputCols,dendrogram="both",lhei = c(0.1,0.90))
 dev.off()
 ```
 
