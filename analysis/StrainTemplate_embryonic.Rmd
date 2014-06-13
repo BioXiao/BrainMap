@@ -4,6 +4,9 @@
 # questions
 - overdispersion
 - how do we rescale these plots? or just axes?
+- add labels, descriptions
+- turn off all caching 
+- general figure formatting/table formatting 
 
 
 ```{r init, echo=FALSE}
@@ -265,7 +268,7 @@ expressionBarplot(sigGenes)
 
 An individual look at each of the significantly differentially regulated genes:
 
-```{r plot ALL OF THE SIGNIFICANT GENES, fig.height=20, fig.width=20}
+```{r plot ALL OF THE SIGNIFICANT GENES, fig.height=20 + 1*(length(sig)), fig.width=20}
 plots<-lapply(sig,function(x){
   myGene<-getGene(cuff,x)
   return(expressionPlot(myGene,replicates=T))
@@ -322,12 +325,14 @@ These genes are:
 print(xtable(as.data.frame(spliceAnnot$gene_short_name)), type="html")
 ```
 
+Splicing heatmap by isoform:
 ```{r splicing heatmap by isoform}
 #pdf("sigSplicing_heatmap.pdf",width=10,height=20)
 csHeatmap(isoforms(splicingSigGenes),cluster='row',method=dist)
 #dev.off()
 ```
 
+Splicing heatmap by gene
 ```{r splicing heatmap by gene}
 csHeatmap(splicingSigGenes,cluster='row',method=dist)
 ```
@@ -493,7 +498,7 @@ labels<-unlist(l)
 setwd('/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis')
 
 #pdf("components_GSEA_biocarta.pdf",width=10,height=30)
-heatmap.2(x, trace="none", margins=c(5,30), col=InputCols, labRow=labels,dendrogram="both",lhei =c(0.9,0.1))
+heatmap.2(x, trace="none", margins=c(5,30), col=InputCols, labRow=labels,dendrogram="both",lhei =c(0.9,0.1),key=FALSE)
 #dev.off()
 ```
 
@@ -508,7 +513,7 @@ labels<-strsplit(rownames(x),"_")
 l<-lapply(labels,function(x){return(x[-1])})
 labels<-as.vector(l)
 
-heatmap.2(x, trace="none", margins=c(5,30),col=InputCols,dendrogram="both",lhei = c(0.9,0.10))
+heatmap.2(x, trace="none", margins=c(5,30),col=InputCols,dendrogram="both",lhei = c(0.9,0.10), key=FALSE)
 #dev.off()
 ```
 

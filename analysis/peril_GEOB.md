@@ -4,9 +4,15 @@ peril_GEOB KO vs WT (Embryonic)
 # questions
 - overdispersion
 - how do we rescale these plots? or just axes?
+- add labels, descriptions
+- turn off all caching 
+- general figure formatting/table formatting 
 
 
 
+```
+## Error: object 'alpha' not found
+```
 
 
 
@@ -19,7 +25,7 @@ This file shows the wt-v-ko comparison for peril_GEOB.
 
 Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 13 07:55:20 2014 -->
+<!-- Fri Jun 13 09:12:23 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 9 </TH>  </TR>
   <TR> <TD align="right"> c......n....rinn_data1....users....agroff....seq....PERIL....data... </TD> <TD> bams </TD> </TR>
@@ -45,7 +51,7 @@ Cuff overview:
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 13 07:55:20 2014 -->
+<!-- Fri Jun 13 09:12:24 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR710_Peril_L46_E14-5_GE_and_OB_wtm1_ATCACG/accepted_hits.bam </TD> <TD> wt </TD> <TD align="right">   0 </TD> <TD> wt_0 </TD> <TD align="right"> 19373200.00 </TD> <TD align="right"> 21401800.00 </TD> <TD align="right"> 0.90 </TD> <TD align="right"> 1.00 </TD> </TR>
@@ -69,11 +75,6 @@ from cummerbund manual: Overdispersion is a common problem in RNA-Seq data. As o
 The squared coefficient of variation is a normalized measure of cross replicate variability that can be useful for evaluating the quality your RNA-seq data. Differences in CV 2 can result in lower numbers of differentially expressed genes due to a higher degree of variability between replicate fpkm estimates.
 
 Genes:
-
-```
-## Warning: RS-DBI driver warning: (closing pending result sets before
-## closing this connection)
-```
 
 ```
 ## Scale for 'x' is already present. Adding another scale for 'x', which will replace the existing scale.
@@ -372,53 +373,28 @@ Per condition differences in isoforms (Does gene have diff piechart between cond
 ## Error: no slot of name "tables" for this object of class "CuffDist"
 ```
 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'annotation': Error: object 'splicingSigGenes' not found
+```
+
 These genes are:
-<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 13 07:57:23 2014 -->
-<TABLE border=1>
-<TR> <TH>  </TH> <TH> spliceAnnot$gene_short_name </TH>  </TR>
-  <TR> <TD align="right"> 1 </TD> <TD> Satb2 </TD> </TR>
-  <TR> <TD align="right"> 2 </TD> <TD> Tmem104 </TD> </TR>
-  <TR> <TD align="right"> 3 </TD> <TD> Pol mu,Polm </TD> </TR>
-  <TR> <TD align="right"> 4 </TD> <TD> Rnf112 </TD> </TR>
-  <TR> <TD align="right"> 5 </TD> <TD> Pde8b </TD> </TR>
-  <TR> <TD align="right"> 6 </TD> <TD> Pxk </TD> </TR>
-  <TR> <TD align="right"> 7 </TD> <TD> Nfatc4 </TD> </TR>
-  <TR> <TD align="right"> 8 </TD> <TD> Scrib </TD> </TR>
-  <TR> <TD align="right"> 9 </TD> <TD> Gnb1l,Wdvcf </TD> </TR>
-  <TR> <TD align="right"> 10 </TD> <TD> Ephb3 </TD> </TR>
-  <TR> <TD align="right"> 11 </TD> <TD> Kank1 </TD> </TR>
-  <TR> <TD align="right"> 12 </TD> <TD> Ralgds,mKIAA1308 </TD> </TR>
-  <TR> <TD align="right"> 13 </TD> <TD> Lrp1b </TD> </TR>
-  <TR> <TD align="right"> 14 </TD> <TD> Dpp4 </TD> </TR>
-  <TR> <TD align="right"> 15 </TD> <TD> EG381438,Gm5148 </TD> </TR>
-  <TR> <TD align="right"> 16 </TD> <TD> Dnaja1,Mir207 </TD> </TR>
-  <TR> <TD align="right"> 17 </TD> <TD> Col27a1,mKIAA1870 </TD> </TR>
-  <TR> <TD align="right"> 18 </TD> <TD> 0610037D15Rik,Ccdc163 </TD> </TR>
-  <TR> <TD align="right"> 19 </TD> <TD>  </TD> </TR>
-  <TR> <TD align="right"> 20 </TD> <TD> Zfp420 </TD> </TR>
-  <TR> <TD align="right"> 21 </TD> <TD> Arntl,bmal1b </TD> </TR>
-  <TR> <TD align="right"> 22 </TD> <TD> Itgam </TD> </TR>
-  <TR> <TD align="right"> 23 </TD> <TD> Vstm2b </TD> </TR>
-  <TR> <TD align="right"> 24 </TD> <TD> Nup93 </TD> </TR>
-  <TR> <TD align="right"> 25 </TD> <TD> Nfix </TD> </TR>
-   </TABLE>
-
 
 ```
-## Using tracking_id, sample_name as id variables
-## No id variables; using all as measure variables
+## Error: error in evaluating the argument 'x' in selecting a method for function 'as.data.frame': Error: object 'spliceAnnot' not found
 ```
 
-![plot of chunk splicing heatmap by isoform](figure/peril_GEOB/splicing heatmap by isoform.png) 
-
+Splicing heatmap by isoform:
 
 ```
-## Using tracking_id, sample_name as id variables
-## No id variables; using all as measure variables
+## Error: error in evaluating the argument 'object' in selecting a method for function 'csHeatmap': Error in isoforms(splicingSigGenes) : 
+##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'splicingSigGenes' not found
 ```
 
-![plot of chunk splicing heatmap by gene](figure/peril_GEOB/splicing heatmap by gene.png) 
+Splicing heatmap by gene
+
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'csHeatmap': Error: object 'splicingSigGenes' not found
+```
 
 The following are significantly differentially spliced genes (relative portion of isoform per condition): 
 
@@ -449,7 +425,17 @@ The following are significantly differentially spliced genes (relative portion o
 
 
 
+
+```
+## Error: figure margins too large
+```
+
 ![plot of chunk print GSEA biocarta](figure/peril_GEOB/print GSEA biocarta.png) 
+
+
+```
+## Error: figure margins too large
+```
 
 ![plot of chunk print GSEA reactome](figure/peril_GEOB/print GSEA reactome.png) 
 
@@ -585,11 +571,11 @@ Hand pick these after initial round of analysis?
 ##  [7] AnnotationDbi_1.24.0   Biobase_2.22.0         mgcv_1.7-29           
 ## [10] nlme_3.1-117           gridExtra_0.9.1        gtable_0.1.2          
 ## [13] marray_1.40.0          gplots_2.13.0          GSA_1.03              
-## [16] limma_3.18.13          xtable_1.7-3           knitr_1.6             
-## [19] cummeRbund_2.7.2       Gviz_1.6.0             rtracklayer_1.22.7    
-## [22] GenomicRanges_1.14.4   XVector_0.2.0          IRanges_1.20.7        
-## [25] fastcluster_1.1.13     reshape2_1.4           ggplot2_1.0.0         
-## [28] RSQLite_0.11.4         DBI_0.2-7              BiocGenerics_0.8.0    
+## [16] limma_3.18.13          xtable_1.7-3           cummeRbund_2.7.2      
+## [19] Gviz_1.6.0             rtracklayer_1.22.7     GenomicRanges_1.14.4  
+## [22] XVector_0.2.0          IRanges_1.20.7         fastcluster_1.1.13    
+## [25] reshape2_1.4           ggplot2_1.0.0          RSQLite_0.11.4        
+## [28] DBI_0.2-7              BiocGenerics_0.8.0     knitr_1.6             
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] biomaRt_2.18.0         Biostrings_2.30.1      biovizBase_1.10.8     

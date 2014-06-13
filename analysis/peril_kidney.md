@@ -4,6 +4,9 @@ peril_kidney KO vs WT (Embryonic)
 # questions
 - overdispersion
 - how do we rescale these plots? or just axes?
+- add labels, descriptions
+- turn off all caching 
+- general figure formatting/table formatting 
 
 
 
@@ -19,7 +22,7 @@ This file shows the wt-v-ko comparison for peril_kidney.
 
 Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 13 07:58:59 2014 -->
+<!-- Fri Jun 13 09:16:27 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 9 </TH>  </TR>
   <TR> <TD align="right"> c......n....rinn_data1....users....agroff....seq....PERIL....data... </TD> <TD> bams </TD> </TR>
@@ -47,7 +50,7 @@ Cuff overview:
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 13 07:59:00 2014 -->
+<!-- Fri Jun 13 09:16:28 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR722_Peril_L43_E14-5_kidney_both_lobeswtM1_ACTGAT/accepted_hits.bam </TD> <TD> wt </TD> <TD align="right">   0 </TD> <TD> wt_0 </TD> <TD align="right"> 32567800.00 </TD> <TD align="right"> 28714000.00 </TD> <TD align="right"> 1.13 </TD> <TD align="right"> 1.00 </TD> </TR>
@@ -363,7 +366,7 @@ Per condition differences in isoforms (Does gene have diff piechart between cond
 
 These genes are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 13 08:13:09 2014 -->
+<!-- Fri Jun 13 09:30:35 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> spliceAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Cisk,Sgk3 </TD> </TR>
@@ -376,6 +379,7 @@ These genes are:
   <TR> <TD align="right"> 8 </TD> <TD> Oasl1 </TD> </TR>
    </TABLE>
 
+Splicing heatmap by isoform:
 
 ```
 ## Using tracking_id, sample_name as id variables
@@ -384,6 +388,7 @@ These genes are:
 
 ![plot of chunk splicing heatmap by isoform](figure/peril_kidney/splicing heatmap by isoform.png) 
 
+Splicing heatmap by gene
 
 ```
 ## Using tracking_id, sample_name as id variables
@@ -418,7 +423,17 @@ The following are significantly differentially spliced genes (relative portion o
 
 
 
+
+```
+## Error: figure margins too large
+```
+
 ![plot of chunk print GSEA biocarta](figure/peril_kidney/print GSEA biocarta.png) 
+
+
+```
+## Error: figure margins too large
+```
 
 ![plot of chunk print GSEA reactome](figure/peril_kidney/print GSEA reactome.png) 
 
@@ -488,11 +503,11 @@ Hand pick these after initial round of analysis?
 ##  [7] AnnotationDbi_1.24.0   Biobase_2.22.0         mgcv_1.7-29           
 ## [10] nlme_3.1-117           gridExtra_0.9.1        gtable_0.1.2          
 ## [13] marray_1.40.0          gplots_2.13.0          GSA_1.03              
-## [16] limma_3.18.13          xtable_1.7-3           knitr_1.6             
-## [19] cummeRbund_2.7.2       Gviz_1.6.0             rtracklayer_1.22.7    
-## [22] GenomicRanges_1.14.4   XVector_0.2.0          IRanges_1.20.7        
-## [25] fastcluster_1.1.13     reshape2_1.4           ggplot2_1.0.0         
-## [28] RSQLite_0.11.4         DBI_0.2-7              BiocGenerics_0.8.0    
+## [16] limma_3.18.13          xtable_1.7-3           cummeRbund_2.7.2      
+## [19] Gviz_1.6.0             rtracklayer_1.22.7     GenomicRanges_1.14.4  
+## [22] XVector_0.2.0          IRanges_1.20.7         fastcluster_1.1.13    
+## [25] reshape2_1.4           ggplot2_1.0.0          RSQLite_0.11.4        
+## [28] DBI_0.2-7              BiocGenerics_0.8.0     knitr_1.6             
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] biomaRt_2.18.0         Biostrings_2.30.1      biovizBase_1.10.8     
