@@ -3,7 +3,7 @@
 
 # questions
 - overdispersion
-
+- how do we rescale these plots? or just axes?
 
 
 ```{r init, echo=FALSE}
@@ -17,6 +17,8 @@ dir<-dir
 strain<-strain
 alpha<-alpha 
 
+#setwd('/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis')
+#setwd("/n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf/whole_brain/")
 
 ### THINGS TO CACHE GO HERE AND NOWHERE ELSE 
 
@@ -332,8 +334,8 @@ csHeatmap(splicingSigGenes,cluster='row',method=dist)
 
 The following are significantly differentially spliced genes (relative portion of isoform per condition): 
 
-# how do we rescale these plots?
-```{r print all the splicing csPie tables}
+# how do we rescale these plots? or just axes?
+```{r print all the splicing csPie plots, fig.height=20, fig.width=20}
 csPiePlots<-lapply(splicingSigIDs,function(x){
   myGene<-getGene(cuff,x)
   csPie(myGene)
@@ -342,9 +344,9 @@ do.call(grid.arrange,csPiePlots)
 ```
 
 
+```{r diff.TSS,eval=FALSE,echo=FALSE, results='hide'}
 ## Differential Promoter usage (isoforms by tss) <- NOT USING IN BRAINMAP
 
-```{r diff.TSS,eval=FALSE,echo=FALSE}
 tssSigIDs<-getSig(cuff,alpha=alpha,level="TSS")
 tssSigGenes<-getGenes(cuff,tssSigIDs)
 
@@ -357,10 +359,11 @@ csPiePlots<-lapply(tssSigIDs,function(x){
 do.call(grid.arrange,csPiePlots)
 
 ```
+ 
 
-## Differential Promoter Usage (By "Promoters") <- NOT USING IN BRAINMAP 
+```{r diff.promoters,eval=FALSE,echo=FALSE, results='hide'}
+## Differential Promoter Usage (By "Promoters") <- NOT USING IN BRAINMAP
 
-```{r diff.promoters,eval=FALSE,echo=FALSE}
 promoterSigIDs<-getSig(cuff,alpha=alpha,level="promoters")
 promoterSigGenes<-getGenes(cuff,promoterSigIDs)
 
@@ -377,8 +380,9 @@ do.call(grid.arrange,csPiePlots)
 
 ```
 
+
+```{r diff.CDS,eval=FALSE, echo=FALSE, results='hide'}
 ## Differential CDS? (unique protein coding isoforms) <-NOT IN BRAINMAP
-```{r diff.CDS,eval=FALSE, echo=FALSE}
 cdsSigIDs<-getSig(cuff,alpha=alpha,level="CDS")
 cdsSigGenes<-getGenes(cuff,cdsSigIDs)
 
@@ -488,13 +492,13 @@ labels<-unlist(l)
 
 setwd('/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis')
 
-pdf("components_GSEA_biocarta.pdf",width=10,height=30)
+#pdf("components_GSEA_biocarta.pdf",width=10,height=30)
 heatmap.2(x, trace="none", margins=c(5,30), col=InputCols, labRow=labels,dendrogram="both",lhei =c(0.1,0.9))
-dev.off()
+#dev.off()
 ```
 
 ```{r print GSEA reactome, fig.width=10, fig.height=30}
-pdf("components_GSEA_reactome.pdf",width=10,height=30)
+#pdf("components_GSEA_reactome.pdf",width=10,height=30)
 
 x<-(-log10(t(reactome_pvl_corrected[,which(colMins(reactome_pvl_corrected) < 0.001)])))
 noinfinitiesx<-x[which(x!="Inf")]
@@ -505,7 +509,7 @@ l<-lapply(labels,function(x){return(x[-1])})
 labels<-as.vector(l)
 
 heatmap.2(x, trace="none", margins=c(5,30),col=InputCols,dendrogram="both",lhei = c(0.1,0.90))
-dev.off()
+#dev.off()
 ```
 
 ## GO enrichment 
