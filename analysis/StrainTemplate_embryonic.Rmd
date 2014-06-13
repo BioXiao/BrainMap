@@ -524,7 +524,7 @@ x_max<-max(noinfinitiesx)+100
 x_ordered_subset[x_ordered_subset=="Inf"]<-x_max
 
 
-heatmap.2(x_ordered_subset, trace="none", margins=c(5,30),col=InputCols,dendrogram="both",lhei = c(0.1,0.90), key=FALSE, labCol=c(""))
+heatmap.2(x_ordered_subset, trace="none", margins=c(5,30),col=InputCols,dendrogram="both",lhei = c(0.1,0.90), labCol=c(""))
 #cexRow = (0.2 + .5/log10(dim(x)[1]))
 dev.off()
 ```
