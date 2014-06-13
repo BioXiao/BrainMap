@@ -11,9 +11,6 @@ peril_GEOB KO vs WT (Embryonic)
 
 
 
-```
-## Error: object 'alpha' not found
-```
 
 
 
@@ -26,7 +23,7 @@ This file shows the wt-v-ko comparison for peril_GEOB.
 
 Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 13 14:23:27 2014 -->
+<!-- Fri Jun 13 15:01:31 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 9 </TH>  </TR>
   <TR> <TD align="right"> c......n....rinn_data1....users....agroff....seq....PERIL....data... </TD> <TD> bams </TD> </TR>
@@ -52,7 +49,7 @@ Cuff overview:
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 13 14:23:28 2014 -->
+<!-- Fri Jun 13 15:01:32 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR710_Peril_L46_E14-5_GE_and_OB_wtm1_ATCACG/accepted_hits.bam </TD> <TD> wt </TD> <TD align="right">   0 </TD> <TD> wt_0 </TD> <TD align="right"> 19373200.00 </TD> <TD align="right"> 21401800.00 </TD> <TD align="right"> 0.90 </TD> <TD align="right"> 1.00 </TD> </TR>
@@ -174,50 +171,37 @@ Isoforms:
 ## Error: invalid class "CuffGene" object: FALSE
 ```
 
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'fpkm': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'fpkm': Error in isoforms(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in isoforms(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in isoforms(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error in isoforms(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error in isoforms(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
-```
+<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
+<!-- Fri Jun 13 15:03:20 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> gene_id </TH> <TH> sample_name </TH> <TH> fpkm </TH> <TH> conf_hi </TH> <TH> conf_lo </TH> <TH> quant_status </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> XLOC_008094 </TD> <TD> ko </TD> <TD align="right"> 1.68 </TD> <TD align="right"> 2.21 </TD> <TD align="right"> 1.14 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> XLOC_008094 </TD> <TD> wt </TD> <TD align="right"> 1.77 </TD> <TD align="right"> 2.41 </TD> <TD align="right"> 1.13 </TD> <TD> OK </TD> </TR>
+   </TABLE>
+<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
+<!-- Fri Jun 13 15:03:20 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> isoform_id </TH> <TH> sample_name </TH> <TH> fpkm </TH> <TH> conf_hi </TH> <TH> conf_lo </TH> <TH> quant_status </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> TCONS_00019669 </TD> <TD> ko </TD> <TD align="right"> 0.05 </TD> <TD align="right"> 0.18 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> TCONS_00019670 </TD> <TD> ko </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.03 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 3 </TD> <TD> TCONS_00019671 </TD> <TD> ko </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.02 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 4 </TD> <TD> TCONS_00019672 </TD> <TD> ko </TD> <TD align="right"> 0.38 </TD> <TD align="right"> 0.76 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 5 </TD> <TD> TCONS_00019673 </TD> <TD> ko </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.02 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 6 </TD> <TD> TCONS_00019674 </TD> <TD> ko </TD> <TD align="right"> 1.04 </TD> <TD align="right"> 1.53 </TD> <TD align="right"> 0.56 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 7 </TD> <TD> TCONS_00019675 </TD> <TD> ko </TD> <TD align="right"> 0.10 </TD> <TD align="right"> 0.29 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 8 </TD> <TD> TCONS_00019676 </TD> <TD> ko </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.07 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 9 </TD> <TD> TCONS_00019677 </TD> <TD> ko </TD> <TD align="right"> 0.11 </TD> <TD align="right"> 0.37 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 10 </TD> <TD> TCONS_00019669 </TD> <TD> wt </TD> <TD align="right"> 0.23 </TD> <TD align="right"> 0.62 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 11 </TD> <TD> TCONS_00019670 </TD> <TD> wt </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.03 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 12 </TD> <TD> TCONS_00019671 </TD> <TD> wt </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.02 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 13 </TD> <TD> TCONS_00019672 </TD> <TD> wt </TD> <TD align="right"> 0.19 </TD> <TD align="right"> 0.46 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 14 </TD> <TD> TCONS_00019673 </TD> <TD> wt </TD> <TD align="right"> 0.47 </TD> <TD align="right"> 0.84 </TD> <TD align="right"> 0.11 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 15 </TD> <TD> TCONS_00019674 </TD> <TD> wt </TD> <TD align="right"> 0.68 </TD> <TD align="right"> 1.05 </TD> <TD align="right"> 0.32 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 16 </TD> <TD> TCONS_00019675 </TD> <TD> wt </TD> <TD align="right"> 0.08 </TD> <TD align="right"> 0.25 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 17 </TD> <TD> TCONS_00019676 </TD> <TD> wt </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.07 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 18 </TD> <TD> TCONS_00019677 </TD> <TD> wt </TD> <TD align="right"> 0.12 </TD> <TD align="right"> 0.56 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+   </TABLE>
+![plot of chunk Enodenous lncRNA tables](figure/peril_GEOB/Enodenous lncRNA tables1.png) ![plot of chunk Enodenous lncRNA tables](figure/peril_GEOB/Enodenous lncRNA tables2.png) ![plot of chunk Enodenous lncRNA tables](figure/peril_GEOB/Enodenous lncRNA tables3.png) ![plot of chunk Enodenous lncRNA tables](figure/peril_GEOB/Enodenous lncRNA tables4.png) ![plot of chunk Enodenous lncRNA tables](figure/peril_GEOB/Enodenous lncRNA tables5.png) ![plot of chunk Enodenous lncRNA tables](figure/peril_GEOB/Enodenous lncRNA tables6.png) ![plot of chunk Enodenous lncRNA tables](figure/peril_GEOB/Enodenous lncRNA tables7.png) ![plot of chunk Enodenous lncRNA tables](figure/peril_GEOB/Enodenous lncRNA tables8.png) 
 
 
 ## LacZ expression
@@ -230,25 +214,14 @@ Isoforms:
 ## Error: object 'myGeneId' not found
 ```
 
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'fpkm': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error: object 'myGene' not found
-```
+<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
+<!-- Fri Jun 13 15:03:33 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> gene_id </TH> <TH> sample_name </TH> <TH> fpkm </TH> <TH> conf_hi </TH> <TH> conf_lo </TH> <TH> quant_status </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> XLOC_008094 </TD> <TD> ko </TD> <TD align="right"> 1.68 </TD> <TD align="right"> 2.21 </TD> <TD align="right"> 1.14 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> XLOC_008094 </TD> <TD> wt </TD> <TD align="right"> 1.77 </TD> <TD align="right"> 2.41 </TD> <TD align="right"> 1.13 </TD> <TD> OK </TD> </TR>
+   </TABLE>
+![plot of chunk LacZ expression](figure/peril_GEOB/LacZ expression1.png) ![plot of chunk LacZ expression](figure/peril_GEOB/LacZ expression2.png) ![plot of chunk LacZ expression](figure/peril_GEOB/LacZ expression3.png) ![plot of chunk LacZ expression](figure/peril_GEOB/LacZ expression4.png) 
 
 
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
@@ -277,15 +250,12 @@ Isoforms:
 ## Error: RS-DBI driver: (error in statement: near ")": syntax error)
 ```
 
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'annotation': Error: object 'sigGenes' not found
-```
-
 There are 0 significantly differentially expressed genes. They are:
 
 
 ```
-## Error: object 'geneAnnot' not found
+## Error: no applicable method for 'xtable' applied to an object of class
+## "character"
 ```
 
 ### Matrix of gene significant differences between conditions
@@ -296,23 +266,31 @@ There are 0 significantly differentially expressed genes. They are:
 ### Replicate Clustering by significant genes 
 
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'csDendro': Error: object 'sigGenes' not found
+## Using tracking_id, rep_name as id variables
+```
+
+![plot of chunk sigDendro](figure/peril_GEOB/sigDendro.png) 
+
+```
+## 'dendrogram' with 2 branches and 6 members total, at height 0.3084
 ```
 
 ### Significant gene expression differences between conditions
 
 
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'csHeatmap': Error: object 'sigGenes' not found
+## Using tracking_id, rep_name as id variables
+## No id variables; using all as measure variables
 ```
 
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error: object 'sigGenes' not found
-```
+![plot of chunk sigExpression](figure/peril_GEOB/sigExpression1.png) ![plot of chunk sigExpression](figure/peril_GEOB/sigExpression2.png) 
 
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error: object 'sigGenes' not found
+## Scale for 'colour' is already present. Adding another scale for 'colour', which will replace the existing scale.
+## ymax not defined: adjusting position using y instead
 ```
+
+![plot of chunk sigExpression](figure/peril_GEOB/sigExpression3.png) 
 
 An individual look at each of the significantly differentially regulated genes:
 
@@ -328,12 +306,10 @@ An individual look at each of the significantly differentially regulated genes:
 
 
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'csScatter': Error: object 'sigGenes' not found
+## Using tracking_id, sample_name as id variables
 ```
 
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'csVolcano': Error: object 'sigGenes' not found
-```
+![plot of chunk expression-sig relationship](figure/peril_GEOB/expression-sig relationship1.png) ![plot of chunk expression-sig relationship](figure/peril_GEOB/expression-sig relationship2.png) 
 
 ## Differential Splicing
 
@@ -345,21 +321,20 @@ Per isoform difference between conditions:
 ## Error: RS-DBI driver: (error in statement: near ")": syntax error)
 ```
 
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'annotation': Error: object 'isoformSigGenes' not found
-```
-
 These isoforms are:
 
 ```
-## Error: object 'isoAnnot' not found
+## Error: no applicable method for 'xtable' applied to an object of class
+## "character"
 ```
 
 
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'csHeatmap': Error in isoforms(isoformSigGenes) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'isoformSigGenes' not found
+## Using tracking_id, sample_name as id variables
+## No id variables; using all as measure variables
 ```
+
+![plot of chunk isoform heatmap](figure/peril_GEOB/isoform heatmap.png) 
 
 ### Differential Splicing between conditions
 
@@ -374,28 +349,55 @@ Per condition differences in isoforms (Does gene have diff piechart between cond
 ## Error: no slot of name "tables" for this object of class "CuffDist"
 ```
 
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'annotation': Error: object 'splicingSigGenes' not found
-```
-
 These genes are:
-
-```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'as.data.frame': Error: object 'spliceAnnot' not found
-```
+<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
+<!-- Fri Jun 13 15:03:47 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> spliceAnnot$gene_short_name </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> Satb2 </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> Tmem104 </TD> </TR>
+  <TR> <TD align="right"> 3 </TD> <TD> Pol mu,Polm </TD> </TR>
+  <TR> <TD align="right"> 4 </TD> <TD> Rnf112 </TD> </TR>
+  <TR> <TD align="right"> 5 </TD> <TD> Pde8b </TD> </TR>
+  <TR> <TD align="right"> 6 </TD> <TD> Pxk </TD> </TR>
+  <TR> <TD align="right"> 7 </TD> <TD> Nfatc4 </TD> </TR>
+  <TR> <TD align="right"> 8 </TD> <TD> Scrib </TD> </TR>
+  <TR> <TD align="right"> 9 </TD> <TD> Gnb1l,Wdvcf </TD> </TR>
+  <TR> <TD align="right"> 10 </TD> <TD> Ephb3 </TD> </TR>
+  <TR> <TD align="right"> 11 </TD> <TD> Kank1 </TD> </TR>
+  <TR> <TD align="right"> 12 </TD> <TD> Ralgds,mKIAA1308 </TD> </TR>
+  <TR> <TD align="right"> 13 </TD> <TD> Lrp1b </TD> </TR>
+  <TR> <TD align="right"> 14 </TD> <TD> Dpp4 </TD> </TR>
+  <TR> <TD align="right"> 15 </TD> <TD> EG381438,Gm5148 </TD> </TR>
+  <TR> <TD align="right"> 16 </TD> <TD> Dnaja1,Mir207 </TD> </TR>
+  <TR> <TD align="right"> 17 </TD> <TD> Col27a1,mKIAA1870 </TD> </TR>
+  <TR> <TD align="right"> 18 </TD> <TD> 0610037D15Rik,Ccdc163 </TD> </TR>
+  <TR> <TD align="right"> 19 </TD> <TD>  </TD> </TR>
+  <TR> <TD align="right"> 20 </TD> <TD> Zfp420 </TD> </TR>
+  <TR> <TD align="right"> 21 </TD> <TD> Arntl,bmal1b </TD> </TR>
+  <TR> <TD align="right"> 22 </TD> <TD> Itgam </TD> </TR>
+  <TR> <TD align="right"> 23 </TD> <TD> Vstm2b </TD> </TR>
+  <TR> <TD align="right"> 24 </TD> <TD> Nup93 </TD> </TR>
+  <TR> <TD align="right"> 25 </TD> <TD> Nfix </TD> </TR>
+   </TABLE>
 
 Splicing heatmap by isoform:
 
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'csHeatmap': Error in isoforms(splicingSigGenes) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'splicingSigGenes' not found
+## Using tracking_id, sample_name as id variables
+## No id variables; using all as measure variables
 ```
+
+![plot of chunk splicing heatmap by isoform](figure/peril_GEOB/splicing heatmap by isoform.png) 
 
 Splicing heatmap by gene
 
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'csHeatmap': Error: object 'splicingSigGenes' not found
+## Using tracking_id, sample_name as id variables
+## No id variables; using all as measure variables
 ```
+
+![plot of chunk splicing heatmap by gene](figure/peril_GEOB/splicing heatmap by gene.png) 
 
 The following are significantly differentially spliced genes (relative portion of isoform per condition): 
 
@@ -460,22 +462,6 @@ Description/explanation of what's here, and justify all choices.
 ## Error: RS-DBI driver: (error in statement: near ")": syntax error)
 ```
 
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'annotation': Error: object 'sigGenes' not found
-```
-
-```
-## Error: object 'geneAnnot' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'diffData': Error: object 'sigGenes' not found
-```
-
-```
-## Error: object 'sigDiff' not found
-```
-
 biomart to get entrez gene IDS
 clusterProfiler does GO enrichment 
 
@@ -494,62 +480,42 @@ enrichPathway
 ##     getGene
 ```
 
+
+
+![plot of chunk GO figures](figure/peril_GEOB/GO figures1.png) ![plot of chunk GO figures](figure/peril_GEOB/GO figures2.png) 
+
 ```
-## Error: object 'geneNames' not found
+## Error: 'x' and 'units' must have length > 0
 ```
 
 ```
-## Error: object 'sigEntrez' not found
+## Warning: no non-missing arguments to min; returning Inf
+## Warning: no non-missing arguments to max; returning -Inf
+## Warning: no non-missing arguments to min; returning Inf
+## Warning: no non-missing arguments to max; returning -Inf
+## Warning: "showCategory" is not a graphical parameter
 ```
 
 ```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'unlist': Error: object 'sigEZ' not found
+## Error: need finite 'xlim' values
 ```
 
+![plot of chunk GO figures](figure/peril_GEOB/GO figures3.png) 
 
 ```
-## Error: object 'sigEZ' not found
-```
-
-```
-## Error: object 'sigEZ' not found
-```
-
-```
-## Error: object 'sigEZ' not found
+## Warning: no non-missing arguments to min; returning Inf
+## Warning: no non-missing arguments to max; returning -Inf
+## Warning: no non-missing arguments to min; returning Inf
+## Warning: no non-missing arguments to max; returning -Inf
+## Warning: "showCategory" is not a graphical parameter
 ```
 
 ```
-## Error: object 'sigEZ' not found
+## Error: need finite 'xlim' values
 ```
 
-```
-## Error: object 'sigEZ' not found
-```
-
-
-```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'goBP' not found
-```
-
-```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'goMF' not found
-```
-
-```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'goCC' not found
-```
-
-```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'kegg' not found
-```
-
-```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'pathway' not found
-```
 
 # Cis vs Trans (locally)
-
 
 
 
@@ -598,14 +564,14 @@ Hand pick these after initial round of analysis?
 ## [19] graph_1.40.1           graphite_1.8.1         gtools_3.4.1          
 ## [22] Hmisc_3.14-4           igraph_0.7.1           KEGG.db_2.10.1        
 ## [25] KernSmooth_2.23-12     labeling_0.2           lattice_0.20-29       
-## [28] latticeExtra_0.6-26    MASS_7.3-33            Matrix_1.1-3          
-## [31] munsell_0.4.2          org.Hs.eg.db_2.10.1    plyr_1.8.1            
-## [34] proto_0.3-10           qvalue_1.36.0          RColorBrewer_1.0-5    
-## [37] Rcpp_0.11.1            RCurl_1.95-4.1         reactome.db_1.46.1    
-## [40] Rsamtools_1.14.3       scales_0.2.4           splines_3.0.2         
-## [43] stats4_3.0.2           stringr_0.6.2          survival_2.37-7       
-## [46] tcltk_3.0.2            tools_3.0.2            XML_3.98-1.1          
-## [49] zlibbioc_1.8.0
+## [28] latticeExtra_0.6-26    markdown_0.7           MASS_7.3-33           
+## [31] Matrix_1.1-3           mime_0.1.1             munsell_0.4.2         
+## [34] org.Hs.eg.db_2.10.1    plyr_1.8.1             proto_0.3-10          
+## [37] qvalue_1.36.0          RColorBrewer_1.0-5     Rcpp_0.11.1           
+## [40] RCurl_1.95-4.1         reactome.db_1.46.1     Rsamtools_1.14.3      
+## [43] scales_0.2.4           splines_3.0.2          stats4_3.0.2          
+## [46] stringr_0.6.2          survival_2.37-7        tcltk_3.0.2           
+## [49] tools_3.0.2            XML_3.98-1.1           zlibbioc_1.8.0
 ```
 
 #Run Info

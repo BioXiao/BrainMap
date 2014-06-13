@@ -341,10 +341,11 @@ csHeatmap(splicingSigGenes,cluster='row',method=dist)
 The following are significantly differentially spliced genes (relative portion of isoform per condition): 
 
 # how do we rescale these plots? or just axes?
-```{r print all the splicing csPie plots, fig.height=(20 +1*length(splicingSigIDs)), fig.width=20}
+```{r print all the splicing csPie plots, fig.height=(20 +1*length(splicingSigIDs)), fig.width=(20 +1*length(splicingSigIDs))}
 csPiePlots<-lapply(splicingSigIDs,function(x){
   myGene<-getGene(cuff,x)
-  csPie(myGene)
+  annot<-annotation(myGene)
+  csPie(myGene) + ggtitle(annot$gene_short_name)
 })
 do.call(grid.arrange,csPiePlots)
 ```
@@ -612,7 +613,7 @@ pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T
 
 ```
 
-```{r GO figures, echo=FALSE}
+```{r GO figures, echo=FALSE,  fig.height=5, fig.width=8}
 #Visualizing w clusterProfiler
 #barplot(goBP, drop = TRUE, showCategory = 12)
 #barplot(goBP, showCategory = 12)
@@ -628,7 +629,9 @@ pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T
 #cluster.enrichPathway<-compareCluster(sigEntrezNames,fun="enrichPathway",qvalueCutoff=0.01)
 
 plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched BP")
+
 plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched MF")
+
 plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched CC")
 
 plot(kegg, showCategory=10) + ggtitle("Kegg Pathways")
@@ -645,6 +648,15 @@ detach("package:biomaRt")
 # Cis vs Trans (locally)
 ``` {r cis_v_trans}
 window<-1000000
+
+
+
+
+
+
+
+
+
 
 
 ```
