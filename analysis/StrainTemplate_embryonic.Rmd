@@ -495,7 +495,7 @@ setwd('/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis')
 
 pdf("components_GSEA_biocarta.pdf",width=10,height=30)
 
-heatmap.2(x, trace="none", margins=c(5,30), col=InputCols,dendrogram="both",lhei =c(0.1,0.9),key=FALSE, cexRow = (0.2 + .1/log10(length(labels))), labCol=c(""))
+heatmap.2(x, trace="none", margins=c(5,30), col=InputCols,dendrogram="both",lhei =c(0.1,0.9),key=FALSE, cexRow = (0.2 + .5/log10(length(labels))), labCol=c(""))
 
 dev.off()
 ```
