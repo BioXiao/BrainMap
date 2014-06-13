@@ -3,15 +3,14 @@
 
 # questions
 - overdispersion
-- get tables to work
-- counts
+
 
 
 ```{r init, echo=FALSE}
 # Set knitr opts
 
 path<-paste("figure/",strain,"/", sep="")
-opts_chunk$set(fig.path=path)
+opts_chunk$set(fig.path=path, echo=FALSE)
 
 ### OPTIONAL VAR OVERRIDE (where are my variables!!?)
 dir<-dir
@@ -65,8 +64,8 @@ LINCRNA<-strain
 This file shows the wt-v-ko comparison for `r strain`. 
 
 Samples used are:
-```{r}
-samples
+```{r results='asis'}
+print(xtable(samples),type="html")
 ```
 
 
@@ -75,9 +74,9 @@ Cuff overview:
 cuff
 ```
 
-## Replicates (MAKE TABLES PRETTY >:| )
-```{r replicates, results='markup'}
-print(xtable(replicates(cuff),type="html"))
+## Replicates
+```{r replicates, results='asis'}
+print(xtable(replicates(cuff)),type="html")
 ```
 
 # QC
@@ -96,8 +95,14 @@ dispersionPlot(genes(cuff))
 ## Cross-replicate variability (fpkmSCVplot)
 The squared coefficient of variation is a normalized measure of cross replicate variability that can be useful for evaluating the quality your RNA-seq data. Differences in CV 2 can result in lower numbers of differentially expressed genes due to a higher degree of variability between replicate fpkm estimates.
 
-```{r CV}
+Genes:
+```{r CV genes}
 fpkmSCVPlot(genes(cuff))
+```
+
+
+Isoforms: 
+```{r cv iso}
 fpkmSCVPlot(isoforms(cuff))
 ```
 
@@ -107,7 +112,7 @@ csVolcano(genes(cuff),"wt","ko")
 ```
 
 ### Volcano matrix (replicates)
-```{r}
+```{r volcano matrix}
 csVolcanoMatrix(genes(cuff),replicates=T)
 ```
 
@@ -165,7 +170,7 @@ PCAplot(genes(cuff),"PC2","PC3", replicates=T)
 MDSplot(genes(cuff),replicates=T)
 ```
 
-### Distance Heat Map (?not sure it goes here..)
+### Distance Heat Map
 ```{r R distance heatmap }
 csDistHeat(genes(cuff), replicates=T)
 ```
