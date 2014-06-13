@@ -489,13 +489,13 @@ biocarta_pvl_corrected<-rbind(biocarta_pvl_corrected,biocarta_pvl_corrected)
 #two options, print as pdf, and adjust size in separate code block
 #make minimum height and then increment scaled by number of rows to return 
 
-x<-(-log10(t(biocarta_pvl_corrected[,which(colMins(biocarta_pvl_corrected) < 0.0001)])))
+x<-(-log10(t(biocarta_pvl_corrected[,which(colMins(biocarta_pvl_corrected) < 0.000001)])))
 
 setwd('/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis')
 
 pdf("components_GSEA_biocarta.pdf",width=10,height=30)
 
-heatmap.2(x, trace="none", margins=c(5,30), col=InputCols,dendrogram="both",lhei =c(0.1,0.9),key=FALSE, cexRow = (0.2 + .5/log10(length(labels))), labCol=c(""))
+heatmap.2(x, trace="none", margins=c(5,30), col=InputCols,dendrogram="row",lhei =c(0.1,0.9),key=FALSE, cexRow = (0.2 + .5/log10(length(labels))), labCol=c(""))
 
 dev.off()
 ```
