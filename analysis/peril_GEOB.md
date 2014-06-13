@@ -10,9 +10,6 @@ peril_GEOB KO vs WT (Embryonic)
 
 
 
-```
-## Error: object 'alpha' not found
-```
 
 
 
@@ -25,7 +22,7 @@ This file shows the wt-v-ko comparison for peril_GEOB.
 
 Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 13 09:12:23 2014 -->
+<!-- Fri Jun 13 13:08:12 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 9 </TH>  </TR>
   <TR> <TD align="right"> c......n....rinn_data1....users....agroff....seq....PERIL....data... </TD> <TD> bams </TD> </TR>
@@ -51,7 +48,7 @@ Cuff overview:
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 13 09:12:24 2014 -->
+<!-- Fri Jun 13 13:08:13 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR710_Peril_L46_E14-5_GE_and_OB_wtm1_ATCACG/accepted_hits.bam </TD> <TD> wt </TD> <TD align="right">   0 </TD> <TD> wt_0 </TD> <TD align="right"> 19373200.00 </TD> <TD align="right"> 21401800.00 </TD> <TD align="right"> 0.90 </TD> <TD align="right"> 1.00 </TD> </TR>
@@ -68,6 +65,12 @@ This shows count (WHAT IS COUNT? fragment counts? per gene?) vs dispersion (of t
 
 from cummerbund manual: Overdispersion is a common problem in RNA-Seq data. As of cufflinks v2.0 mean counts, variance, and dispersion are all emitted, allowing you to visualize the estimated overdispersion for each sample as a quality control measure. - See more at: http://compbio.mit.edu/cummeRbund/manual_2_0.html#sthash.9YRYxwRV.dpuf
 
+
+
+```
+## Warning: RS-DBI driver warning: (closing pending result sets before
+## closing this connection)
+```
 
 ![plot of chunk dispersion](figure/peril_GEOB/dispersion.png) 
 
@@ -427,17 +430,23 @@ The following are significantly differentially spliced genes (relative portion o
 
 
 ```
-## Error: figure margins too large
+## pdf 
+##   4
 ```
 
-![plot of chunk print GSEA biocarta](figure/peril_GEOB/print GSEA biocarta.png) 
+```
+## Error: invalid graphics state
+```
 
 
 ```
-## Error: figure margins too large
+## pdf 
+##   4
 ```
 
-![plot of chunk print GSEA reactome](figure/peril_GEOB/print GSEA reactome.png) 
+```
+## Error: invalid graphics state
+```
 
 ## GO enrichment 
 Cluster profiler used to call enichments of significantly differentially regulated genes that map to Entrez IDs. 
@@ -570,12 +579,12 @@ Hand pick these after initial round of analysis?
 ##  [4] GO.db_2.10.1           DOSE_2.0.0             clusterProfiler_1.13.1
 ##  [7] AnnotationDbi_1.24.0   Biobase_2.22.0         mgcv_1.7-29           
 ## [10] nlme_3.1-117           gridExtra_0.9.1        gtable_0.1.2          
-## [13] marray_1.40.0          gplots_2.13.0          GSA_1.03              
-## [16] limma_3.18.13          xtable_1.7-3           cummeRbund_2.7.2      
-## [19] Gviz_1.6.0             rtracklayer_1.22.7     GenomicRanges_1.14.4  
-## [22] XVector_0.2.0          IRanges_1.20.7         fastcluster_1.1.13    
-## [25] reshape2_1.4           ggplot2_1.0.0          RSQLite_0.11.4        
-## [28] DBI_0.2-7              BiocGenerics_0.8.0     knitr_1.6             
+## [13] knitr_1.6              marray_1.40.0          gplots_2.13.0         
+## [16] GSA_1.03               limma_3.18.13          xtable_1.7-3          
+## [19] cummeRbund_2.7.2       Gviz_1.6.0             rtracklayer_1.22.7    
+## [22] GenomicRanges_1.14.4   XVector_0.2.0          IRanges_1.20.7        
+## [25] fastcluster_1.1.13     reshape2_1.4           ggplot2_1.0.0         
+## [28] RSQLite_0.11.4         DBI_0.2-7              BiocGenerics_0.8.0    
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] biomaRt_2.18.0         Biostrings_2.30.1      biovizBase_1.10.8     
