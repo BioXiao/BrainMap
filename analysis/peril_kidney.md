@@ -7,6 +7,7 @@ peril_kidney KO vs WT (Embryonic)
 - add labels, descriptions
 - turn off all caching 
 - general figure formatting/table formatting 
+- other heatmap labels (csHeatmap)
 
 
 
@@ -22,7 +23,7 @@ This file shows the wt-v-ko comparison for peril_kidney.
 
 Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 13 13:12:00 2014 -->
+<!-- Fri Jun 13 13:45:04 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 9 </TH>  </TR>
   <TR> <TD align="right"> c......n....rinn_data1....users....agroff....seq....PERIL....data... </TD> <TD> bams </TD> </TR>
@@ -50,7 +51,7 @@ Cuff overview:
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 13 13:12:01 2014 -->
+<!-- Fri Jun 13 13:45:05 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR722_Peril_L43_E14-5_kidney_both_lobeswtM1_ACTGAT/accepted_hits.bam </TD> <TD> wt </TD> <TD align="right">   0 </TD> <TD> wt_0 </TD> <TD align="right"> 32567800.00 </TD> <TD align="right"> 28714000.00 </TD> <TD align="right"> 1.13 </TD> <TD align="right"> 1.00 </TD> </TR>
@@ -366,7 +367,7 @@ Per condition differences in isoforms (Does gene have diff piechart between cond
 
 These genes are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 13 13:25:40 2014 -->
+<!-- Fri Jun 13 13:57:11 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> spliceAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Cisk,Sgk3 </TD> </TR>
@@ -423,25 +424,9 @@ The following are significantly differentially spliced genes (relative portion o
 
 
 
+![plot of chunk print GSEA biocarta](figure/peril_kidney/print GSEA biocarta.png) 
 
-```
-## pdf 
-##   4
-```
-
-```
-## Error: invalid graphics state
-```
-
-
-```
-## pdf 
-##   4
-```
-
-```
-## Error: invalid graphics state
-```
+![plot of chunk print GSEA reactome](figure/peril_kidney/print GSEA reactome.png) 
 
 ## GO enrichment 
 Cluster profiler used to call enichments of significantly differentially regulated genes that map to Entrez IDs. 
