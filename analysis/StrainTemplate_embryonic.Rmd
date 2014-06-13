@@ -268,7 +268,7 @@ expressionBarplot(sigGenes)
 
 An individual look at each of the significantly differentially regulated genes:
 
-```{r plot ALL OF THE SIGNIFICANT GENES, fig.height=20 + 1*(length(sig)), fig.width=20}
+```{r plot ALL OF THE SIGNIFICANT GENES, fig.height=(20 + (1*(length(sig)))), fig.width=(20 + (.5*length(sig)))}
 plots<-lapply(sig,function(x){
   myGene<-getGene(cuff,x)
   return(expressionPlot(myGene,replicates=T))
@@ -340,7 +340,7 @@ csHeatmap(splicingSigGenes,cluster='row',method=dist)
 The following are significantly differentially spliced genes (relative portion of isoform per condition): 
 
 # how do we rescale these plots? or just axes?
-```{r print all the splicing csPie plots, fig.height=20, fig.width=20}
+```{r print all the splicing csPie plots, fig.height=(20 +1*length(splicingSigIDs)), fig.width=20}
 csPiePlots<-lapply(splicingSigIDs,function(x){
   myGene<-getGene(cuff,x)
   csPie(myGene)
@@ -485,35 +485,35 @@ biocarta_pvl_corrected <- get_gene_set_q_vals(biocarta_pvl_mat)
 biocarta_pvl_corrected<-rbind(biocarta_pvl_corrected,biocarta_pvl_corrected)
 ```
 
-```{r print GSEA biocarta, fig.height=30, fig.width=10}
+```{r print GSEA biocarta, fig.height=40, fig.width=10}
 #two options, print as pdf, and adjust size in separate code block
 #make minimum height and then increment scaled by number of rows to return 
 
-x<-(-log10(t(biocarta_pvl_corrected[,which(colMins(biocarta_pvl_corrected) < 0.01)])))
-
-labels<-strsplit(rownames(x),"_")
-l<-lapply(labels,function(x){return(x[[2]])})
-labels<-unlist(l)
+x<-(-log10(t(biocarta_pvl_corrected[,which(colMins(biocarta_pvl_corrected) < 0.0001)])))
 
 setwd('/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis')
 
-#pdf("components_GSEA_biocarta.pdf",width=10,height=30)
-heatmap.2(x, trace="none", margins=c(5,30), col=InputCols, labRow=labels,dendrogram="both",lhei =c(0.9,0.1),key=FALSE)
-#dev.off()
+pdf("components_GSEA_biocarta.pdf",width=10,height=30)
+
+heatmap.2(x, trace="none", margins=c(5,30), col=InputCols,dendrogram="both",lhei =c(0.1,0.9),key=FALSE, cexRow = (0.2 + .1/log10(length(labels))), labCol=c(""))
+
+dev.off()
 ```
 
 ```{r print GSEA reactome, fig.width=10, fig.height=30}
 #pdf("components_GSEA_reactome.pdf",width=10,height=30)
 
 x<-(-log10(t(reactome_pvl_corrected[,which(colMins(reactome_pvl_corrected) < 0.001)])))
+
 noinfinitiesx<-x[which(x!="Inf")]
 x_max<-max(noinfinitiesx)+100
 x[x=="Inf"]<-x_max
+
 labels<-strsplit(rownames(x),"_")
 l<-lapply(labels,function(x){return(x[-1])})
 labels<-as.vector(l)
 
-heatmap.2(x, trace="none", margins=c(5,30),col=InputCols,dendrogram="both",lhei = c(0.9,0.10), key=FALSE)
+heatmap.2(x, trace="none", margins=c(15,20),col=InputCols,dendrogram="both",lhei = c(0.9,0.10), key=FALSE)
 #dev.off()
 ```
 
