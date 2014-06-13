@@ -23,7 +23,7 @@ This file shows the wt-v-ko comparison for peril_wholebrain.
 
 Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 13 14:45:35 2014 -->
+<!-- Fri Jun 13 15:21:18 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 9 </TH>  </TR>
   <TR> <TD align="right"> c......n....rinn_data1....users....agroff....seq....PERIL....data... </TD> <TD> bams </TD> </TR>
@@ -51,7 +51,7 @@ Cuff overview:
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 13 14:45:36 2014 -->
+<!-- Fri Jun 13 15:21:19 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/users/agroff/seq/PERIL/data/bams/Sample_JR716_Peril_L43_E14-5_whole_brain_wtM1_CAGATC/accepted_hits.bam </TD> <TD> wt </TD> <TD align="right">   0 </TD> <TD> wt_0 </TD> <TD align="right"> 28383700.00 </TD> <TD align="right"> 25891500.00 </TD> <TD align="right"> 1.09 </TD> <TD align="right"> 1.00 </TD> </TR>
@@ -177,50 +177,37 @@ Isoforms:
 ## Error: invalid class "CuffGene" object: FALSE
 ```
 
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'fpkm': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'fpkm': Error in isoforms(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in isoforms(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in isoforms(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error in isoforms(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error in isoforms(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
-```
+<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
+<!-- Fri Jun 13 15:24:21 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> gene_id </TH> <TH> sample_name </TH> <TH> fpkm </TH> <TH> conf_hi </TH> <TH> conf_lo </TH> <TH> quant_status </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> XLOC_008094 </TD> <TD> ko </TD> <TD align="right"> 1.68 </TD> <TD align="right"> 2.21 </TD> <TD align="right"> 1.14 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> XLOC_008094 </TD> <TD> wt </TD> <TD align="right"> 1.77 </TD> <TD align="right"> 2.41 </TD> <TD align="right"> 1.13 </TD> <TD> OK </TD> </TR>
+   </TABLE>
+<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
+<!-- Fri Jun 13 15:24:21 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> isoform_id </TH> <TH> sample_name </TH> <TH> fpkm </TH> <TH> conf_hi </TH> <TH> conf_lo </TH> <TH> quant_status </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> TCONS_00019669 </TD> <TD> ko </TD> <TD align="right"> 0.05 </TD> <TD align="right"> 0.18 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> TCONS_00019670 </TD> <TD> ko </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.03 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 3 </TD> <TD> TCONS_00019671 </TD> <TD> ko </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.02 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 4 </TD> <TD> TCONS_00019672 </TD> <TD> ko </TD> <TD align="right"> 0.38 </TD> <TD align="right"> 0.76 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 5 </TD> <TD> TCONS_00019673 </TD> <TD> ko </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.02 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 6 </TD> <TD> TCONS_00019674 </TD> <TD> ko </TD> <TD align="right"> 1.04 </TD> <TD align="right"> 1.53 </TD> <TD align="right"> 0.56 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 7 </TD> <TD> TCONS_00019675 </TD> <TD> ko </TD> <TD align="right"> 0.10 </TD> <TD align="right"> 0.29 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 8 </TD> <TD> TCONS_00019676 </TD> <TD> ko </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.07 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 9 </TD> <TD> TCONS_00019677 </TD> <TD> ko </TD> <TD align="right"> 0.11 </TD> <TD align="right"> 0.37 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 10 </TD> <TD> TCONS_00019669 </TD> <TD> wt </TD> <TD align="right"> 0.23 </TD> <TD align="right"> 0.62 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 11 </TD> <TD> TCONS_00019670 </TD> <TD> wt </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.03 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 12 </TD> <TD> TCONS_00019671 </TD> <TD> wt </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.02 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 13 </TD> <TD> TCONS_00019672 </TD> <TD> wt </TD> <TD align="right"> 0.19 </TD> <TD align="right"> 0.46 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 14 </TD> <TD> TCONS_00019673 </TD> <TD> wt </TD> <TD align="right"> 0.47 </TD> <TD align="right"> 0.84 </TD> <TD align="right"> 0.11 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 15 </TD> <TD> TCONS_00019674 </TD> <TD> wt </TD> <TD align="right"> 0.68 </TD> <TD align="right"> 1.05 </TD> <TD align="right"> 0.32 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 16 </TD> <TD> TCONS_00019675 </TD> <TD> wt </TD> <TD align="right"> 0.08 </TD> <TD align="right"> 0.25 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 17 </TD> <TD> TCONS_00019676 </TD> <TD> wt </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.07 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 18 </TD> <TD> TCONS_00019677 </TD> <TD> wt </TD> <TD align="right"> 0.12 </TD> <TD align="right"> 0.56 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+   </TABLE>
+![plot of chunk Enodenous lncRNA tables](figure/peril_wholebrain/Enodenous lncRNA tables1.png) ![plot of chunk Enodenous lncRNA tables](figure/peril_wholebrain/Enodenous lncRNA tables2.png) ![plot of chunk Enodenous lncRNA tables](figure/peril_wholebrain/Enodenous lncRNA tables3.png) ![plot of chunk Enodenous lncRNA tables](figure/peril_wholebrain/Enodenous lncRNA tables4.png) ![plot of chunk Enodenous lncRNA tables](figure/peril_wholebrain/Enodenous lncRNA tables5.png) ![plot of chunk Enodenous lncRNA tables](figure/peril_wholebrain/Enodenous lncRNA tables6.png) ![plot of chunk Enodenous lncRNA tables](figure/peril_wholebrain/Enodenous lncRNA tables7.png) ![plot of chunk Enodenous lncRNA tables](figure/peril_wholebrain/Enodenous lncRNA tables8.png) 
 
 
 ## LacZ expression
@@ -233,25 +220,14 @@ Isoforms:
 ## Error: object 'myGeneId' not found
 ```
 
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'fpkm': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error: object 'myGene' not found
-```
+<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
+<!-- Fri Jun 13 15:24:34 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> gene_id </TH> <TH> sample_name </TH> <TH> fpkm </TH> <TH> conf_hi </TH> <TH> conf_lo </TH> <TH> quant_status </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> XLOC_008094 </TD> <TD> ko </TD> <TD align="right"> 1.68 </TD> <TD align="right"> 2.21 </TD> <TD align="right"> 1.14 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> XLOC_008094 </TD> <TD> wt </TD> <TD align="right"> 1.77 </TD> <TD align="right"> 2.41 </TD> <TD align="right"> 1.13 </TD> <TD> OK </TD> </TR>
+   </TABLE>
+![plot of chunk LacZ expression](figure/peril_wholebrain/LacZ expression1.png) ![plot of chunk LacZ expression](figure/peril_wholebrain/LacZ expression2.png) ![plot of chunk LacZ expression](figure/peril_wholebrain/LacZ expression3.png) ![plot of chunk LacZ expression](figure/peril_wholebrain/LacZ expression4.png) 
 
 
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
@@ -371,7 +347,7 @@ Per condition differences in isoforms (Does gene have diff piechart between cond
 
 These genes are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 13 14:51:18 2014 -->
+<!-- Fri Jun 13 15:27:02 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> spliceAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Satb2 </TD> </TR>
@@ -528,8 +504,8 @@ enrichPathway
 ## Error: need finite 'xlim' values
 ```
 
-# Cis vs Trans (locally)
 
+# Cis vs Trans (locally)
 
 
 
