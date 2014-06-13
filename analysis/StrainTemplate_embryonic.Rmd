@@ -25,6 +25,10 @@ library(limma)
 library(GSA)
 library(gplots)
 library(marray)
+library(ggplot2)
+library(gtable)
+library(gridExtra)
+
 
 reactome_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.reactome.v4.0.symbols.gmt")
 biocarta_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.biocarta.v4.0.symbols.gmt")
@@ -158,25 +162,21 @@ MDSplot(genes(cuff),replicates=T)
 
 ### Distance Heat Map (?not sure it goes here..)
 ```{r R distance heatmap }
-csDistHeat(genes(cuff))
 csDistHeat(genes(cuff), replicates=T)
 ```
 
 
 # KO assessment
 ```{r KO assessment,eval=TRUE,echo=FALSE,message=FALSE}
-sig<-getSig(cuff,alpha=alpha)       
-sigGenes<-getGenes(cuff,sig)
-geneAnnot<-annotation(sigGenes)
 
 ```
 
 ## Endogenous lncRNA expression
-```{r Enodenous lncRNA}
+```{r Enodenous lncRNA tables, results='asis'}
 myGeneID<-LINCRNA
 myGene<-getGene(cuff, myGeneID)
-fpkm(myGene)
-fpkm(isoforms(myGene))
+print(xtable(fpkm(myGene)),type="html")
+print(xtable(fpkm(isoforms(myGene))), type="html")
        
 expressionPlot(myGene)
 expressionPlot(myGene, replicates=TRUE)
@@ -184,50 +184,27 @@ expressionPlot(myGene, replicates=TRUE)
 expressionPlot(isoforms(myGene))
 expressionPlot(isoforms(myGene), replicates=T)
        
-expressionPlot(CDS(myGene))
-expressionPlot(CDS(myGene),replicates=T)
-
-expressionPlot(TSS(myGene))
-expressionPlot(TSS(myGene),replicates=T)
-       
 expressionBarplot(myGene)
 expressionBarplot(myGene,replicates=T)
 
 expressionBarplot(isoforms(myGene))     
 expressionBarplot(isoforms(myGene), replicates=T)
-
-
-#include isoform/promoter etc here!!
-
-
 
 ```
 
 
 ## LacZ expression
-```{r LacZ expression}
+```{r LacZ expression, results='asis'}
 myGeneID<-LacZ
 myGene<-getGene(cuff, myGeneId)
-fpkm(myGene)
-fpkm(isoforms(myGene))
+
+print(xtable(fpkm(myGene)),type="html")
        
 expressionPlot(myGene)
 expressionPlot(myGene, replicates=TRUE)
-       
-expressionPlot(isoforms(myGene))
-expressionPlot(isoforms(myGene), replicates=T)
-       
-expressionPlot(CDS(myGene))
-expressionPlot(CDS(myGene),replicates=T)
-
-expressionPlot(TSS(myGene))
-expressionPlot(TSS(myGene),replicates=T)
-       
+             
 expressionBarplot(myGene)
 expressionBarplot(myGene,replicates=T)
-
-expressionBarplot(isoforms(myGene))     
-expressionBarplot(isoforms(myGene), replicates=T)
 ```
 
 
@@ -243,31 +220,29 @@ expressionBarplot(genotypingGenes,replicates=T)
 
 # Differential Analysis
 
-
 ## Differential Genes 
+
+```{r differential genes}
+sig<-getSig(cuff,alpha=alpha)       
+sigGenes<-getGenes(cuff,sig)
+geneAnnot<-annotation(sigGenes)
+```
 
 There are `r length(sig)` significantly differentially expressed genes. They are:
 
-```{r sigdiffGenetable}
-
+```{r sigdiffGenetable, results="asis"}
 print(xtable(geneAnnot$gene_short_name),type="html")
-
-#print(xtable((fpkmMatrix(sigPCGenes))),type = "html", include.rownames = T)
 ```
 
 ### Matrix of gene significant differences between conditions
 ```{r sigMatrix}
-sigMatrix(cuff, level="genes", alpha=alpha)
-sigMatrix(cuff, level="genes", alpha=alpha, replicates=T)
-sigMatrix(cuff, level="isoforms",alpha=alpha)
-sigMatrix(cuff, level="isoforms",alpha=alpha, replicates=T)       
+#sigMatrix(cuff, level="genes", alpha=alpha)
+sigMatrix(cuff, level="genes", alpha=alpha, replicates=T)       
 ```
 
 ### Replicate Clustering by significant genes 
 ```{r sigDendro}
-
 csDendro(sigGenes, replicates=T)
-
 ```
 
 ### Significant gene expression differences between conditions
@@ -275,7 +250,17 @@ csDendro(sigGenes, replicates=T)
 ```{r sigExpression}
 csHeatmap(sigGenes, cluster="both",replicates=T)
 expressionPlot(sigGenes)
-       #MOAR PLOTS! 
+expressionBarplot(sigGenes)
+```
+```{r plot ALL OF THE SIGNIFICANT GENES, out.height=20, out.width=10}
+
+plots<-lapply(sig,function(x){
+  myGene<-getGene(cuff,x)
+  return(expressionPlot(myGene,replicates=T))
+  })
+do.call(grid.arrange, plots)
+
+
 ```
 
 
@@ -290,6 +275,11 @@ csVolcano(sigGenes, "wt", "ko")
 ### Differential Isoforms between conditions
 Per isoform difference between conditions:
 ```{r diff.iso,eval=TRUE,cache=TRUE}
+
+sigMatrix(cuff, level="isoforms",alpha=alpha)
+sigMatrix(cuff, level="isoforms",alpha=alpha, replicates=T)
+
+
 isoformSigIDs<-getSig(cuff,level="isoforms",alpha=0.1)
 isoformSigGenes<-getGenes(cuff,isoformSigIDs)
 isoAnnot<-annotation(isoformSigGenes)
@@ -478,7 +468,7 @@ dev.off()
 
 pdf("components_GSEA_reactome.pdf",width=10,height=30)
 
-x<-(-log10(t(reactome_pvl_corrected[,which(colMins(reactome_pvl_corrected) < 0.01)])))
+x<-(-log10(t(reactome_pvl_corrected[,which(colMins(reactome_pvl_corrected) < 0.001)])))
 
 noinfinitiesx<-x[which(x!="Inf")]
 x_max<-max(noinfinitiesx)+100
