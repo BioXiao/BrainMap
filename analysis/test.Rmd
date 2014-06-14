@@ -12,6 +12,9 @@
 path<-paste("figure/",strain,"/", sep="")
 opts_chunk$set(fig.path=path)
 
+#for test
+#setwd("/n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf/Kidney/")
+
 
 ### THINGS TO CACHE GO HERE AND NOWHERE ELSE 
 

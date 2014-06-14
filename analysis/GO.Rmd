@@ -4,7 +4,14 @@ GO analysis
 Description/explanation of what's here, and justify all choices. 
 
 ```{r init}
+#source("http://bioconductor.org/biocLite.R")
+#biocLite("ReactomePA")
+
+
 library(cummeRbund)
+library(ReactomePA)
+library(DOSE)
+
 setwd('/n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf/whole_brain/')
 cuff<-readCufflinks()
 
@@ -12,6 +19,9 @@ sigGeneIDs<-getSig(cuff, alpha=0.05)
 sigGenes<-getGenes(cuff,sigGeneIDs)
 geneAnnot<-annotation(sigGenes)
 geneNames<-geneAnnot$gene_short_name
+sigDiff<-diffData(sigGenes)
+sigDiff$foldChange<-sigDiff$value_1/sigDiff$value_2
+
 
 # Top genes by test stat
 #diff<-diffData(genes(cuff))
@@ -72,11 +82,9 @@ goMF<-enrichGO(gene=sigEZ, organism="mouse",ont="MF",pvalueCutoff=0.01,readable=
 
 goCC<-enrichGO(gene=sigEZ, organism="mouse",ont="CC",pvalueCutoff=0.01,readable=T)
 
-#kegg<-enrichKEGG(gene=sigEZ, organism="mouse",pvalueCutoff=0.01, readable=T)
+kegg<-enrichKEGG(gene=sigEZ, organism="mouse",pvalueCutoff=1, readable=T)
 
-#disease<-enrichDO(gene=sigEZ, organism="mouse",pvalueCutoff=0.01, readable=T)
-
-#pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T)
+pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T)
 
 ```
 
@@ -93,7 +101,7 @@ goCC<-enrichGO(gene=sigEZ, organism="mouse",ont="CC",pvalueCutoff=0.01,readable=
 #barplot(goCC, showCategory=12)
 
 #WHY DONT THESE FUNCTIONS WORK? 
-#cnetplot(goBP, categorySize = "pvalue", foldChange = geneList)
+#cnetplot(goBP, categorySize = "pvalue", foldChange = geneList) #NEEDS foldChange values which requres exact entrez gene mapping (cant lose values); this requires a map. too much hassle for now. 
 #cnetplot(goBP, categorySize = "geneNum", foldChange = geneList)
 
 #cluster.enrichKEGG<-compareCluster(sigEZ,fun="enrichKEGG",organism="mouse",qvalueCutoff=0.01)

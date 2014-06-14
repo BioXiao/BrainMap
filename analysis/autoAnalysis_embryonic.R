@@ -1,6 +1,6 @@
 # Generate all wt-v-ko analysis reports for whole brain sequencing by strain 
 library(knitr)
-
+setwd("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/")
 # read in master sheet
 
 
@@ -38,9 +38,8 @@ for(i in seq(1,(dim(test_master_sheet)[1]))){
   dir<-test_master_sheet[i,2]
   print(dir)
   print(strain)
-  #knit2html('test.Rmd',output=paste(strain,".md", sep=""), quiet=TRUE)
-  knit2html('test.Rmd',output=paste(strain,"_test.md", sep=""), quiet=TRUE)
-  
+  #knit2html('test.Rmd',output=paste(strain,"_test.md", sep=""), quiet=TRUE)
+  knit2html('StrainTemplate_embryonic.Rmd', output=paste(strain,".md",sep="")) #if works, add quiet=TRUE
   print(dir)
   print(strain)
 }
