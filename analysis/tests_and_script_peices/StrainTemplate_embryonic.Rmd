@@ -51,7 +51,7 @@ alpha<-0.05
 # Intialize
 ```{r cummeRbund and data setup, echo=FALSE}
 setwd(dir)
-cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10")
+cuff<-readCufflinks()
 reps<-replicates(cuff)
 files<-lapply(reps$file,function(x){strsplit(x, "/")})
 
