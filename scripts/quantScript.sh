@@ -109,6 +109,9 @@
 #JR736
 ./doquant.sh JR736 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR736/accepted_hits.bam
 
+#JR737
+./doquant.sh JR737 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR737/accepted_hits.bam
+
 #JR738
 ./doquant.sh JR738 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR738/accepted_hits.bam
 
@@ -222,4 +225,181 @@
 
 #JR775
 ./doquant.sh JR775 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR775/accepted_hits.bam
+
+#JR776
+./doquant.sh JR776 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR776/accepted_hits.bam
+
+#JR777
+./doquant.sh JR777 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR777/accepted_hits.bam
+
+#JR778
+./doquant.sh JR778 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR778/accepted_hits.bam
+
+#JR779
+./doquant.sh JR779 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR779/accepted_hits.bam
+
+#JR780
+./doquant.sh JR780 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR780/accepted_hits.bam
+
+#JR781
+./doquant.sh JR781 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR781/accepted_hits.bam
+
+#JR782
+./doquant.sh JR782 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR782/accepted_hits.bam
+
+#JR783
+./doquant.sh JR783 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR783/accepted_hits.bam
+
+#JR784
+./doquant.sh JR784 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR784/accepted_hits.bam
+
+#JR785
+./doquant.sh JR785 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR785/accepted_hits.bam
+
+#JR786
+./doquant.sh JR786 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR786/accepted_hits.bam
+
+#JR787
+./doquant.sh JR787 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR787/accepted_hits.bam
+
+#JR788
+./doquant.sh JR788 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR788/accepted_hits.bam
+
+#JR789
+./doquant.sh JR789 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR789/accepted_hits.bam
+
+#JR790
+./doquant.sh JR790 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR790/accepted_hits.bam
+
+#JR791
+./doquant.sh JR791 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR791/accepted_hits.bam
+
+#JR792
+./doquant.sh JR792 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR792/accepted_hits.bam
+
+#JR793
+./doquant.sh JR793 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR793/accepted_hits.bam
+
+#JR796
+./doquant.sh JR796 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR796/accepted_hits.bam
+
+#JR797
+./doquant.sh JR797 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR797/accepted_hits.bam
+
+#JR798
+./doquant.sh JR798 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR798/accepted_hits.bam
+
+#JR799
+./doquant.sh JR799 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR799/accepted_hits.bam
+
+#JR800
+./doquant.sh JR800 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR800/accepted_hits.bam
+
+#JR801
+./doquant.sh JR801 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR801/accepted_hits.bam
+
+#JR802
+./doquant.sh JR802 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR802/accepted_hits.bam
+
+#JR803
+./doquant.sh JR803 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR803/accepted_hits.bam
+
+#JR804
+./doquant.sh JR804 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR804/accepted_hits.bam
+
+#JR805
+./doquant.sh JR805 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR805/accepted_hits.bam
+
+#JR806
+./doquant.sh JR806 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR806/accepted_hits.bam
+
+#JR807
+./doquant.sh JR807 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR807/accepted_hits.bam
+
+#JR808
+./doquant.sh JR808 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR808/accepted_hits.bam
+
+#JR809
+./doquant.sh JR809 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR809/accepted_hits.bam
+
+#JR810
+./doquant.sh JR810 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR810/accepted_hits.bam
+
+#JR811
+./doquant.sh JR811 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR811/accepted_hits.bam
+
+#JR812
+./doquant.sh JR812 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR812/accepted_hits.bam
+
+#JR813
+./doquant.sh JR813 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR813/accepted_hits.bam
+
+#JR814
+./doquant.sh JR814 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR814/accepted_hits.bam
+
+#JR815
+./doquant.sh JR815 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR815/accepted_hits.bam
+
+#JR816
+./doquant.sh JR816 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR816/accepted_hits.bam
+
+#JR817
+./doquant.sh JR817 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR817/accepted_hits.bam
+
+#JR818
+./doquant.sh JR818 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR818/accepted_hits.bam
+
+#JR819
+./doquant.sh JR819 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR819/accepted_hits.bam
+
+#JR820
+./doquant.sh JR820 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR820/accepted_hits.bam
+
+#JR821
+./doquant.sh JR821 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR821/accepted_hits.bam
+
+#JR822
+./doquant.sh JR822 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR822/accepted_hits.bam
+
+#JR823
+./doquant.sh JR823 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR823/accepted_hits.bam
+
+#JR824
+./doquant.sh JR824 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR824/accepted_hits.bam
+
+#JR825
+./doquant.sh JR825 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR825/accepted_hits.bam
+
+#JR826
+./doquant.sh JR826 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR826/accepted_hits.bam
+
+#JR827
+./doquant.sh JR827 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR827/accepted_hits.bam
+
+#JR828
+./doquant.sh JR828 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR828/accepted_hits.bam
+
+#JR829
+./doquant.sh JR829 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR829/accepted_hits.bam
+
+#JR830
+./doquant.sh JR830 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR830/accepted_hits.bam
+
+#JR835
+./doquant.sh JR835 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR835/accepted_hits.bam
+
+#JR836
+./doquant.sh JR836 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR836/accepted_hits.bam
+
+#JR837
+./doquant.sh JR837 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR837/accepted_hits.bam
+
+#JR838
+./doquant.sh JR838 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR838/accepted_hits.bam
+
+#JR839
+./doquant.sh JR839 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR839/accepted_hits.bam
+
+#JR857
+./doquant.sh JR857 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR857/accepted_hits.bam
 

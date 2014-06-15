@@ -5,11 +5,11 @@
 
 #Setup
 PROJECT_ROOT=/n/rinn_data1/seq/lgoff/Projects/BrainMap
-DIFF_ROOT=$PROJECT_ROOT/analysis
+DIFF_ROOT=$PROJECT_ROOT/diffs
 SAMPLESHEET="brainMap_sample_sheet.tab"
 CONTRASTFILE="brainMap_contrasts_full.tab"
 
-REF_GTF=$PROJECT_ROOT/data/annotation/BrainMap_ucsc_coding_AND_lnc_DB2.0.gtf
+REF_GTF=$PROJECT_ROOT/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf
 
 LOGBASE=$PROJECT_ROOT/logs
 

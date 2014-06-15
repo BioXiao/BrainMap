@@ -19,11 +19,9 @@ PROJECT_ROOT="/n/rinn_data1/seq/lgoff/Projects/BrainMap"
 ALIGN_ROOT=$PROJECT_ROOT/data/bam
 QUANT_ROOT=$PROJECT_ROOT/data/quants
 
-TMP_DIR=/n/scratch2/rinn_lab/lgoff
-
 BOWTIE_INDEX=$PROJECT_ROOT/data/indexes/mm10/mm10_brainmap
 
-REF_GTF=$PROJECT_ROOT/data/annotation/BrainMap_ucsc_coding_AND_lnc_DB2.0.gtf
+REF_GTF=$PROJECT_ROOT/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf
 
 LOGBASE=$PROJECT_ROOT/logs
 
@@ -40,6 +38,6 @@ OUTDIR=$ALIGN_ROOT/$SAMPLE_NAME
 mkdir -p $OUTDIR
 
 echo "$SAMPLE_NAME"
-sbatch -J ${SAMPLE_NAME}_quant -t $RUN_TIME --mem-per-cpu=$MAX_MEM -n $NUM_THREADS -p $QUEUE --mail-type=END --wrap="cuffquant --no-update-check -p $NUM_THREADS -o $QUANT_ROOT/$SAMPLE_NAME $REF_GTF $BAMFILE >$LOGDIR/$SAMPLE_NAME.quant.out 2>$LOGDIR/$SAMPLE_NAME.quant.err" >$LOGDIR/${SAMPLE_NAME}_slurm.out 2>$LOGDIR/${SAMPLE_NAME}_slurm.err
+sbatch -J ${SAMPLE_NAME}_quant -t $RUN_TIME --mem-per-cpu=$MAX_MEM -n $NUM_THREADS -p $QUEUE --mail-type=FAIL --wrap="cuffquant --no-update-check -p $NUM_THREADS -o $QUANT_ROOT/$SAMPLE_NAME $REF_GTF $BAMFILE >$LOGDIR/$SAMPLE_NAME.quant.out 2>$LOGDIR/$SAMPLE_NAME.quant.err" >$LOGDIR/${SAMPLE_NAME}_slurm.out 2>$LOGDIR/${SAMPLE_NAME}_slurm.err
 
 
