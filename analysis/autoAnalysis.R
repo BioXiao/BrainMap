@@ -1,11 +1,11 @@
 # Generate all wt-v-ko analysis reports for whole brain sequencing by strain 
 library(knitr)
-setwd("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/")
-analysisdir<-getwd()
+analysisdir<-("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/")
+
 
 # Make directory table
-setwd("/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs")
-diffdir<-getwd()
+diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
+setwd(diffdir)
 files<-list.files()
 names<-files
 split<-data.frame(strsplit(names,"_"))
@@ -14,10 +14,11 @@ rownames(split)<-c("strain","vs","wt","timepoint")
 
 # ADULT DIRECTORIES 
 adult_directories<-split[,which(split[4,]=="Adult")]
-setwd("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/")
+setwd(analysisdir)
 
 for(i in seq(1,(dim(adult_directories)[2]))){
   strain <-as.character(adult_directories[1,i])
+  timepoint<-"Adult"
   filename<-paste(adult_directories[,i],collapse="_")
   dir<-paste(diffdir,filename,sep="/")
   #output<-paste(analysisdir,filename,sep="/")
