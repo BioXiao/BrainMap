@@ -254,11 +254,6 @@ print(xtable(geneAnnot$gene_short_name),type="html")
 sigMatrix(cuff, level="genes", alpha=alpha)
 ```
 
-### Replicate Clustering by significant genes 
-```{r sigDendro}
-csDendro(sigGenes, replicates=T)
-```
-
 ### Significant gene expression differences between conditions
 
 ```{r sigExpression}
