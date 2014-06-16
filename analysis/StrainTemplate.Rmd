@@ -217,12 +217,16 @@ expressionBarplot(myGene,replicates=T)
 
 
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
+
+break apart into bars for individual replicates, prefferably all together
+
 ```{r Digital Genotyping}
-genotypingGeneIDs<-c(LINCRNA,"LacZ","Eif2s3y")
+genotypingGeneIDs<-c(strain,"LacZ","Eif2s3y")
 genotypingGenes<-getGenes(cuff,genotypingGeneIDs)
        
 expressionBarplot(genotypingGenes)
 expressionBarplot(genotypingGenes,replicates=T)
+csHeatmap(genotypingGenes,replicates=T)
 ```
 
 
@@ -425,7 +429,7 @@ dev.off()
 
 ## GSEA
 
-```{r gsea helper functions, eval=FALSE}
+```{r gsea helper functions}
 population<-genes(cuff)
 population.diff<-diffData(population)
 annotation<-annotation(genes(cuff))
@@ -462,11 +466,13 @@ rowMins<-function(x){
 InputCols<-maPalette(low="white",high="red",k=100)
 ```
 
-```{r gsea, eval=FALSE}
+```{r gsea}
 df.pop<-data.frame("short_name"=toupper(gene_names$gene_short_name),"test_stat"=gene_names$test_stat)
-row.names(df.pop)=population.diff$gene_id
-df.pop.ordered<-df.pop[order(df.pop$test_stat),]
-Input.df<-df.pop.ordered
+#row.names(df.pop)=population.diff$gene_id
+df.pop.unique<-unique(df.pop)
+rownames(df.pop.unique)<-NULL
+df.pop.unique.ordered<-df.pop.unique[order(df.pop.unique$test_stat),]
+Input.df<-df.pop.unique.ordered
 
 reactome_pvl_mat <- get_gene_set_p_vals(Input.df, reactome_gs,alternative="mixed")
 reactome_pvl_corrected <- get_gene_set_q_vals(reactome_pvl_mat)
@@ -478,7 +484,7 @@ biocarta_pvl_corrected <- get_gene_set_q_vals(biocarta_pvl_mat)
 biocarta_pvl_corrected<-rbind(biocarta_pvl_corrected,biocarta_pvl_corrected)
 ```
 
-```{r print GSEA biocarta, eval=FALSE, fig.height=20, fig.width=10}
+```{r print GSEA biocarta, fig.height=20, fig.width=10}
 #two options, print as pdf, and adjust size in separate code block
 #make minimum height and then increment scaled by number of rows to return 
 
@@ -494,7 +500,7 @@ x<-(-log10(t(biocarta_pvl_corrected[,which(colMins(biocarta_pvl_corrected) < 0.0
 x_ordered<-x[order(x[,1], decreasing=TRUE),]
 x_ordered_subset<-x_ordered[1:50,]
 noinfinities_x<-x_ordered_subset[which(x_ordered_subset !="Inf")]
-x_max<-max(noinfinitiesx)+100
+x_max<-max(noinfinities_x)+100
 x_ordered_subset[x_ordered_subset=="Inf"]<-x_max
 
 
@@ -506,7 +512,7 @@ heatmap.2(x_ordered_subset, trace="none", margins=c(5,20), col=InputCols,dendrog
 #heatmap.2(x_ordered_subset, trace="none", margins=c(5,30), col=InputCols,dendrogram="row",lhei =c(0.1,0.9), labCol=c(""))
 ```
 
-```{r print GSEA reactome, eval=FALSE, fig.width=10, fig.height=20}
+```{r print GSEA reactome, fig.width=10, fig.height=20}
 
 #print to file
 #pdf("components_GSEA_reactome.pdf",width=10,height=30)
@@ -518,7 +524,7 @@ x<-(-log10(t(reactome_pvl_corrected[,which(colMins(reactome_pvl_corrected) < 0.0
 x_ordered<-x[order(x[,1], decreasing=TRUE),]
 x_ordered_subset<-x_ordered[1:50,]
 noinfinities_x<-x_ordered_subset[which(x_ordered_subset !="Inf")]
-x_max<-max(noinfinitiesx)+100
+x_max<-max(noinfinities_x)+100
 x_ordered_subset[x_ordered_subset=="Inf"]<-x_max
 
 
@@ -536,7 +542,7 @@ Cluster profiler used to call enichments of significantly differentially regulat
 
 Description/explanation of what's here, and justify all choices. 
 
-```{r GO setup, eval=FALSE}
+```{r GO setup}
 #source("http://bioconductor.org/biocLite.R")
 #biocLite("ReactomePA")
 
@@ -544,7 +550,7 @@ library(ReactomePA)
 library(DOSE)
 
 
-sigGeneIDs<-getSig(cuff, alpha=0.05)
+sigGeneIDs<-getSig(cuff, alpha=alpha)
 sigGenes<-getGenes(cuff,sigGeneIDs)
 geneAnnot<-annotation(sigGenes)
 geneNames<-geneAnnot$gene_short_name
@@ -568,13 +574,14 @@ BP, MF, CC
 enrichKEGG
 enrichPathway
 
-```{r GO analysis setup and functions,echo=FALSE,eval=FALSE}
+```{r GO analysis setup and functions,eval=FALSE}
 library(clusterProfiler)
 require(biomaRt)
 #source("http://bioconductor.org/biocLite.R")
 #biocLite("clusterProfiler")
 #biocLite("org.Mm.eg.db")
 #http://www.bioconductor.org/packages/release/bioc/vignettes/biomaRt/inst/doc/biomaRt.pdf
+
 ensembl <- useMart("ENSEMBL_MART_ENSEMBL","mmusculus_gene_ensembl", 
 host="www.ensembl.org")
 
@@ -588,9 +595,6 @@ sigEntrez<-getEntrezIDs(geneNames)
 sigEZ<-strsplit(as.character(sigEntrez), ", ")
 sigEZ<-unlist(sigEZ)
 require(org.Mm.eg.db) #mapping of entrez IDs to genbank
-```
-
-```{r GO enrichments, eval=FALSE, echo=FALSE}
 
 goBP<-enrichGO(gene=sigEZ, organism="mouse",ont="BP",pvalueCutoff=0.01,readable=T)
 
@@ -604,7 +608,7 @@ pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T
 
 ```
 
-```{r GO figures, echo=FALSE, eval=FALSE,  fig.height=5, fig.width=8}
+```{r GO figures, echo=FALSE,  fig.height=5, fig.width=8}
 #Visualizing w clusterProfiler
 #barplot(goBP, drop = TRUE, showCategory = 12)
 #barplot(goBP, showCategory = 12)

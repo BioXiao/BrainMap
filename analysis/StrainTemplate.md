@@ -1,9 +1,12 @@
 
 ```r
-strain<-"Cellr"
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Adult"
+strain<-"Celrr"
 timepoint<-"Adult"
 ```
-Cellr KO vs WT (Adult)
+
+
+Celrr KO vs WT (Adult)
 ======================================
 
 
@@ -23,31 +26,31 @@ Cellr KO vs WT (Adult)
 
 # Design Overview
 
-This file shows the wt-v-ko comparison for Cellr. 
+This file shows the wt-v-ko comparison for Celrr. 
 
 Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sun Jun 15 16:47:31 2014 -->
+<!-- Sun Jun 15 19:44:54 2014 -->
 <TABLE border=1>
-<TR> <TH>  </TH> <TH> 9 </TH>  </TR>
-  <TR> <TD align="right"> c......n....rinn_data1....seq....lgoff....Projects....BrainMap... </TD> <TD> quants </TD> </TR>
-  <TR> <TD align="right"> c......n....rinn_data1....seq....lgoff....Projects....BrainMap....1 </TD> <TD> quants </TD> </TR>
-  <TR> <TD align="right"> c......n....rinn_data1....seq....lgoff....Projects....BrainMap....2 </TD> <TD> quants </TD> </TR>
-  <TR> <TD align="right"> c......n....rinn_data1....seq....lgoff....Projects....BrainMap....3 </TD> <TD> quants </TD> </TR>
-  <TR> <TD align="right"> c......n....rinn_data1....seq....lgoff....Projects....BrainMap....4 </TD> <TD> quants </TD> </TR>
-  <TR> <TD align="right"> c......n....rinn_data1....seq....lgoff....Projects....BrainMap....5 </TD> <TD> quants </TD> </TR>
-  <TR> <TD align="right"> c......n....rinn_data1....seq....lgoff....Projects....BrainMap....6 </TD> <TD> quants </TD> </TR>
-  <TR> <TD align="right"> c......n....rinn_data1....seq....lgoff....Projects....BrainMap....7 </TD> <TD> quants </TD> </TR>
-  <TR> <TD align="right"> c......n....rinn_data1....seq....lgoff....Projects....BrainMap....8 </TD> <TD> quants </TD> </TR>
-  <TR> <TD align="right"> c......n....rinn_data1....seq....lgoff....Projects....BrainMap....9 </TD> <TD> quants </TD> </TR>
-  <TR> <TD align="right"> c......n....rinn_data1....seq....lgoff....Projects....BrainMap....10 </TD> <TD> quants </TD> </TR>
-  <TR> <TD align="right"> c......n....rinn_data1....seq....lgoff....Projects....BrainMap....11 </TD> <TD> quants </TD> </TR>
-  <TR> <TD align="right"> c......n....rinn_data1....seq....lgoff....Projects....BrainMap....12 </TD> <TD> quants </TD> </TR>
-  <TR> <TD align="right"> c......n....rinn_data1....seq....lgoff....Projects....BrainMap....13 </TD> <TD> quants </TD> </TR>
-  <TR> <TD align="right"> c......n....rinn_data1....seq....lgoff....Projects....BrainMap....14 </TD> <TD> quants </TD> </TR>
-  <TR> <TD align="right"> c......n....rinn_data1....seq....lgoff....Projects....BrainMap....15 </TD> <TD> quants </TD> </TR>
-  <TR> <TD align="right"> c......n....rinn_data1....seq....lgoff....Projects....BrainMap....16 </TD> <TD> quants </TD> </TR>
-  <TR> <TD align="right"> c......n....rinn_data1....seq....lgoff....Projects....BrainMap....17 </TD> <TD> quants </TD> </TR>
+<TR> <TH>  </TH> <TH> 10 </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> JR729 </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> JR728 </TD> </TR>
+  <TR> <TD align="right"> 3 </TD> <TD> JR796 </TD> </TR>
+  <TR> <TD align="right"> 4 </TD> <TD> JR797 </TD> </TR>
+  <TR> <TD align="right"> 5 </TD> <TD> JR740 </TD> </TR>
+  <TR> <TD align="right"> 6 </TD> <TD> JR800 </TD> </TR>
+  <TR> <TD align="right"> 7 </TD> <TD> JR827 </TD> </TR>
+  <TR> <TD align="right"> 8 </TD> <TD> JR778 </TD> </TR>
+  <TR> <TD align="right"> 9 </TD> <TD> JR734 </TD> </TR>
+  <TR> <TD align="right"> 10 </TD> <TD> JR802 </TD> </TR>
+  <TR> <TD align="right"> 11 </TD> <TD> JR803 </TD> </TR>
+  <TR> <TD align="right"> 12 </TD> <TD> JR735 </TD> </TR>
+  <TR> <TD align="right"> 13 </TD> <TD> JR817 </TD> </TR>
+  <TR> <TD align="right"> 14 </TD> <TD> JR785 </TD> </TR>
+  <TR> <TD align="right"> 15 </TD> <TD> JR781 </TD> </TR>
+  <TR> <TD align="right"> 16 </TD> <TD> JR739 </TD> </TR>
+  <TR> <TD align="right"> 17 </TD> <TD> JR783 </TD> </TR>
+  <TR> <TD align="right"> 18 </TD> <TD> JR804 </TD> </TR>
    </TABLE>
 
 
@@ -67,7 +70,7 @@ Cuff overview:
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sun Jun 15 16:47:33 2014 -->
+<!-- Sun Jun 15 19:44:55 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR729/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 26338300.00 </TD> <TD align="right"> 33696500.00 </TD> <TD align="right"> 0.78 </TD> <TD align="right"> 1.00 </TD> </TR>
@@ -114,7 +117,7 @@ Genes:
 ## geom_smooth: method="auto" and size of largest group is >=1000, so using gam with formula: y ~ s(x, bs = "cs"). Use 'method = x' to change the smoothing method.
 ```
 
-![plot of chunk CV genes](figure/Cellr/CV genes.png) 
+![plot of chunk CV genes](figure/Celrr/CV genes.png) 
 
 
 Isoforms: 
@@ -124,7 +127,7 @@ Isoforms:
 ## geom_smooth: method="auto" and size of largest group is >=1000, so using gam with formula: y ~ s(x, bs = "cs"). Use 'method = x' to change the smoothing method.
 ```
 
-![plot of chunk cv iso](figure/Cellr/cv iso.png) 
+![plot of chunk cv iso](figure/Celrr/cv iso.png) 
 
 ## Volcano
 
@@ -133,7 +136,7 @@ Isoforms:
 ```
 
 ### Volcano matrix (replicates)
-![plot of chunk volcano matrix](figure/Cellr/volcano matrix.png) 
+![plot of chunk volcano matrix](figure/Celrr/volcano matrix.png) 
 
 ## MvA plot
 
@@ -148,7 +151,7 @@ Isoforms:
 ```
 
 ## Scatterplot
-![plot of chunk scatterplot](figure/Cellr/scatterplot.png) 
+![plot of chunk scatterplot](figure/Celrr/scatterplot.png) 
 
 ### Scatter matrix (replicates) -- SKIP FOR NOW CAUSING PROBLEMS 
 
@@ -158,7 +161,7 @@ Isoforms:
 ## Distributions
 
 ### Boxplot
-![plot of chunk boxplot](figure/Cellr/boxplot1.png) ![plot of chunk boxplot](figure/Cellr/boxplot2.png) ![plot of chunk boxplot](figure/Cellr/boxplot3.png) 
+![plot of chunk boxplot](figure/Celrr/boxplot1.png) ![plot of chunk boxplot](figure/Celrr/boxplot2.png) ![plot of chunk boxplot](figure/Celrr/boxplot3.png) 
 
 ### Density
 
@@ -167,7 +170,7 @@ Isoforms:
 ## Warning: Removed 5688 rows containing non-finite values (stat_density).
 ```
 
-![plot of chunk density](figure/Cellr/density1.png) 
+![plot of chunk density](figure/Celrr/density1.png) 
 
 ```
 ## Warning: Removed 7158 rows containing non-finite values (stat_density).
@@ -190,128 +193,86 @@ Isoforms:
 ## Warning: Removed 6731 rows containing non-finite values (stat_density).
 ```
 
-![plot of chunk density](figure/Cellr/density2.png) 
+![plot of chunk density](figure/Celrr/density2.png) 
 
 
 ## Clustering
 
 ### Replicate Clusters
-![plot of chunk replicate clusters](figure/Cellr/replicate clusters.png) 
+![plot of chunk replicate clusters](figure/Celrr/replicate clusters.png) 
 
 ```
 ## 'dendrogram' with 2 branches and 18 members total, at height 0.07545
 ```
 
 ### PCA
-![plot of chunk PCA](figure/Cellr/PCA.png) 
+![plot of chunk PCA](figure/Celrr/PCA.png) 
 
 ### MDS 
-![plot of chunk MDS](figure/Cellr/MDS.png) 
+![plot of chunk MDS](figure/Celrr/MDS.png) 
 
 ### Distance Heat Map
-![plot of chunk R distance heatmap](figure/Cellr/R distance heatmap.png) 
+![plot of chunk R distance heatmap](figure/Celrr/R distance heatmap.png) 
 
 
 # KO assessment
 
 ## Endogenous lncRNA expression
-
-```
-## Error: invalid class "CuffGene" object: FALSE
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'fpkm': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'fpkm': Error in isoforms(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in isoforms(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error in isoforms(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error in isoforms(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error in isoforms(myGene) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'myGene' not found
-```
+<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
+<!-- Sun Jun 15 19:47:06 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> gene_id </TH> <TH> sample_name </TH> <TH> fpkm </TH> <TH> conf_hi </TH> <TH> conf_lo </TH> <TH> quant_status </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> ENSMUSG00000097881.1 </TD> <TD> Celrr </TD> <TD align="right"> 0.01 </TD> <TD align="right"> 0.07 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> ENSMUSG00000097881.1 </TD> <TD> WT </TD> <TD align="right"> 1.15 </TD> <TD align="right"> 1.73 </TD> <TD align="right"> 0.58 </TD> <TD> OK </TD> </TR>
+   </TABLE>
+<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
+<!-- Sun Jun 15 19:47:06 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> isoform_id </TH> <TH> sample_name </TH> <TH> fpkm </TH> <TH> conf_hi </TH> <TH> conf_lo </TH> <TH> quant_status </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> ENSMUST00000181183.1 </TD> <TD> Celrr </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.05 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> ENSMUST00000181433.1 </TD> <TD> Celrr </TD> <TD align="right"> 0.01 </TD> <TD align="right"> 0.05 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 3 </TD> <TD> ENSMUST00000181183.1 </TD> <TD> WT </TD> <TD align="right"> 0.27 </TD> <TD align="right"> 0.65 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 4 </TD> <TD> ENSMUST00000181433.1 </TD> <TD> WT </TD> <TD align="right"> 0.88 </TD> <TD align="right"> 1.38 </TD> <TD align="right"> 0.38 </TD> <TD> OK </TD> </TR>
+   </TABLE>
+![plot of chunk Enodenous lncRNA tables](figure/Celrr/Enodenous lncRNA tables1.png) ![plot of chunk Enodenous lncRNA tables](figure/Celrr/Enodenous lncRNA tables2.png) ![plot of chunk Enodenous lncRNA tables](figure/Celrr/Enodenous lncRNA tables3.png) ![plot of chunk Enodenous lncRNA tables](figure/Celrr/Enodenous lncRNA tables4.png) ![plot of chunk Enodenous lncRNA tables](figure/Celrr/Enodenous lncRNA tables5.png) ![plot of chunk Enodenous lncRNA tables](figure/Celrr/Enodenous lncRNA tables6.png) ![plot of chunk Enodenous lncRNA tables](figure/Celrr/Enodenous lncRNA tables7.png) ![plot of chunk Enodenous lncRNA tables](figure/Celrr/Enodenous lncRNA tables8.png) 
 
 
 ## LacZ expression
-
-```
-## Error: object 'LacZ' not found
-```
-
-```
-## Error: object 'myGeneId' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'fpkm': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionPlot': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error: object 'myGene' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error: object 'myGene' not found
-```
+<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
+<!-- Sun Jun 15 19:47:16 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> gene_id </TH> <TH> sample_name </TH> <TH> fpkm </TH> <TH> conf_hi </TH> <TH> conf_lo </TH> <TH> quant_status </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> Velocigene_LacZ </TD> <TD> Celrr </TD> <TD align="right"> 1.52 </TD> <TD align="right"> 2.02 </TD> <TD align="right"> 1.03 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> Velocigene_LacZ </TD> <TD> WT </TD> <TD align="right"> 0.12 </TD> <TD align="right"> 0.26 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
+   </TABLE>
+![plot of chunk LacZ expression](figure/Celrr/LacZ expression1.png) ![plot of chunk LacZ expression](figure/Celrr/LacZ expression2.png) ![plot of chunk LacZ expression](figure/Celrr/LacZ expression3.png) ![plot of chunk LacZ expression](figure/Celrr/LacZ expression4.png) 
 
 
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
 
-```
-## Scale for 'colour' is already present. Adding another scale for 'colour', which will replace the existing scale.
-## ymax not defined: adjusting position using y instead
-```
+break apart into bars for individual replicates, prefferably all together
 
-![plot of chunk Digital Genotyping](figure/Cellr/Digital Genotyping1.png) 
 
 ```
 ## Scale for 'colour' is already present. Adding another scale for 'colour', which will replace the existing scale.
 ## ymax not defined: adjusting position using y instead
 ```
 
-![plot of chunk Digital Genotyping](figure/Cellr/Digital Genotyping2.png) 
+![plot of chunk Digital Genotyping](figure/Celrr/Digital Genotyping1.png) 
+
+```
+## Scale for 'colour' is already present. Adding another scale for 'colour', which will replace the existing scale.
+## ymax not defined: adjusting position using y instead
+```
+
+![plot of chunk Digital Genotyping](figure/Celrr/Digital Genotyping2.png) 
+
+```
+## Using tracking_id, rep_name as id variables
+## No id variables; using all as measure variables
+```
+
+![plot of chunk Digital Genotyping](figure/Celrr/Digital Genotyping3.png) 
 
 
 # Differential Analysis
@@ -331,7 +292,7 @@ There are 55 significantly differentially expressed genes. They are:
 ### Matrix of gene significant differences between conditions
 (skip for Brainmap wt-v-ko comparisons)
 
-![plot of chunk sigMatrix](figure/Cellr/sigMatrix.png) 
+![plot of chunk sigMatrix](figure/Celrr/sigMatrix.png) 
 
 ### Significant gene expression differences between conditions
 
@@ -341,14 +302,14 @@ There are 55 significantly differentially expressed genes. They are:
 ## No id variables; using all as measure variables
 ```
 
-![plot of chunk sigExpression](figure/Cellr/sigExpression1.png) ![plot of chunk sigExpression](figure/Cellr/sigExpression2.png) 
+![plot of chunk sigExpression](figure/Celrr/sigExpression1.png) ![plot of chunk sigExpression](figure/Celrr/sigExpression2.png) 
 
 ```
 ## Scale for 'colour' is already present. Adding another scale for 'colour', which will replace the existing scale.
 ## ymax not defined: adjusting position using y instead
 ```
 
-![plot of chunk sigExpression](figure/Cellr/sigExpression3.png) 
+![plot of chunk sigExpression](figure/Celrr/sigExpression3.png) 
 
 An individual look at each of the significantly differentially regulated genes:
 (eval=false for first pass)
@@ -376,7 +337,7 @@ An individual look at each of the significantly differentially regulated genes:
 
 ### Differential Isoforms between conditions
 Per isoform difference between conditions:
-![plot of chunk diff.iso](figure/Cellr/diff.iso.png) 
+![plot of chunk diff.iso](figure/Celrr/diff.iso.png) 
 
 These isoforms are:
 
@@ -391,7 +352,7 @@ These isoforms are:
 ## No id variables; using all as measure variables
 ```
 
-![plot of chunk isoform heatmap](figure/Cellr/isoform heatmap.png) 
+![plot of chunk isoform heatmap](figure/Celrr/isoform heatmap.png) 
 
 ### Differential Splicing between conditions
 
@@ -438,9 +399,9 @@ eval false for first pass
 
 
 
+![plot of chunk print GSEA biocarta](figure/Celrr/print GSEA biocarta.png) 
 
-
-
+![plot of chunk print GSEA reactome](figure/Celrr/print GSEA reactome.png) 
 
 ## GO enrichment 
 Cluster profiler used to call enichments of significantly differentially regulated genes that map to Entrez IDs. 
@@ -448,6 +409,41 @@ Cluster profiler used to call enichments of significantly differentially regulat
 Description/explanation of what's here, and justify all choices. 
 
 
+```
+## Loading required package: AnnotationDbi
+## Loading required package: Biobase
+## Welcome to Bioconductor
+## 
+##     Vignettes contain introductory material; view with
+##     'browseVignettes()'. To cite Bioconductor, see
+##     'citation("Biobase")', and for packages 'citation("pkgname")'.
+## 
+## 
+## Attaching package: 'Biobase'
+## 
+## The following object is masked from 'package:cummeRbund':
+## 
+##     samples
+```
+
+```
+## Warning: Can't find a usable tk.tcl in the following directories: 
+##     /n/sw/centos6/tcl8.5.14/lib/tcl8.5/tk8.5 /n/sw/centos6/tcl8.5.14/lib/tk8.5 ./lib/tk8.5 ./library
+## 
+## 
+## 
+## This probably means that tk wasn't installed properly.
+```
+
+```
+## 
+## 
+## Attaching package: 'DOSE'
+## 
+## The following object is masked from 'package:ReactomePA':
+## 
+##     gseAnalyzer
+```
 
 biomart to get entrez gene IDS
 clusterProfiler does GO enrichment 
@@ -459,8 +455,29 @@ enrichPathway
 
 
 
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'goBP' not found
+```
 
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'goMF' not found
+```
 
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'goCC' not found
+```
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'kegg' not found
+```
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'pathway' not found
+```
+
+```
+## Error: invalid 'name' argument
+```
 
 
 # Cis vs Trans (locally)
@@ -491,30 +508,33 @@ Hand pick these after initial round of analysis?
 ## [8] methods   base     
 ## 
 ## other attached packages:
-##  [1] mgcv_1.7-29          nlme_3.1-117         gridExtra_0.9.1     
-##  [4] gtable_0.1.2         marray_1.40.0        gplots_2.13.0       
-##  [7] GSA_1.03             limma_3.18.13        xtable_1.7-3        
-## [10] cummeRbund_2.7.2     Gviz_1.6.0           rtracklayer_1.22.7  
-## [13] GenomicRanges_1.14.4 XVector_0.2.0        IRanges_1.20.7      
-## [16] fastcluster_1.1.13   reshape2_1.4         ggplot2_1.0.0       
-## [19] RSQLite_0.11.4       DBI_0.2-7            BiocGenerics_0.8.0  
-## [22] knitr_1.6           
+##  [1] DOSE_2.0.0           ReactomePA_1.6.1     AnnotationDbi_1.24.0
+##  [4] Biobase_2.22.0       mgcv_1.7-29          nlme_3.1-117        
+##  [7] gridExtra_0.9.1      gtable_0.1.2         marray_1.40.0       
+## [10] gplots_2.13.0        GSA_1.03             limma_3.18.13       
+## [13] xtable_1.7-3         cummeRbund_2.7.2     Gviz_1.6.0          
+## [16] rtracklayer_1.22.7   GenomicRanges_1.14.4 XVector_0.2.0       
+## [19] IRanges_1.20.7       fastcluster_1.1.13   reshape2_1.4        
+## [22] ggplot2_1.0.0        RSQLite_0.11.4       DBI_0.2-7           
+## [25] BiocGenerics_0.8.0   knitr_1.6           
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] AnnotationDbi_1.24.0   Biobase_2.22.0         biomaRt_2.18.0        
-##  [4] Biostrings_2.30.1      biovizBase_1.10.8      bitops_1.0-6          
-##  [7] BSgenome_1.30.0        caTools_1.17           cluster_1.15.2        
-## [10] colorspace_1.2-4       dichromat_2.0-0        digest_0.6.4          
-## [13] evaluate_0.5.5         formatR_0.10           Formula_1.1-1         
-## [16] gdata_2.13.3           GenomicFeatures_1.14.5 gtools_3.4.1          
-## [19] Hmisc_3.14-4           KernSmooth_2.23-12     labeling_0.2          
-## [22] lattice_0.20-29        latticeExtra_0.6-26    MASS_7.3-33           
-## [25] Matrix_1.1-3           munsell_0.4.2          plyr_1.8.1            
-## [28] proto_0.3-10           RColorBrewer_1.0-5     Rcpp_0.11.1           
-## [31] RCurl_1.95-4.1         Rsamtools_1.14.3       scales_0.2.4          
-## [34] splines_3.0.2          stats4_3.0.2           stringr_0.6.2         
-## [37] survival_2.37-7        tools_3.0.2            XML_3.98-1.1          
-## [40] zlibbioc_1.8.0
+##  [1] biomaRt_2.18.0         Biostrings_2.30.1      biovizBase_1.10.8     
+##  [4] bitops_1.0-6           BSgenome_1.30.0        caTools_1.17          
+##  [7] cluster_1.15.2         colorspace_1.2-4       dichromat_2.0-0       
+## [10] digest_0.6.4           DO.db_2.7              evaluate_0.5.5        
+## [13] formatR_0.10           Formula_1.1-1          gdata_2.13.3          
+## [16] GenomicFeatures_1.14.5 GO.db_2.10.1           GOSemSim_1.20.3       
+## [19] graph_1.40.1           graphite_1.8.1         gtools_3.4.1          
+## [22] Hmisc_3.14-4           igraph_0.7.1           KernSmooth_2.23-12    
+## [25] labeling_0.2           lattice_0.20-29        latticeExtra_0.6-26   
+## [28] MASS_7.3-33            Matrix_1.1-3           munsell_0.4.2         
+## [31] org.Hs.eg.db_2.10.1    plyr_1.8.1             proto_0.3-10          
+## [34] qvalue_1.36.0          RColorBrewer_1.0-5     Rcpp_0.11.1           
+## [37] RCurl_1.95-4.1         reactome.db_1.46.1     Rsamtools_1.14.3      
+## [40] scales_0.2.4           splines_3.0.2          stats4_3.0.2          
+## [43] stringr_0.6.2          survival_2.37-7        tcltk_3.0.2           
+## [46] tools_3.0.2            XML_3.98-1.1           zlibbioc_1.8.0
 ```
 
 #Run Info

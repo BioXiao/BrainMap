@@ -22,7 +22,7 @@ This file shows the wt-v-ko comparison for Celrr.
 
 Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sun Jun 15 17:36:00 2014 -->
+<!-- Sun Jun 15 19:53:21 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR729 </TD> </TR>
@@ -62,7 +62,7 @@ Cuff overview:
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sun Jun 15 17:36:01 2014 -->
+<!-- Sun Jun 15 19:53:21 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR729/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 26338300.00 </TD> <TD align="right"> 33696500.00 </TD> <TD align="right"> 0.78 </TD> <TD align="right"> 1.00 </TD> </TR>
@@ -210,28 +210,38 @@ Isoforms:
 # KO assessment
 
 ## Endogenous lncRNA expression
+
+```
+## Error: You must provide a valid Mart object. To create a Mart object use
+## the function: useMart.  Check ?useMart for more information.
+```
+
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sun Jun 15 17:38:10 2014 -->
+<!-- Sun Jun 15 19:54:57 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> gene_id </TH> <TH> sample_name </TH> <TH> fpkm </TH> <TH> conf_hi </TH> <TH> conf_lo </TH> <TH> quant_status </TH>  </TR>
-  <TR> <TD align="right"> 1 </TD> <TD> ENSMUSG00000097881.1 </TD> <TD> Celrr </TD> <TD align="right"> 0.01 </TD> <TD align="right"> 0.07 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
-  <TR> <TD align="right"> 2 </TD> <TD> ENSMUSG00000097881.1 </TD> <TD> WT </TD> <TD align="right"> 1.15 </TD> <TD align="right"> 1.73 </TD> <TD align="right"> 0.58 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> Velocigene_LacZ </TD> <TD> Celrr </TD> <TD align="right"> 1.52 </TD> <TD align="right"> 2.02 </TD> <TD align="right"> 1.03 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> Velocigene_LacZ </TD> <TD> WT </TD> <TD align="right"> 0.12 </TD> <TD align="right"> 0.26 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
    </TABLE>
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sun Jun 15 17:38:10 2014 -->
+<!-- Sun Jun 15 19:54:57 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> isoform_id </TH> <TH> sample_name </TH> <TH> fpkm </TH> <TH> conf_hi </TH> <TH> conf_lo </TH> <TH> quant_status </TH>  </TR>
-  <TR> <TD align="right"> 1 </TD> <TD> ENSMUST00000181183.1 </TD> <TD> Celrr </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.05 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
-  <TR> <TD align="right"> 2 </TD> <TD> ENSMUST00000181433.1 </TD> <TD> Celrr </TD> <TD align="right"> 0.01 </TD> <TD align="right"> 0.05 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
-  <TR> <TD align="right"> 3 </TD> <TD> ENSMUST00000181183.1 </TD> <TD> WT </TD> <TD align="right"> 0.27 </TD> <TD align="right"> 0.65 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
-  <TR> <TD align="right"> 4 </TD> <TD> ENSMUST00000181433.1 </TD> <TD> WT </TD> <TD align="right"> 0.88 </TD> <TD align="right"> 1.38 </TD> <TD align="right"> 0.38 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> LacZ </TD> <TD> Celrr </TD> <TD align="right"> 1.52 </TD> <TD align="right"> 2.02 </TD> <TD align="right"> 1.03 </TD> <TD> OK </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> LacZ </TD> <TD> WT </TD> <TD align="right"> 0.12 </TD> <TD align="right"> 0.26 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
    </TABLE>
 ![plot of chunk Enodenous lncRNA tables](figure/Celrr/Enodenous lncRNA tables1.png) ![plot of chunk Enodenous lncRNA tables](figure/Celrr/Enodenous lncRNA tables2.png) ![plot of chunk Enodenous lncRNA tables](figure/Celrr/Enodenous lncRNA tables3.png) ![plot of chunk Enodenous lncRNA tables](figure/Celrr/Enodenous lncRNA tables4.png) ![plot of chunk Enodenous lncRNA tables](figure/Celrr/Enodenous lncRNA tables5.png) ![plot of chunk Enodenous lncRNA tables](figure/Celrr/Enodenous lncRNA tables6.png) ![plot of chunk Enodenous lncRNA tables](figure/Celrr/Enodenous lncRNA tables7.png) ![plot of chunk Enodenous lncRNA tables](figure/Celrr/Enodenous lncRNA tables8.png) 
 
 
 ## LacZ expression
+
+```
+## Error: You must provide a valid Mart object. To create a Mart object use
+## the function: useMart.  Check ?useMart for more information.
+```
+
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sun Jun 15 17:38:19 2014 -->
+<!-- Sun Jun 15 19:55:04 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> gene_id </TH> <TH> sample_name </TH> <TH> fpkm </TH> <TH> conf_hi </TH> <TH> conf_lo </TH> <TH> quant_status </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Velocigene_LacZ </TD> <TD> Celrr </TD> <TD align="right"> 1.52 </TD> <TD align="right"> 2.02 </TD> <TD align="right"> 1.03 </TD> <TD> OK </TD> </TR>
@@ -242,21 +252,29 @@ Isoforms:
 
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
 
-```
-## Error: object 'LINCRNA' not found
-```
+break apart into bars for individual replicates, prefferably all together
+
 
 ```
-## Error: object 'genotypingGeneIDs' not found
+## Scale for 'colour' is already present. Adding another scale for 'colour', which will replace the existing scale.
+## ymax not defined: adjusting position using y instead
 ```
 
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error: object 'genotypingGenes' not found
-```
+![plot of chunk Digital Genotyping](figure/Celrr/Digital Genotyping1.png) 
 
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'expressionBarplot': Error: object 'genotypingGenes' not found
+## Scale for 'colour' is already present. Adding another scale for 'colour', which will replace the existing scale.
+## ymax not defined: adjusting position using y instead
 ```
+
+![plot of chunk Digital Genotyping](figure/Celrr/Digital Genotyping2.png) 
+
+```
+## Using tracking_id, rep_name as id variables
+## No id variables; using all as measure variables
+```
+
+![plot of chunk Digital Genotyping](figure/Celrr/Digital Genotyping3.png) 
 
 
 # Differential Analysis
@@ -383,9 +401,9 @@ eval false for first pass
 
 
 
+![plot of chunk print GSEA biocarta](figure/Celrr/print GSEA biocarta.png) 
 
-
-
+![plot of chunk print GSEA reactome](figure/Celrr/print GSEA reactome.png) 
 
 ## GO enrichment 
 Cluster profiler used to call enichments of significantly differentially regulated genes that map to Entrez IDs. 
@@ -403,9 +421,7 @@ enrichPathway
 
 
 
-
-
-
+![plot of chunk GO figures](figure/Celrr/GO figures1.png) ![plot of chunk GO figures](figure/Celrr/GO figures2.png) ![plot of chunk GO figures](figure/Celrr/GO figures3.png) ![plot of chunk GO figures](figure/Celrr/GO figures4.png) ![plot of chunk GO figures](figure/Celrr/GO figures5.png) 
 
 
 # Cis vs Trans (locally)
@@ -436,30 +452,34 @@ Hand pick these after initial round of analysis?
 ## [8] methods   base     
 ## 
 ## other attached packages:
-##  [1] mgcv_1.7-29          nlme_3.1-117         gridExtra_0.9.1     
-##  [4] gtable_0.1.2         marray_1.40.0        gplots_2.13.0       
-##  [7] GSA_1.03             limma_3.18.13        knitr_1.6           
-## [10] xtable_1.7-3         cummeRbund_2.7.2     Gviz_1.6.0          
-## [13] rtracklayer_1.22.7   GenomicRanges_1.14.4 XVector_0.2.0       
-## [16] IRanges_1.20.7       fastcluster_1.1.13   reshape2_1.4        
-## [19] ggplot2_1.0.0        RSQLite_0.11.4       DBI_0.2-7           
-## [22] BiocGenerics_0.8.0  
+##  [1] GO.db_2.10.1           org.Mm.eg.db_2.10.1    clusterProfiler_1.13.1
+##  [4] DOSE_2.0.0             ReactomePA_1.6.1       AnnotationDbi_1.24.0  
+##  [7] Biobase_2.22.0         mgcv_1.7-29            nlme_3.1-117          
+## [10] gridExtra_0.9.1        gtable_0.1.2           marray_1.40.0         
+## [13] gplots_2.13.0          GSA_1.03               limma_3.18.13         
+## [16] xtable_1.7-3           knitr_1.6              cummeRbund_2.7.2      
+## [19] Gviz_1.6.0             rtracklayer_1.22.7     GenomicRanges_1.14.4  
+## [22] XVector_0.2.0          IRanges_1.20.7         fastcluster_1.1.13    
+## [25] reshape2_1.4           ggplot2_1.0.0          RSQLite_0.11.4        
+## [28] DBI_0.2-7              BiocGenerics_0.8.0    
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] AnnotationDbi_1.24.0   Biobase_2.22.0         biomaRt_2.18.0        
-##  [4] Biostrings_2.30.1      biovizBase_1.10.8      bitops_1.0-6          
-##  [7] BSgenome_1.30.0        caTools_1.17           cluster_1.15.2        
-## [10] codetools_0.2-8        colorspace_1.2-4       dichromat_2.0-0       
-## [13] digest_0.6.4           evaluate_0.5.5         formatR_0.10          
-## [16] Formula_1.1-1          gdata_2.13.3           GenomicFeatures_1.14.5
-## [19] gtools_3.4.1           Hmisc_3.14-4           KernSmooth_2.23-12    
-## [22] labeling_0.2           lattice_0.20-29        latticeExtra_0.6-26   
-## [25] MASS_7.3-33            Matrix_1.1-3           munsell_0.4.2         
-## [28] plyr_1.8.1             proto_0.3-10           RColorBrewer_1.0-5    
-## [31] Rcpp_0.11.1            RCurl_1.95-4.1         Rsamtools_1.14.3      
-## [34] scales_0.2.4           splines_3.0.2          stats4_3.0.2          
-## [37] stringr_0.6.2          survival_2.37-7        tools_3.0.2           
-## [40] XML_3.98-1.1           zlibbioc_1.8.0
+##  [1] biomaRt_2.18.0         Biostrings_2.30.1      biovizBase_1.10.8     
+##  [4] bitops_1.0-6           BSgenome_1.30.0        caTools_1.17          
+##  [7] cluster_1.15.2         colorspace_1.2-4       dichromat_2.0-0       
+## [10] digest_0.6.4           DO.db_2.7              evaluate_0.5.5        
+## [13] formatR_0.10           Formula_1.1-1          gdata_2.13.3          
+## [16] GenomicFeatures_1.14.5 GOSemSim_1.20.3        graph_1.40.1          
+## [19] graphite_1.8.1         gtools_3.4.1           Hmisc_3.14-4          
+## [22] igraph_0.7.1           KEGG.db_2.10.1         KernSmooth_2.23-12    
+## [25] labeling_0.2           lattice_0.20-29        latticeExtra_0.6-26   
+## [28] MASS_7.3-33            Matrix_1.1-3           munsell_0.4.2         
+## [31] org.Hs.eg.db_2.10.1    plyr_1.8.1             proto_0.3-10          
+## [34] qvalue_1.36.0          RColorBrewer_1.0-5     Rcpp_0.11.1           
+## [37] RCurl_1.95-4.1         reactome.db_1.46.1     Rsamtools_1.14.3      
+## [40] scales_0.2.4           splines_3.0.2          stats4_3.0.2          
+## [43] stringr_0.6.2          survival_2.37-7        tcltk_3.0.2           
+## [46] tools_3.0.2            XML_3.98-1.1           zlibbioc_1.8.0
 ```
 
 #Run Info

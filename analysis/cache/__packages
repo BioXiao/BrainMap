@@ -1,10 +1,15 @@
+AnnotationDbi
 base
+Biobase
 BiocGenerics
+clusterProfiler
 cummeRbund
 DBI
+DOSE
 fastcluster
 GenomicRanges
 ggplot2
+GO.db
 gplots
 gridExtra
 GSA
@@ -16,6 +21,8 @@ limma
 marray
 mgcv
 nlme
+org.Mm.eg.db
+ReactomePA
 reshape2
 RSQLite
 rtracklayer
