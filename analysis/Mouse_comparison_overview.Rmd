@@ -7,13 +7,6 @@ Mouse Data Overview 1
 
 - enc1 we're going to want a track showing where it's expressed (relative to KO region... )
 
-```{r}
-summary(cars)
-```
 
-You can also embed plots, for example:
-
-```{r fig.width=7, fig.height=6}
-plot(cars)
-```
-
+# Embryonic Samples
+- Celrr: celrr 0 is not KO (seems WT)

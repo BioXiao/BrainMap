@@ -143,18 +143,25 @@ csScatterMatrix(genes(cuff))
 ### Boxplots
 
 Boxplot (genes)
+
 ```{r boxplot genes}
 csBoxplot(genes(cuff))
 ```
+
 Boxplot (genes, replicates)
+
 ```{r boxplot genes replicates}
 csBoxplot(genes(cuff),replicates=T)
 ```
+
 Boxplot (isoforms)
+
 ```{r boxplot isoforms}
 csBoxplot(isoforms(cuff))
 ```
+
 Boxplot (isoforms, replicates)
+
 ```{r boxplot isoforms replicates}
 csBoxplot(isoforms(cuff), replicates=T)
 ```
@@ -242,11 +249,13 @@ expressionBarplot(myGene,replicates=T)
 
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
 Expression plot (endogenous linc, lacZ, Y-expressed gene):
+
 ```{r Digital Genotyping}
 genotypingGeneIDs<-c(strain,"LacZ","Eif2s3y")
 genotypingGenes<-getGenes(cuff,genotypingGeneIDs)
 expressionBarplot(genotypingGenes,replicates=T)
 ```
+
 Expression heatmap:
 ```{r digital geno heatmap}
 csHeatmap(genotypingGenes,replicates=T)
@@ -265,10 +274,11 @@ geneAnnot<-annotation(sigGenes)
 There are `r length(sig)` significantly differentially expressed genes. They are:
 
 ```{r sigdiffGenetable, results="asis"}
-print(xtable(geneAnnot$gene_short_name),type="html")
+print(xtable(as.data.frame(geneAnnot$gene_short_name)),type="html")
 ```
 
 ### Matrix of gene significant differences between conditions
+
 (skip for Brainmap wt-v-ko comparisons)
 
 ```{r sigMatrix}
@@ -279,8 +289,10 @@ sigMatrix(cuff, level="genes", alpha=alpha)
 
 Expression plot (genes):
 ```{r sigExpression, fig.height=20, fig.width=10}
-csHeatmap(sigGenes, cluster="both",replicates=T)
+#RELABEL!
+rowlabel<-geneAnnot$gene_short_name
 expressionPlot(sigGenes)
+csHeatmap(sigGenes, cluster="row",replicates=T)
 #expressionBarplot(sigGenes)
 ```
 
@@ -291,7 +303,7 @@ high<-sigFPKMs[which(sigFPKMs>50),]
 high<-high[complete.cases(high),]
 highIDs<-rownames(high)
 highGenes<-getGenes(cuff,highIDs)
-expresionPlot(highGenes)
+expressionPlot(highGenes)
 ```
 
 An individual look at each of the highly expressed significantly differentially regulated genes:
