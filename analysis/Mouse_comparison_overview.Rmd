@@ -4,8 +4,14 @@ Mouse Data Overview 1
 opts_chunk$set(echo=FALSE)
 ```
 
-```{r setup}
+```{r setup, results='hide'}
 library(cummeRbund)
+library(xtable)
+library(limma)
+library(GSA)
+library(gplots)
+library(marray)
+library(ggplot2)
 
 analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
 diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
@@ -22,7 +28,8 @@ alpha<-0.05
 setwd(diffdir)
 names<-list.files()
 setwd(analysisdir)
-#diffGeneSummary<-data.frame(ALLNULL w NAMES AS COLNAMES)
+diffGeneSummary<-data.frame(t(names), row.names=NULL)
+colnames(diffGeneSummary)<-names
 ```
 
 # Adult Samples 
@@ -370,14 +377,116 @@ Number of differentially expressed genes:`r length(sig)`
 
 
 ### Kantr
+Yay! Cluster together! 
+```{r Kantr embryonic dendro}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Kantr_vs_WT_Embryonic"
+setwd(dir)
+cuff<-readCufflinks()
+csDendro(genes(cuff),replicates=TRUE)
+
+id<-"Kantr"
+myGene<-getGene(cuff,id)
+```
+
+Endogenous Kantr expression: 
+```{r Kantr embryonic}
+
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
+```
+
+LacZ and genotyping heatmap
+```{r Kantr lz embryonic}
+lz<-"LacZ"
+myGene<-getGene(cuff,lz)
+expressionBarplot(isoforms(myGene), replicates=T)
+ids<-c(id,lz)
+myGenes<-getGenes(cuff,ids)
+csHeatmap(myGenes,replicates=TRUE)
+```
+
+```{r Kantr embryonic diff}
+sig<-getSig(cuff, alpha=alpha)
+# ADD TO WHOLE TABLE 
+```
+Number of differentially expressed genes:`r length(sig)`
+
+### Brn1a -- NOT DONE YET 
+
+### Brn1b 
+- digital genotyping looks good 
+
+```{r Brn1b embryonic diff}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Brn1b_vs_WT_Embryonic"
+setwd(dir)
+cuff<-readCufflinks()
+sig<-getSig(cuff, alpha=alpha)
+# ADD TO WHOLE TABLE 
+```
+Number of differentially expressed genes:`r length(sig)`
 
 
+```{r GO setup}
 
-### Brn1a
+library(ReactomePA)
+library(DOSE)
 
-### Brn1b
+sigGeneIDs<-getSig(cuff, alpha=alpha)
+sigGenes<-getGenes(cuff,sigGeneIDs)
+geneAnnot<-annotation(sigGenes)
+geneNames<-geneAnnot$gene_short_name
+sigDiff<-diffData(sigGenes)
+
+```
+
+
+```{r GO analysis setup and functions}
+library(clusterProfiler)
+require(biomaRt)
+
+ensembl <- useMart("ENSEMBL_MART_ENSEMBL","mmusculus_gene_ensembl", 
+host="www.ensembl.org")
+
+#Get entrezIDs
+getEntrezIDs<-function (geneNames)
+{
+    tmp <- getBM(attributes = c("entrezgene"), filters = "mgi_symbol", values = geneNames, mart = ensembl)
+    tmp
+}
+sigEntrez<-getEntrezIDs(geneNames)
+sigEZ<-strsplit(as.character(sigEntrez), ", ")
+sigEZ<-unlist(sigEZ)
+require(org.Mm.eg.db) #mapping of entrez IDs to genbank
+
+goBP<-enrichGO(gene=sigEZ, organism="mouse",ont="BP",pvalueCutoff=0.01,readable=T)
+
+goMF<-enrichGO(gene=sigEZ, organism="mouse",ont="MF",pvalueCutoff=0.01,readable=T)
+
+goCC<-enrichGO(gene=sigEZ, organism="mouse",ont="CC",pvalueCutoff=0.01,readable=T)
+
+kegg<-enrichKEGG(gene=sigEZ, organism="mouse",pvalueCutoff=1, readable=T)
+
+pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T)
+
+```
+
+```{r GO figures,  fig.height=5, fig.width=8}
+plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched BP")
+
+plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched MF")
+
+plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched CC")
+
+plot(kegg, showCategory=10) + ggtitle("Kegg Pathways")
+
+plot(pathway,showCategory=10) + ggtitle("Reactome pathway enrichment")
+detach("package:biomaRt")
+```
 
 ### linc-Cox2
+
+
+
 
 ### linc-Enc1a
 
@@ -394,8 +503,8 @@ Number of differentially expressed genes:`r length(sig)`
 **list of samples to re-check or exclude**
 
 ```{r summary}
-
-diff genes summary
+#
+# diff genes summary
 
 
 ```

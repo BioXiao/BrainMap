@@ -613,13 +613,6 @@ sigDiff$foldChange<-sigDiff$value_1/sigDiff$value_2
 
 ```
 
-biomart to get entrez gene IDS
-clusterProfiler does GO enrichment 
-
-BP, MF, CC
-enrichKEGG
-enrichPathway
-
 ```{r GO analysis setup and functions}
 library(clusterProfiler)
 require(biomaRt)
