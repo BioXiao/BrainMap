@@ -343,7 +343,7 @@ isoAnnot<-annotation(isoformSigGenes)
 
 These isoforms are:
 ```{r diff iso annotations, results='asis'}
-print(xtable(isoAnnot$gene_short_name),type="html")
+print(xtable(as.data.frame(isoAnnot$gene_short_name)),type="html")
 ```
 
 
@@ -374,13 +374,13 @@ print(xtable(as.data.frame(spliceAnnot$gene_short_name)), type="html")
 Splicing heatmap by isoform:
 ```{r splicing heatmap by isoform, eval=FALSE, fig.height=20, fig.width=10}
 #pdf("sigSplicing_heatmap.pdf",width=10,height=20)
-csHeatmap(isoforms(splicingSigGenes),cluster='row',method=dist)
+csHeatmap(isoforms(splicingSigGenes),cluster='both',method=dist)
 #dev.off()
 ```
 
 Splicing heatmap by gene
 ```{r splicing heatmap by gene, eval=FALSE}
-csHeatmap(splicingSigGenes,cluster='row',method=dist)
+csHeatmap(splicingSigGenes,cluster='both',method=dist)
 ```
 
 The following are significantly differentially spliced genes (relative portion of isoform per condition): 

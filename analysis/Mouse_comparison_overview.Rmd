@@ -14,17 +14,24 @@ GTF<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2
 dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Adult"
 setwd(dir)
 cuff<-readCufflinks(gtfFile=GTF,genome="mm10")
+
+alpha<-0.05
+
+
+
+setwd(diffdir)
+names<-list.files()
+setwd(analysisdir)
+#diffGeneSummary<-data.frame(ALLNULL w NAMES AS COLNAMES)
 ```
 
 # Adult Samples 
-
-- all have strange density plots: add pseudocount 
+- All have strange density plots: add pseudocount 
 
 Without Pseudocount
 ```{r density}
 csDensity(genes(cuff),replicates=TRUE)
 ```
-
 
 With Pseudocount = 0.01 
 ```{r density pseudo}
@@ -36,6 +43,7 @@ csDensity(genes(cuff),pseudocount=0.01,replicates=TRUE)
 
 ### Genotyping
 - wt 12 is ko/het (JR817)
+
 ```{r genotyping}
 genotypingGeneIDs<-c(strain,"LacZ","Eif2s3y")
 genotypingGenes<-getGenes(cuff,genotypingGeneIDs)
@@ -245,7 +253,7 @@ Why is one of the tug1 replicates missing from plots/dendrogram??
 
 
 # Embryonic Samples
-- Celrr: celrr 0 is not KO (seems WT)
+
 - wt13 
 
 ## WTS:
@@ -259,14 +267,111 @@ Why is one of the tug1 replicates missing from plots/dendrogram??
 ## KO Strains
 
 ### Celrr
+- Celrr: celrr 0 is not KO (seems WT) JR769
+
+```{r celrr embryonic}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Embryonic"
+setwd(dir)
+cuff<-readCufflinks()
+id<-"Celrr"
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
+```
+
+LacZ and genotyping heatmap
+```{r Celrr lz embryonic}
+lz<-"LacZ"
+myGene<-getGene(cuff,lz)
+expressionBarplot(isoforms(myGene), replicates=T)
+ids<-c(id,lz)
+myGenes<-getGenes(cuff,ids)
+csHeatmap(myGenes,replicates=TRUE)
+```
+
+
+```{r Celrr embryonic diff}
+sig<-getSig(cuff, alpha=alpha)
+# ADD TO WHOLE TABLE 
+```
+Number of differentially expressed genes:`r length(sig)`
+
+Cell compartment: lots of cytoplasmic stuff... is this linc cytoplasmic?? 
 
 ### Crnde
+- actually cluster together!
+
+```{r Crnde embryonic dendro}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Crnde_vs_WT_Embryonic"
+setwd(dir)
+cuff<-readCufflinks()
+csDendro(genes(cuff),replicates=TRUE)
+```
+
+
+Endogenous expression (isoforms)
+```{r Crnde embryonic}
+id<-"Crnde"
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
+```
+
+LacZ and genotyping heatmap
+Crnde_2 may be het? Need to check tracks! 
+```{r Crnde lz embryonic}
+lz<-"LacZ"
+myGene<-getGene(cuff,lz)
+expressionBarplot(isoforms(myGene), replicates=T)
+ids<-c(id,lz)
+myGenes<-getGenes(cuff,ids)
+csHeatmap(myGenes,replicates=TRUE)
+```
+
+```{r Crnde embryonic diff}
+sig<-getSig(cuff, alpha=alpha)
+# ADD TO WHOLE TABLE 
+```
+Number of differentially expressed genes:`r length(sig)`
+
+-ECM/collagen... 
 
 ### Eldr
 
+genotyping looks good!
+
+Kegg: huntingtons/alzheimers/cancer
+
+```{r Eldr embryonic dendro}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Eldr_vs_WT_Embryonic"
+setwd(dir)
+cuff<-readCufflinks()
+```
+
+```{r Eldr embryonic diff}
+sig<-getSig(cuff, alpha=alpha)
+# ADD TO WHOLE TABLE 
+```
+Number of differentially expressed genes:`r length(sig)`
+
+
 ### Haunt
+digital genotyping looks good 
+
+```{r Haunt embryonic dendro}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Haunt_vs_WT_Embryonic"
+setwd(dir)
+cuff<-readCufflinks()
+```
+
+```{r Haunt embryonic diff}
+sig<-getSig(cuff, alpha=alpha)
+# ADD TO WHOLE TABLE 
+```
+Number of differentially expressed genes:`r length(sig)`
+
 
 ### Kantr
+
+
 
 ### Brn1a
 
@@ -283,3 +388,18 @@ Why is one of the tug1 replicates missing from plots/dendrogram??
 ### Trp53cor (linc-p21)
 
 ### Tug1
+
+
+# SUMMARY
+**list of samples to re-check or exclude**
+
+```{r summary}
+
+diff genes summary
+
+
+```
+
+**Interesting or promising strains!**
+
+# TO DO
