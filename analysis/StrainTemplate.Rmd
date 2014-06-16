@@ -5,6 +5,7 @@
 - add labels, descriptions
 - turn off all caching 
 - other heatmap labels (csHeatmap)
+- break into individual replicate bargraphs for genotyping... 
 - overlap figure
 - tracks 
 
@@ -83,17 +84,15 @@ print(xtable(replicates(cuff)),type="html")
 
 ## Dispersion
 
-This shows count (WHAT IS COUNT? fragment counts? per gene?) vs dispersion (of those counts), or the spread in measurements for a particular gene across replicates. 
-
-from cummerbund manual: Overdispersion is a common problem in RNA-Seq data. As of cufflinks v2.0 mean counts, variance, and dispersion are all emitted, allowing you to visualize the estimated overdispersion for each sample as a quality control measure. - See more at: http://compbio.mit.edu/cummeRbund/manual_2_0.html#sthash.9YRYxwRV.dpuf
-
+Dispersion plot for genes in cuff:
+(Overdispersion can lead to innacurate quants)
 
 ```{r dispersion}
 dispersionPlot(genes(cuff))
 ```
 
 ## Cross-replicate variability (fpkmSCVplot)
-The squared coefficient of variation is a normalized measure of cross replicate variability that can be useful for evaluating the quality your RNA-seq data. Differences in CV 2 can result in lower numbers of differentially expressed genes due to a higher degree of variability between replicate fpkm estimates.
+Differences in CV 2 can result in lower numbers of differentially expressed genes due to a higher degree of variability between replicate fpkm estimates.
 
 Genes:
 ```{r CV genes}
@@ -112,6 +111,7 @@ csVolcano(genes(cuff),"wt","ko")
 ```
 
 ### Volcano matrix (replicates)
+
 ```{r volcano matrix}
 csVolcanoMatrix(genes(cuff),replicates=T)
 ```
@@ -140,16 +140,32 @@ csScatterMatrix(genes(cuff))
 
 ## Distributions
 
-### Boxplot
-```{r boxplot}
+### Boxplots
+
+Boxplot (genes)
+```{r boxplot genes}
 csBoxplot(genes(cuff))
+```
+Boxplot (genes, replicates)
+```{r boxplot genes replicates}
 csBoxplot(genes(cuff),replicates=T)
+```
+Boxplot (isoforms)
+```{r boxplot isoforms}
 csBoxplot(isoforms(cuff))
+```
+Boxplot (isoforms, replicates)
+```{r boxplot isoforms replicates}
+csBoxplot(isoforms(cuff), replicates=T)
 ```
 
 ### Density
+Density (genes)
 ```{r density}
 csDensity(genes(cuff))
+```
+Density (genes, replicates)
+```{r density w replicates}
 csDensity(genes(cuff),replicates=T)
 ```
 
@@ -161,17 +177,17 @@ csDensity(genes(cuff),replicates=T)
 csDendro(genes(cuff),replicates=T)
 ```
 
-### PCA
+### PCA (genes)
 ```{r PCA}
 PCAplot(genes(cuff),"PC2","PC3", replicates=T)
 ```
 
-### MDS 
+### MDS (genes)
 ```{r MDS}
 MDSplot(genes(cuff),replicates=T)
 ```
 
-### Distance Heat Map
+### Distance Heat Map (genes)
 ```{r R distance heatmap }
 csDistHeat(genes(cuff), replicates=T)
 ```
@@ -188,16 +204,24 @@ print(xtable(fpkm(isoforms(myGene))), type="html")
        
 expressionPlot(myGene)
 expressionPlot(myGene, replicates=TRUE)
-       
+```
+
+Endogenous expression of `r strain` isoforms:
+```{r endogenous iso}
 expressionPlot(isoforms(myGene))
 expressionPlot(isoforms(myGene), replicates=T)
-       
+```
+
+Barplot of gene expression:
+```{r endogenous barplot}
 expressionBarplot(myGene)
 expressionBarplot(myGene,replicates=T)
+```
 
+Barplot of isoform expression:
+```{r endogenous iso barplot}
 expressionBarplot(isoforms(myGene))     
 expressionBarplot(isoforms(myGene), replicates=T)
-
 ```
 
 
@@ -258,7 +282,7 @@ sigMatrix(cuff, level="genes", alpha=alpha)
 ```{r sigExpression}
 csHeatmap(sigGenes, cluster="both",replicates=T)
 expressionPlot(sigGenes)
-expressionBarplot(sigGenes)
+#expressionBarplot(sigGenes)
 ```
 
 An individual look at each of the significantly differentially regulated genes:
