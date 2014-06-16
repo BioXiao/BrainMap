@@ -3,9 +3,8 @@
 
 
 - add labels, descriptions
-- turn off all caching 
+- turn off all caching ! 
 - other heatmap labels (csHeatmap)
-- break into individual replicate bargraphs for genotyping... 
 - overlap figure
 - tracks 
 - should import litter info
@@ -65,21 +64,11 @@ rownames(samples)<-NULL
 
 This file shows the wt-v-ko comparison for `r strain`. 
 
-Samples used are:
-```{r results='asis'}
-print(xtable(samples),type="html")
-```
-
-
 Cuff overview:
 ```{r}
 cuff
 ```
 
-## Replicates
-```{r replicates, results='asis'}
-print(xtable(replicates(cuff)),type="html")
-```
 
 # QC
 
@@ -631,7 +620,7 @@ BP, MF, CC
 enrichKEGG
 enrichPathway
 
-```{r GO analysis setup and functions,eval=FALSE}
+```{r GO analysis setup and functions}
 library(clusterProfiler)
 require(biomaRt)
 #source("http://bioconductor.org/biocLite.R")
@@ -665,7 +654,7 @@ pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T
 
 ```
 
-```{r GO figures, echo=FALSE,  fig.height=5, fig.width=8}
+```{r GO figures,  fig.height=5, fig.width=8}
 plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched BP")
 
 plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched MF")
@@ -697,12 +686,22 @@ window<-1000000
 
 # Notes
 
-# Session Info
+## Samples used are:
+```{r results='asis', echo=FALSE}
+print(xtable(samples),type="html")
+```
+
+## Replicates
+```{r replicates, results='asis'}
+print(xtable(replicates(cuff)),type="html")
+```
+
+## Session Info
 ```{r session}
 sessionInfo()
 ```
 
-#Run Info
+## Run Info
 ```{r runInfo}
 runInfo(cuff)
 ```

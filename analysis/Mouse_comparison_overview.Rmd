@@ -235,7 +235,7 @@ csHeatmap(myGenes,replicates=TRUE)
 ```
 
 ### Trp53cor1 (linc-p21)
-
+Everything very lowly expressed 
 
 ### Tug1
 

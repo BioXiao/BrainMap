@@ -3,11 +3,11 @@ Eldr KO vs WT (Embryonic)
 
 
 - add labels, descriptions
-- turn off all caching 
+- turn off all caching ! 
 - other heatmap labels (csHeatmap)
-- break into individual replicate bargraphs for genotyping... 
 - overlap figure
 - tracks 
+- should import litter info
 
 
 
@@ -20,32 +20,6 @@ Eldr KO vs WT (Embryonic)
 # Design Overview
 
 This file shows the wt-v-ko comparison for Eldr. 
-
-Samples used are:
-<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sun Jun 15 22:56:11 2014 -->
-<TABLE border=1>
-<TR> <TH>  </TH> <TH> 10 </TH>  </TR>
-  <TR> <TD align="right"> 1 </TD> <TD> JR753 </TD> </TR>
-  <TR> <TD align="right"> 2 </TD> <TD> JR750 </TD> </TR>
-  <TR> <TD align="right"> 3 </TD> <TD> JR771 </TD> </TR>
-  <TR> <TD align="right"> 4 </TD> <TD> JR755 </TD> </TR>
-  <TR> <TD align="right"> 5 </TD> <TD> JR811 </TD> </TR>
-  <TR> <TD align="right"> 6 </TD> <TD> JR768 </TD> </TR>
-  <TR> <TD align="right"> 7 </TD> <TD> JR761 </TD> </TR>
-  <TR> <TD align="right"> 8 </TD> <TD> JR815 </TD> </TR>
-  <TR> <TD align="right"> 9 </TD> <TD> JR789 </TD> </TR>
-  <TR> <TD align="right"> 10 </TD> <TD> JR748 </TD> </TR>
-  <TR> <TD align="right"> 11 </TD> <TD> JR716 </TD> </TR>
-  <TR> <TD align="right"> 12 </TD> <TD> JR717 </TD> </TR>
-  <TR> <TD align="right"> 13 </TD> <TD> JR719 </TD> </TR>
-  <TR> <TD align="right"> 14 </TD> <TD> JR791 </TD> </TR>
-  <TR> <TD align="right"> 15 </TD> <TD> JR756 </TD> </TR>
-  <TR> <TD align="right"> 16 </TD> <TD> JR787 </TD> </TR>
-  <TR> <TD align="right"> 17 </TD> <TD> JR810 </TD> </TR>
-  <TR> <TD align="right"> 18 </TD> <TD> JR838 </TD> </TR>
-   </TABLE>
-
 
 Cuff overview:
 
@@ -61,30 +35,6 @@ Cuff overview:
 ## 	 0 relCDS
 ```
 
-## Replicates
-<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sun Jun 15 22:56:11 2014 -->
-<TABLE border=1>
-<TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
-  <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR753/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 39343800.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 1.32 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 2 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR750/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   1 </TD> <TD> WT_1 </TD> <TD align="right"> 36041100.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 1.15 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 3 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR771/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   2 </TD> <TD> WT_2 </TD> <TD align="right"> 38877000.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 1.28 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 4 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR755/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   3 </TD> <TD> WT_3 </TD> <TD align="right"> 41822800.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 1.34 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 5 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR811/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   4 </TD> <TD> WT_4 </TD> <TD align="right"> 38186700.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 1.25 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 6 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR768/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   5 </TD> <TD> WT_5 </TD> <TD align="right"> 28382500.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 0.93 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 7 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR761/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   6 </TD> <TD> WT_6 </TD> <TD align="right"> 31711800.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 1.01 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 8 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR815/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   7 </TD> <TD> WT_7 </TD> <TD align="right"> 29744300.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 0.96 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 9 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR789/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   8 </TD> <TD> WT_8 </TD> <TD align="right"> 27686600.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 0.90 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 10 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR748/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   9 </TD> <TD> WT_9 </TD> <TD align="right"> 32374600.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 1.00 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 11 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR716/abundances.cxb </TD> <TD> WT </TD> <TD align="right">  10 </TD> <TD> WT_10 </TD> <TD align="right"> 26148700.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 0.84 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 12 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR717/abundances.cxb </TD> <TD> WT </TD> <TD align="right">  11 </TD> <TD> WT_11 </TD> <TD align="right"> 25571500.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 0.83 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 13 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR719/abundances.cxb </TD> <TD> WT </TD> <TD align="right">  12 </TD> <TD> WT_12 </TD> <TD align="right"> 22702200.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 0.71 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 14 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR791/abundances.cxb </TD> <TD> WT </TD> <TD align="right">  13 </TD> <TD> WT_13 </TD> <TD align="right"> 12886300.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 0.42 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 15 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR756/abundances.cxb </TD> <TD> WT </TD> <TD align="right">  14 </TD> <TD> WT_14 </TD> <TD align="right"> 38957200.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 1.26 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 16 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR787/abundances.cxb </TD> <TD> Eldr </TD> <TD align="right">   0 </TD> <TD> Eldr_0 </TD> <TD align="right"> 26903500.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 0.88 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 17 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR810/abundances.cxb </TD> <TD> Eldr </TD> <TD align="right">   1 </TD> <TD> Eldr_1 </TD> <TD align="right"> 41840900.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 1.36 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 18 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR838/abundances.cxb </TD> <TD> Eldr </TD> <TD align="right">   2 </TD> <TD> Eldr_2 </TD> <TD align="right"> 37007300.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 1.21 </TD> <TD align="right"> 1.00 </TD> </TR>
-   </TABLE>
 
 # QC
 
@@ -155,45 +105,31 @@ Isoforms:
 ### Boxplots
 
 Boxplot (genes)
+
 ![plot of chunk boxplot genes](figure/Eldr/boxplot genes.png) 
+
 Boxplot (genes, replicates)
+
 ![plot of chunk boxplot genes replicates](figure/Eldr/boxplot genes replicates.png) 
+
 Boxplot (isoforms)
+
 ![plot of chunk boxplot isoforms](figure/Eldr/boxplot isoforms.png) 
+
 Boxplot (isoforms, replicates)
-![plot of chunk boxplot isoforms replicates](figure/Eldr/boxplot isoforms replicates.png) 
+
+
+```
+## Error: std::bad_alloc
+```
 
 ### Density
+
 Density (genes)
 
-```
-## Warning: Removed 4349 rows containing non-finite values (stat_density).
-## Warning: Removed 5726 rows containing non-finite values (stat_density).
-```
-
 ![plot of chunk density](figure/Eldr/density.png) 
-Density (genes, replicates)
 
-```
-## Warning: Removed 6674 rows containing non-finite values (stat_density).
-## Warning: Removed 7002 rows containing non-finite values (stat_density).
-## Warning: Removed 6665 rows containing non-finite values (stat_density).
-## Warning: Removed 6660 rows containing non-finite values (stat_density).
-## Warning: Removed 6658 rows containing non-finite values (stat_density).
-## Warning: Removed 6924 rows containing non-finite values (stat_density).
-## Warning: Removed 6924 rows containing non-finite values (stat_density).
-## Warning: Removed 6977 rows containing non-finite values (stat_density).
-## Warning: Removed 6968 rows containing non-finite values (stat_density).
-## Warning: Removed 6936 rows containing non-finite values (stat_density).
-## Warning: Removed 7397 rows containing non-finite values (stat_density).
-## Warning: Removed 7319 rows containing non-finite values (stat_density).
-## Warning: Removed 7685 rows containing non-finite values (stat_density).
-## Warning: Removed 7859 rows containing non-finite values (stat_density).
-## Warning: Removed 6664 rows containing non-finite values (stat_density).
-## Warning: Removed 7213 rows containing non-finite values (stat_density).
-## Warning: Removed 6668 rows containing non-finite values (stat_density).
-## Warning: Removed 6817 rows containing non-finite values (stat_density).
-```
+Density (genes, replicates)
 
 ![plot of chunk density w replicates](figure/Eldr/density w replicates.png) 
 
@@ -220,15 +156,16 @@ Density (genes, replicates)
 # KO assessment
 
 ## Endogenous lncRNA expression
+
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sun Jun 15 22:58:21 2014 -->
+<!-- Mon Jun 16 14:48:48 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> gene_id </TH> <TH> sample_name </TH> <TH> fpkm </TH> <TH> conf_hi </TH> <TH> conf_lo </TH> <TH> quant_status </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> ENSMUSG00000087060.1 </TD> <TD> Eldr </TD> <TD align="right"> 0.02 </TD> <TD align="right"> 0.29 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
   <TR> <TD align="right"> 2 </TD> <TD> ENSMUSG00000087060.1 </TD> <TD> WT </TD> <TD align="right"> 4.33 </TD> <TD align="right"> 6.39 </TD> <TD align="right"> 2.27 </TD> <TD> OK </TD> </TR>
    </TABLE>
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sun Jun 15 22:58:21 2014 -->
+<!-- Mon Jun 16 14:48:48 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> isoform_id </TH> <TH> sample_name </TH> <TH> fpkm </TH> <TH> conf_hi </TH> <TH> conf_lo </TH> <TH> quant_status </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> ENSMUST00000123734.1 </TD> <TD> Eldr </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.09 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
@@ -249,18 +186,22 @@ Density (genes, replicates)
 ![plot of chunk Enodenous lncRNA tables](figure/Eldr/Enodenous lncRNA tables1.png) ![plot of chunk Enodenous lncRNA tables](figure/Eldr/Enodenous lncRNA tables2.png) 
 
 Endogenous expression of Eldr isoforms:
+
 ![plot of chunk endogenous iso](figure/Eldr/endogenous iso1.png) ![plot of chunk endogenous iso](figure/Eldr/endogenous iso2.png) 
 
 Barplot of gene expression:
+
 ![plot of chunk endogenous barplot](figure/Eldr/endogenous barplot1.png) ![plot of chunk endogenous barplot](figure/Eldr/endogenous barplot2.png) 
 
 Barplot of isoform expression:
-![plot of chunk endogenous iso barplot](figure/Eldr/endogenous iso barplot1.png) ![plot of chunk endogenous iso barplot](figure/Eldr/endogenous iso barplot2.png) 
+
+![plot of chunk endogenous iso barplot](figure/Eldr/endogenous iso barplot.png) 
 
 
 ## LacZ expression
+
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sun Jun 15 22:58:34 2014 -->
+<!-- Mon Jun 16 14:49:03 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> gene_id </TH> <TH> sample_name </TH> <TH> fpkm </TH> <TH> conf_hi </TH> <TH> conf_lo </TH> <TH> quant_status </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Velocigene_LacZ </TD> <TD> Eldr </TD> <TD align="right"> 2.74 </TD> <TD align="right"> 3.68 </TD> <TD align="right"> 1.80 </TD> <TD> OK </TD> </TR>
@@ -272,12 +213,14 @@ Barplot of isoform expression:
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
 Expression plot (endogenous linc, lacZ, Y-expressed gene):
 
+
 ```
 ## Scale for 'colour' is already present. Adding another scale for 'colour', which will replace the existing scale.
 ## ymax not defined: adjusting position using y instead
 ```
 
 ![plot of chunk Digital Genotyping](figure/Eldr/Digital Genotyping.png) 
+
 Expression heatmap:
 
 ```
@@ -295,13 +238,158 @@ Expression heatmap:
 
 There are 144 significantly differentially expressed genes. They are:
 
-
-```
-## Error: no applicable method for 'xtable' applied to an object of class
-## "character"
-```
+<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
+<!-- Mon Jun 16 14:49:13 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> Cdh1 </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> Col1a1 </TD> </TR>
+  <TR> <TD align="right"> 3 </TD> <TD> Lamb1 </TD> </TR>
+  <TR> <TD align="right"> 4 </TD> <TD> Cacna1e </TD> </TR>
+  <TR> <TD align="right"> 5 </TD> <TD> Polr2a </TD> </TR>
+  <TR> <TD align="right"> 6 </TD> <TD> Nid1 </TD> </TR>
+  <TR> <TD align="right"> 7 </TD> <TD> Vax1 </TD> </TR>
+  <TR> <TD align="right"> 8 </TD> <TD> Rplp1 </TD> </TR>
+  <TR> <TD align="right"> 9 </TD> <TD> Ttc9b </TD> </TR>
+  <TR> <TD align="right"> 10 </TD> <TD> Odc1 </TD> </TR>
+  <TR> <TD align="right"> 11 </TD> <TD> Cad </TD> </TR>
+  <TR> <TD align="right"> 12 </TD> <TD> Ptgds </TD> </TR>
+  <TR> <TD align="right"> 13 </TD> <TD> Abca1 </TD> </TR>
+  <TR> <TD align="right"> 14 </TD> <TD> Dync1h1 </TD> </TR>
+  <TR> <TD align="right"> 15 </TD> <TD> Utrn </TD> </TR>
+  <TR> <TD align="right"> 16 </TD> <TD> D10Bwg1379e </TD> </TR>
+  <TR> <TD align="right"> 17 </TD> <TD> Lama2 </TD> </TR>
+  <TR> <TD align="right"> 18 </TD> <TD> Gm872 </TD> </TR>
+  <TR> <TD align="right"> 19 </TD> <TD> Snrpf </TD> </TR>
+  <TR> <TD align="right"> 20 </TD> <TD> Aebp1 </TD> </TR>
+  <TR> <TD align="right"> 21 </TD> <TD> Prpf8 </TD> </TR>
+  <TR> <TD align="right"> 22 </TD> <TD> Hoxb9 </TD> </TR>
+  <TR> <TD align="right"> 23 </TD> <TD> Pdhb </TD> </TR>
+  <TR> <TD align="right"> 24 </TD> <TD> BC067074 </TD> </TR>
+  <TR> <TD align="right"> 25 </TD> <TD> Nid2 </TD> </TR>
+  <TR> <TD align="right"> 26 </TD> <TD> Myh9 </TD> </TR>
+  <TR> <TD align="right"> 27 </TD> <TD> Col2a1 </TD> </TR>
+  <TR> <TD align="right"> 28 </TD> <TD> Plec </TD> </TR>
+  <TR> <TD align="right"> 29 </TD> <TD> Dlx2 </TD> </TR>
+  <TR> <TD align="right"> 30 </TD> <TD> Igf2r </TD> </TR>
+  <TR> <TD align="right"> 31 </TD> <TD> Fbn2 </TD> </TR>
+  <TR> <TD align="right"> 32 </TD> <TD> Rps14 </TD> </TR>
+  <TR> <TD align="right"> 33 </TD> <TD> Slit1 </TD> </TR>
+  <TR> <TD align="right"> 34 </TD> <TD> Lbx1 </TD> </TR>
+  <TR> <TD align="right"> 35 </TD> <TD> Dock9 </TD> </TR>
+  <TR> <TD align="right"> 36 </TD> <TD> Pgm2 </TD> </TR>
+  <TR> <TD align="right"> 37 </TD> <TD> Col5a2 </TD> </TR>
+  <TR> <TD align="right"> 38 </TD> <TD> Col3a1 </TD> </TR>
+  <TR> <TD align="right"> 39 </TD> <TD> Fn1 </TD> </TR>
+  <TR> <TD align="right"> 40 </TD> <TD> Lamc1 </TD> </TR>
+  <TR> <TD align="right"> 41 </TD> <TD> Ddr2 </TD> </TR>
+  <TR> <TD align="right"> 42 </TD> <TD> Lamc3 </TD> </TR>
+  <TR> <TD align="right"> 43 </TD> <TD> Lrp2 </TD> </TR>
+  <TR> <TD align="right"> 44 </TD> <TD> Fbn1 </TD> </TR>
+  <TR> <TD align="right"> 45 </TD> <TD> Notch2 </TD> </TR>
+  <TR> <TD align="right"> 46 </TD> <TD> Col11a1 </TD> </TR>
+  <TR> <TD align="right"> 47 </TD> <TD> Tnc </TD> </TR>
+  <TR> <TD align="right"> 48 </TD> <TD> Svep1 </TD> </TR>
+  <TR> <TD align="right"> 49 </TD> <TD> Snapc3 </TD> </TR>
+  <TR> <TD align="right"> 50 </TD> <TD> Scp2 </TD> </TR>
+  <TR> <TD align="right"> 51 </TD> <TD> Kcnq4 </TD> </TR>
+  <TR> <TD align="right"> 52 </TD> <TD> Ndufs5 </TD> </TR>
+  <TR> <TD align="right"> 53 </TD> <TD> Wdr65 </TD> </TR>
+  <TR> <TD align="right"> 54 </TD> <TD> Pdgfra </TD> </TR>
+  <TR> <TD align="right"> 55 </TD> <TD> Uncx </TD> </TR>
+  <TR> <TD align="right"> 56 </TD> <TD> Col1a2 </TD> </TR>
+  <TR> <TD align="right"> 57 </TD> <TD> Slc13a4 </TD> </TR>
+  <TR> <TD align="right"> 58 </TD> <TD> Itpr1 </TD> </TR>
+  <TR> <TD align="right"> 59 </TD> <TD> Dera </TD> </TR>
+  <TR> <TD align="right"> 60 </TD> <TD> Herc2 </TD> </TR>
+  <TR> <TD align="right"> 61 </TD> <TD> Iqgap1 </TD> </TR>
+  <TR> <TD align="right"> 62 </TD> <TD> Eif3f </TD> </TR>
+  <TR> <TD align="right"> 63 </TD> <TD> Col4a5 </TD> </TR>
+  <TR> <TD align="right"> 64 </TD> <TD> Gtf3c1 </TD> </TR>
+  <TR> <TD align="right"> 65 </TD> <TD> Lama1 </TD> </TR>
+  <TR> <TD align="right"> 66 </TD> <TD> 3830406C13Rik </TD> </TR>
+  <TR> <TD align="right"> 67 </TD> <TD> Adamts15 </TD> </TR>
+  <TR> <TD align="right"> 68 </TD> <TD> Gbx2 </TD> </TR>
+  <TR> <TD align="right"> 69 </TD> <TD> Prr7 </TD> </TR>
+  <TR> <TD align="right"> 70 </TD> <TD> Fras1 </TD> </TR>
+  <TR> <TD align="right"> 71 </TD> <TD> Vps13c </TD> </TR>
+  <TR> <TD align="right"> 72 </TD> <TD> Fignl1 </TD> </TR>
+  <TR> <TD align="right"> 73 </TD> <TD> Cox8a </TD> </TR>
+  <TR> <TD align="right"> 74 </TD> <TD> Frem2 </TD> </TR>
+  <TR> <TD align="right"> 75 </TD> <TD> Rps16 </TD> </TR>
+  <TR> <TD align="right"> 76 </TD> <TD> Vstm2l </TD> </TR>
+  <TR> <TD align="right"> 77 </TD> <TD> Notch3 </TD> </TR>
+  <TR> <TD align="right"> 78 </TD> <TD> Ift172 </TD> </TR>
+  <TR> <TD align="right"> 79 </TD> <TD> Hoxb4 </TD> </TR>
+  <TR> <TD align="right"> 80 </TD> <TD> Srrm2 </TD> </TR>
+  <TR> <TD align="right"> 81 </TD> <TD> Pcsk1n </TD> </TR>
+  <TR> <TD align="right"> 82 </TD> <TD> Klhl42 </TD> </TR>
+  <TR> <TD align="right"> 83 </TD> <TD> Tlx3 </TD> </TR>
+  <TR> <TD align="right"> 84 </TD> <TD> C1qtnf4 </TD> </TR>
+  <TR> <TD align="right"> 85 </TD> <TD> Dnah7b </TD> </TR>
+  <TR> <TD align="right"> 86 </TD> <TD> 2310036O22Rik </TD> </TR>
+  <TR> <TD align="right"> 87 </TD> <TD> Nkx6-2 </TD> </TR>
+  <TR> <TD align="right"> 88 </TD> <TD> Fmod </TD> </TR>
+  <TR> <TD align="right"> 89 </TD> <TD> Cox6a1 </TD> </TR>
+  <TR> <TD align="right"> 90 </TD> <TD> Hebp1 </TD> </TR>
+  <TR> <TD align="right"> 91 </TD> <TD> Lor </TD> </TR>
+  <TR> <TD align="right"> 92 </TD> <TD> Pgp </TD> </TR>
+  <TR> <TD align="right"> 93 </TD> <TD> Gm9493 </TD> </TR>
+  <TR> <TD align="right"> 94 </TD> <TD> Rps2 </TD> </TR>
+  <TR> <TD align="right"> 95 </TD> <TD> Acp1 </TD> </TR>
+  <TR> <TD align="right"> 96 </TD> <TD> Wdr89 </TD> </TR>
+  <TR> <TD align="right"> 97 </TD> <TD> Gm7729 </TD> </TR>
+  <TR> <TD align="right"> 98 </TD> <TD> Fat4 </TD> </TR>
+  <TR> <TD align="right"> 99 </TD> <TD> Dync2h1 </TD> </TR>
+  <TR> <TD align="right"> 100 </TD> <TD> Kmt2d </TD> </TR>
+  <TR> <TD align="right"> 101 </TD> <TD> Rpl29 </TD> </TR>
+  <TR> <TD align="right"> 102 </TD> <TD> H2afx </TD> </TR>
+  <TR> <TD align="right"> 103 </TD> <TD> Pla2g4e </TD> </TR>
+  <TR> <TD align="right"> 104 </TD> <TD> Dnah6 </TD> </TR>
+  <TR> <TD align="right"> 105 </TD> <TD> Lamb2 </TD> </TR>
+  <TR> <TD align="right"> 106 </TD> <TD> Tusc1 </TD> </TR>
+  <TR> <TD align="right"> 107 </TD> <TD> Zfp771 </TD> </TR>
+  <TR> <TD align="right"> 108 </TD> <TD> Mrfap1 </TD> </TR>
+  <TR> <TD align="right"> 109 </TD> <TD> Gm10020 </TD> </TR>
+  <TR> <TD align="right"> 110 </TD> <TD> Rpl36 </TD> </TR>
+  <TR> <TD align="right"> 111 </TD> <TD> Capn11 </TD> </TR>
+  <TR> <TD align="right"> 112 </TD> <TD> Fdps </TD> </TR>
+  <TR> <TD align="right"> 113 </TD> <TD> H2afj </TD> </TR>
+  <TR> <TD align="right"> 114 </TD> <TD> Tpt1 </TD> </TR>
+  <TR> <TD align="right"> 115 </TD> <TD> Rpl17 </TD> </TR>
+  <TR> <TD align="right"> 116 </TD> <TD> Otof </TD> </TR>
+  <TR> <TD align="right"> 117 </TD> <TD> Rpl35 </TD> </TR>
+  <TR> <TD align="right"> 118 </TD> <TD> Sox11 </TD> </TR>
+  <TR> <TD align="right"> 119 </TD> <TD> Zfp428 </TD> </TR>
+  <TR> <TD align="right"> 120 </TD> <TD> Flnc </TD> </TR>
+  <TR> <TD align="right"> 121 </TD> <TD> Ptprz1 </TD> </TR>
+  <TR> <TD align="right"> 122 </TD> <TD> Nkain2 </TD> </TR>
+  <TR> <TD align="right"> 123 </TD> <TD> Ahnak </TD> </TR>
+  <TR> <TD align="right"> 124 </TD> <TD> Fat1 </TD> </TR>
+  <TR> <TD align="right"> 125 </TD> <TD> Gm1673 </TD> </TR>
+  <TR> <TD align="right"> 126 </TD> <TD> Klhl9 </TD> </TR>
+  <TR> <TD align="right"> 127 </TD> <TD> Jund </TD> </TR>
+  <TR> <TD align="right"> 128 </TD> <TD> Rpl23 </TD> </TR>
+  <TR> <TD align="right"> 129 </TD> <TD> Gpr27 </TD> </TR>
+  <TR> <TD align="right"> 130 </TD> <TD> Srp54a </TD> </TR>
+  <TR> <TD align="right"> 131 </TD> <TD> Wdfy1 </TD> </TR>
+  <TR> <TD align="right"> 132 </TD> <TD> Hbb-bt </TD> </TR>
+  <TR> <TD align="right"> 133 </TD> <TD> Fat3 </TD> </TR>
+  <TR> <TD align="right"> 134 </TD> <TD> Nrbp2 </TD> </TR>
+  <TR> <TD align="right"> 135 </TD> <TD> Gm11273 </TD> </TR>
+  <TR> <TD align="right"> 136 </TD> <TD> Ccdc85c </TD> </TR>
+  <TR> <TD align="right"> 137 </TD> <TD> Ier5l </TD> </TR>
+  <TR> <TD align="right"> 138 </TD> <TD> Gm3739 </TD> </TR>
+  <TR> <TD align="right"> 139 </TD> <TD> Malat1 </TD> </TR>
+  <TR> <TD align="right"> 140 </TD> <TD> Gm10406 </TD> </TR>
+  <TR> <TD align="right"> 141 </TD> <TD> Ccdc85b </TD> </TR>
+  <TR> <TD align="right"> 142 </TD> <TD> Gm8281 </TD> </TR>
+  <TR> <TD align="right"> 143 </TD> <TD> Gm9825 </TD> </TR>
+  <TR> <TD align="right"> 144 </TD> <TD> Gm3591 </TD> </TR>
+   </TABLE>
 
 ### Matrix of gene significant differences between conditions
+
 (skip for Brainmap wt-v-ko comparisons)
 
 ![plot of chunk sigMatrix](figure/Eldr/sigMatrix.png) 
@@ -309,13 +397,14 @@ There are 144 significantly differentially expressed genes. They are:
 ### Significant gene expression differences between conditions
 
 Expression plot (genes):
+![plot of chunk sigExpression](figure/Eldr/sigExpression1.png) 
 
 ```
 ## Using tracking_id, rep_name as id variables
 ## No id variables; using all as measure variables
 ```
 
-![plot of chunk sigExpression](figure/Eldr/sigExpression1.png) ![plot of chunk sigExpression](figure/Eldr/sigExpression2.png) 
+![plot of chunk sigExpression](figure/Eldr/sigExpression2.png) 
 
 Significant genes with expression >50fpkm (any condition):
 
@@ -323,9 +412,7 @@ Significant genes with expression >50fpkm (any condition):
 ## Using tracking_id, sample_name as id variables
 ```
 
-```
-## Error: could not find function "expresionPlot"
-```
+![plot of chunk highly expressed sig](figure/Eldr/highly expressed sig.png) 
 
 An individual look at each of the highly expressed significantly differentially regulated genes:
 (eval=false for first pass)
@@ -429,31 +516,17 @@ enrichKEGG
 enrichPathway
 
 
-
-
 ```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'goBP' not found
-```
-
-```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'goMF' not found
-```
-
-```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'goCC' not found
+## Loading required package: biomaRt
+## 
+## Attaching package: 'biomaRt'
+## 
+## The following object is masked from 'package:cummeRbund':
+## 
+##     getGene
 ```
 
-```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'kegg' not found
-```
-
-```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'pathway' not found
-```
-
-```
-## Error: invalid 'name' argument
-```
+![plot of chunk GO figures](figure/Eldr/GO figures1.png) ![plot of chunk GO figures](figure/Eldr/GO figures2.png) ![plot of chunk GO figures](figure/Eldr/GO figures3.png) ![plot of chunk GO figures](figure/Eldr/GO figures4.png) ![plot of chunk GO figures](figure/Eldr/GO figures5.png) 
 
 # Cis vs Trans (locally)
 
@@ -461,7 +534,57 @@ enrichPathway
 
 # Notes
 
-# Session Info
+## Samples used are:
+<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
+<!-- Mon Jun 16 14:52:13 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> 10 </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> JR753 </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> JR750 </TD> </TR>
+  <TR> <TD align="right"> 3 </TD> <TD> JR771 </TD> </TR>
+  <TR> <TD align="right"> 4 </TD> <TD> JR755 </TD> </TR>
+  <TR> <TD align="right"> 5 </TD> <TD> JR811 </TD> </TR>
+  <TR> <TD align="right"> 6 </TD> <TD> JR768 </TD> </TR>
+  <TR> <TD align="right"> 7 </TD> <TD> JR761 </TD> </TR>
+  <TR> <TD align="right"> 8 </TD> <TD> JR815 </TD> </TR>
+  <TR> <TD align="right"> 9 </TD> <TD> JR789 </TD> </TR>
+  <TR> <TD align="right"> 10 </TD> <TD> JR748 </TD> </TR>
+  <TR> <TD align="right"> 11 </TD> <TD> JR716 </TD> </TR>
+  <TR> <TD align="right"> 12 </TD> <TD> JR717 </TD> </TR>
+  <TR> <TD align="right"> 13 </TD> <TD> JR719 </TD> </TR>
+  <TR> <TD align="right"> 14 </TD> <TD> JR791 </TD> </TR>
+  <TR> <TD align="right"> 15 </TD> <TD> JR756 </TD> </TR>
+  <TR> <TD align="right"> 16 </TD> <TD> JR787 </TD> </TR>
+  <TR> <TD align="right"> 17 </TD> <TD> JR810 </TD> </TR>
+  <TR> <TD align="right"> 18 </TD> <TD> JR838 </TD> </TR>
+   </TABLE>
+
+## Replicates
+<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
+<!-- Mon Jun 16 14:52:13 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR753/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 39343800.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 1.32 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR750/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   1 </TD> <TD> WT_1 </TD> <TD align="right"> 36041100.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 1.15 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 3 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR771/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   2 </TD> <TD> WT_2 </TD> <TD align="right"> 38877000.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 1.28 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 4 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR755/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   3 </TD> <TD> WT_3 </TD> <TD align="right"> 41822800.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 1.34 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 5 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR811/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   4 </TD> <TD> WT_4 </TD> <TD align="right"> 38186700.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 1.25 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 6 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR768/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   5 </TD> <TD> WT_5 </TD> <TD align="right"> 28382500.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 0.93 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 7 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR761/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   6 </TD> <TD> WT_6 </TD> <TD align="right"> 31711800.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 1.01 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 8 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR815/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   7 </TD> <TD> WT_7 </TD> <TD align="right"> 29744300.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 0.96 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 9 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR789/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   8 </TD> <TD> WT_8 </TD> <TD align="right"> 27686600.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 0.90 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 10 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR748/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   9 </TD> <TD> WT_9 </TD> <TD align="right"> 32374600.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 1.00 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 11 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR716/abundances.cxb </TD> <TD> WT </TD> <TD align="right">  10 </TD> <TD> WT_10 </TD> <TD align="right"> 26148700.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 0.84 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 12 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR717/abundances.cxb </TD> <TD> WT </TD> <TD align="right">  11 </TD> <TD> WT_11 </TD> <TD align="right"> 25571500.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 0.83 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 13 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR719/abundances.cxb </TD> <TD> WT </TD> <TD align="right">  12 </TD> <TD> WT_12 </TD> <TD align="right"> 22702200.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 0.71 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 14 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR791/abundances.cxb </TD> <TD> WT </TD> <TD align="right">  13 </TD> <TD> WT_13 </TD> <TD align="right"> 12886300.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 0.42 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 15 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR756/abundances.cxb </TD> <TD> WT </TD> <TD align="right">  14 </TD> <TD> WT_14 </TD> <TD align="right"> 38957200.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 1.26 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 16 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR787/abundances.cxb </TD> <TD> Eldr </TD> <TD align="right">   0 </TD> <TD> Eldr_0 </TD> <TD align="right"> 26903500.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 0.88 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 17 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR810/abundances.cxb </TD> <TD> Eldr </TD> <TD align="right">   1 </TD> <TD> Eldr_1 </TD> <TD align="right"> 41840900.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 1.36 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 18 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR838/abundances.cxb </TD> <TD> Eldr </TD> <TD align="right">   2 </TD> <TD> Eldr_2 </TD> <TD align="right"> 37007300.00 </TD> <TD align="right"> 30904000.00 </TD> <TD align="right"> 1.21 </TD> <TD align="right"> 1.00 </TD> </TR>
+   </TABLE>
+
+## Session Info
 
 ```
 ## R version 3.0.2 (2013-09-25)
@@ -480,15 +603,16 @@ enrichPathway
 ## [8] methods   base     
 ## 
 ## other attached packages:
-##  [1] DOSE_2.0.0           ReactomePA_1.6.1     AnnotationDbi_1.24.0
-##  [4] Biobase_2.22.0       mgcv_1.7-29          nlme_3.1-117        
-##  [7] gridExtra_0.9.1      gtable_0.1.2         marray_1.40.0       
-## [10] gplots_2.13.0        GSA_1.03             limma_3.18.13       
-## [13] xtable_1.7-3         cummeRbund_2.7.2     Gviz_1.6.0          
-## [16] rtracklayer_1.22.7   GenomicRanges_1.14.4 XVector_0.2.0       
-## [19] IRanges_1.20.7       fastcluster_1.1.13   reshape2_1.4        
-## [22] ggplot2_1.0.0        RSQLite_0.11.4       DBI_0.2-7           
-## [25] BiocGenerics_0.8.0   knitr_1.6           
+##  [1] GO.db_2.10.1           org.Mm.eg.db_2.10.1    clusterProfiler_1.13.1
+##  [4] DOSE_2.0.0             ReactomePA_1.6.1       AnnotationDbi_1.24.0  
+##  [7] Biobase_2.22.0         mgcv_1.7-29            nlme_3.1-117          
+## [10] gridExtra_0.9.1        gtable_0.1.2           marray_1.40.0         
+## [13] gplots_2.13.0          GSA_1.03               limma_3.18.13         
+## [16] xtable_1.7-3           knitr_1.6              cummeRbund_2.7.2      
+## [19] Gviz_1.6.0             rtracklayer_1.22.7     GenomicRanges_1.14.4  
+## [22] XVector_0.2.0          IRanges_1.20.7         fastcluster_1.1.13    
+## [25] reshape2_1.4           ggplot2_1.0.0          RSQLite_0.11.4        
+## [28] DBI_0.2-7              BiocGenerics_0.8.0    
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] biomaRt_2.18.0         Biostrings_2.30.1      biovizBase_1.10.8     
@@ -496,9 +620,9 @@ enrichPathway
 ##  [7] cluster_1.15.2         colorspace_1.2-4       dichromat_2.0-0       
 ## [10] digest_0.6.4           DO.db_2.7              evaluate_0.5.5        
 ## [13] formatR_0.10           Formula_1.1-1          gdata_2.13.3          
-## [16] GenomicFeatures_1.14.5 GO.db_2.10.1           GOSemSim_1.20.3       
-## [19] graph_1.40.1           graphite_1.8.1         gtools_3.4.1          
-## [22] Hmisc_3.14-4           igraph_0.7.1           KernSmooth_2.23-12    
+## [16] GenomicFeatures_1.14.5 GOSemSim_1.20.3        graph_1.40.1          
+## [19] graphite_1.8.1         gtools_3.4.1           Hmisc_3.14-4          
+## [22] igraph_0.7.1           KEGG.db_2.10.1         KernSmooth_2.23-12    
 ## [25] labeling_0.2           lattice_0.20-29        latticeExtra_0.6-26   
 ## [28] markdown_0.7           MASS_7.3-33            Matrix_1.1-3          
 ## [31] mime_0.1.1             munsell_0.4.2          org.Hs.eg.db_2.10.1   
@@ -510,7 +634,7 @@ enrichPathway
 ## [49] XML_3.98-1.1           zlibbioc_1.8.0
 ```
 
-#Run Info
+## Run Info
 
 ```
 ##           param
