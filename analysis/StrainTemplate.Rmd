@@ -241,18 +241,16 @@ expressionBarplot(myGene,replicates=T)
 
 
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
-
-break apart into bars for individual replicates, prefferably all together
-
+Expression plot (endogenous linc, lacZ, Y-expressed gene):
 ```{r Digital Genotyping}
 genotypingGeneIDs<-c(strain,"LacZ","Eif2s3y")
 genotypingGenes<-getGenes(cuff,genotypingGeneIDs)
-       
-expressionBarplot(genotypingGenes)
 expressionBarplot(genotypingGenes,replicates=T)
+```
+Expression heatmap:
+```{r digital geno heatmap}
 csHeatmap(genotypingGenes,replicates=T)
 ```
-
 
 # Differential Analysis
 
@@ -279,16 +277,27 @@ sigMatrix(cuff, level="genes", alpha=alpha)
 
 ### Significant gene expression differences between conditions
 
-```{r sigExpression}
+Expression plot (genes):
+```{r sigExpression, fig.height=20, fig.width=10}
 csHeatmap(sigGenes, cluster="both",replicates=T)
 expressionPlot(sigGenes)
 #expressionBarplot(sigGenes)
 ```
 
-An individual look at each of the significantly differentially regulated genes:
+Significant genes with expression >50fpkm (any condition):
+```{r highly expressed sig}
+sigFPKMs<-fpkmMatrix(sigGenes)
+high<-sigFPKMs[which(sigFPKMs>50),]
+high<-high[complete.cases(high),]
+highIDs<-rownames(high)
+highGenes<-getGenes(cuff,highIDs)
+expresionPlot(highGenes)
+```
+
+An individual look at each of the highly expressed significantly differentially regulated genes:
 (eval=false for first pass)
-```{r plot ALL OF THE SIGNIFICANT GENES, eval=FALSE, fig.height=(20 + (1*(length(sig)))), fig.width=(20 + (1*length(sig)))}
-plots<-lapply(sig,function(x){
+```{r plot ALL OF THE SIGNIFICANT GENES, eval=FALSE, fig.height=(20 + (1*(length(highIDs)))), fig.width=(20 + (1*length(highIDs)))}
+plots<-lapply(highIDs,function(x){
   myGene<-getGene(cuff,x)
   return(expressionPlot(myGene,replicates=T))
   })
@@ -296,20 +305,24 @@ do.call(grid.arrange, plots)
 ```
 
 
-### Expression-level significance relationship
+### Expression-level/significance relationship
 
-**Interesting comments n stuff!**
-
+Scatter plot of significant genes only:
 ```{r expression-sig relationship}
 csScatter(sigGenes, "wt", "ko", smooth=T)
+```
+
+Volcano plot with significant genes only:
+```{r sig volcano}
 csVolcano(sigGenes, "wt", "ko")
 ```
+
 
 ## Differential Splicing
 
 ### Differential Isoforms between conditions
 Per isoform difference between conditions:
-```{r diff.iso,eval=TRUE,cache=TRUE}
+```{r diff.iso,eval=TRUE}
 sigMatrix(cuff, level="isoforms",alpha=alpha)
 
 isoformSigIDs<-getSig(cuff,level="isoforms",alpha=alpha)
@@ -322,11 +335,14 @@ These isoforms are:
 print(xtable(isoAnnot$gene_short_name),type="html")
 ```
 
-```{r isoform heatmap}
-csHeatmap(isoforms(isoformSigGenes),cluster='row',method=dist)
+
+```{r isoform heatmap, fig.height=20, fig.width=10}
+csHeatmap(isoforms(isoformSigGenes),cluster='row',rescaling='row',method=dist, replicates=T)
 ```
 
 ### Differential Splicing between conditions
+
+(eval false for first pass)
 
 Per condition differences in isoforms (Does gene have diff piechart between conditions?)
 
@@ -345,7 +361,7 @@ print(xtable(as.data.frame(spliceAnnot$gene_short_name)), type="html")
 ```
 
 Splicing heatmap by isoform:
-```{r splicing heatmap by isoform}
+```{r splicing heatmap by isoform, eval=FALSE, fig.height=20, fig.width=10}
 #pdf("sigSplicing_heatmap.pdf",width=10,height=20)
 csHeatmap(isoforms(splicingSigGenes),cluster='row',method=dist)
 #dev.off()
@@ -358,7 +374,6 @@ csHeatmap(splicingSigGenes,cluster='row',method=dist)
 
 The following are significantly differentially spliced genes (relative portion of isoform per condition): 
 
-eval false for first pass
 ```{r print all the splicing csPie plots, eval=FALSE}
 #fig.height=(20 +1*length(splicingSigIDs)), fig.width=(20 +1*length(splicingSigIDs))
 #csPiePlots<-lapply(splicingSigIDs,function(x){
@@ -386,7 +401,6 @@ do.call(grid.arrange,csPiePlots)
 
 ```
  
-
 ```{r diff.promoters,eval=FALSE,echo=FALSE, results='hide'}
 ## Differential Promoter Usage (By "Promoters") <- NOT USING IN BRAINMAP
 
@@ -406,7 +420,6 @@ do.call(grid.arrange,csPiePlots)
 
 ```
 
-
 ```{r diff.CDS,eval=FALSE, echo=FALSE, results='hide'}
 ## Differential CDS? (unique protein coding isoforms) <-NOT IN BRAINMAP
 cdsSigIDs<-getSig(cuff,alpha=alpha,level="CDS")
@@ -424,7 +437,6 @@ pdf("sig_relCDS_heatmap.pdf",width=10,height=20)
 csHeatmap(relcdsSigGenes,cluster='row',method=dist)
 dev.off()
 ```
-
 
 ```{r overview.venn,echo=FALSE, eval=FALSE}
 ## Venn diagram overview of Differential changes
@@ -447,7 +459,6 @@ dev.off()
 
   
 ```
-
 
 # Gene/Pathway Analysis
 
@@ -633,20 +644,6 @@ pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T
 ```
 
 ```{r GO figures, echo=FALSE,  fig.height=5, fig.width=8}
-#Visualizing w clusterProfiler
-#barplot(goBP, drop = TRUE, showCategory = 12)
-#barplot(goBP, showCategory = 12)
-#barplot(goMF,showCategory=12)
-#barplot(goCC, showCategory=12)
-
-#WHY DONT THESE FUNCTIONS WORK? 
-#cnetplot(goBP, categorySize = "pvalue", foldChange = geneList) #NEEDS foldChange values which requres exact entrez gene mapping (cant lose values); this requires a map. too much hassle for now. 
-#cnetplot(goBP, categorySize = "geneNum", foldChange = geneList)
-
-#cluster.enrichKEGG<-compareCluster(sigEZ,fun="enrichKEGG",organism="mouse",qvalueCutoff=0.01)
-#require(ReactomePA)
-#cluster.enrichPathway<-compareCluster(sigEntrezNames,fun="enrichPathway",qvalueCutoff=0.01)
-
 plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched BP")
 
 plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched MF")
@@ -656,13 +653,8 @@ plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) 
 plot(kegg, showCategory=10) + ggtitle("Kegg Pathways")
 
 plot(pathway,showCategory=10) + ggtitle("Reactome pathway enrichment")
-
-#Loyal plots
-#plot(cluster.enrichKEGG,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched KEGG")
-#plot(cluster.enrichPathway,showCategory=20) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched Reactome")
 detach("package:biomaRt")
 ```
-
 
 # Cis vs Trans (locally)
 ``` {r cis_v_trans}
@@ -680,9 +672,6 @@ window<-1000000
 
 ```
 
-
-# Interesting Genes
-Hand pick these after initial round of analysis?
 
 # Notes
 
