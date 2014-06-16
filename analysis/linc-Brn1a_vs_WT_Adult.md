@@ -5,8 +5,10 @@ linc-Brn1a KO vs WT (Adult)
 - add labels, descriptions
 - turn off all caching 
 - other heatmap labels (csHeatmap)
+- break into individual replicate bargraphs for genotyping... 
 - overlap figure
 - tracks 
+- should import litter info
 
 
 
@@ -22,7 +24,7 @@ This file shows the wt-v-ko comparison for linc-Brn1a.
 
 Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sun Jun 15 20:13:51 2014 -->
+<!-- Mon Jun 16 11:53:49 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR729 </TD> </TR>
@@ -61,7 +63,7 @@ Cuff overview:
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sun Jun 15 20:13:52 2014 -->
+<!-- Mon Jun 16 11:53:50 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR729/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 26338300.00 </TD> <TD align="right"> 33580300.00 </TD> <TD align="right"> 0.78 </TD> <TD align="right"> 1.00 </TD> </TR>
@@ -87,10 +89,8 @@ Cuff overview:
 
 ## Dispersion
 
-This shows count (WHAT IS COUNT? fragment counts? per gene?) vs dispersion (of those counts), or the spread in measurements for a particular gene across replicates. 
-
-from cummerbund manual: Overdispersion is a common problem in RNA-Seq data. As of cufflinks v2.0 mean counts, variance, and dispersion are all emitted, allowing you to visualize the estimated overdispersion for each sample as a quality control measure. - See more at: http://compbio.mit.edu/cummeRbund/manual_2_0.html#sthash.9YRYxwRV.dpuf
-
+Dispersion plot for genes in cuff:
+(Overdispersion can lead to innacurate quants)
 
 
 ```
@@ -98,7 +98,7 @@ from cummerbund manual: Overdispersion is a common problem in RNA-Seq data. As o
 ```
 
 ## Cross-replicate variability (fpkmSCVplot)
-The squared coefficient of variation is a normalized measure of cross replicate variability that can be useful for evaluating the quality your RNA-seq data. Differences in CV 2 can result in lower numbers of differentially expressed genes due to a higher degree of variability between replicate fpkm estimates.
+Differences in CV 2 can result in lower numbers of differentially expressed genes due to a higher degree of variability between replicate fpkm estimates.
 
 Genes:
 
@@ -126,6 +126,7 @@ Isoforms:
 ```
 
 ### Volcano matrix (replicates)
+
 ![plot of chunk volcano matrix](figure/linc-Brn1a/volcano matrix.png) 
 
 ## MvA plot
@@ -150,17 +151,38 @@ Isoforms:
 
 ## Distributions
 
-### Boxplot
-![plot of chunk boxplot](figure/linc-Brn1a/boxplot1.png) ![plot of chunk boxplot](figure/linc-Brn1a/boxplot2.png) ![plot of chunk boxplot](figure/linc-Brn1a/boxplot3.png) 
+### Boxplots
+
+Boxplot (genes)
+
+![plot of chunk boxplot genes](figure/linc-Brn1a/boxplot genes.png) 
+
+Boxplot (genes, replicates)
+
+![plot of chunk boxplot genes replicates](figure/linc-Brn1a/boxplot genes replicates.png) 
+
+Boxplot (isoforms)
+
+![plot of chunk boxplot isoforms](figure/linc-Brn1a/boxplot isoforms.png) 
+
+Boxplot (isoforms, replicates)
+
+![plot of chunk boxplot isoforms replicates](figure/linc-Brn1a/boxplot isoforms replicates.png) 
 
 ### Density
+
+Density (genes)
+
 
 ```
 ## Warning: Removed 3902 rows containing non-finite values (stat_density).
 ## Warning: Removed 6055 rows containing non-finite values (stat_density).
 ```
 
-![plot of chunk density](figure/linc-Brn1a/density1.png) 
+![plot of chunk density](figure/linc-Brn1a/density.png) 
+
+Density (genes, replicates)
+
 
 ```
 ## Warning: Removed 7158 rows containing non-finite values (stat_density).
@@ -182,7 +204,7 @@ Isoforms:
 ## Warning: Removed 6592 rows containing non-finite values (stat_density).
 ```
 
-![plot of chunk density](figure/linc-Brn1a/density2.png) 
+![plot of chunk density w replicates](figure/linc-Brn1a/density w replicates.png) 
 
 
 ## Clustering
@@ -194,28 +216,29 @@ Isoforms:
 ## 'dendrogram' with 2 branches and 17 members total, at height 0.07548
 ```
 
-### PCA
+### PCA (genes)
 ![plot of chunk PCA](figure/linc-Brn1a/PCA.png) 
 
-### MDS 
+### MDS (genes)
 ![plot of chunk MDS](figure/linc-Brn1a/MDS.png) 
 
-### Distance Heat Map
+### Distance Heat Map (genes)
 ![plot of chunk R distance heatmap](figure/linc-Brn1a/R distance heatmap.png) 
 
 
 # KO assessment
 
 ## Endogenous lncRNA expression
+
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sun Jun 15 20:15:29 2014 -->
+<!-- Mon Jun 16 11:56:05 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> gene_id </TH> <TH> sample_name </TH> <TH> fpkm </TH> <TH> conf_hi </TH> <TH> conf_lo </TH> <TH> quant_status </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> ENSMUSG00000060424.8 </TD> <TD> WT </TD> <TD align="right"> 62.74 </TD> <TD align="right"> 75.82 </TD> <TD align="right"> 49.65 </TD> <TD> OK </TD> </TR>
   <TR> <TD align="right"> 2 </TD> <TD> ENSMUSG00000060424.8 </TD> <TD> linc_Brn1a </TD> <TD align="right"> 0.46 </TD> <TD align="right"> 1.14 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
    </TABLE>
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sun Jun 15 20:15:29 2014 -->
+<!-- Mon Jun 16 11:56:05 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> isoform_id </TH> <TH> sample_name </TH> <TH> fpkm </TH> <TH> conf_hi </TH> <TH> conf_lo </TH> <TH> quant_status </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> ENSMUST00000078844.6 </TD> <TD> WT </TD> <TD align="right"> 0.48 </TD> <TD align="right"> 4.19 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
@@ -237,12 +260,25 @@ Isoforms:
   <TR> <TD align="right"> 17 </TD> <TD> ENSMUST00000181660.1 </TD> <TD> linc_Brn1a </TD> <TD align="right"> 0.19 </TD> <TD align="right"> 0.37 </TD> <TD align="right"> 0.01 </TD> <TD> OK </TD> </TR>
   <TR> <TD align="right"> 18 </TD> <TD> ENSMUST00000181725.1 </TD> <TD> linc_Brn1a </TD> <TD align="right"> 0.12 </TD> <TD align="right"> 0.41 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
    </TABLE>
-![plot of chunk Enodenous lncRNA tables](figure/linc-Brn1a/Enodenous lncRNA tables1.png) ![plot of chunk Enodenous lncRNA tables](figure/linc-Brn1a/Enodenous lncRNA tables2.png) ![plot of chunk Enodenous lncRNA tables](figure/linc-Brn1a/Enodenous lncRNA tables3.png) ![plot of chunk Enodenous lncRNA tables](figure/linc-Brn1a/Enodenous lncRNA tables4.png) ![plot of chunk Enodenous lncRNA tables](figure/linc-Brn1a/Enodenous lncRNA tables5.png) ![plot of chunk Enodenous lncRNA tables](figure/linc-Brn1a/Enodenous lncRNA tables6.png) ![plot of chunk Enodenous lncRNA tables](figure/linc-Brn1a/Enodenous lncRNA tables7.png) ![plot of chunk Enodenous lncRNA tables](figure/linc-Brn1a/Enodenous lncRNA tables8.png) 
+![plot of chunk Enodenous lncRNA tables](figure/linc-Brn1a/Enodenous lncRNA tables1.png) ![plot of chunk Enodenous lncRNA tables](figure/linc-Brn1a/Enodenous lncRNA tables2.png) 
+
+Endogenous expression of linc-Brn1a isoforms:
+
+![plot of chunk endogenous iso](figure/linc-Brn1a/endogenous iso1.png) ![plot of chunk endogenous iso](figure/linc-Brn1a/endogenous iso2.png) 
+
+Barplot of gene expression:
+
+![plot of chunk endogenous barplot](figure/linc-Brn1a/endogenous barplot1.png) ![plot of chunk endogenous barplot](figure/linc-Brn1a/endogenous barplot2.png) 
+
+Barplot of isoform expression:
+
+![plot of chunk endogenous iso barplot](figure/linc-Brn1a/endogenous iso barplot.png) 
 
 
 ## LacZ expression
+
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sun Jun 15 20:15:46 2014 -->
+<!-- Mon Jun 16 11:56:20 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> gene_id </TH> <TH> sample_name </TH> <TH> fpkm </TH> <TH> conf_hi </TH> <TH> conf_lo </TH> <TH> quant_status </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Velocigene_LacZ </TD> <TD> WT </TD> <TD align="right"> 0.12 </TD> <TD align="right"> 0.27 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
@@ -252,31 +288,24 @@ Isoforms:
 
 
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
+Expression plot (endogenous linc, lacZ, Y-expressed gene):
 
-break apart into bars for individual replicates, prefferably all together
-
-
-```
-## Scale for 'colour' is already present. Adding another scale for 'colour', which will replace the existing scale.
-## ymax not defined: adjusting position using y instead
-```
-
-![plot of chunk Digital Genotyping](figure/linc-Brn1a/Digital Genotyping1.png) 
 
 ```
 ## Scale for 'colour' is already present. Adding another scale for 'colour', which will replace the existing scale.
 ## ymax not defined: adjusting position using y instead
 ```
 
-![plot of chunk Digital Genotyping](figure/linc-Brn1a/Digital Genotyping2.png) 
+![plot of chunk Digital Genotyping](figure/linc-Brn1a/Digital Genotyping.png) 
+
+Expression heatmap:
 
 ```
 ## Using tracking_id, rep_name as id variables
 ## No id variables; using all as measure variables
 ```
 
-![plot of chunk Digital Genotyping](figure/linc-Brn1a/Digital Genotyping3.png) 
-
+![plot of chunk digital geno heatmap](figure/linc-Brn1a/digital geno heatmap.png) 
 
 # Differential Analysis
 
@@ -286,43 +315,121 @@ break apart into bars for individual replicates, prefferably all together
 
 There are 75 significantly differentially expressed genes. They are:
 
-
-```
-## Error: no applicable method for 'xtable' applied to an object of class
-## "character"
-```
+<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
+<!-- Mon Jun 16 11:56:33 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> Rec8 </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> Arrdc2 </TD> </TR>
+  <TR> <TD align="right"> 3 </TD> <TD> Fosb </TD> </TR>
+  <TR> <TD align="right"> 4 </TD> <TD> Nes </TD> </TR>
+  <TR> <TD align="right"> 5 </TD> <TD> Dio2 </TD> </TR>
+  <TR> <TD align="right"> 6 </TD> <TD> Mertk </TD> </TR>
+  <TR> <TD align="right"> 7 </TD> <TD> Hspa8 </TD> </TR>
+  <TR> <TD align="right"> 8 </TD> <TD> Vip </TD> </TR>
+  <TR> <TD align="right"> 9 </TD> <TD> Fabp7 </TD> </TR>
+  <TR> <TD align="right"> 10 </TD> <TD> Sgk1 </TD> </TR>
+  <TR> <TD align="right"> 11 </TD> <TD> Mybpc1 </TD> </TR>
+  <TR> <TD align="right"> 12 </TD> <TD> Btg2 </TD> </TR>
+  <TR> <TD align="right"> 13 </TD> <TD> Xbp1 </TD> </TR>
+  <TR> <TD align="right"> 14 </TD> <TD> Fos </TD> </TR>
+  <TR> <TD align="right"> 15 </TD> <TD> Rgcc </TD> </TR>
+  <TR> <TD align="right"> 16 </TD> <TD> Dnajc3 </TD> </TR>
+  <TR> <TD align="right"> 17 </TD> <TD> Arc </TD> </TR>
+  <TR> <TD align="right"> 18 </TD> <TD> Sdf2l1 </TD> </TR>
+  <TR> <TD align="right"> 19 </TD> <TD> Nr4a1 </TD> </TR>
+  <TR> <TD align="right"> 20 </TD> <TD> Cdkn1a </TD> </TR>
+  <TR> <TD align="right"> 21 </TD> <TD> Sik1 </TD> </TR>
+  <TR> <TD align="right"> 22 </TD> <TD> Xdh </TD> </TR>
+  <TR> <TD align="right"> 23 </TD> <TD> Dusp1 </TD> </TR>
+  <TR> <TD align="right"> 24 </TD> <TD> Fkbp5 </TD> </TR>
+  <TR> <TD align="right"> 25 </TD> <TD> Il33 </TD> </TR>
+  <TR> <TD align="right"> 26 </TD> <TD> Pdia4 </TD> </TR>
+  <TR> <TD align="right"> 27 </TD> <TD> Paqr8 </TD> </TR>
+  <TR> <TD align="right"> 28 </TD> <TD> Tfcp2l1 </TD> </TR>
+  <TR> <TD align="right"> 29 </TD> <TD> Hspa5 </TD> </TR>
+  <TR> <TD align="right"> 30 </TD> <TD> Spred1 </TD> </TR>
+  <TR> <TD align="right"> 31 </TD> <TD> Cyr61 </TD> </TR>
+  <TR> <TD align="right"> 32 </TD> <TD> Nr4a3 </TD> </TR>
+  <TR> <TD align="right"> 33 </TD> <TD> Alad </TD> </TR>
+  <TR> <TD align="right"> 34 </TD> <TD> Slc2a1 </TD> </TR>
+  <TR> <TD align="right"> 35 </TD> <TD> Mfsd2a </TD> </TR>
+  <TR> <TD align="right"> 36 </TD> <TD> Tinagl1 </TD> </TR>
+  <TR> <TD align="right"> 37 </TD> <TD> Adipor2 </TD> </TR>
+  <TR> <TD align="right"> 38 </TD> <TD> Pglyrp1 </TD> </TR>
+  <TR> <TD align="right"> 39 </TD> <TD> Hddc3 </TD> </TR>
+  <TR> <TD align="right"> 40 </TD> <TD> Tsc22d3 </TD> </TR>
+  <TR> <TD align="right"> 41 </TD> <TD> Cryab </TD> </TR>
+  <TR> <TD align="right"> 42 </TD> <TD> Ndn </TD> </TR>
+  <TR> <TD align="right"> 43 </TD> <TD> Igsf9b </TD> </TR>
+  <TR> <TD align="right"> 44 </TD> <TD> Cbl </TD> </TR>
+  <TR> <TD align="right"> 45 </TD> <TD> Nostrin </TD> </TR>
+  <TR> <TD align="right"> 46 </TD> <TD> Lars2 </TD> </TR>
+  <TR> <TD align="right"> 47 </TD> <TD> Anln </TD> </TR>
+  <TR> <TD align="right"> 48 </TD> <TD> Egr2 </TD> </TR>
+  <TR> <TD align="right"> 49 </TD> <TD> Smim3 </TD> </TR>
+  <TR> <TD align="right"> 50 </TD> <TD> Egr1 </TD> </TR>
+  <TR> <TD align="right"> 51 </TD> <TD> Hdhd3 </TD> </TR>
+  <TR> <TD align="right"> 52 </TD> <TD> Daam2 </TD> </TR>
+  <TR> <TD align="right"> 53 </TD> <TD> Tlr7 </TD> </TR>
+  <TR> <TD align="right"> 54 </TD> <TD> Npas4 </TD> </TR>
+  <TR> <TD align="right"> 55 </TD> <TD> Gpr17 </TD> </TR>
+  <TR> <TD align="right"> 56 </TD> <TD> Nrros </TD> </TR>
+  <TR> <TD align="right"> 57 </TD> <TD> Jun </TD> </TR>
+  <TR> <TD align="right"> 58 </TD> <TD> Junb </TD> </TR>
+  <TR> <TD align="right"> 59 </TD> <TD> Ier2 </TD> </TR>
+  <TR> <TD align="right"> 60 </TD> <TD> Per2 </TD> </TR>
+  <TR> <TD align="right"> 61 </TD> <TD> Kdm5d </TD> </TR>
+  <TR> <TD align="right"> 62 </TD> <TD> linc-Brn1a </TD> </TR>
+  <TR> <TD align="right"> 63 </TD> <TD> Usp31 </TD> </TR>
+  <TR> <TD align="right"> 64 </TD> <TD> Zbtb16 </TD> </TR>
+  <TR> <TD align="right"> 65 </TD> <TD> Ddx3y </TD> </TR>
+  <TR> <TD align="right"> 66 </TD> <TD> Klhl9 </TD> </TR>
+  <TR> <TD align="right"> 67 </TD> <TD> Egr4 </TD> </TR>
+  <TR> <TD align="right"> 68 </TD> <TD> Gm7292 </TD> </TR>
+  <TR> <TD align="right"> 69 </TD> <TD> Fat3 </TD> </TR>
+  <TR> <TD align="right"> 70 </TD> <TD> Xist </TD> </TR>
+  <TR> <TD align="right"> 71 </TD> <TD> Cdr1 </TD> </TR>
+  <TR> <TD align="right"> 72 </TD> <TD> AA465934 </TD> </TR>
+  <TR> <TD align="right"> 73 </TD> <TD> Gm6472 </TD> </TR>
+  <TR> <TD align="right"> 74 </TD> <TD> Gm26924 </TD> </TR>
+  <TR> <TD align="right"> 75 </TD> <TD> LacZ </TD> </TR>
+   </TABLE>
 
 ### Matrix of gene significant differences between conditions
+
 (skip for Brainmap wt-v-ko comparisons)
 
 ![plot of chunk sigMatrix](figure/linc-Brn1a/sigMatrix.png) 
 
 ### Significant gene expression differences between conditions
 
+Expression plot (genes):
+![plot of chunk sigExpression](figure/linc-Brn1a/sigExpression1.png) 
 
 ```
 ## Using tracking_id, rep_name as id variables
 ## No id variables; using all as measure variables
 ```
 
-![plot of chunk sigExpression](figure/linc-Brn1a/sigExpression1.png) ![plot of chunk sigExpression](figure/linc-Brn1a/sigExpression2.png) 
+![plot of chunk sigExpression](figure/linc-Brn1a/sigExpression2.png) 
+
+Significant genes with expression >50fpkm (any condition):
 
 ```
-## Scale for 'colour' is already present. Adding another scale for 'colour', which will replace the existing scale.
-## ymax not defined: adjusting position using y instead
+## Using tracking_id, sample_name as id variables
 ```
 
-![plot of chunk sigExpression](figure/linc-Brn1a/sigExpression3.png) 
+![plot of chunk highly expressed sig](figure/linc-Brn1a/highly expressed sig.png) 
 
-An individual look at each of the significantly differentially regulated genes:
+An individual look at each of the highly expressed significantly differentially regulated genes:
 (eval=false for first pass)
 
 
 
-### Expression-level significance relationship
+### Expression-level/significance relationship
 
-**Interesting comments n stuff!**
-
+Scatter plot of significant genes only:
 
 ```
 ## Using tracking_id, sample_name as id variables
@@ -332,9 +439,12 @@ An individual look at each of the significantly differentially regulated genes:
 ## Error: One or more values of 'x' or 'y' are not valid sample names!
 ```
 
+Volcano plot with significant genes only:
+
 ```
 ## Error: One or more values of 'x' or 'y' are not valid sample names!
 ```
+
 
 ## Differential Splicing
 
@@ -350,14 +460,16 @@ These isoforms are:
 ```
 
 
+
 ```
-## Using tracking_id, sample_name as id variables
-## No id variables; using all as measure variables
+## Using tracking_id, rep_name as id variables
 ```
 
 ![plot of chunk isoform heatmap](figure/linc-Brn1a/isoform heatmap.png) 
 
 ### Differential Splicing between conditions
+
+(eval false for first pass)
 
 Per condition differences in isoforms (Does gene have diff piechart between conditions?)
 
@@ -368,26 +480,17 @@ These genes are:
 
 Splicing heatmap by isoform:
 
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'csHeatmap': Error in isoforms(splicingSigGenes) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'splicingSigGenes' not found
-```
 
 Splicing heatmap by gene
 
 
 The following are significantly differentially spliced genes (relative portion of isoform per condition): 
 
-eval false for first pass
 
 
 
 
  
-
-
-
-
 
 
 
@@ -412,6 +515,41 @@ Cluster profiler used to call enichments of significantly differentially regulat
 Description/explanation of what's here, and justify all choices. 
 
 
+```
+## Loading required package: AnnotationDbi
+## Loading required package: Biobase
+## Welcome to Bioconductor
+## 
+##     Vignettes contain introductory material; view with
+##     'browseVignettes()'. To cite Bioconductor, see
+##     'citation("Biobase")', and for packages 'citation("pkgname")'.
+## 
+## 
+## Attaching package: 'Biobase'
+## 
+## The following object is masked from 'package:cummeRbund':
+## 
+##     samples
+```
+
+```
+## Warning: Can't find a usable tk.tcl in the following directories: 
+##     /n/sw/centos6/tcl8.5.14/lib/tcl8.5/tk8.5 /n/sw/centos6/tcl8.5.14/lib/tk8.5 ./lib/tk8.5 ./library
+## 
+## 
+## 
+## This probably means that tk wasn't installed properly.
+```
+
+```
+## 
+## 
+## Attaching package: 'DOSE'
+## 
+## The following object is masked from 'package:ReactomePA':
+## 
+##     gseAnalyzer
+```
 
 biomart to get entrez gene IDS
 clusterProfiler does GO enrichment 
@@ -422,19 +560,34 @@ enrichPathway
 
 
 
-![plot of chunk GO figures](figure/linc-Brn1a/GO figures1.png) ![plot of chunk GO figures](figure/linc-Brn1a/GO figures2.png) ![plot of chunk GO figures](figure/linc-Brn1a/GO figures3.png) ![plot of chunk GO figures](figure/linc-Brn1a/GO figures4.png) ![plot of chunk GO figures](figure/linc-Brn1a/GO figures5.png) 
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'goBP' not found
+```
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'goMF' not found
+```
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'goCC' not found
+```
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'kegg' not found
+```
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'pathway' not found
+```
 
 ```
 ## Error: invalid 'name' argument
 ```
 
-
 # Cis vs Trans (locally)
 
 
-
-# Interesting Genes
-Hand pick these after initial round of analysis?
 
 # Notes
 
@@ -457,35 +610,33 @@ Hand pick these after initial round of analysis?
 ## [8] methods   base     
 ## 
 ## other attached packages:
-##  [1] GO.db_2.10.1           org.Mm.eg.db_2.10.1    clusterProfiler_1.13.1
-##  [4] DOSE_2.0.0             ReactomePA_1.6.1       AnnotationDbi_1.24.0  
-##  [7] Biobase_2.22.0         mgcv_1.7-29            nlme_3.1-117          
-## [10] gridExtra_0.9.1        gtable_0.1.2           marray_1.40.0         
-## [13] gplots_2.13.0          GSA_1.03               limma_3.18.13         
-## [16] xtable_1.7-3           knitr_1.6              cummeRbund_2.7.2      
-## [19] Gviz_1.6.0             rtracklayer_1.22.7     GenomicRanges_1.14.4  
-## [22] XVector_0.2.0          IRanges_1.20.7         fastcluster_1.1.13    
-## [25] reshape2_1.4           ggplot2_1.0.0          RSQLite_0.11.4        
-## [28] DBI_0.2-7              BiocGenerics_0.8.0    
+##  [1] DOSE_2.0.0           ReactomePA_1.6.1     AnnotationDbi_1.24.0
+##  [4] Biobase_2.22.0       mgcv_1.7-29          nlme_3.1-117        
+##  [7] gridExtra_0.9.1      gtable_0.1.2         marray_1.40.0       
+## [10] gplots_2.13.0        GSA_1.03             limma_3.18.13       
+## [13] xtable_1.7-3         knitr_1.6            cummeRbund_2.7.2    
+## [16] Gviz_1.6.0           rtracklayer_1.22.7   GenomicRanges_1.14.4
+## [19] XVector_0.2.0        IRanges_1.20.7       fastcluster_1.1.13  
+## [22] reshape2_1.4         ggplot2_1.0.0        RSQLite_0.11.4      
+## [25] DBI_0.2-7            BiocGenerics_0.8.0  
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] biomaRt_2.18.0         Biostrings_2.30.1      biovizBase_1.10.8     
 ##  [4] bitops_1.0-6           BSgenome_1.30.0        caTools_1.17          
-##  [7] cluster_1.15.2         codetools_0.2-8        colorspace_1.2-4      
-## [10] dichromat_2.0-0        digest_0.6.4           DO.db_2.7             
-## [13] evaluate_0.5.5         formatR_0.10           Formula_1.1-1         
-## [16] gdata_2.13.3           GenomicFeatures_1.14.5 GOSemSim_1.20.3       
+##  [7] cluster_1.15.2         colorspace_1.2-4       dichromat_2.0-0       
+## [10] digest_0.6.4           DO.db_2.7              evaluate_0.5.5        
+## [13] formatR_0.10           Formula_1.1-1          gdata_2.13.3          
+## [16] GenomicFeatures_1.14.5 GO.db_2.10.1           GOSemSim_1.20.3       
 ## [19] graph_1.40.1           graphite_1.8.1         gtools_3.4.1          
-## [22] Hmisc_3.14-4           igraph_0.7.1           KEGG.db_2.10.1        
-## [25] KernSmooth_2.23-12     labeling_0.2           lattice_0.20-29       
-## [28] latticeExtra_0.6-26    markdown_0.7           MASS_7.3-33           
-## [31] Matrix_1.1-3           mime_0.1.1             munsell_0.4.2         
-## [34] org.Hs.eg.db_2.10.1    plyr_1.8.1             proto_0.3-10          
-## [37] qvalue_1.36.0          RColorBrewer_1.0-5     Rcpp_0.11.1           
-## [40] RCurl_1.95-4.1         reactome.db_1.46.1     Rsamtools_1.14.3      
-## [43] scales_0.2.4           splines_3.0.2          stats4_3.0.2          
-## [46] stringr_0.6.2          survival_2.37-7        tcltk_3.0.2           
-## [49] tools_3.0.2            XML_3.98-1.1           zlibbioc_1.8.0
+## [22] Hmisc_3.14-4           igraph_0.7.1           KernSmooth_2.23-12    
+## [25] labeling_0.2           lattice_0.20-29        latticeExtra_0.6-26   
+## [28] MASS_7.3-33            Matrix_1.1-3           munsell_0.4.2         
+## [31] org.Hs.eg.db_2.10.1    plyr_1.8.1             proto_0.3-10          
+## [34] qvalue_1.36.0          RColorBrewer_1.0-5     Rcpp_0.11.1           
+## [37] RCurl_1.95-4.1         reactome.db_1.46.1     Rsamtools_1.14.3      
+## [40] scales_0.2.4           splines_3.0.2          stats4_3.0.2          
+## [43] stringr_0.6.2          survival_2.37-7        tcltk_3.0.2           
+## [46] tools_3.0.2            XML_3.98-1.1           zlibbioc_1.8.0
 ```
 
 #Run Info

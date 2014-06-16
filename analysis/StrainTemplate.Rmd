@@ -236,7 +236,7 @@ expressionBarplot(myGene,replicates=T)
 Barplot of isoform expression:
 
 ```{r endogenous iso barplot}
-expressionBarplot(isoforms(myGene))     
+#expressionBarplot(isoforms(myGene))     
 expressionBarplot(isoforms(myGene), replicates=T)
 ```
 
