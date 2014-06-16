@@ -1,9 +1,85 @@
 Mouse Data Overview 1
 ========================================================
+```{r options}
+opts_chunk$set(echo=FALSE)
+```
+
+```{r setup}
+library(cummeRbund)
+
+analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
+diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
+GTF<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf"
+
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Adult"
+setwd(dir)
+cuff<-readCufflinks(gtfFile=GTF,genome="mm10")
+```
 
 # Adult Samples 
-- wts 9, 10
+
+- all have strange density plots: add pseudocount 
+
+Without Pseudocount
+```{r density}
+csDensity(genes(cuff),replicates=TRUE)
+```
+
+
+With Pseudocount = 0.01 
+```{r density pseudo}
+csDensity(genes(cuff),pseudocount=0.01,replicates=TRUE)
+```
+
+
+## WTS:
+
+### Genotyping
 - wt 12 is ko/het 
+```{r genotyping}
+genotypingGeneIDs<-c(strain,"LacZ","Eif2s3y")
+genotypingGenes<-getGenes(cuff,genotypingGeneIDs)
+csHeatmap(genotypingGenes,replicates=T)
+```
+
+### QC 
+- wts 9, 10 have smaller fpkm distribution 
+```{r boxplot replicates}
+csBoxplot(genes(cuff),replicates=T)
+```
+
+### Other Notes
+
+
+
+## KO Strains
+
+### Celrr
+
+### Crnde
+
+### Eldr
+
+### Haunt
+
+### Kantr
+
+### Brn1a
+
+### Brn1b
+
+### linc-Cox2
+
+### linc-Enc1a
+
+### Manr
+
+### Peril
+
+### Trp53cor (linc-p21)
+
+### Tug1
+
 
 - enc1 we're going to want a track showing where it's expressed (relative to KO region... )
 
@@ -11,3 +87,39 @@ Mouse Data Overview 1
 # Embryonic Samples
 - Celrr: celrr 0 is not KO (seems WT)
 - wt13 
+
+## WTS:
+
+### Genotyping
+
+### QC 
+
+### Other Notes
+
+## KO Strains
+
+### Celrr
+
+### Crnde
+
+### Eldr
+
+### Haunt
+
+### Kantr
+
+### Brn1a
+
+### Brn1b
+
+### linc-Cox2
+
+### linc-Enc1a
+
+### Manr
+
+### Peril
+
+### Trp53cor (linc-p21)
+
+### Tug1
