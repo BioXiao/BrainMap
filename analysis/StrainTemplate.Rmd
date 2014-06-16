@@ -8,6 +8,7 @@
 - break into individual replicate bargraphs for genotyping... 
 - overlap figure
 - tracks 
+- should import litter info
 
 
 ```{r init, echo=FALSE}
@@ -167,11 +168,15 @@ csBoxplot(isoforms(cuff), replicates=T)
 ```
 
 ### Density
+
 Density (genes)
+
 ```{r density}
 csDensity(genes(cuff))
 ```
+
 Density (genes, replicates)
+
 ```{r density w replicates}
 csDensity(genes(cuff),replicates=T)
 ```
@@ -203,6 +208,7 @@ csDistHeat(genes(cuff), replicates=T)
 # KO assessment
 
 ## Endogenous lncRNA expression
+
 ```{r Enodenous lncRNA tables, results='asis'}
 myGeneID<-strain
 myGene<-getGene(cuff, myGeneID)
@@ -214,18 +220,21 @@ expressionPlot(myGene, replicates=TRUE)
 ```
 
 Endogenous expression of `r strain` isoforms:
+
 ```{r endogenous iso}
 expressionPlot(isoforms(myGene))
 expressionPlot(isoforms(myGene), replicates=T)
 ```
 
 Barplot of gene expression:
+
 ```{r endogenous barplot}
 expressionBarplot(myGene)
 expressionBarplot(myGene,replicates=T)
 ```
 
 Barplot of isoform expression:
+
 ```{r endogenous iso barplot}
 expressionBarplot(isoforms(myGene))     
 expressionBarplot(isoforms(myGene), replicates=T)
@@ -233,6 +242,7 @@ expressionBarplot(isoforms(myGene), replicates=T)
 
 
 ## LacZ expression
+
 ```{r LacZ expression, results='asis'}
 myGeneID<-"LacZ"
 myGene<-getGene(cuff, myGeneID)
@@ -292,7 +302,7 @@ Expression plot (genes):
 #RELABEL!
 rowlabel<-geneAnnot$gene_short_name
 expressionPlot(sigGenes)
-csHeatmap(sigGenes, cluster="row",replicates=T)
+csHeatmap(sigGenes, cluster="both",replicates=T)
 #expressionBarplot(sigGenes)
 ```
 
@@ -349,7 +359,7 @@ print(xtable(isoAnnot$gene_short_name),type="html")
 
 
 ```{r isoform heatmap, fig.height=20, fig.width=10}
-csHeatmap(isoforms(isoformSigGenes),cluster='row',rescaling='row',method=dist, replicates=T)
+csHeatmap(isoforms(isoformSigGenes),cluster='both',rescaling='row',method=dist, replicates=T)
 ```
 
 ### Differential Splicing between conditions

@@ -10,3 +10,4 @@ Mouse Data Overview 1
 
 # Embryonic Samples
 - Celrr: celrr 0 is not KO (seems WT)
+- wt13 
