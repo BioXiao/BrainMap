@@ -159,21 +159,95 @@ myGene<-getGene(cuff,id)
 
 ```
 
+**THIS DENDROGRAM LOOKS DIFFERENT WHEN PRINTED IN R STUDIO!**
+
 Endogenous linc and LZ approx same expression levels 
+
 
 
 ### linc-Enc1a
 
+I think this one MIGHT be a mapping error. Endogenous linc expressed at ~ WT levels (very low), but all cells have lacZ robustly expressed. Potentially hets I guess 
+
+```{r lincEnc1a}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Enc1_vs_WT_Adult"
+
+setwd(dir)
+cuff<-readCufflinks()
+id<-"linc-Enc1"
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
+
+```
+
+
+LacZ and genotyping heatmap
+```{r lincEnc1a lz adult}
+id<-"LacZ"
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
+ids<-c("linc-Enc1","LacZ")
+myGenes<-getGenes(cuff,ids)
+csHeatmap(myGenes,replicates=TRUE)
+```
+
+
+
+
+
 ### Manr
+Same as with linc-Enc1a, may be extra-knockout region OR perhaps hets or some sort of artifact.. 
+
+```{r MANR}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Manr_vs_WT_Adult"
+setwd(dir)
+cuff<-readCufflinks()
+id<-"Manr"
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
+```
+
+LacZ and genotyping heatmap
+```{r MANR lz adult}
+lz<-"LacZ"
+myGene<-getGene(cuff,lz)
+expressionBarplot(isoforms(myGene), replicates=T)
+ids<-c(id,lz)
+myGenes<-getGenes(cuff,ids)
+csHeatmap(myGenes,replicates=TRUE)
+```
+
 
 ### Peril
+
+Fairly certai this is extra-knockout region. Need to make tracks! 
+
+```{r Peril}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Peril_vs_WT_Adult"
+setwd(dir)
+cuff<-readCufflinks()
+id<-"Peril"
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
+```
+
+LacZ and genotyping heatmap
+```{r Peril lz adult}
+lz<-"LacZ"
+myGene<-getGene(cuff,lz)
+expressionBarplot(isoforms(myGene), replicates=T)
+ids<-c(id,lz)
+myGenes<-getGenes(cuff,ids)
+csHeatmap(myGenes,replicates=TRUE)
+```
+
+
 
 ### Trp53cor (linc-p21)
 
 ### Tug1
 
 
-- enc1 we're going to want a track showing where it's expressed (relative to KO region... )
 
 
 # Embryonic Samples

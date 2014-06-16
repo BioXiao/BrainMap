@@ -172,13 +172,13 @@ csBoxplot(isoforms(cuff), replicates=T)
 Density (genes)
 
 ```{r density}
-csDensity(genes(cuff))
+csDensity(genes(cuff),pseudocount=0.001)
 ```
 
 Density (genes, replicates)
 
 ```{r density w replicates}
-csDensity(genes(cuff),replicates=T)
+csDensity(genes(cuff),pseudocount=0.001,replicates=T)
 ```
 
 
