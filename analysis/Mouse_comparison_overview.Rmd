@@ -164,22 +164,18 @@ myGene<-getGene(cuff,id)
 Endogenous linc and LZ approx same expression levels 
 
 
-
 ### linc-Enc1a
 
 I think this one MIGHT be a mapping error. Endogenous linc expressed at ~ WT levels (very low), but all cells have lacZ robustly expressed. Potentially hets I guess 
 
 ```{r lincEnc1a}
 dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Enc1_vs_WT_Adult"
-
 setwd(dir)
 cuff<-readCufflinks()
 id<-"linc-Enc1"
 myGene<-getGene(cuff,id)
 expressionBarplot(isoforms(myGene), replicates=T)
-
 ```
-
 
 LacZ and genotyping heatmap
 ```{r lincEnc1a lz adult}
@@ -190,9 +186,6 @@ ids<-c("linc-Enc1","LacZ")
 myGenes<-getGenes(cuff,ids)
 csHeatmap(myGenes,replicates=TRUE)
 ```
-
-
-
 
 
 ### Manr
@@ -241,12 +234,13 @@ myGenes<-getGenes(cuff,ids)
 csHeatmap(myGenes,replicates=TRUE)
 ```
 
+### Trp53cor1 (linc-p21)
 
-
-### Trp53cor (linc-p21)
 
 ### Tug1
 
+LacZ expressed far lower than Tug1 lincRNA 
+Why is one of the tug1 replicates missing from plots/dendrogram??
 
 
 
