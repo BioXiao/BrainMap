@@ -1,4 +1,4 @@
-'r strain' KO vs WT ('r timepoint')
+`r strain` KO vs WT (`r timepoint`)
 ======================================
 
 
@@ -13,8 +13,8 @@
 ```{r init, echo=FALSE}
 # Set knitr opts
 
-path<-paste("figure/",strain,"/", sep="")
-opts_chunk$set(fig.path=path, echo=FALSE)
+path<-paste("figure/",strain,"/",timepoint,"/", sep="")
+opts_chunk$set(fig.path=path, echo=FALSE, message=FALSE)
 
 ### OPTIONAL VAR OVERRIDE (where are my variables!!?)
 #dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Brn1b_vs_WT_Embryonic/"
@@ -189,8 +189,9 @@ PCAplot(genes(cuff),"PC2","PC3", replicates=T)
 MDSplot(genes(cuff),replicates=T)
 ```
 
+
+```{r R distance heatmap, eval=FALSE }
 ### Distance Heat Map (genes)
-```{r R distance heatmap }
 csDistHeat(genes(cuff), replicates=T)
 ```
 
@@ -202,24 +203,24 @@ csDistHeat(genes(cuff), replicates=T)
 ```{r Enodenous lncRNA tables, results='asis'}
 myGeneID<-strain
 myGene<-getGene(cuff, myGeneID)
-print(xtable(fpkm(myGene)),type="html")
-print(xtable(fpkm(isoforms(myGene))), type="html")
+#print(xtable(fpkm(myGene)),type="html")
+#print(xtable(fpkm(isoforms(myGene))), type="html")
        
-expressionPlot(myGene)
+#expressionPlot(myGene)
 expressionPlot(myGene, replicates=TRUE)
 ```
 
 Endogenous expression of `r strain` isoforms:
 
 ```{r endogenous iso}
-expressionPlot(isoforms(myGene))
+#expressionPlot(isoforms(myGene))
 expressionPlot(isoforms(myGene), replicates=T)
 ```
 
 Barplot of gene expression:
 
 ```{r endogenous barplot}
-expressionBarplot(myGene)
+#expressionBarplot(myGene)
 expressionBarplot(myGene,replicates=T)
 ```
 
@@ -237,12 +238,12 @@ expressionBarplot(isoforms(myGene), replicates=T)
 myGeneID<-"LacZ"
 myGene<-getGene(cuff, myGeneID)
 
-print(xtable(fpkm(myGene)),type="html")
+#print(xtable(fpkm(myGene)),type="html")
        
-expressionPlot(myGene)
+#expressionPlot(myGene)
 expressionPlot(myGene, replicates=TRUE)
              
-expressionBarplot(myGene)
+#expressionBarplot(myGene)
 expressionBarplot(myGene,replicates=T)
 ```
 
@@ -335,7 +336,7 @@ csVolcano(sigGenes, "wt", "ko")
 
 ### Differential Isoforms between conditions
 Per isoform difference between conditions:
-```{r diff.iso,eval=TRUE}
+```{r diff.iso}
 sigMatrix(cuff, level="isoforms",alpha=alpha)
 
 isoformSigIDs<-getSig(cuff,level="isoforms",alpha=alpha)
@@ -350,7 +351,7 @@ print(xtable(as.data.frame(isoAnnot$gene_short_name)),type="html")
 
 
 ```{r isoform heatmap, fig.height=20, fig.width=10}
-csHeatmap(isoforms(isoformSigGenes),cluster='both',rescaling='row',method=dist, replicates=T)
+csHeatmap(isoforms(isoformSigGenes),cluster='both', replicates=T)
 ```
 
 ### Differential Splicing between conditions
@@ -588,9 +589,7 @@ heatmap.2(x_ordered_subset, trace="none", margins=c(5,20),col=InputCols,dendrogr
 ## GO enrichment 
 Cluster profiler used to call enichments of significantly differentially regulated genes that map to Entrez IDs. 
 
-Description/explanation of what's here, and justify all choices. 
-
-```{r GO setup}
+```{r GO setup, echo=FALSE}
 #source("http://bioconductor.org/biocLite.R")
 #biocLite("ReactomePA")
 
