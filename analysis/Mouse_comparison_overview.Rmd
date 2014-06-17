@@ -1,7 +1,7 @@
 Mouse Data Overview 1
 ========================================================
 ```{r options}
-opts_chunk$set(echo=FALSE)
+opts_chunk$set(echo=FALSE, message=FALSE)
 ```
 
 ```{r setup, results='hide'}
@@ -27,32 +27,38 @@ alpha<-0.05
 
 setwd(diffdir)
 names<-list.files()
+names<-gsub("-","",names)
 setwd(analysisdir)
 diffGeneSummary<-data.frame(t(names), row.names=NULL)
 colnames(diffGeneSummary)<-names
+diffGeneSummary$unit_test<-NULL
+diffGeneSummary$init<-NULL
+
 ```
 
 # Adult Samples 
 - All have strange density plots: add pseudocount 
 
 Without Pseudocount
+
 ```{r density}
 csDensity(genes(cuff),replicates=TRUE)
 ```
 
 With Pseudocount = 0.01 
+
 ```{r density pseudo}
 csDensity(genes(cuff),pseudocount=0.01,replicates=TRUE)
 ```
 
 
-## WTS:
+## ADULT WILDTYPES:
 
 ### Genotyping
 - wt 12 is ko/het (JR817)
 
 ```{r genotyping}
-genotypingGeneIDs<-c(strain,"LacZ","Eif2s3y")
+genotypingGeneIDs<-c("Celrr","LacZ","Eif2s3y")
 genotypingGenes<-getGenes(cuff,genotypingGeneIDs)
 csHeatmap(genotypingGenes,replicates=T)
 ```
@@ -81,9 +87,19 @@ csBoxplot(isoforms(cuff), replicates=T)
 
 ### Other Notes
 
-## KO Strains
+## ADULT KNOCKOUT STRAINS 
 
 ### Celrr
+```{r adult celr diff}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Adult"
+setwd(dir)
+cuff<-readCufflinks()
+sig<-getSig(cuff, alpha=alpha)
+diffGeneSummary$Celrr_vs_WT_Adult<-length(sig)
+```
+
+Number of differentially expressed genes:`r length(sig)`
+
 
 ### Crnde
 
@@ -109,6 +125,13 @@ ids<-c("Crnde","LacZ")
 myGenes<-getGenes(cuff,ids)
 csHeatmap(myGenes,replicates=TRUE)
 ```
+
+```{r adult crnde diff}
+sig<-getSig(cuff, alpha=alpha)
+diffGeneSummary$Crnde_vs_WT_Adult<-length(sig)
+```
+
+Number of differentially expressed genes:`r length(sig)`
 
 ### Eldr
 
@@ -137,7 +160,25 @@ csHeatmap(myGenes,replicates=TRUE)
 Problem child is Eldr_0 (JR733)
 Does Eldr_1 look like a het? (JR799)
 
+```{r adult Eldr diff}
+sig<-getSig(cuff, alpha=alpha)
+diffGeneSummary$Eldr_vs_WT_Adult<-length(sig)
+```
+
+Number of differentially expressed genes:`r length(sig)`
+
 ### Haunt
+
+```{r adult haunt diff}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Haunt_vs_WT_Adult/"
+setwd(dir)
+cuff<-readCufflinks()
+sig<-getSig(cuff, alpha=alpha)
+diffGeneSummary$Haunt_vs_WT_Adult<-length(sig)
+```
+
+Number of differentially expressed genes:`r length(sig)`
+
 
 ### Kantr (Jarid1C)
 YAY! They actually cluster!
@@ -153,14 +194,44 @@ myGene<-getGene(cuff,id)
 
 ```
 
+```{r adult Kantr diff}
+sig<-getSig(cuff, alpha=alpha)
+diffGeneSummary$Kantr_vs_WT_Adult<-length(sig)
+```
+
+Number of differentially expressed genes:`r length(sig)`
+
 ### Brn1a
 3 isoforms expressed
+
+```{r adult Brn1a diff}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Brn1a_vs_WT_Adult/"
+setwd(dir)
+cuff<-readCufflinks()
+sig<-getSig(cuff, alpha=alpha)
+diffGeneSummary$lincBrn1a_vs_WT_Adult<-length(sig)
+```
+
+Number of differentially expressed genes:`r length(sig)`
+
 
 ### Brn1b
 LacZ expressed slightly higher than lincRNA
 
+```{r adult lincBrn1b diff}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Brn1b_vs_WT_Adult/"
+setwd(dir)
+cuff<-readCufflinks()
+sig<-getSig(cuff, alpha=alpha)
+diffGeneSummary$lincBrn1b_vs_WT_Adult<-length(sig)
+```
+
+Number of differentially expressed genes:`r length(sig)`
+
+
 ### linc-Cox2
-YAY! They cluster together! (is this a litter thing? sex difference thing?)
+YAY! They cluster together! (is this a litter thing? sex difference thing?) -- Weird, in the other one they cluster together. Diff w/ having mm10/gtf specified? 
+
 
 ```{r lincCox2 adult}
 dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Cox2_vs_WT_Adult"
@@ -178,6 +249,16 @@ myGene<-getGene(cuff,id)
 
 Endogenous linc and LZ approx same expression levels 
 
+```{r adult lincCox2 diff}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Cox2_vs_WT_Adult/"
+setwd(dir)
+cuff<-readCufflinks()
+sig<-getSig(cuff, alpha=alpha)
+diffGeneSummary$lincCox2_vs_WT_Adult<-length(sig)
+```
+
+Number of differentially expressed genes:`r length(sig)`
+
 
 ### linc-Enc1a
 
@@ -193,6 +274,7 @@ expressionBarplot(isoforms(myGene), replicates=T)
 ```
 
 LacZ and genotyping heatmap
+
 ```{r lincEnc1a lz adult}
 id<-"LacZ"
 myGene<-getGene(cuff,id)
@@ -201,6 +283,13 @@ ids<-c("linc-Enc1","LacZ")
 myGenes<-getGenes(cuff,ids)
 csHeatmap(myGenes,replicates=TRUE)
 ```
+
+```{r adult lincEnc1a diff}
+sig<-getSig(cuff, alpha=alpha)
+diffGeneSummary$lincEnc1_vs_WT_Adult<-length(sig)
+```
+
+Number of differentially expressed genes:`r length(sig)`
 
 
 ### Manr
@@ -216,6 +305,7 @@ expressionBarplot(isoforms(myGene), replicates=T)
 ```
 
 LacZ and genotyping heatmap
+
 ```{r MANR lz adult}
 lz<-"LacZ"
 myGene<-getGene(cuff,lz)
@@ -224,6 +314,13 @@ ids<-c(id,lz)
 myGenes<-getGenes(cuff,ids)
 csHeatmap(myGenes,replicates=TRUE)
 ```
+
+```{r adult Manr diff}
+sig<-getSig(cuff, alpha=alpha)
+diffGeneSummary$Manr_vs_WT_Adult<-length(sig)
+```
+
+Number of differentially expressed genes:`r length(sig)`
 
 
 ### Peril
@@ -240,6 +337,7 @@ expressionBarplot(isoforms(myGene), replicates=T)
 ```
 
 LacZ and genotyping heatmap
+
 ```{r Peril lz adult}
 lz<-"LacZ"
 myGene<-getGene(cuff,lz)
@@ -249,14 +347,43 @@ myGenes<-getGenes(cuff,ids)
 csHeatmap(myGenes,replicates=TRUE)
 ```
 
+```{r adult Peril diff}
+sig<-getSig(cuff, alpha=alpha)
+diffGeneSummary$Peril_vs_WT_Adult<-length(sig)
+```
+
+Number of differentially expressed genes:`r length(sig)`
+
+
+
 ### Trp53cor1 (linc-p21)
 Everything very lowly expressed 
+
+```{r adult Trp53cor diff}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Trp53cor1_vs_WT_Adult/"
+setwd(dir)
+cuff<-readCufflinks()
+sig<-getSig(cuff, alpha=alpha)
+diffGeneSummary$Trp53cor1_vs_WT_Adult<-length(sig)
+```
+
+Number of differentially expressed genes:`r length(sig)`
+
 
 ### Tug1
 
 LacZ expressed far lower than Tug1 lincRNA 
 Why is one of the tug1 replicates missing from plots/dendrogram??
 
+```{r adult Tug1 diff}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Tug1_vs_WT_Adult/"
+setwd(dir)
+cuff<-readCufflinks()
+sig<-getSig(cuff, alpha=alpha)
+diffGeneSummary$Tug1_vs_WT_Adult<-length(sig)
+```
+
+Number of differentially expressed genes:`r length(sig)`
 
 
 # Embryonic Samples
@@ -286,6 +413,7 @@ expressionBarplot(isoforms(myGene), replicates=T)
 ```
 
 LacZ and genotyping heatmap
+
 ```{r Celrr lz embryonic}
 lz<-"LacZ"
 myGene<-getGene(cuff,lz)
@@ -298,8 +426,9 @@ csHeatmap(myGenes,replicates=TRUE)
 
 ```{r Celrr embryonic diff}
 sig<-getSig(cuff, alpha=alpha)
-# ADD TO WHOLE TABLE 
+diffGeneSummary$Celrr_vs_WT_Embryonic<-length(sig)
 ```
+
 Number of differentially expressed genes:`r length(sig)`
 
 Cell compartment: lots of cytoplasmic stuff... is this linc cytoplasmic?? 
@@ -316,6 +445,7 @@ csDendro(genes(cuff),replicates=TRUE)
 
 
 Endogenous expression (isoforms)
+
 ```{r Crnde embryonic}
 id<-"Crnde"
 myGene<-getGene(cuff,id)
@@ -324,6 +454,7 @@ expressionBarplot(isoforms(myGene), replicates=T)
 
 LacZ and genotyping heatmap
 Crnde_2 may be het? Need to check tracks! 
+
 ```{r Crnde lz embryonic}
 lz<-"LacZ"
 myGene<-getGene(cuff,lz)
@@ -335,8 +466,9 @@ csHeatmap(myGenes,replicates=TRUE)
 
 ```{r Crnde embryonic diff}
 sig<-getSig(cuff, alpha=alpha)
-# ADD TO WHOLE TABLE 
+diffGeneSummary$Crnde_vs_WT_Embryonic<-length(sig)
 ```
+
 Number of differentially expressed genes:`r length(sig)`
 
 -ECM/collagen... 
@@ -355,8 +487,9 @@ cuff<-readCufflinks()
 
 ```{r Eldr embryonic diff}
 sig<-getSig(cuff, alpha=alpha)
-# ADD TO WHOLE TABLE 
+diffGeneSummary$Eldr_vs_WT_Embryonic<-length(sig)
 ```
+
 Number of differentially expressed genes:`r length(sig)`
 
 
@@ -371,13 +504,15 @@ cuff<-readCufflinks()
 
 ```{r Haunt embryonic diff}
 sig<-getSig(cuff, alpha=alpha)
-# ADD TO WHOLE TABLE 
+diffGeneSummary$Haunt_vs_WT_Embryonic<-length(sig)
 ```
+
 Number of differentially expressed genes:`r length(sig)`
 
 
 ### Kantr
 Yay! Cluster together! 
+
 ```{r Kantr embryonic dendro}
 dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Kantr_vs_WT_Embryonic"
 setwd(dir)
@@ -389,6 +524,7 @@ myGene<-getGene(cuff,id)
 ```
 
 Endogenous Kantr expression: 
+
 ```{r Kantr embryonic}
 
 myGene<-getGene(cuff,id)
@@ -396,6 +532,7 @@ expressionBarplot(isoforms(myGene), replicates=T)
 ```
 
 LacZ and genotyping heatmap
+
 ```{r Kantr lz embryonic}
 lz<-"LacZ"
 myGene<-getGene(cuff,lz)
@@ -407,11 +544,15 @@ csHeatmap(myGenes,replicates=TRUE)
 
 ```{r Kantr embryonic diff}
 sig<-getSig(cuff, alpha=alpha)
-# ADD TO WHOLE TABLE 
+diffGeneSummary$Kantr_vs_WT_Embryonic<-length(sig)
 ```
+
 Number of differentially expressed genes:`r length(sig)`
 
 ### Brn1a -- NOT DONE YET 
+```{r brn1a}
+diffGeneSummary$lincBrn1a_vs_WT_Embryonic<-NULL
+```
 
 ### Brn1b 
 - digital genotyping looks good 
@@ -421,7 +562,7 @@ dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Brn1b_vs_WT_Embr
 setwd(dir)
 cuff<-readCufflinks()
 sig<-getSig(cuff, alpha=alpha)
-# ADD TO WHOLE TABLE 
+diffGeneSummary$lincBrn1b_vs_WT_Embryonic<-length(sig)
 ```
 Number of differentially expressed genes:`r length(sig)`
 
@@ -485,30 +626,245 @@ detach("package:biomaRt")
 
 ### linc-Cox2
 
+Digital genotyping looks good! 
 
+GO terms ribosome/translation related... 
+
+Cluster together! Yay! 
+
+```{r lincCox2 embryonic dendro}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Cox2_vs_WT_Embryonic/"
+setwd(dir)
+cuff<-readCufflinks()
+csDendro(genes(cuff),replicates=TRUE)
+
+id<-"linc-Cox2"
+myGene<-getGene(cuff,id)
+```
+
+
+```{r lincCox2 embryonic diff}
+sig<-getSig(cuff, alpha=alpha)
+diffGeneSummary$lincCox2_vs_WT_Embryonic<-length(sig)
+```
+
+Number of differentially expressed genes:`r length(sig)`
 
 
 ### linc-Enc1a
 
+```{r lincEnc1a embryonic}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Enc1_vs_WT_Embryonic/"
+setwd(dir)
+cuff<-readCufflinks()
+id<-"linc-Enc1"
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
+```
+
+LacZ and genotyping heatmap
+
+```{r lincEnc1a lz embryonic}
+lz<-"LacZ"
+myGene<-getGene(cuff,lz)
+expressionBarplot(isoforms(myGene), replicates=T)
+ids<-c(id,lz)
+myGenes<-getGenes(cuff,ids)
+csHeatmap(myGenes,replicates=TRUE)
+```
+
+
+```{r lincEnc1a embryonic diff}
+sig<-getSig(cuff, alpha=alpha)
+diffGeneSummary$lincEnc1_vs_WT_Embryonic<-length(sig)
+```
+
+Number of differentially expressed genes:`r length(sig)`
+
+
 ### Manr
+
+- GO terms lots of ion/lipid/protein binding; kegg neuroactive ligand-receptor interaction; and reactome has interesting categories but graph is messed up. 
+
+- Hets? Need to see track... 
+
+```{r Manr embryonic}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Manr_vs_WT_Embryonic/"
+setwd(dir)
+cuff<-readCufflinks()
+id<-"Manr"
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
+```
+
+LacZ and genotyping heatmap
+
+```{r Manr lz embryonic}
+lz<-"LacZ"
+myGene<-getGene(cuff,lz)
+expressionBarplot(isoforms(myGene), replicates=T)
+ids<-c(id,lz)
+myGenes<-getGenes(cuff,ids)
+csHeatmap(myGenes,replicates=TRUE)
+```
+
+
+```{r Manr embryonic diff}
+sig<-getSig(cuff, alpha=alpha)
+diffGeneSummary$Manr_vs_WT_Embryonic<-length(sig)
+```
+
+Number of differentially expressed genes:`r length(sig)`
+
 
 ### Peril
 
-### Trp53cor (linc-p21)
+Pretty sure this is an exon-stabilized-by-lacZ issue, but need to see tracks!
+
+```{r Peril embryonic}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Peril_vs_WT_Embryonic/"
+setwd(dir)
+cuff<-readCufflinks()
+id<-"Peril"
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
+```
+
+LacZ and genotyping heatmap
+
+```{r Peril lz embryonic}
+lz<-"LacZ"
+myGene<-getGene(cuff,lz)
+expressionBarplot(isoforms(myGene), replicates=T)
+ids<-c(id,lz)
+myGenes<-getGenes(cuff,ids)
+csHeatmap(myGenes,replicates=TRUE)
+```
+
+
+```{r Peril embryonic diff}
+sig<-getSig(cuff, alpha=alpha)
+diffGeneSummary$Peril_vs_WT_Embryonic<-length(sig)
+```
+
+Number of differentially expressed genes:`r length(sig)`
+
+
+### Trp53cor1 (linc-p21)
+
+Trp53cor1_1 is wildtype (JR813)
+
+```{r Trp53 embryonic}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Trp53cor1_vs_WT_Embryonic/"
+setwd(dir)
+cuff<-readCufflinks()
+id<-"Trp53cor1"
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
+```
+
+LacZ and genotyping heatmap
+
+```{r Trp53 lz embryonic}
+lz<-"LacZ"
+myGene<-getGene(cuff,lz)
+expressionBarplot(isoforms(myGene), replicates=T)
+ids<-c(id,lz)
+myGenes<-getGenes(cuff,ids)
+csHeatmap(myGenes,replicates=TRUE)
+```
+
+
+```{r Trp53 embryonic diff}
+sig<-getSig(cuff, alpha=alpha)
+diffGeneSummary$Trp53cor1_vs_WT_Embryonic<-length(sig)
+```
+
+Number of differentially expressed genes:`r length(sig)`
 
 ### Tug1
+Digital genotyping looks good. 
+Tug1 far more highly expressed than lacZ. 
+
+```{r tug1 embryonic}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Tug1_vs_WT_Embryonic/"
+setwd(dir)
+cuff<-readCufflinks()
+id<-"Tug1"
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
+```
+
+LacZ and genotyping heatmap
+
+```{r tug1 lz embryonic}
+lz<-"LacZ"
+myGene<-getGene(cuff,lz)
+#expressionBarplot(isoforms(myGene), replicates=T)
+ids<-c(id,lz)
+myGenes<-getGenes(cuff,ids)
+csHeatmap(myGenes,replicates=TRUE)
+```
+
+
+```{r tug1 embryonic diff}
+sig<-getSig(cuff, alpha=alpha)
+diffGeneSummary$Tug1_vs_WT_Embryonic<-length(sig)
+```
+
+Number of differentially expressed genes:`r length(sig)`
 
 
 # SUMMARY
+
 **list of samples to re-check or exclude**
 
-```{r summary}
-#
-# diff genes summary
+GENOTYPING:
+- Adult:
+  - WT 12 (JR817)
+  - CRNDE_2 (JR818)
+  - Eldr_0 (JR733) 
+  - Does Eldr_1 look like a het? (JR799)
+- Embryonic:
+  - WT 13 
+  - celrr 0 is not KO (seems WT) JR769
+  - check crnde? (esp #2)
+  - check Manr(#2?)
+  - linc-P21_1 is wt not ko 
+
+enc1a problem child -- need to see tracks
+
+QC: adult wt 9, 10
+
+Range of number of differentially expressed genes:
+
+```{r summary, results='asis'}
+print(xtable(summary(t(diffGeneSummary))), type="html")
+```
 
 
+Number of differentially expressed genes, by condition: 
+
+```{r diff summary}
+x<-as.numeric(diffGeneSummary[1,])
+xx<-rbind(x,x)
+colnames(xx)<-gsub("_vs_WT","",colnames(diffGeneSummary))
+colnames(xx)<-gsub("Embryonic","E",colnames(xx))
+colnames(xx)<-gsub("Adult","A",colnames(xx))
+xx_ordered<-xx[,order(colnames(xx))]
+rownames(xx_ordered)<-c("","")
+heatmap.2(xx_ordered, Rowv=FALSE, breaks=15, dendrogram="none", Colv=FALSE, sepwidth=c(.9,.9),trace="none", col=terrain.colors, lhei=c(.5,.5))
+
+barplot(x)
+#axes=TRUE,names.arg=colnames(diffGeneSummary)
 ```
 
 **Interesting or promising strains!**
+- Kantr!
+
 
 # TO DO
+- tracks!
+- overlap!
+- finish tidying script + reprint!
+- fix gsea printing 

@@ -30,6 +30,10 @@ csHeatmap(myGenes,replicates=TRUE)
 ```
 
 ```{r linc embryonic diff}
+dir<-""
+setwd(dir)
+cuff<-readCufflinks()
 sig<-getSig(cuff, alpha=alpha)
-# ADD TO WHOLE TABLE 
+diffGeneSummary$
 ```
+Number of differentially expressed genes:`r length(sig)`

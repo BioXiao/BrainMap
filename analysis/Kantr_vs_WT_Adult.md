@@ -3,9 +3,8 @@ Kantr KO vs WT (Adult)
 
 
 - add labels, descriptions
-- turn off all caching 
+- turn off all caching ! 
 - other heatmap labels (csHeatmap)
-- break into individual replicate bargraphs for genotyping... 
 - overlap figure
 - tracks 
 - should import litter info
@@ -22,20 +21,6 @@ Kantr KO vs WT (Adult)
 
 This file shows the wt-v-ko comparison for Kantr. 
 
-Samples used are:
-<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jun 16 09:14:08 2014 -->
-<TABLE border=1>
-<TR> <TH>  </TH> <TH> 10 </TH>  </TR>
-  <TR> <TD align="right"> 1 </TD> <TD> JR824 </TD> </TR>
-  <TR> <TD align="right"> 2 </TD> <TD> JR820 </TD> </TR>
-  <TR> <TD align="right"> 3 </TD> <TD> JR821 </TD> </TR>
-  <TR> <TD align="right"> 4 </TD> <TD> JR742 </TD> </TR>
-  <TR> <TD align="right"> 5 </TD> <TD> JR819 </TD> </TR>
-  <TR> <TD align="right"> 6 </TD> <TD> JR823 </TD> </TR>
-   </TABLE>
-
-
 Cuff overview:
 
 ```
@@ -50,18 +35,6 @@ Cuff overview:
 ## 	 0 relCDS
 ```
 
-## Replicates
-<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jun 16 09:14:09 2014 -->
-<TABLE border=1>
-<TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
-  <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR824/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 34312500.00 </TD> <TD align="right"> 36018100.00 </TD> <TD align="right"> 0.96 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 2 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR820/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   1 </TD> <TD> WT_1 </TD> <TD align="right"> 36264600.00 </TD> <TD align="right"> 36018100.00 </TD> <TD align="right"> 1.01 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 3 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR821/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   2 </TD> <TD> WT_2 </TD> <TD align="right"> 45857300.00 </TD> <TD align="right"> 36018100.00 </TD> <TD align="right"> 1.29 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 4 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR742/abundances.cxb </TD> <TD> Kantr </TD> <TD align="right">   0 </TD> <TD> Kantr_0 </TD> <TD align="right"> 35618600.00 </TD> <TD align="right"> 36018100.00 </TD> <TD align="right"> 0.98 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 5 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR819/abundances.cxb </TD> <TD> Kantr </TD> <TD align="right">   1 </TD> <TD> Kantr_1 </TD> <TD align="right"> 32413300.00 </TD> <TD align="right"> 36018100.00 </TD> <TD align="right"> 0.89 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 6 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR823/abundances.cxb </TD> <TD> Kantr </TD> <TD align="right">   2 </TD> <TD> Kantr_2 </TD> <TD align="right"> 33432600.00 </TD> <TD align="right"> 36018100.00 </TD> <TD align="right"> 0.92 </TD> <TD align="right"> 1.00 </TD> </TR>
-   </TABLE>
 
 # QC
 
@@ -151,25 +124,9 @@ Boxplot (isoforms, replicates)
 
 Density (genes)
 
-
-```
-## Warning: Removed 5378 rows containing non-finite values (stat_density).
-## Warning: Removed 5588 rows containing non-finite values (stat_density).
-```
-
 ![plot of chunk density](figure/Kantr/density.png) 
 
 Density (genes, replicates)
-
-
-```
-## Warning: Removed 6638 rows containing non-finite values (stat_density).
-## Warning: Removed 6608 rows containing non-finite values (stat_density).
-## Warning: Removed 6441 rows containing non-finite values (stat_density).
-## Warning: Removed 6727 rows containing non-finite values (stat_density).
-## Warning: Removed 6876 rows containing non-finite values (stat_density).
-## Warning: Removed 6760 rows containing non-finite values (stat_density).
-```
 
 ![plot of chunk density w replicates](figure/Kantr/density w replicates.png) 
 
@@ -198,14 +155,14 @@ Density (genes, replicates)
 ## Endogenous lncRNA expression
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jun 16 09:15:32 2014 -->
+<!-- Mon Jun 16 17:12:17 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> gene_id </TH> <TH> sample_name </TH> <TH> fpkm </TH> <TH> conf_hi </TH> <TH> conf_lo </TH> <TH> quant_status </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> ENSMUSG00000087403.2 </TD> <TD> Kantr </TD> <TD align="right"> 0.02 </TD> <TD align="right"> 0.42 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
   <TR> <TD align="right"> 2 </TD> <TD> ENSMUSG00000087403.2 </TD> <TD> WT </TD> <TD align="right"> 14.10 </TD> <TD align="right"> 17.60 </TD> <TD align="right"> 10.61 </TD> <TD> OK </TD> </TR>
    </TABLE>
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jun 16 09:15:32 2014 -->
+<!-- Mon Jun 16 17:12:17 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> isoform_id </TH> <TH> sample_name </TH> <TH> fpkm </TH> <TH> conf_hi </TH> <TH> conf_lo </TH> <TH> quant_status </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> ENSMUST00000125102.1 </TD> <TD> Kantr </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.17 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
@@ -235,13 +192,13 @@ Barplot of gene expression:
 
 Barplot of isoform expression:
 
-![plot of chunk endogenous iso barplot](figure/Kantr/endogenous iso barplot1.png) ![plot of chunk endogenous iso barplot](figure/Kantr/endogenous iso barplot2.png) 
+![plot of chunk endogenous iso barplot](figure/Kantr/endogenous iso barplot.png) 
 
 
 ## LacZ expression
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jun 16 09:15:49 2014 -->
+<!-- Mon Jun 16 17:12:30 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> gene_id </TH> <TH> sample_name </TH> <TH> fpkm </TH> <TH> conf_hi </TH> <TH> conf_lo </TH> <TH> quant_status </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Velocigene_LacZ </TD> <TD> Kantr </TD> <TD align="right"> 2.28 </TD> <TD align="right"> 2.79 </TD> <TD align="right"> 1.78 </TD> <TD> OK </TD> </TR>
@@ -279,7 +236,7 @@ Expression heatmap:
 There are 313 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jun 16 09:16:05 2014 -->
+<!-- Mon Jun 16 17:12:39 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Sox9 </TD> </TR>
@@ -654,11 +611,290 @@ Per isoform difference between conditions:
 ![plot of chunk diff.iso](figure/Kantr/diff.iso.png) 
 
 These isoforms are:
-
-```
-## Error: no applicable method for 'xtable' applied to an object of class
-## "character"
-```
+<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
+<!-- Mon Jun 16 17:13:14 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> isoAnnot$gene_short_name </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> Sox9 </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> Il12rb1 </TD> </TR>
+  <TR> <TD align="right"> 3 </TD> <TD> Mmp14 </TD> </TR>
+  <TR> <TD align="right"> 4 </TD> <TD> N4bp3 </TD> </TR>
+  <TR> <TD align="right"> 5 </TD> <TD> Gramd3 </TD> </TR>
+  <TR> <TD align="right"> 6 </TD> <TD> Angptl4 </TD> </TR>
+  <TR> <TD align="right"> 7 </TD> <TD> Golga2 </TD> </TR>
+  <TR> <TD align="right"> 8 </TD> <TD> Plin4 </TD> </TR>
+  <TR> <TD align="right"> 9 </TD> <TD> Arrdc2 </TD> </TR>
+  <TR> <TD align="right"> 10 </TD> <TD> Fosb </TD> </TR>
+  <TR> <TD align="right"> 11 </TD> <TD> Hif3a </TD> </TR>
+  <TR> <TD align="right"> 12 </TD> <TD> 9330159F19Rik </TD> </TR>
+  <TR> <TD align="right"> 13 </TD> <TD> Sh2b2 </TD> </TR>
+  <TR> <TD align="right"> 14 </TD> <TD> Prlr </TD> </TR>
+  <TR> <TD align="right"> 15 </TD> <TD> Cyp2a5 </TD> </TR>
+  <TR> <TD align="right"> 16 </TD> <TD> Lrrc8a </TD> </TR>
+  <TR> <TD align="right"> 17 </TD> <TD> Bcl2l1 </TD> </TR>
+  <TR> <TD align="right"> 18 </TD> <TD> Dio2 </TD> </TR>
+  <TR> <TD align="right"> 19 </TD> <TD> Id3 </TD> </TR>
+  <TR> <TD align="right"> 20 </TD> <TD> Derl3 </TD> </TR>
+  <TR> <TD align="right"> 21 </TD> <TD> Gm266 </TD> </TR>
+  <TR> <TD align="right"> 22 </TD> <TD> Med15 </TD> </TR>
+  <TR> <TD align="right"> 23 </TD> <TD> Tjap1 </TD> </TR>
+  <TR> <TD align="right"> 24 </TD> <TD> Mertk </TD> </TR>
+  <TR> <TD align="right"> 25 </TD> <TD> Slc25a13 </TD> </TR>
+  <TR> <TD align="right"> 26 </TD> <TD> Cnksr3 </TD> </TR>
+  <TR> <TD align="right"> 27 </TD> <TD> Notch4 </TD> </TR>
+  <TR> <TD align="right"> 28 </TD> <TD> Camk1g </TD> </TR>
+  <TR> <TD align="right"> 29 </TD> <TD> Sdc4 </TD> </TR>
+  <TR> <TD align="right"> 30 </TD> <TD> Ada </TD> </TR>
+  <TR> <TD align="right"> 31 </TD> <TD> Erbb3 </TD> </TR>
+  <TR> <TD align="right"> 32 </TD> <TD> Ksr1 </TD> </TR>
+  <TR> <TD align="right"> 33 </TD> <TD> Pdk4 </TD> </TR>
+  <TR> <TD align="right"> 34 </TD> <TD> Sema6a </TD> </TR>
+  <TR> <TD align="right"> 35 </TD> <TD> Lama4 </TD> </TR>
+  <TR> <TD align="right"> 36 </TD> <TD> Arid5b </TD> </TR>
+  <TR> <TD align="right"> 37 </TD> <TD> Sgk1 </TD> </TR>
+  <TR> <TD align="right"> 38 </TD> <TD> Ddit4 </TD> </TR>
+  <TR> <TD align="right"> 39 </TD> <TD> Vps54 </TD> </TR>
+  <TR> <TD align="right"> 40 </TD> <TD> Ddc </TD> </TR>
+  <TR> <TD align="right"> 41 </TD> <TD> Cpm </TD> </TR>
+  <TR> <TD align="right"> 42 </TD> <TD> Nipal4 </TD> </TR>
+  <TR> <TD align="right"> 43 </TD> <TD> Tns3 </TD> </TR>
+  <TR> <TD align="right"> 44 </TD> <TD> Btg2 </TD> </TR>
+  <TR> <TD align="right"> 45 </TD> <TD> Gatsl3 </TD> </TR>
+  <TR> <TD align="right"> 46 </TD> <TD> Pomc </TD> </TR>
+  <TR> <TD align="right"> 47 </TD> <TD> Pxdn </TD> </TR>
+  <TR> <TD align="right"> 48 </TD> <TD> Gh </TD> </TR>
+  <TR> <TD align="right"> 49 </TD> <TD> Nfkbia </TD> </TR>
+  <TR> <TD align="right"> 50 </TD> <TD> Zfp36l1 </TD> </TR>
+  <TR> <TD align="right"> 51 </TD> <TD> Otub2 </TD> </TR>
+  <TR> <TD align="right"> 52 </TD> <TD> Net1 </TD> </TR>
+  <TR> <TD align="right"> 53 </TD> <TD> Fos </TD> </TR>
+  <TR> <TD align="right"> 54 </TD> <TD> Zkscan3 </TD> </TR>
+  <TR> <TD align="right"> 55 </TD> <TD> Elovl7 </TD> </TR>
+  <TR> <TD align="right"> 56 </TD> <TD> 4930452B06Rik </TD> </TR>
+  <TR> <TD align="right"> 57 </TD> <TD> Fst </TD> </TR>
+  <TR> <TD align="right"> 58 </TD> <TD> Galnt15 </TD> </TR>
+  <TR> <TD align="right"> 59 </TD> <TD> Sema3g </TD> </TR>
+  <TR> <TD align="right"> 60 </TD> <TD> Psmb5 </TD> </TR>
+  <TR> <TD align="right"> 61 </TD> <TD> Myo10 </TD> </TR>
+  <TR> <TD align="right"> 62 </TD> <TD> Slc38a2 </TD> </TR>
+  <TR> <TD align="right"> 63 </TD> <TD> Litaf </TD> </TR>
+  <TR> <TD align="right"> 64 </TD> <TD> Bcl6 </TD> </TR>
+  <TR> <TD align="right"> 65 </TD> <TD> Arc </TD> </TR>
+  <TR> <TD align="right"> 66 </TD> <TD> Adamts1 </TD> </TR>
+  <TR> <TD align="right"> 67 </TD> <TD> Slc15a2 </TD> </TR>
+  <TR> <TD align="right"> 68 </TD> <TD> Nr4a1 </TD> </TR>
+  <TR> <TD align="right"> 69 </TD> <TD> Cdkn1a </TD> </TR>
+  <TR> <TD align="right"> 70 </TD> <TD> Vegfa </TD> </TR>
+  <TR> <TD align="right"> 71 </TD> <TD> Clic5 </TD> </TR>
+  <TR> <TD align="right"> 72 </TD> <TD> Glo1 </TD> </TR>
+  <TR> <TD align="right"> 73 </TD> <TD> Sik1 </TD> </TR>
+  <TR> <TD align="right"> 74 </TD> <TD> Xdh </TD> </TR>
+  <TR> <TD align="right"> 75 </TD> <TD> Atp6v0c </TD> </TR>
+  <TR> <TD align="right"> 76 </TD> <TD> Tekt4 </TD> </TR>
+  <TR> <TD align="right"> 77 </TD> <TD> Dusp1 </TD> </TR>
+  <TR> <TD align="right"> 78 </TD> <TD> Fkbp5 </TD> </TR>
+  <TR> <TD align="right"> 79 </TD> <TD> Sncaip </TD> </TR>
+  <TR> <TD align="right"> 80 </TD> <TD> Pdgfrb </TD> </TR>
+  <TR> <TD align="right"> 81 </TD> <TD> Fas </TD> </TR>
+  <TR> <TD align="right"> 82 </TD> <TD> Frmd8 </TD> </TR>
+  <TR> <TD align="right"> 83 </TD> <TD> Hhex </TD> </TR>
+  <TR> <TD align="right"> 84 </TD> <TD> Alas2 </TD> </TR>
+  <TR> <TD align="right"> 85 </TD> <TD> Atp10a </TD> </TR>
+  <TR> <TD align="right"> 86 </TD> <TD> D3Ertd751e </TD> </TR>
+  <TR> <TD align="right"> 87 </TD> <TD> Sgk3 </TD> </TR>
+  <TR> <TD align="right"> 88 </TD> <TD> Paqr8 </TD> </TR>
+  <TR> <TD align="right"> 89 </TD> <TD> Slc40a1 </TD> </TR>
+  <TR> <TD align="right"> 90 </TD> <TD> Lamc1 </TD> </TR>
+  <TR> <TD align="right"> 91 </TD> <TD> Myoc </TD> </TR>
+  <TR> <TD align="right"> 92 </TD> <TD> Lypd6b </TD> </TR>
+  <TR> <TD align="right"> 93 </TD> <TD> Lcn2 </TD> </TR>
+  <TR> <TD align="right"> 94 </TD> <TD> Depdc7 </TD> </TR>
+  <TR> <TD align="right"> 95 </TD> <TD> Jag1 </TD> </TR>
+  <TR> <TD align="right"> 96 </TD> <TD> Dll4 </TD> </TR>
+  <TR> <TD align="right"> 97 </TD> <TD> Nkx2-2 </TD> </TR>
+  <TR> <TD align="right"> 98 </TD> <TD> Bpifa1 </TD> </TR>
+  <TR> <TD align="right"> 99 </TD> <TD> Fam83d </TD> </TR>
+  <TR> <TD align="right"> 100 </TD> <TD> Anxa5 </TD> </TR>
+  <TR> <TD align="right"> 101 </TD> <TD> Exosc9 </TD> </TR>
+  <TR> <TD align="right"> 102 </TD> <TD> Dclre1b </TD> </TR>
+  <TR> <TD align="right"> 103 </TD> <TD> Fam198b </TD> </TR>
+  <TR> <TD align="right"> 104 </TD> <TD> Alpk1 </TD> </TR>
+  <TR> <TD align="right"> 105 </TD> <TD> Cyr61 </TD> </TR>
+  <TR> <TD align="right"> 106 </TD> <TD> Gbp2 </TD> </TR>
+  <TR> <TD align="right"> 107 </TD> <TD> Nr4a3 </TD> </TR>
+  <TR> <TD align="right"> 108 </TD> <TD> Rps6 </TD> </TR>
+  <TR> <TD align="right"> 109 </TD> <TD> Slc2a1 </TD> </TR>
+  <TR> <TD align="right"> 110 </TD> <TD> Mfsd2a </TD> </TR>
+  <TR> <TD align="right"> 111 </TD> <TD> Hspg2 </TD> </TR>
+  <TR> <TD align="right"> 112 </TD> <TD> Tinagl1 </TD> </TR>
+  <TR> <TD align="right"> 113 </TD> <TD> Map3k6 </TD> </TR>
+  <TR> <TD align="right"> 114 </TD> <TD> Arhgef19 </TD> </TR>
+  <TR> <TD align="right"> 115 </TD> <TD> Errfi1 </TD> </TR>
+  <TR> <TD align="right"> 116 </TD> <TD> Ugt2a1 </TD> </TR>
+  <TR> <TD align="right"> 117 </TD> <TD> Aff1 </TD> </TR>
+  <TR> <TD align="right"> 118 </TD> <TD> Rasgef1b </TD> </TR>
+  <TR> <TD align="right"> 119 </TD> <TD> Pitpnm2 </TD> </TR>
+  <TR> <TD align="right"> 120 </TD> <TD> Lfng </TD> </TR>
+  <TR> <TD align="right"> 121 </TD> <TD> Nfe2l3 </TD> </TR>
+  <TR> <TD align="right"> 122 </TD> <TD> Gkn3 </TD> </TR>
+  <TR> <TD align="right"> 123 </TD> <TD> Klf15 </TD> </TR>
+  <TR> <TD align="right"> 124 </TD> <TD> Lag3 </TD> </TR>
+  <TR> <TD align="right"> 125 </TD> <TD> Clec2d </TD> </TR>
+  <TR> <TD align="right"> 126 </TD> <TD> Adipor2 </TD> </TR>
+  <TR> <TD align="right"> 127 </TD> <TD> Dusp16 </TD> </TR>
+  <TR> <TD align="right"> 128 </TD> <TD> Slco1a4 </TD> </TR>
+  <TR> <TD align="right"> 129 </TD> <TD> Rhpn2 </TD> </TR>
+  <TR> <TD align="right"> 130 </TD> <TD> Sult1a1 </TD> </TR>
+  <TR> <TD align="right"> 131 </TD> <TD> Disp1 </TD> </TR>
+  <TR> <TD align="right"> 132 </TD> <TD> Lyve1 </TD> </TR>
+  <TR> <TD align="right"> 133 </TD> <TD> Cckbr </TD> </TR>
+  <TR> <TD align="right"> 134 </TD> <TD> Slc38a5 </TD> </TR>
+  <TR> <TD align="right"> 135 </TD> <TD> Col4a5 </TD> </TR>
+  <TR> <TD align="right"> 136 </TD> <TD> Mtm1 </TD> </TR>
+  <TR> <TD align="right"> 137 </TD> <TD> Tsc22d3 </TD> </TR>
+  <TR> <TD align="right"> 138 </TD> <TD> Plat </TD> </TR>
+  <TR> <TD align="right"> 139 </TD> <TD> Sall1 </TD> </TR>
+  <TR> <TD align="right"> 140 </TD> <TD> Gpt2 </TD> </TR>
+  <TR> <TD align="right"> 141 </TD> <TD> Gab1 </TD> </TR>
+  <TR> <TD align="right"> 142 </TD> <TD> Mt2 </TD> </TR>
+  <TR> <TD align="right"> 143 </TD> <TD> Mt1 </TD> </TR>
+  <TR> <TD align="right"> 144 </TD> <TD> Cmtm3 </TD> </TR>
+  <TR> <TD align="right"> 145 </TD> <TD> Ets1 </TD> </TR>
+  <TR> <TD align="right"> 146 </TD> <TD> Ldlr </TD> </TR>
+  <TR> <TD align="right"> 147 </TD> <TD> Heyl </TD> </TR>
+  <TR> <TD align="right"> 148 </TD> <TD> Gng11 </TD> </TR>
+  <TR> <TD align="right"> 149 </TD> <TD> Alox12b </TD> </TR>
+  <TR> <TD align="right"> 150 </TD> <TD> Rnft2 </TD> </TR>
+  <TR> <TD align="right"> 151 </TD> <TD> Slc16a1 </TD> </TR>
+  <TR> <TD align="right"> 152 </TD> <TD> Sox10 </TD> </TR>
+  <TR> <TD align="right"> 153 </TD> <TD> Tbc1d4 </TD> </TR>
+  <TR> <TD align="right"> 154 </TD> <TD> Ucp2 </TD> </TR>
+  <TR> <TD align="right"> 155 </TD> <TD> Klf9 </TD> </TR>
+  <TR> <TD align="right"> 156 </TD> <TD> Trim36 </TD> </TR>
+  <TR> <TD align="right"> 157 </TD> <TD> Neu4 </TD> </TR>
+  <TR> <TD align="right"> 158 </TD> <TD> Igsf9b </TD> </TR>
+  <TR> <TD align="right"> 159 </TD> <TD> Trim59 </TD> </TR>
+  <TR> <TD align="right"> 160 </TD> <TD> Nostrin </TD> </TR>
+  <TR> <TD align="right"> 161 </TD> <TD> Fam214a </TD> </TR>
+  <TR> <TD align="right"> 162 </TD> <TD> Eva1a </TD> </TR>
+  <TR> <TD align="right"> 163 </TD> <TD> Lars2 </TD> </TR>
+  <TR> <TD align="right"> 164 </TD> <TD> Tmem98 </TD> </TR>
+  <TR> <TD align="right"> 165 </TD> <TD> Prr5 </TD> </TR>
+  <TR> <TD align="right"> 166 </TD> <TD> Tmem260 </TD> </TR>
+  <TR> <TD align="right"> 167 </TD> <TD> Micall2 </TD> </TR>
+  <TR> <TD align="right"> 168 </TD> <TD> Kirrel2 </TD> </TR>
+  <TR> <TD align="right"> 169 </TD> <TD> Ppp1r14a </TD> </TR>
+  <TR> <TD align="right"> 170 </TD> <TD> Mxd4 </TD> </TR>
+  <TR> <TD align="right"> 171 </TD> <TD> 4932438A13Rik </TD> </TR>
+  <TR> <TD align="right"> 172 </TD> <TD> Ovol2 </TD> </TR>
+  <TR> <TD align="right"> 173 </TD> <TD> Avp </TD> </TR>
+  <TR> <TD align="right"> 174 </TD> <TD> Egr2 </TD> </TR>
+  <TR> <TD align="right"> 175 </TD> <TD> Sh3rf3 </TD> </TR>
+  <TR> <TD align="right"> 176 </TD> <TD> Smim3 </TD> </TR>
+  <TR> <TD align="right"> 177 </TD> <TD> Galnt11 </TD> </TR>
+  <TR> <TD align="right"> 178 </TD> <TD> Foxf2 </TD> </TR>
+  <TR> <TD align="right"> 179 </TD> <TD> Egr1 </TD> </TR>
+  <TR> <TD align="right"> 180 </TD> <TD> Olfml2b </TD> </TR>
+  <TR> <TD align="right"> 181 </TD> <TD> Atp5l </TD> </TR>
+  <TR> <TD align="right"> 182 </TD> <TD> Mboat1 </TD> </TR>
+  <TR> <TD align="right"> 183 </TD> <TD> Pcsk1n </TD> </TR>
+  <TR> <TD align="right"> 184 </TD> <TD> Tnfsf10 </TD> </TR>
+  <TR> <TD align="right"> 185 </TD> <TD> Atp8b1 </TD> </TR>
+  <TR> <TD align="right"> 186 </TD> <TD> Zfp189 </TD> </TR>
+  <TR> <TD align="right"> 187 </TD> <TD> Cercam </TD> </TR>
+  <TR> <TD align="right"> 188 </TD> <TD> Gpr37 </TD> </TR>
+  <TR> <TD align="right"> 189 </TD> <TD> Spsb1 </TD> </TR>
+  <TR> <TD align="right"> 190 </TD> <TD> Gjb6 </TD> </TR>
+  <TR> <TD align="right"> 191 </TD> <TD> Gbp5 </TD> </TR>
+  <TR> <TD align="right"> 192 </TD> <TD> Nkx6-2 </TD> </TR>
+  <TR> <TD align="right"> 193 </TD> <TD> Cldn5 </TD> </TR>
+  <TR> <TD align="right"> 194 </TD> <TD> Syt15 </TD> </TR>
+  <TR> <TD align="right"> 195 </TD> <TD> Sdk2 </TD> </TR>
+  <TR> <TD align="right"> 196 </TD> <TD> Cdc42ep4 </TD> </TR>
+  <TR> <TD align="right"> 197 </TD> <TD> Pkp2 </TD> </TR>
+  <TR> <TD align="right"> 198 </TD> <TD> Hps4 </TD> </TR>
+  <TR> <TD align="right"> 199 </TD> <TD> Greb1l </TD> </TR>
+  <TR> <TD align="right"> 200 </TD> <TD> Aplnr </TD> </TR>
+  <TR> <TD align="right"> 201 </TD> <TD> Zfp488 </TD> </TR>
+  <TR> <TD align="right"> 202 </TD> <TD> Tlr7 </TD> </TR>
+  <TR> <TD align="right"> 203 </TD> <TD> Serpinb1a </TD> </TR>
+  <TR> <TD align="right"> 204 </TD> <TD> Rassf9 </TD> </TR>
+  <TR> <TD align="right"> 205 </TD> <TD> Cirbp </TD> </TR>
+  <TR> <TD align="right"> 206 </TD> <TD> Insig1 </TD> </TR>
+  <TR> <TD align="right"> 207 </TD> <TD> Zfp36l2 </TD> </TR>
+  <TR> <TD align="right"> 208 </TD> <TD> Npas4 </TD> </TR>
+  <TR> <TD align="right"> 209 </TD> <TD> Clec14a </TD> </TR>
+  <TR> <TD align="right"> 210 </TD> <TD> Gjb2 </TD> </TR>
+  <TR> <TD align="right"> 211 </TD> <TD> Gjb1 </TD> </TR>
+  <TR> <TD align="right"> 212 </TD> <TD> Kmt2d </TD> </TR>
+  <TR> <TD align="right"> 213 </TD> <TD> Ranbp3l </TD> </TR>
+  <TR> <TD align="right"> 214 </TD> <TD> Ccdc6 </TD> </TR>
+  <TR> <TD align="right"> 215 </TD> <TD> Dact2 </TD> </TR>
+  <TR> <TD align="right"> 216 </TD> <TD> Acap2 </TD> </TR>
+  <TR> <TD align="right"> 217 </TD> <TD> Cdc42ep1 </TD> </TR>
+  <TR> <TD align="right"> 218 </TD> <TD> Rasd1 </TD> </TR>
+  <TR> <TD align="right"> 219 </TD> <TD> Opalin </TD> </TR>
+  <TR> <TD align="right"> 220 </TD> <TD> Fzd2 </TD> </TR>
+  <TR> <TD align="right"> 221 </TD> <TD> Ppp1r3g </TD> </TR>
+  <TR> <TD align="right"> 222 </TD> <TD> Plekho2 </TD> </TR>
+  <TR> <TD align="right"> 223 </TD> <TD> Olfml1 </TD> </TR>
+  <TR> <TD align="right"> 224 </TD> <TD> Klf13 </TD> </TR>
+  <TR> <TD align="right"> 225 </TD> <TD> Hbb-y </TD> </TR>
+  <TR> <TD align="right"> 226 </TD> <TD> Gpr17 </TD> </TR>
+  <TR> <TD align="right"> 227 </TD> <TD> Hbb-bs </TD> </TR>
+  <TR> <TD align="right"> 228 </TD> <TD> Junb </TD> </TR>
+  <TR> <TD align="right"> 229 </TD> <TD> Creb5 </TD> </TR>
+  <TR> <TD align="right"> 230 </TD> <TD> Ier2 </TD> </TR>
+  <TR> <TD align="right"> 231 </TD> <TD> Lifr </TD> </TR>
+  <TR> <TD align="right"> 232 </TD> <TD> Lrrc8c </TD> </TR>
+  <TR> <TD align="right"> 233 </TD> <TD> Per2 </TD> </TR>
+  <TR> <TD align="right"> 234 </TD> <TD> Pla2g4a </TD> </TR>
+  <TR> <TD align="right"> 235 </TD> <TD> Ncoa4 </TD> </TR>
+  <TR> <TD align="right"> 236 </TD> <TD> 1810011O10Rik </TD> </TR>
+  <TR> <TD align="right"> 237 </TD> <TD> Kdm5d </TD> </TR>
+  <TR> <TD align="right"> 238 </TD> <TD> Chsy3 </TD> </TR>
+  <TR> <TD align="right"> 239 </TD> <TD> Calcrl </TD> </TR>
+  <TR> <TD align="right"> 240 </TD> <TD> Rpl26 </TD> </TR>
+  <TR> <TD align="right"> 241 </TD> <TD> Cxcl12 </TD> </TR>
+  <TR> <TD align="right"> 242 </TD> <TD> Cox5b </TD> </TR>
+  <TR> <TD align="right"> 243 </TD> <TD> Kdr </TD> </TR>
+  <TR> <TD align="right"> 244 </TD> <TD> Slc22a8 </TD> </TR>
+  <TR> <TD align="right"> 245 </TD> <TD> Zfp428 </TD> </TR>
+  <TR> <TD align="right"> 246 </TD> <TD> Cntn4 </TD> </TR>
+  <TR> <TD align="right"> 247 </TD> <TD> Phactr4 </TD> </TR>
+  <TR> <TD align="right"> 248 </TD> <TD> Zbtb16 </TD> </TR>
+  <TR> <TD align="right"> 249 </TD> <TD> Ppp1r3c </TD> </TR>
+  <TR> <TD align="right"> 250 </TD> <TD> Ddx3y </TD> </TR>
+  <TR> <TD align="right"> 251 </TD> <TD> Ahnak </TD> </TR>
+  <TR> <TD align="right"> 252 </TD> <TD> 1700084C01Rik </TD> </TR>
+  <TR> <TD align="right"> 253 </TD> <TD> Jund </TD> </TR>
+  <TR> <TD align="right"> 254 </TD> <TD> Egr4 </TD> </TR>
+  <TR> <TD align="right"> 255 </TD> <TD> Ccnb1ip1 </TD> </TR>
+  <TR> <TD align="right"> 256 </TD> <TD> Ppp1r3e </TD> </TR>
+  <TR> <TD align="right"> 257 </TD> <TD> Gm7292 </TD> </TR>
+  <TR> <TD align="right"> 258 </TD> <TD> H2-Bl </TD> </TR>
+  <TR> <TD align="right"> 259 </TD> <TD> Tmem88b </TD> </TR>
+  <TR> <TD align="right"> 260 </TD> <TD> Hbb-bt </TD> </TR>
+  <TR> <TD align="right"> 261 </TD> <TD> Plekhf1 </TD> </TR>
+  <TR> <TD align="right"> 262 </TD> <TD> Adh1 </TD> </TR>
+  <TR> <TD align="right"> 263 </TD> <TD> B3galt5 </TD> </TR>
+  <TR> <TD align="right"> 264 </TD> <TD> Nrarp </TD> </TR>
+  <TR> <TD align="right"> 265 </TD> <TD> Aoc2 </TD> </TR>
+  <TR> <TD align="right"> 266 </TD> <TD> Nhsl2 </TD> </TR>
+  <TR> <TD align="right"> 267 </TD> <TD> Gm15631 </TD> </TR>
+  <TR> <TD align="right"> 268 </TD> <TD> Xist </TD> </TR>
+  <TR> <TD align="right"> 269 </TD> <TD> BC064078 </TD> </TR>
+  <TR> <TD align="right"> 270 </TD> <TD> Apold1 </TD> </TR>
+  <TR> <TD align="right"> 271 </TD> <TD> A930018M24Rik </TD> </TR>
+  <TR> <TD align="right"> 272 </TD> <TD> Gm3739 </TD> </TR>
+  <TR> <TD align="right"> 273 </TD> <TD> Neat1 </TD> </TR>
+  <TR> <TD align="right"> 274 </TD> <TD> Malat1 </TD> </TR>
+  <TR> <TD align="right"> 275 </TD> <TD> Gm7094 </TD> </TR>
+  <TR> <TD align="right"> 276 </TD> <TD> Fam181a </TD> </TR>
+  <TR> <TD align="right"> 277 </TD> <TD> Gm26782 </TD> </TR>
+  <TR> <TD align="right"> 278 </TD> <TD> Bin2 </TD> </TR>
+  <TR> <TD align="right"> 279 </TD> <TD> Gm26924 </TD> </TR>
+   </TABLE>
 
 
 
@@ -717,38 +953,21 @@ Description/explanation of what's here, and justify all choices.
 
 
 
-biomart to get entrez gene IDS
-clusterProfiler does GO enrichment 
-
-BP, MF, CC
-enrichKEGG
-enrichPathway
-
-
-
 
 ```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'goBP' not found
+## Loading required package: biomaRt
+## 
+## Attaching package: 'biomaRt'
+## 
+## The following object is masked from 'package:cummeRbund':
+## 
+##     getGene
 ```
 
-```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'goMF' not found
-```
+![plot of chunk GO figures](figure/Kantr/GO figures1.png) ![plot of chunk GO figures](figure/Kantr/GO figures2.png) ![plot of chunk GO figures](figure/Kantr/GO figures3.png) ![plot of chunk GO figures](figure/Kantr/GO figures4.png) 
 
 ```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'goCC' not found
-```
-
-```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'kegg' not found
-```
-
-```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'pathway' not found
-```
-
-```
-## Error: invalid 'name' argument
+## Error: 'x' and 'units' must have length > 0
 ```
 
 # Cis vs Trans (locally)
@@ -757,7 +976,33 @@ enrichPathway
 
 # Notes
 
-# Session Info
+## Samples used are:
+<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
+<!-- Mon Jun 16 17:15:50 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> 10 </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> JR824 </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> JR820 </TD> </TR>
+  <TR> <TD align="right"> 3 </TD> <TD> JR821 </TD> </TR>
+  <TR> <TD align="right"> 4 </TD> <TD> JR742 </TD> </TR>
+  <TR> <TD align="right"> 5 </TD> <TD> JR819 </TD> </TR>
+  <TR> <TD align="right"> 6 </TD> <TD> JR823 </TD> </TR>
+   </TABLE>
+
+## Replicates
+<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
+<!-- Mon Jun 16 17:15:50 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR824/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 34312500.00 </TD> <TD align="right"> 36018100.00 </TD> <TD align="right"> 0.96 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR820/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   1 </TD> <TD> WT_1 </TD> <TD align="right"> 36264600.00 </TD> <TD align="right"> 36018100.00 </TD> <TD align="right"> 1.01 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 3 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR821/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   2 </TD> <TD> WT_2 </TD> <TD align="right"> 45857300.00 </TD> <TD align="right"> 36018100.00 </TD> <TD align="right"> 1.29 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 4 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR742/abundances.cxb </TD> <TD> Kantr </TD> <TD align="right">   0 </TD> <TD> Kantr_0 </TD> <TD align="right"> 35618600.00 </TD> <TD align="right"> 36018100.00 </TD> <TD align="right"> 0.98 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 5 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR819/abundances.cxb </TD> <TD> Kantr </TD> <TD align="right">   1 </TD> <TD> Kantr_1 </TD> <TD align="right"> 32413300.00 </TD> <TD align="right"> 36018100.00 </TD> <TD align="right"> 0.89 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 6 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR823/abundances.cxb </TD> <TD> Kantr </TD> <TD align="right">   2 </TD> <TD> Kantr_2 </TD> <TD align="right"> 33432600.00 </TD> <TD align="right"> 36018100.00 </TD> <TD align="right"> 0.92 </TD> <TD align="right"> 1.00 </TD> </TR>
+   </TABLE>
+
+## Session Info
 
 ```
 ## R version 3.0.2 (2013-09-25)
@@ -776,15 +1021,16 @@ enrichPathway
 ## [8] methods   base     
 ## 
 ## other attached packages:
-##  [1] DOSE_2.0.0           ReactomePA_1.6.1     AnnotationDbi_1.24.0
-##  [4] Biobase_2.22.0       mgcv_1.7-29          nlme_3.1-117        
-##  [7] gridExtra_0.9.1      gtable_0.1.2         marray_1.40.0       
-## [10] gplots_2.13.0        GSA_1.03             limma_3.18.13       
-## [13] xtable_1.7-3         cummeRbund_2.7.2     Gviz_1.6.0          
-## [16] rtracklayer_1.22.7   GenomicRanges_1.14.4 XVector_0.2.0       
-## [19] IRanges_1.20.7       fastcluster_1.1.13   reshape2_1.4        
-## [22] ggplot2_1.0.0        RSQLite_0.11.4       DBI_0.2-7           
-## [25] BiocGenerics_0.8.0   knitr_1.6           
+##  [1] GO.db_2.10.1           org.Mm.eg.db_2.10.1    clusterProfiler_1.13.1
+##  [4] DOSE_2.0.0             ReactomePA_1.6.1       AnnotationDbi_1.24.0  
+##  [7] Biobase_2.22.0         mgcv_1.7-29            nlme_3.1-117          
+## [10] gridExtra_0.9.1        gtable_0.1.2           marray_1.40.0         
+## [13] gplots_2.13.0          GSA_1.03               limma_3.18.13         
+## [16] xtable_1.7-3           knitr_1.6              cummeRbund_2.7.2      
+## [19] Gviz_1.6.0             rtracklayer_1.22.7     GenomicRanges_1.14.4  
+## [22] XVector_0.2.0          IRanges_1.20.7         fastcluster_1.1.13    
+## [25] reshape2_1.4           ggplot2_1.0.0          RSQLite_0.11.4        
+## [28] DBI_0.2-7              BiocGenerics_0.8.0    
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] biomaRt_2.18.0         Biostrings_2.30.1      biovizBase_1.10.8     
@@ -792,9 +1038,9 @@ enrichPathway
 ##  [7] cluster_1.15.2         colorspace_1.2-4       dichromat_2.0-0       
 ## [10] digest_0.6.4           DO.db_2.7              evaluate_0.5.5        
 ## [13] formatR_0.10           Formula_1.1-1          gdata_2.13.3          
-## [16] GenomicFeatures_1.14.5 GO.db_2.10.1           GOSemSim_1.20.3       
-## [19] graph_1.40.1           graphite_1.8.1         gtools_3.4.1          
-## [22] Hmisc_3.14-4           igraph_0.7.1           KernSmooth_2.23-12    
+## [16] GenomicFeatures_1.14.5 GOSemSim_1.20.3        graph_1.40.1          
+## [19] graphite_1.8.1         gtools_3.4.1           Hmisc_3.14-4          
+## [22] igraph_0.7.1           KEGG.db_2.10.1         KernSmooth_2.23-12    
 ## [25] labeling_0.2           lattice_0.20-29        latticeExtra_0.6-26   
 ## [28] markdown_0.7           MASS_7.3-33            Matrix_1.1-3          
 ## [31] mime_0.1.1             munsell_0.4.2          org.Hs.eg.db_2.10.1   
@@ -806,7 +1052,7 @@ enrichPathway
 ## [49] XML_3.98-1.1           zlibbioc_1.8.0
 ```
 
-#Run Info
+## Run Info
 
 ```
 ##           param

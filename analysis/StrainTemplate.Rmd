@@ -17,9 +17,9 @@ path<-paste("figure/",strain,"/", sep="")
 opts_chunk$set(fig.path=path, echo=FALSE)
 
 ### OPTIONAL VAR OVERRIDE (where are my variables!!?)
-#dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Adult"
-#setwd(dir)
-strain<-strain
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Brn1b_vs_WT_Embryonic/"
+setwd(dir)
+strain<-"linc-Brn1b"
 alpha<-0.05 
 
 
@@ -292,6 +292,7 @@ Expression plot (genes):
 rowlabel<-geneAnnot$gene_short_name
 expressionPlot(sigGenes)
 csHeatmap(sigGenes, cluster="both",replicates=T)
+#Maybe do cluster="col"
 #expressionBarplot(sigGenes)
 ```
 
