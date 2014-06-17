@@ -1,4 +1,4 @@
-Kantr KO vs WT (Adult)
+'r strain' KO vs WT ('r timepoint')
 ======================================
 
 
@@ -155,14 +155,14 @@ Density (genes, replicates)
 ## Endogenous lncRNA expression
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jun 16 17:12:17 2014 -->
+<!-- Mon Jun 16 21:03:12 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> gene_id </TH> <TH> sample_name </TH> <TH> fpkm </TH> <TH> conf_hi </TH> <TH> conf_lo </TH> <TH> quant_status </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> ENSMUSG00000087403.2 </TD> <TD> Kantr </TD> <TD align="right"> 0.02 </TD> <TD align="right"> 0.42 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
   <TR> <TD align="right"> 2 </TD> <TD> ENSMUSG00000087403.2 </TD> <TD> WT </TD> <TD align="right"> 14.10 </TD> <TD align="right"> 17.60 </TD> <TD align="right"> 10.61 </TD> <TD> OK </TD> </TR>
    </TABLE>
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jun 16 17:12:17 2014 -->
+<!-- Mon Jun 16 21:03:12 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> isoform_id </TH> <TH> sample_name </TH> <TH> fpkm </TH> <TH> conf_hi </TH> <TH> conf_lo </TH> <TH> quant_status </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> ENSMUST00000125102.1 </TD> <TD> Kantr </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.17 </TD> <TD align="right"> 0.00 </TD> <TD> OK </TD> </TR>
@@ -198,7 +198,7 @@ Barplot of isoform expression:
 ## LacZ expression
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jun 16 17:12:30 2014 -->
+<!-- Mon Jun 16 21:03:27 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> gene_id </TH> <TH> sample_name </TH> <TH> fpkm </TH> <TH> conf_hi </TH> <TH> conf_lo </TH> <TH> quant_status </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Velocigene_LacZ </TD> <TD> Kantr </TD> <TD align="right"> 2.28 </TD> <TD align="right"> 2.79 </TD> <TD align="right"> 1.78 </TD> <TD> OK </TD> </TR>
@@ -236,7 +236,7 @@ Expression heatmap:
 There are 313 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jun 16 17:12:39 2014 -->
+<!-- Mon Jun 16 21:03:37 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Sox9 </TD> </TR>
@@ -612,7 +612,7 @@ Per isoform difference between conditions:
 
 These isoforms are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jun 16 17:13:14 2014 -->
+<!-- Mon Jun 16 21:04:14 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> isoAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Sox9 </TD> </TR>
@@ -978,7 +978,7 @@ Description/explanation of what's here, and justify all choices.
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jun 16 17:15:50 2014 -->
+<!-- Mon Jun 16 21:07:00 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR824 </TD> </TR>
@@ -991,7 +991,7 @@ Description/explanation of what's here, and justify all choices.
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jun 16 17:15:50 2014 -->
+<!-- Mon Jun 16 21:07:00 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR824/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 34312500.00 </TD> <TD align="right"> 36018100.00 </TD> <TD align="right"> 0.96 </TD> <TD align="right"> 1.00 </TD> </TR>
@@ -1021,12 +1021,12 @@ Description/explanation of what's here, and justify all choices.
 ## [8] methods   base     
 ## 
 ## other attached packages:
-##  [1] GO.db_2.10.1           org.Mm.eg.db_2.10.1    clusterProfiler_1.13.1
-##  [4] DOSE_2.0.0             ReactomePA_1.6.1       AnnotationDbi_1.24.0  
-##  [7] Biobase_2.22.0         mgcv_1.7-29            nlme_3.1-117          
-## [10] gridExtra_0.9.1        gtable_0.1.2           marray_1.40.0         
-## [13] gplots_2.13.0          GSA_1.03               limma_3.18.13         
-## [16] xtable_1.7-3           knitr_1.6              cummeRbund_2.7.2      
+##  [1] mgcv_1.7-29            nlme_3.1-117           gridExtra_0.9.1       
+##  [4] gtable_0.1.2           knitr_1.6              GO.db_2.10.1          
+##  [7] org.Mm.eg.db_2.10.1    clusterProfiler_1.13.1 DOSE_2.0.0            
+## [10] ReactomePA_1.6.1       AnnotationDbi_1.24.0   Biobase_2.22.0        
+## [13] marray_1.40.0          gplots_2.13.0          GSA_1.03              
+## [16] limma_3.18.13          xtable_1.7-3           cummeRbund_2.7.2      
 ## [19] Gviz_1.6.0             rtracklayer_1.22.7     GenomicRanges_1.14.4  
 ## [22] XVector_0.2.0          IRanges_1.20.7         fastcluster_1.1.13    
 ## [25] reshape2_1.4           ggplot2_1.0.0          RSQLite_0.11.4        

@@ -2,7 +2,7 @@ Mouse Data Overview 1
 ========================================================
 
 ```r
-opts_chunk$set(echo=FALSE, message=FALSE)
+opts_chunk$set(echo=FALSE, message=FALSE, fig.path='/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/')
 ```
 
 
@@ -34,11 +34,11 @@ Without Pseudocount
 ## Warning: Removed 6731 rows containing non-finite values (stat_density).
 ```
 
-![plot of chunk density](figure/density.png) 
+![plot of chunk density](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/density.png) 
 
 With Pseudocount = 0.01 
 
-![plot of chunk density pseudo](figure/density pseudo.png) 
+![plot of chunk density pseudo](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/density pseudo.png) 
 
 
 ## ADULT WILDTYPES:
@@ -46,22 +46,22 @@ With Pseudocount = 0.01
 ### Genotyping
 - wt 12 is ko/het (JR817)
 
-![plot of chunk genotyping](figure/genotyping.png) 
+![plot of chunk genotyping](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/genotyping.png) 
 
 ### QC 
 - wts 9, 10 have smaller fpkm distribution (replicates)
 
-![plot of chunk boxplot replicates](figure/boxplot replicates.png) 
+![plot of chunk boxplot replicates](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/boxplot replicates.png) 
 
 - isoform fpkm distributions: WT smaller on whole, but replicates look fine? 
 
 Boxplot (isoforms)
 
-![plot of chunk boxplot isoforms](figure/boxplot isoforms.png) 
+![plot of chunk boxplot isoforms](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/boxplot isoforms.png) 
 
 Boxplot (isoforms, replicates)
 
-![plot of chunk boxplot isoforms replicates](figure/boxplot isoforms replicates.png) 
+![plot of chunk boxplot isoforms replicates](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/boxplot isoforms replicates.png) 
 
 
 ### Other Notes
@@ -78,12 +78,12 @@ Number of differentially expressed genes:55
 
 - Either wrong genotyping or isoform beyond KO region stabilized by LZ (need to see tracks)
 
-![plot of chunk crnde adult](figure/crnde adult.png) 
+![plot of chunk crnde adult](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/crnde adult.png) 
 
 
 - Wrong genotyping CRNDE_2 (JR818)
 
-![plot of chunk crnde lz adult](figure/crnde lz adult1.png) ![plot of chunk crnde lz adult](figure/crnde lz adult2.png) 
+![plot of chunk crnde lz adult](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/crnde lz adult1.png) ![plot of chunk crnde lz adult](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/crnde lz adult2.png) 
 
 
 
@@ -93,10 +93,10 @@ Number of differentially expressed genes:80
 
 - Either wrong genotyping or isoform beyond KO region stabilized by LZ (need to see tracks)
 
-![plot of chunk eldr adult](figure/eldr adult.png) 
+![plot of chunk eldr adult](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/eldr adult.png) 
 
 
-![plot of chunk eldr lz adult](figure/eldr lz adult1.png) ![plot of chunk eldr lz adult](figure/eldr lz adult2.png) 
+![plot of chunk eldr lz adult](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/eldr lz adult1.png) ![plot of chunk eldr lz adult](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/eldr lz adult2.png) 
 
 Problem child is Eldr_0 (JR733)
 Does Eldr_1 look like a het? (JR799)
@@ -114,7 +114,7 @@ Number of differentially expressed genes:38
 
 ### Kantr (Jarid1C)
 YAY! They actually cluster!
-![plot of chunk Kantr adult](figure/Kantr adult.png) 
+![plot of chunk Kantr adult](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/Kantr adult.png) 
 
 ```
 ## 'dendrogram' with 2 branches and 6 members total, at height 0.06617
@@ -144,7 +144,7 @@ Number of differentially expressed genes:198
 YAY! They cluster together! (is this a litter thing? sex difference thing?) -- Weird, in the other one they cluster together. Diff w/ having mm10/gtf specified? 
 
 
-![plot of chunk lincCox2 adult](figure/lincCox2 adult.png) 
+![plot of chunk lincCox2 adult](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/lincCox2 adult.png) 
 
 ```
 ## 'dendrogram' with 2 branches and 18 members total, at height 0.07544
@@ -163,11 +163,11 @@ Number of differentially expressed genes:100
 
 I think this one MIGHT be a mapping error. Endogenous linc expressed at ~ WT levels (very low), but all cells have lacZ robustly expressed. Potentially hets I guess 
 
-![plot of chunk lincEnc1a](figure/lincEnc1a.png) 
+![plot of chunk lincEnc1a](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/lincEnc1a.png) 
 
 LacZ and genotyping heatmap
 
-![plot of chunk lincEnc1a lz adult](figure/lincEnc1a lz adult1.png) ![plot of chunk lincEnc1a lz adult](figure/lincEnc1a lz adult2.png) 
+![plot of chunk lincEnc1a lz adult](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/lincEnc1a lz adult1.png) ![plot of chunk lincEnc1a lz adult](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/lincEnc1a lz adult2.png) 
 
 
 
@@ -177,11 +177,11 @@ Number of differentially expressed genes:54
 ### Manr
 Same as with linc-Enc1a, may be extra-knockout region OR perhaps hets or some sort of artifact.. 
 
-![plot of chunk MANR](figure/MANR.png) 
+![plot of chunk MANR](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/MANR.png) 
 
 LacZ and genotyping heatmap
 
-![plot of chunk MANR lz adult](figure/MANR lz adult1.png) ![plot of chunk MANR lz adult](figure/MANR lz adult2.png) 
+![plot of chunk MANR lz adult](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/MANR lz adult1.png) ![plot of chunk MANR lz adult](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/MANR lz adult2.png) 
 
 
 
@@ -192,11 +192,11 @@ Number of differentially expressed genes:61
 
 Fairly certai this is extra-knockout region. Need to make tracks! 
 
-![plot of chunk Peril](figure/Peril.png) 
+![plot of chunk Peril](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/Peril.png) 
 
 LacZ and genotyping heatmap
 
-![plot of chunk Peril lz adult](figure/Peril lz adult1.png) ![plot of chunk Peril lz adult](figure/Peril lz adult2.png) 
+![plot of chunk Peril lz adult](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/Peril lz adult1.png) ![plot of chunk Peril lz adult](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/Peril lz adult2.png) 
 
 
 
@@ -239,11 +239,11 @@ Number of differentially expressed genes:66
 ### Celrr
 - Celrr: celrr 0 is not KO (seems WT) JR769
 
-![plot of chunk celrr embryonic](figure/celrr embryonic.png) 
+![plot of chunk celrr embryonic](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/celrr embryonic.png) 
 
 LacZ and genotyping heatmap
 
-![plot of chunk Celrr lz embryonic](figure/Celrr lz embryonic1.png) ![plot of chunk Celrr lz embryonic](figure/Celrr lz embryonic2.png) 
+![plot of chunk Celrr lz embryonic](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/Celrr lz embryonic1.png) ![plot of chunk Celrr lz embryonic](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/Celrr lz embryonic2.png) 
 
 
 
@@ -255,7 +255,7 @@ Cell compartment: lots of cytoplasmic stuff... is this linc cytoplasmic??
 ### Crnde
 - actually cluster together!
 
-![plot of chunk Crnde embryonic dendro](figure/Crnde embryonic dendro.png) 
+![plot of chunk Crnde embryonic dendro](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/Crnde embryonic dendro.png) 
 
 ```
 ## 'dendrogram' with 2 branches and 18 members total, at height 0.08401
@@ -264,12 +264,12 @@ Cell compartment: lots of cytoplasmic stuff... is this linc cytoplasmic??
 
 Endogenous expression (isoforms)
 
-![plot of chunk Crnde embryonic](figure/Crnde embryonic.png) 
+![plot of chunk Crnde embryonic](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/Crnde embryonic.png) 
 
 LacZ and genotyping heatmap
 Crnde_2 may be het? Need to check tracks! 
 
-![plot of chunk Crnde lz embryonic](figure/Crnde lz embryonic1.png) ![plot of chunk Crnde lz embryonic](figure/Crnde lz embryonic2.png) 
+![plot of chunk Crnde lz embryonic](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/Crnde lz embryonic1.png) ![plot of chunk Crnde lz embryonic](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/Crnde lz embryonic2.png) 
 
 
 
@@ -303,7 +303,7 @@ Number of differentially expressed genes:33
 ### Kantr
 Yay! Cluster together! 
 
-![plot of chunk Kantr embryonic dendro](figure/Kantr embryonic dendro.png) 
+![plot of chunk Kantr embryonic dendro](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/Kantr embryonic dendro.png) 
 
 ```
 ## 'dendrogram' with 2 branches and 6 members total, at height 0.0764
@@ -311,11 +311,11 @@ Yay! Cluster together!
 
 Endogenous Kantr expression: 
 
-![plot of chunk Kantr embryonic](figure/Kantr embryonic.png) 
+![plot of chunk Kantr embryonic](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/Kantr embryonic.png) 
 
 LacZ and genotyping heatmap
 
-![plot of chunk Kantr lz embryonic](figure/Kantr lz embryonic1.png) ![plot of chunk Kantr lz embryonic](figure/Kantr lz embryonic2.png) 
+![plot of chunk Kantr lz embryonic](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/Kantr lz embryonic1.png) ![plot of chunk Kantr lz embryonic](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/Kantr lz embryonic2.png) 
 
 
 
@@ -344,7 +344,7 @@ Number of differentially expressed genes:143
 
 
 
-![plot of chunk GO figures](figure/GO figures1.png) ![plot of chunk GO figures](figure/GO figures2.png) ![plot of chunk GO figures](figure/GO figures3.png) ![plot of chunk GO figures](figure/GO figures4.png) ![plot of chunk GO figures](figure/GO figures5.png) 
+![plot of chunk GO figures](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/GO figures1.png) ![plot of chunk GO figures](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/GO figures2.png) ![plot of chunk GO figures](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/GO figures3.png) ![plot of chunk GO figures](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/GO figures4.png) ![plot of chunk GO figures](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/GO figures5.png) 
 
 ### linc-Cox2
 
@@ -354,7 +354,7 @@ GO terms ribosome/translation related...
 
 Cluster together! Yay! 
 
-![plot of chunk lincCox2 embryonic dendro](figure/lincCox2 embryonic dendro.png) 
+![plot of chunk lincCox2 embryonic dendro](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/lincCox2 embryonic dendro.png) 
 
 ```
 ## 'dendrogram' with 2 branches and 18 members total, at height 0.08399
@@ -368,11 +368,11 @@ Number of differentially expressed genes:97
 
 ### linc-Enc1a
 
-![plot of chunk lincEnc1a embryonic](figure/lincEnc1a embryonic.png) 
+![plot of chunk lincEnc1a embryonic](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/lincEnc1a embryonic.png) 
 
 LacZ and genotyping heatmap
 
-![plot of chunk lincEnc1a lz embryonic](figure/lincEnc1a lz embryonic1.png) ![plot of chunk lincEnc1a lz embryonic](figure/lincEnc1a lz embryonic2.png) 
+![plot of chunk lincEnc1a lz embryonic](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/lincEnc1a lz embryonic1.png) ![plot of chunk lincEnc1a lz embryonic](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/lincEnc1a lz embryonic2.png) 
 
 
 
@@ -386,11 +386,11 @@ Number of differentially expressed genes:17
 
 - Hets? Need to see track... 
 
-![plot of chunk Manr embryonic](figure/Manr embryonic.png) 
+![plot of chunk Manr embryonic](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/Manr embryonic.png) 
 
 LacZ and genotyping heatmap
 
-![plot of chunk Manr lz embryonic](figure/Manr lz embryonic1.png) ![plot of chunk Manr lz embryonic](figure/Manr lz embryonic2.png) 
+![plot of chunk Manr lz embryonic](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/Manr lz embryonic1.png) ![plot of chunk Manr lz embryonic](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/Manr lz embryonic2.png) 
 
 
 
@@ -402,11 +402,11 @@ Number of differentially expressed genes:100
 
 Pretty sure this is an exon-stabilized-by-lacZ issue, but need to see tracks!
 
-![plot of chunk Peril embryonic](figure/Peril embryonic.png) 
+![plot of chunk Peril embryonic](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/Peril embryonic.png) 
 
 LacZ and genotyping heatmap
 
-![plot of chunk Peril lz embryonic](figure/Peril lz embryonic1.png) ![plot of chunk Peril lz embryonic](figure/Peril lz embryonic2.png) 
+![plot of chunk Peril lz embryonic](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/Peril lz embryonic1.png) ![plot of chunk Peril lz embryonic](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/Peril lz embryonic2.png) 
 
 
 
@@ -418,11 +418,11 @@ Number of differentially expressed genes:291
 
 Trp53cor1_1 is wildtype (JR813)
 
-![plot of chunk Trp53 embryonic](figure/Trp53 embryonic.png) 
+![plot of chunk Trp53 embryonic](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/Trp53 embryonic.png) 
 
 LacZ and genotyping heatmap
 
-![plot of chunk Trp53 lz embryonic](figure/Trp53 lz embryonic1.png) ![plot of chunk Trp53 lz embryonic](figure/Trp53 lz embryonic2.png) 
+![plot of chunk Trp53 lz embryonic](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/Trp53 lz embryonic1.png) ![plot of chunk Trp53 lz embryonic](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/Trp53 lz embryonic2.png) 
 
 
 
@@ -433,11 +433,11 @@ Number of differentially expressed genes:22
 Digital genotyping looks good. 
 Tug1 far more highly expressed than lacZ. 
 
-![plot of chunk tug1 embryonic](figure/tug1 embryonic.png) 
+![plot of chunk tug1 embryonic](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/tug1 embryonic.png) 
 
 LacZ and genotyping heatmap
 
-![plot of chunk tug1 lz embryonic](figure/tug1 lz embryonic.png) 
+![plot of chunk tug1 lz embryonic](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/tug1 lz embryonic.png) 
 
 
 
@@ -446,10 +446,30 @@ Number of differentially expressed genes:19
 
 
 # SUMMARY
+
 **list of samples to re-check or exclude**
 
+GENOTYPING:
+- Adult:
+  - WT 12 (JR817)
+  - CRNDE_2 (JR818)
+  - Eldr_0 (JR733) 
+  - Does Eldr_1 look like a het? (JR799)
+- Embryonic:
+  - WT 13 
+  - celrr 0 is not KO (seems WT) JR769
+  - check crnde? (esp #2)
+  - check Manr(#2?)
+  - linc-P21_1 is wt not ko 
+
+enc1a problem child -- need to see tracks
+
+QC: adult wt 9, 10
+
+Range of number of differentially expressed genes:
+
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jun 16 20:04:48 2014 -->
+<!-- Mon Jun 16 20:29:30 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH>       V1 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Min.   : 17   </TD> </TR>
@@ -459,8 +479,18 @@ Number of differentially expressed genes:19
   <TR> <TD align="right"> 5 </TD> <TD> 3rd Qu.:144   </TD> </TR>
   <TR> <TD align="right"> 6 </TD> <TD> Max.   :785   </TD> </TR>
    </TABLE>
-![plot of chunk summary](figure/summary1.png) ![plot of chunk summary](figure/summary2.png) 
+
+
+Number of differentially expressed genes, by condition: 
+
+![plot of chunk diff summary](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/diff summary1.png) ![plot of chunk diff summary](/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/figure/overview/diff summary2.png) 
 
 **Interesting or promising strains!**
+- Kantr!
+
 
 # TO DO
+- tracks!
+- overlap!
+- finish tidying script + reprint!
+- fix gsea printing 
