@@ -2,30 +2,32 @@
 
 #setup 
 library(cummeRbund)
-setwd("/n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf/whole_brain")
+setwd("/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Adult/")
 cuff<-readCufflinks()
+strain<-"Celrr"
 
 # start
 #source("http://bioconductor.org/biocLite.R")
 #biocLite("BSgenome.Mmusculus.UCSC.mm9")
 #biocLite("seqbias")
 #biocLite("stringr")
+#source("http://bioconductor.org/biocLite.R")
+#biocLite("BSgenome.Mmusculus.UCSC.mm10")
 
-library(BSgenome.Mmusculus.UCSC.mm9) #CHANGE TO MM10!!
+library(BSgenome.Mmusculus.UCSC.mm10)
 library(seqbias)
 library(stringr)
-library(cummeRbund)
-cuff<-readCufflinks()
+
 
 myLengths<-seqlengths(Mmusculus)[!grepl("_random",names(seqlengths(Mmusculus)))]
 
-mm9.granges<-GRanges(seqnames = names(myLengths), ranges = IRanges(start = 1, end = myLengths),seqlengths=myLengths)
+mm10.granges<-GRanges(seqnames = names(myLengths), ranges = IRanges(start = 1, end = myLengths),seqlengths=myLengths)
 
 
 #Constants
 nIter<-1000
 windowSize<-2000000
-myRandom<-random.intervals(mm9.granges,n=nIter,ms=windowSize)
+myRandom<-random.intervals(mm10.granges,n=nIter,ms=windowSize)
 
 getTable<-function(object){
   fullTable<-diffTable(genes(object))
