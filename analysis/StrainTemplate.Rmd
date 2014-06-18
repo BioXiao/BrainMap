@@ -2,10 +2,9 @@
 ======================================
 
 
-- add labels, descriptions
-- turn off all caching ! 
+
 - other heatmap labels (csHeatmap)
-- overlap figure
+- cache gsea and overlap figure!! 
 - tracks 
 - should import litter info
 
@@ -711,7 +710,7 @@ for (i in 1:nIter){
   signeighbors[1,i]<-nSigIter
 }
 
-ttest<-t.test(signeighbors,mu=nSig-1)
+ttest<-t.test(signeighbors,mu=nSig)
 pval_for_region<-ttest$p.value
 
 #first 	question, region enriched over genomic background for cis significance? (pvalue)
