@@ -51,13 +51,15 @@ strain<-"Peril"
 
 fullTable<-getTable(cuff)
 
-myGene<-fullTable[which(fullTable$gene_short_name==strain),][1,]
+myGene<-fullTable[which(fullTable$gene_short_name==strain),][1,] #any problems w this?
 chromosome<-myGene$chromosome
 start<-myGene$start-(windowSize/2)
 end<-myGene$end+(windowSize/2)
-strain_wt_sig<-paste(strain,"_WT_significant", sep="")
+#strain_wt_sig<-paste(strain,"_WT_significant", sep="")
 #nSig<-nrow(subset(fullTable,chromosome==chromosome & start>=start &end<=end & strain_wt_sig=="yes"))
-nSig<-nrow(fullTable[which(fullTable[,40]==chromosome & fullTable[,39]=="yes" & fullTable[,9]>=start & fullTable[,10]<=end),])
+sigGenesRegion<-fullTable[which(fullTable[,40]==chromosome & fullTable[,39]=="yes" & fullTable[,9]>=start & fullTable[,10]<=end),]
+nSig<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
+#nSig<-nrow(fullTable[which(fullTable[,40]==chromosome & fullTable[,39]=="yes" & fullTable[,9]>=start & fullTable[,10]<=end),])
 
 score<-0
 signeighbors<-data.frame(rep(NULL,nIter))
@@ -78,8 +80,8 @@ for (i in 1:nIter){
 
 score/nIter
 
-ttest<-t.test(signneighbors,mu=nSig-1)
-ttset$p.value
+ttest<-t.test(signeighbors,mu=nSig-1)
+ttest$p.value
 
 #first 	question, region enriched over genomic background for cis significance? (pvalue)
 
@@ -94,19 +96,16 @@ colnames(genesInRegion)[36]<-"test_stat"
 
 library(plyr)
 data<-ddply(genesInRegion,.(gene_id),head,n=1)
-
+ggplot(data,aes(start,test_stat,color=sig))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))+labs(title=strain)
 
 #data<-cbind(genesInRegion$gene_id, genesInRegion$gene_name, genesInRegion$log2foldchange, genesInRegion$sig, genesInRegion$start, genesInRegion$end)
 #data<-as.data.frame(data)
 #colnames(data)<-c("gene_id","gene_name","log2foldchange","sig","start","end")
 #ddply(data, .(gene_id), head, n = 1) 
-
-
-
 #transform start/stop to center around gene of interest??? (so 0 is our gene?)
 #qplot(start,test_stat,data=data,color=sig)
 #ggplot(data,aes(start,test_stat,color=sig))+geom_point()+scale_fill_manual(values=c("black", "red"))
-ggplot(data,aes(start,test_stat,color=sig))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))
+ggplot(data,aes(start,test_stat,color=sig))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))+labs(title=strain)
 
 
 
