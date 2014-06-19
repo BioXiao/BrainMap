@@ -1,7 +1,8 @@
-`r strain` `r (timepoint)` Cis-v-Trans
+Celrr Adult Cis-v-Trans
 ========================================================
 
-```{r setup}
+
+```r
 #source("http://bioconductor.org/biocLite.R")
 #biocLite("BSgenome.Mmusculus.UCSC.mm9")
 #biocLite("seqbias")
@@ -28,6 +29,13 @@ mm10.granges<-GRanges(seqnames = names(myLengths), ranges = IRanges(start = 1, e
 nIter<-1000
 windowSize<-2000000
 set.seed()
+```
+
+```
+## Error: argument "seed" is missing, with no default
+```
+
+```r
 myRandom<-random.intervals(mm10.granges,n=nIter,ms=windowSize)
 
 getTable<-function(object){
@@ -96,10 +104,13 @@ data<-ddply(genesInRegion,.(gene_id),head,n=1)
 data$test_stat<-as.numeric(data$test_stat)
 ```
 
-# P-value for `r nSig` DE genes in a region this size in this dataset is: `r pval_for_region` 
+# P-value for 0 DE genes in a region this size in this dataset is: 1 
 
-```{r overlap_image}
+
+```r
 ggplot(data,aes(start,test_stat,color=sig))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))+labs(title=strain)
 ```
+
+![plot of chunk overlap_image](figure/overlap_image.png) 
 
 
