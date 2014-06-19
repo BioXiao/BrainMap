@@ -14,7 +14,8 @@ rownames(split)<-c("strain","vs","wt","timepoint")
 adult_directories<-split[,which(split[4,]=="Adult")]
 setwd(analysisdir)
 
-for(i in seq(10,(dim(adult_directories)[2]))){
+#for(i in seq(10,(dim(adult_directories)[2]))){
+for(i in seq(1,3)){
   strain <-as.character(adult_directories[1,i])
   timepoint<-"Adult"
   filename<-paste(adult_directories[,i],collapse="_")
@@ -31,7 +32,7 @@ for(i in seq(10,(dim(adult_directories)[2]))){
 # Embryonic Brains 
 embryonic_directories<-split[,which(split[4,]=="Embryonic")]
 setwd(analysisdir)
-for(i in seq(1,(dim(embryonic_directories)[2]))){
+for(i in seq(4,(dim(embryonic_directories)[2]))){
   strain <-as.character(embryonic_directories[1,i])
   timepoint<-"Embryonic"
   filename<-paste(embryonic_directories[,i],collapse="_")

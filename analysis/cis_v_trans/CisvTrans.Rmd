@@ -1,6 +1,6 @@
 `r strain` `r (timepoint)` Cis-v-Trans
 ========================================================
-```{r options}
+```{r options, echo=FALSE}
 path<-paste("figure/",strain,"/",timepoint,"/", sep="")
 #cachepath<-paste("cache/",strain,"/",timepoint,"/", sep="")
 opts_chunk$set(fig.path=path, echo=FALSE, message=FALSE, warning=FALSE)
@@ -106,7 +106,7 @@ data$test_stat<-as.numeric(data$test_stat)
 # P-value for `r nSig` DE genes in a region this size in this dataset is: `r pval_for_region` 
 
 ```{r overlap_image}
-ggplot(data,aes(start,test_stat,color=sig))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))+labs(title=strain)
+ggplot(data,aes(start,test_stat,color=sig))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))+labs(title=strain)+geom_text(label=data$gene_name)
 ```
 
 
