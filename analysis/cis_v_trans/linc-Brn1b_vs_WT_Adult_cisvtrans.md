@@ -1,4 +1,4 @@
-Crnde Adult Cis-v-Trans
+linc-Brn1b Adult Cis-v-Trans
 ========================================================
 
 
@@ -14,6 +14,10 @@ Crnde Adult Cis-v-Trans
 #biocLite("seqbias")
 #biocLite("BiocParallel")
 #biocLite("IRanges")
+
+path<-paste("figure/",strain,"/",timepoint,"/", sep="")
+#cachepath<-paste("cache/",strain,"/",timepoint,"/", sep="")
+opts_chunk$set(fig.path=path, echo=FALSE, message=FALSE, warning=FALSE)
 
 #setup 
 library(cummeRbund)
@@ -79,17 +83,12 @@ for (i in 1:nIter){
   sigGenesRegion<-fullTable[which(fullTable[,40]==seqnames(myRandom[i])@values & fullTable[,39]=="yes" & fullTable[,9]>=start(myRandom[i])-(windowSize/2) & fullTable[,10]<=end(myRandom[i])+(windowSize/2)),]
   nSigIter<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
   write(nSigIter,stderr())
-  if(nSigIter >= nSig-1) {score<-score+1}
+  if(nSigIter >= nSig) {score<-score+1}
   signeighbors[1,i]<-nSigIter
 }
-```
 
-```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'which': Error in end(myRandom[i]) : 
-##   error in evaluating the argument 'x' in selecting a method for function 'end': Error in set.seed() : argument "seed" is missing, with no default
-```
 
-```r
+
 #ttest<-t.test(signeighbors,alternative="less",mu=nSig-1)
 #pval_for_region<-ttest$p.value
 pval_for_region<-score/nIter
@@ -109,13 +108,8 @@ data<-ddply(genesInRegion,.(gene_id),head,n=1)
 data$test_stat<-as.numeric(data$test_stat)
 ```
 
-# P-value for 0 DE genes in a region this size in this dataset is: 0.359 
+# P-value for 0 DE genes in a region this size in this dataset is: 1 
 
-
-```r
-ggplot(data,aes(start,test_stat,color=sig))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))+labs(title=strain)
-```
-
-![plot of chunk overlap_image](figure/overlap_image.png) 
+![plot of chunk overlap_image](figure/linc-Brn1b/Adult/overlap_image.png) 
 
 
