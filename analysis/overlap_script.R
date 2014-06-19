@@ -45,9 +45,9 @@ getTable<-function(object){
 }
 
 
-#setwd("/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Peril_vs_WT_Embryonic/")
-#cuff<-readCufflinks()
-#strain<-"Peril"
+setwd("/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Tug1_vs_WT_Adult/")
+cuff<-readCufflinks()
+strain<-"Tug1"
 
 fullTable<-getTable(cuff)
 
@@ -70,7 +70,7 @@ for (i in 1:nIter){
   signeighbors[1,i]<-nSigIter
 }
 
-ttest<-t.test(signeighbors,mu=nSig-1)
+ttest<-t.test(signeighbors,alternative="less",mu=nSig)
 pval_for_region<-ttest$p.value
 
 #first 	question, region enriched over genomic background for cis significance? (pvalue)
@@ -84,4 +84,5 @@ colnames(genesInRegion)[39]<-"sig"
 colnames(genesInRegion)[35]<-"log2foldchange"
 colnames(genesInRegion)[36]<-"test_stat"
 data<-ddply(genesInRegion,.(gene_id),head,n=1)
+data$test_stat<-as.numeric(data$test_stat)
 ggplot(data,aes(start,test_stat,color=sig))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))+labs(title=strain)

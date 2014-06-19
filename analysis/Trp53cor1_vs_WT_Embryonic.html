@@ -152,10 +152,8 @@ hr {
 <h1>Trp53cor1 KO vs WT (Embryonic)</h1>
 
 <ul>
-<li>add labels, descriptions</li>
-<li>turn off all caching ! </li>
 <li>other heatmap labels (csHeatmap)</li>
-<li>overlap figure</li>
+<li>cache gsea and overlap figure!! </li>
 <li>tracks </li>
 <li>should import litter info</li>
 </ul>
@@ -310,7 +308,7 @@ hr {
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
 
-<!-- Tue Jun 17 09:53:50 2014 -->
+<!-- Thu Jun 19 09:34:43 2014 -->
 
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
@@ -381,7 +379,7 @@ hr {
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
 
-<!-- Tue Jun 17 09:53:57 2014 -->
+<!-- Thu Jun 19 09:34:53 2014 -->
 
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> isoAnnot$gene_short_name </TH>  </TR>
@@ -612,13 +610,20 @@ hr {
 
 <h1>Cis vs Trans (locally)</h1>
 
+<pre><code>## Error: argument &quot;seed&quot; is missing, with no default
+</code></pre>
+
+<p>The pvalue for genes significantly regulated in this region is: 0</p>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk overlap image"/> </p>
+
 <h1>Notes</h1>
 
 <h2>Samples used are:</h2>
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
 
-<!-- Tue Jun 17 09:56:23 2014 -->
+<!-- Thu Jun 19 09:54:33 2014 -->
 
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
@@ -646,7 +651,7 @@ hr {
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
 
-<!-- Tue Jun 17 09:56:23 2014 -->
+<!-- Thu Jun 19 09:54:33 2014 -->
 
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
@@ -688,35 +693,59 @@ hr {
 ## [8] methods   base     
 ## 
 ## other attached packages:
-##  [1] GO.db_2.10.1           org.Mm.eg.db_2.10.1    clusterProfiler_1.13.1
-##  [4] DOSE_2.0.0             ReactomePA_1.6.1       AnnotationDbi_1.24.0  
-##  [7] Biobase_2.22.0         mgcv_1.7-29            nlme_3.1-117          
-## [10] gridExtra_0.9.1        gtable_0.1.2           marray_1.40.0         
-## [13] gplots_2.13.0          GSA_1.03               limma_3.18.13         
-## [16] xtable_1.7-3           knitr_1.6              cummeRbund_2.7.2      
-## [19] Gviz_1.6.0             rtracklayer_1.22.7     GenomicRanges_1.14.4  
-## [22] XVector_0.2.0          IRanges_1.20.7         fastcluster_1.1.13    
-## [25] reshape2_1.4           ggplot2_1.0.0          RSQLite_0.11.4        
-## [28] DBI_0.2-7              BiocGenerics_0.8.0    
+##  [1] plyr_1.8.1                         
+##  [2] stringr_0.6.2                      
+##  [3] seqbias_1.10.0                     
+##  [4] BSgenome.Mmusculus.UCSC.mm10_1.3.19
+##  [5] BSgenome_1.30.0                    
+##  [6] Biostrings_2.30.1                  
+##  [7] GO.db_2.10.1                       
+##  [8] org.Mm.eg.db_2.10.1                
+##  [9] clusterProfiler_1.13.1             
+## [10] DOSE_2.0.0                         
+## [11] ReactomePA_1.6.1                   
+## [12] AnnotationDbi_1.24.0               
+## [13] Biobase_2.22.0                     
+## [14] mgcv_1.7-29                        
+## [15] nlme_3.1-117                       
+## [16] gridExtra_0.9.1                    
+## [17] gtable_0.1.2                       
+## [18] marray_1.40.0                      
+## [19] gplots_2.13.0                      
+## [20] GSA_1.03                           
+## [21] limma_3.18.13                      
+## [22] xtable_1.7-3                       
+## [23] cummeRbund_2.7.2                   
+## [24] Gviz_1.6.0                         
+## [25] rtracklayer_1.22.7                 
+## [26] GenomicRanges_1.14.4               
+## [27] XVector_0.2.0                      
+## [28] IRanges_1.20.7                     
+## [29] fastcluster_1.1.13                 
+## [30] reshape2_1.4                       
+## [31] ggplot2_1.0.0                      
+## [32] RSQLite_0.11.4                     
+## [33] DBI_0.2-7                          
+## [34] BiocGenerics_0.8.0                 
+## [35] knitr_1.6                          
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] biomaRt_2.18.0         Biostrings_2.30.1      biovizBase_1.10.8     
-##  [4] bitops_1.0-6           BSgenome_1.30.0        caTools_1.17          
-##  [7] cluster_1.15.2         colorspace_1.2-4       dichromat_2.0-0       
-## [10] digest_0.6.4           DO.db_2.7              evaluate_0.5.5        
-## [13] formatR_0.10           Formula_1.1-1          gdata_2.13.3          
-## [16] GenomicFeatures_1.14.5 GOSemSim_1.20.3        graph_1.40.1          
-## [19] graphite_1.8.1         gtools_3.4.1           Hmisc_3.14-4          
-## [22] igraph_0.7.1           KEGG.db_2.10.1         KernSmooth_2.23-12    
-## [25] labeling_0.2           lattice_0.20-29        latticeExtra_0.6-26   
-## [28] markdown_0.7           MASS_7.3-33            Matrix_1.1-3          
-## [31] mime_0.1.1             munsell_0.4.2          org.Hs.eg.db_2.10.1   
-## [34] plyr_1.8.1             proto_0.3-10           qvalue_1.36.0         
-## [37] RColorBrewer_1.0-5     Rcpp_0.11.1            RCurl_1.95-4.1        
-## [40] reactome.db_1.46.1     Rsamtools_1.14.3       scales_0.2.4          
-## [43] splines_3.0.2          stats4_3.0.2           stringr_0.6.2         
-## [46] survival_2.37-7        tcltk_3.0.2            tools_3.0.2           
-## [49] XML_3.98-1.1           zlibbioc_1.8.0
+##  [1] biomaRt_2.18.0         biovizBase_1.10.8      bitops_1.0-6          
+##  [4] caTools_1.17           cluster_1.15.2         colorspace_1.2-4      
+##  [7] dichromat_2.0-0        digest_0.6.4           DO.db_2.7             
+## [10] evaluate_0.5.5         formatR_0.10           Formula_1.1-1         
+## [13] gdata_2.13.3           GenomicFeatures_1.14.5 GOSemSim_1.20.3       
+## [16] graph_1.40.1           graphite_1.8.1         gtools_3.4.1          
+## [19] Hmisc_3.14-4           igraph_0.7.1           KEGG.db_2.10.1        
+## [22] KernSmooth_2.23-12     labeling_0.2           lattice_0.20-29       
+## [25] latticeExtra_0.6-26    markdown_0.7           MASS_7.3-33           
+## [28] Matrix_1.1-3           mime_0.1.1             munsell_0.4.2         
+## [31] org.Hs.eg.db_2.10.1    proto_0.3-10           qvalue_1.36.0         
+## [34] RColorBrewer_1.0-5     Rcpp_0.11.1            RCurl_1.95-4.1        
+## [37] reactome.db_1.46.1     Rsamtools_1.14.3       scales_0.2.4          
+## [40] splines_3.0.2          stats4_3.0.2           survival_2.37-7       
+## [43] tcltk_3.0.2            tools_3.0.2            XML_3.98-1.1          
+## [46] zlibbioc_1.8.0
 </code></pre>
 
 <h2>Run Info</h2>
