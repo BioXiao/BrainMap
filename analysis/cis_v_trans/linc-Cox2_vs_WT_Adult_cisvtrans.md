@@ -1,13 +1,8 @@
-`r strain` `r (timepoint)` Cis-v-Trans
+linc-Cox2 Adult Cis-v-Trans
 ========================================================
-```{r options}
-path<-paste("figure/",strain,"/",timepoint,"/", sep="")
-#cachepath<-paste("cache/",strain,"/",timepoint,"/", sep="")
-opts_chunk$set(fig.path=path, echo=FALSE, message=FALSE, warning=FALSE)
-```
 
 
-```{r setup}
+```r
 #source("http://bioconductor.org/biocLite.R")
 #biocLite("BSgenome.Mmusculus.UCSC.mm9")
 #biocLite("seqbias")
@@ -20,6 +15,9 @@ opts_chunk$set(fig.path=path, echo=FALSE, message=FALSE, warning=FALSE)
 #biocLite("BiocParallel")
 #biocLite("IRanges")
 
+path<-paste("figure/",strain,"/",timepoint,"/", sep="")
+#cachepath<-paste("cache/",strain,"/",timepoint,"/", sep="")
+opts_chunk$set(fig.path=path, echo=FALSE, message=FALSE, warning=FALSE)
 
 #setup 
 library(cummeRbund)
@@ -35,6 +33,13 @@ mm10.granges<-GRanges(seqnames = names(myLengths), ranges = IRanges(start = 1, e
 nIter<-1000
 windowSize<-2000000
 set.seed()
+```
+
+```
+## Error: argument "seed" is missing, with no default
+```
+
+```r
 myRandom<-random.intervals(mm10.granges,n=nIter,ms=windowSize)
 
 getTable<-function(object){
@@ -103,10 +108,8 @@ data<-ddply(genesInRegion,.(gene_id),head,n=1)
 data$test_stat<-as.numeric(data$test_stat)
 ```
 
-# P-value for `r nSig` DE genes in a region this size in this dataset is: `r pval_for_region` 
+# P-value for 1 DE genes in a region this size in this dataset is: 0.111 
 
-```{r overlap_image}
-ggplot(data,aes(start,test_stat,color=sig))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))+labs(title=strain)
-```
+![plot of chunk overlap_image](figure/linc-Cox2/Adult/overlap_image.png) 
 
 
