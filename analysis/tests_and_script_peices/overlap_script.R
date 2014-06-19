@@ -1,31 +1,33 @@
 # Cis v Trans 
 
-#setup 
-library(cummeRbund)
-setwd("/n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf/whole_brain")
-cuff<-readCufflinks()
-
 # start
 #source("http://bioconductor.org/biocLite.R")
 #biocLite("BSgenome.Mmusculus.UCSC.mm9")
 #biocLite("seqbias")
 #biocLite("stringr")
+#source("http://bioconductor.org/biocLite.R")
+#biocLite("BSgenome.Mmusculus.UCSC.mm10")
+#biocLite("ggplot2")
+#biocLite("rtracklayer")
+#biocLite("seqbias")
+#biocLite("BiocParallel")
+#biocLite("IRanges")
 
-library(BSgenome.Mmusculus.UCSC.mm9) #CHANGE TO MM10!!
+#setup 
+library(cummeRbund)
+library(BSgenome.Mmusculus.UCSC.mm10)
 library(seqbias)
 library(stringr)
-library(cummeRbund)
-cuff<-readCufflinks()
+library(plyr)
 
 myLengths<-seqlengths(Mmusculus)[!grepl("_random",names(seqlengths(Mmusculus)))]
-
-mm9.granges<-GRanges(seqnames = names(myLengths), ranges = IRanges(start = 1, end = myLengths),seqlengths=myLengths)
-
+mm10.granges<-GRanges(seqnames = names(myLengths), ranges = IRanges(start = 1, end = myLengths),seqlengths=myLengths)
 
 #Constants
 nIter<-1000
 windowSize<-2000000
-myRandom<-random.intervals(mm9.granges,n=nIter,ms=windowSize)
+set.seed()
+myRandom<-random.intervals(mm10.granges,n=nIter,ms=windowSize)
 
 getTable<-function(object){
   fullTable<-diffTable(genes(object))
@@ -37,64 +39,58 @@ getTable<-function(object){
   fullTable$start<-as.numeric(secondSplit[,1])
   fullTable$end<-as.numeric(secondSplit[,2])
   
-  fullTable<-fullTable[fullTable$chromosome %in% names(seqlengths(mm9.granges)),]
-  fullTable$chromosome<-factor(fullTable$chromosome, levels=names(seqlengths(mm9.granges)))
+  fullTable<-fullTable[fullTable$chromosome %in% names(seqlengths(mm10.granges)),]
+  fullTable$chromosome<-factor(fullTable$chromosome, levels=names(seqlengths(mm10.granges)))
   fullTable
 }
 
 
+setwd("/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Tug1_vs_WT_Adult/")
+cuff<-readCufflinks()
+strain<-"Tug1"
+
 fullTable<-getTable(cuff)
 
-#linc-Foxf1a
-#nSig<-nrow(subset(fullTable,chromosome=='chr8' & start>=123578782-(windowSize/2) & end<=123578782+(windowSize/2) & KO_WT_significant=="yes"))
-
-#linc-Sox2
-#nSig<-nrow(subset(fullTable,chromosome=='chr3' & start>=34663091-(windowSize/2) & end<=34663091+(windowSize/2) & ko_wt_significant=="yes"))
-
-#linc-Brn1b
-#nSig<-nrow(subset(fullTable,chromosome=='chr1' & start>=42763905-(windowSize/2) & end<=42763905+(windowSize/2) & E13_lincBrn1b_KO_Tel_E13_WT_Tel_significant=="yes"))
-
-#myGene
-myGene<-fullTable[which(fullTable$gene_short_name==strain),]
+myGene<-fullTable[which(fullTable$gene_short_name==strain),][1,] #any problems w this?
 chromosome<-myGene$chromosome
 start<-myGene$start-(windowSize/2)
 end<-myGene$end+(windowSize/2)
-nSig<-nrow(subset(fullTable,chromosome==chromosome & start>=start & end<=end & ko_wt_significant=="yes"))
-
+sigGenesRegion<-fullTable[which(fullTable[,40]==chromosome & fullTable[,39]=="yes" & fullTable[,9]>=start & fullTable[,10]<=end),]
+nSig<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
 
 score<-0
+signeighbors<-data.frame(rep(NULL,nIter))
+
+#if(nSig==0){nSig<-1} # we know for nSig that one gene is KO. May not show up as differentially
+# expressed, but we know it's a differential. And we dont want mu 
+# to ever be -1 
+
 for (i in 1:nIter){
   write(i,stderr())
-  nSigIter<-nrow(subset(fullTable,chromosome==seqnames(myRandom[i])@values & start>=start(myRandom[i])-(windowSize/2) & end<=end(myRandom[i])+(windowSize/2) & ko_wt_significant=="yes"))
+  sigGenesRegion<-fullTable[which(fullTable[,40]==seqnames(myRandom[i])@values & fullTable[,39]=="yes" & fullTable[,9]>=start(myRandom[i])-(windowSize/2) & fullTable[,10]<=end(myRandom[i])+(windowSize/2)),]
+  nSigIter<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
   write(nSigIter,stderr())
   if(nSigIter >= nSig-1) {score<-score+1}
+  signeighbors[1,i]<-nSigIter
 }
 
-score/nIter
-
-#P-values (H0=number of significant genes in window is different from that observed for 1000 random intervals)
-# linc-Foxf1a   p<0.087 (1 signficant neighboring gene)
-# linc-Sox2             p<1.0 (0 significant neighboring gene)
-# linc-Brn1b    p<0.225 (4 significant neighboring genes)
 
 
-
-#Simple Image
-#xacis: window size (-100k, +100k; tss @0)
-#yaxis: test stat
-#gene in position across region 
-#colored by yes/no; red/black 
+#ttest<-t.test(signeighbors,alternative="less",mu=nSig-1)
+#pval_for_region<-ttest$p.value
+pval_for_region<-score/nIter
 
 
+#first 	question, region enriched over genomic background for cis significance? (pvalue)
 
+#second task:
+#plot all genes in region according to start position in region. color code red=yes, black=no
 
-#Draw GeneTrack  
-
-library(Gviz)
-#Granges
-#must read gtf in w cuff 
-cuff<-readCufflinks(gtfFile='/n/rinn_data1/users/agroff/annotation/mm9/ucsc_no_noncoding_AND_lincdb2.gtf',genome='mm9')#will be mm10!
-myID<-"Pde8b"
-myGene<-getGene(cuff,myID)
-genetrack <-makeGeneRegionTrack(myGene)
-plotTracks(genetrack)
+genesInRegion<-fullTable[which(fullTable[,40]==chromosome & fullTable[,9]>=start & fullTable[,10]<=end),]
+genesInRegion$start<-myGene$start-genesInRegion$start
+colnames(genesInRegion)[39]<-"sig"
+colnames(genesInRegion)[35]<-"log2foldchange"
+colnames(genesInRegion)[36]<-"test_stat"
+data<-ddply(genesInRegion,.(gene_id),head,n=1)
+data$test_stat<-as.numeric(data$test_stat)
+ggplot(data,aes(start,test_stat,color=sig))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))+labs(title=strain)

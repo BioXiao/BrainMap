@@ -1,11 +1,8 @@
 Celrr KO vs WT (Adult)
 ======================================
 
-
-- add labels, descriptions
-- turn off all caching ! 
 - other heatmap labels (csHeatmap)
-- overlap figure
+- cache gsea and overlap figure!! 
 - tracks 
 - should import litter info
 
@@ -179,7 +176,7 @@ Expression heatmap:
 There are 55 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Wed Jun 18 16:04:15 2014 -->
+<!-- Thu Jun 19 10:36:56 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Chordc1 </TD> </TR>
@@ -281,7 +278,7 @@ Per isoform difference between conditions:
 
 These isoforms are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Wed Jun 18 16:04:31 2014 -->
+<!-- Thu Jun 19 10:45:01 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> isoAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Chordc1 </TD> </TR>
@@ -396,7 +393,7 @@ Cluster profiler used to call enichments of significantly differentially regulat
 ## Error: argument "seed" is missing, with no default
 ```
 
-The pvalue for genes significantly regulated in this region is: 0
+The pvalue for genes significantly regulated in this region is: 
 
 ![plot of chunk overlap image](figure/Celrr/Adult/overlap image.png) 
 
@@ -405,7 +402,7 @@ The pvalue for genes significantly regulated in this region is: 0
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Wed Jun 18 16:22:18 2014 -->
+<!-- Thu Jun 19 11:10:06 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR729 </TD> </TR>
@@ -430,7 +427,7 @@ The pvalue for genes significantly regulated in this region is: 0
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Wed Jun 18 16:22:18 2014 -->
+<!-- Thu Jun 19 11:10:07 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR729/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 26338300.00 </TD> <TD align="right"> 33696500.00 </TD> <TD align="right"> 0.78 </TD> <TD align="right"> 1.00 </TD> </TR>
@@ -494,36 +491,36 @@ The pvalue for genes significantly regulated in this region is: 0
 ## [20] GSA_1.03                           
 ## [21] limma_3.18.13                      
 ## [22] xtable_1.7-3                       
-## [23] knitr_1.6                          
-## [24] cummeRbund_2.7.2                   
-## [25] Gviz_1.6.0                         
-## [26] rtracklayer_1.22.7                 
-## [27] GenomicRanges_1.14.4               
-## [28] XVector_0.2.0                      
-## [29] IRanges_1.20.7                     
-## [30] fastcluster_1.1.13                 
-## [31] reshape2_1.4                       
-## [32] ggplot2_1.0.0                      
-## [33] RSQLite_0.11.4                     
-## [34] DBI_0.2-7                          
-## [35] BiocGenerics_0.8.0                 
+## [23] cummeRbund_2.7.2                   
+## [24] Gviz_1.6.0                         
+## [25] rtracklayer_1.22.7                 
+## [26] GenomicRanges_1.14.4               
+## [27] XVector_0.2.0                      
+## [28] IRanges_1.20.7                     
+## [29] fastcluster_1.1.13                 
+## [30] reshape2_1.4                       
+## [31] ggplot2_1.0.0                      
+## [32] RSQLite_0.11.4                     
+## [33] DBI_0.2-7                          
+## [34] BiocGenerics_0.8.0                 
+## [35] knitr_1.6                          
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] biomaRt_2.18.0         biovizBase_1.10.8      bitops_1.0-6          
-##  [4] caTools_1.17           cluster_1.15.2         colorspace_1.2-4      
-##  [7] dichromat_2.0-0        digest_0.6.4           DO.db_2.7             
-## [10] evaluate_0.5.5         formatR_0.10           Formula_1.1-1         
-## [13] gdata_2.13.3           GenomicFeatures_1.14.5 GOSemSim_1.20.3       
-## [16] graph_1.40.1           graphite_1.8.1         gtools_3.4.1          
-## [19] Hmisc_3.14-4           igraph_0.7.1           KEGG.db_2.10.1        
-## [22] KernSmooth_2.23-12     labeling_0.2           lattice_0.20-29       
-## [25] latticeExtra_0.6-26    MASS_7.3-33            Matrix_1.1-3          
-## [28] munsell_0.4.2          org.Hs.eg.db_2.10.1    proto_0.3-10          
-## [31] qvalue_1.36.0          RColorBrewer_1.0-5     Rcpp_0.11.1           
-## [34] RCurl_1.95-4.1         reactome.db_1.46.1     Rsamtools_1.14.3      
-## [37] scales_0.2.4           splines_3.0.2          stats4_3.0.2          
-## [40] survival_2.37-7        tcltk_3.0.2            tools_3.0.2           
-## [43] XML_3.98-1.1           zlibbioc_1.8.0
+##  [4] caTools_1.17           cluster_1.15.2         codetools_0.2-8       
+##  [7] colorspace_1.2-4       dichromat_2.0-0        digest_0.6.4          
+## [10] DO.db_2.7              evaluate_0.5.5         formatR_0.10          
+## [13] Formula_1.1-1          gdata_2.13.3           GenomicFeatures_1.14.5
+## [16] GOSemSim_1.20.3        graph_1.40.1           graphite_1.8.1        
+## [19] gtools_3.4.1           Hmisc_3.14-4           igraph_0.7.1          
+## [22] KEGG.db_2.10.1         KernSmooth_2.23-12     labeling_0.2          
+## [25] lattice_0.20-29        latticeExtra_0.6-26    MASS_7.3-33           
+## [28] Matrix_1.1-3           munsell_0.4.2          org.Hs.eg.db_2.10.1   
+## [31] proto_0.3-10           qvalue_1.36.0          RColorBrewer_1.0-5    
+## [34] Rcpp_0.11.1            RCurl_1.95-4.1         reactome.db_1.46.1    
+## [37] Rsamtools_1.14.3       scales_0.2.4           splines_3.0.2         
+## [40] stats4_3.0.2           survival_2.37-7        tcltk_3.0.2           
+## [43] tools_3.0.2            XML_3.98-1.1           zlibbioc_1.8.0
 ```
 
 ## Run Info
