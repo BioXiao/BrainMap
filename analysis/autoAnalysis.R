@@ -14,7 +14,7 @@ rownames(split)<-c("strain","vs","wt","timepoint")
 adult_directories<-split[,which(split[4,]=="Adult")]
 setwd(analysisdir)
 
-for(i in seq(6,(dim(adult_directories)[2]))){
+for(i in seq(7,(dim(adult_directories)[2]))){
   strain <-as.character(adult_directories[1,i])
   timepoint<-"Adult"
   filename<-paste(adult_directories[,i],collapse="_")
