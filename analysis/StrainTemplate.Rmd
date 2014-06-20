@@ -1,11 +1,8 @@
 `r strain` KO vs WT (`r timepoint`)
 ======================================
 
-
-- add labels, descriptions
-- turn off all caching ! 
 - other heatmap labels (csHeatmap)
-- overlap figure
+- cache gsea and overlap figure!! 
 - tracks 
 - should import litter info
 
@@ -14,7 +11,8 @@
 # Set knitr opts
 
 path<-paste("figure/",strain,"/",timepoint,"/", sep="")
-opts_chunk$set(fig.path=path, echo=FALSE, message=FALSE, warning=FALSE)
+cachepath<-paste("cache/",strain,"/",timepoint,"/", sep="")
+opts_chunk$set(fig.path=path, echo=FALSE, message=FALSE, warning=FALSE, cache.path=cachepath)
 
 ### OPTIONAL VAR OVERRIDE (where are my variables!!?)
 #dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Brn1b_vs_WT_Embryonic/"
@@ -47,7 +45,7 @@ biocarta_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.biocarta.v4.0
 # Intialize
 ```{r cummeRbund and data setup, echo=FALSE}
 setwd(dir)
-cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10")
+cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10",rebuild=T)
 reps<-replicates(cuff)
 files<-lapply(reps$file,function(x){strsplit(x, "/")})
 
@@ -661,7 +659,7 @@ detach("package:biomaRt")
 ```
 
 # Cis vs Trans (locally)
-``` {r cis_v_trans}
+``` {r cis_v_trans, cache=TRUE}
 library(BSgenome.Mmusculus.UCSC.mm10)
 library(seqbias)
 library(stringr)
@@ -699,20 +697,20 @@ end<-myGene$end+(windowSize/2)
 sigGenesRegion<-fullTable[which(fullTable[,40]==chromosome & fullTable[,39]=="yes" & fullTable[,9]>=start & fullTable[,10]<=end),]
 nSig<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
 
-score<-0
-signeighbors<-data.frame(rep(NULL,nIter))
+#score<-0
+#signeighbors<-data.frame(rep(NULL,nIter))
 
-for (i in 1:nIter){
-  write(i,stderr())
-  sigGenesRegion<-fullTable[which(fullTable[,40]==seqnames(myRandom[i])@values & fullTable[,39]=="yes" & fullTable[,9]>=start(myRandom[i])-(windowSize/2) & fullTable[,10]<=end(myRandom[i])+(windowSize/2)),]
-  nSigIter<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
-  write(nSigIter,stderr())
-  if(nSigIter >= nSig-1) {score<-score+1}
-  signeighbors[1,i]<-nSigIter
-}
+#for (i in 1:nIter){
+#  write(i,stderr())
+#  sigGenesRegion<-fullTable[which(fullTable[,40]==seqnames(myRandom[i])@values & fullTable[,39]=="yes" & fullTable[,9]>=start(myRandom[i])-(windowSize/2) & fullTable[,10]<=end(myRandom[i])+(windowSize/2)),]
+#  nSigIter<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
+#  write(nSigIter,stderr())
+#  if(nSigIter >= nSig-1) {score<-score+1}
+#  signeighbors[1,i]<-nSigIter
+#}
 
-ttest<-t.test(signeighbors,mu=nSig-1)
-pval_for_region<-ttest$p.value
+#ttest<-t.test(signeighbors,mu=nSig)
+#pval_for_region<-ttest$p.value
 
 #first 	question, region enriched over genomic background for cis significance? (pvalue)
 #second task:
@@ -724,12 +722,16 @@ colnames(genesInRegion)[39]<-"sig"
 colnames(genesInRegion)[35]<-"log2foldchange"
 colnames(genesInRegion)[36]<-"test_stat"
 data<-ddply(genesInRegion,.(gene_id),head,n=1)
+data$test_stat<-as.numeric(data$test_stat)
+
+
 ```
 
-The pvalue for genes significantly regulated in this region is: `r pval_for_region`
+The pvalue for genes significantly regulated in this region is: (not calculated in this file) 
 
-```{r overlap image}
+```{r overlap image, cache=TRUE}
 ggplot(data,aes(start,test_stat,color=sig))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))+labs(title=strain)
+
 ```
 
 
