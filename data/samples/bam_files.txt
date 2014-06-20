@@ -48,9 +48,9 @@ bamfile	sample_name	quantified
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR746/accepted_hits.bam	JR746	True
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR747/accepted_hits.bam	JR747	True
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR748/accepted_hits.bam	JR748	True
-/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR749/accepted_hits.bam	JR749	True
-/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR750/accepted_hits.bam	JR750	True
-/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR751/accepted_hits.bam	JR751	True
+/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR749/accepted_hits.bam	JR749	False
+/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR750/accepted_hits.bam	JR750	False
+/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR751/accepted_hits.bam	JR751	False
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR752/accepted_hits.bam	JR752	True
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR753/accepted_hits.bam	JR753	True
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR754/accepted_hits.bam	JR754	True
@@ -85,7 +85,7 @@ bamfile	sample_name	quantified
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR783/accepted_hits.bam	JR783	True
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR784/accepted_hits.bam	JR784	True
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR785/accepted_hits.bam	JR785	True
-/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR786/accepted_hits.bam	JR786	True
+/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR786/accepted_hits.bam	JR786	False
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR787/accepted_hits.bam	JR787	True
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR788/accepted_hits.bam	JR788	True
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR789/accepted_hits.bam	JR789	True
@@ -99,7 +99,7 @@ bamfile	sample_name	quantified
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR800/accepted_hits.bam	JR800	True
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR801/accepted_hits.bam	JR801	True
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR802/accepted_hits.bam	JR802	True
-/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR803/accepted_hits.bam	JR803	False
+/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR803/accepted_hits.bam	JR803	True
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR804/accepted_hits.bam	JR804	True
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR805/accepted_hits.bam	JR805	True
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR806/accepted_hits.bam	JR806	True

@@ -31,7 +31,7 @@ outFile = open("diffScript_adult.sh",'w')
 
 for strain,bg in background.iteritems():
 
-	KOSamples = ",".join([quant_root+x['sample_id']+'/abundances.cxb' for x in samples if x['Genotype']=="KO" and x['Strain']==strain])
-	WTSamples = ",".join([quant_root+x['sample_id']+'/abundances.cxb' for x in samples if x['Genotype']=="WT" and x['Genetic background']==bg])
+	KOSamples = ",".join([quant_root+x['sample_id']+'/abundances.cxb' for x in samples if x['Genotype']=="KO" and x['Strain']==strain and x['Useable']=="TRUE"])
+	WTSamples = ",".join([quant_root+x['sample_id']+'/abundances.cxb' for x in samples if x['Genotype']=="WT" and x['Genetic background']==bg and x['Useable']=="TRUE"])
 
 	print >>outFile, "#%s\n%s %s %s %s %s\n" % (strain,cuffdiff_cmd,strain,"Adult",KOSamples,WTSamples)

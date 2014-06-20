@@ -5,7 +5,7 @@
 
 #Setup
 PROJECT_ROOT=/n/rinn_data1/seq/lgoff/Projects/BrainMap
-DIFF_ROOT=$PROJECT_ROOT/diffs
+DIFF_ROOT=$PROJECT_ROOT/data/diffs
 
 REF_GTF=$PROJECT_ROOT/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf
 
@@ -14,8 +14,8 @@ LOGBASE=$PROJECT_ROOT/logs
 #Slurm
 QUEUE=serial_requeue #unrestricted #or general OR serial_requeue
 NUM_THREADS=10
-MAX_MEM=4000
-RUN_TIME=600
+MAX_MEM=8000
+RUN_TIME=1200
 
 ###########
 #Main
