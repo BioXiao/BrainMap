@@ -45,7 +45,7 @@ biocarta_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.biocarta.v4.0
 # Intialize
 ```{r cummeRbund and data setup, echo=FALSE}
 setwd(dir)
-cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10")
+cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10",rebuild=T)
 reps<-replicates(cuff)
 files<-lapply(reps$file,function(x){strsplit(x, "/")})
 
@@ -727,7 +727,7 @@ data$test_stat<-as.numeric(data$test_stat)
 
 ```
 
-The pvalue for genes significantly regulated in this region is: 
+The pvalue for genes significantly regulated in this region is: (not calculated in this file) 
 
 ```{r overlap image, cache=TRUE}
 ggplot(data,aes(start,test_stat,color=sig))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))+labs(title=strain)
