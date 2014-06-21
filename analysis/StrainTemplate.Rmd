@@ -15,8 +15,8 @@ cachepath<-paste("cache/",strain,"/",timepoint,"/", sep="")
 opts_chunk$set(fig.path=path, echo=FALSE, message=FALSE, warning=FALSE, cache.path=cachepath)
 
 ### OPTIONAL VAR OVERRIDE (where are my variables!!?)
-#dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Brn1b_vs_WT_Embryonic/"
-#strain<-"linc-Brn1b"
+#dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Enc1_vs_WT_Embryonic/"
+#strain<-"linc-Enc1"
 alpha<-0.05 
 setwd(dir)
 
@@ -95,7 +95,7 @@ fpkmSCVPlot(isoforms(cuff))
 
 ## Volcano
 ```{r volcano}
-csVolcano(genes(cuff),"wt","ko")
+#csVolcano(genes(cuff),"wt","ko")
 ```
 
 ### Volcano matrix (replicates)
@@ -106,12 +106,12 @@ csVolcanoMatrix(genes(cuff),replicates=T)
 
 ## MvA plot
 ```{r MvA}
-MAplot(genes(cuff),"wt","ko")
+#MAplot(genes(cuff),"wt","ko")
 ```
    
 ### MvA plot counts
 ```{r MvA_counts}
-MAplot(genes(cuff),"wt","ko",useCount=T)
+#MAplot(genes(cuff),"wt","ko",useCount=T)
 ```
 
 ## Scatterplot
@@ -292,7 +292,6 @@ rowlabel<-geneAnnot$gene_short_name
 expressionPlot(sigGenes)
 csHeatmap(sigGenes, cluster="both",replicates=T)
 #Maybe do cluster="col"
-#expressionBarplot(sigGenes)
 ```
 
 Significant genes with expression >50fpkm (any condition):
@@ -302,7 +301,8 @@ high<-sigFPKMs[which(sigFPKMs>50),]
 high<-high[complete.cases(high),]
 highIDs<-rownames(high)
 highGenes<-getGenes(cuff,highIDs)
-expressionPlot(highGenes)
+highNames<-annotation(highGenes)$gene_short_name
+expressionPlot(highGenes)+ylab(highNames)
 ```
 
 An individual look at each of the highly expressed significantly differentially regulated genes:
@@ -662,20 +662,22 @@ end<-myGene$end+(windowSize/2)
 sigGenesRegion<-fullTable[which(fullTable[,40]==chromosome & fullTable[,39]=="yes" & fullTable[,9]>=start & fullTable[,10]<=end),]
 nSig<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
 
-#score<-0
-#signeighbors<-data.frame(rep(NULL,nIter))
+score<-0
+signeighbors<-data.frame(rep(NULL,nIter))
 
-#for (i in 1:nIter){
-#  write(i,stderr())
-#  sigGenesRegion<-fullTable[which(fullTable[,40]==seqnames(myRandom[i])@values & fullTable[,39]=="yes" & fullTable[,9]>=start(myRandom[i])-(windowSize/2) & fullTable[,10]<=end(myRandom[i])+(windowSize/2)),]
-#  nSigIter<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
-#  write(nSigIter,stderr())
-#  if(nSigIter >= nSig-1) {score<-score+1}
-#  signeighbors[1,i]<-nSigIter
-#}
+for (i in 1:nIter){
+  write(i,stderr())
+  sigGenesRegion<-fullTable[which(fullTable[,40]==seqnames(myRandom[i])@values & fullTable[,39]=="yes" & fullTable[,9]>=start(myRandom[i])-(windowSize/2) & fullTable[,10]<=end(myRandom[i])+(windowSize/2)),]
+  nSigIter<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
+  write(nSigIter,stderr())
+  if(nSigIter >= nSig-1) {score<-score+1}
+  signeighbors[1,i]<-nSigIter
+}
 
 #ttest<-t.test(signeighbors,mu=nSig)
 #pval_for_region<-ttest$p.value
+
+pval_for_region<-score/nIter
 
 #first 	question, region enriched over genomic background for cis significance? (pvalue)
 #second task:
@@ -690,7 +692,7 @@ data<-ddply(genesInRegion,.(gene_id),head,n=1)
 data$test_stat<-as.numeric(data$test_stat)
 ```
 
-The pvalue for genes significantly regulated in this region is: (not calculated in this file) 
+The pvalue for `r nSig` genes significantly regulated in this region is: `r pval_for_region` 
 
 ```{r overlap_image, cache=TRUE}
 ggplot(data,aes(start,test_stat,color=sig))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))+labs(title=strain)

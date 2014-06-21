@@ -26,10 +26,10 @@ Cuff overview:
 ## 	 26754 genes
 ## 	 77524 isoforms
 ## 	 0 TSS
-## 	 0 CDS
+## 	 23066 CDS
 ## 	 0 promoters
 ## 	 0 splicing
-## 	 0 relCDS
+## 	 19954 relCDS
 ```
 
 
@@ -49,33 +49,24 @@ Dispersion plot for genes in cuff:
 Differences in CV 2 can result in lower numbers of differentially expressed genes due to a higher degree of variability between replicate fpkm estimates.
 
 Genes:
-![plot of chunk CV genes](figure/Crnde/Adult/CV genes.png) 
+![plot of chunk CV_genes](figure/Crnde/Adult/CV_genes.png) 
 
 
 Isoforms: 
-![plot of chunk cv iso](figure/Crnde/Adult/cv iso.png) 
+![plot of chunk cv_iso](figure/Crnde/Adult/cv_iso.png) 
 
 ## Volcano
 
-```
-## Error: One or more values of 'x' or 'y' are not valid sample names!
-```
 
 ### Volcano matrix (replicates)
 
-![plot of chunk volcano matrix](figure/Crnde/Adult/volcano matrix.png) 
+![plot of chunk volcano_matrix](figure/Crnde/Adult/volcano_matrix.png) 
 
 ## MvA plot
 
-```
-## Error: non-numeric argument to binary operator
-```
    
 ### MvA plot counts
 
-```
-## Error: non-numeric argument to binary operator
-```
 
 ## Scatterplot
 ![plot of chunk scatterplot](figure/Crnde/Adult/scatterplot.png) 
@@ -91,19 +82,19 @@ Isoforms:
 
 Boxplot (genes)
 
-![plot of chunk boxplot genes](figure/Crnde/Adult/boxplot genes.png) 
+![plot of chunk boxplot_genes](figure/Crnde/Adult/boxplot_genes.png) 
 
 Boxplot (genes, replicates)
 
-![plot of chunk boxplot genes replicates](figure/Crnde/Adult/boxplot genes replicates.png) 
+![plot of chunk boxplot_genes_replicates](figure/Crnde/Adult/boxplot_genes_replicates.png) 
 
 Boxplot (isoforms)
 
-![plot of chunk boxplot isoforms](figure/Crnde/Adult/boxplot isoforms.png) 
+![plot of chunk boxplot_isoforms](figure/Crnde/Adult/boxplot_isoforms.png) 
 
 Boxplot (isoforms, replicates)
 
-![plot of chunk boxplot isoforms replicates](figure/Crnde/Adult/boxplot isoforms replicates.png) 
+![plot of chunk boxplot_isoforms_replicates](figure/Crnde/Adult/boxplot_isoforms_replicates.png) 
 
 ### Density
 
@@ -113,16 +104,16 @@ Density (genes)
 
 Density (genes, replicates)
 
-![plot of chunk density w replicates](figure/Crnde/Adult/density w replicates.png) 
+![plot of chunk density_w_replicates](figure/Crnde/Adult/density_w_replicates.png) 
 
 
 ## Clustering
 
 ### Replicate Clusters
-![plot of chunk replicate clusters](figure/Crnde/Adult/replicate clusters.png) 
+![plot of chunk replicate_clusters](figure/Crnde/Adult/replicate_clusters.png) 
 
 ```
-## 'dendrogram' with 2 branches and 18 members total, at height 0.07545
+## 'dendrogram' with 2 branches and 16 members total, at height 0.07546
 ```
 
 ### PCA (genes)
@@ -139,33 +130,33 @@ Density (genes, replicates)
 
 ## Endogenous lncRNA expression
 
-![plot of chunk Enodenous lncRNA tables](figure/Crnde/Adult/Enodenous lncRNA tables.png) 
+![plot of chunk Enodenous_lncRNA_tables](figure/Crnde/Adult/Enodenous_lncRNA_tables.png) 
 
 Endogenous expression of Crnde isoforms:
 
-![plot of chunk endogenous iso](figure/Crnde/Adult/endogenous iso.png) 
+![plot of chunk endogenous_iso](figure/Crnde/Adult/endogenous_iso.png) 
 
 Barplot of gene expression:
 
-![plot of chunk endogenous barplot](figure/Crnde/Adult/endogenous barplot.png) 
+![plot of chunk endogenous_barplot](figure/Crnde/Adult/endogenous_barplot.png) 
 
 Barplot of isoform expression:
 
-![plot of chunk endogenous iso barplot](figure/Crnde/Adult/endogenous iso barplot.png) 
+![plot of chunk endogenous_iso_barplot](figure/Crnde/Adult/endogenous_iso_barplot.png) 
 
 
 ## LacZ expression
 
-![plot of chunk LacZ expression](figure/Crnde/Adult/LacZ expression1.png) ![plot of chunk LacZ expression](figure/Crnde/Adult/LacZ expression2.png) 
+![plot of chunk LacZ_expression](figure/Crnde/Adult/LacZ_expression1.png) ![plot of chunk LacZ_expression](figure/Crnde/Adult/LacZ_expression2.png) 
 
 
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
 Expression plot (endogenous linc, lacZ, Y-expressed gene):
 
-![plot of chunk Digital Genotyping](figure/Crnde/Adult/Digital Genotyping.png) 
+![plot of chunk Digital_Genotyping](figure/Crnde/Adult/Digital_Genotyping.png) 
 
 Expression heatmap:
-![plot of chunk digital geno heatmap](figure/Crnde/Adult/digital geno heatmap.png) 
+![plot of chunk digital_geno_heatmap](figure/Crnde/Adult/digital_geno_heatmap.png) 
 
 # Differential Analysis
 
@@ -173,92 +164,57 @@ Expression heatmap:
 
 
 
-There are 80 significantly differentially expressed genes. They are:
+There are 45 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Thu Jun 19 11:14:49 2014 -->
+<!-- Sat Jun 21 16:34:26 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
-  <TR> <TD align="right"> 1 </TD> <TD> Sox9 </TD> </TR>
-  <TR> <TD align="right"> 2 </TD> <TD> Arrdc2 </TD> </TR>
-  <TR> <TD align="right"> 3 </TD> <TD> Klf4 </TD> </TR>
-  <TR> <TD align="right"> 4 </TD> <TD> Fosb </TD> </TR>
-  <TR> <TD align="right"> 5 </TD> <TD> Nes </TD> </TR>
-  <TR> <TD align="right"> 6 </TD> <TD> Id3 </TD> </TR>
-  <TR> <TD align="right"> 7 </TD> <TD> Carhsp1 </TD> </TR>
-  <TR> <TD align="right"> 8 </TD> <TD> Mertk </TD> </TR>
-  <TR> <TD align="right"> 9 </TD> <TD> Wsb1 </TD> </TR>
-  <TR> <TD align="right"> 10 </TD> <TD> Erbb3 </TD> </TR>
-  <TR> <TD align="right"> 11 </TD> <TD> Sgk1 </TD> </TR>
-  <TR> <TD align="right"> 12 </TD> <TD> Timp3 </TD> </TR>
-  <TR> <TD align="right"> 13 </TD> <TD> Adi1 </TD> </TR>
-  <TR> <TD align="right"> 14 </TD> <TD> Nfkbia </TD> </TR>
-  <TR> <TD align="right"> 15 </TD> <TD> Serpina3n </TD> </TR>
-  <TR> <TD align="right"> 16 </TD> <TD> Net1 </TD> </TR>
-  <TR> <TD align="right"> 17 </TD> <TD> Fos </TD> </TR>
-  <TR> <TD align="right"> 18 </TD> <TD> Edn1 </TD> </TR>
-  <TR> <TD align="right"> 19 </TD> <TD> Arc </TD> </TR>
-  <TR> <TD align="right"> 20 </TD> <TD> Nr4a1 </TD> </TR>
-  <TR> <TD align="right"> 21 </TD> <TD> Cdkn1a </TD> </TR>
-  <TR> <TD align="right"> 22 </TD> <TD> Wfdc1 </TD> </TR>
-  <TR> <TD align="right"> 23 </TD> <TD> Clic5 </TD> </TR>
-  <TR> <TD align="right"> 24 </TD> <TD> Atp6v0c </TD> </TR>
-  <TR> <TD align="right"> 25 </TD> <TD> Fkbp5 </TD> </TR>
-  <TR> <TD align="right"> 26 </TD> <TD> Tma16 </TD> </TR>
-  <TR> <TD align="right"> 27 </TD> <TD> Clk1 </TD> </TR>
-  <TR> <TD align="right"> 28 </TD> <TD> Mall </TD> </TR>
-  <TR> <TD align="right"> 29 </TD> <TD> Slc7a11 </TD> </TR>
-  <TR> <TD align="right"> 30 </TD> <TD> Cyr61 </TD> </TR>
-  <TR> <TD align="right"> 31 </TD> <TD> Nr4a3 </TD> </TR>
-  <TR> <TD align="right"> 32 </TD> <TD> Slc2a1 </TD> </TR>
-  <TR> <TD align="right"> 33 </TD> <TD> Mfsd2a </TD> </TR>
-  <TR> <TD align="right"> 34 </TD> <TD> Tinagl1 </TD> </TR>
-  <TR> <TD align="right"> 35 </TD> <TD> Fosl2 </TD> </TR>
-  <TR> <TD align="right"> 36 </TD> <TD> Emp1 </TD> </TR>
-  <TR> <TD align="right"> 37 </TD> <TD> Pglyrp1 </TD> </TR>
-  <TR> <TD align="right"> 38 </TD> <TD> Hddc3 </TD> </TR>
-  <TR> <TD align="right"> 39 </TD> <TD> Mt2 </TD> </TR>
-  <TR> <TD align="right"> 40 </TD> <TD> Mt1 </TD> </TR>
-  <TR> <TD align="right"> 41 </TD> <TD> Sox10 </TD> </TR>
-  <TR> <TD align="right"> 42 </TD> <TD> Arhgap27 </TD> </TR>
-  <TR> <TD align="right"> 43 </TD> <TD> Trim59 </TD> </TR>
-  <TR> <TD align="right"> 44 </TD> <TD> Psenen </TD> </TR>
-  <TR> <TD align="right"> 45 </TD> <TD> Bcorl1 </TD> </TR>
-  <TR> <TD align="right"> 46 </TD> <TD> Clic4 </TD> </TR>
-  <TR> <TD align="right"> 47 </TD> <TD> Klf10 </TD> </TR>
-  <TR> <TD align="right"> 48 </TD> <TD> Egr2 </TD> </TR>
-  <TR> <TD align="right"> 49 </TD> <TD> Smim3 </TD> </TR>
-  <TR> <TD align="right"> 50 </TD> <TD> Egr1 </TD> </TR>
-  <TR> <TD align="right"> 51 </TD> <TD> Cdc42ep4 </TD> </TR>
-  <TR> <TD align="right"> 52 </TD> <TD> Maff </TD> </TR>
-  <TR> <TD align="right"> 53 </TD> <TD> Id1 </TD> </TR>
-  <TR> <TD align="right"> 54 </TD> <TD> Ctla2a </TD> </TR>
-  <TR> <TD align="right"> 55 </TD> <TD> Gm9493 </TD> </TR>
-  <TR> <TD align="right"> 56 </TD> <TD> Acp1 </TD> </TR>
-  <TR> <TD align="right"> 57 </TD> <TD> Npas4 </TD> </TR>
-  <TR> <TD align="right"> 58 </TD> <TD> Rasd1 </TD> </TR>
-  <TR> <TD align="right"> 59 </TD> <TD> Plekho2 </TD> </TR>
-  <TR> <TD align="right"> 60 </TD> <TD> Junb </TD> </TR>
-  <TR> <TD align="right"> 61 </TD> <TD> Klf2 </TD> </TR>
-  <TR> <TD align="right"> 62 </TD> <TD> Fat2 </TD> </TR>
-  <TR> <TD align="right"> 63 </TD> <TD> Rpl30 </TD> </TR>
-  <TR> <TD align="right"> 64 </TD> <TD> Gm5506 </TD> </TR>
-  <TR> <TD align="right"> 65 </TD> <TD> linc-Brn1a </TD> </TR>
-  <TR> <TD align="right"> 66 </TD> <TD> Plekhh1 </TD> </TR>
-  <TR> <TD align="right"> 67 </TD> <TD> Rps7 </TD> </TR>
-  <TR> <TD align="right"> 68 </TD> <TD> Sox21 </TD> </TR>
-  <TR> <TD align="right"> 69 </TD> <TD> Cox5b </TD> </TR>
-  <TR> <TD align="right"> 70 </TD> <TD> Zbtb16 </TD> </TR>
-  <TR> <TD align="right"> 71 </TD> <TD> Bpifb3 </TD> </TR>
-  <TR> <TD align="right"> 72 </TD> <TD> Ddx3y </TD> </TR>
-  <TR> <TD align="right"> 73 </TD> <TD> Fat1 </TD> </TR>
-  <TR> <TD align="right"> 74 </TD> <TD> Egr4 </TD> </TR>
-  <TR> <TD align="right"> 75 </TD> <TD> Ppia </TD> </TR>
-  <TR> <TD align="right"> 76 </TD> <TD> Gm7292 </TD> </TR>
-  <TR> <TD align="right"> 77 </TD> <TD> A830036E02Rik </TD> </TR>
-  <TR> <TD align="right"> 78 </TD> <TD> Apold1 </TD> </TR>
-  <TR> <TD align="right"> 79 </TD> <TD> AA465934 </TD> </TR>
-  <TR> <TD align="right"> 80 </TD> <TD> LacZ </TD> </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> Fosb </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> Mertk </TD> </TR>
+  <TR> <TD align="right"> 3 </TD> <TD> Adi1 </TD> </TR>
+  <TR> <TD align="right"> 4 </TD> <TD> Serpina3n </TD> </TR>
+  <TR> <TD align="right"> 5 </TD> <TD> Fos </TD> </TR>
+  <TR> <TD align="right"> 6 </TD> <TD> Arc </TD> </TR>
+  <TR> <TD align="right"> 7 </TD> <TD> Nr4a1 </TD> </TR>
+  <TR> <TD align="right"> 8 </TD> <TD> Cdkn1a </TD> </TR>
+  <TR> <TD align="right"> 9 </TD> <TD> Clic5 </TD> </TR>
+  <TR> <TD align="right"> 10 </TD> <TD> Fkbp5 </TD> </TR>
+  <TR> <TD align="right"> 11 </TD> <TD> Unc5a </TD> </TR>
+  <TR> <TD align="right"> 12 </TD> <TD> Sgk3 </TD> </TR>
+  <TR> <TD align="right"> 13 </TD> <TD> Nr4a3 </TD> </TR>
+  <TR> <TD align="right"> 14 </TD> <TD> Slc2a1 </TD> </TR>
+  <TR> <TD align="right"> 15 </TD> <TD> Mfsd2a </TD> </TR>
+  <TR> <TD align="right"> 16 </TD> <TD> Tinagl1 </TD> </TR>
+  <TR> <TD align="right"> 17 </TD> <TD> Fosl2 </TD> </TR>
+  <TR> <TD align="right"> 18 </TD> <TD> Hddc3 </TD> </TR>
+  <TR> <TD align="right"> 19 </TD> <TD> Mt2 </TD> </TR>
+  <TR> <TD align="right"> 20 </TD> <TD> Sox10 </TD> </TR>
+  <TR> <TD align="right"> 21 </TD> <TD> Lpcat2 </TD> </TR>
+  <TR> <TD align="right"> 22 </TD> <TD> Ndn </TD> </TR>
+  <TR> <TD align="right"> 23 </TD> <TD> Egr3 </TD> </TR>
+  <TR> <TD align="right"> 24 </TD> <TD> Arhgap27 </TD> </TR>
+  <TR> <TD align="right"> 25 </TD> <TD> Trim59 </TD> </TR>
+  <TR> <TD align="right"> 26 </TD> <TD> Klf10 </TD> </TR>
+  <TR> <TD align="right"> 27 </TD> <TD> Egr2 </TD> </TR>
+  <TR> <TD align="right"> 28 </TD> <TD> Egr1 </TD> </TR>
+  <TR> <TD align="right"> 29 </TD> <TD> Pcsk1n </TD> </TR>
+  <TR> <TD align="right"> 30 </TD> <TD> C1qtnf4 </TD> </TR>
+  <TR> <TD align="right"> 31 </TD> <TD> Cdc42ep4 </TD> </TR>
+  <TR> <TD align="right"> 32 </TD> <TD> Npas4 </TD> </TR>
+  <TR> <TD align="right"> 33 </TD> <TD> Cdh19 </TD> </TR>
+  <TR> <TD align="right"> 34 </TD> <TD> Junb </TD> </TR>
+  <TR> <TD align="right"> 35 </TD> <TD> Kdm5d </TD> </TR>
+  <TR> <TD align="right"> 36 </TD> <TD> Gm5506 </TD> </TR>
+  <TR> <TD align="right"> 37 </TD> <TD> Cox5b </TD> </TR>
+  <TR> <TD align="right"> 38 </TD> <TD> Scoc </TD> </TR>
+  <TR> <TD align="right"> 39 </TD> <TD> Ddx3y </TD> </TR>
+  <TR> <TD align="right"> 40 </TD> <TD> Jund </TD> </TR>
+  <TR> <TD align="right"> 41 </TD> <TD> Egr4 </TD> </TR>
+  <TR> <TD align="right"> 42 </TD> <TD> Ppia </TD> </TR>
+  <TR> <TD align="right"> 43 </TD> <TD> A830036E02Rik </TD> </TR>
+  <TR> <TD align="right"> 44 </TD> <TD> Xist </TD> </TR>
+  <TR> <TD align="right"> 45 </TD> <TD> AA465934 </TD> </TR>
    </TABLE>
 
 ### Matrix of gene significant differences between conditions
@@ -273,7 +229,7 @@ Expression plot (genes):
 ![plot of chunk sigExpression](figure/Crnde/Adult/sigExpression1.png) ![plot of chunk sigExpression](figure/Crnde/Adult/sigExpression2.png) 
 
 Significant genes with expression >50fpkm (any condition):
-![plot of chunk highly expressed sig](figure/Crnde/Adult/highly expressed sig.png) 
+![plot of chunk highly_expressed_sig](figure/Crnde/Adult/highly_expressed_sig.png) 
 
 An individual look at each of the highly expressed significantly differentially regulated genes:
 (eval=false for first pass)
@@ -299,73 +255,55 @@ Volcano plot with significant genes only:
 
 ### Differential Isoforms between conditions
 Per isoform difference between conditions:
-![plot of chunk diff.iso](figure/Crnde/Adult/diff.iso.png) 
+![plot of chunk diff_iso](figure/Crnde/Adult/diff_iso.png) 
 
 These isoforms are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Thu Jun 19 11:15:10 2014 -->
+<!-- Sat Jun 21 16:34:43 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> isoAnnot$gene_short_name </TH>  </TR>
-  <TR> <TD align="right"> 1 </TD> <TD> Sox9 </TD> </TR>
-  <TR> <TD align="right"> 2 </TD> <TD> Arrdc2 </TD> </TR>
-  <TR> <TD align="right"> 3 </TD> <TD> Klf4 </TD> </TR>
-  <TR> <TD align="right"> 4 </TD> <TD> Fosb </TD> </TR>
-  <TR> <TD align="right"> 5 </TD> <TD> Hif3a </TD> </TR>
-  <TR> <TD align="right"> 6 </TD> <TD> Nes </TD> </TR>
-  <TR> <TD align="right"> 7 </TD> <TD> Carhsp1 </TD> </TR>
-  <TR> <TD align="right"> 8 </TD> <TD> Mertk </TD> </TR>
-  <TR> <TD align="right"> 9 </TD> <TD> Erbb3 </TD> </TR>
-  <TR> <TD align="right"> 10 </TD> <TD> Timp3 </TD> </TR>
-  <TR> <TD align="right"> 11 </TD> <TD> Serpina3n </TD> </TR>
-  <TR> <TD align="right"> 12 </TD> <TD> Fos </TD> </TR>
-  <TR> <TD align="right"> 13 </TD> <TD> Edn1 </TD> </TR>
-  <TR> <TD align="right"> 14 </TD> <TD> Hmgcr </TD> </TR>
-  <TR> <TD align="right"> 15 </TD> <TD> Arc </TD> </TR>
-  <TR> <TD align="right"> 16 </TD> <TD> Nr4a1 </TD> </TR>
-  <TR> <TD align="right"> 17 </TD> <TD> Cdkn1a </TD> </TR>
-  <TR> <TD align="right"> 18 </TD> <TD> Atp6v0c </TD> </TR>
-  <TR> <TD align="right"> 19 </TD> <TD> Fkbp5 </TD> </TR>
-  <TR> <TD align="right"> 20 </TD> <TD> Tma16 </TD> </TR>
-  <TR> <TD align="right"> 21 </TD> <TD> Cyr61 </TD> </TR>
-  <TR> <TD align="right"> 22 </TD> <TD> Slc2a1 </TD> </TR>
-  <TR> <TD align="right"> 23 </TD> <TD> Mfsd2a </TD> </TR>
-  <TR> <TD align="right"> 24 </TD> <TD> Tinagl1 </TD> </TR>
-  <TR> <TD align="right"> 25 </TD> <TD> Fosl2 </TD> </TR>
-  <TR> <TD align="right"> 26 </TD> <TD> Emp1 </TD> </TR>
-  <TR> <TD align="right"> 27 </TD> <TD> Pglyrp1 </TD> </TR>
-  <TR> <TD align="right"> 28 </TD> <TD> Hddc3 </TD> </TR>
-  <TR> <TD align="right"> 29 </TD> <TD> Mt2 </TD> </TR>
-  <TR> <TD align="right"> 30 </TD> <TD> Mt1 </TD> </TR>
-  <TR> <TD align="right"> 31 </TD> <TD> Sox10 </TD> </TR>
-  <TR> <TD align="right"> 32 </TD> <TD> Ucp2 </TD> </TR>
-  <TR> <TD align="right"> 33 </TD> <TD> Trim59 </TD> </TR>
-  <TR> <TD align="right"> 34 </TD> <TD> Midn </TD> </TR>
-  <TR> <TD align="right"> 35 </TD> <TD> Psenen </TD> </TR>
-  <TR> <TD align="right"> 36 </TD> <TD> Klf10 </TD> </TR>
-  <TR> <TD align="right"> 37 </TD> <TD> Egr2 </TD> </TR>
-  <TR> <TD align="right"> 38 </TD> <TD> Smim3 </TD> </TR>
-  <TR> <TD align="right"> 39 </TD> <TD> Egr1 </TD> </TR>
-  <TR> <TD align="right"> 40 </TD> <TD> Tnfsf10 </TD> </TR>
-  <TR> <TD align="right"> 41 </TD> <TD> Id1 </TD> </TR>
-  <TR> <TD align="right"> 42 </TD> <TD> Ctla2a </TD> </TR>
-  <TR> <TD align="right"> 43 </TD> <TD> Gm9493 </TD> </TR>
-  <TR> <TD align="right"> 44 </TD> <TD> Rasd1 </TD> </TR>
-  <TR> <TD align="right"> 45 </TD> <TD> Plekho2 </TD> </TR>
-  <TR> <TD align="right"> 46 </TD> <TD> Junb </TD> </TR>
-  <TR> <TD align="right"> 47 </TD> <TD> Klf2 </TD> </TR>
-  <TR> <TD align="right"> 48 </TD> <TD> Fat2 </TD> </TR>
-  <TR> <TD align="right"> 49 </TD> <TD> Gm5506 </TD> </TR>
-  <TR> <TD align="right"> 50 </TD> <TD> Rps7 </TD> </TR>
-  <TR> <TD align="right"> 51 </TD> <TD> Cox5b </TD> </TR>
-  <TR> <TD align="right"> 52 </TD> <TD> Egr4 </TD> </TR>
-  <TR> <TD align="right"> 53 </TD> <TD> Gm7292 </TD> </TR>
-  <TR> <TD align="right"> 54 </TD> <TD> A830036E02Rik </TD> </TR>
-  <TR> <TD align="right"> 55 </TD> <TD> Apold1 </TD> </TR>
-  <TR> <TD align="right"> 56 </TD> <TD> LacZ </TD> </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> Fosb </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> Hif3a </TD> </TR>
+  <TR> <TD align="right"> 3 </TD> <TD> Mertk </TD> </TR>
+  <TR> <TD align="right"> 4 </TD> <TD> Serpina3n </TD> </TR>
+  <TR> <TD align="right"> 5 </TD> <TD> Fos </TD> </TR>
+  <TR> <TD align="right"> 6 </TD> <TD> Arc </TD> </TR>
+  <TR> <TD align="right"> 7 </TD> <TD> Nr4a1 </TD> </TR>
+  <TR> <TD align="right"> 8 </TD> <TD> Cdkn1a </TD> </TR>
+  <TR> <TD align="right"> 9 </TD> <TD> Clic5 </TD> </TR>
+  <TR> <TD align="right"> 10 </TD> <TD> Fkbp5 </TD> </TR>
+  <TR> <TD align="right"> 11 </TD> <TD> Tma16 </TD> </TR>
+  <TR> <TD align="right"> 12 </TD> <TD> Slc2a1 </TD> </TR>
+  <TR> <TD align="right"> 13 </TD> <TD> Mfsd2a </TD> </TR>
+  <TR> <TD align="right"> 14 </TD> <TD> Tinagl1 </TD> </TR>
+  <TR> <TD align="right"> 15 </TD> <TD> Fosl2 </TD> </TR>
+  <TR> <TD align="right"> 16 </TD> <TD> Hddc3 </TD> </TR>
+  <TR> <TD align="right"> 17 </TD> <TD> Mt2 </TD> </TR>
+  <TR> <TD align="right"> 18 </TD> <TD> Sox10 </TD> </TR>
+  <TR> <TD align="right"> 19 </TD> <TD> Lpcat2 </TD> </TR>
+  <TR> <TD align="right"> 20 </TD> <TD> Trim59 </TD> </TR>
+  <TR> <TD align="right"> 21 </TD> <TD> Midn </TD> </TR>
+  <TR> <TD align="right"> 22 </TD> <TD> Klf10 </TD> </TR>
+  <TR> <TD align="right"> 23 </TD> <TD> Egr2 </TD> </TR>
+  <TR> <TD align="right"> 24 </TD> <TD> Egr1 </TD> </TR>
+  <TR> <TD align="right"> 25 </TD> <TD> Pcsk1n </TD> </TR>
+  <TR> <TD align="right"> 26 </TD> <TD> C1qtnf4 </TD> </TR>
+  <TR> <TD align="right"> 27 </TD> <TD> Npas4 </TD> </TR>
+  <TR> <TD align="right"> 28 </TD> <TD> Cdh19 </TD> </TR>
+  <TR> <TD align="right"> 29 </TD> <TD> Junb </TD> </TR>
+  <TR> <TD align="right"> 30 </TD> <TD> Kdm5d </TD> </TR>
+  <TR> <TD align="right"> 31 </TD> <TD> Gm5506 </TD> </TR>
+  <TR> <TD align="right"> 32 </TD> <TD> Cox5b </TD> </TR>
+  <TR> <TD align="right"> 33 </TD> <TD> Ddx3y </TD> </TR>
+  <TR> <TD align="right"> 34 </TD> <TD> Ahnak </TD> </TR>
+  <TR> <TD align="right"> 35 </TD> <TD> Jund </TD> </TR>
+  <TR> <TD align="right"> 36 </TD> <TD> Egr4 </TD> </TR>
+  <TR> <TD align="right"> 37 </TD> <TD> A830036E02Rik </TD> </TR>
+  <TR> <TD align="right"> 38 </TD> <TD> Xist </TD> </TR>
    </TABLE>
 
 
-![plot of chunk isoform heatmap](figure/Crnde/Adult/isoform heatmap.png) 
+![plot of chunk isoform_heatmap](figure/Crnde/Adult/isoform_heatmap.png) 
 
 ### Differential Splicing between conditions
 
@@ -395,8 +333,6 @@ The following are significantly differentially spliced genes (relative portion o
 
 
 
-
-
 # Gene/Pathway Analysis
 
 ## GSEA
@@ -405,9 +341,9 @@ The following are significantly differentially spliced genes (relative portion o
 
 
 
-![plot of chunk print GSEA biocarta](figure/Crnde/Adult/print GSEA biocarta.png) 
+![plot of chunk print_GSEA_biocarta](figure/Crnde/Adult/print_GSEA_biocarta.png) 
 
-![plot of chunk print GSEA reactome](figure/Crnde/Adult/print GSEA reactome.png) 
+![plot of chunk print_GSEA_reactome](figure/Crnde/Adult/print_GSEA_reactome.png) 
 
 ## GO enrichment 
 Cluster profiler used to call enichments of significantly differentially regulated genes that map to Entrez IDs. 
@@ -416,7 +352,17 @@ Cluster profiler used to call enichments of significantly differentially regulat
 
 
 
-![plot of chunk GO figures](figure/Crnde/Adult/GO figures1.png) ![plot of chunk GO figures](figure/Crnde/Adult/GO figures2.png) ![plot of chunk GO figures](figure/Crnde/Adult/GO figures3.png) ![plot of chunk GO figures](figure/Crnde/Adult/GO figures4.png) ![plot of chunk GO figures](figure/Crnde/Adult/GO figures5.png) 
+![plot of chunk GO_figures](figure/Crnde/Adult/GO_figures1.png) ![plot of chunk GO_figures](figure/Crnde/Adult/GO_figures2.png) ![plot of chunk GO_figures](figure/Crnde/Adult/GO_figures3.png) 
+
+```
+## Error: need finite 'xlim' values
+```
+
+![plot of chunk GO_figures](figure/Crnde/Adult/GO_figures4.png) 
+
+```
+## Error: 'x' and 'units' must have length > 0
+```
 
 # Cis vs Trans (locally)
 
@@ -424,16 +370,15 @@ Cluster profiler used to call enichments of significantly differentially regulat
 ## Error: argument "seed" is missing, with no default
 ```
 
-The pvalue for genes significantly regulated in this region is: 
+The pvalue for 1 genes significantly regulated in this region is: 1 
 
-![plot of chunk overlap image](figure/Crnde/Adult/overlap image.png) 
-
+![plot of chunk overlap_image](figure/Crnde/Adult/overlap_image.png) 
 
 # Notes
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Thu Jun 19 11:30:36 2014 -->
+<!-- Sat Jun 21 16:57:22 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR729 </TD> </TR>
@@ -448,37 +393,33 @@ The pvalue for genes significantly regulated in this region is:
   <TR> <TD align="right"> 10 </TD> <TD> JR802 </TD> </TR>
   <TR> <TD align="right"> 11 </TD> <TD> JR803 </TD> </TR>
   <TR> <TD align="right"> 12 </TD> <TD> JR735 </TD> </TR>
-  <TR> <TD align="right"> 13 </TD> <TD> JR817 </TD> </TR>
-  <TR> <TD align="right"> 14 </TD> <TD> JR785 </TD> </TR>
-  <TR> <TD align="right"> 15 </TD> <TD> JR781 </TD> </TR>
-  <TR> <TD align="right"> 16 </TD> <TD> JR741 </TD> </TR>
-  <TR> <TD align="right"> 17 </TD> <TD> JR784 </TD> </TR>
-  <TR> <TD align="right"> 18 </TD> <TD> JR818 </TD> </TR>
+  <TR> <TD align="right"> 13 </TD> <TD> JR785 </TD> </TR>
+  <TR> <TD align="right"> 14 </TD> <TD> JR781 </TD> </TR>
+  <TR> <TD align="right"> 15 </TD> <TD> JR741 </TD> </TR>
+  <TR> <TD align="right"> 16 </TD> <TD> JR784 </TD> </TR>
    </TABLE>
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Thu Jun 19 11:30:36 2014 -->
+<!-- Sat Jun 21 16:57:23 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
-  <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR729/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 26338300.00 </TD> <TD align="right"> 34536600.00 </TD> <TD align="right"> 0.76 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 2 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR728/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   1 </TD> <TD> WT_1 </TD> <TD align="right"> 20332100.00 </TD> <TD align="right"> 34536600.00 </TD> <TD align="right"> 0.59 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 3 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR796/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   2 </TD> <TD> WT_2 </TD> <TD align="right"> 34093300.00 </TD> <TD align="right"> 34536600.00 </TD> <TD align="right"> 0.98 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 4 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR797/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   3 </TD> <TD> WT_3 </TD> <TD align="right"> 28111900.00 </TD> <TD align="right"> 34536600.00 </TD> <TD align="right"> 0.80 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 5 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR740/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   4 </TD> <TD> WT_4 </TD> <TD align="right"> 35813300.00 </TD> <TD align="right"> 34536600.00 </TD> <TD align="right"> 1.04 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 6 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR800/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   5 </TD> <TD> WT_5 </TD> <TD align="right"> 37017800.00 </TD> <TD align="right"> 34536600.00 </TD> <TD align="right"> 1.07 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 7 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR827/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   6 </TD> <TD> WT_6 </TD> <TD align="right"> 27790600.00 </TD> <TD align="right"> 34536600.00 </TD> <TD align="right"> 0.81 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 8 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR778/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   7 </TD> <TD> WT_7 </TD> <TD align="right"> 39549100.00 </TD> <TD align="right"> 34536600.00 </TD> <TD align="right"> 1.16 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 9 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR734/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   8 </TD> <TD> WT_8 </TD> <TD align="right"> 34485000.00 </TD> <TD align="right"> 34536600.00 </TD> <TD align="right"> 1.01 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 10 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR802/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   9 </TD> <TD> WT_9 </TD> <TD align="right"> 45472800.00 </TD> <TD align="right"> 34536600.00 </TD> <TD align="right"> 1.30 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 11 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR803/abundances.cxb </TD> <TD> WT </TD> <TD align="right">  10 </TD> <TD> WT_10 </TD> <TD align="right"> 52136700.00 </TD> <TD align="right"> 34536600.00 </TD> <TD align="right"> 1.51 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 12 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR735/abundances.cxb </TD> <TD> WT </TD> <TD align="right">  11 </TD> <TD> WT_11 </TD> <TD align="right"> 34999600.00 </TD> <TD align="right"> 34536600.00 </TD> <TD align="right"> 1.02 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 13 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR817/abundances.cxb </TD> <TD> WT </TD> <TD align="right">  12 </TD> <TD> WT_12 </TD> <TD align="right"> 30811500.00 </TD> <TD align="right"> 34536600.00 </TD> <TD align="right"> 0.90 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 14 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR785/abundances.cxb </TD> <TD> WT </TD> <TD align="right">  13 </TD> <TD> WT_13 </TD> <TD align="right"> 34180700.00 </TD> <TD align="right"> 34536600.00 </TD> <TD align="right"> 0.98 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 15 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR781/abundances.cxb </TD> <TD> WT </TD> <TD align="right">  14 </TD> <TD> WT_14 </TD> <TD align="right"> 41544600.00 </TD> <TD align="right"> 34536600.00 </TD> <TD align="right"> 1.21 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 16 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR741/abundances.cxb </TD> <TD> Crnde </TD> <TD align="right">   0 </TD> <TD> Crnde_0 </TD> <TD align="right"> 37691800.00 </TD> <TD align="right"> 34536600.00 </TD> <TD align="right"> 1.10 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 17 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR784/abundances.cxb </TD> <TD> Crnde </TD> <TD align="right">   1 </TD> <TD> Crnde_1 </TD> <TD align="right"> 37659200.00 </TD> <TD align="right"> 34536600.00 </TD> <TD align="right"> 1.09 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 18 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR818/abundances.cxb </TD> <TD> Crnde </TD> <TD align="right">   2 </TD> <TD> Crnde_2 </TD> <TD align="right"> 37868900.00 </TD> <TD align="right"> 34536600.00 </TD> <TD align="right"> 1.08 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR729/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 26338300.00 </TD> <TD align="right"> 34595700.00 </TD> <TD align="right"> 0.76 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR728/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   1 </TD> <TD> WT_1 </TD> <TD align="right"> 20332100.00 </TD> <TD align="right"> 34595700.00 </TD> <TD align="right"> 0.59 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 3 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR796/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   2 </TD> <TD> WT_2 </TD> <TD align="right"> 34093300.00 </TD> <TD align="right"> 34595700.00 </TD> <TD align="right"> 0.98 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 4 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR797/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   3 </TD> <TD> WT_3 </TD> <TD align="right"> 28111900.00 </TD> <TD align="right"> 34595700.00 </TD> <TD align="right"> 0.80 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 5 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR740/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   4 </TD> <TD> WT_4 </TD> <TD align="right"> 35813300.00 </TD> <TD align="right"> 34595700.00 </TD> <TD align="right"> 1.04 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 6 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR800/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   5 </TD> <TD> WT_5 </TD> <TD align="right"> 37017800.00 </TD> <TD align="right"> 34595700.00 </TD> <TD align="right"> 1.07 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 7 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR827/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   6 </TD> <TD> WT_6 </TD> <TD align="right"> 27790600.00 </TD> <TD align="right"> 34595700.00 </TD> <TD align="right"> 0.81 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 8 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR778/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   7 </TD> <TD> WT_7 </TD> <TD align="right"> 39549100.00 </TD> <TD align="right"> 34595700.00 </TD> <TD align="right"> 1.16 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 9 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR734/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   8 </TD> <TD> WT_8 </TD> <TD align="right"> 34485000.00 </TD> <TD align="right"> 34595700.00 </TD> <TD align="right"> 1.01 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 10 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR802/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   9 </TD> <TD> WT_9 </TD> <TD align="right"> 45472800.00 </TD> <TD align="right"> 34595700.00 </TD> <TD align="right"> 1.30 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 11 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR803/abundances.cxb </TD> <TD> WT </TD> <TD align="right">  10 </TD> <TD> WT_10 </TD> <TD align="right"> 52136700.00 </TD> <TD align="right"> 34595700.00 </TD> <TD align="right"> 1.51 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 12 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR735/abundances.cxb </TD> <TD> WT </TD> <TD align="right">  11 </TD> <TD> WT_11 </TD> <TD align="right"> 34999600.00 </TD> <TD align="right"> 34595700.00 </TD> <TD align="right"> 1.02 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 13 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR785/abundances.cxb </TD> <TD> WT </TD> <TD align="right">  12 </TD> <TD> WT_12 </TD> <TD align="right"> 34180700.00 </TD> <TD align="right"> 34595700.00 </TD> <TD align="right"> 0.97 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 14 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR781/abundances.cxb </TD> <TD> WT </TD> <TD align="right">  13 </TD> <TD> WT_13 </TD> <TD align="right"> 41544600.00 </TD> <TD align="right"> 34595700.00 </TD> <TD align="right"> 1.21 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 15 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR741/abundances.cxb </TD> <TD> Crnde </TD> <TD align="right">   0 </TD> <TD> Crnde_0 </TD> <TD align="right"> 37691800.00 </TD> <TD align="right"> 34595700.00 </TD> <TD align="right"> 1.09 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 16 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR784/abundances.cxb </TD> <TD> Crnde </TD> <TD align="right">   1 </TD> <TD> Crnde_1 </TD> <TD align="right"> 37659200.00 </TD> <TD align="right"> 34595700.00 </TD> <TD align="right"> 1.09 </TD> <TD align="right"> 1.00 </TD> </TR>
    </TABLE>
 
 ## Session Info
@@ -500,9 +441,9 @@ The pvalue for genes significantly regulated in this region is:
 ## [8] methods   base     
 ## 
 ## other attached packages:
-##  [1] plyr_1.8.1                         
-##  [2] stringr_0.6.2                      
-##  [3] seqbias_1.10.0                     
+##  [1] stringr_0.6.2                      
+##  [2] seqbias_1.10.0                     
+##  [3] plyr_1.8.1                         
 ##  [4] BSgenome.Mmusculus.UCSC.mm10_1.3.19
 ##  [5] BSgenome_1.30.0                    
 ##  [6] Biostrings_2.30.1                  
@@ -564,10 +505,10 @@ The pvalue for genes significantly regulated in this region is:
 ## 3  SVN_revision
 ## 4 boost_version
 ## 5        genome
-##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              value
-## 1 cuffdiff -p 10 -L WT,Crnde -o /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Crnde_vs_WT_Adult /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR729/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR728/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR796/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR797/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR740/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR800/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR827/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR778/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR734/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR802/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR803/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR735/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR817/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR785/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR781/abundances.cxb /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR741/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR784/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR818/abundances.cxb 
-## 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            2.2.1
-## 3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             4237
-## 4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           104700
-## 5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             mm10
+##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        value
+## 1 cuffdiff -p 10 -L WT,Crnde -o /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Crnde_vs_WT_Adult /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR729/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR728/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR796/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR797/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR740/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR800/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR827/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR778/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR734/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR802/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR803/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR735/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR785/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR781/abundances.cxb /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR741/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR784/abundances.cxb 
+## 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      2.2.1
+## 3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       4237
+## 4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     104700
+## 5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       mm10
 ```
