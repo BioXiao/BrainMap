@@ -45,7 +45,7 @@ biocarta_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.biocarta.v4.0
 # Intialize
 ```{r cummeRbund and data setup, echo=FALSE}
 setwd(dir)
-cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10",rebuild=T)
+cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") #rebuild=T until all first rounds done! build sep though bc issues :-/
 reps<-replicates(cuff)
 files<-lapply(reps$file,function(x){strsplit(x, "/")})
 
@@ -449,28 +449,6 @@ csHeatmap(relcdsSigGenes,cluster='row',method=dist)
 dev.off()
 ```
 
-```{r overview.venn,echo=FALSE, eval=FALSE}
-## Venn diagram overview of Differential changes
-
-
-# Make venn diagram of DE genes, DE splicing, DE promoters, DE relCDS (See figure 2)
-
-#install.packages("tiff")
-#library(tiff)
-#require(VennDiagram)
-#venn<-venn.diagram(list(
-#    'Genes'=sigGeneIDs,
-#    'Splicing'=splicingSigIDs,
-#    'Isoforms'=isoformSigIDs,
-#    'Promoters'=promoterSigIDs,
-#    'TSS'=tssSigIDs),filename=NULL)
-
-#'CDS'=cdsSigIDs,
-#'relCDS'=relcdsSigIDs
-
-  
-```
-
 # Gene/Pathway Analysis
 
 ## GSEA
@@ -593,7 +571,6 @@ Cluster profiler used to call enichments of significantly differentially regulat
 library(ReactomePA)
 library(DOSE)
 
-
 sigGeneIDs<-getSig(cuff, alpha=alpha)
 sigGenes<-getGenes(cuff,sigGeneIDs)
 geneAnnot<-annotation(sigGenes)
@@ -601,23 +578,11 @@ geneNames<-geneAnnot$gene_short_name
 sigDiff<-diffData(sigGenes)
 sigDiff$foldChange<-sigDiff$value_1/sigDiff$value_2
 
-
-# Top genes by test stat
-#diff<-diffData(genes(cuff))
-#diff<-diff[order(abs(diff$test_stat),decreasing=TRUE),]
-#top_genes<-diff[which(diff$p_value<0.1),]
-#top_genes_annot<-merge(top_genes,population)
-#geneNames<-top_genes_annot$gene_short_name
-
 ```
 
 ```{r GO analysis setup and functions}
 library(clusterProfiler)
 require(biomaRt)
-#source("http://bioconductor.org/biocLite.R")
-#biocLite("clusterProfiler")
-#biocLite("org.Mm.eg.db")
-#http://www.bioconductor.org/packages/release/bioc/vignettes/biomaRt/inst/doc/biomaRt.pdf
 
 ensembl <- useMart("ENSEMBL_MART_ENSEMBL","mmusculus_gene_ensembl", 
 host="www.ensembl.org")
@@ -723,17 +688,13 @@ colnames(genesInRegion)[35]<-"log2foldchange"
 colnames(genesInRegion)[36]<-"test_stat"
 data<-ddply(genesInRegion,.(gene_id),head,n=1)
 data$test_stat<-as.numeric(data$test_stat)
-
-
 ```
 
 The pvalue for genes significantly regulated in this region is: (not calculated in this file) 
 
 ```{r overlap image, cache=TRUE}
 ggplot(data,aes(start,test_stat,color=sig))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))+labs(title=strain)
-
 ```
-
 
 # Notes
 

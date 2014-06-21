@@ -13,7 +13,7 @@ rownames(split)<-c("strain","vs","wt","timepoint")
 # ADULT Brains 
 adult_directories<-split[,which(split[4,]=="Adult")]
 setwd(analysisdir)
-
+library(cummeRbund)
 for(i in seq(1,(dim(adult_directories)[2]))){
   strain <-as.character(adult_directories[1,i])
   timepoint<-"Adult"
@@ -23,7 +23,9 @@ for(i in seq(1,(dim(adult_directories)[2]))){
   print(filename)
   print(dir)
   print(strain)
-  knit2html('StrainTemplate.Rmd',output=paste(filename,".md", sep=""), quiet=TRUE)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+  setwd(dir)
+  cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
+  #knit2html('StrainTemplate.Rmd',output=paste(filename,".md", sep=""), quiet=TRUE)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
   print(dir)
   print(strain)
 }
@@ -33,6 +35,7 @@ for(i in seq(1,(dim(adult_directories)[2]))){
 # Embryonic Brains 
 embryonic_directories<-split[,which(split[4,]=="Embryonic")]
 setwd(analysisdir)
+library(cummeRbund)
 for(i in seq(1,(dim(embryonic_directories)[2]))){
   strain <-as.character(embryonic_directories[1,i])
   timepoint<-"Embryonic"
@@ -42,7 +45,10 @@ for(i in seq(1,(dim(embryonic_directories)[2]))){
   print(filename)
   print(dir)
   print(strain)
-  knit2html('StrainTemplate.Rmd',output=paste(filename,".md", sep=""), quiet=TRUE)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+  setwd(dir)
+  cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
+
+#  knit2html('StrainTemplate.Rmd',output=paste(filename,".md", sep=""), quiet=TRUE)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
   print(dir)
   print(strain)
 }
