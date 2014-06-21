@@ -43,7 +43,7 @@ biocarta_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.biocarta.v4.0
 ```
 
 # Intialize
-```{r cummeRbund and data setup, echo=FALSE}
+```{r cummeRbund_and_data_setup, echo=FALSE}
 setwd(dir)
 cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") #rebuild=T until all first rounds done! build sep though bc issues :-/
 reps<-replicates(cuff)
@@ -83,13 +83,13 @@ dispersionPlot(genes(cuff))
 Differences in CV 2 can result in lower numbers of differentially expressed genes due to a higher degree of variability between replicate fpkm estimates.
 
 Genes:
-```{r CV genes}
+```{r CV_genes}
 fpkmSCVPlot(genes(cuff))
 ```
 
 
 Isoforms: 
-```{r cv iso}
+```{r cv_iso}
 fpkmSCVPlot(isoforms(cuff))
 ```
 
@@ -100,7 +100,7 @@ csVolcano(genes(cuff),"wt","ko")
 
 ### Volcano matrix (replicates)
 
-```{r volcano matrix}
+```{r volcano_matrix}
 csVolcanoMatrix(genes(cuff),replicates=T)
 ```
 
@@ -110,7 +110,7 @@ MAplot(genes(cuff),"wt","ko")
 ```
    
 ### MvA plot counts
-```{r MvA counts}
+```{r MvA_counts}
 MAplot(genes(cuff),"wt","ko",useCount=T)
 ```
 
@@ -121,7 +121,7 @@ csScatterMatrix(genes(cuff))
 
 ### Scatter matrix (replicates) -- SKIP FOR NOW CAUSING PROBLEMS 
 
-```{r scatterplot matrix}
+```{r scatterplot_matrix}
 #csScatterMatrix(genes(cuff),replicates=T)
 ```
 
@@ -132,25 +132,25 @@ csScatterMatrix(genes(cuff))
 
 Boxplot (genes)
 
-```{r boxplot genes}
+```{r boxplot_genes}
 csBoxplot(genes(cuff))
 ```
 
 Boxplot (genes, replicates)
 
-```{r boxplot genes replicates}
+```{r boxplot_genes_replicates}
 csBoxplot(genes(cuff),replicates=T)
 ```
 
 Boxplot (isoforms)
 
-```{r boxplot isoforms}
+```{r boxplot_isoforms}
 csBoxplot(isoforms(cuff))
 ```
 
 Boxplot (isoforms, replicates)
 
-```{r boxplot isoforms replicates}
+```{r boxplot_isoforms_replicates}
 csBoxplot(isoforms(cuff), replicates=T)
 ```
 
@@ -164,7 +164,7 @@ csDensity(genes(cuff),pseudocount=0.001)
 
 Density (genes, replicates)
 
-```{r density w replicates}
+```{r density_w_replicates}
 csDensity(genes(cuff),pseudocount=0.001,replicates=T)
 ```
 
@@ -172,7 +172,7 @@ csDensity(genes(cuff),pseudocount=0.001,replicates=T)
 ## Clustering
 
 ### Replicate Clusters
-```{r replicate clusters}
+```{r replicate_clusters}
 csDendro(genes(cuff),replicates=T)
 ```
 
@@ -187,7 +187,7 @@ MDSplot(genes(cuff),replicates=T)
 ```
 
 
-```{r R distance heatmap, eval=FALSE }
+```{r R_distance_heatmap, eval=FALSE }
 ### Distance Heat Map (genes)
 csDistHeat(genes(cuff), replicates=T)
 ```
@@ -197,7 +197,7 @@ csDistHeat(genes(cuff), replicates=T)
 
 ## Endogenous lncRNA expression
 
-```{r Enodenous lncRNA tables, results='asis'}
+```{r Enodenous_lncRNA_tables, results='asis'}
 myGeneID<-strain
 myGene<-getGene(cuff, myGeneID)
 #print(xtable(fpkm(myGene)),type="html")
@@ -209,21 +209,21 @@ expressionPlot(myGene, replicates=TRUE)
 
 Endogenous expression of `r strain` isoforms:
 
-```{r endogenous iso}
+```{r endogenous_iso}
 #expressionPlot(isoforms(myGene))
 expressionPlot(isoforms(myGene), replicates=T)
 ```
 
 Barplot of gene expression:
 
-```{r endogenous barplot}
+```{r endogenous_barplot}
 #expressionBarplot(myGene)
 expressionBarplot(myGene,replicates=T)
 ```
 
 Barplot of isoform expression:
 
-```{r endogenous iso barplot}
+```{r endogenous_iso_barplot}
 #expressionBarplot(isoforms(myGene))     
 expressionBarplot(isoforms(myGene), replicates=T)
 ```
@@ -231,7 +231,7 @@ expressionBarplot(isoforms(myGene), replicates=T)
 
 ## LacZ expression
 
-```{r LacZ expression, results='asis'}
+```{r LacZ_expression, results='asis'}
 myGeneID<-"LacZ"
 myGene<-getGene(cuff, myGeneID)
 
@@ -248,14 +248,14 @@ expressionBarplot(myGene,replicates=T)
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
 Expression plot (endogenous linc, lacZ, Y-expressed gene):
 
-```{r Digital Genotyping}
+```{r Digital_Genotyping}
 genotypingGeneIDs<-c(strain,"LacZ","Eif2s3y")
 genotypingGenes<-getGenes(cuff,genotypingGeneIDs)
 expressionBarplot(genotypingGenes,replicates=T)
 ```
 
 Expression heatmap:
-```{r digital geno heatmap}
+```{r digital_geno_heatmap}
 csHeatmap(genotypingGenes,replicates=T)
 ```
 
@@ -263,7 +263,7 @@ csHeatmap(genotypingGenes,replicates=T)
 
 ## Differential Genes 
 
-```{r differential genes}
+```{r differential_genes}
 sig<-getSig(cuff,alpha=alpha)       
 sigGenes<-getGenes(cuff,sig)
 geneAnnot<-annotation(sigGenes)
@@ -296,7 +296,7 @@ csHeatmap(sigGenes, cluster="both",replicates=T)
 ```
 
 Significant genes with expression >50fpkm (any condition):
-```{r highly expressed sig}
+```{r highly_expressed_sig}
 sigFPKMs<-fpkmMatrix(sigGenes)
 high<-sigFPKMs[which(sigFPKMs>50),]
 high<-high[complete.cases(high),]
@@ -307,7 +307,7 @@ expressionPlot(highGenes)
 
 An individual look at each of the highly expressed significantly differentially regulated genes:
 (eval=false for first pass)
-```{r plot ALL OF THE SIGNIFICANT GENES, eval=FALSE, fig.height=(20 + (1*(length(highIDs)))), fig.width=(20 + (1*length(highIDs)))}
+```{r plot_ALL_OF_THE_SIGNIFICANT_GENES, eval=FALSE, fig.height=(20 + (1*(length(highIDs)))), fig.width=(20 + (1*length(highIDs)))}
 plots<-lapply(highIDs,function(x){
   myGene<-getGene(cuff,x)
   return(expressionPlot(myGene,replicates=T))
@@ -319,12 +319,12 @@ do.call(grid.arrange, plots)
 ### Expression-level/significance relationship
 
 Scatter plot of significant genes only:
-```{r expression-sig relationship}
+```{r expression-sig_relationship}
 csScatter(sigGenes, "wt", "ko", smooth=T)
 ```
 
 Volcano plot with significant genes only:
-```{r sig volcano}
+```{r sig_volcano}
 csVolcano(sigGenes, "wt", "ko")
 ```
 
@@ -333,7 +333,7 @@ csVolcano(sigGenes, "wt", "ko")
 
 ### Differential Isoforms between conditions
 Per isoform difference between conditions:
-```{r diff.iso}
+```{r diff_iso}
 sigMatrix(cuff, level="isoforms",alpha=alpha)
 
 isoformSigIDs<-getSig(cuff,level="isoforms",alpha=alpha)
@@ -342,12 +342,12 @@ isoAnnot<-annotation(isoformSigGenes)
 ```
 
 These isoforms are:
-```{r diff iso annotations, results='asis'}
+```{r diff_iso_annotations, results='asis'}
 print(xtable(as.data.frame(isoAnnot$gene_short_name)),type="html")
 ```
 
 
-```{r isoform heatmap, fig.height=20, fig.width=10}
+```{r isoform_heatmap, fig.height=20, fig.width=10}
 csHeatmap(isoforms(isoformSigGenes),cluster='both', replicates=T)
 ```
 
@@ -357,7 +357,7 @@ csHeatmap(isoforms(isoformSigGenes),cluster='both', replicates=T)
 
 Per condition differences in isoforms (Does gene have diff piechart between conditions?)
 
-```{r diff splicing, eval=FALSE}
+```{r diff_splicing, eval=FALSE}
 splicingSigIDs<-getSig(cuff,level="splicing",alpha=alpha)
 splicingSigGenes<-getGenes(cuff,splicingSigIDs)
 
@@ -367,25 +367,25 @@ spliceAnnot<-annotation(splicingSigGenes)
 ```
 
 These genes are:
-```{r diff splicing table of genes, results='asis', eval=FALSE}
+```{r diff_splicing_table_of_genes, results='asis', eval=FALSE}
 print(xtable(as.data.frame(spliceAnnot$gene_short_name)), type="html")
 ```
 
 Splicing heatmap by isoform:
-```{r splicing heatmap by isoform, eval=FALSE, fig.height=20, fig.width=10}
+```{r splicing_heatmap_by_isoform, eval=FALSE, fig.height=20, fig.width=10}
 #pdf("sigSplicing_heatmap.pdf",width=10,height=20)
 csHeatmap(isoforms(splicingSigGenes),cluster='both',method=dist)
 #dev.off()
 ```
 
 Splicing heatmap by gene
-```{r splicing heatmap by gene, eval=FALSE}
+```{r splicing_heatmap_by_gene, eval=FALSE}
 csHeatmap(splicingSigGenes,cluster='both',method=dist)
 ```
 
 The following are significantly differentially spliced genes (relative portion of isoform per condition): 
 
-```{r print all the splicing csPie plots, eval=FALSE}
+```{r print_all_the_splicing_csPie_plots, eval=FALSE}
 #fig.height=(20 +1*length(splicingSigIDs)), fig.width=(20 +1*length(splicingSigIDs))
 #csPiePlots<-lapply(splicingSigIDs,function(x){
 #  myGene<-getGene(cuff,x)
@@ -453,7 +453,7 @@ dev.off()
 
 ## GSEA
 
-```{r gsea helper functions}
+```{r gsea_helper_functions}
 population<-genes(cuff)
 population.diff<-diffData(population)
 annotation<-annotation(genes(cuff))
@@ -508,7 +508,7 @@ biocarta_pvl_corrected <- get_gene_set_q_vals(biocarta_pvl_mat)
 biocarta_pvl_corrected<-rbind(biocarta_pvl_corrected,biocarta_pvl_corrected)
 ```
 
-```{r print GSEA biocarta, fig.height=20, fig.width=10}
+```{r print_GSEA_biocarta, fig.height=20, fig.width=10}
 #two options, print as pdf, and adjust size in separate code block
 #make minimum height and then increment scaled by number of rows to return 
 
@@ -536,7 +536,7 @@ heatmap.2(x_ordered_subset, trace="none", margins=c(5,20), col=InputCols,dendrog
 #heatmap.2(x_ordered_subset, trace="none", margins=c(5,30), col=InputCols,dendrogram="row",lhei =c(0.1,0.9), labCol=c(""))
 ```
 
-```{r print GSEA reactome, fig.width=10, fig.height=20}
+```{r print_GSEA_reactome, fig.width=10, fig.height=20}
 
 #print to file
 #pdf("components_GSEA_reactome.pdf",width=10,height=30)
@@ -564,7 +564,7 @@ heatmap.2(x_ordered_subset, trace="none", margins=c(5,20),col=InputCols,dendrogr
 ## GO enrichment 
 Cluster profiler used to call enichments of significantly differentially regulated genes that map to Entrez IDs. 
 
-```{r GO setup, echo=FALSE}
+```{r GO_setup, echo=FALSE}
 #source("http://bioconductor.org/biocLite.R")
 #biocLite("ReactomePA")
 
@@ -610,7 +610,7 @@ pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T
 
 ```
 
-```{r GO figures,  fig.height=5, fig.width=8}
+```{r GO_figures,  fig.height=5, fig.width=8}
 plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched BP")
 
 plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched MF")
@@ -692,7 +692,7 @@ data$test_stat<-as.numeric(data$test_stat)
 
 The pvalue for genes significantly regulated in this region is: (not calculated in this file) 
 
-```{r overlap image, cache=TRUE}
+```{r overlap_image, cache=TRUE}
 ggplot(data,aes(start,test_stat,color=sig))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))+labs(title=strain)
 ```
 
