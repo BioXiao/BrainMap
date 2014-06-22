@@ -343,7 +343,9 @@ isoAnnot<-annotation(isoformSigGenes)
 
 These isoforms are:
 ```{r diff_iso_annotations, results='asis'}
-print(xtable(as.data.frame(isoAnnot$gene_short_name)),type="html")
+if(length(isoformSigIDs)>0){
+  print(xtable(as.data.frame(isoAnnot$gene_short_name)),type="html")
+}
 ```
 
 
