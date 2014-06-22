@@ -1,8 +1,6 @@
 Trp53cor1 KO vs WT (Embryonic)
 ======================================
 
-
-
 - other heatmap labels (csHeatmap)
 - cache gsea and overlap figure!! 
 - tracks 
@@ -51,33 +49,24 @@ Dispersion plot for genes in cuff:
 Differences in CV 2 can result in lower numbers of differentially expressed genes due to a higher degree of variability between replicate fpkm estimates.
 
 Genes:
-![plot of chunk CV genes](figure/Trp53cor1/Embryonic/CV genes.png) 
+![plot of chunk CV_genes](figure/Trp53cor1/Embryonic/CV_genes.png) 
 
 
 Isoforms: 
-![plot of chunk cv iso](figure/Trp53cor1/Embryonic/cv iso.png) 
+![plot of chunk cv_iso](figure/Trp53cor1/Embryonic/cv_iso.png) 
 
 ## Volcano
 
-```
-## Error: One or more values of 'x' or 'y' are not valid sample names!
-```
 
 ### Volcano matrix (replicates)
 
-![plot of chunk volcano matrix](figure/Trp53cor1/Embryonic/volcano matrix.png) 
+![plot of chunk volcano_matrix](figure/Trp53cor1/Embryonic/volcano_matrix.png) 
 
 ## MvA plot
 
-```
-## Error: non-numeric argument to binary operator
-```
    
 ### MvA plot counts
 
-```
-## Error: non-numeric argument to binary operator
-```
 
 ## Scatterplot
 ![plot of chunk scatterplot](figure/Trp53cor1/Embryonic/scatterplot.png) 
@@ -93,19 +82,19 @@ Isoforms:
 
 Boxplot (genes)
 
-![plot of chunk boxplot genes](figure/Trp53cor1/Embryonic/boxplot genes.png) 
+![plot of chunk boxplot_genes](figure/Trp53cor1/Embryonic/boxplot_genes.png) 
 
 Boxplot (genes, replicates)
 
-![plot of chunk boxplot genes replicates](figure/Trp53cor1/Embryonic/boxplot genes replicates.png) 
+![plot of chunk boxplot_genes_replicates](figure/Trp53cor1/Embryonic/boxplot_genes_replicates.png) 
 
 Boxplot (isoforms)
 
-![plot of chunk boxplot isoforms](figure/Trp53cor1/Embryonic/boxplot isoforms.png) 
+![plot of chunk boxplot_isoforms](figure/Trp53cor1/Embryonic/boxplot_isoforms.png) 
 
 Boxplot (isoforms, replicates)
 
-![plot of chunk boxplot isoforms replicates](figure/Trp53cor1/Embryonic/boxplot isoforms replicates.png) 
+![plot of chunk boxplot_isoforms_replicates](figure/Trp53cor1/Embryonic/boxplot_isoforms_replicates.png) 
 
 ### Density
 
@@ -115,13 +104,13 @@ Density (genes)
 
 Density (genes, replicates)
 
-![plot of chunk density w replicates](figure/Trp53cor1/Embryonic/density w replicates.png) 
+![plot of chunk density_w_replicates](figure/Trp53cor1/Embryonic/density_w_replicates.png) 
 
 
 ## Clustering
 
 ### Replicate Clusters
-![plot of chunk replicate clusters](figure/Trp53cor1/Embryonic/replicate clusters.png) 
+![plot of chunk replicate_clusters](figure/Trp53cor1/Embryonic/replicate_clusters.png) 
 
 ```
 ## 'dendrogram' with 2 branches and 18 members total, at height 0.08399
@@ -141,33 +130,33 @@ Density (genes, replicates)
 
 ## Endogenous lncRNA expression
 
-![plot of chunk Enodenous lncRNA tables](figure/Trp53cor1/Embryonic/Enodenous lncRNA tables.png) 
+![plot of chunk Enodenous_lncRNA_tables](figure/Trp53cor1/Embryonic/Enodenous_lncRNA_tables.png) 
 
 Endogenous expression of Trp53cor1 isoforms:
 
-![plot of chunk endogenous iso](figure/Trp53cor1/Embryonic/endogenous iso.png) 
+![plot of chunk endogenous_iso](figure/Trp53cor1/Embryonic/endogenous_iso.png) 
 
 Barplot of gene expression:
 
-![plot of chunk endogenous barplot](figure/Trp53cor1/Embryonic/endogenous barplot.png) 
+![plot of chunk endogenous_barplot](figure/Trp53cor1/Embryonic/endogenous_barplot.png) 
 
 Barplot of isoform expression:
 
-![plot of chunk endogenous iso barplot](figure/Trp53cor1/Embryonic/endogenous iso barplot.png) 
+![plot of chunk endogenous_iso_barplot](figure/Trp53cor1/Embryonic/endogenous_iso_barplot.png) 
 
 
 ## LacZ expression
 
-![plot of chunk LacZ expression](figure/Trp53cor1/Embryonic/LacZ expression1.png) ![plot of chunk LacZ expression](figure/Trp53cor1/Embryonic/LacZ expression2.png) 
+![plot of chunk LacZ_expression](figure/Trp53cor1/Embryonic/LacZ_expression1.png) ![plot of chunk LacZ_expression](figure/Trp53cor1/Embryonic/LacZ_expression2.png) 
 
 
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
 Expression plot (endogenous linc, lacZ, Y-expressed gene):
 
-![plot of chunk Digital Genotyping](figure/Trp53cor1/Embryonic/Digital Genotyping.png) 
+![plot of chunk Digital_Genotyping](figure/Trp53cor1/Embryonic/Digital_Genotyping.png) 
 
 Expression heatmap:
-![plot of chunk digital geno heatmap](figure/Trp53cor1/Embryonic/digital geno heatmap.png) 
+![plot of chunk digital_geno_heatmap](figure/Trp53cor1/Embryonic/digital_geno_heatmap.png) 
 
 # Differential Analysis
 
@@ -178,7 +167,7 @@ Expression heatmap:
 There are 22 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Thu Jun 19 09:34:43 2014 -->
+<!-- Sun Jun 22 04:31:32 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Hoxb9 </TD> </TR>
@@ -217,7 +206,7 @@ Expression plot (genes):
 ![plot of chunk sigExpression](figure/Trp53cor1/Embryonic/sigExpression1.png) ![plot of chunk sigExpression](figure/Trp53cor1/Embryonic/sigExpression2.png) 
 
 Significant genes with expression >50fpkm (any condition):
-![plot of chunk highly expressed sig](figure/Trp53cor1/Embryonic/highly expressed sig.png) 
+![plot of chunk highly_expressed_sig](figure/Trp53cor1/Embryonic/highly_expressed_sig.png) 
 
 An individual look at each of the highly expressed significantly differentially regulated genes:
 (eval=false for first pass)
@@ -243,195 +232,14 @@ Volcano plot with significant genes only:
 
 ### Differential Isoforms between conditions
 Per isoform difference between conditions:
-![plot of chunk diff.iso](figure/Trp53cor1/Embryonic/diff.iso.png) 
+![plot of chunk diff_iso](figure/Trp53cor1/Embryonic/diff_iso.png) 
 
 ```
 ## Error: RS-DBI driver: (error in statement: near ")": syntax error)
 ```
 
 These isoforms are:
-<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Thu Jun 19 09:34:53 2014 -->
-<TABLE border=1>
-<TR> <TH>  </TH> <TH> isoAnnot$gene_short_name </TH>  </TR>
-  <TR> <TD align="right"> 1 </TD> <TD> Ccnd2 </TD> </TR>
-  <TR> <TD align="right"> 2 </TD> <TD> Gabra2 </TD> </TR>
-  <TR> <TD align="right"> 3 </TD> <TD> Col18a1 </TD> </TR>
-  <TR> <TD align="right"> 4 </TD> <TD> Col1a1 </TD> </TR>
-  <TR> <TD align="right"> 5 </TD> <TD> Grin2d </TD> </TR>
-  <TR> <TD align="right"> 6 </TD> <TD> Aqp1 </TD> </TR>
-  <TR> <TD align="right"> 7 </TD> <TD> Nes </TD> </TR>
-  <TR> <TD align="right"> 8 </TD> <TD> Nid1 </TD> </TR>
-  <TR> <TD align="right"> 9 </TD> <TD> Hmox1 </TD> </TR>
-  <TR> <TD align="right"> 10 </TD> <TD> Rplp1 </TD> </TR>
-  <TR> <TD align="right"> 11 </TD> <TD> Wnt3a </TD> </TR>
-  <TR> <TD align="right"> 12 </TD> <TD> Odc1 </TD> </TR>
-  <TR> <TD align="right"> 13 </TD> <TD> Cad </TD> </TR>
-  <TR> <TD align="right"> 14 </TD> <TD> Dennd6b </TD> </TR>
-  <TR> <TD align="right"> 15 </TD> <TD> Celsr1 </TD> </TR>
-  <TR> <TD align="right"> 16 </TD> <TD> Sulf1 </TD> </TR>
-  <TR> <TD align="right"> 17 </TD> <TD> Slc16a10 </TD> </TR>
-  <TR> <TD align="right"> 18 </TD> <TD> Lrriq1 </TD> </TR>
-  <TR> <TD align="right"> 19 </TD> <TD> Lama2 </TD> </TR>
-  <TR> <TD align="right"> 20 </TD> <TD> Gm872 </TD> </TR>
-  <TR> <TD align="right"> 21 </TD> <TD> Ndufa12 </TD> </TR>
-  <TR> <TD align="right"> 22 </TD> <TD> Pomc </TD> </TR>
-  <TR> <TD align="right"> 23 </TD> <TD> Mrc2 </TD> </TR>
-  <TR> <TD align="right"> 24 </TD> <TD> Galk1 </TD> </TR>
-  <TR> <TD align="right"> 25 </TD> <TD> Nxn </TD> </TR>
-  <TR> <TD align="right"> 26 </TD> <TD> Tnfrsf10b </TD> </TR>
-  <TR> <TD align="right"> 27 </TD> <TD> Psmb5 </TD> </TR>
-  <TR> <TD align="right"> 28 </TD> <TD> Npr3 </TD> </TR>
-  <TR> <TD align="right"> 29 </TD> <TD> Col14a1 </TD> </TR>
-  <TR> <TD align="right"> 30 </TD> <TD> Zbtb20 </TD> </TR>
-  <TR> <TD align="right"> 31 </TD> <TD> Arhgap31 </TD> </TR>
-  <TR> <TD align="right"> 32 </TD> <TD> Adamts1 </TD> </TR>
-  <TR> <TD align="right"> 33 </TD> <TD> Clic6 </TD> </TR>
-  <TR> <TD align="right"> 34 </TD> <TD> Wnt1 </TD> </TR>
-  <TR> <TD align="right"> 35 </TD> <TD> Dlx2 </TD> </TR>
-  <TR> <TD align="right"> 36 </TD> <TD> Igf2r </TD> </TR>
-  <TR> <TD align="right"> 37 </TD> <TD> H2-M5 </TD> </TR>
-  <TR> <TD align="right"> 38 </TD> <TD> Pou4f3 </TD> </TR>
-  <TR> <TD align="right"> 39 </TD> <TD> Fbn2 </TD> </TR>
-  <TR> <TD align="right"> 40 </TD> <TD> Pdgfrb </TD> </TR>
-  <TR> <TD align="right"> 41 </TD> <TD> Gldc </TD> </TR>
-  <TR> <TD align="right"> 42 </TD> <TD> Slc18a2 </TD> </TR>
-  <TR> <TD align="right"> 43 </TD> <TD> Podxl </TD> </TR>
-  <TR> <TD align="right"> 44 </TD> <TD> Col5a2 </TD> </TR>
-  <TR> <TD align="right"> 45 </TD> <TD> Col3a1 </TD> </TR>
-  <TR> <TD align="right"> 46 </TD> <TD> Igfbp5 </TD> </TR>
-  <TR> <TD align="right"> 47 </TD> <TD> Fn1 </TD> </TR>
-  <TR> <TD align="right"> 48 </TD> <TD> Ptma </TD> </TR>
-  <TR> <TD align="right"> 49 </TD> <TD> Lamc1 </TD> </TR>
-  <TR> <TD align="right"> 50 </TD> <TD> Ddr2 </TD> </TR>
-  <TR> <TD align="right"> 51 </TD> <TD> Lmx1a </TD> </TR>
-  <TR> <TD align="right"> 52 </TD> <TD> Gad2 </TD> </TR>
-  <TR> <TD align="right"> 53 </TD> <TD> Col5a1 </TD> </TR>
-  <TR> <TD align="right"> 54 </TD> <TD> Notch1 </TD> </TR>
-  <TR> <TD align="right"> 55 </TD> <TD> Lrp2 </TD> </TR>
-  <TR> <TD align="right"> 56 </TD> <TD> Fbn1 </TD> </TR>
-  <TR> <TD align="right"> 57 </TD> <TD> Tspan18 </TD> </TR>
-  <TR> <TD align="right"> 58 </TD> <TD> Syt13 </TD> </TR>
-  <TR> <TD align="right"> 59 </TD> <TD> Rrbp1 </TD> </TR>
-  <TR> <TD align="right"> 60 </TD> <TD> Mccc1 </TD> </TR>
-  <TR> <TD align="right"> 61 </TD> <TD> Exosc9 </TD> </TR>
-  <TR> <TD align="right"> 62 </TD> <TD> Slc7a11 </TD> </TR>
-  <TR> <TD align="right"> 63 </TD> <TD> Notch2 </TD> </TR>
-  <TR> <TD align="right"> 64 </TD> <TD> Vcam1 </TD> </TR>
-  <TR> <TD align="right"> 65 </TD> <TD> Hadh </TD> </TR>
-  <TR> <TD align="right"> 66 </TD> <TD> Svep1 </TD> </TR>
-  <TR> <TD align="right"> 67 </TD> <TD> Hspg2 </TD> </TR>
-  <TR> <TD align="right"> 68 </TD> <TD> Rspo1 </TD> </TR>
-  <TR> <TD align="right"> 69 </TD> <TD> Trp73 </TD> </TR>
-  <TR> <TD align="right"> 70 </TD> <TD> Gm996 </TD> </TR>
-  <TR> <TD align="right"> 71 </TD> <TD> Col1a2 </TD> </TR>
-  <TR> <TD align="right"> 72 </TD> <TD> Dlx5 </TD> </TR>
-  <TR> <TD align="right"> 73 </TD> <TD> Lrig1 </TD> </TR>
-  <TR> <TD align="right"> 74 </TD> <TD> Aldh1l1 </TD> </TR>
-  <TR> <TD align="right"> 75 </TD> <TD> Grin2b </TD> </TR>
-  <TR> <TD align="right"> 76 </TD> <TD> Dbx1 </TD> </TR>
-  <TR> <TD align="right"> 77 </TD> <TD> Lyve1 </TD> </TR>
-  <TR> <TD align="right"> 78 </TD> <TD> Heph </TD> </TR>
-  <TR> <TD align="right"> 79 </TD> <TD> Smad3 </TD> </TR>
-  <TR> <TD align="right"> 80 </TD> <TD> Rpsa </TD> </TR>
-  <TR> <TD align="right"> 81 </TD> <TD> Inppl1 </TD> </TR>
-  <TR> <TD align="right"> 82 </TD> <TD> Lama1 </TD> </TR>
-  <TR> <TD align="right"> 83 </TD> <TD> R3hcc1 </TD> </TR>
-  <TR> <TD align="right"> 84 </TD> <TD> Foxj1 </TD> </TR>
-  <TR> <TD align="right"> 85 </TD> <TD> Tmem132c </TD> </TR>
-  <TR> <TD align="right"> 86 </TD> <TD> Ptpn13 </TD> </TR>
-  <TR> <TD align="right"> 87 </TD> <TD> Prr7 </TD> </TR>
-  <TR> <TD align="right"> 88 </TD> <TD> Fras1 </TD> </TR>
-  <TR> <TD align="right"> 89 </TD> <TD> Arl4d </TD> </TR>
-  <TR> <TD align="right"> 90 </TD> <TD> Arx </TD> </TR>
-  <TR> <TD align="right"> 91 </TD> <TD> Tgfbi </TD> </TR>
-  <TR> <TD align="right"> 92 </TD> <TD> Cox8a </TD> </TR>
-  <TR> <TD align="right"> 93 </TD> <TD> Colec12 </TD> </TR>
-  <TR> <TD align="right"> 94 </TD> <TD> Gatad2a </TD> </TR>
-  <TR> <TD align="right"> 95 </TD> <TD> Lum </TD> </TR>
-  <TR> <TD align="right"> 96 </TD> <TD> Kirrel2 </TD> </TR>
-  <TR> <TD align="right"> 97 </TD> <TD> Wnt8b </TD> </TR>
-  <TR> <TD align="right"> 98 </TD> <TD> Frem2 </TD> </TR>
-  <TR> <TD align="right"> 99 </TD> <TD> D4Wsu53e </TD> </TR>
-  <TR> <TD align="right"> 100 </TD> <TD> Notch3 </TD> </TR>
-  <TR> <TD align="right"> 101 </TD> <TD> Spon1 </TD> </TR>
-  <TR> <TD align="right"> 102 </TD> <TD> Akap12 </TD> </TR>
-  <TR> <TD align="right"> 103 </TD> <TD> Atp5l </TD> </TR>
-  <TR> <TD align="right"> 104 </TD> <TD> Pcsk1n </TD> </TR>
-  <TR> <TD align="right"> 105 </TD> <TD> Kcne2 </TD> </TR>
-  <TR> <TD align="right"> 106 </TD> <TD> Bmf </TD> </TR>
-  <TR> <TD align="right"> 107 </TD> <TD> Thbs1 </TD> </TR>
-  <TR> <TD align="right"> 108 </TD> <TD> C1qtnf4 </TD> </TR>
-  <TR> <TD align="right"> 109 </TD> <TD> Abhd4 </TD> </TR>
-  <TR> <TD align="right"> 110 </TD> <TD> Ccdc8 </TD> </TR>
-  <TR> <TD align="right"> 111 </TD> <TD> Arhgap11a </TD> </TR>
-  <TR> <TD align="right"> 112 </TD> <TD> Prelp </TD> </TR>
-  <TR> <TD align="right"> 113 </TD> <TD> Nlrp5-ps </TD> </TR>
-  <TR> <TD align="right"> 114 </TD> <TD> Pgm5 </TD> </TR>
-  <TR> <TD align="right"> 115 </TD> <TD> Dlx1 </TD> </TR>
-  <TR> <TD align="right"> 116 </TD> <TD> Rassf4 </TD> </TR>
-  <TR> <TD align="right"> 117 </TD> <TD> Dmrt3 </TD> </TR>
-  <TR> <TD align="right"> 118 </TD> <TD> Reln </TD> </TR>
-  <TR> <TD align="right"> 119 </TD> <TD> Lor </TD> </TR>
-  <TR> <TD align="right"> 120 </TD> <TD> Tmem145 </TD> </TR>
-  <TR> <TD align="right"> 121 </TD> <TD> Wfikkn2 </TD> </TR>
-  <TR> <TD align="right"> 122 </TD> <TD> Snhg11 </TD> </TR>
-  <TR> <TD align="right"> 123 </TD> <TD> Gm9493 </TD> </TR>
-  <TR> <TD align="right"> 124 </TD> <TD> Basp1 </TD> </TR>
-  <TR> <TD align="right"> 125 </TD> <TD> Olig1 </TD> </TR>
-  <TR> <TD align="right"> 126 </TD> <TD> Scand1 </TD> </TR>
-  <TR> <TD align="right"> 127 </TD> <TD> Fat4 </TD> </TR>
-  <TR> <TD align="right"> 128 </TD> <TD> Adamts12 </TD> </TR>
-  <TR> <TD align="right"> 129 </TD> <TD> Col6a3 </TD> </TR>
-  <TR> <TD align="right"> 130 </TD> <TD> Pla2g4e </TD> </TR>
-  <TR> <TD align="right"> 131 </TD> <TD> Gja1 </TD> </TR>
-  <TR> <TD align="right"> 132 </TD> <TD> Rspo2 </TD> </TR>
-  <TR> <TD align="right"> 133 </TD> <TD> Hbb-y </TD> </TR>
-  <TR> <TD align="right"> 134 </TD> <TD> Hbb-bh1 </TD> </TR>
-  <TR> <TD align="right"> 135 </TD> <TD> Hbb-bs </TD> </TR>
-  <TR> <TD align="right"> 136 </TD> <TD> Ezr </TD> </TR>
-  <TR> <TD align="right"> 137 </TD> <TD> Lamb2 </TD> </TR>
-  <TR> <TD align="right"> 138 </TD> <TD> Glis3 </TD> </TR>
-  <TR> <TD align="right"> 139 </TD> <TD> Yap1 </TD> </TR>
-  <TR> <TD align="right"> 140 </TD> <TD> Zfp771 </TD> </TR>
-  <TR> <TD align="right"> 141 </TD> <TD> Hba-x </TD> </TR>
-  <TR> <TD align="right"> 142 </TD> <TD> Myh8 </TD> </TR>
-  <TR> <TD align="right"> 143 </TD> <TD> Col8a2 </TD> </TR>
-  <TR> <TD align="right"> 144 </TD> <TD> Pgpep1 </TD> </TR>
-  <TR> <TD align="right"> 145 </TD> <TD> Ncoa4 </TD> </TR>
-  <TR> <TD align="right"> 146 </TD> <TD> Kdm5d </TD> </TR>
-  <TR> <TD align="right"> 147 </TD> <TD> Hist3h2ba </TD> </TR>
-  <TR> <TD align="right"> 148 </TD> <TD> Hydin </TD> </TR>
-  <TR> <TD align="right"> 149 </TD> <TD> Ldha </TD> </TR>
-  <TR> <TD align="right"> 150 </TD> <TD> Fbln2 </TD> </TR>
-  <TR> <TD align="right"> 151 </TD> <TD> Cldn9 </TD> </TR>
-  <TR> <TD align="right"> 152 </TD> <TD> Lgals1 </TD> </TR>
-  <TR> <TD align="right"> 153 </TD> <TD> Flnc </TD> </TR>
-  <TR> <TD align="right"> 154 </TD> <TD> Sp9 </TD> </TR>
-  <TR> <TD align="right"> 155 </TD> <TD> Ddx3y </TD> </TR>
-  <TR> <TD align="right"> 156 </TD> <TD> Gpr98 </TD> </TR>
-  <TR> <TD align="right"> 157 </TD> <TD> Ahnak </TD> </TR>
-  <TR> <TD align="right"> 158 </TD> <TD> Fat1 </TD> </TR>
-  <TR> <TD align="right"> 159 </TD> <TD> Serpinh1 </TD> </TR>
-  <TR> <TD align="right"> 160 </TD> <TD> Gm10282 </TD> </TR>
-  <TR> <TD align="right"> 161 </TD> <TD> Jund </TD> </TR>
-  <TR> <TD align="right"> 162 </TD> <TD> Fam84b </TD> </TR>
-  <TR> <TD align="right"> 163 </TD> <TD> Gm7292 </TD> </TR>
-  <TR> <TD align="right"> 164 </TD> <TD> Drc1 </TD> </TR>
-  <TR> <TD align="right"> 165 </TD> <TD> Col22a1 </TD> </TR>
-  <TR> <TD align="right"> 166 </TD> <TD> Fzd10 </TD> </TR>
-  <TR> <TD align="right"> 167 </TD> <TD> Gm14204 </TD> </TR>
-  <TR> <TD align="right"> 168 </TD> <TD> Ier5l </TD> </TR>
-  <TR> <TD align="right"> 169 </TD> <TD> Dlx6os1 </TD> </TR>
-  <TR> <TD align="right"> 170 </TD> <TD> Pou3f1 </TD> </TR>
-  <TR> <TD align="right"> 171 </TD> <TD> Ccdc85b </TD> </TR>
-  <TR> <TD align="right"> 172 </TD> <TD> Gm21781 </TD> </TR>
-  <TR> <TD align="right"> 173 </TD> <TD> Gm6472 </TD> </TR>
-  <TR> <TD align="right"> 174 </TD> <TD> 4930480K23Rik </TD> </TR>
-  <TR> <TD align="right"> 175 </TD> <TD> Rmst </TD> </TR>
-  <TR> <TD align="right"> 176 </TD> <TD> A930011O12Rik </TD> </TR>
-  <TR> <TD align="right"> 177 </TD> <TD> Gm27000 </TD> </TR>
-   </TABLE>
+
 
 
 
@@ -467,8 +275,6 @@ The following are significantly differentially spliced genes (relative portion o
 
 
 
-
-
 # Gene/Pathway Analysis
 
 ## GSEA
@@ -477,9 +283,9 @@ The following are significantly differentially spliced genes (relative portion o
 
 
 
-![plot of chunk print GSEA biocarta](figure/Trp53cor1/Embryonic/print GSEA biocarta.png) 
+![plot of chunk print_GSEA_biocarta](figure/Trp53cor1/Embryonic/print_GSEA_biocarta.png) 
 
-![plot of chunk print GSEA reactome](figure/Trp53cor1/Embryonic/print GSEA reactome.png) 
+![plot of chunk print_GSEA_reactome](figure/Trp53cor1/Embryonic/print_GSEA_reactome.png) 
 
 ## GO enrichment 
 Cluster profiler used to call enichments of significantly differentially regulated genes that map to Entrez IDs. 
@@ -505,7 +311,7 @@ Cluster profiler used to call enichments of significantly differentially regulat
 ## Error: need finite 'xlim' values
 ```
 
-![plot of chunk GO figures](figure/Trp53cor1/Embryonic/GO figures.png) 
+![plot of chunk GO_figures](figure/Trp53cor1/Embryonic/GO_figures.png) 
 
 ```
 ## Error: need finite 'xlim' values
@@ -517,16 +323,15 @@ Cluster profiler used to call enichments of significantly differentially regulat
 ## Error: argument "seed" is missing, with no default
 ```
 
-The pvalue for genes significantly regulated in this region is: 0
+The pvalue for 1 genes significantly regulated in this region is: 1 
 
-![plot of chunk overlap image](figure/Trp53cor1/Embryonic/overlap image.png) 
-
+![plot of chunk overlap_image](figure/Trp53cor1/Embryonic/overlap_image.png) 
 
 # Notes
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Thu Jun 19 09:54:33 2014 -->
+<!-- Sun Jun 22 04:53:24 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR753 </TD> </TR>
@@ -551,7 +356,7 @@ The pvalue for genes significantly regulated in this region is: 0
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Thu Jun 19 09:54:33 2014 -->
+<!-- Sun Jun 22 04:53:24 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR753/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 39343800.00 </TD> <TD align="right"> 30709800.00 </TD> <TD align="right"> 1.33 </TD> <TD align="right"> 1.00 </TD> </TR>
@@ -631,21 +436,21 @@ The pvalue for genes significantly regulated in this region is: 0
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] biomaRt_2.18.0         biovizBase_1.10.8      bitops_1.0-6          
-##  [4] caTools_1.17           cluster_1.15.2         colorspace_1.2-4      
-##  [7] dichromat_2.0-0        digest_0.6.4           DO.db_2.7             
-## [10] evaluate_0.5.5         formatR_0.10           Formula_1.1-1         
-## [13] gdata_2.13.3           GenomicFeatures_1.14.5 GOSemSim_1.20.3       
-## [16] graph_1.40.1           graphite_1.8.1         gtools_3.4.1          
-## [19] Hmisc_3.14-4           igraph_0.7.1           KEGG.db_2.10.1        
-## [22] KernSmooth_2.23-12     labeling_0.2           lattice_0.20-29       
-## [25] latticeExtra_0.6-26    markdown_0.7           MASS_7.3-33           
-## [28] Matrix_1.1-3           mime_0.1.1             munsell_0.4.2         
-## [31] org.Hs.eg.db_2.10.1    proto_0.3-10           qvalue_1.36.0         
-## [34] RColorBrewer_1.0-5     Rcpp_0.11.1            RCurl_1.95-4.1        
-## [37] reactome.db_1.46.1     Rsamtools_1.14.3       scales_0.2.4          
-## [40] splines_3.0.2          stats4_3.0.2           survival_2.37-7       
-## [43] tcltk_3.0.2            tools_3.0.2            XML_3.98-1.1          
-## [46] zlibbioc_1.8.0
+##  [4] caTools_1.17           cluster_1.15.2         codetools_0.2-8       
+##  [7] colorspace_1.2-4       dichromat_2.0-0        digest_0.6.4          
+## [10] DO.db_2.7              evaluate_0.5.5         formatR_0.10          
+## [13] Formula_1.1-1          gdata_2.13.3           GenomicFeatures_1.14.5
+## [16] GOSemSim_1.20.3        graph_1.40.1           graphite_1.8.1        
+## [19] gtools_3.4.1           Hmisc_3.14-4           igraph_0.7.1          
+## [22] KEGG.db_2.10.1         KernSmooth_2.23-12     labeling_0.2          
+## [25] lattice_0.20-29        latticeExtra_0.6-26    markdown_0.7          
+## [28] MASS_7.3-33            Matrix_1.1-3           mime_0.1.1            
+## [31] munsell_0.4.2          org.Hs.eg.db_2.10.1    proto_0.3-10          
+## [34] qvalue_1.36.0          RColorBrewer_1.0-5     Rcpp_0.11.1           
+## [37] RCurl_1.95-4.1         reactome.db_1.46.1     Rsamtools_1.14.3      
+## [40] scales_0.2.4           splines_3.0.2          stats4_3.0.2          
+## [43] survival_2.37-7        tcltk_3.0.2            tools_3.0.2           
+## [46] XML_3.98-1.1           zlibbioc_1.8.0
 ```
 
 ## Run Info
