@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Interesting Strains </title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+</head>
+
+<body>
+<h1>Interesting Strains </h1>
+
+<pre><code>## Loading required package: BiocGenerics
+## Loading required package: parallel
+## 
+## Attaching package: &#39;BiocGenerics&#39;
+## 
+## The following objects are masked from &#39;package:parallel&#39;:
+## 
+##     clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+##     clusterExport, clusterMap, parApply, parCapply, parLapply,
+##     parLapplyLB, parRapply, parSapply, parSapplyLB
+## 
+## The following object is masked from &#39;package:stats&#39;:
+## 
+##     xtabs
+## 
+## The following objects are masked from &#39;package:base&#39;:
+## 
+##     anyDuplicated, append, as.data.frame, as.vector, cbind,
+##     colnames, duplicated, eval, evalq, Filter, Find, get,
+##     intersect, is.unsorted, lapply, Map, mapply, match, mget,
+##     order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+##     rbind, Reduce, rep.int, rownames, sapply, setdiff, sort,
+##     table, tapply, union, unique, unlist
+## 
+## Loading required package: RSQLite
+## Loading required package: DBI
+## Loading required package: ggplot2
+## Loading required package: reshape2
+## Loading required package: fastcluster
+## 
+## Attaching package: &#39;fastcluster&#39;
+## 
+## The following object is masked from &#39;package:stats&#39;:
+## 
+##     hclust
+## 
+## Loading required package: rtracklayer
+## Loading required package: GenomicRanges
+## Loading required package: IRanges
+## Loading required package: XVector
+## Loading required package: Gviz
+## Loading required package: grid
+## 
+## Attaching package: &#39;cummeRbund&#39;
+## 
+## The following object is masked from &#39;package:GenomicRanges&#39;:
+## 
+##     promoters
+## 
+## The following object is masked from &#39;package:IRanges&#39;:
+## 
+##     promoters
+## 
+## The following object is masked from &#39;package:BiocGenerics&#39;:
+## 
+##     conditions
+## 
+## 
+## Attaching package: &#39;limma&#39;
+## 
+## The following object is masked from &#39;package:BiocGenerics&#39;:
+## 
+##     plotMA
+## 
+## KernSmooth 2.23 loaded
+## Copyright M. P. Wand 1997-2009
+## 
+## Attaching package: &#39;gplots&#39;
+## 
+## The following object is masked from &#39;package:rtracklayer&#39;:
+## 
+##     space
+## 
+## The following object is masked from &#39;package:IRanges&#39;:
+## 
+##     space
+## 
+## The following object is masked from &#39;package:stats&#39;:
+## 
+##     lowess
+</code></pre>
+
+<pre><code>## Error: object &#39;cachepath&#39; not found
+</code></pre>
+
+<h1>Kantr</h1>
+
+<h2>Adult Kantr</h2>
+
+<pre><code class="r">dir&lt;-&quot;/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Kantr_vs_WT_Adult&quot;
+alpha&lt;-0.05
+setwd(dir)
+id&lt;-&quot;Kantr&quot;
+cuff&lt;-readCufflinks(gtfFile=&quot;/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf&quot;,genome=&quot;mm10&quot;) 
+csDendro(genes(cuff),replicates=TRUE)
+</code></pre>
+
+<p><img src="figure/Kantr%20adult.png" alt="plot of chunk Kantr adult"/> </p>
+
+<pre><code>## &#39;dendrogram&#39; with 2 branches and 6 members total, at height 0.06618
+</code></pre>
+
+<pre><code class="r">myGene&lt;-getGene(cuff,id)
+</code></pre>
+
+<pre><code class="r">sigAdult&lt;-getSig(cuff, alpha=alpha)
+</code></pre>
+
+<pre><code class="r">library(ReactomePA)
+</code></pre>
+
+<pre><code>## Loading required package: AnnotationDbi
+## Loading required package: Biobase
+## Welcome to Bioconductor
+## 
+##     Vignettes contain introductory material; view with
+##     &#39;browseVignettes()&#39;. To cite Bioconductor, see
+##     &#39;citation(&quot;Biobase&quot;)&#39;, and for packages &#39;citation(&quot;pkgname&quot;)&#39;.
+## 
+## 
+## Attaching package: &#39;Biobase&#39;
+## 
+## The following object is masked from &#39;package:cummeRbund&#39;:
+## 
+##     samples
+</code></pre>
+
+<pre><code>## Warning: Can&#39;t find a usable tk.tcl in the following directories: 
+##     /n/sw/centos6/tcl8.5.14/lib/tcl8.5/tk8.5 /n/sw/centos6/tcl8.5.14/lib/tk8.5 ./lib/tk8.5 ./library
+## 
+## 
+## 
+## This probably means that tk wasn&#39;t installed properly.
+</code></pre>
+
+<pre><code>## 
+</code></pre>
+
+<pre><code class="r">library(DOSE)
+</code></pre>
+
+<pre><code>## 
+## Attaching package: &#39;DOSE&#39;
+## 
+## The following object is masked from &#39;package:ReactomePA&#39;:
+## 
+##     gseAnalyzer
+</code></pre>
+
+<pre><code class="r">library(clusterProfiler)
+</code></pre>
+
+<pre><code>## 
+## KEGG.db contains mappings based on older data because the original
+##   resource was removed from the the public domain before the most
+##   recent update was produced. This package should now be
+##   considered deprecated and future versions of Bioconductor may
+##   not have it available.  Users who want more current data are
+##   encouraged to look at the KEGGREST or reactome.db packages
+</code></pre>
+
+<pre><code class="r">require(biomaRt)
+</code></pre>
+
+<pre><code>## Loading required package: biomaRt
+## 
+## Attaching package: &#39;biomaRt&#39;
+## 
+## The following object is masked from &#39;package:cummeRbund&#39;:
+## 
+##     getGene
+</code></pre>
+
+<pre><code class="r">ensembl &lt;- useMart(&quot;ENSEMBL_MART_ENSEMBL&quot;,&quot;mmusculus_gene_ensembl&quot;, 
+host=&quot;www.ensembl.org&quot;)
+
+#Get entrezIDs
+getEntrezIDs&lt;-function (geneNames)
+{
+    tmp &lt;- getBM(attributes = c(&quot;entrezgene&quot;), filters = &quot;mgi_symbol&quot;, values = geneNames, mart = ensembl)
+    tmp
+}
+</code></pre>
+
+<pre><code class="r">sigGeneIDs&lt;-getSig(cuff, alpha=alpha)
+sigGenes&lt;-getGenes(cuff,sigGeneIDs)
+geneAnnot&lt;-annotation(sigGenes)
+geneNames&lt;-geneAnnot$gene_short_name
+sigDiff&lt;-diffData(sigGenes)
+sigEntrez&lt;-getEntrezIDs(geneNames)
+sigEZ&lt;-strsplit(as.character(sigEntrez), &quot;, &quot;)
+sigEZ&lt;-unlist(sigEZ)
+require(org.Mm.eg.db) #mapping of entrez IDs to genbank
+</code></pre>
+
+<pre><code>## Loading required package: org.Mm.eg.db
+</code></pre>
+
+<pre><code class="r">#goBP&lt;-enrichGO(gene=sigEZ, organism=&quot;mouse&quot;,ont=&quot;BP&quot;,pvalueCutoff=0.01,readable=T)
+
+goMF&lt;-enrichGO(gene=sigEZ, organism=&quot;mouse&quot;,ont=&quot;MF&quot;,pvalueCutoff=0.01,readable=T)
+</code></pre>
+
+<pre><code>## Loading required package: GO.db
+</code></pre>
+
+<pre><code class="r">#goCC&lt;-enrichGO(gene=sigEZ, organism=&quot;mouse&quot;,ont=&quot;CC&quot;,pvalueCutoff=0.01,readable=T)
+
+kegg&lt;-enrichKEGG(gene=sigEZ, organism=&quot;mouse&quot;,pvalueCutoff=1, readable=T)
+
+#pathway&lt;-enrichPathway(gene=sigEZ,organism=&quot;mouse&quot;,pvalueCutoff=0.01, readable=T)
+</code></pre>
+
+<pre><code class="r">#plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle(&quot;Enriched BP&quot;)
+
+plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle(&quot;Enriched MF&quot;)
+</code></pre>
+
+<p><img src="figure/Kantr%20adult%20GO%20figures1.png" alt="plot of chunk Kantr adult GO figures"/> </p>
+
+<pre><code class="r">#plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle(&quot;Enriched CC&quot;)
+
+plot(kegg, showCategory=10) + ggtitle(&quot;Kegg Pathways&quot;)
+</code></pre>
+
+<p><img src="figure/Kantr%20adult%20GO%20figures2.png" alt="plot of chunk Kantr adult GO figures"/> </p>
+
+<pre><code class="r">#plot(pathway,showCategory=10) + ggtitle(&quot;Reactome pathway enrichment&quot;)
+detach(&quot;package:biomaRt&quot;)
+</code></pre>
+
+<h2>Embryo Kantr</h2>
+
+<pre><code class="r">dir&lt;-&quot;/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Kantr_vs_WT_Embryonic&quot;
+setwd(dir)
+cuff&lt;-readCufflinks(gtfFile=&quot;/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf&quot;,genome=&quot;mm10&quot;) 
+csDendro(genes(cuff),replicates=TRUE)
+</code></pre>
+
+<p><img src="figure/Kantr%20embryonic%20dendro.png" alt="plot of chunk Kantr embryonic dendro"/> </p>
+
+<pre><code>## &#39;dendrogram&#39; with 2 branches and 6 members total, at height 0.07638
+</code></pre>
+
+<pre><code class="r">myGene&lt;-getGene(cuff,id)
+</code></pre>
+
+<pre><code class="r">sigEmbryo&lt;-getSig(cuff, alpha=alpha)
+</code></pre>
+
+<p>There are 313 differentially expressed genes in Kantr adult brain and 785 in Kantr embryos. </p>
+
+<pre><code class="r">library(ReactomePA)
+library(DOSE)
+
+
+
+library(clusterProfiler)
+require(biomaRt)
+</code></pre>
+
+<pre><code>## Loading required package: biomaRt
+## 
+## Attaching package: &#39;biomaRt&#39;
+## 
+## The following object is masked from &#39;package:cummeRbund&#39;:
+## 
+##     getGene
+</code></pre>
+
+<pre><code class="r">ensembl &lt;- useMart(&quot;ENSEMBL_MART_ENSEMBL&quot;,&quot;mmusculus_gene_ensembl&quot;, 
+host=&quot;www.ensembl.org&quot;)
+
+#Get entrezIDs
+getEntrezIDs&lt;-function (geneNames)
+{
+    tmp &lt;- getBM(attributes = c(&quot;entrezgene&quot;), filters = &quot;mgi_symbol&quot;, values = geneNames, mart = ensembl)
+    tmp
+}
+</code></pre>
+
+<pre><code class="r">sigGeneIDs&lt;-getSig(cuff, alpha=alpha)
+sigGenes&lt;-getGenes(cuff,sigGeneIDs)
+geneAnnot&lt;-annotation(sigGenes)
+geneNames&lt;-geneAnnot$gene_short_name
+sigDiff&lt;-diffData(sigGenes)
+
+sigEntrez&lt;-getEntrezIDs(geneNames)
+sigEZ&lt;-strsplit(as.character(sigEntrez), &quot;, &quot;)
+sigEZ&lt;-unlist(sigEZ)
+require(org.Mm.eg.db) #mapping of entrez IDs to genbank
+
+goBP&lt;-enrichGO(gene=sigEZ, organism=&quot;mouse&quot;,ont=&quot;BP&quot;,pvalueCutoff=0.01,readable=T)
+
+goMF&lt;-enrichGO(gene=sigEZ, organism=&quot;mouse&quot;,ont=&quot;MF&quot;,pvalueCutoff=0.01,readable=T)
+
+goCC&lt;-enrichGO(gene=sigEZ, organism=&quot;mouse&quot;,ont=&quot;CC&quot;,pvalueCutoff=0.01,readable=T)
+
+kegg&lt;-enrichKEGG(gene=sigEZ, organism=&quot;mouse&quot;,pvalueCutoff=1, readable=T)
+
+pathway&lt;-enrichPathway(gene=sigEZ,organism=&quot;mouse&quot;,pvalueCutoff=0.01, readable=T)
+</code></pre>
+
+<pre><code class="r">plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle(&quot;Enriched BP&quot;)
+</code></pre>
+
+<p><img src="figure/Kantr%20embryo%20GO%20figures1.png" alt="plot of chunk Kantr embryo GO figures"/> </p>
+
+<pre><code class="r">plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle(&quot;Enriched MF&quot;)
+</code></pre>
+
+<p><img src="figure/Kantr%20embryo%20GO%20figures2.png" alt="plot of chunk Kantr embryo GO figures"/> </p>
+
+<pre><code class="r">plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle(&quot;Enriched CC&quot;)
+</code></pre>
+
+<p><img src="figure/Kantr%20embryo%20GO%20figures3.png" alt="plot of chunk Kantr embryo GO figures"/> </p>
+
+<pre><code class="r">plot(kegg, showCategory=10) + ggtitle(&quot;Kegg Pathways&quot;)
+</code></pre>
+
+<p><img src="figure/Kantr%20embryo%20GO%20figures4.png" alt="plot of chunk Kantr embryo GO figures"/> </p>
+
+<pre><code class="r">plot(pathway,showCategory=10) + ggtitle(&quot;Reactome pathway enrichment&quot;)
+</code></pre>
+
+<p><img src="figure/Kantr%20embryo%20GO%20figures5.png" alt="plot of chunk Kantr embryo GO figures"/> </p>
+
+<pre><code class="r">detach(&quot;package:biomaRt&quot;)
+</code></pre>
+
+<h1>Crnde</h1>
+
+<h2>Adult Crnde</h2>
+
+<pre><code class="r">dir&lt;-&quot;/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Crnde_vs_WT_Adult&quot;
+setwd(dir)
+cuff&lt;-readCufflinks(gtfFile=&quot;/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf&quot;,genome=&quot;mm10&quot;) 
+id&lt;-&quot;Crnde&quot;
+myGene&lt;-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
+</code></pre>
+
+<p><img src="figure/crnde%20adult.png" alt="plot of chunk crnde adult"/> </p>
+
+<pre><code class="r">sig&lt;-getSig(cuff, alpha=alpha)
+diffGeneSummary$Crnde_vs_WT_Adult&lt;-length(sig)
+</code></pre>
+
+<pre><code>## Error: object &#39;diffGeneSummary&#39; not found
+</code></pre>
+
+<pre><code class="r">library(ReactomePA)
+library(DOSE)
+library(clusterProfiler)
+require(biomaRt)
+</code></pre>
+
+<pre><code>## Loading required package: biomaRt
+## 
+## Attaching package: &#39;biomaRt&#39;
+## 
+## The following object is masked from &#39;package:cummeRbund&#39;:
+## 
+##     getGene
+</code></pre>
+
+<pre><code class="r">ensembl &lt;- useMart(&quot;ENSEMBL_MART_ENSEMBL&quot;,&quot;mmusculus_gene_ensembl&quot;, 
+host=&quot;www.ensembl.org&quot;)
+</code></pre>
+
+<pre><code class="r">sigGeneIDs&lt;-getSig(cuff, alpha=alpha)
+sigGenes&lt;-getGenes(cuff,sigGeneIDs)
+geneAnnot&lt;-annotation(sigGenes)
+geneNames&lt;-geneAnnot$gene_short_name
+sigDiff&lt;-diffData(sigGenes)
+sigEntrez&lt;-getEntrezIDs(geneNames)
+sigEZ&lt;-strsplit(as.character(sigEntrez), &quot;, &quot;)
+sigEZ&lt;-unlist(sigEZ)
+require(org.Mm.eg.db) #mapping of entrez IDs to genbank
+
+goBP&lt;-enrichGO(gene=sigEZ, organism=&quot;mouse&quot;,ont=&quot;BP&quot;,pvalueCutoff=0.01,readable=T)
+
+goMF&lt;-enrichGO(gene=sigEZ, organism=&quot;mouse&quot;,ont=&quot;MF&quot;,pvalueCutoff=0.01,readable=T)
+
+#goCC&lt;-enrichGO(gene=sigEZ, organism=&quot;mouse&quot;,ont=&quot;CC&quot;,pvalueCutoff=0.01,readable=T)
+
+#kegg&lt;-enrichKEGG(gene=sigEZ, organism=&quot;mouse&quot;,pvalueCutoff=1, readable=T)
+
+#pathway&lt;-enrichPathway(gene=sigEZ,organism=&quot;mouse&quot;,pvalueCutoff=0.01, readable=T)
+</code></pre>
+
+<pre><code class="r">plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle(&quot;Enriched BP&quot;)
+</code></pre>
+
+<p><img src="figure/Crnde%20adult%20GO%20figures1.png" alt="plot of chunk Crnde adult GO figures"/> </p>
+
+<pre><code class="r">plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle(&quot;Enriched MF&quot;)
+</code></pre>
+
+<p><img src="figure/Crnde%20adult%20GO%20figures2.png" alt="plot of chunk Crnde adult GO figures"/> </p>
+
+<pre><code class="r">#plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle(&quot;Enriched CC&quot;)
+
+#plot(kegg, showCategory=10) + ggtitle(&quot;Kegg Pathways&quot;)
+
+#plot(pathway,showCategory=10) + ggtitle(&quot;Reactome pathway enrichment&quot;)
+detach(&quot;package:biomaRt&quot;)
+</code></pre>
+
+<h2>Embryo Crnde</h2>
+
+<pre><code class="r">dir&lt;-&quot;/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Crnde_vs_WT_Embryonic&quot;
+setwd(dir)
+cuff&lt;-readCufflinks(gtfFile=&quot;/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf&quot;,genome=&quot;mm10&quot;) 
+csDendro(genes(cuff),replicates=TRUE)
+</code></pre>
+
+<p><img src="figure/Crnde%20embryonic%20dendro.png" alt="plot of chunk Crnde embryonic dendro"/> </p>
+
+<pre><code>## &#39;dendrogram&#39; with 2 branches and 17 members total, at height 0.08401
+</code></pre>
+
+<p>Endogenous expression (isoforms)</p>
+
+<pre><code class="r">id&lt;-&quot;Crnde&quot;
+myGene&lt;-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
+</code></pre>
+
+<p><img src="figure/Crnde%20embryonic.png" alt="plot of chunk Crnde embryonic"/> </p>
+
+<p>LacZ and genotyping heatmap</p>
+
+<pre><code class="r">sig&lt;-getSig(cuff, alpha=alpha)
+diffGeneSummary$Crnde_vs_WT_Embryonic&lt;-length(sig)
+</code></pre>
+
+<pre><code>## Error: object &#39;diffGeneSummary&#39; not found
+</code></pre>
+
+<pre><code class="r">library(ReactomePA)
+library(DOSE)
+library(clusterProfiler)
+require(biomaRt)
+</code></pre>
+
+<pre><code>## Loading required package: biomaRt
+## 
+## Attaching package: &#39;biomaRt&#39;
+## 
+## The following object is masked from &#39;package:cummeRbund&#39;:
+## 
+##     getGene
+</code></pre>
+
+<pre><code class="r">ensembl &lt;- useMart(&quot;ENSEMBL_MART_ENSEMBL&quot;,&quot;mmusculus_gene_ensembl&quot;, 
+host=&quot;www.ensembl.org&quot;)
+
+#Get entrezIDs
+getEntrezIDs&lt;-function (geneNames)
+{
+    tmp &lt;- getBM(attributes = c(&quot;entrezgene&quot;), filters = &quot;mgi_symbol&quot;, values = geneNames, mart = ensembl)
+    tmp
+}
+</code></pre>
+
+<pre><code class="r">sigGeneIDs&lt;-getSig(cuff, alpha=alpha)
+sigGenes&lt;-getGenes(cuff,sigGeneIDs)
+geneAnnot&lt;-annotation(sigGenes)
+geneNames&lt;-geneAnnot$gene_short_name
+sigDiff&lt;-diffData(sigGenes)
+
+sigEntrez&lt;-getEntrezIDs(geneNames)
+sigEZ&lt;-strsplit(as.character(sigEntrez), &quot;, &quot;)
+sigEZ&lt;-unlist(sigEZ)
+require(org.Mm.eg.db) #mapping of entrez IDs to genbank
+
+goBP&lt;-enrichGO(gene=sigEZ, organism=&quot;mouse&quot;,ont=&quot;BP&quot;,pvalueCutoff=0.01,readable=T)
+
+goMF&lt;-enrichGO(gene=sigEZ, organism=&quot;mouse&quot;,ont=&quot;MF&quot;,pvalueCutoff=0.01,readable=T)
+
+goCC&lt;-enrichGO(gene=sigEZ, organism=&quot;mouse&quot;,ont=&quot;CC&quot;,pvalueCutoff=0.01,readable=T)
+
+kegg&lt;-enrichKEGG(gene=sigEZ, organism=&quot;mouse&quot;,pvalueCutoff=1, readable=T)
+</code></pre>
+
+<pre><code>## [1] &quot;ERROR: The estimated pi0 &lt;= 0. Check that you have valid p-values or use another lambda method.&quot;
+</code></pre>
+
+<pre><code class="r">pathway&lt;-enrichPathway(gene=sigEZ,organism=&quot;mouse&quot;,pvalueCutoff=0.01, readable=T)
+</code></pre>
+
+<pre><code class="r">plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle(&quot;Enriched BP&quot;)
+</code></pre>
+
+<p><img src="figure/crnde%20embryo%20GO%20figures1.png" alt="plot of chunk crnde embryo GO figures"/> </p>
+
+<pre><code class="r">plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle(&quot;Enriched MF&quot;)
+</code></pre>
+
+<p><img src="figure/crnde%20embryo%20GO%20figures2.png" alt="plot of chunk crnde embryo GO figures"/> </p>
+
+<pre><code class="r">plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle(&quot;Enriched CC&quot;)
+</code></pre>
+
+<p><img src="figure/crnde%20embryo%20GO%20figures3.png" alt="plot of chunk crnde embryo GO figures"/> </p>
+
+<pre><code class="r">plot(kegg, showCategory=10) + ggtitle(&quot;Kegg Pathways&quot;)
+</code></pre>
+
+<p><img src="figure/crnde%20embryo%20GO%20figures4.png" alt="plot of chunk crnde embryo GO figures"/> </p>
+
+<pre><code class="r">plot(pathway,showCategory=10) + ggtitle(&quot;Reactome pathway enrichment&quot;)
+</code></pre>
+
+<p><img src="figure/crnde%20embryo%20GO%20figures5.png" alt="plot of chunk crnde embryo GO figures"/> </p>
+
+<pre><code class="r">detach(&quot;package:biomaRt&quot;)
+</code></pre>
+
+<h1>Brn1b</h1>
+
+<h2>Adult Brn1b</h2>
+
+<pre><code class="r">dir&lt;-&quot;/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Brn1b_vs_WT_Adult/&quot;
+setwd(dir)
+cuff&lt;-readCufflinks(gtfFile=&quot;/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf&quot;,genome=&quot;mm10&quot;) 
+sig&lt;-getSig(cuff, alpha=alpha)
+diffGeneSummary$lincBrn1b_vs_WT_Adult&lt;-length(sig)
+</code></pre>
+
+<pre><code>## Error: object &#39;diffGeneSummary&#39; not found
+</code></pre>
+
+<pre><code class="r">library(ReactomePA)
+library(DOSE)
+library(clusterProfiler)
+require(biomaRt)
+</code></pre>
+
+<pre><code>## Loading required package: biomaRt
+## 
+## Attaching package: &#39;biomaRt&#39;
+## 
+## The following object is masked from &#39;package:cummeRbund&#39;:
+## 
+##     getGene
+</code></pre>
+
+<pre><code class="r">ensembl &lt;- useMart(&quot;ENSEMBL_MART_ENSEMBL&quot;,&quot;mmusculus_gene_ensembl&quot;, 
+host=&quot;www.ensembl.org&quot;)
+
+#Get entrezIDs
+getEntrezIDs&lt;-function (geneNames)
+{
+    tmp &lt;- getBM(attributes = c(&quot;entrezgene&quot;), filters = &quot;mgi_symbol&quot;, values = geneNames, mart = ensembl)
+    tmp
+}
+</code></pre>
+
+<pre><code class="r">sigGeneIDs&lt;-getSig(cuff, alpha=alpha)
+sigGenes&lt;-getGenes(cuff,sigGeneIDs)
+geneAnnot&lt;-annotation(sigGenes)
+geneNames&lt;-geneAnnot$gene_short_name
+sigDiff&lt;-diffData(sigGenes)
+
+sigEntrez&lt;-getEntrezIDs(geneNames)
+sigEZ&lt;-strsplit(as.character(sigEntrez), &quot;, &quot;)
+sigEZ&lt;-unlist(sigEZ)
+require(org.Mm.eg.db) #mapping of entrez IDs to genbank
+
+goBP&lt;-enrichGO(gene=sigEZ, organism=&quot;mouse&quot;,ont=&quot;BP&quot;,pvalueCutoff=0.01,readable=T)
+
+goMF&lt;-enrichGO(gene=sigEZ, organism=&quot;mouse&quot;,ont=&quot;MF&quot;,pvalueCutoff=0.01,readable=T)
+
+goCC&lt;-enrichGO(gene=sigEZ, organism=&quot;mouse&quot;,ont=&quot;CC&quot;,pvalueCutoff=0.01,readable=T)
+
+kegg&lt;-enrichKEGG(gene=sigEZ, organism=&quot;mouse&quot;,pvalueCutoff=1, readable=T)
+
+pathway&lt;-enrichPathway(gene=sigEZ,organism=&quot;mouse&quot;,pvalueCutoff=0.01, readable=T)
+</code></pre>
+
+<pre><code class="r">plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle(&quot;Enriched BP&quot;)
+</code></pre>
+
+<p><img src="figure/brn1b%20adult%20GO%20figures1.png" alt="plot of chunk brn1b adult GO figures"/> </p>
+
+<pre><code class="r">plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle(&quot;Enriched MF&quot;)
+</code></pre>
+
+<p><img src="figure/brn1b%20adult%20GO%20figures2.png" alt="plot of chunk brn1b adult GO figures"/> </p>
+
+<pre><code class="r">#plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle(&quot;Enriched CC&quot;)
+
+plot(kegg, showCategory=10) + ggtitle(&quot;Kegg Pathways&quot;)
+</code></pre>
+
+<p><img src="figure/brn1b%20adult%20GO%20figures3.png" alt="plot of chunk brn1b adult GO figures"/> </p>
+
+<pre><code class="r">plot(pathway,showCategory=10) + ggtitle(&quot;Reactome pathway enrichment&quot;)
+</code></pre>
+
+<p><img src="figure/brn1b%20adult%20GO%20figures4.png" alt="plot of chunk brn1b adult GO figures"/> </p>
+
+<pre><code class="r">detach(&quot;package:biomaRt&quot;)
+</code></pre>
+
+<h2>Embryonic Brn1b</h2>
+
+<pre><code class="r">dir&lt;-&quot;/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Brn1b_vs_WT_Embryonic&quot;
+setwd(dir)
+cuff&lt;-readCufflinks(gtfFile=&quot;/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf&quot;,genome=&quot;mm10&quot;) 
+sig&lt;-getSig(cuff, alpha=alpha)
+diffGeneSummary$lincBrn1b_vs_WT_Embryonic&lt;-length(sig)
+</code></pre>
+
+<pre><code>## Error: object &#39;diffGeneSummary&#39; not found
+</code></pre>
+
+<p>Number of differentially expressed embryonic genes:131</p>
+
+<pre><code class="r">library(ReactomePA)
+library(DOSE)
+library(clusterProfiler)
+require(biomaRt)
+</code></pre>
+
+<pre><code>## Loading required package: biomaRt
+## 
+## Attaching package: &#39;biomaRt&#39;
+## 
+## The following object is masked from &#39;package:cummeRbund&#39;:
+## 
+##     getGene
+</code></pre>
+
+<pre><code class="r">ensembl &lt;- useMart(&quot;ENSEMBL_MART_ENSEMBL&quot;,&quot;mmusculus_gene_ensembl&quot;, 
+host=&quot;www.ensembl.org&quot;)
+
+#Get entrezIDs
+getEntrezIDs&lt;-function (geneNames)
+{
+    tmp &lt;- getBM(attributes = c(&quot;entrezgene&quot;), filters = &quot;mgi_symbol&quot;, values = geneNames, mart = ensembl)
+    tmp
+}
+</code></pre>
+
+<pre><code class="r">sigGeneIDs&lt;-getSig(cuff, alpha=alpha)
+sigGenes&lt;-getGenes(cuff,sigGeneIDs)
+geneAnnot&lt;-annotation(sigGenes)
+geneNames&lt;-geneAnnot$gene_short_name
+sigDiff&lt;-diffData(sigGenes)
+
+sigEntrez&lt;-getEntrezIDs(geneNames)
+sigEZ&lt;-strsplit(as.character(sigEntrez), &quot;, &quot;)
+sigEZ&lt;-unlist(sigEZ)
+require(org.Mm.eg.db) #mapping of entrez IDs to genbank
+
+goBP&lt;-enrichGO(gene=sigEZ, organism=&quot;mouse&quot;,ont=&quot;BP&quot;,pvalueCutoff=0.01,readable=T)
+
+goMF&lt;-enrichGO(gene=sigEZ, organism=&quot;mouse&quot;,ont=&quot;MF&quot;,pvalueCutoff=0.01,readable=T)
+
+goCC&lt;-enrichGO(gene=sigEZ, organism=&quot;mouse&quot;,ont=&quot;CC&quot;,pvalueCutoff=0.01,readable=T)
+
+# kegg&lt;-enrichKEGG(gene=sigEZ, organism=&quot;mouse&quot;,pvalueCutoff=1, readable=T)
+
+# pathway&lt;-enrichPathway(gene=sigEZ,organism=&quot;mouse&quot;,pvalueCutoff=0.01, readable=T)
+</code></pre>
+
+<pre><code class="r">plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle(&quot;Enriched BP&quot;)
+</code></pre>
+
+<p><img src="figure/brn1b%20embryonic%20GO%20figures1.png" alt="plot of chunk brn1b embryonic GO figures"/> </p>
+
+<pre><code class="r">plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle(&quot;Enriched MF&quot;)
+</code></pre>
+
+<p><img src="figure/brn1b%20embryonic%20GO%20figures2.png" alt="plot of chunk brn1b embryonic GO figures"/> </p>
+
+<pre><code class="r">plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle(&quot;Enriched CC&quot;)
+</code></pre>
+
+<p><img src="figure/brn1b%20embryonic%20GO%20figures3.png" alt="plot of chunk brn1b embryonic GO figures"/> </p>
+
+<pre><code class="r">plot(kegg, showCategory=10) + ggtitle(&quot;Kegg Pathways&quot;)
+</code></pre>
+
+<p><img src="figure/brn1b%20embryonic%20GO%20figures4.png" alt="plot of chunk brn1b embryonic GO figures"/> </p>
+
+<pre><code class="r">plot(pathway,showCategory=10) + ggtitle(&quot;Reactome pathway enrichment&quot;)
+</code></pre>
+
+<p><img src="figure/brn1b%20embryonic%20GO%20figures5.png" alt="plot of chunk brn1b embryonic GO figures"/> </p>
+
+<pre><code class="r">detach(&quot;package:biomaRt&quot;)
+</code></pre>
+
+<h1>Peril</h1>
+
+<pre><code class="r">dir&lt;-&quot;/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Peril_vs_WT_Adult&quot;
+setwd(dir)
+cuff&lt;-readCufflinks(gtfFile=&quot;/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf&quot;,genome=&quot;mm10&quot;) 
+id&lt;-&quot;Peril&quot;
+myGene&lt;-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk Peril"/> </p>
+
+<p>LacZ and genotyping heatmap</p>
+
+<pre><code class="r">lz&lt;-&quot;LacZ&quot;
+myGene&lt;-getGene(cuff,lz)
+expressionBarplot(isoforms(myGene), replicates=T)
+</code></pre>
+
+<p><img src="figure/Peril%20lz%20adult1.png" alt="plot of chunk Peril lz adult"/> </p>
+
+<pre><code class="r">ids&lt;-c(id,lz)
+myGenes&lt;-getGenes(cuff,ids)
+csHeatmap(myGenes,replicates=TRUE)
+</code></pre>
+
+<pre><code>## Using tracking_id, rep_name as id variables
+## No id variables; using all as measure variables
+</code></pre>
+
+<p><img src="figure/Peril%20lz%20adult2.png" alt="plot of chunk Peril lz adult"/> </p>
+
+<pre><code class="r">sig&lt;-getSig(cuff, alpha=alpha)
+diffGeneSummary$Peril_vs_WT_Adult&lt;-length(sig)
+</code></pre>
+
+<pre><code>## Error: object &#39;diffGeneSummary&#39; not found
+</code></pre>
+
+<pre><code class="r">library(ReactomePA)
+library(DOSE)
+library(clusterProfiler)
+require(biomaRt)
+</code></pre>
+
+<pre><code>## Loading required package: biomaRt
+## 
+## Attaching package: &#39;biomaRt&#39;
+## 
+## The following object is masked from &#39;package:cummeRbund&#39;:
+## 
+##     getGene
+</code></pre>
+
+<pre><code class="r">ensembl &lt;- useMart(&quot;ENSEMBL_MART_ENSEMBL&quot;,&quot;mmusculus_gene_ensembl&quot;, 
+host=&quot;www.ensembl.org&quot;)
+
+#Get entrezIDs
+getEntrezIDs&lt;-function (geneNames)
+{
+    tmp &lt;- getBM(attributes = c(&quot;entrezgene&quot;), filters = &quot;mgi_symbol&quot;, values = geneNames, mart = ensembl)
+    tmp
+}
+</code></pre>
+
+<pre><code class="r">sigGeneIDs&lt;-getSig(cuff, alpha=alpha)
+sigGenes&lt;-getGenes(cuff,sigGeneIDs)
+geneAnnot&lt;-annotation(sigGenes)
+geneNames&lt;-geneAnnot$gene_short_name
+sigDiff&lt;-diffData(sigGenes)
+
+sigEntrez&lt;-getEntrezIDs(geneNames)
+sigEZ&lt;-strsplit(as.character(sigEntrez), &quot;, &quot;)
+sigEZ&lt;-unlist(sigEZ)
+require(org.Mm.eg.db) #mapping of entrez IDs to genbank
+
+goBP&lt;-enrichGO(gene=sigEZ, organism=&quot;mouse&quot;,ont=&quot;BP&quot;,pvalueCutoff=0.01,readable=T)
+
+goMF&lt;-enrichGO(gene=sigEZ, organism=&quot;mouse&quot;,ont=&quot;MF&quot;,pvalueCutoff=0.01,readable=T)
+
+goCC&lt;-enrichGO(gene=sigEZ, organism=&quot;mouse&quot;,ont=&quot;CC&quot;,pvalueCutoff=0.01,readable=T)
+
+ kegg&lt;-enrichKEGG(gene=sigEZ, organism=&quot;mouse&quot;,pvalueCutoff=1, readable=T)
+
+ pathway&lt;-enrichPathway(gene=sigEZ,organism=&quot;mouse&quot;,pvalueCutoff=0.01, readable=T)
+</code></pre>
+
+<pre><code class="r">plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle(&quot;Enriched BP&quot;)
+</code></pre>
+
+<p><img src="figure/Peril%20adult%20GO%20figures1.png" alt="plot of chunk Peril adult GO figures"/> </p>
+
+<pre><code class="r">plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle(&quot;Enriched MF&quot;)
+</code></pre>
+
+<p><img src="figure/Peril%20adult%20GO%20figures2.png" alt="plot of chunk Peril adult GO figures"/> </p>
+
+<pre><code class="r">plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle(&quot;Enriched CC&quot;)
+</code></pre>
+
+<p><img src="figure/Peril%20adult%20GO%20figures3.png" alt="plot of chunk Peril adult GO figures"/> </p>
+
+<pre><code class="r">plot(kegg, showCategory=10) + ggtitle(&quot;Kegg Pathways&quot;)
+</code></pre>
+
+<p><img src="figure/Peril%20adult%20GO%20figures4.png" alt="plot of chunk Peril adult GO figures"/> </p>
+
+<pre><code class="r">plot(pathway,showCategory=10) + ggtitle(&quot;Reactome pathway enrichment&quot;)
+</code></pre>
+
+<p><img src="figure/Peril%20adult%20GO%20figures5.png" alt="plot of chunk Peril adult GO figures"/> </p>
+
+<pre><code class="r">detach(&quot;package:biomaRt&quot;)
+</code></pre>
+
+<h2>Peril Embryonic</h2>
+
+<pre><code class="r">dir&lt;-&quot;/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Peril_vs_WT_Embryonic/&quot;
+setwd(dir)
+cuff&lt;-readCufflinks(gtfFile=&quot;/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf&quot;,genome=&quot;mm10&quot;) 
+id&lt;-&quot;Peril&quot;
+myGene&lt;-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
+</code></pre>
+
+<p><img src="figure/Peril%20embryonic.png" alt="plot of chunk Peril embryonic"/> </p>
+
+<pre><code class="r">sig&lt;-getSig(cuff, alpha=alpha)
+diffGeneSummary$Peril_vs_WT_Embryonic&lt;-length(sig)
+</code></pre>
+
+<pre><code>## Error: object &#39;diffGeneSummary&#39; not found
+</code></pre>
+
+<pre><code class="r">library(ReactomePA)
+library(DOSE)
+library(clusterProfiler)
+require(biomaRt)
+</code></pre>
+
+<pre><code>## Loading required package: biomaRt
+## 
+## Attaching package: &#39;biomaRt&#39;
+## 
+## The following object is masked from &#39;package:cummeRbund&#39;:
+## 
+##     getGene
+</code></pre>
+
+<pre><code class="r">ensembl &lt;- useMart(&quot;ENSEMBL_MART_ENSEMBL&quot;,&quot;mmusculus_gene_ensembl&quot;, 
+host=&quot;www.ensembl.org&quot;)
+
+#Get entrezIDs
+getEntrezIDs&lt;-function (geneNames)
+{
+    tmp &lt;- getBM(attributes = c(&quot;entrezgene&quot;), filters = &quot;mgi_symbol&quot;, values = geneNames, mart = ensembl)
+    tmp
+}
+</code></pre>
+
+<pre><code class="r">sigGeneIDs&lt;-getSig(cuff, alpha=alpha)
+sigGenes&lt;-getGenes(cuff,sigGeneIDs)
+geneAnnot&lt;-annotation(sigGenes)
+geneNames&lt;-geneAnnot$gene_short_name
+sigDiff&lt;-diffData(sigGenes)
+
+sigEntrez&lt;-getEntrezIDs(geneNames)
+sigEZ&lt;-strsplit(as.character(sigEntrez), &quot;, &quot;)
+sigEZ&lt;-unlist(sigEZ)
+require(org.Mm.eg.db) #mapping of entrez IDs to genbank
+
+goBP&lt;-enrichGO(gene=sigEZ, organism=&quot;mouse&quot;,ont=&quot;BP&quot;,pvalueCutoff=0.01,readable=T)
+
+goMF&lt;-enrichGO(gene=sigEZ, organism=&quot;mouse&quot;,ont=&quot;MF&quot;,pvalueCutoff=0.01,readable=T)
+
+goCC&lt;-enrichGO(gene=sigEZ, organism=&quot;mouse&quot;,ont=&quot;CC&quot;,pvalueCutoff=0.01,readable=T)
+
+ kegg&lt;-enrichKEGG(gene=sigEZ, organism=&quot;mouse&quot;,pvalueCutoff=1, readable=T)
+
+ pathway&lt;-enrichPathway(gene=sigEZ,organism=&quot;mouse&quot;,pvalueCutoff=0.01, readable=T)
+</code></pre>
+
+<pre><code class="r">plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle(&quot;Enriched BP&quot;)
+</code></pre>
+
+<p><img src="figure/Peril%20embryonic%20GO%20figures1.png" alt="plot of chunk Peril embryonic GO figures"/> </p>
+
+<pre><code class="r">plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle(&quot;Enriched MF&quot;)
+</code></pre>
+
+<p><img src="figure/Peril%20embryonic%20GO%20figures2.png" alt="plot of chunk Peril embryonic GO figures"/> </p>
+
+<pre><code class="r">plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle(&quot;Enriched CC&quot;)
+</code></pre>
+
+<p><img src="figure/Peril%20embryonic%20GO%20figures3.png" alt="plot of chunk Peril embryonic GO figures"/> </p>
+
+<pre><code class="r">plot(kegg, showCategory=10) + ggtitle(&quot;Kegg Pathways&quot;)
+</code></pre>
+
+<p><img src="figure/Peril%20embryonic%20GO%20figures4.png" alt="plot of chunk Peril embryonic GO figures"/> </p>
+
+<pre><code class="r">plot(pathway,showCategory=10) + ggtitle(&quot;Reactome pathway enrichment&quot;)
+</code></pre>
+
+<p><img src="figure/Peril%20embryonic%20GO%20figures5.png" alt="plot of chunk Peril embryonic GO figures"/> </p>
+
+<pre><code class="r">detach(&quot;package:biomaRt&quot;)
+</code></pre>
+
+<h1>Tug1</h1>
+
+<h2>Tug1 Adult</h2>
+
+<pre><code class="r">dir&lt;-&quot;/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Tug1_vs_WT_Adult/&quot;
+setwd(dir)
+cuff&lt;-readCufflinks(gtfFile=&quot;/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf&quot;,genome=&quot;mm10&quot;) 
+sig&lt;-getSig(cuff, alpha=alpha)
+diffGeneSummary$Tug1_vs_WT_Adult&lt;-length(sig)
+</code></pre>
+
+<pre><code>## Error: object &#39;diffGeneSummary&#39; not found
+</code></pre>
+
+<pre><code class="r">library(ReactomePA)
+library(DOSE)
+library(clusterProfiler)
+require(biomaRt)
+</code></pre>
+
+<pre><code>## Loading required package: biomaRt
+## 
+## Attaching package: &#39;biomaRt&#39;
+## 
+## The following object is masked from &#39;package:cummeRbund&#39;:
+## 
+##     getGene
+</code></pre>
+
+<pre><code class="r">ensembl &lt;- useMart(&quot;ENSEMBL_MART_ENSEMBL&quot;,&quot;mmusculus_gene_ensembl&quot;, 
+host=&quot;www.ensembl.org&quot;)
+
+#Get entrezIDs
+getEntrezIDs&lt;-function (geneNames)
+{
+    tmp &lt;- getBM(attributes = c(&quot;entrezgene&quot;), filters = &quot;mgi_symbol&quot;, values = geneNames, mart = ensembl)
+    tmp
+}
+</code></pre>
+
+<pre><code class="r">sigGeneIDs&lt;-getSig(cuff, alpha=alpha)
+sigGenes&lt;-getGenes(cuff,sigGeneIDs)
+geneAnnot&lt;-annotation(sigGenes)
+geneNames&lt;-geneAnnot$gene_short_name
+sigDiff&lt;-diffData(sigGenes)
+
+sigEntrez&lt;-getEntrezIDs(geneNames)
+sigEZ&lt;-strsplit(as.character(sigEntrez), &quot;, &quot;)
+sigEZ&lt;-unlist(sigEZ)
+require(org.Mm.eg.db) #mapping of entrez IDs to genbank
+
+goBP&lt;-enrichGO(gene=sigEZ, organism=&quot;mouse&quot;,ont=&quot;BP&quot;,pvalueCutoff=0.01,readable=T)
+
+goMF&lt;-enrichGO(gene=sigEZ, organism=&quot;mouse&quot;,ont=&quot;MF&quot;,pvalueCutoff=0.01,readable=T)
+
+goCC&lt;-enrichGO(gene=sigEZ, organism=&quot;mouse&quot;,ont=&quot;CC&quot;,pvalueCutoff=0.01,readable=T)
+
+ kegg&lt;-enrichKEGG(gene=sigEZ, organism=&quot;mouse&quot;,pvalueCutoff=1, readable=T)
+
+ pathway&lt;-enrichPathway(gene=sigEZ,organism=&quot;mouse&quot;,pvalueCutoff=0.01, readable=T)
+</code></pre>
+
+<pre><code>## [1] &quot;ERROR: The estimated pi0 &lt;= 0. Check that you have valid p-values or use another lambda method.&quot;
+</code></pre>
+
+<pre><code class="r">plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle(&quot;Enriched BP&quot;)
+</code></pre>
+
+<p><img src="figure/tug1%20adult%20GO%20figures1.png" alt="plot of chunk tug1 adult GO figures"/> </p>
+
+<pre><code class="r">plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle(&quot;Enriched MF&quot;)
+</code></pre>
+
+<pre><code>## Error: &#39;x&#39; and &#39;units&#39; must have length &gt; 0
+</code></pre>
+
+<pre><code class="r">plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle(&quot;Enriched CC&quot;)
+</code></pre>
+
+<p><img src="figure/tug1%20adult%20GO%20figures2.png" alt="plot of chunk tug1 adult GO figures"/> </p>
+
+<pre><code class="r">plot(kegg, showCategory=10) + ggtitle(&quot;Kegg Pathways&quot;)
+</code></pre>
+
+<p><img src="figure/tug1%20adult%20GO%20figures3.png" alt="plot of chunk tug1 adult GO figures"/> </p>
+
+<pre><code class="r">plot(pathway,showCategory=10) + ggtitle(&quot;Reactome pathway enrichment&quot;)
+</code></pre>
+
+<p><img src="figure/tug1%20adult%20GO%20figures4.png" alt="plot of chunk tug1 adult GO figures"/> </p>
+
+<pre><code class="r">detach(&quot;package:biomaRt&quot;)
+</code></pre>
+
+<pre><code class="r">library(BSgenome.Mmusculus.UCSC.mm10)
+</code></pre>
+
+<pre><code>## Loading required package: BSgenome
+## Loading required package: Biostrings
+## 
+## Attaching package: &#39;BSgenome&#39;
+## 
+## The following object is masked from &#39;package:AnnotationDbi&#39;:
+## 
+##     species
+</code></pre>
+
+<pre><code class="r">library(seqbias)
+library(stringr)
+library(plyr)
+</code></pre>
+
+<pre><code>## 
+## Attaching package: &#39;plyr&#39;
+## 
+## The following object is masked from &#39;package:cummeRbund&#39;:
+## 
+##     count
+## 
+## The following object is masked from &#39;package:XVector&#39;:
+## 
+##     compact
+## 
+## The following objects are masked from &#39;package:IRanges&#39;:
+## 
+##     desc, rename
+</code></pre>
+
+<pre><code class="r">myLengths&lt;-seqlengths(Mmusculus)[!grepl(&quot;_random&quot;,names(seqlengths(Mmusculus)))]
+mm10.granges&lt;-GRanges(seqnames = names(myLengths), ranges = IRanges(start = 1, end = myLengths),seqlengths=myLengths)
+
+#Constants
+nIter&lt;-1000
+windowSize&lt;-2000000
+set.seed()
+</code></pre>
+
+<pre><code>## Error: argument &quot;seed&quot; is missing, with no default
+</code></pre>
+
+<pre><code class="r">myRandom&lt;-random.intervals(mm10.granges,n=nIter,ms=windowSize)
+
+getTable&lt;-function(object){
+  fullTable&lt;-diffTable(genes(object))
+  write(&quot;First Split&quot;,stderr())
+  firstSplit&lt;-str_split_fixed(fullTable$locus,&quot;:&quot;,2)
+  write(&quot;Second Split&quot;,stderr())
+  secondSplit&lt;-str_split_fixed(firstSplit[,2],&quot;-&quot;,2)
+  fullTable$chromosome&lt;-firstSplit[,1]
+  fullTable$start&lt;-as.numeric(secondSplit[,1])
+  fullTable$end&lt;-as.numeric(secondSplit[,2])
+  fullTable&lt;-fullTable[fullTable$chromosome %in% names(seqlengths(mm10.granges)),]
+  fullTable$chromosome&lt;-factor(fullTable$chromosome, levels=names(seqlengths(mm10.granges)))
+  fullTable
+}
+fullTable&lt;-getTable(cuff)
+
+myGene&lt;-fullTable[which(fullTable$gene_short_name==strain),][1,] #any problems w this?
+</code></pre>
+
+<pre><code>## Error: error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;which&#39;: Error: object &#39;strain&#39; not found
+</code></pre>
+
+<pre><code class="r">chromosome&lt;-myGene$chromosome
+</code></pre>
+
+<pre><code>## Error: $ operator not defined for this S4 class
+</code></pre>
+
+<pre><code class="r">start&lt;-myGene$start-(windowSize/2)
+</code></pre>
+
+<pre><code>## Error: $ operator not defined for this S4 class
+</code></pre>
+
+<pre><code class="r">end&lt;-myGene$end+(windowSize/2)
+</code></pre>
+
+<pre><code>## Error: $ operator not defined for this S4 class
+</code></pre>
+
+<pre><code class="r">sigGenesRegion&lt;-fullTable[which(fullTable[,40]==chromosome &amp; fullTable[,39]==&quot;yes&quot; &amp; fullTable[,9]&gt;=start &amp; fullTable[,10]&lt;=end),]
+</code></pre>
+
+<pre><code>## Error: error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;which&#39;: Error in `==.default`(fullTable[, 40], chromosome) : 
+##   comparison (1) is possible only for atomic and list types
+## Calls: Ops.factor -&gt; NextMethod
+</code></pre>
+
+<pre><code class="r">nSig&lt;-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
+</code></pre>
+
+<pre><code>## Error: error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;nrow&#39;: Error in empty(.data) : object &#39;sigGenesRegion&#39; not found
+## Calls: ddply -&gt; empty
+</code></pre>
+
+<pre><code class="r">genesInRegion&lt;-fullTable[which(fullTable[,40]==chromosome &amp; fullTable[,9]&gt;=start &amp; fullTable[,10]&lt;=end),]
+</code></pre>
+
+<pre><code>## Error: error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;which&#39;: Error in `==.default`(fullTable[, 40], chromosome) : 
+##   comparison (1) is possible only for atomic and list types
+## Calls: Ops.factor -&gt; NextMethod
+</code></pre>
+
+<pre><code class="r">genesInRegion$start&lt;-myGene$start-genesInRegion$start
+</code></pre>
+
+<pre><code>## Error: $ operator not defined for this S4 class
+</code></pre>
+
+<pre><code class="r">colnames(genesInRegion)[39]&lt;-&quot;sig&quot;
+</code></pre>
+
+<pre><code>## Error: object &#39;genesInRegion&#39; not found
+</code></pre>
+
+<pre><code class="r">colnames(genesInRegion)[35]&lt;-&quot;log2foldchange&quot;
+</code></pre>
+
+<pre><code>## Error: object &#39;genesInRegion&#39; not found
+</code></pre>
+
+<pre><code class="r">colnames(genesInRegion)[36]&lt;-&quot;test_stat&quot;
+</code></pre>
+
+<pre><code>## Error: object &#39;genesInRegion&#39; not found
+</code></pre>
+
+<pre><code class="r">data&lt;-ddply(genesInRegion,.(gene_id),head,n=1)
+</code></pre>
+
+<pre><code>## Error: object &#39;genesInRegion&#39; not found
+</code></pre>
+
+<pre><code class="r">data$test_stat&lt;-as.numeric(data$test_stat)
+</code></pre>
+
+<pre><code>## Error: object of type &#39;closure&#39; is not subsettable
+</code></pre>
+
+<pre><code class="r">ggplot(data,aes(start,test_stat,color=sig))+geom_point()+scale_color_manual(values=c(&quot;black&quot;, &quot;red&quot;))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))+labs(title=strain)
+</code></pre>
+
+<pre><code>## Error: ggplot2 doesn&#39;t know how to deal with data of class function
+</code></pre>
+
+<h2>Tug1 Embryonic</h2>
+
+<pre><code class="r">dir&lt;-&quot;/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Tug1_vs_WT_Embryonic/&quot;
+setwd(dir)
+cuff&lt;-readCufflinks(gtfFile=&quot;/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf&quot;,genome=&quot;mm10&quot;) 
+id&lt;-&quot;Tug1&quot;
+myGene&lt;-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
+</code></pre>
+
+<p><img src="figure/tug1%20embryonic.png" alt="plot of chunk tug1 embryonic"/> </p>
+
+<pre><code class="r">sig&lt;-getSig(cuff, alpha=alpha)
+diffGeneSummary$Tug1_vs_WT_Embryonic&lt;-length(sig)
+</code></pre>
+
+<pre><code>## Error: object &#39;diffGeneSummary&#39; not found
+</code></pre>
+
+<pre><code class="r">fullTable&lt;-getTable(cuff)
+
+myGene&lt;-fullTable[which(fullTable$gene_short_name==strain),][1,] #any problems w this?
+</code></pre>
+
+<pre><code>## Error: error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;which&#39;: Error: object &#39;strain&#39; not found
+</code></pre>
+
+<pre><code class="r">chromosome&lt;-myGene$chromosome
+</code></pre>
+
+<pre><code>## Error: $ operator not defined for this S4 class
+</code></pre>
+
+<pre><code class="r">start&lt;-myGene$start-(windowSize/2)
+</code></pre>
+
+<pre><code>## Error: $ operator not defined for this S4 class
+</code></pre>
+
+<pre><code class="r">end&lt;-myGene$end+(windowSize/2)
+</code></pre>
+
+<pre><code>## Error: $ operator not defined for this S4 class
+</code></pre>
+
+<pre><code class="r">sigGenesRegion&lt;-fullTable[which(fullTable[,40]==chromosome &amp; fullTable[,39]==&quot;yes&quot; &amp; fullTable[,9]&gt;=start &amp; fullTable[,10]&lt;=end),]
+</code></pre>
+
+<pre><code>## Error: error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;which&#39;: Error in `==.default`(fullTable[, 40], chromosome) : 
+##   comparison (1) is possible only for atomic and list types
+## Calls: Ops.factor -&gt; NextMethod
+</code></pre>
+
+<pre><code class="r">nSig&lt;-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
+</code></pre>
+
+<pre><code>## Error: error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;nrow&#39;: Error in empty(.data) : object &#39;sigGenesRegion&#39; not found
+## Calls: ddply -&gt; empty
+</code></pre>
+
+<pre><code class="r">genesInRegion&lt;-fullTable[which(fullTable[,40]==chromosome &amp; fullTable[,9]&gt;=start &amp; fullTable[,10]&lt;=end),]
+</code></pre>
+
+<pre><code>## Error: error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;which&#39;: Error in `==.default`(fullTable[, 40], chromosome) : 
+##   comparison (1) is possible only for atomic and list types
+## Calls: Ops.factor -&gt; NextMethod
+</code></pre>
+
+<pre><code class="r">genesInRegion$start&lt;-myGene$start-genesInRegion$start
+</code></pre>
+
+<pre><code>## Error: $ operator not defined for this S4 class
+</code></pre>
+
+<pre><code class="r">colnames(genesInRegion)[39]&lt;-&quot;sig&quot;
+</code></pre>
+
+<pre><code>## Error: object &#39;genesInRegion&#39; not found
+</code></pre>
+
+<pre><code class="r">colnames(genesInRegion)[35]&lt;-&quot;log2foldchange&quot;
+</code></pre>
+
+<pre><code>## Error: object &#39;genesInRegion&#39; not found
+</code></pre>
+
+<pre><code class="r">colnames(genesInRegion)[36]&lt;-&quot;test_stat&quot;
+</code></pre>
+
+<pre><code>## Error: object &#39;genesInRegion&#39; not found
+</code></pre>
+
+<pre><code class="r">data&lt;-ddply(genesInRegion,.(gene_id),head,n=1)
+</code></pre>
+
+<pre><code>## Error: object &#39;genesInRegion&#39; not found
+</code></pre>
+
+<pre><code class="r">data$test_stat&lt;-as.numeric(data$test_stat)
+</code></pre>
+
+<pre><code>## Error: object of type &#39;closure&#39; is not subsettable
+</code></pre>
+
+<pre><code class="r">ggplot(data,aes(start,test_stat,color=sig))+geom_point()+scale_color_manual(values=c(&quot;black&quot;, &quot;red&quot;))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))+labs(title=strain)
+</code></pre>
+
+<pre><code>## Error: ggplot2 doesn&#39;t know how to deal with data of class function
+</code></pre>
+
+<h1>Examples </h1>
+
+<h1>Adult</h1>
+
+<h2>Kantr</h2>
+
+<h2>Brn1a</h2>
+
+<h2>Trp53cor1</h2>
+
+<h2>Tug1</h2>
+
+<h1>Embryo</h1>
+
+<h2>Crnde</h2>
+
+<h2>Eldr</h2>
+
+<h2>Kantr</h2>
+
+<h2>Manr</h2>
+
+<h2>Peril</h2>
+
+<h2>linc-Cox2</h2>
+
+<h2>linc-Enc1</h2>
+
+</body>
+
+</html>
+

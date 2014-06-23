@@ -1,11 +1,23 @@
 Interesting Strains 
 ========================================================
+```{r setup, echo=FALSE}
+library(cummeRbund)
+library(xtable)
+library(limma)
+library(GSA)
+library(gplots)
+library(marray)
+library(ggplot2)
+
+opts_chunk$set(fig.path=path, echo=FALSE, message=FALSE, warning=FALSE, cache.path=cachepath)
+```
 
 # Kantr
 
 ## Adult Kantr
 
 ```{r Kantr adult}
+
 dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Kantr_vs_WT_Adult"
 alpha<-0.05
 setwd(dir)
@@ -651,7 +663,33 @@ detach("package:biomaRt")
 ```
 
 ```{r tug1 adult overlap_image}
+library(BSgenome.Mmusculus.UCSC.mm10)
+library(seqbias)
+library(stringr)
+library(plyr)
 
+myLengths<-seqlengths(Mmusculus)[!grepl("_random",names(seqlengths(Mmusculus)))]
+mm10.granges<-GRanges(seqnames = names(myLengths), ranges = IRanges(start = 1, end = myLengths),seqlengths=myLengths)
+
+#Constants
+nIter<-1000
+windowSize<-2000000
+set.seed()
+myRandom<-random.intervals(mm10.granges,n=nIter,ms=windowSize)
+
+getTable<-function(object){
+  fullTable<-diffTable(genes(object))
+  write("First Split",stderr())
+  firstSplit<-str_split_fixed(fullTable$locus,":",2)
+  write("Second Split",stderr())
+  secondSplit<-str_split_fixed(firstSplit[,2],"-",2)
+  fullTable$chromosome<-firstSplit[,1]
+  fullTable$start<-as.numeric(secondSplit[,1])
+  fullTable$end<-as.numeric(secondSplit[,2])
+  fullTable<-fullTable[fullTable$chromosome %in% names(seqlengths(mm10.granges)),]
+  fullTable$chromosome<-factor(fullTable$chromosome, levels=names(seqlengths(mm10.granges)))
+  fullTable
+}
 fullTable<-getTable(cuff)
 
 myGene<-fullTable[which(fullTable$gene_short_name==strain),][1,] #any problems w this?
