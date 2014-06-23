@@ -26,10 +26,10 @@ Cuff overview:
 ## 	 26754 genes
 ## 	 77524 isoforms
 ## 	 0 TSS
-## 	 0 CDS
+## 	 23066 CDS
 ## 	 0 promoters
 ## 	 0 splicing
-## 	 0 relCDS
+## 	 19954 relCDS
 ```
 
 
@@ -49,33 +49,24 @@ Dispersion plot for genes in cuff:
 Differences in CV 2 can result in lower numbers of differentially expressed genes due to a higher degree of variability between replicate fpkm estimates.
 
 Genes:
-![plot of chunk CV genes](figure/Kantr/Adult/CV genes.png) 
+![plot of chunk CV_genes](figure/Kantr/Adult/CV_genes.png) 
 
 
 Isoforms: 
-![plot of chunk cv iso](figure/Kantr/Adult/cv iso.png) 
+![plot of chunk cv_iso](figure/Kantr/Adult/cv_iso.png) 
 
 ## Volcano
 
-```
-## Error: One or more values of 'x' or 'y' are not valid sample names!
-```
 
 ### Volcano matrix (replicates)
 
-![plot of chunk volcano matrix](figure/Kantr/Adult/volcano matrix.png) 
+![plot of chunk volcano_matrix](figure/Kantr/Adult/volcano_matrix.png) 
 
 ## MvA plot
 
-```
-## Error: non-numeric argument to binary operator
-```
    
 ### MvA plot counts
 
-```
-## Error: non-numeric argument to binary operator
-```
 
 ## Scatterplot
 ![plot of chunk scatterplot](figure/Kantr/Adult/scatterplot.png) 
@@ -91,19 +82,19 @@ Isoforms:
 
 Boxplot (genes)
 
-![plot of chunk boxplot genes](figure/Kantr/Adult/boxplot genes.png) 
+![plot of chunk boxplot_genes](figure/Kantr/Adult/boxplot_genes.png) 
 
 Boxplot (genes, replicates)
 
-![plot of chunk boxplot genes replicates](figure/Kantr/Adult/boxplot genes replicates.png) 
+![plot of chunk boxplot_genes_replicates](figure/Kantr/Adult/boxplot_genes_replicates.png) 
 
 Boxplot (isoforms)
 
-![plot of chunk boxplot isoforms](figure/Kantr/Adult/boxplot isoforms.png) 
+![plot of chunk boxplot_isoforms](figure/Kantr/Adult/boxplot_isoforms.png) 
 
 Boxplot (isoforms, replicates)
 
-![plot of chunk boxplot isoforms replicates](figure/Kantr/Adult/boxplot isoforms replicates.png) 
+![plot of chunk boxplot_isoforms_replicates](figure/Kantr/Adult/boxplot_isoforms_replicates.png) 
 
 ### Density
 
@@ -113,16 +104,16 @@ Density (genes)
 
 Density (genes, replicates)
 
-![plot of chunk density w replicates](figure/Kantr/Adult/density w replicates.png) 
+![plot of chunk density_w_replicates](figure/Kantr/Adult/density_w_replicates.png) 
 
 
 ## Clustering
 
 ### Replicate Clusters
-![plot of chunk replicate clusters](figure/Kantr/Adult/replicate clusters.png) 
+![plot of chunk replicate_clusters](figure/Kantr/Adult/replicate_clusters.png) 
 
 ```
-## 'dendrogram' with 2 branches and 6 members total, at height 0.06617
+## 'dendrogram' with 2 branches and 6 members total, at height 0.06618
 ```
 
 ### PCA (genes)
@@ -139,33 +130,33 @@ Density (genes, replicates)
 
 ## Endogenous lncRNA expression
 
-![plot of chunk Enodenous lncRNA tables](figure/Kantr/Adult/Enodenous lncRNA tables.png) 
+![plot of chunk Enodenous_lncRNA_tables](figure/Kantr/Adult/Enodenous_lncRNA_tables.png) 
 
 Endogenous expression of Kantr isoforms:
 
-![plot of chunk endogenous iso](figure/Kantr/Adult/endogenous iso.png) 
+![plot of chunk endogenous_iso](figure/Kantr/Adult/endogenous_iso.png) 
 
 Barplot of gene expression:
 
-![plot of chunk endogenous barplot](figure/Kantr/Adult/endogenous barplot.png) 
+![plot of chunk endogenous_barplot](figure/Kantr/Adult/endogenous_barplot.png) 
 
 Barplot of isoform expression:
 
-![plot of chunk endogenous iso barplot](figure/Kantr/Adult/endogenous iso barplot.png) 
+![plot of chunk endogenous_iso_barplot](figure/Kantr/Adult/endogenous_iso_barplot.png) 
 
 
 ## LacZ expression
 
-![plot of chunk LacZ expression](figure/Kantr/Adult/LacZ expression1.png) ![plot of chunk LacZ expression](figure/Kantr/Adult/LacZ expression2.png) 
+![plot of chunk LacZ_expression](figure/Kantr/Adult/LacZ_expression1.png) ![plot of chunk LacZ_expression](figure/Kantr/Adult/LacZ_expression2.png) 
 
 
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
 Expression plot (endogenous linc, lacZ, Y-expressed gene):
 
-![plot of chunk Digital Genotyping](figure/Kantr/Adult/Digital Genotyping.png) 
+![plot of chunk Digital_Genotyping](figure/Kantr/Adult/Digital_Genotyping.png) 
 
 Expression heatmap:
-![plot of chunk digital geno heatmap](figure/Kantr/Adult/digital geno heatmap.png) 
+![plot of chunk digital_geno_heatmap](figure/Kantr/Adult/digital_geno_heatmap.png) 
 
 # Differential Analysis
 
@@ -176,7 +167,7 @@ Expression heatmap:
 There are 313 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Thu Jun 19 12:06:09 2014 -->
+<!-- Sat Jun 21 17:50:30 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Sox9 </TD> </TR>
@@ -506,7 +497,7 @@ Expression plot (genes):
 ![plot of chunk sigExpression](figure/Kantr/Adult/sigExpression1.png) ![plot of chunk sigExpression](figure/Kantr/Adult/sigExpression2.png) 
 
 Significant genes with expression >50fpkm (any condition):
-![plot of chunk highly expressed sig](figure/Kantr/Adult/highly expressed sig.png) 
+![plot of chunk highly_expressed_sig](figure/Kantr/Adult/highly_expressed_sig.png) 
 
 An individual look at each of the highly expressed significantly differentially regulated genes:
 (eval=false for first pass)
@@ -532,11 +523,11 @@ Volcano plot with significant genes only:
 
 ### Differential Isoforms between conditions
 Per isoform difference between conditions:
-![plot of chunk diff.iso](figure/Kantr/Adult/diff.iso.png) 
+![plot of chunk diff_iso](figure/Kantr/Adult/diff_iso.png) 
 
 These isoforms are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Thu Jun 19 12:06:53 2014 -->
+<!-- Sat Jun 21 17:51:26 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> isoAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Sox9 </TD> </TR>
@@ -854,8 +845,6 @@ The following are significantly differentially spliced genes (relative portion o
 
 
 
-
-
 # Gene/Pathway Analysis
 
 ## GSEA
@@ -864,9 +853,9 @@ The following are significantly differentially spliced genes (relative portion o
 
 
 
-![plot of chunk print GSEA biocarta](figure/Kantr/Adult/print GSEA biocarta.png) 
+![plot of chunk print_GSEA_biocarta](figure/Kantr/Adult/print_GSEA_biocarta.png) 
 
-![plot of chunk print GSEA reactome](figure/Kantr/Adult/print GSEA reactome.png) 
+![plot of chunk print_GSEA_reactome](figure/Kantr/Adult/print_GSEA_reactome.png) 
 
 ## GO enrichment 
 Cluster profiler used to call enichments of significantly differentially regulated genes that map to Entrez IDs. 
@@ -875,7 +864,7 @@ Cluster profiler used to call enichments of significantly differentially regulat
 
 
 
-![plot of chunk GO figures](figure/Kantr/Adult/GO figures1.png) ![plot of chunk GO figures](figure/Kantr/Adult/GO figures2.png) ![plot of chunk GO figures](figure/Kantr/Adult/GO figures3.png) ![plot of chunk GO figures](figure/Kantr/Adult/GO figures4.png) 
+![plot of chunk GO_figures](figure/Kantr/Adult/GO_figures1.png) ![plot of chunk GO_figures](figure/Kantr/Adult/GO_figures2.png) ![plot of chunk GO_figures](figure/Kantr/Adult/GO_figures3.png) ![plot of chunk GO_figures](figure/Kantr/Adult/GO_figures4.png) 
 
 ```
 ## Error: 'x' and 'units' must have length > 0
@@ -887,16 +876,15 @@ Cluster profiler used to call enichments of significantly differentially regulat
 ## Error: argument "seed" is missing, with no default
 ```
 
-The pvalue for genes significantly regulated in this region is: 
+The pvalue for 1 genes significantly regulated in this region is: 1 
 
-![plot of chunk overlap image](figure/Kantr/Adult/overlap image.png) 
-
+![plot of chunk overlap_image](figure/Kantr/Adult/overlap_image.png) 
 
 # Notes
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Thu Jun 19 12:21:24 2014 -->
+<!-- Sat Jun 21 18:14:29 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR824 </TD> </TR>
@@ -909,7 +897,7 @@ The pvalue for genes significantly regulated in this region is:
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Thu Jun 19 12:21:24 2014 -->
+<!-- Sat Jun 21 18:14:29 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR824/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 34312500.00 </TD> <TD align="right"> 36018100.00 </TD> <TD align="right"> 0.96 </TD> <TD align="right"> 1.00 </TD> </TR>
@@ -939,9 +927,9 @@ The pvalue for genes significantly regulated in this region is:
 ## [8] methods   base     
 ## 
 ## other attached packages:
-##  [1] plyr_1.8.1                         
-##  [2] stringr_0.6.2                      
-##  [3] seqbias_1.10.0                     
+##  [1] stringr_0.6.2                      
+##  [2] seqbias_1.10.0                     
+##  [3] plyr_1.8.1                         
 ##  [4] BSgenome.Mmusculus.UCSC.mm10_1.3.19
 ##  [5] BSgenome_1.30.0                    
 ##  [6] Biostrings_2.30.1                  

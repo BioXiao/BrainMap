@@ -15,8 +15,8 @@ cachepath<-paste("cache/",strain,"/",timepoint,"/", sep="")
 opts_chunk$set(fig.path=path, echo=FALSE, message=FALSE, warning=FALSE, cache.path=cachepath)
 
 ### OPTIONAL VAR OVERRIDE (where are my variables!!?)
-#dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Brn1b_vs_WT_Embryonic/"
-#strain<-"linc-Brn1b"
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Enc1_vs_WT_Embryonic/"
+strain<-"linc-Enc1"
 alpha<-0.05 
 setwd(dir)
 
@@ -45,7 +45,7 @@ biocarta_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.biocarta.v4.0
 # Intialize
 ```{r cummeRbund_and_data_setup, echo=FALSE}
 setwd(dir)
-cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10",rebuild=T)
+cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") #rebuild=T until all first rounds done! build sep though bc issues :-/
 reps<-replicates(cuff)
 files<-lapply(reps$file,function(x){strsplit(x, "/")})
 
@@ -95,7 +95,7 @@ fpkmSCVPlot(isoforms(cuff))
 
 ## Volcano
 ```{r volcano}
-csVolcano(genes(cuff),"wt","ko")
+#csVolcano(genes(cuff),"wt","ko")
 ```
 
 ### Volcano matrix (replicates)
@@ -106,12 +106,12 @@ csVolcanoMatrix(genes(cuff),replicates=T)
 
 ## MvA plot
 ```{r MvA}
-MAplot(genes(cuff),"wt","ko")
+#MAplot(genes(cuff),"wt","ko")
 ```
    
 ### MvA plot counts
 ```{r MvA_counts}
-MAplot(genes(cuff),"wt","ko",useCount=T)
+#MAplot(genes(cuff),"wt","ko",useCount=T)
 ```
 
 ## Scatterplot
@@ -292,7 +292,6 @@ rowlabel<-geneAnnot$gene_short_name
 expressionPlot(sigGenes)
 csHeatmap(sigGenes, cluster="both",replicates=T)
 #Maybe do cluster="col"
-#expressionBarplot(sigGenes)
 ```
 
 Significant genes with expression >50fpkm (any condition):
@@ -302,7 +301,8 @@ high<-sigFPKMs[which(sigFPKMs>50),]
 high<-high[complete.cases(high),]
 highIDs<-rownames(high)
 highGenes<-getGenes(cuff,highIDs)
-expressionPlot(highGenes)
+highNames<-annotation(highGenes)$gene_short_name
+expressionPlot(highGenes)+ylab(highNames)
 ```
 
 An individual look at each of the highly expressed significantly differentially regulated genes:
@@ -343,7 +343,9 @@ isoAnnot<-annotation(isoformSigGenes)
 
 These isoforms are:
 ```{r diff_iso_annotations, results='asis'}
-print(xtable(as.data.frame(isoAnnot$gene_short_name)),type="html")
+if(length(isoformSigIDs)>0){
+  print(xtable(as.data.frame(isoAnnot$gene_short_name)),type="html")
+}
 ```
 
 
@@ -447,28 +449,6 @@ dev.off()
 pdf("sig_relCDS_heatmap.pdf",width=10,height=20)
 csHeatmap(relcdsSigGenes,cluster='row',method=dist)
 dev.off()
-```
-
-```{r overview.venn,echo=FALSE, eval=FALSE}
-## Venn diagram overview of Differential changes
-
-
-# Make venn diagram of DE genes, DE splicing, DE promoters, DE relCDS (See figure 2)
-
-#install.packages("tiff")
-#library(tiff)
-#require(VennDiagram)
-#venn<-venn.diagram(list(
-#    'Genes'=sigGeneIDs,
-#    'Splicing'=splicingSigIDs,
-#    'Isoforms'=isoformSigIDs,
-#    'Promoters'=promoterSigIDs,
-#    'TSS'=tssSigIDs),filename=NULL)
-
-#'CDS'=cdsSigIDs,
-#'relCDS'=relcdsSigIDs
-
-  
 ```
 
 # Gene/Pathway Analysis
@@ -594,7 +574,6 @@ Cluster profiler used to call enichments of significantly differentially regulat
 library(ReactomePA)
 library(DOSE)
 
-
 sigGeneIDs<-getSig(cuff, alpha=alpha)
 sigGenes<-getGenes(cuff,sigGeneIDs)
 geneAnnot<-annotation(sigGenes)
@@ -602,23 +581,11 @@ geneNames<-geneAnnot$gene_short_name
 sigDiff<-diffData(sigGenes)
 sigDiff$foldChange<-sigDiff$value_1/sigDiff$value_2
 
-
-# Top genes by test stat
-#diff<-diffData(genes(cuff))
-#diff<-diff[order(abs(diff$test_stat),decreasing=TRUE),]
-#top_genes<-diff[which(diff$p_value<0.1),]
-#top_genes_annot<-merge(top_genes,population)
-#geneNames<-top_genes_annot$gene_short_name
-
 ```
 
 ```{r GO analysis setup and functions}
 library(clusterProfiler)
 require(biomaRt)
-#source("http://bioconductor.org/biocLite.R")
-#biocLite("clusterProfiler")
-#biocLite("org.Mm.eg.db")
-#http://www.bioconductor.org/packages/release/bioc/vignettes/biomaRt/inst/doc/biomaRt.pdf
 
 ensembl <- useMart("ENSEMBL_MART_ENSEMBL","mmusculus_gene_ensembl", 
 host="www.ensembl.org")
@@ -698,20 +665,22 @@ end<-myGene$end+(windowSize/2)
 sigGenesRegion<-fullTable[which(fullTable[,40]==chromosome & fullTable[,39]=="yes" & fullTable[,9]>=start & fullTable[,10]<=end),]
 nSig<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
 
-#score<-0
-#signeighbors<-data.frame(rep(NULL,nIter))
+score<-0
+signeighbors<-data.frame(rep(NULL,nIter))
 
-#for (i in 1:nIter){
-#  write(i,stderr())
-#  sigGenesRegion<-fullTable[which(fullTable[,40]==seqnames(myRandom[i])@values & fullTable[,39]=="yes" & fullTable[,9]>=start(myRandom[i])-(windowSize/2) & fullTable[,10]<=end(myRandom[i])+(windowSize/2)),]
-#  nSigIter<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
-#  write(nSigIter,stderr())
-#  if(nSigIter >= nSig-1) {score<-score+1}
-#  signeighbors[1,i]<-nSigIter
-#}
+for (i in 1:nIter){
+  write(i,stderr())
+  sigGenesRegion<-fullTable[which(fullTable[,40]==seqnames(myRandom[i])@values & fullTable[,39]=="yes" & fullTable[,9]>=start(myRandom[i])-(windowSize/2) & fullTable[,10]<=end(myRandom[i])+(windowSize/2)),]
+  nSigIter<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
+  write(nSigIter,stderr())
+  if(nSigIter >= nSig-1) {score<-score+1}
+  signeighbors[1,i]<-nSigIter
+}
 
 #ttest<-t.test(signeighbors,mu=nSig)
 #pval_for_region<-ttest$p.value
+
+pval_for_region<-score/nIter
 
 #first 	question, region enriched over genomic background for cis significance? (pvalue)
 #second task:
@@ -724,17 +693,13 @@ colnames(genesInRegion)[35]<-"log2foldchange"
 colnames(genesInRegion)[36]<-"test_stat"
 data<-ddply(genesInRegion,.(gene_id),head,n=1)
 data$test_stat<-as.numeric(data$test_stat)
-
-
 ```
 
-The pvalue for genes significantly regulated in this region is: (not calculated in this file) 
+The pvalue for `r nSig` genes significantly regulated in this region is: `r pval_for_region` 
 
 ```{r overlap_image, cache=TRUE}
-ggplot(data,aes(start,test_stat,color=sig))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))+labs(title=strain)
-
+ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))+labs(title=strain)+geom_text(data=subset(data, sig=='yes'))
 ```
-
 
 # Notes
 

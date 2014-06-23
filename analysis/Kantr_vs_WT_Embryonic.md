@@ -1,8 +1,6 @@
 Kantr KO vs WT (Embryonic)
 ======================================
 
-
-
 - other heatmap labels (csHeatmap)
 - cache gsea and overlap figure!! 
 - tracks 
@@ -28,10 +26,10 @@ Cuff overview:
 ## 	 26754 genes
 ## 	 77524 isoforms
 ## 	 0 TSS
-## 	 0 CDS
+## 	 23066 CDS
 ## 	 0 promoters
 ## 	 0 splicing
-## 	 0 relCDS
+## 	 19954 relCDS
 ```
 
 
@@ -51,33 +49,24 @@ Dispersion plot for genes in cuff:
 Differences in CV 2 can result in lower numbers of differentially expressed genes due to a higher degree of variability between replicate fpkm estimates.
 
 Genes:
-![plot of chunk CV genes](figure/Kantr/Embryonic/CV genes.png) 
+![plot of chunk CV_genes](figure/Kantr/Embryonic/CV_genes.png) 
 
 
 Isoforms: 
-![plot of chunk cv iso](figure/Kantr/Embryonic/cv iso.png) 
+![plot of chunk cv_iso](figure/Kantr/Embryonic/cv_iso.png) 
 
 ## Volcano
 
-```
-## Error: One or more values of 'x' or 'y' are not valid sample names!
-```
 
 ### Volcano matrix (replicates)
 
-![plot of chunk volcano matrix](figure/Kantr/Embryonic/volcano matrix.png) 
+![plot of chunk volcano_matrix](figure/Kantr/Embryonic/volcano_matrix.png) 
 
 ## MvA plot
 
-```
-## Error: non-numeric argument to binary operator
-```
    
 ### MvA plot counts
 
-```
-## Error: non-numeric argument to binary operator
-```
 
 ## Scatterplot
 ![plot of chunk scatterplot](figure/Kantr/Embryonic/scatterplot.png) 
@@ -93,19 +82,19 @@ Isoforms:
 
 Boxplot (genes)
 
-![plot of chunk boxplot genes](figure/Kantr/Embryonic/boxplot genes.png) 
+![plot of chunk boxplot_genes](figure/Kantr/Embryonic/boxplot_genes.png) 
 
 Boxplot (genes, replicates)
 
-![plot of chunk boxplot genes replicates](figure/Kantr/Embryonic/boxplot genes replicates.png) 
+![plot of chunk boxplot_genes_replicates](figure/Kantr/Embryonic/boxplot_genes_replicates.png) 
 
 Boxplot (isoforms)
 
-![plot of chunk boxplot isoforms](figure/Kantr/Embryonic/boxplot isoforms.png) 
+![plot of chunk boxplot_isoforms](figure/Kantr/Embryonic/boxplot_isoforms.png) 
 
 Boxplot (isoforms, replicates)
 
-![plot of chunk boxplot isoforms replicates](figure/Kantr/Embryonic/boxplot isoforms replicates.png) 
+![plot of chunk boxplot_isoforms_replicates](figure/Kantr/Embryonic/boxplot_isoforms_replicates.png) 
 
 ### Density
 
@@ -115,16 +104,16 @@ Density (genes)
 
 Density (genes, replicates)
 
-![plot of chunk density w replicates](figure/Kantr/Embryonic/density w replicates.png) 
+![plot of chunk density_w_replicates](figure/Kantr/Embryonic/density_w_replicates.png) 
 
 
 ## Clustering
 
 ### Replicate Clusters
-![plot of chunk replicate clusters](figure/Kantr/Embryonic/replicate clusters.png) 
+![plot of chunk replicate_clusters](figure/Kantr/Embryonic/replicate_clusters.png) 
 
 ```
-## 'dendrogram' with 2 branches and 6 members total, at height 0.0764
+## 'dendrogram' with 2 branches and 6 members total, at height 0.07638
 ```
 
 ### PCA (genes)
@@ -141,33 +130,33 @@ Density (genes, replicates)
 
 ## Endogenous lncRNA expression
 
-![plot of chunk Enodenous lncRNA tables](figure/Kantr/Embryonic/Enodenous lncRNA tables.png) 
+![plot of chunk Enodenous_lncRNA_tables](figure/Kantr/Embryonic/Enodenous_lncRNA_tables.png) 
 
 Endogenous expression of Kantr isoforms:
 
-![plot of chunk endogenous iso](figure/Kantr/Embryonic/endogenous iso.png) 
+![plot of chunk endogenous_iso](figure/Kantr/Embryonic/endogenous_iso.png) 
 
 Barplot of gene expression:
 
-![plot of chunk endogenous barplot](figure/Kantr/Embryonic/endogenous barplot.png) 
+![plot of chunk endogenous_barplot](figure/Kantr/Embryonic/endogenous_barplot.png) 
 
 Barplot of isoform expression:
 
-![plot of chunk endogenous iso barplot](figure/Kantr/Embryonic/endogenous iso barplot.png) 
+![plot of chunk endogenous_iso_barplot](figure/Kantr/Embryonic/endogenous_iso_barplot.png) 
 
 
 ## LacZ expression
 
-![plot of chunk LacZ expression](figure/Kantr/Embryonic/LacZ expression1.png) ![plot of chunk LacZ expression](figure/Kantr/Embryonic/LacZ expression2.png) 
+![plot of chunk LacZ_expression](figure/Kantr/Embryonic/LacZ_expression1.png) ![plot of chunk LacZ_expression](figure/Kantr/Embryonic/LacZ_expression2.png) 
 
 
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
 Expression plot (endogenous linc, lacZ, Y-expressed gene):
 
-![plot of chunk Digital Genotyping](figure/Kantr/Embryonic/Digital Genotyping.png) 
+![plot of chunk Digital_Genotyping](figure/Kantr/Embryonic/Digital_Genotyping.png) 
 
 Expression heatmap:
-![plot of chunk digital geno heatmap](figure/Kantr/Embryonic/digital geno heatmap.png) 
+![plot of chunk digital_geno_heatmap](figure/Kantr/Embryonic/digital_geno_heatmap.png) 
 
 # Differential Analysis
 
@@ -178,7 +167,7 @@ Expression heatmap:
 There are 785 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Thu Jun 19 09:18:52 2014 -->
+<!-- Sun Jun 22 01:33:34 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> H19 </TD> </TR>
@@ -980,7 +969,7 @@ Expression plot (genes):
 ![plot of chunk sigExpression](figure/Kantr/Embryonic/sigExpression1.png) ![plot of chunk sigExpression](figure/Kantr/Embryonic/sigExpression2.png) 
 
 Significant genes with expression >50fpkm (any condition):
-![plot of chunk highly expressed sig](figure/Kantr/Embryonic/highly expressed sig.png) 
+![plot of chunk highly_expressed_sig](figure/Kantr/Embryonic/highly_expressed_sig.png) 
 
 An individual look at each of the highly expressed significantly differentially regulated genes:
 (eval=false for first pass)
@@ -1006,11 +995,11 @@ Volcano plot with significant genes only:
 
 ### Differential Isoforms between conditions
 Per isoform difference between conditions:
-![plot of chunk diff.iso](figure/Kantr/Embryonic/diff.iso.png) 
+![plot of chunk diff_iso](figure/Kantr/Embryonic/diff_iso.png) 
 
 These isoforms are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Thu Jun 19 09:20:28 2014 -->
+<!-- Sun Jun 22 01:35:50 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> isoAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> H19 </TD> </TR>
@@ -1535,8 +1524,6 @@ The following are significantly differentially spliced genes (relative portion o
 
 
 
-
-
 # Gene/Pathway Analysis
 
 ## GSEA
@@ -1545,9 +1532,9 @@ The following are significantly differentially spliced genes (relative portion o
 
 
 
-![plot of chunk print GSEA biocarta](figure/Kantr/Embryonic/print GSEA biocarta.png) 
+![plot of chunk print_GSEA_biocarta](figure/Kantr/Embryonic/print_GSEA_biocarta.png) 
 
-![plot of chunk print GSEA reactome](figure/Kantr/Embryonic/print GSEA reactome.png) 
+![plot of chunk print_GSEA_reactome](figure/Kantr/Embryonic/print_GSEA_reactome.png) 
 
 ## GO enrichment 
 Cluster profiler used to call enichments of significantly differentially regulated genes that map to Entrez IDs. 
@@ -1556,7 +1543,7 @@ Cluster profiler used to call enichments of significantly differentially regulat
 
 
 
-![plot of chunk GO figures](figure/Kantr/Embryonic/GO figures1.png) ![plot of chunk GO figures](figure/Kantr/Embryonic/GO figures2.png) ![plot of chunk GO figures](figure/Kantr/Embryonic/GO figures3.png) ![plot of chunk GO figures](figure/Kantr/Embryonic/GO figures4.png) ![plot of chunk GO figures](figure/Kantr/Embryonic/GO figures5.png) 
+![plot of chunk GO_figures](figure/Kantr/Embryonic/GO_figures1.png) ![plot of chunk GO_figures](figure/Kantr/Embryonic/GO_figures2.png) ![plot of chunk GO_figures](figure/Kantr/Embryonic/GO_figures3.png) ![plot of chunk GO_figures](figure/Kantr/Embryonic/GO_figures4.png) ![plot of chunk GO_figures](figure/Kantr/Embryonic/GO_figures5.png) 
 
 # Cis vs Trans (locally)
 
@@ -1564,16 +1551,15 @@ Cluster profiler used to call enichments of significantly differentially regulat
 ## Error: argument "seed" is missing, with no default
 ```
 
-The pvalue for genes significantly regulated in this region is: 2.3824 &times; 10<sup>-82</sup>
+The pvalue for 2 genes significantly regulated in this region is: 0.583 
 
-![plot of chunk overlap image](figure/Kantr/Embryonic/overlap image.png) 
-
+![plot of chunk overlap_image](figure/Kantr/Embryonic/overlap_image.png) 
 
 # Notes
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Thu Jun 19 09:38:51 2014 -->
+<!-- Sun Jun 22 02:04:58 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR762 </TD> </TR>
@@ -1586,7 +1572,7 @@ The pvalue for genes significantly regulated in this region is: 2.3824 &times; 1
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Thu Jun 19 09:38:51 2014 -->
+<!-- Sun Jun 22 02:04:58 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR762/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 32232400.00 </TD> <TD align="right"> 33354800.00 </TD> <TD align="right"> 0.95 </TD> <TD align="right"> 1.00 </TD> </TR>
@@ -1654,21 +1640,21 @@ The pvalue for genes significantly regulated in this region is: 2.3824 &times; 1
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] biomaRt_2.18.0         biovizBase_1.10.8      bitops_1.0-6          
-##  [4] caTools_1.17           cluster_1.15.2         colorspace_1.2-4      
-##  [7] dichromat_2.0-0        digest_0.6.4           DO.db_2.7             
-## [10] evaluate_0.5.5         formatR_0.10           Formula_1.1-1         
-## [13] gdata_2.13.3           GenomicFeatures_1.14.5 GOSemSim_1.20.3       
-## [16] graph_1.40.1           graphite_1.8.1         gtools_3.4.1          
-## [19] Hmisc_3.14-4           igraph_0.7.1           KEGG.db_2.10.1        
-## [22] KernSmooth_2.23-12     labeling_0.2           lattice_0.20-29       
-## [25] latticeExtra_0.6-26    markdown_0.7           MASS_7.3-33           
-## [28] Matrix_1.1-3           mime_0.1.1             munsell_0.4.2         
-## [31] org.Hs.eg.db_2.10.1    proto_0.3-10           qvalue_1.36.0         
-## [34] RColorBrewer_1.0-5     Rcpp_0.11.1            RCurl_1.95-4.1        
-## [37] reactome.db_1.46.1     Rsamtools_1.14.3       scales_0.2.4          
-## [40] splines_3.0.2          stats4_3.0.2           survival_2.37-7       
-## [43] tcltk_3.0.2            tools_3.0.2            XML_3.98-1.1          
-## [46] zlibbioc_1.8.0
+##  [4] caTools_1.17           cluster_1.15.2         codetools_0.2-8       
+##  [7] colorspace_1.2-4       dichromat_2.0-0        digest_0.6.4          
+## [10] DO.db_2.7              evaluate_0.5.5         formatR_0.10          
+## [13] Formula_1.1-1          gdata_2.13.3           GenomicFeatures_1.14.5
+## [16] GOSemSim_1.20.3        graph_1.40.1           graphite_1.8.1        
+## [19] gtools_3.4.1           Hmisc_3.14-4           igraph_0.7.1          
+## [22] KEGG.db_2.10.1         KernSmooth_2.23-12     labeling_0.2          
+## [25] lattice_0.20-29        latticeExtra_0.6-26    markdown_0.7          
+## [28] MASS_7.3-33            Matrix_1.1-3           mime_0.1.1            
+## [31] munsell_0.4.2          org.Hs.eg.db_2.10.1    proto_0.3-10          
+## [34] qvalue_1.36.0          RColorBrewer_1.0-5     Rcpp_0.11.1           
+## [37] RCurl_1.95-4.1         reactome.db_1.46.1     Rsamtools_1.14.3      
+## [40] scales_0.2.4           splines_3.0.2          stats4_3.0.2          
+## [43] survival_2.37-7        tcltk_3.0.2            tools_3.0.2           
+## [46] XML_3.98-1.1           zlibbioc_1.8.0
 ```
 
 ## Run Info
@@ -1680,10 +1666,10 @@ The pvalue for genes significantly regulated in this region is: 2.3824 &times; 1
 ## 3  SVN_revision
 ## 4 boost_version
 ## 5        genome
-##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         value
-## 1 cuffdiff -p 10 -L WT,Kantr -o /n/rinn_data1/seq/lgoff/Projects/BrainMap/diffs/Kantr_vs_WT_Embryonic /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR762/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR774/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR746/abundances.cxb /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR775/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR747/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR812/abundances.cxb 
-## 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       2.2.1
-## 3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        4237
-## 4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      104700
-## 5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        mm10
+##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              value
+## 1 cuffdiff -p 10 -L WT,Kantr -o /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Kantr_vs_WT_Embryonic /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR762/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR774/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR746/abundances.cxb /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR775/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR747/abundances.cxb,/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR812/abundances.cxb 
+## 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            2.2.1
+## 3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             4237
+## 4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           104700
+## 5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             mm10
 ```

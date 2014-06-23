@@ -49,33 +49,24 @@ Dispersion plot for genes in cuff:
 Differences in CV 2 can result in lower numbers of differentially expressed genes due to a higher degree of variability between replicate fpkm estimates.
 
 Genes:
-![plot of chunk CV genes](figure/Celrr/Embryonic/CV genes.png) 
+![plot of chunk CV_genes](figure/Celrr/Embryonic/CV_genes.png) 
 
 
 Isoforms: 
-![plot of chunk cv iso](figure/Celrr/Embryonic/cv iso.png) 
+![plot of chunk cv_iso](figure/Celrr/Embryonic/cv_iso.png) 
 
 ## Volcano
 
-```
-## Error: One or more values of 'x' or 'y' are not valid sample names!
-```
 
 ### Volcano matrix (replicates)
 
-![plot of chunk volcano matrix](figure/Celrr/Embryonic/volcano matrix.png) 
+![plot of chunk volcano_matrix](figure/Celrr/Embryonic/volcano_matrix.png) 
 
 ## MvA plot
 
-```
-## Error: non-numeric argument to binary operator
-```
    
 ### MvA plot counts
 
-```
-## Error: non-numeric argument to binary operator
-```
 
 ## Scatterplot
 ![plot of chunk scatterplot](figure/Celrr/Embryonic/scatterplot.png) 
@@ -91,19 +82,19 @@ Isoforms:
 
 Boxplot (genes)
 
-![plot of chunk boxplot genes](figure/Celrr/Embryonic/boxplot genes.png) 
+![plot of chunk boxplot_genes](figure/Celrr/Embryonic/boxplot_genes.png) 
 
 Boxplot (genes, replicates)
 
-![plot of chunk boxplot genes replicates](figure/Celrr/Embryonic/boxplot genes replicates.png) 
+![plot of chunk boxplot_genes_replicates](figure/Celrr/Embryonic/boxplot_genes_replicates.png) 
 
 Boxplot (isoforms)
 
-![plot of chunk boxplot isoforms](figure/Celrr/Embryonic/boxplot isoforms.png) 
+![plot of chunk boxplot_isoforms](figure/Celrr/Embryonic/boxplot_isoforms.png) 
 
 Boxplot (isoforms, replicates)
 
-![plot of chunk boxplot isoforms replicates](figure/Celrr/Embryonic/boxplot isoforms replicates.png) 
+![plot of chunk boxplot_isoforms_replicates](figure/Celrr/Embryonic/boxplot_isoforms_replicates.png) 
 
 ### Density
 
@@ -113,13 +104,13 @@ Density (genes)
 
 Density (genes, replicates)
 
-![plot of chunk density w replicates](figure/Celrr/Embryonic/density w replicates.png) 
+![plot of chunk density_w_replicates](figure/Celrr/Embryonic/density_w_replicates.png) 
 
 
 ## Clustering
 
 ### Replicate Clusters
-![plot of chunk replicate clusters](figure/Celrr/Embryonic/replicate clusters.png) 
+![plot of chunk replicate_clusters](figure/Celrr/Embryonic/replicate_clusters.png) 
 
 ```
 ## 'dendrogram' with 2 branches and 16 members total, at height 0.08451
@@ -139,33 +130,33 @@ Density (genes, replicates)
 
 ## Endogenous lncRNA expression
 
-![plot of chunk Enodenous lncRNA tables](figure/Celrr/Embryonic/Enodenous lncRNA tables.png) 
+![plot of chunk Enodenous_lncRNA_tables](figure/Celrr/Embryonic/Enodenous_lncRNA_tables.png) 
 
 Endogenous expression of Celrr isoforms:
 
-![plot of chunk endogenous iso](figure/Celrr/Embryonic/endogenous iso.png) 
+![plot of chunk endogenous_iso](figure/Celrr/Embryonic/endogenous_iso.png) 
 
 Barplot of gene expression:
 
-![plot of chunk endogenous barplot](figure/Celrr/Embryonic/endogenous barplot.png) 
+![plot of chunk endogenous_barplot](figure/Celrr/Embryonic/endogenous_barplot.png) 
 
 Barplot of isoform expression:
 
-![plot of chunk endogenous iso barplot](figure/Celrr/Embryonic/endogenous iso barplot.png) 
+![plot of chunk endogenous_iso_barplot](figure/Celrr/Embryonic/endogenous_iso_barplot.png) 
 
 
 ## LacZ expression
 
-![plot of chunk LacZ expression](figure/Celrr/Embryonic/LacZ expression1.png) ![plot of chunk LacZ expression](figure/Celrr/Embryonic/LacZ expression2.png) 
+![plot of chunk LacZ_expression](figure/Celrr/Embryonic/LacZ_expression1.png) ![plot of chunk LacZ_expression](figure/Celrr/Embryonic/LacZ_expression2.png) 
 
 
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
 Expression plot (endogenous linc, lacZ, Y-expressed gene):
 
-![plot of chunk Digital Genotyping](figure/Celrr/Embryonic/Digital Genotyping.png) 
+![plot of chunk Digital_Genotyping](figure/Celrr/Embryonic/Digital_Genotyping.png) 
 
 Expression heatmap:
-![plot of chunk digital geno heatmap](figure/Celrr/Embryonic/digital geno heatmap.png) 
+![plot of chunk digital_geno_heatmap](figure/Celrr/Embryonic/digital_geno_heatmap.png) 
 
 # Differential Analysis
 
@@ -176,7 +167,7 @@ Expression heatmap:
 There are 37 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 20 10:39:14 2014 -->
+<!-- Sat Jun 21 22:30:25 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Phox2b </TD> </TR>
@@ -230,7 +221,7 @@ Expression plot (genes):
 ![plot of chunk sigExpression](figure/Celrr/Embryonic/sigExpression1.png) ![plot of chunk sigExpression](figure/Celrr/Embryonic/sigExpression2.png) 
 
 Significant genes with expression >50fpkm (any condition):
-![plot of chunk highly expressed sig](figure/Celrr/Embryonic/highly expressed sig.png) 
+![plot of chunk highly_expressed_sig](figure/Celrr/Embryonic/highly_expressed_sig.png) 
 
 An individual look at each of the highly expressed significantly differentially regulated genes:
 (eval=false for first pass)
@@ -256,58 +247,14 @@ Volcano plot with significant genes only:
 
 ### Differential Isoforms between conditions
 Per isoform difference between conditions:
-![plot of chunk diff.iso](figure/Celrr/Embryonic/diff.iso.png) 
+![plot of chunk diff_iso](figure/Celrr/Embryonic/diff_iso.png) 
 
 ```
 ## Error: RS-DBI driver: (error in statement: near ")": syntax error)
 ```
 
 These isoforms are:
-<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 20 10:39:30 2014 -->
-<TABLE border=1>
-<TR> <TH>  </TH> <TH> isoAnnot$gene_short_name </TH>  </TR>
-  <TR> <TD align="right"> 1 </TD> <TD> Chordc1 </TD> </TR>
-  <TR> <TD align="right"> 2 </TD> <TD> Hif3a </TD> </TR>
-  <TR> <TD align="right"> 3 </TD> <TD> Nes </TD> </TR>
-  <TR> <TD align="right"> 4 </TD> <TD> Dnajb1 </TD> </TR>
-  <TR> <TD align="right"> 5 </TD> <TD> Dio2 </TD> </TR>
-  <TR> <TD align="right"> 6 </TD> <TD> Btg2 </TD> </TR>
-  <TR> <TD align="right"> 7 </TD> <TD> Xbp1 </TD> </TR>
-  <TR> <TD align="right"> 8 </TD> <TD> Pdia6 </TD> </TR>
-  <TR> <TD align="right"> 9 </TD> <TD> Serpina3n </TD> </TR>
-  <TR> <TD align="right"> 10 </TD> <TD> Fos </TD> </TR>
-  <TR> <TD align="right"> 11 </TD> <TD> Fam107a </TD> </TR>
-  <TR> <TD align="right"> 12 </TD> <TD> Arc </TD> </TR>
-  <TR> <TD align="right"> 13 </TD> <TD> Sdf2l1 </TD> </TR>
-  <TR> <TD align="right"> 14 </TD> <TD> Nr4a1 </TD> </TR>
-  <TR> <TD align="right"> 15 </TD> <TD> Dusp1 </TD> </TR>
-  <TR> <TD align="right"> 16 </TD> <TD> Pdia4 </TD> </TR>
-  <TR> <TD align="right"> 17 </TD> <TD> Hspa5 </TD> </TR>
-  <TR> <TD align="right"> 18 </TD> <TD> Vcam1 </TD> </TR>
-  <TR> <TD align="right"> 19 </TD> <TD> Hddc3 </TD> </TR>
-  <TR> <TD align="right"> 20 </TD> <TD> Mt3 </TD> </TR>
-  <TR> <TD align="right"> 21 </TD> <TD> Mt2 </TD> </TR>
-  <TR> <TD align="right"> 22 </TD> <TD> Mt1 </TD> </TR>
-  <TR> <TD align="right"> 23 </TD> <TD> Ptgs2 </TD> </TR>
-  <TR> <TD align="right"> 24 </TD> <TD> Lars2 </TD> </TR>
-  <TR> <TD align="right"> 25 </TD> <TD> Egr1 </TD> </TR>
-  <TR> <TD align="right"> 26 </TD> <TD> Gm9493 </TD> </TR>
-  <TR> <TD align="right"> 27 </TD> <TD> Cirbp </TD> </TR>
-  <TR> <TD align="right"> 28 </TD> <TD> Trim39 </TD> </TR>
-  <TR> <TD align="right"> 29 </TD> <TD> Npas4 </TD> </TR>
-  <TR> <TD align="right"> 30 </TD> <TD> Tmem252 </TD> </TR>
-  <TR> <TD align="right"> 31 </TD> <TD> Opalin </TD> </TR>
-  <TR> <TD align="right"> 32 </TD> <TD> Cd14 </TD> </TR>
-  <TR> <TD align="right"> 33 </TD> <TD> Per2 </TD> </TR>
-  <TR> <TD align="right"> 34 </TD> <TD> Zbtb40 </TD> </TR>
-  <TR> <TD align="right"> 35 </TD> <TD> Gm7292 </TD> </TR>
-  <TR> <TD align="right"> 36 </TD> <TD> Wdfy1 </TD> </TR>
-  <TR> <TD align="right"> 37 </TD> <TD> Hspa1b </TD> </TR>
-  <TR> <TD align="right"> 38 </TD> <TD> Hspa1a </TD> </TR>
-  <TR> <TD align="right"> 39 </TD> <TD> Neat1 </TD> </TR>
-  <TR> <TD align="right"> 40 </TD> <TD> LacZ </TD> </TR>
-   </TABLE>
+
 
 
 
@@ -343,8 +290,6 @@ The following are significantly differentially spliced genes (relative portion o
 
 
 
-
-
 # Gene/Pathway Analysis
 
 ## GSEA
@@ -353,9 +298,9 @@ The following are significantly differentially spliced genes (relative portion o
 
 
 
-![plot of chunk print GSEA biocarta](figure/Celrr/Embryonic/print GSEA biocarta.png) 
+![plot of chunk print_GSEA_biocarta](figure/Celrr/Embryonic/print_GSEA_biocarta.png) 
 
-![plot of chunk print GSEA reactome](figure/Celrr/Embryonic/print GSEA reactome.png) 
+![plot of chunk print_GSEA_reactome](figure/Celrr/Embryonic/print_GSEA_reactome.png) 
 
 ## GO enrichment 
 Cluster profiler used to call enichments of significantly differentially regulated genes that map to Entrez IDs. 
@@ -371,7 +316,7 @@ Cluster profiler used to call enichments of significantly differentially regulat
 ## [1] "ERROR: The estimated pi0 <= 0. Check that you have valid p-values or use another lambda method."
 ```
 
-![plot of chunk GO figures](figure/Celrr/Embryonic/GO figures1.png) ![plot of chunk GO figures](figure/Celrr/Embryonic/GO figures2.png) ![plot of chunk GO figures](figure/Celrr/Embryonic/GO figures3.png) ![plot of chunk GO figures](figure/Celrr/Embryonic/GO figures4.png) ![plot of chunk GO figures](figure/Celrr/Embryonic/GO figures5.png) 
+![plot of chunk GO_figures](figure/Celrr/Embryonic/GO_figures1.png) ![plot of chunk GO_figures](figure/Celrr/Embryonic/GO_figures2.png) ![plot of chunk GO_figures](figure/Celrr/Embryonic/GO_figures3.png) ![plot of chunk GO_figures](figure/Celrr/Embryonic/GO_figures4.png) ![plot of chunk GO_figures](figure/Celrr/Embryonic/GO_figures5.png) 
 
 # Cis vs Trans (locally)
 
@@ -379,75 +324,15 @@ Cluster profiler used to call enichments of significantly differentially regulat
 ## Error: argument "seed" is missing, with no default
 ```
 
-```
-## Error: cannot allocate vector of size 34.8 Mb
-```
+The pvalue for 0 genes significantly regulated in this region is: 1 
 
-```
-## Error: object 'fullTable' not found
-```
-
-```
-## Error: $ operator not defined for this S4 class
-```
-
-```
-## Error: $ operator not defined for this S4 class
-```
-
-```
-## Error: $ operator not defined for this S4 class
-```
-
-```
-## Error: object 'fullTable' not found
-```
-
-```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'nrow': Error in empty(.data) : object 'sigGenesRegion' not found
-```
-
-```
-## Error: object 'fullTable' not found
-```
-
-```
-## Error: $ operator not defined for this S4 class
-```
-
-```
-## Error: object 'genesInRegion' not found
-```
-
-```
-## Error: object 'genesInRegion' not found
-```
-
-```
-## Error: object 'genesInRegion' not found
-```
-
-```
-## Error: object 'genesInRegion' not found
-```
-
-```
-## Error: object of type 'closure' is not subsettable
-```
-
-The pvalue for genes significantly regulated in this region is: (not calculated in this file) 
-
-
-```
-## Error: ggplot2 doesn't know how to deal with data of class function
-```
-
+![plot of chunk overlap_image](figure/Celrr/Embryonic/overlap_image.png) 
 
 # Notes
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 20 10:43:24 2014 -->
+<!-- Sat Jun 21 22:56:02 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR753 </TD> </TR>
@@ -470,7 +355,7 @@ The pvalue for genes significantly regulated in this region is: (not calculated 
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 20 10:43:24 2014 -->
+<!-- Sat Jun 21 22:56:02 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR753/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 39343800.00 </TD> <TD align="right"> 32387000.00 </TD> <TD align="right"> 1.26 </TD> <TD align="right"> 1.00 </TD> </TR>
@@ -510,9 +395,9 @@ The pvalue for genes significantly regulated in this region is: (not calculated 
 ## [8] methods   base     
 ## 
 ## other attached packages:
-##  [1] plyr_1.8.1                         
-##  [2] stringr_0.6.2                      
-##  [3] seqbias_1.10.0                     
+##  [1] stringr_0.6.2                      
+##  [2] seqbias_1.10.0                     
+##  [3] plyr_1.8.1                         
 ##  [4] BSgenome.Mmusculus.UCSC.mm10_1.3.19
 ##  [5] BSgenome_1.30.0                    
 ##  [6] Biostrings_2.30.1                  
