@@ -15,18 +15,21 @@ adult_directories<-split[,which(split[4,]=="Adult")]
 setwd(analysisdir)
 #library(cummeRbund)
 
-#trp53cor1
-for(i in seq(12,(dim(adult_directories)[2]))){
+
+for(i in seq(1,(dim(adult_directories)[2]))){
+  setwd(analysisdir)
   strain <-as.character(adult_directories[1,i])
   timepoint<-"Adult"
   filename<-paste(adult_directories[,i],collapse="_")
   dir<-paste(diffdir,filename,sep="/")
+  dir.create(filename)
   print(filename)
   print(dir)
   print(strain)
   #setwd(dir)
   #cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
-  knit2html('StrainTemplate.Rmd',output=paste(filename,".md", sep=""), quiet=TRUE)
+  
+  knit2html('StrainTemplate.Rmd',output=paste(filename,paste(filename,".md",sep=""), sep="/"), quiet=TRUE)
   print(dir)
   print(strain)
 }

@@ -20,7 +20,13 @@ plotTracks(genetrack)
 
 library(rtracklayer)
 library(Gviz)
+
+
+#source("http://bioconductor.org/biocLite.R")
+#biocLite("RMySQL")
+
 library(RMySQL)
+library(RColorBrewer)
 
 #Need to install R-3.0.0 (Devel) for Gviz to deal with .bam files
 
