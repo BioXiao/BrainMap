@@ -466,8 +466,8 @@ gene_set_index <- function(genelist, short_names){
 }
 
 get_gene_set_p_vals <- function(input, gs, alternative){
-  gene_set_indices <- lapply(gs$genesets, function(short_name){
-    gene_set_index(input$short_name, short_name)
+  gene_set_indices <- lapply(gs$genesets, function(genelist){
+    gene_set_index(genelist,input$short_name)
     })
   pvl<-lapply(gene_set_indices,geneSetTest,input$test_stat, alternative=alternative)
   pvl_mat<-as.data.frame(t(unlist(pvl)))
@@ -499,11 +499,11 @@ df.pop.unique<-unique(df.pop)
 rownames(df.pop.unique)<-NULL
 df.pop.unique.ordered<-df.pop.unique[order(df.pop.unique$test_stat),]
 Input.df<-df.pop.unique.ordered
+Input.df$short_name<-as.character(Input.df$short_name)
 
 reactome_pvl_mat <- get_gene_set_p_vals(Input.df, reactome_gs,alternative="mixed")
 reactome_pvl_corrected <- get_gene_set_q_vals(reactome_pvl_mat)
 reactome_pvl_corrected<-rbind(reactome_pvl_corrected,reactome_pvl_corrected)
-
 
 biocarta_pvl_mat <- get_gene_set_p_vals(Input.df, biocarta_gs, alternative="mixed")
 biocarta_pvl_corrected <- get_gene_set_q_vals(biocarta_pvl_mat)
