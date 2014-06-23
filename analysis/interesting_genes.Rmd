@@ -1,6 +1,6 @@
-Interesting Strains 
+ Interesting Strains 
 ========================================================
-```{r setup, echo=FALSE}
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
 library(cummeRbund)
 library(xtable)
 library(limma)
@@ -605,6 +605,7 @@ setwd(dir)
 cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Tug1_vs_WT_Adult<-length(sig)
+strain<-"Tug1"
 ```
 
 ```{r tug1_adult_GO_setup_and_functions}
@@ -674,7 +675,7 @@ mm10.granges<-GRanges(seqnames = names(myLengths), ranges = IRanges(start = 1, e
 #Constants
 nIter<-1000
 windowSize<-2000000
-set.seed()
+#set.seed()
 myRandom<-random.intervals(mm10.granges,n=nIter,ms=windowSize)
 
 getTable<-function(object){
@@ -709,7 +710,7 @@ colnames(genesInRegion)[36]<-"test_stat"
 data<-ddply(genesInRegion,.(gene_id),head,n=1)
 data$test_stat<-as.numeric(data$test_stat)
 
-ggplot(data,aes(start,test_stat,color=sig))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))+labs(title=strain)
+ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))+labs(title=strain)+geom_text(data=subset(data, sig=='yes'))
 ```
 
 ## Tug1 Embryonic 
@@ -720,6 +721,7 @@ setwd(dir)
 cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
 id<-"Tug1"
 myGene<-getGene(cuff,id)
+strain<-"Tug1"
 ```
 
 ```{r tug1_embryonic diff}
@@ -737,8 +739,6 @@ end<-myGene$end+(windowSize/2)
 sigGenesRegion<-fullTable[which(fullTable[,40]==chromosome & fullTable[,39]=="yes" & fullTable[,9]>=start & fullTable[,10]<=end),]
 nSig<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
 
-
-
 genesInRegion<-fullTable[which(fullTable[,40]==chromosome & fullTable[,9]>=start & fullTable[,10]<=end),]
 genesInRegion$start<-myGene$start-genesInRegion$start
 colnames(genesInRegion)[39]<-"sig"
@@ -747,7 +747,7 @@ colnames(genesInRegion)[36]<-"test_stat"
 data<-ddply(genesInRegion,.(gene_id),head,n=1)
 data$test_stat<-as.numeric(data$test_stat)
 
-ggplot(data,aes(start,test_stat,color=sig))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))+labs(title=strain)
+ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))+labs(title=strain)+geom_text(data=subset(data, sig=='yes'))
 ```
 
 

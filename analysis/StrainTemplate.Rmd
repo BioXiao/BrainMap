@@ -697,7 +697,7 @@ data$test_stat<-as.numeric(data$test_stat)
 The pvalue for `r nSig` genes significantly regulated in this region is: `r pval_for_region` 
 
 ```{r overlap_image, cache=TRUE}
-ggplot(data,aes(start,test_stat,color=sig))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))+labs(title=strain)
+ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))+labs(title=strain)+geom_text(data=subset(data, sig=='yes'))
 ```
 
 # Notes

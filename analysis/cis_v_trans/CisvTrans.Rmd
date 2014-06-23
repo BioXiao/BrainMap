@@ -106,8 +106,6 @@ data$test_stat<-as.numeric(data$test_stat)
 # P-value for `r nSig` DE genes in a region this size in this dataset is: `r pval_for_region` 
 
 ```{r overlap_image}
-ggplot(data,aes(start,test_stat,color=sig))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))+labs(title=strain)
+ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))+labs(title=strain)+geom_text(data=subset(data, sig=='yes'))
 
 ```
-
-- Figure out how to add name labels to significant genes only! on the graphs! s
