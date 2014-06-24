@@ -1,7 +1,7 @@
 # TRACKS
+
+####### cummeRbund Tracks #######
 library(cummeRbund)
-library(Gviz)
-library(RColorBrewer)
 
 analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
 diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
@@ -13,32 +13,21 @@ cuff<-readCufflinks(gtfFile=GTF,genome="mm10")
 
 myID<-"linc-Enc1"
 myGene<-getGene(cuff,myID)
-#genetrack <-makeGeneRegionTrack(myGene)
-#plotTracks(list(genetrack))
-
-myID<-"Peril"
-peril<-getGene(cuff,myID)
 genetrack <-makeGeneRegionTrack(myGene)
 plotTracks(list(genetrack))
-################# SCRIPT FROM LOYAL ##################
 
-library(rtracklayer)
-library(Gviz)
+#myID<-"Peril"
+#peril<-getGene(cuff,myID)
+#genetrack <-makeGeneRegionTrack(peril) #throws weird error 
+#plotTracks(list(genetrack))
 
-
-#source("http://bioconductor.org/biocLite.R")
-#biocLite("RMySQL")
-
+################# SCRIPT FROM LOYAL -- helper functions ### 
 library(RMySQL)
 library(RColorBrewer)
 library(GenomicFeatures)
 
 #makeTranscriptDbFromGFF
 #mm10DB<-makeTranscriptDbFromGFF(GTF,format="gtf",species="mus musculus")
-
-
-
-
 
 #Need to install R-3.0.0 (Devel) for Gviz to deal with .bam files
 
@@ -95,22 +84,30 @@ movingAverage <- function(x, n=10, centered=TRUE) {
   s/count
 }
 
-#TODO: get regions to plot
-#plotRegions<-read.table("plotRegions.txt",header=T,sep="\t",stringsAsFactors=FALSE)
+makeBamTrack<-function(bamFile,bamName,genome=genome,chromosome,color="steelblue",window=20,ylim=c(0,15)){
+  
+  track<-DataTrack(range=bamFile,name=bamName,genome=genome,type="h",transformation=function(x){movingAverage(x,window)},col=color,fill.histogram=color,col.histogram=color,chromosome=chromosome, ylim=ylim, lwd=1.5)
+  
+  return(track)
+}
 
-#Constants
+########## Constants #########
+library(cummeRbund)
+analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
+diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
+GTF<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf"
+
 genome<-"mm10"
 
-#name<-"Slc25a12"
-#chrom<-"chr2"
-#from<-71095513
-#to<-71215660
-
-dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Peril_vs_WT_Embryonic/"
-setwd(dir)
-cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
+setwd(diffdir)
+setwd('Peril_vs_WT_Embryonic/')
+cuff<-readCufflinks(gtfFile=GTF,genome=genome)
 name<-"Peril"
+
 myGene<-getGene(cuff,name)
+genetrack <-makeGeneRegionTrack(myGene)
+#plotTracks(list(genetrack))
+
 annot<-annotation(myGene)
 
 locus<-strsplit(annot$locus,":")
@@ -127,9 +124,9 @@ files<-lapply(reps$file,function(x){strsplit(x, "/")})
 files<-as.data.frame(files)
 samples<-(t(files[10,]))
 rownames(samples)<-NULL
-
 JRs<-samples
 
+setwd(analysisdir)
 deletionCoords<-read.table("mm10DeletionCoords.txt",sep="\t",header=TRUE,stringsAsFactors=FALSE)
 colnames(deletionCoords)<-c("gene_name","gene_region","deletionRegion")
 koStrain<-name
@@ -149,18 +146,13 @@ bamFiles<-lapply(JRs,function(x){paste(bamRoot,x,"/accepted_hits.bam",sep="")})
 
 bamNames<-reps$rep_name
 
-bamColors<-brewer.pal(length(bamNames),"Spectral")
-
-makeBamTrack<-function(bamFile,bamName,genome=genome,chromosome,color="steelblue",window=20,ylim=c(0,15)){
-  
-  track<-DataTrack(range=bamFile,name=bamName,genome=genome,type="h",transformation=function(x){movingAverage(x,window)},col=color,fill.histogram=color,col.histogram=color,chromosome=chromosome, ylim=ylim, lwd=1.5)
-  
-  return(track)
-}
+specCols<-brewer.pal(3,"Paired")
+colPal<-colorRampPalette(specCols)
+bamColors<-colPal(length(bamFiles))
 
 require(TxDb.Mmusculus.UCSC.mm10.knownGene)
 
-doPlot<-function(genome=genome,name,myChr,from,to,window,bamFiles,bamNames){
+doPlot<-function(genome=genome,name,myChr,from,to,window,bamFiles,bamNames,koStart,koWidth,koChr){
   #Make Tracks
   axTrack<-GenomeAxisTrack(add53 = TRUE,add35 = TRUE, labelPos = "above")
   idxTrack <- IdeogramTrack(genome = genome, chromosome = myChr)
@@ -168,7 +160,7 @@ doPlot<-function(genome=genome,name,myChr,from,to,window,bamFiles,bamNames){
   #BamTracks
   write("\tBamTracks",stderr())
   bamTracks<-list()
-  bamOrder<-c(6:length(bamFiles))
+  bamOrder<-c(1:length(bamFiles))
 
   for (i in bamOrder){
     track<-makeBamTrack(bamFiles[[i]],bamNames[[i]],genome=genome,chromosome=myChr,color=bamColors[i],window=window)
@@ -178,41 +170,33 @@ doPlot<-function(genome=genome,name,myChr,from,to,window,bamFiles,bamNames){
   #Plot Tracks
   write("\tplotting...",stderr())
   # myTracks<-c(bamTracks,knownGenes)
-  myTracks<-c(idxTrack,axTrack,bamTracks,koTrack)
-  trackSizes<-c(2,2,rep(1,length(bamTracks)),1)
+  myTracks<-c(idxTrack,axTrack,genetrack,bamTracks,koTrack)
+  trackSizes<-c(1,1,4,rep(1,length(bamTracks)),1)
 
   #pdf(paste(name,".pdf",sep=""),width=10,height=8)
   plotTracks(myTracks,from=from,to=to,chromosome=myChr,showAxis=FALSE,background.title="black",col.title="white",col.axis="black",sizes=trackSizes)
-
   #dev.off()
   #dbDisconnect(con)
 }
 
-genome<-"mm10"
-myChr<-chrom
 
-doPlot(genome=genome, name=name, myChr=chrom, from=from, to=to, window=20,bamFiles=bamFiles, bamNames=bamNames)
+doPlot(genome=genome, name=name, myChr=chrom, from=from, to=to, window=20,bamFiles=bamFiles, bamNames=bamNames, koStart=koStart,koWidth=koWidth,koChr=koChr)
 
-geneTrack<-makeGeneRegionTrack(myGene)
+
+#> plotTracks(bamTracks[[16]],from=from,to=to,chromosome=myChr,showAxis=FALSE,background.title="black",col.title="white",col.axis="grey")
+#Error in n - 1 : non-numeric argument to binary operator
 
 #make a transcriptDB with our gtf in mm10 
-#make a track from a bed file for ?
-
-plotTracks(list(myTracks[[1]],myTracks[[20]]),from=from,to=to,chromosome=myChr,showAxis=FALSE,background.title="black",col.title="white",col.axis="black",sizes=c(2,2))
 
 
-
-
-
-
-
-for(i in 1:dim(plotRegions)[1]){
-  write(paste(plotRegions[i,]$name),stderr())
-  #print(paste(plotRegions[i,]$name,plotRegions[i,]$chrom))
-  doPlot(genome=genome,
-         name=plotRegions[i,]$name,
-         myChr=plotRegions[i,]$chrom,
-         from=as.numeric(plotRegions[i,]$start),
-         to=as.numeric(plotRegions[i,]$end),
-         window=as.numeric(plotRegions[i,]$window))
-}
+####################lots of plots! #########
+#for(i in 1:dim(plotRegions)[1]){
+#  write(paste(plotRegions[i,]$name),stderr())
+#  #print(paste(plotRegions[i,]$name,plotRegions[i,]$chrom))
+#  doPlot(genome=genome,
+#         name=plotRegions[i,]$name,
+#         myChr=plotRegions[i,]$chrom,
+#         from=as.numeric(plotRegions[i,]$start),
+#         to=as.numeric(plotRegions[i,]$end),
+#         window=as.numeric(plotRegions[i,]$window))
+#}
