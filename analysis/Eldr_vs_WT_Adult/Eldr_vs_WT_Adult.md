@@ -49,7 +49,7 @@ Dispersion plot for genes in cuff:
 Differences in CV 2 can result in lower numbers of differentially expressed genes due to a higher degree of variability between replicate fpkm estimates.
 
 Genes:
-![plot of chunk CV_genes](figure/CV_genes.png) 
+![plot of chunk CV_genes](Eldr_vs_WT_Adult/figure/CV_genes.png) 
 
 
 Isoforms: 
@@ -63,7 +63,7 @@ Isoforms:
 
 ### Volcano matrix (replicates)
 
-![plot of chunk volcano_matrix](figure/volcano_matrix.png) 
+![plot of chunk volcano_matrix](Eldr_vs_WT_Adult/figure/volcano_matrix.png) 
 
 ## MvA plot
 
@@ -72,7 +72,7 @@ Isoforms:
 
 
 ## Scatterplot
-![plot of chunk scatterplot](figure/scatterplot.png) 
+![plot of chunk scatterplot](Eldr_vs_WT_Adult/figure/scatterplot.png) 
 
 ### Scatter matrix (replicates) -- SKIP FOR NOW CAUSING PROBLEMS 
 
@@ -85,45 +85,45 @@ Isoforms:
 
 Boxplot (genes)
 
-![plot of chunk boxplot_genes](figure/boxplot_genes.png) 
+![plot of chunk boxplot_genes](Eldr_vs_WT_Adult/figure/boxplot_genes.png) 
 
 Boxplot (genes, replicates)
 
-![plot of chunk boxplot_genes_replicates](figure/boxplot_genes_replicates.png) 
+![plot of chunk boxplot_genes_replicates](Eldr_vs_WT_Adult/figure/boxplot_genes_replicates.png) 
 
 Boxplot (isoforms)
 
-![plot of chunk boxplot_isoforms](figure/boxplot_isoforms.png) 
+![plot of chunk boxplot_isoforms](Eldr_vs_WT_Adult/figure/boxplot_isoforms.png) 
 
 Boxplot (isoforms, replicates)
 
-![plot of chunk boxplot_isoforms_replicates](figure/boxplot_isoforms_replicates.png) 
+![plot of chunk boxplot_isoforms_replicates](Eldr_vs_WT_Adult/figure/boxplot_isoforms_replicates.png) 
 
 ### Density
 
 Density (genes)
 
-![plot of chunk density](figure/density.png) 
+![plot of chunk density](Eldr_vs_WT_Adult/figure/density.png) 
 
 Density (genes, replicates)
 
-![plot of chunk density_w_replicates](figure/density_w_replicates.png) 
+![plot of chunk density_w_replicates](Eldr_vs_WT_Adult/figure/density_w_replicates.png) 
 
 
 ## Clustering
 
 ### Replicate Clusters
-![plot of chunk replicate_clusters](figure/replicate_clusters.png) 
+![plot of chunk replicate_clusters](Eldr_vs_WT_Adult/figure/replicate_clusters.png) 
 
 ```
 ## 'dendrogram' with 2 branches and 16 members total, at height 0.07545
 ```
 
 ### PCA (genes)
-![plot of chunk PCA](figure/PCA.png) 
+![plot of chunk PCA](Eldr_vs_WT_Adult/figure/PCA.png) 
 
 ### MDS (genes)
-![plot of chunk MDS](figure/MDS.png) 
+![plot of chunk MDS](Eldr_vs_WT_Adult/figure/MDS.png) 
 
 
 
@@ -133,33 +133,33 @@ Density (genes, replicates)
 
 ## Endogenous lncRNA expression
 
-![plot of chunk Enodenous_lncRNA_tables](figure/Enodenous_lncRNA_tables.png) 
+![plot of chunk Enodenous_lncRNA_tables](Eldr_vs_WT_Adult/figure/Enodenous_lncRNA_tables.png) 
 
 Endogenous expression of Eldr isoforms:
 
-![plot of chunk endogenous_iso](figure/endogenous_iso.png) 
+![plot of chunk endogenous_iso](Eldr_vs_WT_Adult/figure/endogenous_iso.png) 
 
 Barplot of gene expression:
 
-![plot of chunk endogenous_barplot](figure/endogenous_barplot.png) 
+![plot of chunk endogenous_barplot](Eldr_vs_WT_Adult/figure/endogenous_barplot.png) 
 
 Barplot of isoform expression:
 
-![plot of chunk endogenous_iso_barplot](figure/endogenous_iso_barplot.png) 
+![plot of chunk endogenous_iso_barplot](Eldr_vs_WT_Adult/figure/endogenous_iso_barplot.png) 
 
 
 ## LacZ expression
 
-![plot of chunk LacZ_expression](figure/LacZ_expression1.png) ![plot of chunk LacZ_expression](figure/LacZ_expression2.png) 
+![plot of chunk LacZ_expression](Eldr_vs_WT_Adult/figure/LacZ_expression1.png) ![plot of chunk LacZ_expression](Eldr_vs_WT_Adult/figure/LacZ_expression2.png) 
 
 
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
 Expression plot (endogenous linc, lacZ, Y-expressed gene):
 
-![plot of chunk Digital_Genotyping](figure/Digital_Genotyping.png) 
+![plot of chunk Digital_Genotyping](Eldr_vs_WT_Adult/figure/Digital_Genotyping.png) 
 
 Expression heatmap:
-![plot of chunk digital_geno_heatmap](figure/digital_geno_heatmap.png) 
+![plot of chunk digital_geno_heatmap](Eldr_vs_WT_Adult/figure/digital_geno_heatmap.png) 
 
 # Differential Analysis
 
@@ -170,7 +170,7 @@ Expression heatmap:
 There are 29 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jun 23 17:52:28 2014 -->
+<!-- Mon Jun 23 22:47:44 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Nes </TD> </TR>
@@ -208,15 +208,15 @@ There are 29 significantly differentially expressed genes. They are:
 
 (skip for Brainmap wt-v-ko comparisons)
 
-![plot of chunk sigMatrix](figure/sigMatrix.png) 
+![plot of chunk sigMatrix](Eldr_vs_WT_Adult/figure/sigMatrix.png) 
 
 ### Significant gene expression differences between conditions
 
 Expression plot (genes):
-![plot of chunk sigExpression](figure/sigExpression1.png) ![plot of chunk sigExpression](figure/sigExpression2.png) 
+![plot of chunk sigExpression](Eldr_vs_WT_Adult/figure/sigExpression1.png) ![plot of chunk sigExpression](Eldr_vs_WT_Adult/figure/sigExpression2.png) 
 
 Significant genes with expression >50fpkm (any condition):
-![plot of chunk highly_expressed_sig](figure/highly_expressed_sig.png) 
+![plot of chunk highly_expressed_sig](Eldr_vs_WT_Adult/figure/highly_expressed_sig.png) 
 
 An individual look at each of the highly expressed significantly differentially regulated genes:
 (eval=false for first pass)
@@ -242,7 +242,7 @@ Volcano plot with significant genes only:
 
 ### Differential Isoforms between conditions
 Per isoform difference between conditions:
-![plot of chunk diff_iso](figure/diff_iso.png) 
+![plot of chunk diff_iso](Eldr_vs_WT_Adult/figure/diff_iso.png) 
 
 ```
 ## Error: RS-DBI driver: (error in statement: near ")": syntax error)
@@ -252,7 +252,7 @@ These isoforms are:
 
 
 
-![plot of chunk isoform_heatmap](figure/isoform_heatmap.png) 
+![plot of chunk isoform_heatmap](Eldr_vs_WT_Adult/figure/isoform_heatmap.png) 
 
 ### Differential Splicing between conditions
 
@@ -307,13 +307,13 @@ Cluster profiler used to call enichments of significantly differentially regulat
 
 
 
-![plot of chunk GO_figures](figure/GO_figures1.png) ![plot of chunk GO_figures](figure/GO_figures2.png) ![plot of chunk GO_figures](figure/GO_figures3.png) 
+![plot of chunk GO_figures](Eldr_vs_WT_Adult/figure/GO_figures1.png) ![plot of chunk GO_figures](Eldr_vs_WT_Adult/figure/GO_figures2.png) ![plot of chunk GO_figures](Eldr_vs_WT_Adult/figure/GO_figures3.png) 
 
 ```
 ## Error: need finite 'xlim' values
 ```
 
-![plot of chunk GO_figures](figure/GO_figures4.png) 
+![plot of chunk GO_figures](Eldr_vs_WT_Adult/figure/GO_figures4.png) 
 
 ```
 ## Error: need finite 'xlim' values
@@ -325,15 +325,15 @@ Cluster profiler used to call enichments of significantly differentially regulat
 ## Error: argument "seed" is missing, with no default
 ```
 
-The pvalue for 0 genes significantly regulated in this region is: 1 
+The pvalue for 1 genes significantly regulated in this region is: 1 
 
-![plot of chunk overlap_image](figure/overlap_image.png) 
+![plot of chunk overlap_image](Eldr_vs_WT_Adult/figure/overlap_image.png) 
 
 # Notes
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jun 23 17:56:13 2014 -->
+<!-- Mon Jun 23 23:08:50 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR729 </TD> </TR>
@@ -356,7 +356,7 @@ The pvalue for 0 genes significantly regulated in this region is: 1
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jun 23 17:56:13 2014 -->
+<!-- Mon Jun 23 23:08:51 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR729/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 26338300.00 </TD> <TD align="right"> 34784800.00 </TD> <TD align="right"> 0.76 </TD> <TD align="right"> 1.00 </TD> </TR>
@@ -396,9 +396,9 @@ The pvalue for 0 genes significantly regulated in this region is: 1
 ## [8] methods   base     
 ## 
 ## other attached packages:
-##  [1] plyr_1.8.1                         
-##  [2] stringr_0.6.2                      
-##  [3] seqbias_1.10.0                     
+##  [1] stringr_0.6.2                      
+##  [2] seqbias_1.10.0                     
+##  [3] plyr_1.8.1                         
 ##  [4] BSgenome.Mmusculus.UCSC.mm10_1.3.19
 ##  [5] BSgenome_1.30.0                    
 ##  [6] Biostrings_2.30.1                  
