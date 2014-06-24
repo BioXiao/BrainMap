@@ -27,10 +27,12 @@ for(i in seq(1,(dim(adult_directories)[2]))){
   print(dir)
   print(strain)
   #setwd(dir)
-  #cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
-  knit2html('StrainTemplate.Rmd',output=paste(filename,paste(filename,".md",sep=""), sep="/"), quiet=TRUE)
+  #cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10")
+  setwd(filename)
+  knit2html('../StrainTemplate.Rmd',output=paste(filename,paste(filename,".md",sep=""), sep="/"), quiet=TRUE)
   print(dir)
   print(strain)
+  setwd(analysisdir)
 }
 
 #paste(adult_directories[,1],sep="_",collapse="_")
