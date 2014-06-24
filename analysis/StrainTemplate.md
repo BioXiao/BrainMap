@@ -154,7 +154,7 @@ Expression heatmap:
 There are 18 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Tue Jun 24 15:53:17 2014 -->
+<!-- Tue Jun 24 17:10:16 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Rec8 </TD> </TR>
@@ -186,9 +186,11 @@ There are 18 significantly differentially expressed genes. They are:
 ### Significant gene expression differences between conditions
 
 Expression plot (genes):
+
 ![plot of chunk sigExpression](linc-Enc1_vs_WT_Embryonic/figure/sigExpression1.png) ![plot of chunk sigExpression](linc-Enc1_vs_WT_Embryonic/figure/sigExpression2.png) 
 
 Significant genes with expression >50fpkm (any condition):
+
 ![plot of chunk highly_expressed_sig](linc-Enc1_vs_WT_Embryonic/figure/highly_expressed_sig.png) 
 
 An individual look at each of the highly expressed significantly differentially regulated genes:
@@ -196,18 +198,23 @@ An individual look at each of the highly expressed significantly differentially 
 
 
 
+
 ### Expression-level/significance relationship
 
 Scatter plot of significant genes only:
+
 ![plot of chunk expression-sig_relationship](linc-Enc1_vs_WT_Embryonic/figure/expression-sig_relationship.png) 
 
 Volcano Plot
 
 
+
 Volcano plot with significant genes only:
+
 ![plot of chunk sig_volcano](linc-Enc1_vs_WT_Embryonic/figure/sig_volcano.png) 
 
-## FoldChange Heatmap
+FoldChange Heatmap
+
 ![plot of chunk sigGenes logfoldchange_heatmap](linc-Enc1_vs_WT_Embryonic/figure/sigGenes logfoldchange_heatmap.png) 
 
 
@@ -215,19 +222,24 @@ Volcano plot with significant genes only:
 ## Differential Splicing
 
 ### Differential Isoforms between conditions
+
 Per isoform difference between conditions:
+
 ![plot of chunk diff_iso](linc-Enc1_vs_WT_Embryonic/figure/diff_iso.png) 
 
 These isoforms are:
+
 [1] "no sig isoforms"
 
 Gene-level DE isoform heatmap
+
 
 ```
 ## [1] "no sig isoforms"
 ```
 
 Isoform foldchange heatmap by isoform:
+
 
 ```
 ## [1] "no sig isoforms"
@@ -267,137 +279,12 @@ The following are significantly differentially spliced genes (relative portion o
 ## GSEA
 
 
-```
-## Error: unable to find an inherited method for function 'genes' for
-## signature '"CuffSet"'
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'diffData': Error: object 'population' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'annotation': Error in (function (classes, fdef, mtable)  : 
-##   unable to find an inherited method for function 'genes' for signature '"CuffSet"'
-## Calls: genes -> <Anonymous>
-```
-
-```
-## Error: error in evaluating the argument 'y' in selecting a method for function 'merge': Error: object 'population.diff' not found
-```
 
 
-```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'toupper': Error: object 'gene_names' not found
-```
 
-```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'unique': Error: object 'df.pop' not found
-```
+![plot of chunk print_GSEA_biocarta](linc-Enc1_vs_WT_Embryonic/figure/print_GSEA_biocarta.png) 
 
-```
-## Error: object 'df.pop.unique' not found
-```
-
-```
-## Error: object 'df.pop.unique' not found
-```
-
-```
-## Error: object 'df.pop.unique.ordered' not found
-```
-
-```
-## Error: object 'Input.df' not found
-```
-
-```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'which': Error in short_names %in% genelist : 
-##   error in evaluating the argument 'x' in selecting a method for function '%in%': Error: object 'Input.df' not found
-```
-
-```
-## Error: object 'reactome_pvl_mat' not found
-```
-
-```
-## Error: object 'reactome_pvl_corrected' not found
-```
-
-```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'which': Error in short_names %in% genelist : 
-##   error in evaluating the argument 'x' in selecting a method for function '%in%': Error: object 'Input.df' not found
-```
-
-```
-## Error: object 'biocarta_pvl_mat' not found
-```
-
-```
-## Error: object 'biocarta_pvl_corrected' not found
-```
-
-
-```
-## Error: error in evaluating the argument 'x' in selecting a method for function 't': Error: object 'biocarta_pvl_corrected' not found
-```
-
-```
-## Error: object 'x' not found
-```
-
-```
-## Error: object 'x_ordered' not found
-```
-
-```
-## Error: object 'x_ordered' not found
-```
-
-```
-## Error: object 'noinfinities_x' not found
-```
-
-```
-## Error: object 'x_max' not found
-```
-
-```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'as.matrix': Error: object 'x_ordered' not found
-```
-
-```
-## Error: object 'x_ordered' not found
-```
-
-
-```
-## Error: error in evaluating the argument 'x' in selecting a method for function 't': Error: object 'reactome_pvl_corrected' not found
-```
-
-```
-## Error: object 'x' not found
-```
-
-```
-## Error: object 'x_ordered' not found
-```
-
-```
-## Error: object 'x_ordered' not found
-```
-
-```
-## Error: object 'noinfinities_x' not found
-```
-
-```
-## Error: object 'x_max' not found
-```
-
-```
-## Error: object 'x_ordered' not found
-```
+![plot of chunk print_GSEA_reactome](linc-Enc1_vs_WT_Embryonic/figure/print_GSEA_reactome.png) 
 
 ## GO enrichment 
 Cluster profiler used to call enichments of significantly differentially regulated genes that map to Entrez IDs. 
@@ -429,77 +316,16 @@ Cluster profiler used to call enichments of significantly differentially regulat
 
 # Cis vs Trans (locally)
 
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'diffTable': Error in (function (classes, fdef, mtable)  : 
-##   unable to find an inherited method for function 'genes' for signature '"CuffSet"'
-## Calls: genes -> <Anonymous>
-```
-
-```
-## Error: object 'fullTable' not found
-```
-
-```
-## Error: $ operator not defined for this S4 class
-```
-
-```
-## Error: $ operator not defined for this S4 class
-```
-
-```
-## Error: $ operator not defined for this S4 class
-```
-
-```
-## Error: object 'fullTable' not found
-```
-
-```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'nrow': Error in empty(.data) : object 'sigGenesRegion' not found
-## Calls: ddply -> empty
-```
-
-```
-## Error: object 'fullTable' not found
-```
-
-```
-## Error: $ operator not defined for this S4 class
-```
-
-```
-## Error: object 'genesInRegion' not found
-```
-
-```
-## Error: object 'genesInRegion' not found
-```
-
-```
-## Error: object 'genesInRegion' not found
-```
-
-```
-## Error: object 'genesInRegion' not found
-```
-
-```
-## Error: object of type 'closure' is not subsettable
-```
 
 
 
-
-```
-## Error: ggplot2 doesn't know how to deal with data of class function
-```
+![plot of chunk overlap_image](linc-Enc1_vs_WT_Embryonic/figure/overlap_image.png) 
 
 # Notes
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Tue Jun 24 15:55:06 2014 -->
+<!-- Tue Jun 24 17:27:29 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR753 </TD> </TR>
@@ -523,7 +349,7 @@ Cluster profiler used to call enichments of significantly differentially regulat
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Tue Jun 24 15:55:06 2014 -->
+<!-- Tue Jun 24 17:27:29 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR753/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 39343800.00 </TD> <TD align="right"> 33014500.00 </TD> <TD align="right"> 1.23 </TD> <TD align="right"> 1.00 </TD> </TR>
@@ -564,61 +390,60 @@ Cluster profiler used to call enichments of significantly differentially regulat
 ## [8] methods   base     
 ## 
 ## other attached packages:
-##  [1] plyr_1.8.1                               
-##  [2] stringr_0.6.2                            
-##  [3] seqbias_1.10.0                           
-##  [4] BSgenome.Mmusculus.UCSC.mm10_1.3.19      
-##  [5] BSgenome_1.30.0                          
-##  [6] Biostrings_2.30.1                        
-##  [7] GO.db_2.10.1                             
-##  [8] org.Mm.eg.db_2.10.1                      
-##  [9] clusterProfiler_1.13.1                   
-## [10] DOSE_2.0.0                               
-## [11] ReactomePA_1.6.1                         
-## [12] TxDb.Mmusculus.UCSC.mm10.knownGene_2.10.1
-## [13] GenomicFeatures_1.14.5                   
-## [14] AnnotationDbi_1.24.0                     
-## [15] Biobase_2.22.0                           
-## [16] RColorBrewer_1.0-5                       
-## [17] RMySQL_0.9-3                             
-## [18] mgcv_1.7-29                              
-## [19] nlme_3.1-117                             
-## [20] gridExtra_0.9.1                          
-## [21] gtable_0.1.2                             
-## [22] marray_1.40.0                            
-## [23] gplots_2.13.0                            
-## [24] GSA_1.03                                 
-## [25] limma_3.18.13                            
-## [26] xtable_1.7-3                             
-## [27] cummeRbund_2.7.2                         
-## [28] Gviz_1.6.0                               
-## [29] rtracklayer_1.22.7                       
-## [30] GenomicRanges_1.14.4                     
-## [31] XVector_0.2.0                            
-## [32] IRanges_1.20.7                           
-## [33] fastcluster_1.1.13                       
-## [34] reshape2_1.4                             
-## [35] ggplot2_1.0.0                            
-## [36] RSQLite_0.11.4                           
-## [37] DBI_0.2-7                                
-## [38] BiocGenerics_0.8.0                       
-## [39] knitr_1.6                                
+##  [1] plyr_1.8.1                         
+##  [2] stringr_0.6.2                      
+##  [3] seqbias_1.10.0                     
+##  [4] BSgenome.Mmusculus.UCSC.mm10_1.3.19
+##  [5] BSgenome_1.30.0                    
+##  [6] Biostrings_2.30.1                  
+##  [7] GO.db_2.10.1                       
+##  [8] org.Mm.eg.db_2.10.1                
+##  [9] clusterProfiler_1.13.1             
+## [10] DOSE_2.0.0                         
+## [11] ReactomePA_1.6.1                   
+## [12] AnnotationDbi_1.24.0               
+## [13] Biobase_2.22.0                     
+## [14] RColorBrewer_1.0-5                 
+## [15] RMySQL_0.9-3                       
+## [16] mgcv_1.7-29                        
+## [17] nlme_3.1-117                       
+## [18] gridExtra_0.9.1                    
+## [19] gtable_0.1.2                       
+## [20] marray_1.40.0                      
+## [21] gplots_2.13.0                      
+## [22] GSA_1.03                           
+## [23] limma_3.18.13                      
+## [24] xtable_1.7-3                       
+## [25] cummeRbund_2.7.2                   
+## [26] Gviz_1.6.0                         
+## [27] rtracklayer_1.22.7                 
+## [28] GenomicRanges_1.14.4               
+## [29] XVector_0.2.0                      
+## [30] IRanges_1.20.7                     
+## [31] fastcluster_1.1.13                 
+## [32] reshape2_1.4                       
+## [33] ggplot2_1.0.0                      
+## [34] RSQLite_0.11.4                     
+## [35] DBI_0.2-7                          
+## [36] BiocGenerics_0.8.0                 
+## [37] knitr_1.6                          
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] biomaRt_2.18.0      biovizBase_1.10.8   bitops_1.0-6       
-##  [4] caTools_1.17        cluster_1.15.2      colorspace_1.2-4   
-##  [7] dichromat_2.0-0     digest_0.6.4        DO.db_2.7          
-## [10] evaluate_0.5.5      formatR_0.10        Formula_1.1-1      
-## [13] gdata_2.13.3        GOSemSim_1.20.3     graph_1.40.1       
-## [16] graphite_1.8.1      gtools_3.4.1        Hmisc_3.14-4       
-## [19] igraph_0.7.1        KEGG.db_2.10.1      KernSmooth_2.23-12 
-## [22] labeling_0.2        lattice_0.20-29     latticeExtra_0.6-26
-## [25] MASS_7.3-33         Matrix_1.1-3        munsell_0.4.2      
-## [28] org.Hs.eg.db_2.10.1 proto_0.3-10        qvalue_1.36.0      
-## [31] Rcpp_0.11.1         RCurl_1.95-4.1      reactome.db_1.46.1 
-## [34] Rsamtools_1.14.3    scales_0.2.4        splines_3.0.2      
-## [37] stats4_3.0.2        survival_2.37-7     tcltk_3.0.2        
-## [40] tools_3.0.2         XML_3.98-1.1        zlibbioc_1.8.0
+##  [1] biomaRt_2.18.0         biovizBase_1.10.8      bitops_1.0-6          
+##  [4] caTools_1.17           cluster_1.15.2         colorspace_1.2-4      
+##  [7] dichromat_2.0-0        digest_0.6.4           DO.db_2.7             
+## [10] evaluate_0.5.5         formatR_0.10           Formula_1.1-1         
+## [13] gdata_2.13.3           GenomicFeatures_1.14.5 GOSemSim_1.20.3       
+## [16] graph_1.40.1           graphite_1.8.1         gtools_3.4.1          
+## [19] Hmisc_3.14-4           igraph_0.7.1           KEGG.db_2.10.1        
+## [22] KernSmooth_2.23-12     labeling_0.2           lattice_0.20-29       
+## [25] latticeExtra_0.6-26    MASS_7.3-33            Matrix_1.1-3          
+## [28] munsell_0.4.2          org.Hs.eg.db_2.10.1    proto_0.3-10          
+## [31] qvalue_1.36.0          Rcpp_0.11.1            RCurl_1.95-4.1        
+## [34] reactome.db_1.46.1     Rsamtools_1.14.3       scales_0.2.4          
+## [37] splines_3.0.2          stats4_3.0.2           survival_2.37-7       
+## [40] tcltk_3.0.2            tools_3.0.2            XML_3.98-1.1          
+## [43] zlibbioc_1.8.0
 ```
 
 ## Run Info

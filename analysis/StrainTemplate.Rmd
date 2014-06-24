@@ -1,4 +1,4 @@
-```{r standalone setup, echo=FALSE}
+```{r standalone setup, echo=FALSE,eval=FALSE}
 strain<-"linc-Enc1"
 timepoint<-"Embryonic"
 filename<-"linc-Enc1_vs_WT_Embryonic"
@@ -13,7 +13,6 @@ dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Enc1_vs_WT_Embry
 
 path<-paste(filename,"/figure/",sep="")
 opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE,fig.path=path)
-
 alpha<-0.05 
 
 analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
@@ -57,9 +56,7 @@ files<-as.data.frame(files)
 samples<-(t(files[10,]))
 rownames(samples)<-NULL
 
-
 #look up strain, litter, sex, notes in master sheet 
-
 ```
 
 # Design Overview

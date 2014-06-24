@@ -23,8 +23,6 @@ GTF<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2
 
 alpha<-0.05
 
-
-
 setwd(diffdir)
 names<-list.files()
 names<-gsub("-","",names)
@@ -33,6 +31,16 @@ diffGeneSummary<-data.frame(t(names), row.names=NULL)
 colnames(diffGeneSummary)<-names
 diffGeneSummary$unit_test<-NULL
 diffGeneSummary$init<-NULL
+diffGeneSummary$Adult_full<-NULL
+diffGeneSummary$Embryonic_full<-NULL
+lincs<-lapply(colnames(diffGeneSummary),function(x){unlist(strsplit(x,"_"))[1]})
+lincs<-unlist(lincs)
+lincs<-unique(lincs)
+
+linc_LZ_correlation<-data.frame(matrix(nrow=length(lincs),ncol=4))
+rownames(linc_LZ_correlation)=lincs
+colnames(linc_LZ_correlation)=c("AdultLZ", "AdultEndogenous","EmbryoLZ","EmbryoEndogenous")
+
 
 ```
 
@@ -46,12 +54,15 @@ diffGeneSummary$init<-NULL
 # ADULT KNOCKOUT STRAINS 
 
 ### Celrr
+
 ```{r adult celr diff}
 dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Adult"
 setwd(dir)
 cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Celrr_vs_WT_Adult<-length(sig)
+
+
 ```
 
 Number of differentially expressed genes:`r length(sig)`
@@ -123,9 +134,10 @@ diffGeneSummary$Haunt_vs_WT_Adult<-length(sig)
 
 Number of differentially expressed genes:`r length(sig)`
 
-
 ### Kantr (Jarid1C)
+
 YAY! They actually cluster!
+
 ```{r Kantr adult}
 dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Kantr_vs_WT_Adult"
 setwd(dir)

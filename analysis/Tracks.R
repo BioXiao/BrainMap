@@ -26,11 +26,12 @@ library(RMySQL)
 library(RColorBrewer)
 library(GenomicFeatures)
 
+chromInfo<-read.table("/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/indexes/mm10/mm10_brainmap.chrom.info",header=TRUE)
+
 #makeTranscriptDbFromGFF
-#mm10DB<-makeTranscriptDbFromGFF(GTF,format="gtf",species="mus musculus")
+mm10DB<-makeTranscriptDbFromGFF(GTF,format="gtf",chrominfo=chromInfo,species="mus musculus")
 
 #Need to install R-3.0.0 (Devel) for Gviz to deal with .bam files
-
 #Helper Functions
 movingAverage <- function(x, n=10, centered=TRUE) {
   
