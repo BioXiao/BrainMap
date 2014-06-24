@@ -6,6 +6,10 @@ library(cummeRbund)
 analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
 diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
 GTF<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf"
+#lincRNAsubsetGTF<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/annotation_abbie/mm10_brainmap_lincRNA_subset.gtf"
+
+lincRNAsubsetGTF<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/annotation_abbie/strandless_test.gtf"
+
 
 setwd(diffdir)
 setwd('linc-Enc1_vs_WT_Embryonic/')
@@ -29,7 +33,11 @@ library(GenomicFeatures)
 chromInfo<-read.table("/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/indexes/mm10/mm10_brainmap.chrom.info",header=TRUE)
 
 #makeTranscriptDbFromGFF
-mm10DB<-makeTranscriptDbFromGFF(GTF,format="gtf",chrominfo=chromInfo,species="mus musculus")
+#brainmap_lincs_mm10<-makeTranscriptDbFromGFF(lincRNAsubsetGTF,format="gtf",chrominfo=chromInfo,species="Mus musculus")
+
+brainmap_lincs_mm10<-makeTranscriptDbFromGFF(lincRNAsubsetGTF,format="gtf")
+
+#SAVE 
 
 #Need to install R-3.0.0 (Devel) for Gviz to deal with .bam files
 #Helper Functions
