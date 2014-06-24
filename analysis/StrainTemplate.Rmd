@@ -355,7 +355,7 @@ specCols<-brewer.pal(3,"Paired")
 colPal<-colorRampPalette(specCols)
 bamColors<-colPal(length(bamFiles))
 
-require(TxDb.Mmusculus.UCSC.mm10.knownGene)
+#require(TxDb.Mmusculus.UCSC.mm10.knownGene)
 
 doPlot<-function(genome=genome,name,myChr,from,to,window,bamFiles,bamNames,koStart,koWidth,koChr){
   #Make Tracks
@@ -417,6 +417,7 @@ sigMatrix(cuff, level="genes", alpha=alpha)+theme_bw()
 ### Significant gene expression differences between conditions
 
 Expression plot (genes):
+
 ```{r sigExpression, fig.height=20, fig.width=10}
 #RELABEL!
 rowlabel<-geneAnnot$gene_short_name
@@ -426,6 +427,7 @@ csHeatmap(sigGenes, cluster="both",replicates=T)+theme_bw()
 ```
 
 Significant genes with expression >50fpkm (any condition):
+
 ```{r highly_expressed_sig}
 sigFPKMs<-fpkmMatrix(sigGenes)
 high<-sigFPKMs[which(sigFPKMs>50),]
@@ -438,6 +440,7 @@ expressionPlot(highGenes)+ylab(highNames)+theme_bw()
 
 An individual look at each of the highly expressed significantly differentially regulated genes:
 (eval=false for first pass)
+
 ```{r plot_ALL_OF_THE_SIGNIFICANT_GENES, eval=FALSE, fig.height=(20 + (1*(length(highIDs)))), fig.width=(20 + (1*length(highIDs)))}
 plots<-lapply(highIDs,function(x){
   myGene<-getGene(cuff,x)
@@ -450,21 +453,25 @@ do.call(grid.arrange, plots)
 ### Expression-level/significance relationship
 
 Scatter plot of significant genes only:
+
 ```{r expression-sig_relationship}
 csScatter(sigGenes, "WT", strain_sample, smooth=T)+theme_bw()
 ```
 
 Volcano Plot
+
 ```{r volcano,eval=FALSE}
 csVolcano(genes(cuff),"WT",strain_sample,alpha=alpha,xlimits=c(-10,10),showSignificant=TRUE)+theme_bw()
 ```
 
 Volcano plot with significant genes only:
+
 ```{r sig_volcano}
 csVolcano(sigGenes, "WT", strain_sample,showSignificant=TRUE,alpha=alpha,xlimits=c(-10,10))+theme_bw()
 ```
 
-## FoldChange Heatmap
+FoldChange Heatmap
+
 ```{r sigGenes logfoldchange_heatmap}
 csFoldChangeHeatmap(sigGenes,"WT",replicates=TRUE,replicate_num=0,clustering="both")+theme_bw()
 ```
@@ -474,7 +481,9 @@ csFoldChangeHeatmap(sigGenes,"WT",replicates=TRUE,replicate_num=0,clustering="bo
 ## Differential Splicing
 
 ### Differential Isoforms between conditions
+
 Per isoform difference between conditions:
+
 ```{r diff_iso}
 sigMatrix(cuff, level="isoforms",alpha=alpha)+theme_bw()
 
@@ -486,6 +495,7 @@ if(length(isoformSigIDs)>0){
 ```
 
 These isoforms are:
+
 ```{r diff_iso_annotations, results='asis'}
 if(length(isoformSigIDs)>0){
   print(xtable(as.data.frame(isoAnnot$gene_short_name)),type="html")
@@ -493,6 +503,7 @@ if(length(isoformSigIDs)>0){
 ```
 
 Gene-level DE isoform heatmap
+
 ```{r isoform_heatmap, fig.height=20, fig.width=10}
 if(length(isoformSigIDs)>0){
   csHeatmap(isoformSigGenes,cluster='both', replicates=T)+theme_bw()
@@ -500,6 +511,7 @@ if(length(isoformSigIDs)>0){
 ```
 
 Isoform foldchange heatmap by isoform:
+
 ```{r isoform logfoldchange_heatmap}
 if(length(isoformSigIDs)>0){
   csFoldChangeHeatmap(isoforms(isoformSigGenes),"WT",replicates=TRUE,replicate_num=0,clustering="none")+theme_bw()
