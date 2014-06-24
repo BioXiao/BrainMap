@@ -776,7 +776,7 @@ detach("package:biomaRt")
 ```
 
 # Cis vs Trans (locally)
-``` {r cis_v_trans}
+``` {r cis_v_trans_table_and_pvalcalculation}
 library(BSgenome.Mmusculus.UCSC.mm10)
 library(seqbias)
 library(stringr)
@@ -817,19 +817,16 @@ nSig<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
 score<-0
 signeighbors<-data.frame(rep(NULL,nIter))
 
-for (i in 1:nIter){
-  write(i,stderr())
-  sigGenesRegion<-fullTable[which(fullTable[,40]==seqnames(myRandom[i])@values & fullTable[,39]=="yes" & fullTable[,9]>=start(myRandom[i])-(windowSize/2) & fullTable[,10]<=end(myRandom[i])+(windowSize/2)),]
-  nSigIter<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
-  write(nSigIter,stderr())
-  if(nSigIter >= nSig-1) {score<-score+1}
-  signeighbors[1,i]<-nSigIter
-}
+#for (i in 1:nIter){
+#  write(i,stderr())
+#  sigGenesRegion<-fullTable[which(fullTable[,40]==seqnames(myRandom[i])@values & fullTable[,39]=="yes" & fullTable[,9]>=start(myRandom[i])-(windowSize/2) & fullTable[,10]<=end(myRandom[i])+(windowSize/2)),]
+#  nSigIter<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
+#  write(nSigIter,stderr())
+#  if(nSigIter >= nSig-1) {score<-score+1}
+#  signeighbors[1,i]<-nSigIter
+#}
 
-#ttest<-t.test(signeighbors,mu=nSig)
-#pval_for_region<-ttest$p.value
-
-pval_for_region<-score/nIter
+#pval_for_region<-score/nIter
 
 #first 	question, region enriched over genomic background for cis significance? (pvalue)
 #second task:
@@ -843,9 +840,13 @@ colnames(genesInRegion)[36]<-"test_stat"
 data<-ddply(genesInRegion,.(gene_id),head,n=1)
 data$test_stat<-as.numeric(data$test_stat)
 
+
+#The pvalue for `r nSig` genes significantly regulated in a region this size  is: `r pval_for_region` 
+#### WHY THE FUCK DOES THIS NOT WORK!? 
+
 ```
 
-The pvalue for `r nSig` genes significantly regulated in a region this size  is: `r pval_for_region` 
+
 
 ```{r overlap_image}
 ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2), ylim=c(-abs(max(data$test_stat)+1),abs(max(data$test_stat)+1)))+labs(title=strain)+geom_text(data=subset(data, sig=='yes'))+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
