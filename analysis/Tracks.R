@@ -14,7 +14,7 @@ cuff<-readCufflinks(gtfFile=GTF,genome="mm10")
 myID<-"Peril"
 myGene<-getGene(cuff,myID)
 genetrack <-makeGeneRegionTrack(myGene)
-plotTracks(genetrack)
+plotTracks(list(genetrack))
 
 ################# SCRIPT FROM LOYAL ##################
 
@@ -128,21 +128,23 @@ bamNames<-reps$rep_name
 bamColors<-brewer.pal(length(bamNames),"Spectral")
 
 makeBamTrack<-function(bamFile,bamName,genome=genome,chromosome,color="steelblue",window=20,ylim=c(0,15)){
+  
   track<-DataTrack(range=bamFile,name=bamName,genome=genome,type="h",transformation=function(x){movingAverage(x,window)},col=color,fill.histogram=color,col.histogram=color,chromosome=chromosome, ylim=ylim, lwd=1.5)
+  
   return(track)
 }
 
 require(TxDb.Mmusculus.UCSC.mm10.knownGene)
 
-doPlot<-function(genome=genome,name,myChr,from,to,window="auto",bamFiles,bamNames){
+doPlot<-function(genome=genome,name,myChr,from,to,window,bamFiles,bamNames){
   #Make Tracks
-  #axTrack<-GenomeAxisTrack(add53 = TRUE,add35 = TRUE, labelPos = "above")
-  #idxTrack <- IdeogramTrack(genome = genome, chromosome = myChr)
+  axTrack<-GenomeAxisTrack(add53 = TRUE,add35 = TRUE, labelPos = "above")
+  idxTrack <- IdeogramTrack(genome = genome, chromosome = myChr)
   
   #BamTracks
   write("\tBamTracks",stderr())
   bamTracks<-list()
-  bamOrder<-c(1:length(bamFiles))
+  bamOrder<-c(6:length(bamFiles))
 
   for (i in bamOrder){
     track<-makeBamTrack(bamFiles[[i]],bamNames[[i]],genome=genome,chromosome=myChr,color=bamColors[i],window=window)
@@ -152,11 +154,12 @@ doPlot<-function(genome=genome,name,myChr,from,to,window="auto",bamFiles,bamName
   #Plot Tracks
   write("\tplotting...",stderr())
   # myTracks<-c(bamTracks,knownGenes)
-  myTracks<-bamTracks
-  trackSizes<-c(rep(1,length(bamTracks)))
+  myTracks<-c(axTrack,idxTrack,bamTracks)
+  trackSizes<-c(2,2,rep(1,length(bamTracks)))
 
   #pdf(paste(name,".pdf",sep=""),width=10,height=8)
-  plotTracks(myTracks,from=as.numeric(from),to=as.numeric(to),chrom=myChr,showAxis=FALSE,background.title="white",col.title="black",col.axis="black",sizes=trackSizes)
+  plotTracks(myTracks,from=from,to=to,chromosome=myChr,showAxis=FALSE,background.title="black",col.title="white",col.axis="black",sizes=trackSizes)
+
   #dev.off()
   #dbDisconnect(con)
 }
@@ -165,7 +168,20 @@ genome<-"mm10"
 name<-"Peril"
 myChr<-chrom
 
-doPlot(genome=genome, name=name, myChr=chrom, from=from, to=to, window="auto",bamFiles, bamNames)
+doPlot(genome=genome, name=name, myChr=chrom, from=from, to=to, window=20,bamFiles=bamFiles, bamNames=bamNames)
+
+geneTrick<-makeGeneRegionTrack(myGene)
+
+#make a transcriptDB with our gtf in mm10 
+#make a track from a bed file for ?
+
+plotTracks(list(myTracks[[1]],myTracks[[20]]),from=from,to=to,chromosome=myChr,showAxis=FALSE,background.title="black",col.title="white",col.axis="black",sizes=c(2,2))
+
+
+
+
+
+
 
 for(i in 1:dim(plotRegions)[1]){
   write(paste(plotRegions[i,]$name),stderr())
@@ -226,7 +242,7 @@ doPlotX<-function(genome,name,chrom,from,to,window=16666){
   bamTracks<-list()
   bamOrder<-c(1:6)
   for (i in bamOrder){
-    track<-makeBamTrack(bamFiles[i],bamNames[i],genome=genome,chromosome=chrom,color=bamColors[i],window=window,ylim=c(0,15))
+    track<-makeBamTrack(bamFiles[i],bamNames[i],genome=genome,chromosome=chrom,color=bamColors[i],window=10,ylim=c(0,15))
     bamTracks<-c(bamTracks,track)
   }
   
@@ -237,7 +253,7 @@ doPlotX<-function(genome,name,chrom,from,to,window=16666){
   
   
   png(paste(name,".png",sep=""),width=1000,height=800)
-  plotTracks(myTracks,from=from,to=to,chrom=chrom,background.title="white",col.title="black",col.axis="black",sizes=trackSizes,showAxis=TRUE)
+  plotTracks(myTracks,from=from,to=to,chromosome=chrom,background.title="white",col.title="black",col.axis="black",sizes=trackSizes,showAxis=TRUE)
   dev.off()
   #dbDisconnect(con)
 }

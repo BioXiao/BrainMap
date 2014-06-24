@@ -28,7 +28,6 @@ for(i in seq(1,(dim(adult_directories)[2]))){
   print(strain)
   #setwd(dir)
   #cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
-  
   knit2html('StrainTemplate.Rmd',output=paste(filename,paste(filename,".md",sep=""), sep="/"), quiet=TRUE)
   print(dir)
   print(strain)
@@ -42,19 +41,18 @@ embryonic_directories<-split[,which(split[4,]=="Embryonic")]
 setwd(analysisdir)
 #library(cummeRbund)
 #haunt and tp53cor1
-for(i in seq(3,(dim(embryonic_directories)[2]))){
-  i<-4
+for(i in seq(1,(dim(embryonic_directories)[2]))){
   strain <-as.character(embryonic_directories[1,i])
   timepoint<-"Embryonic"
   filename<-paste(embryonic_directories[,i],collapse="_")
   dir<-paste(diffdir,filename,sep="/")
-  #output<-paste(analysisdir,filename,sep="/")
+  dir.create(filename)
   print(filename)
   print(dir)
   print(strain)
   #setwd(dir)
   #cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
-  knit2html('StrainTemplate.Rmd',output=paste(filename,".md", sep=""), quiet=TRUE)
+  knit2html('StrainTemplate.Rmd',output=paste(filename,paste(filename,".md",sep=""), sep="/"), quiet=TRUE)
   print(dir)
   print(strain)
 }
