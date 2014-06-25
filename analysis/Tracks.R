@@ -6,9 +6,14 @@ library(cummeRbund)
 analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
 diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
 GTF<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf"
+
+
 #lincRNAsubsetGTF<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/annotation_abbie/mm10_brainmap_lincRNA_subset.gtf"
 
-lincRNAsubsetGTF<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/annotation_abbie/strandless_test.gtf"
+#lincRNAsubsetGTF<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/annotation_abbie/strandless_test.gtf"
+
+oneLinc<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/onelinc.gtf"
+oneTrnascript<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/oneTranscript.gtf"
 
 
 setwd(diffdir)
@@ -35,7 +40,28 @@ chromInfo<-read.table("/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/indexes/mm
 #makeTranscriptDbFromGFF
 #brainmap_lincs_mm10<-makeTranscriptDbFromGFF(lincRNAsubsetGTF,format="gtf",chrominfo=chromInfo,species="Mus musculus")
 
-brainmap_lincs_mm10<-makeTranscriptDbFromGFF(lincRNAsubsetGTF,format="gtf")
+mm10Db<-makeTranscriptDbFromGFF(GTF,format="gtf",chrominfo=chromInfo, species="Mus musculus")
+
+#subsetA<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/subsetA.gtf"
+#subsetB<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/subsetB.gtf"
+#oneLinc<-makeTranscriptDbFromGFF(oneLinc,format="gtf")
+#subsetADb<-makeTranscriptDbFromGFF(subsetA,format="gtf",chrominfo=chromInfo)
+#subsetBDb<-makeTranscriptDbFromGFF(subsetB,format="gtf",chrominfo=chromInfo) #doesnt work! 
+
+#periletc<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/Peril_and_Manr.gtf"
+#perilandmanr<-makeTranscriptDbFromGFF(periletc,format="gtf",chrominfo=chromInfo) #WORKS! 
+
+#eldrkantrenc<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/eldr_kantr_enc1.gtf"
+#eldrKANTRenc<-makeTranscriptDbFromGFF(eldrkantrenc,format="gtf",chrominfo=chromInfo)
+
+#kantr<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/kantr.gtf"
+#KANTR<-makeTranscriptDbFromGFF(kantr,format="gtf",chrominfo=chromInfo)
+
+#eldr<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/eldr.gtf"
+#ELDR<-makeTranscriptDbFromGFF(eldr,format="gtf",chrominfo=chromInfo)
+
+#enc1<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/enc1.gtf"
+#ENC1<-makeTranscriptDbFromGFF(enc1,format="gtf",chrominfo=chromInfo)
 
 #SAVE 
 

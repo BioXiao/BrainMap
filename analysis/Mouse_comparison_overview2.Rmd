@@ -888,8 +888,13 @@ timepoint<-unlist(lapply(type,function(x){unlist(strsplit(x,"_"))[2]}))
 name<-unlist(lapply(type,function(x){unlist(strsplit(x,"_"))[1]}))
 linc_LZ_correlation$timepoint<-timepoint
 linc_LZ_correlation$name<-name
-ggplot(linc_LZ_correlation, aes(LZ,EndogenousLinc,color=timepoint))+geom_point()+geom_text(aes(label=name))+scale_x_log10(limits=c(-20,50))+scale_y_log10(limits=c(-20,30))
+ggplot(linc_LZ_correlation, aes(LZ,EndogenousLinc,color=timepoint))+geom_point()+geom_text(aes(label=name))+scale_x_log10(limits=c(-20,50))+scale_y_log10(limits=c(-20,30))+geom_abline(intercept=0,slope=1)+ylab("Endogenous lincRNA expression log10(FPKM)")+xlab("LacZ expression log10(FPKM)")
 #+xlim(-.1,.5)+ylim(-.1,.5)
+
+#var(linc_LZ_correlation$LZ,linc_LZ_correlation$EndogenousLinc)
+cor(linc_LZ_correlation$LZ,linc_LZ_correlation$EndogenousLinc)
+#cov(linc_LZ_correlation$LZ,linc_LZ_correlation$EndogenousLinc)
+
 #+scale_x_log10(limits=c(-20,50))+scale_y_log10(limits=c(-20,30))
 
 ```
