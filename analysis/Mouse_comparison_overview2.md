@@ -341,7 +341,7 @@ Number of differentially expressed genes:20
 Range of number of differentially expressed genes:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Wed Jun 25 17:38:22 2014 -->
+<!-- Wed Jun 25 18:28:21 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH>       V1 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> 37     : 2   </TD> </TR>
@@ -358,7 +358,7 @@ Number of differentially expressed genes, by condition:
 
 
 ```
-## Error: must have one more break than colour
+## Error: formal argument "breaks" matched by multiple actual arguments
 ```
 
 ![plot of chunk diff summary](figure/overview/diff summary.png) 

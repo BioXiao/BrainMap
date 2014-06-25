@@ -85,8 +85,6 @@ cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/anno
 id<-"Crnde"
 myGene<-getGene(cuff,id)
 expressionBarplot(isoforms(myGene), replicates=T)
-
-
 ```
 
 
@@ -874,7 +872,7 @@ rownames(xx_ordered)<-c("","")
 
 InputCols<-maPalette(low="white",high="green",k=10)
 
-heatmap.2(xx_ordered, Rowv=FALSE, breaks=15, dendrogram="none", Colv=FALSE, sepwidth=c(.9,.9),trace="none", col=InputCols, lhei=c(.5,.5))
+heatmap.2(xx_ordered, Rowv=FALSE, breaks=15, dendrogram="none", Colv=FALSE, sepwidth=c(.9,.9),trace="none", col=InputCols, breaks=k+1,lhei=c(.5,.5))
 
 barplot(x)
 #axes=TRUE,names.arg=colnames(diffGeneSummary)
