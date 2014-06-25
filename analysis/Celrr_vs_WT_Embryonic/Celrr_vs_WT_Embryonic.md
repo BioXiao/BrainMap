@@ -49,12 +49,15 @@ Isoforms:
 
 
 ## MvA plot
+
 ![plot of chunk MvA](figure/MvA.png) 
    
 ### MvA plot counts
+
 ![plot of chunk MvA_counts](figure/MvA_counts.png) 
 
 ## Scatterplot matrix
+
 ![plot of chunk scatterplot](figure/scatterplot.png) 
 
 ## Distributions
@@ -91,6 +94,7 @@ Density (genes, replicates)
 ## Clustering
 
 ### Replicate Clusters
+
 ![plot of chunk replicate_clusters](figure/replicate_clusters.png) 
 
 ```
@@ -98,9 +102,11 @@ Density (genes, replicates)
 ```
 
 ### PCA (genes)
+
 ![plot of chunk PCA](figure/PCA.png) 
 
 ### MDS (genes)
+
 ![plot of chunk MDS](figure/MDS.png) 
 
 
@@ -137,6 +143,7 @@ Expression plot (endogenous linc, lacZ, Y-expressed gene):
 ![plot of chunk Digital_Genotyping](figure/Digital_Genotyping.png) 
 
 Expression heatmap:
+
 ![plot of chunk digital_geno_heatmap](figure/digital_geno_heatmap.png) 
 
 
@@ -154,7 +161,7 @@ Expression heatmap:
 There are 37 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Tue Jun 24 21:19:17 2014 -->
+<!-- Wed Jun 25 11:40:48 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Phox2b </TD> </TR>
@@ -226,7 +233,7 @@ Scatter plot of significant genes only:
 
 Volcano Plot
 
-
+![plot of chunk volcano](figure/volcano.png) 
 
 Volcano plot with significant genes only:
 
@@ -235,7 +242,6 @@ Volcano plot with significant genes only:
 FoldChange Heatmap
 
 ![plot of chunk sigGenes logfoldchange_heatmap](figure/sigGenes logfoldchange_heatmap.png) 
-
 
 
 ## Differential Splicing
@@ -276,10 +282,13 @@ Per condition differences in isoforms (Does gene have diff piechart between cond
 These genes are:
 
 
+
 Splicing heatmap by isoform:
 
 
+
 Splicing heatmap by gene
+
 
 
 The following are significantly differentially spliced genes (relative portion of isoform per condition): 
@@ -302,36 +311,18 @@ The following are significantly differentially spliced genes (relative portion o
 
 
 
-
 Biocarta enrichment: 
-
-
-```
-## Error: figure margins too large
-```
 
 ![plot of chunk print_GSEA_biocarta](figure/print_GSEA_biocarta.png) 
 
 biocarta zscore: 
-
-
-```
-## Error: figure margins too large
-```
 
 ![plot of chunk gsea_zscore_biocarta](figure/gsea_zscore_biocarta.png) 
 
 
 Reactome enrichment: 
 
-
-```
-## Error: figure margins too large
-```
-
 ![plot of chunk print_GSEA_reactome](figure/print_GSEA_reactome.png) 
-
-
 
 
 Reactome zscore: 
@@ -366,7 +357,7 @@ The pvalue for 0 genes significantly regulated in a region this size  is: 1
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Tue Jun 24 21:40:46 2014 -->
+<!-- Wed Jun 25 12:03:36 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR753 </TD> </TR>
@@ -389,7 +380,7 @@ The pvalue for 0 genes significantly regulated in a region this size  is: 1
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Tue Jun 24 21:40:47 2014 -->
+<!-- Wed Jun 25 12:03:36 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR753/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 39343800.00 </TD> <TD align="right"> 32387000.00 </TD> <TD align="right"> 1.26 </TD> <TD align="right"> 1.00 </TD> </TR>
