@@ -882,9 +882,15 @@ barplot(x)
 
 ```{r lacZ correlation}
 
-linc_LZ_correlation<-t(linc_LZ_correlation)
-
-ggplot(linc_LZ_correlation, aes(LZ,Endogenous))
+linc_LZ_correlation<-as.data.frame(t(linc_LZ_correlation))
+type<-rownames(linc_LZ_correlation)
+timepoint<-unlist(lapply(type,function(x){unlist(strsplit(x,"_"))[2]}))
+name<-unlist(lapply(type,function(x){unlist(strsplit(x,"_"))[1]}))
+linc_LZ_correlation$timepoint<-timepoint
+linc_LZ_correlation$name<-name
+ggplot(linc_LZ_correlation, aes(LZ,EndogenousLinc,color=timepoint))+geom_point()+geom_text(aes(label=name))+scale_x_log10(limits=c(-20,50))+scale_y_log10(limits=c(-20,30))
+#+xlim(-.1,.5)+ylim(-.1,.5)
+#+scale_x_log10(limits=c(-20,50))+scale_y_log10(limits=c(-20,30))
 
 ```
 

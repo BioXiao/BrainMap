@@ -7,10 +7,9 @@ Celrr KO vs WT (Adult)
 
 
 
-# Intialize
 
 
-# Design Overview
+
 
 This file shows the wt-v-ko comparison for Celrr. 
 
@@ -161,7 +160,7 @@ Expression heatmap:
 There are 52 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Wed Jun 25 13:33:45 2014 -->
+<!-- Wed Jun 25 15:33:14 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Chordc1 </TD> </TR>

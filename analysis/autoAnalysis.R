@@ -16,8 +16,7 @@ setwd(analysisdir)
 #library(cummeRbund)
 
 
-#for(i in seq(1,(dim(adult_directories)[2]))){
-for(i in seq(3,(dim(adult_directories)[2]))){
+for(i in seq(1,(dim(adult_directories)[2]))){
   setwd(analysisdir)
   strain <-as.character(adult_directories[1,i])
   timepoint<-"Adult"
