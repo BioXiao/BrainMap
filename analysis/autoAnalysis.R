@@ -17,7 +17,7 @@ setwd(analysisdir)
 
 
 #for(i in seq(1,(dim(adult_directories)[2]))){
-for(i in seq(1,2)){
+for(i in seq(3,(dim(adult_directories)[2]))){
   setwd(analysisdir)
   strain <-as.character(adult_directories[1,i])
   timepoint<-"Adult"
@@ -44,7 +44,7 @@ embryonic_directories<-split[,which(split[4,]=="Embryonic")]
 setwd(analysisdir)
 #library(cummeRbund)
 #haunt and tp53cor1
-for(i in seq(1,(dim(embryonic_directories)[2]))){
+for(i in seq(5,1)){#(dim(embryonic_directories)[2]))){
   strain <-as.character(embryonic_directories[1,i])
   timepoint<-"Embryonic"
   filename<-paste(embryonic_directories[,i],collapse="_")

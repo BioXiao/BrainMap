@@ -125,7 +125,7 @@ csBoxplot(genes(cuff))+theme_bw()
 
 Boxplot (genes, replicates)
 
-```{r boxplot_genes_replicates}
+```{r boxplot_genes_replicates, fig.width=8}
 csBoxplot(genes(cuff),replicates=T)+theme_bw()
 ```
 
@@ -137,7 +137,7 @@ csBoxplot(isoforms(cuff))+theme_bw()
 
 Boxplot (isoforms, replicates)
 
-```{r boxplot_isoforms_replicates}
+```{r boxplot_isoforms_replicates, fig.width=8}
 csBoxplot(isoforms(cuff), replicates=T)+theme_bw()
 ```
 
@@ -160,7 +160,7 @@ csDensity(genes(cuff),pseudocount=0.001,replicates=T)+theme_bw()
 
 ### Replicate Clusters
 
-```{r replicate_clusters}
+```{r replicate_clusters, fig.height=8,fig.width=8}
 csDendro(genes(cuff),replicates=T)+theme_bw()
 ```
 
@@ -187,7 +187,7 @@ csDistHeat(genes(cuff), replicates=T)+theme_bw()
 
 ## Endogenous lncRNA expression
 
-```{r Enodenous_lncRNA_tables, results='asis'}
+```{r Enodenous_lncRNA_tables, results='asis', fig.width=6, fig.height=6}
 myGeneID<-strain
 myGene<-getGene(cuff, myGeneID)
 #print(xtable(fpkm(myGene)),type="html")
@@ -206,7 +206,7 @@ expressionPlot(isoforms(myGene), replicates=T)+theme_bw()
 
 Barplot of gene expression:
 
-```{r endogenous_barplot}
+```{r endogenous_barplot,fig.height=6,fig.width=6}
 #expressionBarplot(myGene)
 expressionBarplot(myGene,replicates=T)+theme_bw()
 ```
@@ -247,7 +247,7 @@ expressionBarplot(genotypingGenes,replicates=T)+theme_bw()
 Expression heatmap:
 
 ```{r digital_geno_heatmap, fig.height=4, fig.width=8}
-csHeatmap(genotypingGenes,replicates=T)+theme_bw()
+csHeatmap(genotypingGenes,replicates=T)
 ```
 
 
@@ -421,18 +421,23 @@ sigMatrix(cuff, level="genes", alpha=alpha)+theme_bw()
 
 ### Significant gene expression differences between conditions
 
-Expression plot (genes):
+Expression plot (genes):(turned off)
 
-```{r sigExpression, fig.height=10, fig.width=8}
+```{r sigExpression, eval=FALSE, fig.height=10, fig.width=8}
 rowlabel<-geneAnnot$gene_short_name
 expressionPlot(sigGenes)+theme_bw()
-csHeatmap(sigGenes, cluster="both",replicates=T)+theme_bw()
+
 #Maybe do cluster="col"
 ```
 
-Significant genes with expression >50fpkm (any condition):
 
-```{r highly_expressed_sig, fig.height=8, fig.width=8}
+```{r sigExpression heatmap, fig.height=8, fig.width=10}
+csHeatmap(sigGenes, cluster="both",replicates=T)+theme_bw()
+```
+
+Significant genes with expression >50fpkm (any condition):(turned off)
+
+```{r highly_expressed_sig, eval=FALSE, fig.height=8, fig.width=8}
 sigFPKMs<-fpkmMatrix(sigGenes)
 high<-sigFPKMs[which(sigFPKMs>50),]
 high<-high[complete.cases(high),]
@@ -476,7 +481,7 @@ csVolcano(sigGenes, "WT", strain_sample,showSignificant=TRUE,alpha=alpha,xlimits
 
 FoldChange Heatmap
 
-```{r sigGenes logfoldchange_heatmap, fig.height=8, fig.width=10}
+```{r sigGenes logfoldchange_heatmap, fig.height=8, fig.width=12}
 csFoldChangeHeatmap(sigGenes,"WT",replicates=TRUE,replicate_num=0,clustering="both")+theme_bw()
 ```
 
@@ -517,7 +522,7 @@ Isoform foldchange heatmap by isoform:
 
 ```{r isoform logfoldchange_heatmap, fig.height=8, fig.width=10}
 if(length(isoformSigIDs)>0){
-  csFoldChangeHeatmap(isoforms(isoformSigGenes),"WT",replicates=TRUE,replicate_num=0,clustering="none")+theme_bw()
+  csFoldChangeHeatmap(isoforms(isoformSigGenes),"WT",replicates=TRUE,replicate_num=0,clustering="both")+theme_bw()
 }else{print("no sig isoforms")}
 ```
 
@@ -714,6 +719,11 @@ reactome_zscores<-cbind(reactome_zscores,reactome_zscores)
 biocarta_zscores<-get_gene_set_ztest(Input.df,biocarta_gs)
 biocarta_zscores<-cbind(biocarta_zscores,biocarta_zscores)
 
+k <- 100
+myColors<-maPalette(low=“steelblue”,mid=“white”,high=“red”,k=k)
+#myBreaks<-seq(-max(abs(x)),max(abs(x)),k+1)
+myBreaks<-seq(-2,2,k+1)
+
 ```
 
 
@@ -738,20 +748,18 @@ heatmap.2(x_ordered, trace="none",col=InputCols,margins=c(1,20),dendrogram="both
 biocarta zscore: 
 
 ```{r gsea_zscore_biocarta, fig.height=8, fig.width=8}
-InputCols<-maPalette(low="blue",mid="white",high="red",k=100)
-
 x<-((biocarta_zscores[which(colMins(biocarta_pvl_corrected) < 0.01),]))
 x_ordered<-x[order(x[,1], decreasing=TRUE),]
 if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
 x_ordered<-as.matrix(x_ordered)
 
-heatmap.2(x_ordered, trace="none",col=InputCols,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = (0.2 + .5/log10(dim(x)[1])))
+heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = (0.2 + .5/log10(dim(x)[1])))
 ```
 
 
 Reactome enrichment: 
 
-```{r print_GSEA_reactome, fig.width=8, fig.height=8}
+```{r print_GSEA_reactome, fig.width=10, fig.height=12}
 #pdf("components_GSEA_reactome.pdf",width=10,height=30)
 
 InputCols<-maPalette(low="white",high="red",k=100)
@@ -764,15 +772,14 @@ x_max<-max(noinfinities_x)+100
 x_ordered[x_ordered=="Inf"]<-x_max
 
 heatmap.2(x_ordered, trace="none",col=InputCols,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = (0.2 + .5/log10(dim(x)[1])))
+
 #dev.off()
 ```
 
 
 Reactome zscore: 
 
-```{r gsea_zscore_reactome, fig.height=8, fig.width=8}
-
-InputCols<-maPalette(low="blue",mid="white",high="red",k=100)
+```{r gsea_zscore_reactome, fig.width=10, fig.height=12}
 
 x<-reactome_zscores[which(colMins(reactome_pvl_corrected) < 0.001),]
 
@@ -781,7 +788,7 @@ x_ordered<-x[order(x[,1], decreasing=TRUE),]
 if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
 x_ordered<-as.matrix(x_ordered)
 
-heatmap.2(x_ordered, trace="none",col=InputCols,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = (0.2 + .5/log10(dim(x)[1])))
+heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = (0.2 + .5/log10(dim(x)[1])))
 
 ```
 
