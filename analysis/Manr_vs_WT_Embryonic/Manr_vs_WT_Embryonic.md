@@ -1,11 +1,7 @@
+
+
 Manr KO vs WT (Embryonic)
 ======================================
-
-- other heatmap labels (csHeatmap)
-- cache gsea and overlap figure!! 
-- tracks 
-- should import litter info
-
 
 
 
@@ -40,10 +36,7 @@ Cuff overview:
 Dispersion plot for genes in cuff:
 (Overdispersion can lead to innacurate quants)
 
-
-```
-## Error: 'from' cannot be NA, NaN or infinite
-```
+![plot of chunk dispersion](figure/dispersion.png) 
 
 ## Cross-replicate variability (fpkmSCVplot)
 Differences in CV 2 can result in lower numbers of differentially expressed genes due to a higher degree of variability between replicate fpkm estimates.
@@ -51,30 +44,18 @@ Differences in CV 2 can result in lower numbers of differentially expressed gene
 Genes:
 ![plot of chunk CV_genes](figure/CV_genes.png) 
 
-
 Isoforms: 
 ![plot of chunk cv_iso](figure/cv_iso.png) 
 
-## Volcano
-
-
-### Volcano matrix (replicates)
-
-![plot of chunk volcano_matrix](figure/volcano_matrix.png) 
 
 ## MvA plot
-
+![plot of chunk MvA](figure/MvA.png) 
    
 ### MvA plot counts
+![plot of chunk MvA_counts](figure/MvA_counts.png) 
 
-
-## Scatterplot
+## Scatterplot matrix
 ![plot of chunk scatterplot](figure/scatterplot.png) 
-
-### Scatter matrix (replicates) -- SKIP FOR NOW CAUSING PROBLEMS 
-
-
-
 
 ## Distributions
 
@@ -113,7 +94,7 @@ Density (genes, replicates)
 ![plot of chunk replicate_clusters](figure/replicate_clusters.png) 
 
 ```
-## 'dendrogram' with 2 branches and 17 members total, at height 0.084
+## NULL
 ```
 
 ### PCA (genes)
@@ -158,6 +139,17 @@ Expression plot (endogenous linc, lacZ, Y-expressed gene):
 Expression heatmap:
 ![plot of chunk digital_geno_heatmap](figure/digital_geno_heatmap.png) 
 
+
+
+### Track visualization 
+
+
+```
+## Error: Rle of type 'list' is not supported
+```
+
+![plot of chunk track_vis](figure/track_vis.png) 
+
 # Differential Analysis
 
 ## Differential Genes 
@@ -167,7 +159,7 @@ Expression heatmap:
 There are 100 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jun 23 21:45:38 2014 -->
+<!-- Wed Jun 25 00:41:27 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Gabra2 </TD> </TR>
@@ -281,9 +273,11 @@ There are 100 significantly differentially expressed genes. They are:
 ### Significant gene expression differences between conditions
 
 Expression plot (genes):
+
 ![plot of chunk sigExpression](figure/sigExpression1.png) ![plot of chunk sigExpression](figure/sigExpression2.png) 
 
 Significant genes with expression >50fpkm (any condition):
+
 ![plot of chunk highly_expressed_sig](figure/highly_expressed_sig.png) 
 
 An individual look at each of the highly expressed significantly differentially regulated genes:
@@ -291,30 +285,39 @@ An individual look at each of the highly expressed significantly differentially 
 
 
 
+
 ### Expression-level/significance relationship
 
 Scatter plot of significant genes only:
 
-```
-## Error: One or more values of 'x' or 'y' are not valid sample names!
-```
+![plot of chunk expression-sig_relationship](figure/expression-sig_relationship.png) 
+
+Volcano Plot
+
+
 
 Volcano plot with significant genes only:
 
-```
-## Error: One or more values of 'x' or 'y' are not valid sample names!
-```
+![plot of chunk sig_volcano](figure/sig_volcano.png) 
+
+FoldChange Heatmap
+
+![plot of chunk sigGenes logfoldchange_heatmap](figure/sigGenes logfoldchange_heatmap.png) 
+
 
 
 ## Differential Splicing
 
 ### Differential Isoforms between conditions
+
 Per isoform difference between conditions:
+
 ![plot of chunk diff_iso](figure/diff_iso.png) 
 
 These isoforms are:
+
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jun 23 21:45:59 2014 -->
+<!-- Wed Jun 25 00:41:50 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> isoAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Cdh1 </TD> </TR>
@@ -382,11 +385,14 @@ These isoforms are:
   <TR> <TD align="right"> 63 </TD> <TD> Hs3st4 </TD> </TR>
    </TABLE>
 
+Gene-level DE isoform heatmap
 
+![plot of chunk isoform_heatmap](figure/isoform_heatmap.png) 
 
-```
-## Error: NaN dissimilarity value.
-```
+Isoform foldchange heatmap by isoform:
+
+![plot of chunk isoform logfoldchange_heatmap](figure/isoform logfoldchange_heatmap.png) 
+
 
 ### Differential Splicing between conditions
 
@@ -424,9 +430,42 @@ The following are significantly differentially spliced genes (relative portion o
 
 
 
+
+
+Biocarta enrichment: 
+
+
+```
+## Error: figure margins too large
+```
+
 ![plot of chunk print_GSEA_biocarta](figure/print_GSEA_biocarta.png) 
 
+biocarta zscore: 
+
+
+```
+## Error: figure margins too large
+```
+
+![plot of chunk gsea_zscore_biocarta](figure/gsea_zscore_biocarta.png) 
+
+
+Reactome enrichment: 
+
+
+```
+## Error: figure margins too large
+```
+
 ![plot of chunk print_GSEA_reactome](figure/print_GSEA_reactome.png) 
+
+
+
+
+Reactome zscore: 
+
+![plot of chunk gsea_zscore_reactome](figure/gsea_zscore_reactome.png) 
 
 ## GO enrichment 
 Cluster profiler used to call enichments of significantly differentially regulated genes that map to Entrez IDs. 
@@ -442,19 +481,17 @@ Cluster profiler used to call enichments of significantly differentially regulat
 
 # Cis vs Trans (locally)
 
-```
-## Error: argument "seed" is missing, with no default
-```
 
-The pvalue for 0 genes significantly regulated in this region is: 1 
+The pvalue for 0 genes significantly regulated in a region this size  is: 1 
 
-![plot of chunk overlap_image](figure/overlap_image.png) 
+
+![plot of chunk cisreg_image](figure/cisreg_image.png) 
 
 # Notes
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jun 23 21:49:23 2014 -->
+<!-- Wed Jun 25 01:00:59 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR753 </TD> </TR>
@@ -478,7 +515,7 @@ The pvalue for 0 genes significantly regulated in this region is: 1
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jun 23 21:49:23 2014 -->
+<!-- Wed Jun 25 01:01:00 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR753/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 39343800.00 </TD> <TD align="right"> 31923700.00 </TD> <TD align="right"> 1.28 </TD> <TD align="right"> 1.00 </TD> </TR>
@@ -519,35 +556,60 @@ The pvalue for 0 genes significantly regulated in this region is: 1
 ## [8] methods   base     
 ## 
 ## other attached packages:
-##  [1] GO.db_2.10.1           org.Mm.eg.db_2.10.1    clusterProfiler_1.13.1
-##  [4] DOSE_2.0.0             ReactomePA_1.6.1       AnnotationDbi_1.24.0  
-##  [7] Biobase_2.22.0         mgcv_1.7-29            nlme_3.1-117          
-## [10] gridExtra_0.9.1        gtable_0.1.2           marray_1.40.0         
-## [13] gplots_2.13.0          GSA_1.03               limma_3.18.13         
-## [16] xtable_1.7-3           cummeRbund_2.7.2       Gviz_1.6.0            
-## [19] rtracklayer_1.22.7     GenomicRanges_1.14.4   XVector_0.2.0         
-## [22] IRanges_1.20.7         fastcluster_1.1.13     reshape2_1.4          
-## [25] ggplot2_1.0.0          RSQLite_0.11.4         DBI_0.2-7             
-## [28] BiocGenerics_0.8.0     knitr_1.6             
+##  [1] plyr_1.8.1                         
+##  [2] stringr_0.6.2                      
+##  [3] seqbias_1.10.0                     
+##  [4] BSgenome.Mmusculus.UCSC.mm10_1.3.19
+##  [5] BSgenome_1.30.0                    
+##  [6] Biostrings_2.30.1                  
+##  [7] GO.db_2.10.1                       
+##  [8] org.Mm.eg.db_2.10.1                
+##  [9] clusterProfiler_1.13.1             
+## [10] DOSE_2.0.0                         
+## [11] ReactomePA_1.6.1                   
+## [12] AnnotationDbi_1.24.0               
+## [13] Biobase_2.22.0                     
+## [14] RMySQL_0.9-3                       
+## [15] mgcv_1.7-29                        
+## [16] nlme_3.1-117                       
+## [17] RColorBrewer_1.0-5                 
+## [18] gridExtra_0.9.1                    
+## [19] gtable_0.1.2                       
+## [20] marray_1.40.0                      
+## [21] gplots_2.13.0                      
+## [22] GSA_1.03                           
+## [23] limma_3.18.13                      
+## [24] xtable_1.7-3                       
+## [25] cummeRbund_2.7.2                   
+## [26] Gviz_1.6.0                         
+## [27] rtracklayer_1.22.7                 
+## [28] GenomicRanges_1.14.4               
+## [29] XVector_0.2.0                      
+## [30] IRanges_1.20.7                     
+## [31] fastcluster_1.1.13                 
+## [32] reshape2_1.4                       
+## [33] ggplot2_1.0.0                      
+## [34] RSQLite_0.11.4                     
+## [35] DBI_0.2-7                          
+## [36] BiocGenerics_0.8.0                 
+## [37] knitr_1.6                          
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] biomaRt_2.18.0         Biostrings_2.30.1      biovizBase_1.10.8     
-##  [4] bitops_1.0-6           BSgenome_1.30.0        caTools_1.17          
-##  [7] cluster_1.15.2         colorspace_1.2-4       dichromat_2.0-0       
-## [10] digest_0.6.4           DO.db_2.7              evaluate_0.5.5        
-## [13] formatR_0.10           Formula_1.1-1          gdata_2.13.3          
-## [16] GenomicFeatures_1.14.5 GOSemSim_1.20.3        graph_1.40.1          
-## [19] graphite_1.8.1         gtools_3.4.1           Hmisc_3.14-4          
-## [22] igraph_0.7.1           KEGG.db_2.10.1         KernSmooth_2.23-12    
-## [25] labeling_0.2           lattice_0.20-29        latticeExtra_0.6-26   
-## [28] markdown_0.7           MASS_7.3-33            Matrix_1.1-3          
-## [31] munsell_0.4.2          org.Hs.eg.db_2.10.1    plyr_1.8.1            
-## [34] proto_0.3-10           qvalue_1.36.0          RColorBrewer_1.0-5    
-## [37] Rcpp_0.11.1            RCurl_1.95-4.1         reactome.db_1.46.1    
-## [40] Rsamtools_1.14.3       scales_0.2.4           splines_3.0.2         
-## [43] stats4_3.0.2           stringr_0.6.2          survival_2.37-7       
-## [46] tcltk_3.0.2            tools_3.0.2            XML_3.98-1.1          
-## [49] zlibbioc_1.8.0
+##  [1] biomaRt_2.18.0         biovizBase_1.10.8      bitops_1.0-6          
+##  [4] caTools_1.17           cluster_1.15.2         colorspace_1.2-4      
+##  [7] dichromat_2.0-0        digest_0.6.4           DO.db_2.7             
+## [10] evaluate_0.5.5         formatR_0.10           Formula_1.1-1         
+## [13] gdata_2.13.3           GenomicFeatures_1.14.5 GOSemSim_1.20.3       
+## [16] graph_1.40.1           graphite_1.8.1         gtools_3.4.1          
+## [19] Hmisc_3.14-4           igraph_0.7.1           KEGG.db_2.10.1        
+## [22] KernSmooth_2.23-12     labeling_0.2           lattice_0.20-29       
+## [25] latticeExtra_0.6-26    markdown_0.7           MASS_7.3-33           
+## [28] Matrix_1.1-3           mime_0.1.1             munsell_0.4.2         
+## [31] org.Hs.eg.db_2.10.1    proto_0.3-10           qvalue_1.36.0         
+## [34] Rcpp_0.11.1            RCurl_1.95-4.1         reactome.db_1.46.1    
+## [37] Rsamtools_1.14.3       scales_0.2.4           splines_3.0.2         
+## [40] stats4_3.0.2           survival_2.37-7        tcltk_3.0.2           
+## [43] tools_3.0.2            XML_3.98-1.1           zlibbioc_1.8.0
 ```
 
 ## Run Info
