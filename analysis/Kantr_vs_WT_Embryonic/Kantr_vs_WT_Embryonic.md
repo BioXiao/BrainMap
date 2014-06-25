@@ -7,10 +7,9 @@ Kantr KO vs WT (Embryonic)
 
 
 
-# Intialize
 
 
-# Design Overview
+
 
 This file shows the wt-v-ko comparison for Kantr. 
 
@@ -49,12 +48,15 @@ Isoforms:
 
 
 ## MvA plot
+
 ![plot of chunk MvA](figure/MvA.png) 
    
 ### MvA plot counts
+
 ![plot of chunk MvA_counts](figure/MvA_counts.png) 
 
 ## Scatterplot matrix
+
 ![plot of chunk scatterplot](figure/scatterplot.png) 
 
 ## Distributions
@@ -91,6 +93,7 @@ Density (genes, replicates)
 ## Clustering
 
 ### Replicate Clusters
+
 ![plot of chunk replicate_clusters](figure/replicate_clusters.png) 
 
 ```
@@ -98,9 +101,11 @@ Density (genes, replicates)
 ```
 
 ### PCA (genes)
+
 ![plot of chunk PCA](figure/PCA.png) 
 
 ### MDS (genes)
+
 ![plot of chunk MDS](figure/MDS.png) 
 
 
@@ -137,6 +142,7 @@ Expression plot (endogenous linc, lacZ, Y-expressed gene):
 ![plot of chunk Digital_Genotyping](figure/Digital_Genotyping.png) 
 
 Expression heatmap:
+
 ![plot of chunk digital_geno_heatmap](figure/digital_geno_heatmap.png) 
 
 
@@ -154,7 +160,7 @@ Expression heatmap:
 There are 785 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Wed Jun 25 09:28:48 2014 -->
+<!-- Wed Jun 25 19:04:23 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> H19 </TD> </TR>
@@ -952,13 +958,16 @@ There are 785 significantly differentially expressed genes. They are:
 
 ### Significant gene expression differences between conditions
 
-Expression plot (genes):
+Expression plot (genes):(turned off)
 
-![plot of chunk sigExpression](figure/sigExpression1.png) ![plot of chunk sigExpression](figure/sigExpression2.png) 
 
-Significant genes with expression >50fpkm (any condition):
 
-![plot of chunk highly_expressed_sig](figure/highly_expressed_sig.png) 
+
+![plot of chunk sigExpression heatmap](figure/sigExpression heatmap.png) 
+
+Significant genes with expression >50fpkm (any condition):(turned off)
+
+
 
 An individual look at each of the highly expressed significantly differentially regulated genes:
 (eval=false for first pass)
@@ -974,7 +983,7 @@ Scatter plot of significant genes only:
 
 Volcano Plot
 
-
+![plot of chunk volcano](figure/volcano.png) 
 
 Volcano plot with significant genes only:
 
@@ -983,7 +992,6 @@ Volcano plot with significant genes only:
 FoldChange Heatmap
 
 ![plot of chunk sigGenes logfoldchange_heatmap](figure/sigGenes logfoldchange_heatmap.png) 
-
 
 
 ## Differential Splicing
@@ -997,7 +1005,7 @@ Per isoform difference between conditions:
 These isoforms are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Wed Jun 25 09:31:44 2014 -->
+<!-- Wed Jun 25 19:05:18 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> isoAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> H19 </TD> </TR>
@@ -1508,10 +1516,13 @@ Per condition differences in isoforms (Does gene have diff piechart between cond
 These genes are:
 
 
+
 Splicing heatmap by isoform:
 
 
+
 Splicing heatmap by gene
+
 
 
 The following are significantly differentially spliced genes (relative portion of isoform per condition): 
@@ -1534,13 +1545,7 @@ The following are significantly differentially spliced genes (relative portion o
 
 
 
-
 Biocarta enrichment: 
-
-
-```
-## Error: figure margins too large
-```
 
 ![plot of chunk print_GSEA_biocarta](figure/print_GSEA_biocarta.png) 
 
@@ -1548,27 +1553,21 @@ biocarta zscore:
 
 
 ```
-## Error: figure margins too large
+## Error: length must be non-negative number
 ```
-
-![plot of chunk gsea_zscore_biocarta](figure/gsea_zscore_biocarta.png) 
 
 
 Reactome enrichment: 
 
-
-```
-## Error: figure margins too large
-```
-
 ![plot of chunk print_GSEA_reactome](figure/print_GSEA_reactome.png) 
-
-
 
 
 Reactome zscore: 
 
-![plot of chunk gsea_zscore_reactome](figure/gsea_zscore_reactome.png) 
+
+```
+## Error: length must be non-negative number
+```
 
 ## GO enrichment 
 Cluster profiler used to call enichments of significantly differentially regulated genes that map to Entrez IDs. 
@@ -1582,7 +1581,8 @@ Cluster profiler used to call enichments of significantly differentially regulat
 # Cis vs Trans (locally)
 
 
-The pvalue for 4 genes significantly regulated in a region this size  is: 0.367 
+
+The pvalue for 4 genes significantly regulated in a region this size  is: 0.396 
 
 
 
@@ -1594,7 +1594,7 @@ The pvalue for 4 genes significantly regulated in a region this size  is: 0.367
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Wed Jun 25 09:55:38 2014 -->
+<!-- Wed Jun 25 19:24:03 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR762 </TD> </TR>
@@ -1607,7 +1607,7 @@ The pvalue for 4 genes significantly regulated in a region this size  is: 0.367
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Wed Jun 25 09:55:39 2014 -->
+<!-- Wed Jun 25 19:24:03 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR762/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 32232400.00 </TD> <TD align="right"> 33354800.00 </TD> <TD align="right"> 0.95 </TD> <TD align="right"> 1.00 </TD> </TR>
@@ -1684,13 +1684,13 @@ The pvalue for 4 genes significantly regulated in a region this size  is: 0.367
 ## [16] graph_1.40.1           graphite_1.8.1         gtools_3.4.1          
 ## [19] Hmisc_3.14-4           igraph_0.7.1           KEGG.db_2.10.1        
 ## [22] KernSmooth_2.23-12     labeling_0.2           lattice_0.20-29       
-## [25] latticeExtra_0.6-26    MASS_7.3-33            Matrix_1.1-3          
-## [28] munsell_0.4.2          org.Hs.eg.db_2.10.1    proto_0.3-10          
-## [31] qvalue_1.36.0          Rcpp_0.11.1            RCurl_1.95-4.1        
-## [34] reactome.db_1.46.1     Rsamtools_1.14.3       scales_0.2.4          
-## [37] splines_3.0.2          stats4_3.0.2           survival_2.37-7       
-## [40] tcltk_3.0.2            tools_3.0.2            XML_3.98-1.1          
-## [43] zlibbioc_1.8.0
+## [25] latticeExtra_0.6-26    markdown_0.7           MASS_7.3-33           
+## [28] Matrix_1.1-3           mime_0.1.1             munsell_0.4.2         
+## [31] org.Hs.eg.db_2.10.1    proto_0.3-10           qvalue_1.36.0         
+## [34] Rcpp_0.11.1            RCurl_1.95-4.1         reactome.db_1.46.1    
+## [37] Rsamtools_1.14.3       scales_0.2.4           splines_3.0.2         
+## [40] stats4_3.0.2           survival_2.37-7        tcltk_3.0.2           
+## [43] tools_3.0.2            XML_3.98-1.1           zlibbioc_1.8.0
 ```
 
 ## Run Info

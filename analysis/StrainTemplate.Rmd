@@ -653,8 +653,8 @@ get_gene_set_p_vals <- function(input, gs, alternative){
 }
  
 get_gene_set_q_vals <- function(pvl_mat, method="bonferroni"){
-	comp_corrected <- matrix(p.adjust(pvl_mat, method=method), nrow=nrow(pvl_mat), ncol=ncol(pvl_mat))
-	colnames(comp_corrected) <- colnames(pvl_mat)
+  comp_corrected <- matrix(p.adjust(pvl_mat, method=method), nrow=nrow(pvl_mat), ncol=ncol(pvl_mat))
+  colnames(comp_corrected) <- colnames(pvl_mat)
 	rownames(comp_corrected) <- rownames(pvl_mat)
 	return(comp_corrected)
 }
@@ -721,7 +721,7 @@ biocarta_zscores<-cbind(biocarta_zscores,biocarta_zscores)
 k <- 100
 myColors<-maPalette(low="blue",mid="white",high="red",k=k)
 #myBreaks<-seq(-max(abs(x)),max(abs(x)),k+1)
-myBreaks<-seq(-2,2,k+1)
+myBreaks<-seq(-2,2,length.out=(k+1))
 
 ```
 
@@ -739,9 +739,9 @@ x_max<-max(noinfinities_x)+100
 x_ordered[x_ordered=="Inf"]<-x_max
 x_ordered<-as.matrix(x_ordered)
 
-
-heatmap.2(x_ordered, trace="none",col=InputCols,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = (0.2 + .5/log10(dim(x)[1])))
-
+if(dim(x_ordered)[1]>1){
+  heatmap.2(x_ordered, trace="none",col=InputCols,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = (0.2 + .5/log10(dim(x)[1])))
+}else{print("Not enough significant categories to print a heatmap!")}
 ```
 
 biocarta zscore: 
@@ -752,7 +752,9 @@ x_ordered<-x[order(x[,1], decreasing=TRUE),]
 if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
 x_ordered<-as.matrix(x_ordered)
 
+if(dim(x_ordered)[1]>1){
 heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = (0.2 + .5/log10(dim(x)[1])))
+}else{print("Not enough significant categories to print a heatmap!")}
 ```
 
 
@@ -770,7 +772,9 @@ noinfinities_x<-x_ordered[which(x_ordered !="Inf")]
 x_max<-max(noinfinities_x)+100
 x_ordered[x_ordered=="Inf"]<-x_max
 
-heatmap.2(x_ordered, trace="none",col=InputCols,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = (0.2 + .5/log10(dim(x)[1])))
+if(dim(x_ordered)[1]>1){
+  heatmap.2(x_ordered, trace="none",col=InputCols,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = (0.2 + .5/log10(dim(x)[1])))
+}else{print("Not enough significant categories to print a heatmap!")}
 
 #dev.off()
 ```
@@ -787,7 +791,15 @@ x_ordered<-x[order(x[,1], decreasing=TRUE),]
 if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
 x_ordered<-as.matrix(x_ordered)
 
+if(dim(x_ordered)[1]>1){
 heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = (0.2 + .5/log10(dim(x)[1])))
+}else{print("Not enough significant categories to print a heatmap!")}
+
+
+rm(biocarta_pvl_mat)
+rm(reactome_pvl_mat)
+rm(Input.df)
+rm(pop)
 
 ```
 
@@ -949,3 +961,24 @@ sessionInfo()
 ```{r runInfo}
 runInfo(cuff)
 ```
+
+```{r clear environment}
+rm(sigGeneIDs)
+rm(isoformSigIDs)
+rm(sig)
+rm(splicingSigGenes)
+rm(sigGenes)
+rm(genotypingGenes)
+rm(isoformSigGenes)
+rm(goBP)
+rm(goMF)
+rm(goCC)
+rm(kegg)
+rm(pathway)
+rm(data)
+rm(fullTable)
+rm(cuff)
+
+```
+
+

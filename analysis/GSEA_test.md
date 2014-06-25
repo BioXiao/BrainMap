@@ -25,10 +25,7 @@ Biocarta enrichment:
 
 biocarta zscore: 
 
-
-```
-## Error: length must be non-negative number
-```
+![plot of chunk gsea_zscore_biocarta](figure/gsea_zscore_biocarta.png) 
 
 
 Reactome enrichment: 
@@ -38,7 +35,4 @@ Reactome enrichment:
 
 Reactome zscore: 
 
-
-```
-## Error: length must be non-negative number
-```
+![plot of chunk gsea_zscore_reactome](figure/gsea_zscore_reactome.png) 
