@@ -36,26 +36,26 @@ Cuff overview:
 Dispersion plot for genes in cuff:
 (Overdispersion can lead to innacurate quants)
 
-![plot of chunk dispersion](Celrr_vs_WT_Adult/figure/dispersion.png) 
+![plot of chunk dispersion](figure/dispersion.png) 
 
 ## Cross-replicate variability (fpkmSCVplot)
 Differences in CV 2 can result in lower numbers of differentially expressed genes due to a higher degree of variability between replicate fpkm estimates.
 
 Genes:
-![plot of chunk CV_genes](Celrr_vs_WT_Adult/figure/CV_genes.png) 
+![plot of chunk CV_genes](figure/CV_genes.png) 
 
 Isoforms: 
-![plot of chunk cv_iso](Celrr_vs_WT_Adult/figure/cv_iso.png) 
+![plot of chunk cv_iso](figure/cv_iso.png) 
 
 
 ## MvA plot
-![plot of chunk MvA](Celrr_vs_WT_Adult/figure/MvA.png) 
+![plot of chunk MvA](figure/MvA.png) 
    
 ### MvA plot counts
-![plot of chunk MvA_counts](Celrr_vs_WT_Adult/figure/MvA_counts.png) 
+![plot of chunk MvA_counts](figure/MvA_counts.png) 
 
 ## Scatterplot matrix
-![plot of chunk scatterplot](Celrr_vs_WT_Adult/figure/scatterplot.png) 
+![plot of chunk scatterplot](figure/scatterplot.png) 
 
 ## Distributions
 
@@ -63,45 +63,45 @@ Isoforms:
 
 Boxplot (genes)
 
-![plot of chunk boxplot_genes](Celrr_vs_WT_Adult/figure/boxplot_genes.png) 
+![plot of chunk boxplot_genes](figure/boxplot_genes.png) 
 
 Boxplot (genes, replicates)
 
-![plot of chunk boxplot_genes_replicates](Celrr_vs_WT_Adult/figure/boxplot_genes_replicates.png) 
+![plot of chunk boxplot_genes_replicates](figure/boxplot_genes_replicates.png) 
 
 Boxplot (isoforms)
 
-![plot of chunk boxplot_isoforms](Celrr_vs_WT_Adult/figure/boxplot_isoforms.png) 
+![plot of chunk boxplot_isoforms](figure/boxplot_isoforms.png) 
 
 Boxplot (isoforms, replicates)
 
-![plot of chunk boxplot_isoforms_replicates](Celrr_vs_WT_Adult/figure/boxplot_isoforms_replicates.png) 
+![plot of chunk boxplot_isoforms_replicates](figure/boxplot_isoforms_replicates.png) 
 
 ### Density
 
 Density (genes)
 
-![plot of chunk density](Celrr_vs_WT_Adult/figure/density.png) 
+![plot of chunk density](figure/density.png) 
 
 Density (genes, replicates)
 
-![plot of chunk density_w_replicates](Celrr_vs_WT_Adult/figure/density_w_replicates.png) 
+![plot of chunk density_w_replicates](figure/density_w_replicates.png) 
 
 
 ## Clustering
 
 ### Replicate Clusters
-![plot of chunk replicate_clusters](Celrr_vs_WT_Adult/figure/replicate_clusters.png) 
+![plot of chunk replicate_clusters](figure/replicate_clusters.png) 
 
 ```
 ## NULL
 ```
 
 ### PCA (genes)
-![plot of chunk PCA](Celrr_vs_WT_Adult/figure/PCA.png) 
+![plot of chunk PCA](figure/PCA.png) 
 
 ### MDS (genes)
-![plot of chunk MDS](Celrr_vs_WT_Adult/figure/MDS.png) 
+![plot of chunk MDS](figure/MDS.png) 
 
 
 
@@ -111,39 +111,39 @@ Density (genes, replicates)
 
 ## Endogenous lncRNA expression
 
-![plot of chunk Enodenous_lncRNA_tables](Celrr_vs_WT_Adult/figure/Enodenous_lncRNA_tables.png) 
+![plot of chunk Enodenous_lncRNA_tables](figure/Enodenous_lncRNA_tables.png) 
 
 Endogenous expression of Celrr isoforms:
 
-![plot of chunk endogenous_iso](Celrr_vs_WT_Adult/figure/endogenous_iso.png) 
+![plot of chunk endogenous_iso](figure/endogenous_iso.png) 
 
 Barplot of gene expression:
 
-![plot of chunk endogenous_barplot](Celrr_vs_WT_Adult/figure/endogenous_barplot.png) 
+![plot of chunk endogenous_barplot](figure/endogenous_barplot.png) 
 
 Barplot of isoform expression:
 
-![plot of chunk endogenous_iso_barplot](Celrr_vs_WT_Adult/figure/endogenous_iso_barplot.png) 
+![plot of chunk endogenous_iso_barplot](figure/endogenous_iso_barplot.png) 
 
 
 ## LacZ expression
 
-![plot of chunk LacZ_expression](Celrr_vs_WT_Adult/figure/LacZ_expression1.png) ![plot of chunk LacZ_expression](Celrr_vs_WT_Adult/figure/LacZ_expression2.png) 
+![plot of chunk LacZ_expression](figure/LacZ_expression1.png) ![plot of chunk LacZ_expression](figure/LacZ_expression2.png) 
 
 
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
 Expression plot (endogenous linc, lacZ, Y-expressed gene):
 
-![plot of chunk Digital_Genotyping](Celrr_vs_WT_Adult/figure/Digital_Genotyping.png) 
+![plot of chunk Digital_Genotyping](figure/Digital_Genotyping.png) 
 
 Expression heatmap:
-![plot of chunk digital_geno_heatmap](Celrr_vs_WT_Adult/figure/digital_geno_heatmap.png) 
+![plot of chunk digital_geno_heatmap](figure/digital_geno_heatmap.png) 
 
 
 
 ### Track visualization 
 
-![plot of chunk track_vis](Celrr_vs_WT_Adult/figure/track_vis.png) 
+![plot of chunk track_vis](figure/track_vis.png) 
 
 # Differential Analysis
 
@@ -154,7 +154,7 @@ Expression heatmap:
 There are 52 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Tue Jun 24 17:45:43 2014 -->
+<!-- Tue Jun 24 23:41:43 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Chordc1 </TD> </TR>
@@ -215,17 +215,17 @@ There are 52 significantly differentially expressed genes. They are:
 
 (skip for Brainmap wt-v-ko comparisons)
 
-![plot of chunk sigMatrix](Celrr_vs_WT_Adult/figure/sigMatrix.png) 
+![plot of chunk sigMatrix](figure/sigMatrix.png) 
 
 ### Significant gene expression differences between conditions
 
 Expression plot (genes):
 
-![plot of chunk sigExpression](Celrr_vs_WT_Adult/figure/sigExpression1.png) ![plot of chunk sigExpression](Celrr_vs_WT_Adult/figure/sigExpression2.png) 
+![plot of chunk sigExpression](figure/sigExpression1.png) ![plot of chunk sigExpression](figure/sigExpression2.png) 
 
 Significant genes with expression >50fpkm (any condition):
 
-![plot of chunk highly_expressed_sig](Celrr_vs_WT_Adult/figure/highly_expressed_sig.png) 
+![plot of chunk highly_expressed_sig](figure/highly_expressed_sig.png) 
 
 An individual look at each of the highly expressed significantly differentially regulated genes:
 (eval=false for first pass)
@@ -237,7 +237,7 @@ An individual look at each of the highly expressed significantly differentially 
 
 Scatter plot of significant genes only:
 
-![plot of chunk expression-sig_relationship](Celrr_vs_WT_Adult/figure/expression-sig_relationship.png) 
+![plot of chunk expression-sig_relationship](figure/expression-sig_relationship.png) 
 
 Volcano Plot
 
@@ -245,11 +245,11 @@ Volcano Plot
 
 Volcano plot with significant genes only:
 
-![plot of chunk sig_volcano](Celrr_vs_WT_Adult/figure/sig_volcano.png) 
+![plot of chunk sig_volcano](figure/sig_volcano.png) 
 
 FoldChange Heatmap
 
-![plot of chunk sigGenes logfoldchange_heatmap](Celrr_vs_WT_Adult/figure/sigGenes logfoldchange_heatmap.png) 
+![plot of chunk sigGenes logfoldchange_heatmap](figure/sigGenes logfoldchange_heatmap.png) 
 
 
 
@@ -259,7 +259,7 @@ FoldChange Heatmap
 
 Per isoform difference between conditions:
 
-![plot of chunk diff_iso](Celrr_vs_WT_Adult/figure/diff_iso.png) 
+![plot of chunk diff_iso](figure/diff_iso.png) 
 
 These isoforms are:
 
@@ -317,11 +317,37 @@ The following are significantly differentially spliced genes (relative portion o
 
 
 
+
+Biocarta enrichment: 
+
+
 ```
 ## Error: `x' must have at least 2 rows and 2 columns
 ```
 
-![plot of chunk print_GSEA_reactome](Celrr_vs_WT_Adult/figure/print_GSEA_reactome.png) 
+biocarta zscore: 
+
+
+```
+## Error: `x' must have at least 2 rows and 2 columns
+```
+
+
+Reactome enrichment: 
+
+
+```
+## Error: figure margins too large
+```
+
+![plot of chunk print_GSEA_reactome](figure/print_GSEA_reactome.png) 
+
+
+
+
+Reactome zscore: 
+
+![plot of chunk gsea_zscore_reactome](figure/gsea_zscore_reactome.png) 
 
 ## GO enrichment 
 Cluster profiler used to call enichments of significantly differentially regulated genes that map to Entrez IDs. 
@@ -337,20 +363,21 @@ Cluster profiler used to call enichments of significantly differentially regulat
 ## [1] "ERROR: The estimated pi0 <= 0. Check that you have valid p-values or use another lambda method."
 ```
 
-![plot of chunk GO_figures](Celrr_vs_WT_Adult/figure/GO_figures1.png) ![plot of chunk GO_figures](Celrr_vs_WT_Adult/figure/GO_figures2.png) ![plot of chunk GO_figures](Celrr_vs_WT_Adult/figure/GO_figures3.png) ![plot of chunk GO_figures](Celrr_vs_WT_Adult/figure/GO_figures4.png) ![plot of chunk GO_figures](Celrr_vs_WT_Adult/figure/GO_figures5.png) 
+![plot of chunk GO_figures](figure/GO_figures1.png) ![plot of chunk GO_figures](figure/GO_figures2.png) ![plot of chunk GO_figures](figure/GO_figures3.png) ![plot of chunk GO_figures](figure/GO_figures4.png) ![plot of chunk GO_figures](figure/GO_figures5.png) 
 
 # Cis vs Trans (locally)
 
 
+The pvalue for 0 genes significantly regulated in a region this size  is: 1 
 
 
-![plot of chunk overlap_image](Celrr_vs_WT_Adult/figure/overlap_image.png) 
+![plot of chunk cisreg_image](figure/cisreg_image.png) 
 
 # Notes
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Tue Jun 24 18:02:45 2014 -->
+<!-- Wed Jun 25 00:03:08 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR729 </TD> </TR>
@@ -374,7 +401,7 @@ Cluster profiler used to call enichments of significantly differentially regulat
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Tue Jun 24 18:02:46 2014 -->
+<!-- Wed Jun 25 00:03:08 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR729/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 26338300.00 </TD> <TD align="right"> 33873900.00 </TD> <TD align="right"> 0.78 </TD> <TD align="right"> 1.00 </TD> </TR>
@@ -428,10 +455,10 @@ Cluster profiler used to call enichments of significantly differentially regulat
 ## [11] ReactomePA_1.6.1                   
 ## [12] AnnotationDbi_1.24.0               
 ## [13] Biobase_2.22.0                     
-## [14] RColorBrewer_1.0-5                 
-## [15] RMySQL_0.9-3                       
-## [16] mgcv_1.7-29                        
-## [17] nlme_3.1-117                       
+## [14] RMySQL_0.9-3                       
+## [15] mgcv_1.7-29                        
+## [16] nlme_3.1-117                       
+## [17] RColorBrewer_1.0-5                 
 ## [18] gridExtra_0.9.1                    
 ## [19] gtable_0.1.2                       
 ## [20] marray_1.40.0                      
