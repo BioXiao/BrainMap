@@ -653,11 +653,36 @@ rowMins<-function(x){
 }
  
 InputCols<-maPalette(low="white",high="red",k=100)
+
+
+ztest<-function(samp,pop){
+  (mean(samp,na.rm=T)-mean(pop,na.rm=T))/sd(pop,na.rm=T)
+}
+
+
+get_gene_set_ztest <- function(scoring_df, gs){  
+  gene_set_indices <- lapply(gs$genesets, function(genelist){
+    gene_set_index(genelist, scoring_df$short_name)
+    })
+  
+#  zscores <- apply(scoring_df$,2, function(mat_col){
+#			lapply(gene_set_indices,function(gsi){
+#					ztest(mat_col[gsi],mat_col)})
+ #     })
+  
+  zscores <- lapply(gene_set_indices,function(gsi){
+					ztest(scoring_df$test_stat[gsi],scoring_df$test_stat)
+          })  
+  
+	zscore_mat<-do.call(rbind,lapply(zscores,unlist))
+	rownames(zscore_mat) <- gs$geneset.names
+	colnames(zscore_mat) <- "zscore"
+	return(zscore_mat)
+}
 ```
 
 ```{r gsea}
 df.pop<-data.frame("short_name"=toupper(gene_names$gene_short_name),"test_stat"=gene_names$test_stat)
-#row.names(df.pop)=population.diff$gene_id
 df.pop.unique<-unique(df.pop)
 rownames(df.pop.unique)<-NULL
 df.pop.unique.ordered<-df.pop.unique[order(df.pop.unique$test_stat),]
@@ -671,6 +696,10 @@ reactome_pvl_corrected<-rbind(reactome_pvl_corrected,reactome_pvl_corrected)
 biocarta_pvl_mat <- get_gene_set_p_vals(Input.df, biocarta_gs, alternative="either")
 biocarta_pvl_corrected <- get_gene_set_q_vals(biocarta_pvl_mat)
 biocarta_pvl_corrected<-rbind(biocarta_pvl_corrected,biocarta_pvl_corrected)
+
+
+reactome_zscores<-get_gene_set_ztest(Input.df,reactome_gs)
+
 ```
 
 ```{r print_GSEA_biocarta, fig.height=8, fig.width=8}

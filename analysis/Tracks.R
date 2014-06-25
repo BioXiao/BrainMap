@@ -159,7 +159,7 @@ specCols<-brewer.pal(3,"Paired")
 colPal<-colorRampPalette(specCols)
 bamColors<-colPal(length(bamFiles))
 
-require(TxDb.Mmusculus.UCSC.mm10.knownGene)
+#require(TxDb.Mmusculus.UCSC.mm10.knownGene)
 
 doPlot<-function(genome=genome,name,myChr,from,to,window,bamFiles,bamNames,koStart,koWidth,koChr){
   #Make Tracks
@@ -191,6 +191,8 @@ doPlot<-function(genome=genome,name,myChr,from,to,window,bamFiles,bamNames,koSta
 
 doPlot(genome=genome, name=name, myChr=chrom, from=from, to=to, window=20,bamFiles=bamFiles, bamNames=bamNames, koStart=koStart,koWidth=koWidth,koChr=koChr)
 
+
+detach(package:GenomicFeatures)
 
 #> plotTracks(bamTracks[[16]],from=from,to=to,chromosome=myChr,showAxis=FALSE,background.title="black",col.title="white",col.axis="grey")
 #Error in n - 1 : non-numeric argument to binary operator
