@@ -32,7 +32,7 @@ library(marray)
 library(ggplot2)
 library(gtable)
 library(gridExtra)
-
+library(RColorBrewer)
 
 reactome_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.reactome.v4.0.symbols.gmt")
 biocarta_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.biocarta.v4.0.symbols.gmt")
@@ -321,14 +321,15 @@ myGene<-getGene(cuff,name)
 genetrack <-makeGeneRegionTrack(myGene)
 #plotTracks(list(genetrack))
 
+windowMargin<-1000
 annot<-annotation(myGene)
 locus<-strsplit(annot$locus,":")
 locus<-unlist(locus)
 chrom<-locus[[1]]
 start_and_end<-strsplit(locus[[2]],"-")
 start_and_end<-unlist(start_and_end)
-from<-as.numeric(start_and_end[[1]])
-to<-as.numeric(start_and_end[[2]])
+from<-as.numeric(start_and_end[[1]])-windowMargin
+to<-as.numeric(start_and_end[[2]])+windowMargin
 
 JRs<-samples
 
@@ -619,6 +620,8 @@ dev.off()
 ## GSEA
 
 ```{r gsea_helper_functions}
+
+
 population<-genes(cuff)
 population.diff<-diffData(population)
 annotation<-annotation(genes(cuff))
@@ -699,8 +702,16 @@ biocarta_pvl_corrected<-rbind(biocarta_pvl_corrected,biocarta_pvl_corrected)
 
 
 reactome_zscores<-get_gene_set_ztest(Input.df,reactome_gs)
+reactome_zscores<-cbind(reactome_zscores,reactome_zscores)
+
+biocarta_zscores<-get_gene_set_ztest(Input.df,biocarta_gs)
+biocarta_zscores<-cbind(biocarta_zscores,biocarta_zscores)
 
 ```
+
+
+
+Biocarta enrichment: 
 
 ```{r print_GSEA_biocarta, fig.height=8, fig.width=8}
 #two options, print as pdf, and adjust size in separate code block
@@ -721,6 +732,7 @@ noinfinities_x<-x_ordered[which(x_ordered !="Inf")]
 x_max<-max(noinfinities_x)+100
 x_ordered[x_ordered=="Inf"]<-x_max
 x_ordered<-as.matrix(x_ordered)
+
 heatmap.2(x_ordered, trace="none", margins=c(5,20), col=InputCols,dendrogram="row",lhei =c(0.1,0.9), labCol=c(""))
 
 #dev.off()
@@ -728,8 +740,33 @@ heatmap.2(x_ordered, trace="none", margins=c(5,20), col=InputCols,dendrogram="ro
 #heatmap.2(x_ordered_subset, trace="none", margins=c(5,30), col=InputCols,dendrogram="row",lhei =c(0.1,0.9), labCol=c(""))
 ```
 
+biocarta zscore: 
+
+```{r gsea_zscore_biocarta}
+InputCols<-maPalette(low="blue",high="red",k=100)
+
+x<-((biocarta_zscores[which(colMins(biocarta_pvl_corrected) < 0.01),]))
+x_ordered<-x[order(x[,1], decreasing=TRUE),]
+if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
+x_ordered<-as.matrix(x_ordered)
+
+#specCols<-brewer.pal(2,"RdYlBu")
+#colPal<-colorRampPalette(specCols)
+#pal<-colorRampPalette(c("Red","Blue"))
+
+heatmap.2(x_ordered, trace="none", margins=c(5,20), col=InputCols,dendrogram="row",lhei =c(0.1,0.9), labCol=c(""))
+
+```
+
+
+Reactome enrichment: 
+
 ```{r print_GSEA_reactome, fig.width=8, fig.height=8}
 #pdf("components_GSEA_reactome.pdf",width=10,height=30)
+
+InputCols<-maPalette(low="white",high="red",k=100)
+
+
 x<-(-log10(t(reactome_pvl_corrected[,which(colMins(reactome_pvl_corrected) < 0.001)])))
 x_ordered<-x[order(x[,1], decreasing=TRUE),]
 if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
@@ -743,6 +780,26 @@ heatmap.2(x_ordered, trace="none", margins=c(5,20),col=InputCols,dendrogram="bot
 
 #print to report 
 #heatmap.2(x_ordered_subset, trace="none", margins=c(5,30),col=InputCols,dendrogram="both",lhei = c(0.1,0.90), labCol=c(""))
+
+```
+
+
+
+
+Reactome zscore: 
+
+```{r gsea_zscore_reactome}
+
+InputCols<-maPalette(low="blue",high="red",k=100)
+
+x<-reactome_zscores[which(colMins(reactome_pvl_corrected) < 0.001),]
+
+x_ordered<-x[order(x[,1], decreasing=TRUE),]
+
+if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
+x_ordered<-as.matrix(x_ordered)
+
+heatmap.2(x_ordered, trace="none", col=InputCols,dendrogram="row", labCol=c(""))
 
 ```
 
