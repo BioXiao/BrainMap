@@ -160,7 +160,7 @@ Expression heatmap:
 There are 52 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Wed Jun 25 17:27:27 2014 -->
+<!-- Wed Jun 25 20:24:41 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Chordc1 </TD> </TR>
@@ -332,14 +332,14 @@ Biocarta enrichment:
 
 
 ```
-## Error: `x' must have at least 2 rows and 2 columns
+## [1] "Not enough significant categories to print a heatmap!"
 ```
 
 biocarta zscore: 
 
 
 ```
-## Error: `x' must have at least 2 rows and 2 columns
+## [1] "Not enough significant categories to print a heatmap!"
 ```
 
 
@@ -350,10 +350,7 @@ Reactome enrichment:
 
 Reactome zscore: 
 
-
-```
-## Error: length must be non-negative number
-```
+![plot of chunk gsea_zscore_reactome](figure/gsea_zscore_reactome.png) 
 
 ## GO enrichment 
 Cluster profiler used to call enichments of significantly differentially regulated genes that map to Entrez IDs. 
@@ -384,7 +381,7 @@ The pvalue for 0 genes significantly regulated in a region this size  is: 1
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Wed Jun 25 17:50:08 2014 -->
+<!-- Wed Jun 25 20:46:25 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR729 </TD> </TR>
@@ -408,7 +405,7 @@ The pvalue for 0 genes significantly regulated in a region this size  is: 1
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Wed Jun 25 17:50:08 2014 -->
+<!-- Wed Jun 25 20:46:25 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR729/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 26338300.00 </TD> <TD align="right"> 33873900.00 </TD> <TD align="right"> 0.78 </TD> <TD align="right"> 1.00 </TD> </TR>
@@ -521,3 +518,7 @@ The pvalue for 0 genes significantly regulated in a region this size  is: 1
 ## 4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                104700
 ## 5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  mm10
 ```
+
+
+
+
