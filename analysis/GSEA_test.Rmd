@@ -6,7 +6,7 @@ GSEA printing test
 strain<-"linc-Enc1"
 timepoint<-"Embryonic"
 filename<-"linc-Enc1_vs_WT_Embryonic"
-dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Enc1_vs_WT_Embryonic/"
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/olddiffs/linc-Enc1_vs_WT_Embryonic/"
 ```
 
 
@@ -14,7 +14,7 @@ dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Enc1_vs_WT_Embry
 # Set knitr opts
 
 #path<-paste(filename,"/figure/",sep="")
-opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE,fig.height=4, fig.width=4)
+opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE,fig.height=4, fig.width=4,dev=c('png', 'pdf'))
 alpha<-0.05 
 
 analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
@@ -36,8 +36,10 @@ library(gridExtra)
 library(RColorBrewer)
 
 reactome_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.reactome.v4.0.symbols.gmt")
+
 biocarta_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.biocarta.v4.0.symbols.gmt")
 
+kegg_gs<-GSA.read.gmt("/n/rinn_data1/annotations/gsea/msigdb_v4.0_files_to_download_locally/msigdb_v4.0_GMTs/c2.cp.kegg.v4.0.symbols.gmt")
 ```
 
 
@@ -45,7 +47,6 @@ biocarta_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.biocarta.v4.0
 setwd(dir)
 cuff<-readCufflinks(gtfFile=GTF,genome=genome)
 ```
-
 
 
 ```{r gsea_helper_functions}
@@ -128,6 +129,10 @@ biocarta_pvl_mat <- get_gene_set_p_vals(Input.df, biocarta_gs, alternative="eith
 biocarta_pvl_corrected <- get_gene_set_q_vals(biocarta_pvl_mat)
 biocarta_pvl_corrected<-rbind(biocarta_pvl_corrected,biocarta_pvl_corrected)
 
+kegg_pvl_mat <- get_gene_set_p_vals(Input.df, kegg_gs, alternative="either")
+kegg_pvl_corrected <- get_gene_set_q_vals(kegg_pvl_mat)
+kegg_pvl_corrected<-rbind(kegg_pvl_corrected,kegg_pvl_corrected)
+
 
 reactome_zscores<-get_gene_set_ztest(Input.df,reactome_gs)
 reactome_zscores<-cbind(reactome_zscores,reactome_zscores)
@@ -135,11 +140,16 @@ reactome_zscores<-cbind(reactome_zscores,reactome_zscores)
 biocarta_zscores<-get_gene_set_ztest(Input.df,biocarta_gs)
 biocarta_zscores<-cbind(biocarta_zscores,biocarta_zscores)
 
+kegg_zscores<-get_gene_set_ztest(Input.df,kegg_gs)
+kegg_zscores<-cbind(kegg_zscores,kegg_zscores)
+
+
+
 k <- 100
 myColors<-maPalette(low="blue",mid="white",high="red",k=k)
 #myBreaks<-seq(-max(abs(x)),max(abs(x)),k+1)
 myBreaks<-seq(-2,2,length.out=(k+1))
-
+enrichmentBreaks<-seq(0,6,length.out=(k+1))
 ```
 
 
@@ -157,11 +167,11 @@ x_ordered[x_ordered=="Inf"]<-x_max
 x_ordered<-as.matrix(x_ordered)
 
 if(dim(x_ordered)[1]>1){
-  heatmap.2(x_ordered, trace="none",col=InputCols,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = (0.2 + .5/log10(dim(x)[1])))
+  heatmap.2(x_ordered, trace="none",col=InputCols,breaks=enrichmentBreaks, margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = 1, offsetRow=0)
 }else{print("Not enough significant categories to print a heatmap!")}
 ```
 
-biocarta zscore: 
+Biocarta zscore: 
 
 ```{r gsea_zscore_biocarta, fig.height=8, fig.width=8}
 x<-((biocarta_zscores[which(colMins(biocarta_pvl_corrected) < 0.01),]))
@@ -170,7 +180,7 @@ if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
 x_ordered<-as.matrix(x_ordered)
 
 if(dim(x_ordered)[1]>1){
-heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = (0.2 + .5/log10(dim(x)[1])))
+heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow =1, offsetRow=0)
 }else{print("Not enough significant categories to print a heatmap!")}
 ```
 
@@ -190,7 +200,7 @@ x_max<-max(noinfinities_x)+100
 x_ordered[x_ordered=="Inf"]<-x_max
 
 if(dim(x_ordered)[1]>1){
-  heatmap.2(x_ordered, trace="none",col=InputCols,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = (0.2 + .5/log10(dim(x)[1])))
+  heatmap.2(x_ordered, trace="none",col=InputCols,breaks=enrichmentBreaks, margins=c(1,20),dendrogram="both",labCol=c(""),cexRow =1, offsetRow=0)
 }else{print("Not enough significant categories to print a heatmap!")}
 
 #dev.off()
@@ -209,6 +219,44 @@ if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
 x_ordered<-as.matrix(x_ordered)
 
 if(dim(x_ordered)[1]>1){
-heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = (0.2 + .5/log10(dim(x)[1])))
+heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = 1, offsetRow=0)
 }else{print("Not enough significant categories to print a heatmap!")}
 ```
+
+
+Kegg enrichment: 
+
+```{r gsea_enrichment_kegg, fig.width=10, fig.height=12}
+InputCols<-maPalette(low="white",high="red",k=100)
+
+x<-(-log10(t(kegg_pvl_corrected[,which(colMins(kegg_pvl_corrected) < 0.001)])))
+x_ordered<-x[order(x[,1], decreasing=TRUE),]
+if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
+noinfinities_x<-x_ordered[which(x_ordered !="Inf")]
+x_max<-max(noinfinities_x)+100
+x_ordered[x_ordered=="Inf"]<-x_max
+
+if(dim(x_ordered)[1]>1){
+  heatmap.2(x_ordered, trace="none",col=InputCols,breaks=enrichmentBreaks, margins=c(1,20),dendrogram="both",labCol=c(""),cexRow =1, offsetRow=0)
+}else{print("Not enough significant categories to print a heatmap!")}
+
+
+```
+
+Kegg zscore: 
+
+```{r gsea_zscore_kegg, fig.width=10, fig.height=12}
+
+x<-kegg_zscores[which(colMins(kegg_pvl_corrected) < 0.001),]
+
+x_ordered<-x[order(x[,1], decreasing=TRUE),]
+
+if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
+x_ordered<-as.matrix(x_ordered)
+
+if(dim(x_ordered)[1]>1){
+heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = 1, offsetRow=0)
+}else{print("Not enough significant categories to print a heatmap!")}
+
+```
+

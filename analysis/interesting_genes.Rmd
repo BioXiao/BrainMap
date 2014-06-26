@@ -25,6 +25,19 @@ csDendro(genes(cuff),replicates=TRUE)
 myGene<-getGene(cuff,id)
 ```
 
+
+
+Jarid1c adult
+genes<-getGenes(cuff,c("Kdm5c","Eif2s3y"))
+csHeatmap(genes,replicates=TRUE)
+#jarid1c in males v females in wildtypes 
+
+Adult wildtypes:
+setwd("../Crnde_vs_WT_Adult/")
+cuff<-readCufflinks()
+#is jarid1c protein coding generally higher in females? 
+
+
 ```{r adult_Kantr_diff}
 sigAdult<-getSig(cuff, alpha=alpha)
 ```

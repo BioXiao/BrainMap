@@ -4,66 +4,39 @@
 library(cummeRbund)
 
 analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
-diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
-GTF<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf"
+diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/olddiffs"
 
-
-#lincRNAsubsetGTF<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/annotation_abbie/mm10_brainmap_lincRNA_subset.gtf"
-
-#lincRNAsubsetGTF<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/annotation_abbie/strandless_test.gtf"
-
-oneLinc<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/onelinc.gtf"
-oneTrnascript<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/oneTranscript.gtf"
-
-
-setwd(diffdir)
-setwd('linc-Enc1_vs_WT_Embryonic/')
-cuff<-readCufflinks(gtfFile=GTF,genome="mm10")
-
-myID<-"linc-Enc1"
-myGene<-getGene(cuff,myID)
-genetrack <-makeGeneRegionTrack(myGene)
-plotTracks(list(genetrack))
-
-#myID<-"Peril"
-#peril<-getGene(cuff,myID)
-#genetrack <-makeGeneRegionTrack(peril) #throws weird error 
-#plotTracks(list(genetrack))
 
 ################# SCRIPT FROM LOYAL -- helper functions ### 
 library(RMySQL)
 library(RColorBrewer)
 library(GenomicFeatures)
 
-chromInfo<-read.table("/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/indexes/mm10/mm10_brainmap.chrom.info",header=TRUE)
+
+GTF<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf"
+GTF_noLacZ<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/mm10_gencode_with_lincRNAS_NO_LACZ.gtf"
+
+#lincRNAsubsetGTF<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/BrainmapLincRNAs.gtf"
+#chromInfo<-read.table("/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/indexes/mm10/mm10_brainmap.chrom.info",header=TRUE)
+real_chromInfo<-read.table("/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/real_chromosomes_mm10_brainmap.chrom.info",header=TRUE)
+
 
 #makeTranscriptDbFromGFF
-#brainmap_lincs_mm10<-makeTranscriptDbFromGFF(lincRNAsubsetGTF,format="gtf",chrominfo=chromInfo,species="Mus musculus")
+#brainmap_lincs_mm10<-makeTranscriptDbFromGFF(lincRNAsubsetGTF,format="gtf",chrominfo=real_chromInfo,species="Mus musculus")
+#saveDb(brainmap_lincs_mm10,file="brainmap_lincsubset_db.sqlite")
+#brainmap_lincs_mm10<-loadDb("brainmap_lincsubset_db.sqlite")
 
-mm10Db<-makeTranscriptDbFromGFF(GTF,format="gtf",chrominfo=chromInfo, species="Mus musculus")
+mm10Db<-makeTranscriptDbFromGFF(GTF,format="gtf",chrominfo=real_chromInfo, species="Mus musculus")
+mm10Db_nolacz<-makeTranscriptDbFromGFF(GTF_noLacZ,format="gtf",chrominfo=real_chromInfo, species="Mus musculus")
 
-#subsetA<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/subsetA.gtf"
-#subsetB<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/subsetB.gtf"
-#oneLinc<-makeTranscriptDbFromGFF(oneLinc,format="gtf")
-#subsetADb<-makeTranscriptDbFromGFF(subsetA,format="gtf",chrominfo=chromInfo)
-#subsetBDb<-makeTranscriptDbFromGFF(subsetB,format="gtf",chrominfo=chromInfo) #doesnt work! 
+#setwd(analysisdir)
+#saveDb(mm10Db,file="mm10gencode_brainmapDB.sqlite")
 
-#periletc<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/Peril_and_Manr.gtf"
-#perilandmanr<-makeTranscriptDbFromGFF(periletc,format="gtf",chrominfo=chromInfo) #WORKS! 
 
-#eldrkantrenc<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/eldr_kantr_enc1.gtf"
-#eldrKANTRenc<-makeTranscriptDbFromGFF(eldrkantrenc,format="gtf",chrominfo=chromInfo)
+#NOT SURE ON HOW TO LOAD THESE? 
+#BrainmapDB<-system.file("mm10gencode_brainmapDB.sqlite",package="GenomicFeatures")
+#mm10DB<-loadDb(BrainmapDB)
 
-#kantr<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/kantr.gtf"
-#KANTR<-makeTranscriptDbFromGFF(kantr,format="gtf",chrominfo=chromInfo)
-
-#eldr<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/eldr.gtf"
-#ELDR<-makeTranscriptDbFromGFF(eldr,format="gtf",chrominfo=chromInfo)
-
-#enc1<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/enc1.gtf"
-#ENC1<-makeTranscriptDbFromGFF(enc1,format="gtf",chrominfo=chromInfo)
-
-#SAVE 
 
 #Need to install R-3.0.0 (Devel) for Gviz to deal with .bam files
 #Helper Functions
@@ -129,7 +102,7 @@ makeBamTrack<-function(bamFile,bamName,genome=genome,chromosome,color="steelblue
 ########## Constants #########
 library(cummeRbund)
 analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
-diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
+diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/olddiffs"
 GTF<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf"
 
 genome<-"mm10"
@@ -138,20 +111,24 @@ setwd(diffdir)
 setwd('Peril_vs_WT_Embryonic/')
 cuff<-readCufflinks(gtfFile=GTF,genome=genome)
 name<-"Peril"
+#name<-"linc-Enc1"
 
 myGene<-getGene(cuff,name)
-genetrack <-makeGeneRegionTrack(myGene)
+#genetrack <-makeGeneRegionTrack(myGene)
 #plotTracks(list(genetrack))
 
 annot<-annotation(myGene)
-
+margin<-1000
 locus<-strsplit(annot$locus,":")
 locus<-unlist(locus)
 chrom<-locus[[1]]
 start_and_end<-strsplit(locus[[2]],"-")
 start_and_end<-unlist(start_and_end)
-from<-as.numeric(start_and_end[[1]])
-to<-as.numeric(start_and_end[[2]])
+from<-as.numeric(start_and_end[[1]])-margin
+to<-as.numeric(start_and_end[[2]])+margin
+
+
+genetrack<-GeneRegionTrack(brainmap_lincs_mm10,rstarts=from,rends=to,chromosome=chrom,showId=TRUE,geneSymbol=TRUE,genome=genome,name="LincRNA Isoforms",fill="steelblue")
 
 
 reps<-replicates(cuff)
@@ -175,7 +152,7 @@ koStart<-as.numeric(positions[1])
 koWidth<-abs(as.numeric(positions[2])-as.numeric(positions[1]))
 
 
-bamRoot<-'/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/'
+bamRoot<-'/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/oldbam/'
 
 bamFiles<-lapply(JRs,function(x){paste(bamRoot,x,"/accepted_hits.bam",sep="")})
 
@@ -185,7 +162,6 @@ specCols<-brewer.pal(3,"Paired")
 colPal<-colorRampPalette(specCols)
 bamColors<-colPal(length(bamFiles))
 
-#require(TxDb.Mmusculus.UCSC.mm10.knownGene)
 
 doPlot<-function(genome=genome,name,myChr,from,to,window,bamFiles,bamNames,koStart,koWidth,koChr){
   #Make Tracks
@@ -208,22 +184,16 @@ doPlot<-function(genome=genome,name,myChr,from,to,window,bamFiles,bamNames,koSta
   myTracks<-c(idxTrack,axTrack,genetrack,bamTracks,koTrack)
   trackSizes<-c(1,1,4,rep(1,length(bamTracks)),1)
 
-  #pdf(paste(name,".pdf",sep=""),width=10,height=8)
-  plotTracks(myTracks,from=from,to=to,chromosome=myChr,showAxis=FALSE,background.title="black",col.title="white",col.axis="black",sizes=trackSizes)
-  #dev.off()
-  #dbDisconnect(con)
+  plotTracks(myTracks,from=from,to=to,chromosome=myChr,showAxis=FALSE,background.title="black",col.title="white",col.axis="black",sizes=trackSizes,geneSymbol=TRUE)
+
 }
 
 
 doPlot(genome=genome, name=name, myChr=chrom, from=from, to=to, window=20,bamFiles=bamFiles, bamNames=bamNames, koStart=koStart,koWidth=koWidth,koChr=koChr)
 
 
+
 detach(package:GenomicFeatures)
-
-#> plotTracks(bamTracks[[16]],from=from,to=to,chromosome=myChr,showAxis=FALSE,background.title="black",col.title="white",col.axis="grey")
-#Error in n - 1 : non-numeric argument to binary operator
-
-#make a transcriptDB with our gtf in mm10 
 
 
 ####################lots of plots! #########
