@@ -7,10 +7,9 @@ linc-Brn1b KO vs WT (Embryonic)
 
 
 
-# Intialize
 
 
-# Design Overview
+
 
 This file shows the wt-v-ko comparison for linc-Brn1b. 
 
@@ -49,12 +48,15 @@ Isoforms:
 
 
 ## MvA plot
+
 ![plot of chunk MvA](figure/MvA.png) 
    
 ### MvA plot counts
+
 ![plot of chunk MvA_counts](figure/MvA_counts.png) 
 
 ## Scatterplot matrix
+
 ![plot of chunk scatterplot](figure/scatterplot.png) 
 
 ## Distributions
@@ -91,6 +93,7 @@ Density (genes, replicates)
 ## Clustering
 
 ### Replicate Clusters
+
 ![plot of chunk replicate_clusters](figure/replicate_clusters.png) 
 
 ```
@@ -98,9 +101,11 @@ Density (genes, replicates)
 ```
 
 ### PCA (genes)
+
 ![plot of chunk PCA](figure/PCA.png) 
 
 ### MDS (genes)
+
 ![plot of chunk MDS](figure/MDS.png) 
 
 
@@ -137,6 +142,7 @@ Expression plot (endogenous linc, lacZ, Y-expressed gene):
 ![plot of chunk Digital_Genotyping](figure/Digital_Genotyping.png) 
 
 Expression heatmap:
+
 ![plot of chunk digital_geno_heatmap](figure/digital_geno_heatmap.png) 
 
 
@@ -154,7 +160,7 @@ Expression heatmap:
 There are 131 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Wed Jun 25 01:50:15 2014 -->
+<!-- Thu Jun 26 03:44:22 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Glra1 </TD> </TR>
@@ -298,13 +304,16 @@ There are 131 significantly differentially expressed genes. They are:
 
 ### Significant gene expression differences between conditions
 
-Expression plot (genes):
+Expression plot (genes):(turned off)
 
-![plot of chunk sigExpression](figure/sigExpression1.png) ![plot of chunk sigExpression](figure/sigExpression2.png) 
 
-Significant genes with expression >50fpkm (any condition):
 
-![plot of chunk highly_expressed_sig](figure/highly_expressed_sig.png) 
+
+![plot of chunk sigExpression heatmap](figure/sigExpression heatmap.png) 
+
+Significant genes with expression >50fpkm (any condition):(turned off)
+
+
 
 An individual look at each of the highly expressed significantly differentially regulated genes:
 (eval=false for first pass)
@@ -320,7 +329,7 @@ Scatter plot of significant genes only:
 
 Volcano Plot
 
-
+![plot of chunk volcano](figure/volcano.png) 
 
 Volcano plot with significant genes only:
 
@@ -329,7 +338,6 @@ Volcano plot with significant genes only:
 FoldChange Heatmap
 
 ![plot of chunk sigGenes logfoldchange_heatmap](figure/sigGenes logfoldchange_heatmap.png) 
-
 
 
 ## Differential Splicing
@@ -343,7 +351,7 @@ Per isoform difference between conditions:
 These isoforms are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Wed Jun 25 01:50:39 2014 -->
+<!-- Thu Jun 26 03:44:39 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> isoAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Nfix </TD> </TR>
@@ -466,10 +474,13 @@ Per condition differences in isoforms (Does gene have diff piechart between cond
 These genes are:
 
 
+
 Splicing heatmap by isoform:
 
 
+
 Splicing heatmap by gene
+
 
 
 The following are significantly differentially spliced genes (relative portion of isoform per condition): 
@@ -492,36 +503,18 @@ The following are significantly differentially spliced genes (relative portion o
 
 
 
-
 Biocarta enrichment: 
-
-
-```
-## Error: figure margins too large
-```
 
 ![plot of chunk print_GSEA_biocarta](figure/print_GSEA_biocarta.png) 
 
 biocarta zscore: 
-
-
-```
-## Error: figure margins too large
-```
 
 ![plot of chunk gsea_zscore_biocarta](figure/gsea_zscore_biocarta.png) 
 
 
 Reactome enrichment: 
 
-
-```
-## Error: figure margins too large
-```
-
 ![plot of chunk print_GSEA_reactome](figure/print_GSEA_reactome.png) 
-
-
 
 
 Reactome zscore: 
@@ -544,6 +537,7 @@ Cluster profiler used to call enichments of significantly differentially regulat
 # Cis vs Trans (locally)
 
 
+
 The pvalue for 0 genes significantly regulated in a region this size  is: 1 
 
 
@@ -556,7 +550,7 @@ The pvalue for 0 genes significantly regulated in a region this size  is: 1
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Wed Jun 25 02:09:59 2014 -->
+<!-- Thu Jun 26 04:04:57 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR753 </TD> </TR>
@@ -580,7 +574,7 @@ The pvalue for 0 genes significantly regulated in a region this size  is: 1
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Wed Jun 25 02:09:59 2014 -->
+<!-- Thu Jun 26 04:04:57 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR753/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 39343800.00 </TD> <TD align="right"> 32408200.00 </TD> <TD align="right"> 1.25 </TD> <TD align="right"> 1.00 </TD> </TR>
@@ -693,3 +687,7 @@ The pvalue for 0 genes significantly regulated in a region this size  is: 1
 ## 4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              104700
 ## 5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                mm10
 ```
+
+
+
+
