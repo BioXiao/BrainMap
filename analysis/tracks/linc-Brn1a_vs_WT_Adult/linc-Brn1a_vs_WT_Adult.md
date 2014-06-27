@@ -1,4 +1,4 @@
-Celrr Adult track visualization 
+linc-Brn1a Adult track visualization 
 ========================================================
 
 
@@ -12,5 +12,5 @@ alpha<-0.05
 
 
 
-![plot of chunk strain_track_vis](Celrr_vs_WT_Adult/figure/strain_track_vis.png) 
+![plot of chunk strain_track_vis](linc-Brn1a_vs_WT_Adult/figure/strain_track_vis.png) 
 

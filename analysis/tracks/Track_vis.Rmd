@@ -2,7 +2,8 @@
 ========================================================
 
 ```{r opts}
-opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE,fig.height=12, fig.width=10,dev=c('png', 'pdf'))
+path<-paste(filename,"/figure/",sep="")
+opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE,fig.height=12, fig.width=10,fig.path=path,dev=c('png', 'pdf'))
 alpha<-0.05 
 ```
 
@@ -163,7 +164,7 @@ JRs<-samples
 #setwd(analysisdir)
 deletionCoords<-read.table("../mm10DeletionCoords.txt",sep="\t",header=TRUE,stringsAsFactors=FALSE)
 colnames(deletionCoords)<-c("gene_name","gene_region","deletionRegion")
-koStrain<-name
+koStrain<-strain
 coords<-deletionCoords[which(deletionCoords$gene_name==koStrain),3]
 coords<-strsplit(coords,":")
 coords<-unlist(coords)
@@ -186,7 +187,7 @@ bamColors<-colPal(length(bamFiles))
 ```
 
 ```{r strain_track_vis}
-doPlot(genome=genome, name=name, myChr=chrom, from=from, to=to, window=20,bamFiles=bamFiles, bamNames=bamNames, koStart=koStart,koWidth=koWidth,koChr=koChr)
+doPlot(genome=genome, name=strain, myChr=chrom, from=from, to=to, window=20,bamFiles=bamFiles, bamNames=bamNames, koStart=koStart,koWidth=koWidth,koChr=koChr)
 
 
 

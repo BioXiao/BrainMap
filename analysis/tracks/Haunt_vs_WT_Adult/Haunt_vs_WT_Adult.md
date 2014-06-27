@@ -1,4 +1,4 @@
-Celrr Adult track visualization 
+Haunt Adult track visualization 
 ========================================================
 
 
@@ -12,5 +12,10 @@ alpha<-0.05
 
 
 
-![plot of chunk strain_track_vis](Celrr_vs_WT_Adult/figure/strain_track_vis.png) 
+
+```
+## Error: dims [product 5] do not match the length of object [6]
+```
+
+![plot of chunk strain_track_vis](Haunt_vs_WT_Adult/figure/strain_track_vis.png) 
 
