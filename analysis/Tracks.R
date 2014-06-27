@@ -33,10 +33,13 @@ real_chromInfo<-read.table("/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_ann
 #saveDb(brainmap_lincs_mm10,file="brainmap_lincsubset_db.sqlite")
 #brainmap_lincs_mm10<-loadDb("brainmap_lincsubset_db.sqlite")
 
+mm10DB<-loadDb("brainmap_lincsubset_db.sqlite")
+
+
 #mm10Db_nolacz<-makeTranscriptDbFromGFF(GTF_noLacZ,format="gtf",chrominfo=real_chromInfo, species="Mus musculus")
 setwd(analysisdir)
 #saveDb(mm10Db_nolacz,file="mm10gencode_brainmapDB_nolacz.sqlite")
-mm10DB<-loadDb("mm10gencode_brainmapDB_nolacz.sqlite")
+#mm10DB<-loadDb("mm10gencode_brainmapDB_nolacz.sqlite")
 
 
 #Need to install R-3.0.0 (Devel) for Gviz to deal with .bam files
