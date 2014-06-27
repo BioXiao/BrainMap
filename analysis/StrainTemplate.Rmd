@@ -405,7 +405,7 @@ doPlot<-function(genome=genome,name,myChr,from,to,window,bamFiles,bamNames,koSta
   plotTracks(myTracks,from=from,to=to,chromosome=myChr,showAxis=FALSE,background.title="black",col.title="white",col.axis="black",sizes=trackSizes,geneSymbol=TRUE)
 }
 
-doPlot(genome=genome, name=name, myChr=chrom, from=from, to=to, window=20,bamFiles=bamFiles, bamNames=bamNames, koStart=koStart,koWidth=koWidth,koChr=koChr)
+doPlot(genome=genome, name=strain, myChr=chrom, from=from, to=to, window=20,bamFiles=bamFiles, bamNames=bamNames, koStart=koStart,koWidth=koWidth,koChr=koChr)
 
 detach(package:GenomicFeatures)
 ```
