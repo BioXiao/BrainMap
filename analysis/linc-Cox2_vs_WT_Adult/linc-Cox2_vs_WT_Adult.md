@@ -153,14 +153,10 @@ Expression heatmap:
 
 
 ```
-## Error: Invalid chromosome identifier 'velocigene_Zen_UB1_N3'
-## Please consider setting options(ucscChromosomeNames=FALSE) to allow for arbitrary chromosome identifiers.
+## Error: dims [product 3] do not match the length of object [4]
 ```
 
-```
-## Error: Invalid chromosome identifier 'velocigene_Zen_UB1_N3'
-## Please consider setting options(ucscChromosomeNames=FALSE) to allow for arbitrary chromosome identifiers.
-```
+![plot of chunk track_vis](figure/track_vis.png) 
 
 # Differential Analysis
 
@@ -171,7 +167,7 @@ Expression heatmap:
 There are 90 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 27 12:25:19 2014 -->
+<!-- Fri Jun 27 17:34:21 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Tubb6 </TD> </TR>
@@ -321,7 +317,7 @@ Per isoform difference between conditions:
 These isoforms are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 27 12:25:35 2014 -->
+<!-- Fri Jun 27 17:34:36 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> isoAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Tubb6 </TD> </TR>
@@ -495,7 +491,7 @@ The pvalue for 1 genes significantly regulated in a region this size  is: 1
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 27 12:44:21 2014 -->
+<!-- Fri Jun 27 17:58:44 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR729 </TD> </TR>
@@ -519,7 +515,7 @@ The pvalue for 1 genes significantly regulated in a region this size  is: 1
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 27 12:44:21 2014 -->
+<!-- Fri Jun 27 17:58:44 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR729/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 26338300.00 </TD> <TD align="right"> 34102000.00 </TD> <TD align="right"> 0.77 </TD> <TD align="right"> 1.00 </TD> </TR>
