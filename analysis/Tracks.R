@@ -1,22 +1,29 @@
 # TRACKS
 
-####### cummeRbund Tracks #######
 library(cummeRbund)
 
 analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
 diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/olddiffs"
 
+genome<-"mm10"
+GTF<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf"
+GTF_noLacZ<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/mm10_gencode_with_lincRNAS_NO_LACZ.gtf"
+#lincRNAsubsetGTF<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/BrainmapLincRNAs.gtf"
 
-################# SCRIPT FROM LOYAL -- helper functions ### 
+
+setwd(diffdir)
+setwd('linc-Cox2_vs_WT_Adult/')
+cuff<-readCufflinks(gtfFile=GTF,genome=genome)
+name<-"linc-Cox2"
+myGene<-getGene(cuff,name)
+
 library(RMySQL)
 library(RColorBrewer)
 library(GenomicFeatures)
 
 
-GTF<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf"
-GTF_noLacZ<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/mm10_gencode_with_lincRNAS_NO_LACZ.gtf"
 
-#lincRNAsubsetGTF<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/BrainmapLincRNAs.gtf"
+################# SCRIPT FROM LOYAL -- helper functions ### 
 #chromInfo<-read.table("/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/indexes/mm10/mm10_brainmap.chrom.info",header=TRUE)
 real_chromInfo<-read.table("/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/real_chromosomes_mm10_brainmap.chrom.info",header=TRUE)
 
@@ -26,16 +33,10 @@ real_chromInfo<-read.table("/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_ann
 #saveDb(brainmap_lincs_mm10,file="brainmap_lincsubset_db.sqlite")
 #brainmap_lincs_mm10<-loadDb("brainmap_lincsubset_db.sqlite")
 
-mm10Db<-makeTranscriptDbFromGFF(GTF,format="gtf",chrominfo=real_chromInfo, species="Mus musculus")
-mm10Db_nolacz<-makeTranscriptDbFromGFF(GTF_noLacZ,format="gtf",chrominfo=real_chromInfo, species="Mus musculus")
-
-#setwd(analysisdir)
-#saveDb(mm10Db,file="mm10gencode_brainmapDB.sqlite")
-
-
-#NOT SURE ON HOW TO LOAD THESE? 
-#BrainmapDB<-system.file("mm10gencode_brainmapDB.sqlite",package="GenomicFeatures")
-#mm10DB<-loadDb(BrainmapDB)
+#mm10Db_nolacz<-makeTranscriptDbFromGFF(GTF_noLacZ,format="gtf",chrominfo=real_chromInfo, species="Mus musculus")
+setwd(analysisdir)
+#saveDb(mm10Db_nolacz,file="mm10gencode_brainmapDB_nolacz.sqlite")
+mm10DB<-loadDb("mm10gencode_brainmapDB_nolacz.sqlite")
 
 
 #Need to install R-3.0.0 (Devel) for Gviz to deal with .bam files
@@ -100,23 +101,6 @@ makeBamTrack<-function(bamFile,bamName,genome=genome,chromosome,color="steelblue
 }
 
 ########## Constants #########
-library(cummeRbund)
-analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
-diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/olddiffs"
-GTF<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf"
-
-genome<-"mm10"
-
-setwd(diffdir)
-setwd('Peril_vs_WT_Embryonic/')
-cuff<-readCufflinks(gtfFile=GTF,genome=genome)
-name<-"Peril"
-#name<-"linc-Enc1"
-
-myGene<-getGene(cuff,name)
-#genetrack <-makeGeneRegionTrack(myGene)
-#plotTracks(list(genetrack))
-
 annot<-annotation(myGene)
 margin<-1000
 locus<-strsplit(annot$locus,":")
@@ -128,7 +112,8 @@ from<-as.numeric(start_and_end[[1]])-margin
 to<-as.numeric(start_and_end[[2]])+margin
 
 
-genetrack<-GeneRegionTrack(brainmap_lincs_mm10,rstarts=from,rends=to,chromosome=chrom,showId=TRUE,geneSymbol=TRUE,genome=genome,name="LincRNA Isoforms",fill="steelblue")
+#genetrack<-GeneRegionTrack(brainmap_lincs_mm10,rstarts=from,rends=to,chromosome=chrom,showId=TRUE,geneSymbol=TRUE,genome=genome,name="LincRNA Isoforms",fill="steelblue")
+genetrack<-GeneRegionTrack(mm10DB,rstarts=from,rends=to,chromosome=chrom,showId=TRUE,geneSymbol=TRUE,genome=genome,name="LincRNA Isoforms",fill="steelblue",stacking="squish")
 
 
 reps<-replicates(cuff)

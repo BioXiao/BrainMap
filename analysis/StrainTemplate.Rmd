@@ -1,8 +1,11 @@
-```{r standalone setup, echo=FALSE,eval=FALSE}
-strain<-"linc-Enc1"
+```{r standalone setup, echo=FALSE}
+strain<-"linc-Cox2"
 timepoint<-"Embryonic"
-filename<-"linc-Enc1_vs_WT_Embryonic"
-dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/olddiffs/linc-Enc1_vs_WT_Embryonic/"
+filename<-"linc-Cox2_vs_WT_Embryonic"
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/olddiffs/linc-Cox2_vs_WT_Embryonic/"
+
+
+### THINGS TO REMEMBER: change oldbam to bam and olddiff to diff once new set done! 
 ```
 
 `r strain` KO vs WT (`r timepoint`)
@@ -33,6 +36,8 @@ library(ggplot2)
 library(gtable)
 library(gridExtra)
 library(RColorBrewer)
+library(RMySQL)
+
 
 reactome_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.reactome.v4.0.symbols.gmt")
 biocarta_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.biocarta.v4.0.symbols.gmt")
@@ -45,6 +50,8 @@ colnames(deletionCoords)<-c("gene_name","gene_region","deletionRegion")
 
 
 ```
+
+THINGS TO REMEMBER: change oldbam to bam and olddiff to diff once new set done! 
 
 
 ```{r cummeRbund_and_data_setup, echo=FALSE}
@@ -256,13 +263,18 @@ csHeatmap(genotypingGenes,replicates=T)
 ### Track visualization 
 
 ```{r track_vis, fig.height=15, fig.width=10}
-library(RMySQL)
-library(RColorBrewer)
+library(GenomicFeatures)
 
-#library(GenomicFeatures)
-#makeTranscriptDbFromGFF
-#mm10DB<-makeTranscriptDbFromGFF(GTF,format="gtf",species="mus musculus")
+real_chromInfo<-read.table("/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/real_chromosomes_mm10_brainmap.chrom.info",header=TRUE)
 
+#GTF_noLacZ<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/mm10_gencode_with_lincRNAS_NO_LACZ.gtf"
+#mm10Db_nolacz<-makeTranscriptDbFromGFF(GTF_noLacZ,format="gtf",chrominfo=real_chromInfo, species="Mus musculus")
+#saveDb(mm10Db_nolacz,file="mm10gencode_brainmapDB_nolacz.sqlite")
+
+mm10DB<-loadDb("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/mm10gencode_brainmapDB_nolacz.sqlite")
+
+
+#Need to install R-3.0.0 (Devel) for Gviz to deal with .bam files
 #Helper Functions
 movingAverage <- function(x, n=10, centered=TRUE) {
   
@@ -324,23 +336,29 @@ makeBamTrack<-function(bamFile,bamName,genome=genome,chromosome,color="steelblue
 }
 
 ########## Constants #########
-name<-strain
-myGene<-getGene(cuff,name)
-genetrack <-makeGeneRegionTrack(myGene)
-#plotTracks(list(genetrack))
-
-windowMargin<-1000
 annot<-annotation(myGene)
+margin<-1000
 locus<-strsplit(annot$locus,":")
 locus<-unlist(locus)
 chrom<-locus[[1]]
 start_and_end<-strsplit(locus[[2]],"-")
 start_and_end<-unlist(start_and_end)
-from<-as.numeric(start_and_end[[1]])-windowMargin
-to<-as.numeric(start_and_end[[2]])+windowMargin
+from<-as.numeric(start_and_end[[1]])-margin
+to<-as.numeric(start_and_end[[2]])+margin
 
+#genetrack<-GeneRegionTrack(brainmap_lincs_mm10,rstarts=from,rends=to,chromosome=chrom,showId=TRUE,geneSymbol=TRUE,genome=genome,name="LincRNA Isoforms",fill="steelblue")
+genetrack<-GeneRegionTrack(mm10DB,rstarts=from,rends=to,chromosome=chrom,showId=TRUE,geneSymbol=TRUE,genome=genome,name="LincRNA Isoforms",fill="steelblue")
+
+reps<-replicates(cuff)
+files<-lapply(reps$file,function(x){strsplit(x, "/")})
+files<-as.data.frame(files)
+samples<-(t(files[10,]))
+rownames(samples)<-NULL
 JRs<-samples
 
+setwd(analysisdir)
+deletionCoords<-read.table("mm10DeletionCoords.txt",sep="\t",header=TRUE,stringsAsFactors=FALSE)
+colnames(deletionCoords)<-c("gene_name","gene_region","deletionRegion")
 koStrain<-name
 coords<-deletionCoords[which(deletionCoords$gene_name==koStrain),3]
 coords<-strsplit(coords,":")
@@ -350,6 +368,7 @@ positions<-strsplit(coords[[2]],"-")
 positions<-unlist(positions)
 koStart<-as.numeric(positions[1])
 koWidth<-abs(as.numeric(positions[2])-as.numeric(positions[1]))
+
 
 bamRoot<-'/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/oldbam/'
 
@@ -361,7 +380,6 @@ specCols<-brewer.pal(3,"Paired")
 colPal<-colorRampPalette(specCols)
 bamColors<-colPal(length(bamFiles))
 
-#require(TxDb.Mmusculus.UCSC.mm10.knownGene)
 
 doPlot<-function(genome=genome,name,myChr,from,to,window,bamFiles,bamNames,koStart,koWidth,koChr){
   #Make Tracks
@@ -382,18 +400,14 @@ doPlot<-function(genome=genome,name,myChr,from,to,window,bamFiles,bamNames,koSta
   write("\tplotting...",stderr())
   # myTracks<-c(bamTracks,knownGenes)
   myTracks<-c(idxTrack,axTrack,genetrack,bamTracks,koTrack)
-  trackSizes<-c(2,2,4,rep(1,length(bamTracks)),1)
+  trackSizes<-c(1,1,4,rep(1,length(bamTracks)),1)
 
-  #pdf(paste(name,".pdf",sep=""),width=10,height=8)
-  plotTracks(myTracks,from=from,to=to,chromosome=myChr,showAxis=FALSE,background.title="black",col.title="white",col.axis="black",sizes=trackSizes)
-  #dev.off()
-  #dbDisconnect(con)
+  plotTracks(myTracks,from=from,to=to,chromosome=myChr,showAxis=FALSE,background.title="black",col.title="white",col.axis="black",sizes=trackSizes,geneSymbol=TRUE)
 }
-
 
 doPlot(genome=genome, name=name, myChr=chrom, from=from, to=to, window=20,bamFiles=bamFiles, bamNames=bamNames, koStart=koStart,koWidth=koWidth,koChr=koChr)
 
-
+detach(package:GenomicFeatures)
 ```
 
 # Differential Analysis

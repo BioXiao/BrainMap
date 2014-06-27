@@ -3,7 +3,7 @@ library(knitr)
 analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
 
 # Make directory table
-diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
+diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/olddiffs"
 setwd(diffdir)
 files<-list.files()
 names<-files
@@ -51,7 +51,7 @@ library(knitr)
 analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
 
 # Make directory table
-diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
+diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/olddiffs"
 setwd(diffdir)
 files<-list.files()
 names<-files
