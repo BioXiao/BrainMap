@@ -264,15 +264,16 @@ csHeatmap(genotypingGenes,replicates=T)
 
 ```{r track_vis, fig.height=15, fig.width=10}
 library(GenomicFeatures)
-
+name<-strain
 real_chromInfo<-read.table("/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/real_chromosomes_mm10_brainmap.chrom.info",header=TRUE)
 
+genome<-"mm10"
 #GTF_noLacZ<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/mm10_gencode_with_lincRNAS_NO_LACZ.gtf"
 #mm10Db_nolacz<-makeTranscriptDbFromGFF(GTF_noLacZ,format="gtf",chrominfo=real_chromInfo, species="Mus musculus")
 #saveDb(mm10Db_nolacz,file="mm10gencode_brainmapDB_nolacz.sqlite")
 
-mm10DB<-loadDb("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/mm10gencode_brainmapDB_nolacz.sqlite")
-
+#mm10DB<-loadDb("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/mm10gencode_brainmapDB_nolacz.sqlite")
+mm10DB<-loadDb("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/brainmap_lincsubset_db.sqlite")
 
 #Need to install R-3.0.0 (Devel) for Gviz to deal with .bam files
 #Helper Functions
@@ -405,7 +406,7 @@ doPlot<-function(genome=genome,name,myChr,from,to,window,bamFiles,bamNames,koSta
   plotTracks(myTracks,from=from,to=to,chromosome=myChr,showAxis=FALSE,background.title="black",col.title="white",col.axis="black",sizes=trackSizes,geneSymbol=TRUE)
 }
 
-doPlot(genome=genome, name=strain, myChr=chrom, from=from, to=to, window=20,bamFiles=bamFiles, bamNames=bamNames, koStart=koStart,koWidth=koWidth,koChr=koChr)
+doPlot(genome=genome, name=name, myChr=chrom, from=from, to=to, window=20,bamFiles=bamFiles, bamNames=bamNames, koStart=koStart,koWidth=koWidth,koChr=koChr)
 
 detach(package:GenomicFeatures)
 ```
