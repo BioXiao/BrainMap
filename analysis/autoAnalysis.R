@@ -1,4 +1,51 @@
 # Generate all wt-v-ko analysis reports for whole brain sequencing by strain 
+
+# NEED:
+# strain
+# timepoint
+# dir
+# filename
+# # make csv file with these and feed into R BATCH script 
+
+diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/olddiffs"
+
+files<-list.files(path=diffdir)
+names<-files
+split<-data.frame(strsplit(names,"_"))
+rownames(split)<-c("strain","vs","wt","timepoint")
+split$c..Adult....full..<-NULL
+split$c..Embryonic....full..<-NULL
+split$X.init.<-NULL
+split$c..unit....test..<-NULL
+
+mat<-matrix(nrow=dim(split)[2],ncol=4)
+data=data.frame(mat)
+colnames(data)<-c("strain","timepoint","filename","dir")
+
+for(i in seq(1,(dim(split)[2]))){ 
+  data$strain[i] <-as.character(split[1,i])
+  data$timepoint[i]<-as.character(split[4,i])
+  filename<-paste(split[,i],collapse="_")
+  data$filename[i]<-filename
+  data$dir[i]<-paste(diffdir,filename,sep="/")
+#  knit2html('../StrainTemplate.Rmd',output=paste(filename,".md",sep=""), quiet=TRUE)
+}
+
+write.table(data,"autoanalysisInfo.csv",sep=",")
+
+
+####################BATCH SCRIPT######################
+dat<-read.csv("autoanalysisInfo.csv",header=TRUE)
+#GET i ARG! 
+i<-commandArgs()[1]
+filename<-dat$filename[i]
+print(filename)
+print(dat$strain[i])
+setwd(filename)
+knit2html('/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/StrainTemplate.Rmd',output=paste(filename,".md",sep=""), quiet=TRUE)
+
+########################## ADULT ###################
+
 library(knitr)
 analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
 
@@ -16,7 +63,7 @@ setwd(analysisdir)
 #library(cummeRbund)
 
 
-for(i in seq(1,(dim(adult_directories)[2]))){
+for(i in seq(6,(dim(adult_directories)[2]))){
   setwd(analysisdir)
   strain <-as.character(adult_directories[1,i])
   timepoint<-"Adult"
@@ -34,9 +81,6 @@ for(i in seq(1,(dim(adult_directories)[2]))){
   print(strain)
   setwd(analysisdir)
 }
-
-#paste(adult_directories[,1],sep="_",collapse="_")
-
 
 
 
@@ -64,7 +108,7 @@ embryonic_directories<-split[,which(split[4,]=="Embryonic")]
 setwd(analysisdir)
 #library(cummeRbund)
 #haunt and tp53cor1
-for(i in seq(1,(dim(embryonic_directories)[2]))){
+for(i in seq(7,(dim(embryonic_directories)[2]))){
   strain <-as.character(embryonic_directories[1,i])
   timepoint<-"Embryonic"
   filename<-paste(embryonic_directories[,i],collapse="_")
