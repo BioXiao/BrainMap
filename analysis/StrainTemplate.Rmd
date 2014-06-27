@@ -263,8 +263,12 @@ csHeatmap(genotypingGenes,replicates=T)
 ### Track visualization 
 
 ```{r track_vis, fig.height=15, fig.width=10}
-library(GenomicFeatures)
 name<-strain
+myGene<-getGene(cuff,name)
+
+library(GenomicFeatures)
+
+
 real_chromInfo<-read.table("/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/real_chromosomes_mm10_brainmap.chrom.info",header=TRUE)
 
 genome<-"mm10"

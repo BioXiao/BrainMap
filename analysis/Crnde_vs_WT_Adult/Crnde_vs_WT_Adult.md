@@ -151,16 +151,7 @@ Expression heatmap:
 
 ### Track visualization 
 
-
-```
-## Error: Invalid chromosome identifier 'velocigene_Zen_UB1_N3'
-## Please consider setting options(ucscChromosomeNames=FALSE) to allow for arbitrary chromosome identifiers.
-```
-
-```
-## Error: Invalid chromosome identifier 'velocigene_Zen_UB1_N3'
-## Please consider setting options(ucscChromosomeNames=FALSE) to allow for arbitrary chromosome identifiers.
-```
+![plot of chunk track_vis](figure/track_vis.png) 
 
 # Differential Analysis
 
@@ -171,7 +162,7 @@ Expression heatmap:
 There are 45 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 27 10:03:03 2014 -->
+<!-- Fri Jun 27 15:02:38 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Fosb </TD> </TR>
@@ -276,7 +267,7 @@ Per isoform difference between conditions:
 These isoforms are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 27 10:03:18 2014 -->
+<!-- Fri Jun 27 15:02:52 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> isoAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Fosb </TD> </TR>
@@ -428,7 +419,7 @@ Cluster profiler used to call enichments of significantly differentially regulat
 
 
 
-The pvalue for 2 genes significantly regulated in a region this size  is: 0.107 
+The pvalue for 2 genes significantly regulated in a region this size  is: 0.113 
 
 
 ![plot of chunk cisreg_image](figure/cisreg_image.png) 
@@ -437,7 +428,7 @@ The pvalue for 2 genes significantly regulated in a region this size  is: 0.107
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 27 10:24:18 2014 -->
+<!-- Fri Jun 27 15:22:38 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR729 </TD> </TR>
@@ -460,7 +451,7 @@ The pvalue for 2 genes significantly regulated in a region this size  is: 0.107
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 27 10:24:18 2014 -->
+<!-- Fri Jun 27 15:22:38 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR729/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 26338300.00 </TD> <TD align="right"> 34595700.00 </TD> <TD align="right"> 0.76 </TD> <TD align="right"> 1.00 </TD> </TR>
