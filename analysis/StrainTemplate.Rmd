@@ -2,7 +2,7 @@
 strain<-"linc-Cox2"
 timepoint<-"Embryonic"
 filename<-"linc-Cox2_vs_WT_Embryonic"
-dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/olddiffs/linc-Cox2_vs_WT_Embryonic/"
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Cox2_vs_WT_Embryonic/"
 
 
 ### THINGS TO REMEMBER: change oldbam to bam and olddiff to diff once new set done! 
@@ -19,7 +19,7 @@ opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE,fig.height=4, fig.width=
 alpha<-0.05 
 
 analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
-diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/olddiffs"
+diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
 GTF<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf"
 genome<-"mm10"
 
@@ -375,7 +375,7 @@ koStart<-as.numeric(positions[1])
 koWidth<-abs(as.numeric(positions[2])-as.numeric(positions[1]))
 
 
-bamRoot<-'/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/oldbam/'
+bamRoot<-'/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/'
 
 bamFiles<-lapply(JRs,function(x){paste(bamRoot,x,"/accepted_hits.bam",sep="")})
 

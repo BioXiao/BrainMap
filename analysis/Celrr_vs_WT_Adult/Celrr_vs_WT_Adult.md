@@ -151,7 +151,12 @@ Expression heatmap:
 
 ### Track visualization 
 
-![plot of chunk track_vis](figure/track_vis.png) 
+
+```
+## Error: Unable to find index for BAM file '/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR729/accepted_hits.bam'. You can build an index using the following command:
+## 	library(Rsamtools)
+## 	indexBam("/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/JR729/accepted_hits.bam")
+```
 
 # Differential Analysis
 
@@ -159,10 +164,10 @@ Expression heatmap:
 
 
 
-There are 52 significantly differentially expressed genes. They are:
+There are 54 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 27 14:38:48 2014 -->
+<!-- Sat Jun 28 14:15:11 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Chordc1 </TD> </TR>
@@ -173,50 +178,52 @@ There are 52 significantly differentially expressed genes. They are:
   <TR> <TD align="right"> 6 </TD> <TD> P4ha1 </TD> </TR>
   <TR> <TD align="right"> 7 </TD> <TD> Btg2 </TD> </TR>
   <TR> <TD align="right"> 8 </TD> <TD> Ccdc117 </TD> </TR>
-  <TR> <TD align="right"> 9 </TD> <TD> Pdia6 </TD> </TR>
-  <TR> <TD align="right"> 10 </TD> <TD> Adi1 </TD> </TR>
-  <TR> <TD align="right"> 11 </TD> <TD> Serpina3n </TD> </TR>
-  <TR> <TD align="right"> 12 </TD> <TD> Fos </TD> </TR>
-  <TR> <TD align="right"> 13 </TD> <TD> Arc </TD> </TR>
-  <TR> <TD align="right"> 14 </TD> <TD> Sdf2l1 </TD> </TR>
-  <TR> <TD align="right"> 15 </TD> <TD> Nr4a1 </TD> </TR>
-  <TR> <TD align="right"> 16 </TD> <TD> Creld2 </TD> </TR>
-  <TR> <TD align="right"> 17 </TD> <TD> Glo1 </TD> </TR>
-  <TR> <TD align="right"> 18 </TD> <TD> Dusp1 </TD> </TR>
-  <TR> <TD align="right"> 19 </TD> <TD> Pdia4 </TD> </TR>
-  <TR> <TD align="right"> 20 </TD> <TD> Lcn2 </TD> </TR>
-  <TR> <TD align="right"> 21 </TD> <TD> Hspa5 </TD> </TR>
-  <TR> <TD align="right"> 22 </TD> <TD> Vcam1 </TD> </TR>
-  <TR> <TD align="right"> 23 </TD> <TD> Hddc3 </TD> </TR>
-  <TR> <TD align="right"> 24 </TD> <TD> Tsc22d3 </TD> </TR>
-  <TR> <TD align="right"> 25 </TD> <TD> Mt2 </TD> </TR>
-  <TR> <TD align="right"> 26 </TD> <TD> Mt1 </TD> </TR>
-  <TR> <TD align="right"> 27 </TD> <TD> Pllp </TD> </TR>
-  <TR> <TD align="right"> 28 </TD> <TD> Cryab </TD> </TR>
-  <TR> <TD align="right"> 29 </TD> <TD> Ptgs2 </TD> </TR>
-  <TR> <TD align="right"> 30 </TD> <TD> Lars2 </TD> </TR>
-  <TR> <TD align="right"> 31 </TD> <TD> Egr2 </TD> </TR>
-  <TR> <TD align="right"> 32 </TD> <TD> Fmo2 </TD> </TR>
-  <TR> <TD align="right"> 33 </TD> <TD> Obfc1 </TD> </TR>
-  <TR> <TD align="right"> 34 </TD> <TD> Pcsk9 </TD> </TR>
-  <TR> <TD align="right"> 35 </TD> <TD> Gm9493 </TD> </TR>
-  <TR> <TD align="right"> 36 </TD> <TD> Acp1 </TD> </TR>
-  <TR> <TD align="right"> 37 </TD> <TD> Cirbp </TD> </TR>
-  <TR> <TD align="right"> 38 </TD> <TD> Npas4 </TD> </TR>
-  <TR> <TD align="right"> 39 </TD> <TD> Tmem252 </TD> </TR>
-  <TR> <TD align="right"> 40 </TD> <TD> Opalin </TD> </TR>
-  <TR> <TD align="right"> 41 </TD> <TD> Cd14 </TD> </TR>
-  <TR> <TD align="right"> 42 </TD> <TD> Rpl30 </TD> </TR>
-  <TR> <TD align="right"> 43 </TD> <TD> Tpt1 </TD> </TR>
-  <TR> <TD align="right"> 44 </TD> <TD> Zbtb40 </TD> </TR>
-  <TR> <TD align="right"> 45 </TD> <TD> Rpl34 </TD> </TR>
-  <TR> <TD align="right"> 46 </TD> <TD> Ppia </TD> </TR>
-  <TR> <TD align="right"> 47 </TD> <TD> Gm7292 </TD> </TR>
-  <TR> <TD align="right"> 48 </TD> <TD> H2-Bl </TD> </TR>
-  <TR> <TD align="right"> 49 </TD> <TD> Wdfy1 </TD> </TR>
-  <TR> <TD align="right"> 50 </TD> <TD> Hspa1b </TD> </TR>
-  <TR> <TD align="right"> 51 </TD> <TD> Hspa1a </TD> </TR>
-  <TR> <TD align="right"> 52 </TD> <TD> AA465934 </TD> </TR>
+  <TR> <TD align="right"> 9 </TD> <TD> Xbp1 </TD> </TR>
+  <TR> <TD align="right"> 10 </TD> <TD> Pdia6 </TD> </TR>
+  <TR> <TD align="right"> 11 </TD> <TD> Adi1 </TD> </TR>
+  <TR> <TD align="right"> 12 </TD> <TD> Serpina3n </TD> </TR>
+  <TR> <TD align="right"> 13 </TD> <TD> Fos </TD> </TR>
+  <TR> <TD align="right"> 14 </TD> <TD> Arc </TD> </TR>
+  <TR> <TD align="right"> 15 </TD> <TD> Sdf2l1 </TD> </TR>
+  <TR> <TD align="right"> 16 </TD> <TD> Nr4a1 </TD> </TR>
+  <TR> <TD align="right"> 17 </TD> <TD> Creld2 </TD> </TR>
+  <TR> <TD align="right"> 18 </TD> <TD> Glo1 </TD> </TR>
+  <TR> <TD align="right"> 19 </TD> <TD> Dusp1 </TD> </TR>
+  <TR> <TD align="right"> 20 </TD> <TD> Pdia4 </TD> </TR>
+  <TR> <TD align="right"> 21 </TD> <TD> Lcn2 </TD> </TR>
+  <TR> <TD align="right"> 22 </TD> <TD> Hspa5 </TD> </TR>
+  <TR> <TD align="right"> 23 </TD> <TD> Vcam1 </TD> </TR>
+  <TR> <TD align="right"> 24 </TD> <TD> Hddc3 </TD> </TR>
+  <TR> <TD align="right"> 25 </TD> <TD> Tsc22d3 </TD> </TR>
+  <TR> <TD align="right"> 26 </TD> <TD> Mt2 </TD> </TR>
+  <TR> <TD align="right"> 27 </TD> <TD> Mt1 </TD> </TR>
+  <TR> <TD align="right"> 28 </TD> <TD> Pllp </TD> </TR>
+  <TR> <TD align="right"> 29 </TD> <TD> Cryab </TD> </TR>
+  <TR> <TD align="right"> 30 </TD> <TD> Ptgs2 </TD> </TR>
+  <TR> <TD align="right"> 31 </TD> <TD> Tlr13 </TD> </TR>
+  <TR> <TD align="right"> 32 </TD> <TD> Lars2 </TD> </TR>
+  <TR> <TD align="right"> 33 </TD> <TD> Egr1 </TD> </TR>
+  <TR> <TD align="right"> 34 </TD> <TD> Fmo2 </TD> </TR>
+  <TR> <TD align="right"> 35 </TD> <TD> Obfc1 </TD> </TR>
+  <TR> <TD align="right"> 36 </TD> <TD> Pcsk9 </TD> </TR>
+  <TR> <TD align="right"> 37 </TD> <TD> Gm9493 </TD> </TR>
+  <TR> <TD align="right"> 38 </TD> <TD> Acp1 </TD> </TR>
+  <TR> <TD align="right"> 39 </TD> <TD> Cirbp </TD> </TR>
+  <TR> <TD align="right"> 40 </TD> <TD> Npas4 </TD> </TR>
+  <TR> <TD align="right"> 41 </TD> <TD> Tmem252 </TD> </TR>
+  <TR> <TD align="right"> 42 </TD> <TD> Opalin </TD> </TR>
+  <TR> <TD align="right"> 43 </TD> <TD> Cd14 </TD> </TR>
+  <TR> <TD align="right"> 44 </TD> <TD> Tpt1 </TD> </TR>
+  <TR> <TD align="right"> 45 </TD> <TD> Zbtb40 </TD> </TR>
+  <TR> <TD align="right"> 46 </TD> <TD> Rpl34 </TD> </TR>
+  <TR> <TD align="right"> 47 </TD> <TD> Ppia </TD> </TR>
+  <TR> <TD align="right"> 48 </TD> <TD> Gm7292 </TD> </TR>
+  <TR> <TD align="right"> 49 </TD> <TD> H2-Bl </TD> </TR>
+  <TR> <TD align="right"> 50 </TD> <TD> Wdfy1 </TD> </TR>
+  <TR> <TD align="right"> 51 </TD> <TD> Hspa1b </TD> </TR>
+  <TR> <TD align="right"> 52 </TD> <TD> Hspa1a </TD> </TR>
+  <TR> <TD align="right"> 53 </TD> <TD> Neat1 </TD> </TR>
+  <TR> <TD align="right"> 54 </TD> <TD> AA465934 </TD> </TR>
    </TABLE>
 
 ### Matrix of gene significant differences between conditions
@@ -273,21 +280,56 @@ Per isoform difference between conditions:
 
 These isoforms are:
 
-[1] "no sig isoforms"
+<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
+<!-- Sat Jun 28 14:15:52 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> isoAnnot$gene_short_name </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> Chordc1 </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> Rec8 </TD> </TR>
+  <TR> <TD align="right"> 3 </TD> <TD> Hif3a </TD> </TR>
+  <TR> <TD align="right"> 4 </TD> <TD> Nes </TD> </TR>
+  <TR> <TD align="right"> 5 </TD> <TD> Dnajb1 </TD> </TR>
+  <TR> <TD align="right"> 6 </TD> <TD> Cyp2a5 </TD> </TR>
+  <TR> <TD align="right"> 7 </TD> <TD> Dio2 </TD> </TR>
+  <TR> <TD align="right"> 8 </TD> <TD> Btg2 </TD> </TR>
+  <TR> <TD align="right"> 9 </TD> <TD> Pdia6 </TD> </TR>
+  <TR> <TD align="right"> 10 </TD> <TD> Serpina3n </TD> </TR>
+  <TR> <TD align="right"> 11 </TD> <TD> Fos </TD> </TR>
+  <TR> <TD align="right"> 12 </TD> <TD> Fam107a </TD> </TR>
+  <TR> <TD align="right"> 13 </TD> <TD> Arc </TD> </TR>
+  <TR> <TD align="right"> 14 </TD> <TD> Sdf2l1 </TD> </TR>
+  <TR> <TD align="right"> 15 </TD> <TD> Nr4a1 </TD> </TR>
+  <TR> <TD align="right"> 16 </TD> <TD> Dusp1 </TD> </TR>
+  <TR> <TD align="right"> 17 </TD> <TD> Pdia4 </TD> </TR>
+  <TR> <TD align="right"> 18 </TD> <TD> Vcam1 </TD> </TR>
+  <TR> <TD align="right"> 19 </TD> <TD> Hddc3 </TD> </TR>
+  <TR> <TD align="right"> 20 </TD> <TD> Mt2 </TD> </TR>
+  <TR> <TD align="right"> 21 </TD> <TD> Mt1 </TD> </TR>
+  <TR> <TD align="right"> 22 </TD> <TD> Pllp </TD> </TR>
+  <TR> <TD align="right"> 23 </TD> <TD> Ptgs2 </TD> </TR>
+  <TR> <TD align="right"> 24 </TD> <TD> Lars2 </TD> </TR>
+  <TR> <TD align="right"> 25 </TD> <TD> Gjb6 </TD> </TR>
+  <TR> <TD align="right"> 26 </TD> <TD> Gm9493 </TD> </TR>
+  <TR> <TD align="right"> 27 </TD> <TD> Cirbp </TD> </TR>
+  <TR> <TD align="right"> 28 </TD> <TD> Npas4 </TD> </TR>
+  <TR> <TD align="right"> 29 </TD> <TD> Tmem252 </TD> </TR>
+  <TR> <TD align="right"> 30 </TD> <TD> Opalin </TD> </TR>
+  <TR> <TD align="right"> 31 </TD> <TD> Pla2g4e </TD> </TR>
+  <TR> <TD align="right"> 32 </TD> <TD> Zbtb40 </TD> </TR>
+  <TR> <TD align="right"> 33 </TD> <TD> Gm7292 </TD> </TR>
+  <TR> <TD align="right"> 34 </TD> <TD> Wdfy1 </TD> </TR>
+  <TR> <TD align="right"> 35 </TD> <TD> Hspa1b </TD> </TR>
+  <TR> <TD align="right"> 36 </TD> <TD> Hspa1a </TD> </TR>
+  <TR> <TD align="right"> 37 </TD> <TD> Neat1 </TD> </TR>
+   </TABLE>
 
 Gene-level DE isoform heatmap
 
-
-```
-## [1] "no sig isoforms"
-```
+![plot of chunk isoform_heatmap](figure/isoform_heatmap.png) 
 
 Isoform foldchange heatmap by isoform:
 
-
-```
-## [1] "no sig isoforms"
-```
+![plot of chunk isoform logfoldchange_heatmap](figure/isoform logfoldchange_heatmap.png) 
 
 
 ### Differential Splicing between conditions
@@ -391,7 +433,11 @@ Cluster profiler used to call enichments of significantly differentially regulat
 ## [1] "ERROR: The estimated pi0 <= 0. Check that you have valid p-values or use another lambda method."
 ```
 
-![plot of chunk GO_figures](figure/GO_figures1.png) ![plot of chunk GO_figures](figure/GO_figures2.png) ![plot of chunk GO_figures](figure/GO_figures3.png) ![plot of chunk GO_figures](figure/GO_figures4.png) ![plot of chunk GO_figures](figure/GO_figures5.png) 
+![plot of chunk GO_figures](figure/GO_figures1.png) ![plot of chunk GO_figures](figure/GO_figures2.png) ![plot of chunk GO_figures](figure/GO_figures3.png) ![plot of chunk GO_figures](figure/GO_figures4.png) 
+
+```
+## Error: 'x' and 'units' must have length > 0
+```
 
 # Cis vs Trans (locally)
 
@@ -406,7 +452,7 @@ The pvalue for 0 genes significantly regulated in a region this size  is: 1
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 27 14:58:18 2014 -->
+<!-- Sat Jun 28 14:40:39 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR729 </TD> </TR>
@@ -430,26 +476,26 @@ The pvalue for 0 genes significantly regulated in a region this size  is: 1
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jun 27 14:58:18 2014 -->
+<!-- Sat Jun 28 14:40:39 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
-  <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR729/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 26338300.00 </TD> <TD align="right"> 33873900.00 </TD> <TD align="right"> 0.78 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 2 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR728/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   1 </TD> <TD> WT_1 </TD> <TD align="right"> 20332100.00 </TD> <TD align="right"> 33873900.00 </TD> <TD align="right"> 0.60 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 3 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR796/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   2 </TD> <TD> WT_2 </TD> <TD align="right"> 34093300.00 </TD> <TD align="right"> 33873900.00 </TD> <TD align="right"> 1.00 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 4 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR797/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   3 </TD> <TD> WT_3 </TD> <TD align="right"> 28111900.00 </TD> <TD align="right"> 33873900.00 </TD> <TD align="right"> 0.82 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 5 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR740/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   4 </TD> <TD> WT_4 </TD> <TD align="right"> 35813300.00 </TD> <TD align="right"> 33873900.00 </TD> <TD align="right"> 1.06 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 6 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR800/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   5 </TD> <TD> WT_5 </TD> <TD align="right"> 37017800.00 </TD> <TD align="right"> 33873900.00 </TD> <TD align="right"> 1.10 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 7 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR827/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   6 </TD> <TD> WT_6 </TD> <TD align="right"> 27790600.00 </TD> <TD align="right"> 33873900.00 </TD> <TD align="right"> 0.82 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 8 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR778/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   7 </TD> <TD> WT_7 </TD> <TD align="right"> 39549100.00 </TD> <TD align="right"> 33873900.00 </TD> <TD align="right"> 1.18 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 9 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR734/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   8 </TD> <TD> WT_8 </TD> <TD align="right"> 34485000.00 </TD> <TD align="right"> 33873900.00 </TD> <TD align="right"> 1.03 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 10 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR802/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   9 </TD> <TD> WT_9 </TD> <TD align="right"> 45472800.00 </TD> <TD align="right"> 33873900.00 </TD> <TD align="right"> 1.33 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 11 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR803/abundances.cxb </TD> <TD> WT </TD> <TD align="right">  10 </TD> <TD> WT_10 </TD> <TD align="right"> 52136700.00 </TD> <TD align="right"> 33873900.00 </TD> <TD align="right"> 1.54 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 12 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR735/abundances.cxb </TD> <TD> WT </TD> <TD align="right">  11 </TD> <TD> WT_11 </TD> <TD align="right"> 34999600.00 </TD> <TD align="right"> 33873900.00 </TD> <TD align="right"> 1.04 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 13 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR785/abundances.cxb </TD> <TD> WT </TD> <TD align="right">  12 </TD> <TD> WT_12 </TD> <TD align="right"> 34180700.00 </TD> <TD align="right"> 33873900.00 </TD> <TD align="right"> 1.00 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 14 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR781/abundances.cxb </TD> <TD> WT </TD> <TD align="right">  13 </TD> <TD> WT_13 </TD> <TD align="right"> 41544600.00 </TD> <TD align="right"> 33873900.00 </TD> <TD align="right"> 1.23 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 15 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR739/abundances.cxb </TD> <TD> Celrr </TD> <TD align="right">   0 </TD> <TD> Celrr_0 </TD> <TD align="right"> 23329000.00 </TD> <TD align="right"> 33873900.00 </TD> <TD align="right"> 0.69 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 16 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR783/abundances.cxb </TD> <TD> Celrr </TD> <TD align="right">   1 </TD> <TD> Celrr_1 </TD> <TD align="right"> 37164200.00 </TD> <TD align="right"> 33873900.00 </TD> <TD align="right"> 1.10 </TD> <TD align="right"> 1.00 </TD> </TR>
-  <TR> <TD align="right"> 17 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR804/abundances.cxb </TD> <TD> Celrr </TD> <TD align="right">   2 </TD> <TD> Celrr_2 </TD> <TD align="right"> 39723200.00 </TD> <TD align="right"> 33873900.00 </TD> <TD align="right"> 1.16 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR729/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 26334400.00 </TD> <TD align="right"> 33868500.00 </TD> <TD align="right"> 0.78 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR728/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   1 </TD> <TD> WT_1 </TD> <TD align="right"> 20329200.00 </TD> <TD align="right"> 33868500.00 </TD> <TD align="right"> 0.60 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 3 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR796/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   2 </TD> <TD> WT_2 </TD> <TD align="right"> 34089000.00 </TD> <TD align="right"> 33868500.00 </TD> <TD align="right"> 1.00 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 4 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR797/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   3 </TD> <TD> WT_3 </TD> <TD align="right"> 28103300.00 </TD> <TD align="right"> 33868500.00 </TD> <TD align="right"> 0.82 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 5 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR740/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   4 </TD> <TD> WT_4 </TD> <TD align="right"> 35808200.00 </TD> <TD align="right"> 33868500.00 </TD> <TD align="right"> 1.06 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 6 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR800/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   5 </TD> <TD> WT_5 </TD> <TD align="right"> 37012200.00 </TD> <TD align="right"> 33868500.00 </TD> <TD align="right"> 1.10 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 7 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR827/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   6 </TD> <TD> WT_6 </TD> <TD align="right"> 27786600.00 </TD> <TD align="right"> 33868500.00 </TD> <TD align="right"> 0.82 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 8 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR778/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   7 </TD> <TD> WT_7 </TD> <TD align="right"> 39541900.00 </TD> <TD align="right"> 33868500.00 </TD> <TD align="right"> 1.18 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 9 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR734/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   8 </TD> <TD> WT_8 </TD> <TD align="right"> 34480600.00 </TD> <TD align="right"> 33868500.00 </TD> <TD align="right"> 1.03 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 10 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR802/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   9 </TD> <TD> WT_9 </TD> <TD align="right"> 45467400.00 </TD> <TD align="right"> 33868500.00 </TD> <TD align="right"> 1.33 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 11 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR803/abundances.cxb </TD> <TD> WT </TD> <TD align="right">  10 </TD> <TD> WT_10 </TD> <TD align="right"> 52130400.00 </TD> <TD align="right"> 33868500.00 </TD> <TD align="right"> 1.54 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 12 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR735/abundances.cxb </TD> <TD> WT </TD> <TD align="right">  11 </TD> <TD> WT_11 </TD> <TD align="right"> 34994400.00 </TD> <TD align="right"> 33868500.00 </TD> <TD align="right"> 1.04 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 13 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR785/abundances.cxb </TD> <TD> WT </TD> <TD align="right">  12 </TD> <TD> WT_12 </TD> <TD align="right"> 34173600.00 </TD> <TD align="right"> 33868500.00 </TD> <TD align="right"> 1.00 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 14 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR781/abundances.cxb </TD> <TD> WT </TD> <TD align="right">  13 </TD> <TD> WT_13 </TD> <TD align="right"> 41538900.00 </TD> <TD align="right"> 33868500.00 </TD> <TD align="right"> 1.23 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 15 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR739/abundances.cxb </TD> <TD> Celrr </TD> <TD align="right">   0 </TD> <TD> Celrr_0 </TD> <TD align="right"> 23325900.00 </TD> <TD align="right"> 33868500.00 </TD> <TD align="right"> 0.69 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 16 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR783/abundances.cxb </TD> <TD> Celrr </TD> <TD align="right">   1 </TD> <TD> Celrr_1 </TD> <TD align="right"> 37161800.00 </TD> <TD align="right"> 33868500.00 </TD> <TD align="right"> 1.10 </TD> <TD align="right"> 1.00 </TD> </TR>
+  <TR> <TD align="right"> 17 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR804/abundances.cxb </TD> <TD> Celrr </TD> <TD align="right">   2 </TD> <TD> Celrr_2 </TD> <TD align="right"> 39715300.00 </TD> <TD align="right"> 33868500.00 </TD> <TD align="right"> 1.16 </TD> <TD align="right"> 1.00 </TD> </TR>
    </TABLE>
 
 ## Session Info
@@ -518,13 +564,13 @@ The pvalue for 0 genes significantly regulated in a region this size  is: 1
 ## [16] graph_1.40.1           graphite_1.8.1         gtools_3.4.1          
 ## [19] Hmisc_3.14-4           igraph_0.7.1           KEGG.db_2.10.1        
 ## [22] KernSmooth_2.23-12     labeling_0.2           lattice_0.20-29       
-## [25] latticeExtra_0.6-26    markdown_0.7           MASS_7.3-33           
-## [28] Matrix_1.1-3           mime_0.1.1             munsell_0.4.2         
-## [31] org.Hs.eg.db_2.10.1    proto_0.3-10           qvalue_1.36.0         
-## [34] Rcpp_0.11.1            RCurl_1.95-4.1         reactome.db_1.46.1    
-## [37] Rsamtools_1.14.3       scales_0.2.4           splines_3.0.2         
-## [40] stats4_3.0.2           survival_2.37-7        tcltk_3.0.2           
-## [43] tools_3.0.2            XML_3.98-1.1           zlibbioc_1.8.0
+## [25] latticeExtra_0.6-26    MASS_7.3-33            Matrix_1.1-3          
+## [28] munsell_0.4.2          org.Hs.eg.db_2.10.1    proto_0.3-10          
+## [31] qvalue_1.36.0          Rcpp_0.11.1            RCurl_1.95-4.1        
+## [34] reactome.db_1.46.1     Rsamtools_1.14.3       scales_0.2.4          
+## [37] splines_3.0.2          stats4_3.0.2           survival_2.37-7       
+## [40] tcltk_3.0.2            tools_3.0.2            XML_3.98-1.1          
+## [43] zlibbioc_1.8.0
 ```
 
 ## Run Info

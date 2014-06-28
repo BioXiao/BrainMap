@@ -7,7 +7,7 @@
 # filename
 # # make csv file with these and feed into R BATCH script 
 
-diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/olddiffs"
+diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
 
 files<-list.files(path=diffdir)
 names<-files
@@ -50,7 +50,7 @@ library(knitr)
 analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
 
 # Make directory table
-diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/olddiffs"
+diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
 setwd(diffdir)
 files<-list.files()
 names<-files
@@ -63,7 +63,7 @@ setwd(analysisdir)
 #library(cummeRbund)
 
 
-for(i in seq(6,(dim(adult_directories)[2]))){
+for(i in seq(1,(dim(adult_directories)[2]))){
   setwd(analysisdir)
   strain <-as.character(adult_directories[1,i])
   timepoint<-"Adult"
@@ -73,8 +73,6 @@ for(i in seq(6,(dim(adult_directories)[2]))){
   print(filename)
   print(dir)
   print(strain)
-  #setwd(dir)
-  #cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10")
   setwd(filename)
   knit2html('../StrainTemplate.Rmd',output=paste(filename,".md",sep=""), quiet=TRUE)
   print(dir)
@@ -95,7 +93,7 @@ library(knitr)
 analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
 
 # Make directory table
-diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/olddiffs"
+diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
 setwd(diffdir)
 files<-list.files()
 names<-files
@@ -108,7 +106,7 @@ embryonic_directories<-split[,which(split[4,]=="Embryonic")]
 setwd(analysisdir)
 #library(cummeRbund)
 #haunt and tp53cor1
-for(i in seq(7,(dim(embryonic_directories)[2]))){
+for(i in seq(1,(dim(embryonic_directories)[2]))){
   strain <-as.character(embryonic_directories[1,i])
   timepoint<-"Embryonic"
   filename<-paste(embryonic_directories[,i],collapse="_")
