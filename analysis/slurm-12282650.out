@@ -106,3 +106,853 @@ Reading Var Model Info  /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Cel
 Writing varModel Table
 Reading GTF file
 Writing GTF features to 'features' table...
+Reading /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Embryonic/genes.fpkm_tracking
+Checking samples table...
+Populating samples table...
+Writing genes table
+Reshaping geneData table
+Recasting
+Writing geneData table
+Reading /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Embryonic/gene_exp.diff
+Writing geneExpDiffData table
+Reading /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Embryonic/promoters.diff
+Writing promoterDiffData table
+No records found in /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Embryonic/promoters.diff
+Reading /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Embryonic/genes.count_tracking
+Reshaping geneCount table
+Recasting
+Writing geneCount table
+Reading read group info in /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Embryonic/genes.read_group_tracking
+Writing geneReplicateData table
+Reading /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Embryonic/isoforms.fpkm_tracking
+Checking samples table...
+OK!
+Writing isoforms table
+Reshaping isoformData table
+Recasting
+Writing isoformData table
+Reading /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Embryonic/isoform_exp.diff
+Writing isoformExpDiffData table
+Reading /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Embryonic/isoforms.count_tracking
+Reshaping isoformCount table
+Recasting
+Writing isoformCount table
+Reading read group info in /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Embryonic/isoforms.read_group_tracking
+Writing isoformReplicateData table
+Reading /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Embryonic/tss_groups.fpkm_tracking
+Checking samples table...
+OK!
+Writing TSS table
+No records found in /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Embryonic/tss_groups.fpkm_tracking
+TSS FPKM tracking file was empty.
+Reading /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Embryonic/tss_group_exp.diff
+No records found in /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Embryonic/tss_group_exp.diff
+Reading /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Embryonic/splicing.diff
+No records found in /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Embryonic/splicing.diff
+Reading /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Embryonic/tss_groups.count_tracking
+No records found in /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Embryonic/tss_groups.count_tracking
+Reading read group info in /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Embryonic/tss_groups.read_group_tracking
+No records found in /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Embryonic/tss_groups.read_group_tracking
+Reading /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Embryonic/cds.fpkm_tracking
+Checking samples table...
+OK!
+Writing CDS table
+Reshaping CDSData table
+Recasting
+Writing CDSData table
+Reading /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Embryonic/cds_exp.diff
+Writing CDSExpDiffData table
+Reading /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Embryonic/cds.diff
+Writing CDSDiffData table
+Reading /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Embryonic/cds.count_tracking
+Reshaping CDSCount table
+Recasting
+Writing CDSCount table
+Reading read group info in /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Embryonic/cds.read_group_tracking
+Writing CDSReplicateData table
+Indexing Tables...
+Scale for 'x' is already present. Adding another scale for 'x', which will replace the existing scale.
+geom_smooth: method="auto" and size of largest group is >=1000, so using gam with formula: y ~ s(x, bs = "cs"). Use 'method = x' to change the smoothing method.
+Scale for 'x' is already present. Adding another scale for 'x', which will replace the existing scale.
+geom_smooth: method="auto" and size of largest group is >=1000, so using gam with formula: y ~ s(x, bs = "cs"). Use 'method = x' to change the smoothing method.
+Getting gene information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting isoforms information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting CDS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting TSS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting promoter information:
+	distData
+Getting splicing information:
+	distData
+Getting relCDS information:
+	distData
+Scale for 'colour' is already present. Adding another scale for 'colour', which will replace the existing scale.
+ymax not defined: adjusting position using y instead
+Using tracking_id, rep_name as id variables
+No id variables; using all as measure variables
+Loading required package: AnnotationDbi
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+
+Attaching package: 'Biobase'
+
+The following object is masked from 'package:cummeRbund':
+
+    samples
+
+
+Attaching package: 'GenomicFeatures'
+
+The following objects are masked from 'package:cummeRbund':
+
+    features, genes
+
+	BamTracks
+	plotting...
+Getting gene information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting isoforms information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting CDS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting TSS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting promoter information:
+	distData
+Getting splicing information:
+	distData
+Getting relCDS information:
+	distData
+Using tracking_id, rep_name as id variables
+No id variables; using all as measure variables
+Using tracking_id, sample_name as id variables
+Error in lm.wfit(x, y, w, offset = offset, singular.ok = singular.ok,  : 
+  NA/NaN/Inf in 'y'
+In addition: Warning messages:
+1: attributes are not identical across measure variables; they will be dropped 
+2: attributes are not identical across measure variables; they will be dropped 
+3: attributes are not identical across measure variables; they will be dropped 
+4: attributes are not identical across measure variables; they will be dropped 
+5: attributes are not identical across measure variables; they will be dropped 
+6: attributes are not identical across measure variables; they will be dropped 
+7: Removed 4299 rows containing missing values (geom_point). 
+8: Removed 4297 rows containing missing values (geom_point). 
+Using tracking_id, rep_name as id variables
+No id variables; using all as measure variables
+
+
+
+Attaching package: 'DOSE'
+
+The following object is masked from 'package:ReactomePA':
+
+    gseAnalyzer
+
+Getting gene information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting isoforms information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting CDS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting TSS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting promoter information:
+	distData
+Getting splicing information:
+	distData
+Getting relCDS information:
+	distData
+
+KEGG.db contains mappings based on older data because the original
+  resource was removed from the the public domain before the most
+  recent update was produced. This package should now be
+  considered deprecated and future versions of Bioconductor may
+  not have it available.  Users who want more current data are
+  encouraged to look at the KEGGREST or reactome.db packages
+
+Loading required package: biomaRt
+
+Attaching package: 'biomaRt'
+
+The following object is masked from 'package:cummeRbund':
+
+    getGene
+
+Loading required package: org.Mm.eg.db
+
+Loading required package: GO.db
+Loading required package: BSgenome
+Loading required package: Biostrings
+
+Attaching package: 'BSgenome'
+
+The following object is masked from 'package:AnnotationDbi':
+
+    species
+
+
+Attaching package: 'plyr'
+
+The following object is masked from 'package:cummeRbund':
+
+    count
+
+The following object is masked from 'package:XVector':
+
+    compact
+
+The following objects are masked from 'package:IRanges':
+
+    desc, rename
+
+First Split
+Second Split
+1
+0
+2
+0
+3
+0
+4
+0
+5
+0
+6
+0
+7
+0
+8
+0
+9
+0
+10
+0
+11
+0
+12
+1
+13
+0
+14
+0
+15
+0
+16
+0
+17
+0
+18
+1
+19
+0
+20
+0
+21
+0
+22
+0
+23
+0
+24
+0
+25
+0
+26
+0
+27
+0
+28
+0
+29
+0
+30
+0
+31
+0
+32
+1
+33
+1
+34
+0
+35
+0
+36
+0
+37
+0
+38
+0
+39
+0
+40
+0
+41
+0
+42
+0
+43
+0
+44
+1
+45
+0
+46
+0
+47
+0
+48
+0
+49
+1
+50
+0
+51
+0
+52
+0
+53
+0
+54
+0
+55
+0
+56
+1
+57
+0
+58
+1
+59
+0
+60
+1
+61
+0
+62
+0
+63
+0
+64
+0
+65
+0
+66
+0
+67
+0
+68
+0
+69
+0
+70
+1
+71
+0
+72
+0
+73
+0
+74
+1
+75
+0
+76
+0
+77
+0
+78
+0
+79
+0
+80
+0
+81
+1
+82
+0
+83
+0
+84
+0
+85
+1
+86
+0
+87
+0
+88
+0
+89
+0
+90
+0
+91
+0
+92
+0
+93
+0
+94
+0
+95
+0
+96
+0
+97
+0
+98
+1
+99
+0
+100
+0
+101
+0
+102
+0
+103
+0
+104
+0
+105
+0
+106
+1
+107
+0
+108
+0
+109
+0
+110
+0
+111
+0
+112
+0
+113
+0
+114
+0
+115
+0
+116
+2
+117
+0
+118
+0
+119
+0
+120
+0
+121
+0
+122
+0
+123
+1
+124
+0
+125
+0
+126
+0
+127
+0
+128
+1
+129
+0
+130
+0
+131
+1
+132
+0
+133
+1
+134
+0
+135
+0
+136
+0
+137
+0
+138
+0
+139
+0
+140
+0
+141
+0
+142
+0
+143
+0
+144
+0
+145
+0
+146
+0
+147
+1
+148
+0
+149
+0
+150
+0
+151
+0
+152
+0
+153
+0
+154
+0
+155
+0
+156
+0
+157
+0
+158
+0
+159
+1
+160
+0
+161
+0
+162
+0
+163
+0
+164
+0
+165
+0
+166
+0
+167
+0
+168
+0
+169
+0
+170
+0
+171
+0
+172
+0
+173
+0
+174
+0
+175
+0
+176
+0
+177
+0
+178
+0
+179
+0
+180
+0
+181
+1
+182
+1
+183
+0
+184
+0
+185
+0
+186
+0
+187
+0
+188
+0
+189
+1
+190
+0
+191
+0
+192
+0
+193
+0
+194
+0
+195
+0
+196
+0
+197
+0
+198
+0
+199
+0
+200
+1
+201
+0
+202
+0
+203
+0
+204
+0
+205
+0
+206
+0
+207
+0
+208
+0
+209
+1
+210
+0
+211
+0
+212
+0
+213
+0
+214
+0
+215
+0
+216
+0
+217
+0
+218
+0
+219
+0
+220
+0
+221
+0
+222
+0
+223
+1
+224
+1
+225
+0
+226
+0
+227
+0
+228
+0
+229
+0
+230
+0
+231
+0
+232
+0
+233
+0
+234
+0
+235
+0
+236
+0
+237
+1
+238
+0
+239
+0
+240
+0
+241
+1
+242
+0
+243
+0
+244
+0
+245
+0
+246
+0
+247
+0
+248
+1
+249
+0
+250
+0
+251
+0
+252
+0
+253
+0
+254
+0
+255
+0
+256
+0
+257
+0
+258
+0
+259
+0
+260
+0
+261
+0
+262
+0
+263
+0
+264
+0
+265
+0
+266
+0
+267
+0
+268
+0
+269
+0
+270
+0
+271
+0
+272
+1
+273
+0
+274
+0
+275
+0
+276
+0
+277
+0
+278
+0
+279
+0
+280
+0
+281
+0
+282
+0
+283
+1
+284
+0
+285
+0
+286
+0
+287
+0
+288
+0
+289
+0
+290
+0
+291
+0
+292
+0
+293
+0
+294
+0
+295
+0
+296
+0
+297
