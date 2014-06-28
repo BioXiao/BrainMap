@@ -11,7 +11,7 @@ alpha<-0.05
 library(cummeRbund)
 
 analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
-diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/olddiffs"
+diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
 
 genome<-"mm10"
 GTF<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf"
@@ -175,7 +175,7 @@ koStart<-as.numeric(positions[1])
 koWidth<-abs(as.numeric(positions[2])-as.numeric(positions[1]))
 
 
-bamRoot<-'/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/oldbam/'
+bamRoot<-'/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/'
 
 bamFiles<-lapply(JRs,function(x){paste(bamRoot,x,"/accepted_hits.bam",sep="")})
 

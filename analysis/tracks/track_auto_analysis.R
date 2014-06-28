@@ -3,7 +3,7 @@ library(knitr)
 trackdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/tracks/"
 
 # Make directory table
-diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/olddiffs"
+diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
 files<-list.files(path=diffdir)
 names<-files
 split<-data.frame(strsplit(names,"_"))
@@ -41,7 +41,7 @@ library(knitr)
 trackdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/tracks/"
 
 # Make directory table
-diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/olddiffs"
+diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
 setwd(diffdir)
 files<-list.files()
 names<-files

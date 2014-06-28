@@ -35,12 +35,13 @@ write.table(data,"autoanalysisInfo.csv",sep=",")
 
 
 ####################BATCH SCRIPT######################
-dat<-read.csv("autoanalysisInfo.csv",header=TRUE)
+dat<-read.csv("autoanalysisInfo.csv",header=TRUE,stringsAsFactors=FALSE)
 #GET i ARG! 
-i<-commandArgs()[1]
+i<-as.numeric(as.character(commandArgs(TRUE)[1]))
 filename<-dat$filename[i]
 print(filename)
 print(dat$strain[i])
+dir.create(filename)
 setwd(filename)
 knit2html('/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/StrainTemplate.Rmd',output=paste(filename,".md",sep=""), quiet=TRUE)
 
