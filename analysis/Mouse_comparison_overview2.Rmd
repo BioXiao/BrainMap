@@ -56,6 +56,8 @@ rownames(linc_LZ_correlation)=c("LZ", "EndogenousLinc")
 
 ### Celrr
 
+Eif2s3y is a y-expressed gene 
+
 ```{r adult celr diff}
 dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Adult"
 setwd(dir)
@@ -69,6 +71,10 @@ LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
 linc<-getGene(cuff,"Celrr")
 linc_avg_fpkm<-fpkm(linc)$fpkm[2]
 linc_LZ_correlation$Celrr_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm)
+
+genotypingGeneIDs<-c(strain,"LacZ","Eif2s3y")
+genotypingGenes<-getGenes(cuff,genotypingGeneIDs)
+csHeatmap(genotypingGenes,replicates=T)
 
 ```
 

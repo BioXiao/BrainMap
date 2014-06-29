@@ -51,8 +51,6 @@ colnames(deletionCoords)<-c("gene_name","gene_region","deletionRegion")
 
 ```
 
-THINGS TO REMEMBER: change oldbam to bam and olddiff to diff once new set done! 
-
 
 ```{r cummeRbund_and_data_setup, echo=FALSE}
 #setwd(dir)
@@ -72,10 +70,10 @@ rownames(samples)<-NULL
 This file shows the wt-v-ko comparison for `r strain`. 
 
 Cuff overview:
+
 ```{r}
 cuff
 ```
-
 
 # QC
 
@@ -92,11 +90,13 @@ dispersionPlot(cuff)+theme_bw()
 Differences in CV 2 can result in lower numbers of differentially expressed genes due to a higher degree of variability between replicate fpkm estimates.
 
 Genes:
+
 ```{r CV_genes}
 fpkmSCVPlot(genes(cuff))+theme_bw()
 ```
 
 Isoforms: 
+
 ```{r cv_iso}
 fpkmSCVPlot(isoforms(cuff))+theme_bw()
 ```
@@ -244,6 +244,8 @@ expressionBarplot(myGene,replicates=T)+theme_bw()
 
 
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
+
+Eif2s3y is a y-expressed gene 
 Expression plot (endogenous linc, lacZ, Y-expressed gene):
 
 ```{r Digital_Genotyping,fig.height=8, fig.width=8}
@@ -454,7 +456,7 @@ expressionPlot(sigGenes)+theme_bw()
 
 
 ```{r sigExpression heatmap, fig.height=8, fig.width=10}
-csHeatmap(sigGenes, cluster="both",replicates=T)+theme_bw()
+csHeatmap(sigGenes, cluster="both",replicates=T, labRow=FALSE)+theme_bw()
 ```
 
 Significant genes with expression >50fpkm (any condition):(turned off)
@@ -504,7 +506,7 @@ csVolcano(sigGenes, "WT", strain_sample,showSignificant=TRUE,alpha=alpha,xlimits
 FoldChange Heatmap
 
 ```{r sigGenes logfoldchange_heatmap, fig.height=8, fig.width=12}
-csFoldChangeHeatmap(sigGenes,"WT",replicates=TRUE,replicate_num=0,clustering="both")+theme_bw()
+csFoldChangeHeatmap(sigGenes,"WT",replicates=TRUE,replicate_num=0,clustering="both",labRow=FALSE)+theme_bw()
 ```
 
 
@@ -536,7 +538,7 @@ Gene-level DE isoform heatmap
 
 ```{r isoform_heatmap, fig.height=10, fig.width=10}
 if(length(isoformSigIDs)>0){
-  csHeatmap(isoformSigGenes,cluster='both', replicates=T)+theme_bw()
+  csHeatmap(isoformSigGenes,cluster='both', replicates=T,labRow=FALSE)+theme_bw()
   } else{print("no sig isoforms")}
 ```
 
@@ -544,7 +546,7 @@ Isoform foldchange heatmap by isoform:
 
 ```{r isoform logfoldchange_heatmap, fig.height=8, fig.width=10}
 if(length(isoformSigIDs)>0){
-  csFoldChangeHeatmap(isoforms(isoformSigGenes),"WT",replicates=TRUE,replicate_num=0,clustering="both")+theme_bw()
+  csFoldChangeHeatmap(isoforms(isoformSigGenes),"WT",replicates=TRUE,replicate_num=0,clustering="both",labRow=FALSE)+theme_bw()
 }else{print("no sig isoforms")}
 ```
 
@@ -574,14 +576,14 @@ Splicing heatmap by isoform:
 
 ```{r splicing_heatmap_by_isoform, eval=FALSE, fig.height=20, fig.width=10}
 #pdf("sigSplicing_heatmap.pdf",width=10,height=20)
-csHeatmap(isoforms(splicingSigGenes),cluster='both',method=dist)+theme_bw()
+csHeatmap(isoforms(splicingSigGenes),cluster='both',method=dist, labRow=FALSE)+theme_bw()
 #dev.off()
 ```
 
 Splicing heatmap by gene
 
 ```{r splicing_heatmap_by_gene, eval=FALSE}
-csHeatmap(splicingSigGenes,cluster='both',method=dist)+theme_bw()
+csHeatmap(splicingSigGenes,cluster='both',method=dist,labRow=FALSE)+theme_bw()
 ```
 
 The following are significantly differentially spliced genes (relative portion of isoform per condition): 
@@ -603,7 +605,7 @@ The following are significantly differentially spliced genes (relative portion o
 tssSigIDs<-getSig(cuff,alpha=alpha,level="TSS")
 tssSigGenes<-getGenes(cuff,tssSigIDs)
 
-csHeatmap(tssSigGenes,cluster='row',method=dist)+theme_bw()
+csHeatmap(tssSigGenes,cluster='row',method=dist,labRow=FALSE)+theme_bw()
 
 csPiePlots<-lapply(tssSigIDs,function(x){
   myGene<-getGene(cuff,x)
@@ -620,7 +622,7 @@ promoterSigIDs<-getSig(cuff,alpha=alpha,level="promoters")
 promoterSigGenes<-getGenes(cuff,promoterSigIDs)
 
 pdf("sigPromoter_heatmap.pdf",width=10,height=20)
-csHeatmap(promoterSigGenes,cluster='row',method=dist)
+csHeatmap(promoterSigGenes,cluster='row',method=dist,labRow=FALSE)
 dev.off()
 
 csPiePlots<-lapply(promoterSigIDs,function(x){
@@ -642,11 +644,11 @@ relcdsSigGenes<-getGenes(cuff,relcdsSigIDs)
 
 
 pdf("sigCDS_heatmap.pdf",width=10,height=20)
-csHeatmap(cdsSigGenes,cluster='row',method=dist)+theme_bw()
+csHeatmap(cdsSigGenes,cluster='row',method=dist,labRow=FALSE)+theme_bw()
 dev.off()
 
 pdf("sig_relCDS_heatmap.pdf",width=10,height=20)
-csHeatmap(relcdsSigGenes,cluster='row',method=dist)+theme_bw()
+csHeatmap(relcdsSigGenes,cluster='row',method=dist,labRow=FALSE)+theme_bw()
 dev.off()
 ```
 
