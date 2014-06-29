@@ -371,3 +371,28 @@ The following object is masked from 'package:cummeRbund':
 Loading required package: org.Mm.eg.db
 
 Loading required package: GO.db
+Loading required package: BSgenome
+Loading required package: Biostrings
+
+Attaching package: 'BSgenome'
+
+The following object is masked from 'package:AnnotationDbi':
+
+    species
+
+
+Attaching package: 'plyr'
+
+The following object is masked from 'package:cummeRbund':
+
+    count
+
+The following object is masked from 'package:XVector':
+
+    compact
+
+The following objects are masked from 'package:IRanges':
+
+    desc, rename
+
+First Split
