@@ -7,8 +7,6 @@ Kantr KO vs WT (Embryonic)
 
 
 
-THINGS TO REMEMBER: change oldbam to bam and olddiff to diff once new set done! 
-
 
 
 
@@ -16,6 +14,7 @@ THINGS TO REMEMBER: change oldbam to bam and olddiff to diff once new set done!
 This file shows the wt-v-ko comparison for Kantr. 
 
 Cuff overview:
+
 
 ```
 ## CuffSet instance with:
@@ -28,7 +27,6 @@ Cuff overview:
 ## 	 0 splicing
 ## 	 19954 relCDS
 ```
-
 
 # QC
 
@@ -43,9 +41,11 @@ Dispersion plot for genes in cuff:
 Differences in CV 2 can result in lower numbers of differentially expressed genes due to a higher degree of variability between replicate fpkm estimates.
 
 Genes:
+
 ![plot of chunk CV_genes](figure/CV_genes.png) 
 
 Isoforms: 
+
 ![plot of chunk cv_iso](figure/cv_iso.png) 
 
 
@@ -139,6 +139,8 @@ Barplot of isoform expression:
 
 
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
+
+Eif2s3y is a y-expressed gene 
 Expression plot (endogenous linc, lacZ, Y-expressed gene):
 
 ![plot of chunk Digital_Genotyping](figure/Digital_Genotyping.png) 
@@ -162,7 +164,7 @@ Expression heatmap:
 There are 766 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sat Jun 28 19:46:15 2014 -->
+<!-- Sun Jun 29 18:34:22 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> H19 </TD> </TR>
@@ -988,7 +990,7 @@ Per isoform difference between conditions:
 These isoforms are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sat Jun 28 19:47:41 2014 -->
+<!-- Sun Jun 29 18:36:02 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> isoAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> H19 </TD> </TR>
@@ -1586,7 +1588,7 @@ Cluster profiler used to call enichments of significantly differentially regulat
 
 
 
-The pvalue for 4 genes significantly regulated in a region this size  is: 0.407 
+The pvalue for 4 genes significantly regulated in a region this size  is: 0.395 
 
 
 
@@ -1598,7 +1600,7 @@ The pvalue for 4 genes significantly regulated in a region this size  is: 0.407
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sat Jun 28 20:12:11 2014 -->
+<!-- Sun Jun 29 19:07:41 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR762 </TD> </TR>
@@ -1611,7 +1613,7 @@ The pvalue for 4 genes significantly regulated in a region this size  is: 0.407
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sat Jun 28 20:12:11 2014 -->
+<!-- Sun Jun 29 19:07:41 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR762/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 32218100.00 </TD> <TD align="right"> 33340200.00 </TD> <TD align="right"> 0.95 </TD> <TD align="right"> 1.00 </TD> </TR>

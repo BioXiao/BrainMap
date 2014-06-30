@@ -7,8 +7,6 @@ linc-Enc1 KO vs WT (Embryonic)
 
 
 
-THINGS TO REMEMBER: change oldbam to bam and olddiff to diff once new set done! 
-
 
 
 
@@ -16,6 +14,7 @@ THINGS TO REMEMBER: change oldbam to bam and olddiff to diff once new set done!
 This file shows the wt-v-ko comparison for linc-Enc1. 
 
 Cuff overview:
+
 
 ```
 ## CuffSet instance with:
@@ -28,7 +27,6 @@ Cuff overview:
 ## 	 0 splicing
 ## 	 19954 relCDS
 ```
-
 
 # QC
 
@@ -43,9 +41,11 @@ Dispersion plot for genes in cuff:
 Differences in CV 2 can result in lower numbers of differentially expressed genes due to a higher degree of variability between replicate fpkm estimates.
 
 Genes:
+
 ![plot of chunk CV_genes](figure/CV_genes.png) 
 
 Isoforms: 
+
 ![plot of chunk cv_iso](figure/cv_iso.png) 
 
 
@@ -139,6 +139,8 @@ Barplot of isoform expression:
 
 
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
+
+Eif2s3y is a y-expressed gene 
 Expression plot (endogenous linc, lacZ, Y-expressed gene):
 
 ![plot of chunk Digital_Genotyping](figure/Digital_Genotyping.png) 
@@ -162,7 +164,7 @@ Expression heatmap:
 There are 16 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sat Jun 28 19:54:58 2014 -->
+<!-- Sun Jun 29 18:37:53 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Rec8 </TD> </TR>
@@ -357,7 +359,7 @@ Cluster profiler used to call enichments of significantly differentially regulat
 
 
 
-The pvalue for 2 genes significantly regulated in a region this size  is: 0.047 
+The pvalue for 2 genes significantly regulated in a region this size  is: 0.034 
 
 
 ![plot of chunk cisreg_image](figure/cisreg_image.png) 
@@ -366,7 +368,7 @@ The pvalue for 2 genes significantly regulated in a region this size  is: 0.047
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sat Jun 28 20:23:22 2014 -->
+<!-- Sun Jun 29 19:04:43 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR753 </TD> </TR>
@@ -390,7 +392,7 @@ The pvalue for 2 genes significantly regulated in a region this size  is: 0.047
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sat Jun 28 20:23:22 2014 -->
+<!-- Sun Jun 29 19:04:43 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR753/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 39331900.00 </TD> <TD align="right"> 33003900.00 </TD> <TD align="right"> 1.23 </TD> <TD align="right"> 1.00 </TD> </TR>

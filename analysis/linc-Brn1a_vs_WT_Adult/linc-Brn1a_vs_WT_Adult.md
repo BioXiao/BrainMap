@@ -7,8 +7,6 @@ linc-Brn1a KO vs WT (Adult)
 
 
 
-THINGS TO REMEMBER: change oldbam to bam and olddiff to diff once new set done! 
-
 
 
 
@@ -16,6 +14,7 @@ THINGS TO REMEMBER: change oldbam to bam and olddiff to diff once new set done!
 This file shows the wt-v-ko comparison for linc-Brn1a. 
 
 Cuff overview:
+
 
 ```
 ## CuffSet instance with:
@@ -28,7 +27,6 @@ Cuff overview:
 ## 	 0 splicing
 ## 	 19954 relCDS
 ```
-
 
 # QC
 
@@ -43,9 +41,11 @@ Dispersion plot for genes in cuff:
 Differences in CV 2 can result in lower numbers of differentially expressed genes due to a higher degree of variability between replicate fpkm estimates.
 
 Genes:
+
 ![plot of chunk CV_genes](figure/CV_genes.png) 
 
 Isoforms: 
+
 ![plot of chunk cv_iso](figure/cv_iso.png) 
 
 
@@ -139,6 +139,8 @@ Barplot of isoform expression:
 
 
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
+
+Eif2s3y is a y-expressed gene 
 Expression plot (endogenous linc, lacZ, Y-expressed gene):
 
 ![plot of chunk Digital_Genotyping](figure/Digital_Genotyping.png) 
@@ -162,7 +164,7 @@ Expression heatmap:
 There are 74 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sat Jun 28 19:52:03 2014 -->
+<!-- Sun Jun 29 18:37:07 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Rec8 </TD> </TR>
@@ -296,7 +298,7 @@ Per isoform difference between conditions:
 These isoforms are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sat Jun 28 19:53:12 2014 -->
+<!-- Sun Jun 29 18:38:16 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> isoAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Rec8 </TD> </TR>
@@ -496,7 +498,7 @@ The pvalue for 1 genes significantly regulated in a region this size  is: 1
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sat Jun 28 20:20:47 2014 -->
+<!-- Sun Jun 29 19:06:20 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR729 </TD> </TR>
@@ -519,7 +521,7 @@ The pvalue for 1 genes significantly regulated in a region this size  is: 1
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sat Jun 28 20:20:47 2014 -->
+<!-- Sun Jun 29 19:06:20 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR729/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 26334400.00 </TD> <TD align="right"> 33756400.00 </TD> <TD align="right"> 0.78 </TD> <TD align="right"> 1.00 </TD> </TR>

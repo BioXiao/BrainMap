@@ -7,39 +7,26 @@ linc-Brn1a KO vs WT (Embryonic)
 
 
 
-THINGS TO REMEMBER: change oldbam to bam and olddiff to diff once new set done! 
 
 
-
-```
-## Error: no lines available in input
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'replicates': Error: object 'cuff' not found
-```
-
-```
-## Error: error in evaluating the argument 'X' in selecting a method for function 'lapply': Error: object 'reps' not found
-```
-
-```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'as.data.frame': Error: object 'files' not found
-```
-
-```
-## Error: error in evaluating the argument 'x' in selecting a method for function 't': Error: object 'files' not found
-```
 
 
 This file shows the wt-v-ko comparison for linc-Brn1a. 
 
 Cuff overview:
 
-```
-## Error: object 'cuff' not found
-```
 
+```
+## CuffSet instance with:
+## 	 0 samples
+## 	 0 genes
+## 	 0 isoforms
+## 	 0 TSS
+## 	 0 CDS
+## 	 0 promoters
+## 	 0 splicing
+## 	 0 relCDS
+```
 
 # QC
 
@@ -50,7 +37,7 @@ Dispersion plot for genes in cuff:
 
 
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'dispersionPlot': Error: object 'cuff' not found
+## Error: replacement has 1 row, data has 0
 ```
 
 ## Cross-replicate variability (fpkmSCVplot)
@@ -58,16 +45,16 @@ Differences in CV 2 can result in lower numbers of differentially expressed gene
 
 Genes:
 
+
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'fpkmSCVPlot': Error in genes(cuff) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'genes': Error: object 'cuff' not found
+## Error: RS-DBI driver: (error in statement: near ")": syntax error)
 ```
 
 Isoforms: 
 
+
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'fpkmSCVPlot': Error in isoforms(cuff) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'cuff' not found
+## Error: RS-DBI driver: (error in statement: near ")": syntax error)
 ```
 
 
@@ -75,24 +62,21 @@ Isoforms:
 
 
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'MAplot': Error in genes(cuff) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'genes': Error: object 'cuff' not found
+## Error: non-numeric argument to binary operator
 ```
    
 ### MvA plot counts
 
 
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'MAplot': Error in genes(cuff) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'genes': Error: object 'cuff' not found
+## Error: non-numeric argument to binary operator
 ```
 
 ## Scatterplot matrix
 
 
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'csScatterMatrix': Error in genes(cuff) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'genes': Error: object 'cuff' not found
+## Error: RS-DBI driver: (error in statement: near "from": syntax error)
 ```
 
 ## Distributions
@@ -103,32 +87,28 @@ Boxplot (genes)
 
 
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'csBoxplot': Error in genes(cuff) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'genes': Error: object 'cuff' not found
+## Error: RS-DBI driver: (error in statement: near ")": syntax error)
 ```
 
 Boxplot (genes, replicates)
 
 
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'csBoxplot': Error in genes(cuff) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'genes': Error: object 'cuff' not found
+## Error: RS-DBI driver: (error in statement: near ")": syntax error)
 ```
 
 Boxplot (isoforms)
 
 
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'csBoxplot': Error in isoforms(cuff) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'cuff' not found
+## Error: RS-DBI driver: (error in statement: near ")": syntax error)
 ```
 
 Boxplot (isoforms, replicates)
 
 
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'csBoxplot': Error in isoforms(cuff) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'isoforms': Error: object 'cuff' not found
+## Error: RS-DBI driver: (error in statement: near ")": syntax error)
 ```
 
 ### Density
@@ -137,16 +117,14 @@ Density (genes)
 
 
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'csDensity': Error in genes(cuff) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'genes': Error: object 'cuff' not found
+## Error: RS-DBI driver: (error in statement: near ")": syntax error)
 ```
 
 Density (genes, replicates)
 
 
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'csDensity': Error in genes(cuff) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'genes': Error: object 'cuff' not found
+## Error: RS-DBI driver: (error in statement: near ")": syntax error)
 ```
 
 
@@ -156,24 +134,21 @@ Density (genes, replicates)
 
 
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'csDendro': Error in genes(cuff) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'genes': Error: object 'cuff' not found
+## Error: RS-DBI driver: (error in statement: near "from": syntax error)
 ```
 
 ### PCA (genes)
 
 
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'PCAplot': Error in genes(cuff) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'genes': Error: object 'cuff' not found
+## Error: RS-DBI driver: (error in statement: near "from": syntax error)
 ```
 
 ### MDS (genes)
 
 
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'MDSplot': Error in genes(cuff) : 
-##   error in evaluating the argument 'object' in selecting a method for function 'genes': Error: object 'cuff' not found
+## Error: RS-DBI driver: (error in statement: near "from": syntax error)
 ```
 
 
@@ -186,7 +161,7 @@ Density (genes, replicates)
 
 
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'getGene': Error: object 'cuff' not found
+## Error: RS-DBI driver: (error in statement: near ")": syntax error)
 ```
 
 ```
@@ -221,7 +196,8 @@ Barplot of isoform expression:
 
 
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'getGene': Error: object 'cuff' not found
+## Error: RS-DBI driver: (RS_SQLite_exec: could not execute1: cannot start a
+## transaction within a transaction)
 ```
 
 ```
@@ -234,11 +210,14 @@ Barplot of isoform expression:
 
 
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
+
+Eif2s3y is a y-expressed gene 
 Expression plot (endogenous linc, lacZ, Y-expressed gene):
 
 
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'getGenes': Error: object 'cuff' not found
+## Error: RS-DBI driver: (RS_SQLite_exec: could not execute1: cannot start a
+## transaction within a transaction)
 ```
 
 ```
@@ -258,7 +237,8 @@ Expression heatmap:
 
 
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'getGene': Error: object 'cuff' not found
+## Error: RS-DBI driver: (RS_SQLite_exec: could not execute1: cannot start a
+## transaction within a transaction)
 ```
 
 ```
@@ -298,26 +278,6 @@ Expression heatmap:
 ```
 
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'replicates': Error: object 'cuff' not found
-```
-
-```
-## Error: error in evaluating the argument 'X' in selecting a method for function 'lapply': Error: object 'reps' not found
-```
-
-```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'as.data.frame': Error: object 'files' not found
-```
-
-```
-## Error: error in evaluating the argument 'x' in selecting a method for function 't': Error: object 'files' not found
-```
-
-```
-## Error: object 'reps' not found
-```
-
-```
 ## Error: unique() applies only to vectors
 ```
 
@@ -327,84 +287,495 @@ Expression heatmap:
 
 
 ```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'getSig': Error: object 'cuff' not found
-```
-
-```
-## Error: error in evaluating the argument 'object' in selecting a method for function 'getGenes': Error: object 'cuff' not found
+## Error: RS-DBI driver: (error in statement: near ")": syntax error)
 ```
 
 ```
 ## Error: error in evaluating the argument 'object' in selecting a method for function 'annotation': Error: object 'sigGenes' not found
 ```
 
+There are 0 significantly differentially expressed genes. They are:
 
+[1] "No sig genes!"
 
+### Matrix of gene significant differences between conditions
 
+(skip for Brainmap wt-v-ko comparisons)
 
+![plot of chunk sigMatrix](figure/sigMatrix.png) 
 
+### Significant gene expression differences between conditions
 
+Expression plot (genes):(turned off)
 
 
 
 
 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'csHeatmap': Error: object 'sigGenes' not found
+```
 
+Significant genes with expression >50fpkm (any condition):(turned off)
 
 
 
+An individual look at each of the highly expressed significantly differentially regulated genes:
+(eval=false for first pass)
 
 
 
 
+### Expression-level/significance relationship
 
+Scatter plot of significant genes only:
 
 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'csScatter': Error: object 'sigGenes' not found
+```
 
+Volcano Plot
 
 
+```
+## Error: One or more values of 'x' or 'y' are not valid sample names!
+```
 
+Volcano plot with significant genes only:
 
 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'csVolcano': Error: object 'sigGenes' not found
+```
 
+FoldChange Heatmap
 
 
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'csFoldChangeHeatmap': Error: object 'sigGenes' not found
+```
 
 
+## Differential Splicing
 
+### Differential Isoforms between conditions
 
+Per isoform difference between conditions:
 
+![plot of chunk diff_iso](figure/diff_iso.png) 
 
+These isoforms are:
 
+[1] "no sig isoforms"
 
+Gene-level DE isoform heatmap
 
 
+```
+## [1] "no sig isoforms"
+```
 
+Isoform foldchange heatmap by isoform:
 
 
+```
+## [1] "no sig isoforms"
+```
 
 
+### Differential Splicing between conditions
 
+(eval false for first pass)
 
+Per condition differences in isoforms (Does gene have diff piechart between conditions?)
 
 
 
+These genes are:
 
 
 
+Splicing heatmap by isoform:
 
 
 
+Splicing heatmap by gene
 
 
 
+The following are significantly differentially spliced genes (relative portion of isoform per condition): 
 
 
 
 
 
+ 
 
 
+
+
+# Gene/Pathway Analysis
+
+## GSEA
+
+
+
+
+```
+## Error: Only alternative="mixed" is possible with F-like statistics.
+```
+
+```
+## Error: object 'reactome_pvl_mat' not found
+```
+
+```
+## Error: object 'reactome_pvl_corrected' not found
+```
+
+```
+## Error: Only alternative="mixed" is possible with F-like statistics.
+```
+
+```
+## Error: object 'biocarta_pvl_mat' not found
+```
+
+```
+## Error: object 'biocarta_pvl_corrected' not found
+```
+
+```
+## Error: Only alternative="mixed" is possible with F-like statistics.
+```
+
+```
+## Error: object 'kegg_pvl_mat' not found
+```
+
+```
+## Error: object 'kegg_pvl_corrected' not found
+```
+
+
+Biocarta enrichment: 
+
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 't': Error: object 'biocarta_pvl_corrected' not found
+```
+
+```
+## Error: object 'x' not found
+```
+
+```
+## Error: object 'x_ordered' not found
+```
+
+```
+## Error: object 'x_ordered' not found
+```
+
+```
+## Error: object 'noinfinities_x' not found
+```
+
+```
+## Error: object 'x_max' not found
+```
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'as.matrix': Error: object 'x_ordered' not found
+```
+
+```
+## Error: object 'x_ordered' not found
+```
+
+Biocarta zscore: 
+
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'which': Error in apply(x, 2, min) : object 'biocarta_pvl_corrected' not found
+## Calls: colMins -> apply
+```
+
+```
+## Error: object 'x' not found
+```
+
+```
+## Error: object 'x_ordered' not found
+```
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'as.matrix': Error: object 'x_ordered' not found
+```
+
+```
+## Error: object 'x_ordered' not found
+```
+
+
+Reactome enrichment: 
+
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 't': Error: object 'reactome_pvl_corrected' not found
+```
+
+```
+## Error: object 'x' not found
+```
+
+```
+## Error: object 'x_ordered' not found
+```
+
+```
+## Error: object 'x_ordered' not found
+```
+
+```
+## Error: object 'noinfinities_x' not found
+```
+
+```
+## Error: object 'x_max' not found
+```
+
+```
+## Error: object 'x_ordered' not found
+```
+
+
+Reactome zscore: 
+
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'which': Error in apply(x, 2, min) : object 'reactome_pvl_corrected' not found
+## Calls: colMins -> apply
+```
+
+```
+## Error: object 'x' not found
+```
+
+```
+## Error: object 'x_ordered' not found
+```
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'as.matrix': Error: object 'x_ordered' not found
+```
+
+```
+## Error: object 'x_ordered' not found
+```
+
+
+Kegg enrichment: 
+
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 't': Error: object 'kegg_pvl_corrected' not found
+```
+
+```
+## Error: object 'x' not found
+```
+
+```
+## Error: object 'x_ordered' not found
+```
+
+```
+## Error: object 'x_ordered' not found
+```
+
+```
+## Error: object 'noinfinities_x' not found
+```
+
+```
+## Error: object 'x_max' not found
+```
+
+```
+## Error: object 'x_ordered' not found
+```
+
+Kegg zscore: 
+
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'which': Error in apply(x, 2, min) : object 'kegg_pvl_corrected' not found
+## Calls: colMins -> apply
+```
+
+```
+## Error: object 'x' not found
+```
+
+```
+## Error: object 'x_ordered' not found
+```
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'as.matrix': Error: object 'x_ordered' not found
+```
+
+```
+## Error: object 'x_ordered' not found
+```
+
+
+
+
+
+## GO enrichment 
+Cluster profiler used to call enichments of significantly differentially regulated genes that map to Entrez IDs. 
+
+
+```
+## Error: RS-DBI driver: (error in statement: near ")": syntax error)
+```
+
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'annotation': Error: object 'sigGenes' not found
+```
+
+```
+## Error: object 'geneAnnot' not found
+```
+
+```
+## Error: error in evaluating the argument 'object' in selecting a method for function 'diffData': Error: object 'sigGenes' not found
+```
+
+```
+## Error: object 'sigDiff' not found
+```
+
+
+```
+## Error: object 'geneNames' not found
+```
+
+```
+## Error: object 'sigEntrez' not found
+```
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'unlist': Error: object 'sigEZ' not found
+```
+
+```
+## Error: object 'sigEZ' not found
+```
+
+```
+## Error: object 'sigEZ' not found
+```
+
+```
+## Error: object 'sigEZ' not found
+```
+
+```
+## Error: object 'sigEZ' not found
+```
+
+```
+## Error: object 'sigEZ' not found
+```
+
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'goBP' not found
+```
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'goMF' not found
+```
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'goCC' not found
+```
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'kegg' not found
+```
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'pathway' not found
+```
+
+# Cis vs Trans (locally)
+
+
+```
+## Error: dims [product 1] do not match the length of object [0]
+```
+
+```
+## Error: object 'fullTable' not found
+```
+
+```
+## Error: object 'myGene' not found
+```
+
+```
+## Error: object 'myGene' not found
+```
+
+```
+## Error: object 'myGene' not found
+```
+
+```
+## Error: object 'fullTable' not found
+```
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'nrow': Error in empty(.data) : object 'sigGenesRegion' not found
+## Calls: ddply -> empty
+```
+
+```
+## Error: object 'fullTable' not found
+```
+
+```
+## Error: object 'fullTable' not found
+```
+
+```
+## Error: object 'myGene' not found
+```
+
+```
+## Error: object 'genesInRegion' not found
+```
+
+```
+## Error: object 'genesInRegion' not found
+```
+
+```
+## Error: object 'genesInRegion' not found
+```
+
+```
+## Error: object 'genesInRegion' not found
+```
+
+```
+## Error: object of type 'closure' is not subsettable
+```
 
 
 
