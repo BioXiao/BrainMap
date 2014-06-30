@@ -965,7 +965,7 @@ getTable<-function(object){
 }
 ```
 
-```{r computationally intensive part of cis trans image, eval=FALSE}
+```{r computationally intensive part of cis trans image}
 fullTable<-getTable(cuff)
 
 myGene<-fullTable[which(fullTable$gene_short_name==strain),][1,] #any problems w this?
@@ -1001,13 +1001,13 @@ colnames(genesInRegion)[36]<-"test_stat"
 data<-ddply(genesInRegion,.(gene_id),head,n=1)
 data$test_stat<-as.numeric(data$test_stat)
 
-The pvalue for `r nSig` genes significantly regulated in a region this size  is: `r pval_for_region` 
+
 ```
 
+The pvalue for `r nSig` genes significantly regulated in a region this size  is: `r pval_for_region` 
 
 
-
-```{r cisreg_image,  fig.height=8, fig.width=8, eval=FALSE}
+```{r cisreg_image,  fig.height=8, fig.width=8}
 ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2), ylim=c(-abs(max(data$test_stat)+1),abs(max(data$test_stat)+1)))+labs(title=strain)+geom_text(data=subset(data, sig=='yes'))+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
 ```
 

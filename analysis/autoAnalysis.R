@@ -10,13 +10,17 @@
 diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
 
 files<-list.files(path=diffdir)
+files[1]<-NA
+files[8]<-NA
+files[29]<-NA
+files[30]<-NA
+files<-files[!is.na(files)]
 names<-files
+
 split<-data.frame(strsplit(names,"_"))
 rownames(split)<-c("strain","vs","wt","timepoint")
-split$c..Adult....full..<-NULL
-split$c..Embryonic....full..<-NULL
-split$X.init.<-NULL
-split$c..unit....test..<-NULL
+
+
 
 mat<-matrix(nrow=dim(split)[2],ncol=4)
 data=data.frame(mat)
