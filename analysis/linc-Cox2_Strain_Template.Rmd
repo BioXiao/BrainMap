@@ -267,6 +267,7 @@ csHeatmap(genotypingGenes,replicates=T)
 ```{r track_vis, fig.height=15, fig.width=10}
 name<-strain
 myGene<-getGene(cuff,name)
+genetrack<-makeGeneRegionTrack(myGene)
 
 library(GenomicFeatures)
 
@@ -354,7 +355,7 @@ from<-as.numeric(start_and_end[[1]])-margin
 to<-as.numeric(start_and_end[[2]])+margin
 
 #genetrack<-GeneRegionTrack(brainmap_lincs_mm10,rstarts=from,rends=to,chromosome=chrom,showId=TRUE,geneSymbol=TRUE,genome=genome,name="LincRNA Isoforms",fill="steelblue")
-genetrack<-GeneRegionTrack(mm10DB,rstarts=from,rends=to,chromosome=chrom,showId=TRUE,geneSymbol=TRUE,genome=genome,name="LincRNA Isoforms",fill="steelblue")
+#genetrack<-GeneRegionTrack(mm10DB,rstarts=from,rends=to,chromosome=chrom,showId=TRUE,geneSymbol=TRUE,genome=genome,name="LincRNA Isoforms",fill="steelblue")
 
 reps<-replicates(cuff)
 files<-lapply(reps$file,function(x){strsplit(x, "/")})

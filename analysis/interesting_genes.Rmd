@@ -1,6 +1,21 @@
  Interesting Strains 
 ========================================================
-```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+
+```{r init, echo=FALSE}
+# Set knitr opts
+
+#path<-paste(filename,"/figure/",sep="")
+opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE,dev=c('png', 'pdf'))
+alpha<-0.05 
+
+analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
+diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
+GTF<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf"
+genome<-"mm10"
+
+```
+
+```{r vars_and_setup,echo=FALSE,results='hide',message=FALSE}
 library(cummeRbund)
 library(xtable)
 library(limma)
@@ -8,12 +23,135 @@ library(GSA)
 library(gplots)
 library(marray)
 library(ggplot2)
-opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE)
+library(gtable)
+library(gridExtra)
+library(RColorBrewer)
+library(RMySQL)
+
+
+reactome_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.reactome.v4.0.symbols.gmt")
+biocarta_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.biocarta.v4.0.symbols.gmt")
+kegg_gs<-GSA.read.gmt("/n/rinn_data1/annotations/gsea/msigdb_v4.0_files_to_download_locally/msigdb_v4.0_GMTs/c2.cp.kegg.v4.0.symbols.gmt")
+
+
+setwd(analysisdir)
+deletionCoords<-read.table("mm10DeletionCoords.txt",sep="\t",header=TRUE,stringsAsFactors=FALSE)
+colnames(deletionCoords)<-c("gene_name","gene_region","deletionRegion")
+
+
 ```
 
-# Kantr
+### Top strains for stains: Eldr (egfr), linc-Cox2, linc-Brn1a, Cellr (insig2), Kantr (Jarid1c) 
 
-## Adult Kantr
+# Eldr (egfr)
+
+## Adult (2 KOs, <1 FPKM; 4/6 isoforms): minimal expression in WT (see tracks below), no gsea, no cis reg, go terms high level 
+```{r eldr adult setup}
+dir<-paste(diffdir,"Eldr_vs_WT_Adult",sep="/")
+cuff<-readCufflinks(dir=dir,gtfFile=GTF,genome=genome)
+
+```
+
+### Tracks:
+```{r}
+```
+
+## Embryonic (3 KOs, ~4 FPKM; ~4/6 isoforms): expression in wt, ko looks good!; gsea, no sig cis reg (but neighboring EGFR protein coding gene downregulated), go terms look ok
+
+### Tracks:
+
+### GSEA: 
+
+### Region plot: 
+
+### GO: 
+
+
+
+
+
+
+
+# linc-Cox2
+
+## Adult (3 KOs, <1 FPKM, 1/1 isoform): reprint tracks with cummerbund genetracking (not sure why my DB sometimes doesnt like this gene/these files). GSEA has some hits, go terms look high level, cis not interesting. 
+
+### Tracks
+
+### GSEA
+
+## Embryonic (3 KOs, <1 FPKM, 1/1 isoform): reprint tracks with cummerbund genetracking (not sure why my DB sometimes doesnt like this gene/these files). GSEA has some hits, go reactome potentially interesting, cis not interesting.
+
+### Tracks
+
+### GSEA
+
+### GO - reactome 
+
+
+
+
+
+
+
+# linc-Brn1a
+
+## Adult (2 KO, ~50 FPKM; 3/9 isoforms)- Tracks look good, gsea looks interesting, same with go, no cis. 
+
+### Tracks
+
+### GSEA
+
+### GO
+
+## Embryonic -- NO KOS YET! 
+
+
+
+
+
+
+
+
+
+# Cellr (insig2)
+
+## Adult (3 KOs, ~1 FPKM, 2/2 isoforms)- tracks look good, gsea not great, go ok (death), no cis
+
+### Tracks
+
+### GSEA
+
+### GO
+
+## Embryonic (2 KOs, <1 FPKM, 2/2 isoforms) - tracks look good, gsea looks good and so does go. no cis. 
+
+### Tracks
+
+### GSEA
+
+### GO
+
+
+
+
+
+
+
+
+
+# Kantr (Jarid1c)
+
+## Adult Kantr - (3 KOs, N2.5, ~15FPKM, mostly 1 iso, but 2 others (of 7))
+- tracks look good, gsea and kegg go are interesting, other go look high level. cis region not significant, but protein coding neighbor upregulated. 
+
+### Tracks
+
+### GSEA
+
+### Kegg GO
+
+### Cis image 
 
 ```{r Kantr_adult}
 dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Kantr_vs_WT_Adult"
@@ -96,7 +234,15 @@ detach("package:biomaRt")
 ```
 
 
-## Embryo Kantr
+## Embryo Kantr (3 KO, N2.5, ~7.5 FPKM, mostly 1 isoform of 7) - tracks look good, GSEA, GO, cis not significant but 4 misreg
+
+### Tracks
+
+### GSEA
+
+### GO
+
+### Cis image:
 
 ```{r Kantr_embryonic_dendro}
 dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Kantr_vs_WT_Embryonic"
@@ -170,6 +316,11 @@ plot(kegg, showCategory=10) + ggtitle("Kegg Pathways")
 plot(pathway,showCategory=10) + ggtitle("Reactome pathway enrichment")
 detach("package:biomaRt")
 ```
+
+
+
+
+Other Interesting Genes (by SEQ)
 
 
 # Crnde
@@ -761,6 +912,10 @@ data$test_stat<-as.numeric(data$test_stat)
 ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))+labs(title=strain)+geom_text(data=subset(data, sig=='yes'))
 ```
 
+
+# REMINDERS
+- remove tug1 adult sample!
+- rerun w new flow cells, and brn1a?! 
 
 Examples 
 ========================================================
