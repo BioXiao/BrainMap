@@ -168,7 +168,7 @@ Expression heatmap:
 There are 94 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jun 30 21:11:54 2014 -->
+<!-- Tue Jul  1 10:17:34 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Tubb6 </TD> </TR>
@@ -322,7 +322,7 @@ Per isoform difference between conditions:
 These isoforms are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jun 30 21:12:48 2014 -->
+<!-- Tue Jul  1 10:18:22 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> isoAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Tubb6 </TD> </TR>
@@ -510,7 +510,7 @@ The pvalue for 1 genes significantly regulated in a region this size  is: 1
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jun 30 21:31:25 2014 -->
+<!-- Tue Jul  1 10:41:37 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR729 </TD> </TR>
@@ -534,7 +534,7 @@ The pvalue for 1 genes significantly regulated in a region this size  is: 1
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jun 30 21:31:26 2014 -->
+<!-- Tue Jul  1 10:41:38 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR729/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 26334400.00 </TD> <TD align="right"> 34095400.00 </TD> <TD align="right"> 0.77 </TD> <TD align="right"> 1.00 </TD> </TR>
@@ -624,7 +624,7 @@ The pvalue for 1 genes significantly regulated in a region this size  is: 1
 ## [22] KernSmooth_2.23-12     labeling_0.2           lattice_0.20-29       
 ## [25] latticeExtra_0.6-26    MASS_7.3-33            Matrix_1.1-3          
 ## [28] munsell_0.4.2          org.Hs.eg.db_2.10.1    proto_0.3-10          
-## [31] qvalue_1.36.0          Rcpp_0.11.1            RCurl_1.95-4.1        
+## [31] qvalue_1.36.0          Rcpp_0.11.2            RCurl_1.95-4.1        
 ## [34] reactome.db_1.46.1     Rsamtools_1.14.3       scales_0.2.4          
 ## [37] splines_3.0.2          stats4_3.0.2           survival_2.37-7       
 ## [40] tcltk_3.0.2            tools_3.0.2            XML_3.98-1.1          

@@ -269,6 +269,7 @@ myGene<-getGene(cuff,name)
 genetrack<-makeGeneRegionTrack(myGene)
 
 library(GenomicFeatures)
+library(RColorBrewer)
 
 
 real_chromInfo<-read.table("/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/real_chromosomes_mm10_brainmap.chrom.info",header=TRUE)
@@ -283,7 +284,7 @@ mm10DB<-loadDb("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/brainmap_lin
 
 #Need to install R-3.0.0 (Devel) for Gviz to deal with .bam files
 #Helper Functions
-movingAverage <- function(x, n=10, centered=TRUE) {
+movingAverage <- function(x, n=20, centered=TRUE) {
   
   if (centered) {
     before <- floor  ((n-1)/2)
@@ -344,7 +345,7 @@ makeBamTrack<-function(bamFile,bamName,genome=genome,chromosome,color="steelblue
 
 ########## Constants #########
 annot<-annotation(myGene)
-margin<-1000
+margin<-100
 locus<-strsplit(annot$locus,":")
 locus<-unlist(locus)
 chrom<-locus[[1]]
@@ -1005,7 +1006,7 @@ The pvalue for `r nSig` genes significantly regulated in a region this size  is:
 
 
 ```{r cisreg_image,  fig.height=8, fig.width=8}
-ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2), ylim=c(-abs(max(data$test_stat)+1),abs(max(data$test_stat)+1)))+labs(title=strain)+geom_text(data=subset(data, sig=='yes'))+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
+ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2), ylim=c(-(max(abs(data$test_stat)+1)),(max(abs(data$test_stat)+1)))+labs(title=strain)+geom_text(data=subset(data, sig=='yes'))+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
 ```
 
 # Notes
