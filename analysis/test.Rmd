@@ -1,0 +1,94 @@
+`r strain` KO vs WT (Embryonic)
+======================================
+
+# questions
+- overdispersion
+- get tables to work
+- counts
+
+
+```{r init, echo=FALSE}
+# Set knitr opts
+path<-paste("figure/",strain,"/", sep="")
+opts_chunk$set(fig.path=path)
+
+#for test
+#setwd("/n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf/Kidney/")
+
+
+### THINGS TO CACHE GO HERE AND NOWHERE ELSE 
+
+
+
+
+```
+
+```{r vars_and_setup,echo=FALSE,results='hide',message=FALSE}
+library(cummeRbund)
+library(xtable)
+library(limma)
+library(GSA)
+library(gplots)
+library(marray)
+
+reactome_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.reactome.v4.0.symbols.gmt")
+biocarta_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.biocarta.v4.0.symbols.gmt")
+
+# Constant variables
+alpha<-0.05
+
+```
+
+# Intialize
+```{r cummeRbund and data setup, echo=FALSE}
+setwd(dir)
+cuff<-readCufflinks()
+reps<-replicates(cuff)
+files<-lapply(reps$file,function(x){strsplit(x, "/")})
+
+#field 9 will be JR number 
+files<-as.data.frame(files)
+samples<-as.data.frame(t(files[9,]))
+
+#look up strain, litter, sex, notes in master sheet 
+
+LINCRNA<-strain
+
+```
+
+# Design Overview
+
+This file shows the wt-v-ko comparison for `r strain`. 
+
+Samples used are:
+```{r, results='asis'}
+print(xtable(samples),type="html")
+```
+
+
+Cuff overview:
+```{r}
+print(xtable(cuff),type="html")
+```
+
+## Replicates (MAKE TABLES PRETTY >:| )
+```{r replicates, results='asis'}
+print(xtable(replicates(cuff)),type="html")
+```
+
+# QC
+
+## Dispersion
+
+This shows count (WHAT IS COUNT? fragment counts? per gene?) vs dispersion (of those counts), or the spread in measurements for a particular gene across replicates. 
+
+from cummerbund manual: Overdispersion is a common problem in RNA-Seq data. As of cufflinks v2.0 mean counts, variance, and dispersion are all emitted, allowing you to visualize the estimated overdispersion for each sample as a quality control measure. - See more at: http://compbio.mit.edu/cummeRbund/manual_2_0.html#sthash.9YRYxwRV.dpuf
+
+
+```{r dispersion}
+dispersionPlot(genes(cuff))
+
+csDendro(genes(cuff),replicates=TRUE)
+
+
+```
