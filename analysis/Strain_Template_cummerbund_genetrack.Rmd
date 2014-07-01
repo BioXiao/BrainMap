@@ -245,11 +245,11 @@ expressionBarplot(myGene,replicates=T)+theme_bw()
 
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
 
-Eif2s3y is a y-expressed gene 
+Eif2s3y is a y-expressed gene, Xist is an x-expressed gene 
 Expression plot (endogenous linc, lacZ, Y-expressed gene):
 
 ```{r Digital_Genotyping,fig.height=8, fig.width=8}
-genotypingGeneIDs<-c(strain,"LacZ","Eif2s3y")
+genotypingGeneIDs<-c(strain,"LacZ","Eif2s3y","Xist")
 genotypingGenes<-getGenes(cuff,genotypingGeneIDs)
 expressionBarplot(genotypingGenes,replicates=T)+theme_bw()
 ```
@@ -657,6 +657,12 @@ dev.off()
 
 ## GSEA
 
+Enrichment and zscores are calculated based on expression in KO vs WT (fpkmKO/fpkmWT), so genes that are down regulated in KO are shown in blue, while upregulation is shown in red. 
+
+KO/WT
+Blue = down in KO
+Red = Up in KO
+
 ```{r gsea_helper_functions}
 
 population<-genes(cuff)
@@ -936,6 +942,9 @@ detach("package:biomaRt")
 
 # Cis vs Trans (locally)
 
+log2 Foldchange and test statistic are calculated with the ratio of fpkm(KO)/fpkm(WT), thus the test_stat is positive if a gene is higher in the KO and negative if a gene has lower expression in the KO
+
+
 ``` {r cis_v_trans_table_and_pvalcalculation}
 library(BSgenome.Mmusculus.UCSC.mm10)
 library(seqbias)
@@ -1005,8 +1014,10 @@ data$test_stat<-as.numeric(data$test_stat)
 The pvalue for `r nSig` genes significantly regulated in a region this size  is: `r pval_for_region` 
 
 
+
 ```{r cisreg_image,  fig.height=8, fig.width=8}
-ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2), ylim=c(-(max(abs(data$test_stat)+1)),(max(abs(data$test_stat)+1)))+labs(title=strain)+geom_text(data=subset(data, sig=='yes'))+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
+ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2), ylim=c(-(max(abs(data$test_stat)+1)),(max(abs(data$test_stat)+1)))+labs(title=strain)+
+                                                                                                                                         geom_text(data=subset(data, sig=='yes'))+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
 ```
 
 # Notes

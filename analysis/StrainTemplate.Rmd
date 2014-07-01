@@ -1,8 +1,8 @@
 ```{r standalone setup, echo=FALSE,eval=FALSE}
 strain<-"Kdm5c"
 timepoint<-"Adult"
-filename<-"Embryo_WT_male_v_female"
-dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/WT_Embryonic_Male_v_Female/"
+filename<-"Adult_WT_male_v_female"
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/WT_Adult_Male_v_Female/"
 
 
 ### THINGS TO REMEMBER: change oldbam to bam and olddiff to diff once new set done! 
@@ -22,7 +22,7 @@ analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
 diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
 GTF<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf"
 genome<-"mm10"
-
+sexgenes<-c("Kdm5d","Egr2","Ddx3y","Xist","Myl6")
 ```
 
 ```{r vars_and_setup,echo=FALSE,results='hide',message=FALSE}
@@ -42,6 +42,8 @@ library(RMySQL)
 reactome_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.reactome.v4.0.symbols.gmt")
 biocarta_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.biocarta.v4.0.symbols.gmt")
 kegg_gs<-GSA.read.gmt("/n/rinn_data1/annotations/gsea/msigdb_v4.0_files_to_download_locally/msigdb_v4.0_GMTs/c2.cp.kegg.v4.0.symbols.gmt")
+
+#sexdiffs_gs<-GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/N3_Adult_murine_sexdiffs.gmt")
 
 
 setwd(analysisdir)
@@ -245,11 +247,11 @@ expressionBarplot(myGene,replicates=T)+theme_bw()
 
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
 
-Eif2s3y is a y-expressed gene 
+Eif2s3y is a y-expressed gene, Xist is an x-expressed gene 
 Expression plot (endogenous linc, lacZ, Y-expressed gene):
 
 ```{r Digital_Genotyping,fig.height=8, fig.width=8}
-genotypingGeneIDs<-c(strain,"LacZ","Eif2s3y")
+genotypingGeneIDs<-c(strain,"LacZ","Eif2s3y","Xist")
 genotypingGenes<-getGenes(cuff,genotypingGeneIDs)
 expressionBarplot(genotypingGenes,replicates=T)+theme_bw()
 ```
@@ -656,6 +658,12 @@ dev.off()
 
 ## GSEA
 
+Enrichment and zscores are calculated based on expression in KO vs WT (fpkmKO/fpkmWT), so genes that are down regulated in KO are shown in blue, while upregulation is shown in red. 
+
+KO/WT
+Blue = down in KO
+Red = Up in KO
+
 ```{r gsea_helper_functions}
 
 population<-genes(cuff)
@@ -757,6 +765,7 @@ myColors<-maPalette(low="blue",mid="white",high="red",k=k)
 #myBreaks<-seq(-max(abs(x)),max(abs(x)),k+1)
 myBreaks<-seq(-2,2,length.out=(k+1))
 enrichmentBreaks<-seq(0,6,length.out=(k+1))
+
 ```
 
 
@@ -934,6 +943,9 @@ detach("package:biomaRt")
 ```
 
 # Cis vs Trans (locally)
+
+log2 Foldchange and test statistic are calculated with the ratio of fpkm(KO)/fpkm(WT), thus the test_stat is positive if a gene is higher in the KO and negative if a gene has lower expression in the KO
+
 
 ``` {r cis_v_trans_table_and_pvalcalculation}
 library(BSgenome.Mmusculus.UCSC.mm10)
