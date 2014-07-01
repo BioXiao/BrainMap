@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 ```{r standalone setup, echo=FALSE,eval=FALSE}
 strain<-"Kdm5c"
 timepoint<-"Adult"
@@ -9,15 +9,9 @@ dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/WT_Adult_Male_v_Femal
 ### THINGS TO REMEMBER: change oldbam to bam and olddiff to diff once new set done! 
 ```
 
-=======
->>>>>>> 1515f1481dfa450887894156461df7527c16a908
-`r strain` KO vs WT (`r timepoint`)
-======================================
 
-- other heatmap labels (csHeatmap)
-- cache gsea and overlap figure!! 
-- tracks 
-- should import litter info
+`r strain` KO vs WT (`r timepoint`)
+=============================================
 
 
 ```{r init, echo=FALSE}
@@ -34,16 +28,14 @@ alpha<-0.05
 setwd(dir)
 
 
-<<<<<<< HEAD
 analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
 diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
 GTF<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf"
 genome<-"mm10"
 sexgenes<-c("Kdm5d","Egr2","Ddx3y","Xist","Myl6")
-=======
+
 ### THINGS TO CACHE GO HERE AND NOWHERE ELSE 
 
->>>>>>> 1515f1481dfa450887894156461df7527c16a908
 ```
 
 ```{r vars_and_setup,echo=FALSE,results='hide',message=FALSE}
@@ -60,18 +52,16 @@ library(gridExtra)
 
 reactome_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.reactome.v4.0.symbols.gmt")
 biocarta_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.biocarta.v4.0.symbols.gmt")
-<<<<<<< HEAD
 kegg_gs<-GSA.read.gmt("/n/rinn_data1/annotations/gsea/msigdb_v4.0_files_to_download_locally/msigdb_v4.0_GMTs/c2.cp.kegg.v4.0.symbols.gmt")
+interneuron_gs<-GSA.read.gmt("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/support/interneuron_genesets.gmt")
 
-#sexdiffs_gs<-GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/N3_Adult_murine_sexdiffs.gmt")
+sexdiffs_gs<-GSA.read.gmt("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/support/sexdiffs.gmt")
 
 
 setwd(analysisdir)
 deletionCoords<-read.table("mm10DeletionCoords.txt",sep="\t",header=TRUE,stringsAsFactors=FALSE)
 colnames(deletionCoords)<-c("gene_name","gene_region","deletionRegion")
 
-=======
->>>>>>> 1515f1481dfa450887894156461df7527c16a908
 
 ```
 
@@ -279,21 +269,18 @@ expressionBarplot(myGene,replicates=T)
 
 
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
-<<<<<<< HEAD
+
 
 Eif2s3y is a y-expressed gene, Xist is an x-expressed gene 
 Expression plot (endogenous linc, lacZ, Y-expressed gene):
 
 ```{r Digital_Genotyping,fig.height=8, fig.width=8}
 genotypingGeneIDs<-c(strain,"LacZ","Eif2s3y","Xist")
-=======
+
 Expression plot (endogenous linc, lacZ, Y-expressed gene):
 
-```{r Digital_Genotyping}
-genotypingGeneIDs<-c(strain,"LacZ","Eif2s3y")
->>>>>>> 1515f1481dfa450887894156461df7527c16a908
 genotypingGenes<-getGenes(cuff,genotypingGeneIDs)
-expressionBarplot(genotypingGenes,replicates=T)
+
 ```
 
 Expression heatmap:
@@ -556,13 +543,29 @@ reactome_pvl_corrected<-rbind(reactome_pvl_corrected,reactome_pvl_corrected)
 biocarta_pvl_mat <- get_gene_set_p_vals(Input.df, biocarta_gs, alternative="mixed")
 biocarta_pvl_corrected <- get_gene_set_q_vals(biocarta_pvl_mat)
 biocarta_pvl_corrected<-rbind(biocarta_pvl_corrected,biocarta_pvl_corrected)
-```
 
-```{r print_GSEA_biocarta, fig.height=20, fig.width=10}
-#two options, print as pdf, and adjust size in separate code block
-#make minimum height and then increment scaled by number of rows to return 
+interneuron_pvl_mat<-get_gene_set_p_vals(Input.df,interneuron_gs,alternative="either")
+interneuron_pvl_corrected<-get_gene_set_q_vals(interneuron_pvl_mat)
+interneuron_pvl_corrected<-rbind(interneuron_pvl_corrected,interneuron_pvl_corrected)
 
-<<<<<<< HEAD
+
+kegg_pvl_mat <- get_gene_set_p_vals(Input.df, kegg_gs, alternative="either")
+kegg_pvl_corrected <- get_gene_set_q_vals(kegg_pvl_mat)
+kegg_pvl_corrected<-rbind(kegg_pvl_corrected,kegg_pvl_corrected)
+
+
+reactome_zscores<-get_gene_set_ztest(Input.df,reactome_gs)
+reactome_zscores<-cbind(reactome_zscores,reactome_zscores)
+
+biocarta_zscores<-get_gene_set_ztest(Input.df,biocarta_gs)
+biocarta_zscores<-cbind(biocarta_zscores,biocarta_zscores)
+
+kegg_zscores<-get_gene_set_ztest(Input.df,kegg_gs)
+kegg_zscores<-cbind(kegg_zscores,kegg_zscores)
+
+interneuron_zscores<-get_gene_set_ztest(Input.df,interneuron_gs)
+interneuron_zscores<-cbind(interneuron_zscores,interneuron_zscores)
+
 k <- 100
 myColors<-maPalette(low="blue",mid="white",high="red",k=k)
 #myBreaks<-seq(-max(abs(x)),max(abs(x)),k+1)
@@ -570,56 +573,152 @@ myBreaks<-seq(-2,2,length.out=(k+1))
 enrichmentBreaks<-seq(0,6,length.out=(k+1))
 
 ```
-=======
->>>>>>> 1515f1481dfa450887894156461df7527c16a908
 
-#setwd('/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis')
 
-#print to file 
-#pdf("components_GSEA_biocarta.pdf",width=10,height=30)
 
-#take top 50
-x<-(-log10(t(biocarta_pvl_corrected[,which(colMins(biocarta_pvl_corrected) < 0.001)])))
+Biocarta enrichment: 
 
+```{r print_GSEA_biocarta, fig.height=8, fig.width=8}
+InputCols<-maPalette(low="white",high="red",k=100)
+
+x<-(-log10(t(biocarta_pvl_corrected[,which(colMins(biocarta_pvl_corrected) < 0.01)])))
 x_ordered<-x[order(x[,1], decreasing=TRUE),]
-x_ordered_subset<-x_ordered[1:50,]
-noinfinities_x<-x_ordered_subset[which(x_ordered_subset !="Inf")]
+if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
+noinfinities_x<-x_ordered[which(x_ordered !="Inf")]
 x_max<-max(noinfinities_x)+100
-x_ordered_subset[x_ordered_subset=="Inf"]<-x_max
+x_ordered[x_ordered=="Inf"]<-x_max
+x_ordered<-as.matrix(x_ordered)
 
-
-heatmap.2(x_ordered_subset, trace="none", margins=c(5,20), col=InputCols,dendrogram="row",lhei =c(0.1,0.9), labCol=c(""))
-
-#dev.off()
-
-#print to report 
-#heatmap.2(x_ordered_subset, trace="none", margins=c(5,30), col=InputCols,dendrogram="row",lhei =c(0.1,0.9), labCol=c(""))
+if(dim(x_ordered)[1]>1){
+  heatmap.2(x_ordered, trace="none",col=InputCols,breaks=enrichmentBreaks, margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = 1, offsetRow=0)
+}else{print("Not enough significant categories to print a heatmap!")}
 ```
 
-```{r print_GSEA_reactome, fig.width=10, fig.height=20}
+Biocarta zscore: 
 
-#print to file
+```{r gsea_zscore_biocarta, fig.height=8, fig.width=8}
+x<-((biocarta_zscores[which(colMins(biocarta_pvl_corrected) < 0.01),]))
+x_ordered<-x[order(x[,1], decreasing=TRUE),]
+if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
+x_ordered<-as.matrix(x_ordered)
+
+if(dim(x_ordered)[1]>1){
+heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow =1, offsetRow=0)
+}else{print("Not enough significant categories to print a heatmap!")}
+```
+
+
+Reactome enrichment: 
+
+```{r print_GSEA_reactome, fig.width=10, fig.height=12}
 #pdf("components_GSEA_reactome.pdf",width=10,height=30)
 
-#take top 50 because this is ridiculous
-#x<-(-log10(t(reactome_pvl_corrected[,which(colMins(reactome_pvl_corrected) < 0.0000000000000000000000001)])))
+InputCols<-maPalette(low="white",high="red",k=100)
 
-x<-(-log10(t(reactome_pvl_corrected[,which(colMins(reactome_pvl_corrected) < 0.0001)])))
+x<-(-log10(t(reactome_pvl_corrected[,which(colMins(reactome_pvl_corrected) < 0.001)])))
 x_ordered<-x[order(x[,1], decreasing=TRUE),]
-x_ordered_subset<-x_ordered[1:50,]
-noinfinities_x<-x_ordered_subset[which(x_ordered_subset !="Inf")]
+if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
+noinfinities_x<-x_ordered[which(x_ordered !="Inf")]
 x_max<-max(noinfinities_x)+100
-x_ordered_subset[x_ordered_subset=="Inf"]<-x_max
+x_ordered[x_ordered=="Inf"]<-x_max
 
+if(dim(x_ordered)[1]>1){
+  heatmap.2(x_ordered, trace="none",col=InputCols,breaks=enrichmentBreaks, margins=c(1,20),dendrogram="both",labCol=c(""),cexRow =1, offsetRow=0)
+}else{print("Not enough significant categories to print a heatmap!")}
 
-heatmap.2(x_ordered_subset, trace="none", margins=c(5,20),col=InputCols,dendrogram="both",lhei = c(0.1,0.90), labCol=c(""))
-#cexRow = (0.2 + .5/log10(dim(x)[1]))
 #dev.off()
+```
 
-#print to report 
-#heatmap.2(x_ordered_subset, trace="none", margins=c(5,30),col=InputCols,dendrogram="both",lhei = c(0.1,0.90), labCol=c(""))
+
+Reactome zscore: 
+
+```{r gsea_zscore_reactome, fig.width=10, fig.height=12}
+
+x<-reactome_zscores[which(colMins(reactome_pvl_corrected) < 0.001),]
+
+x_ordered<-x[order(x[,1], decreasing=TRUE),]
+
+if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
+x_ordered<-as.matrix(x_ordered)
+
+if(dim(x_ordered)[1]>1){
+heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = 1, offsetRow=0)
+}else{print("Not enough significant categories to print a heatmap!")}
+```
+
+
+Kegg enrichment: 
+
+```{r gsea_enrichment_kegg, fig.width=10, fig.height=12}
+InputCols<-maPalette(low="white",high="red",k=100)
+
+x<-(-log10(t(kegg_pvl_corrected[,which(colMins(kegg_pvl_corrected) < 0.001)])))
+x_ordered<-x[order(x[,1], decreasing=TRUE),]
+if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
+noinfinities_x<-x_ordered[which(x_ordered !="Inf")]
+x_max<-max(noinfinities_x)+100
+x_ordered[x_ordered=="Inf"]<-x_max
+
+if(dim(x_ordered)[1]>1){
+  heatmap.2(x_ordered, trace="none",col=InputCols,breaks=enrichmentBreaks, margins=c(1,20),dendrogram="both",labCol=c(""),cexRow =1, offsetRow=0)
+}else{print("Not enough significant categories to print a heatmap!")}
+
 
 ```
+
+Kegg zscore: 
+
+```{r gsea_zscore_kegg, fig.width=10, fig.height=12}
+
+x<-kegg_zscores[which(colMins(kegg_pvl_corrected) < 0.001),]
+
+x_ordered<-x[order(x[,1], decreasing=TRUE),]
+
+if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
+x_ordered<-as.matrix(x_ordered)
+
+if(dim(x_ordered)[1]>1){
+heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = 1, offsetRow=0)
+}else{print("Not enough significant categories to print a heatmap!")}
+
+```
+
+Interneuron enrichment:
+
+```{r gsea_enrichment_interneuron, fig.width=10, fig.height=12}
+InputCols<-maPalette(low="white",high="red",k=100)
+
+x<-(-log10(t(interneuron_pvl_corrected[,which(colMins(interneuron_pvl_corrected) < 0.001)])))
+x_ordered<-x[order(x[,1], decreasing=TRUE),]
+if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
+noinfinities_x<-x_ordered[which(x_ordered !="Inf")]
+x_max<-max(noinfinities_x)+100
+x_ordered[x_ordered=="Inf"]<-x_max
+
+if(dim(x_ordered)[1]>1){
+  heatmap.2(x_ordered, trace="none",col=InputCols,breaks=enrichmentBreaks, margins=c(1,20),dendrogram="both",labCol=c(""),cexRow =1, offsetRow=0)
+}else{print("Not enough significant categories to print a heatmap!")}
+
+
+```
+
+Interneuron zscore:
+
+```{r gsea_zscore_interneuron, fig.width=10, fig.height=12}
+
+x<-interneuron_zscores[which(colMins(interneuron_pvl_corrected) < 0.001),]
+
+x_ordered<-x[order(x[,1], decreasing=TRUE),]
+
+if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
+x_ordered<-as.matrix(x_ordered)
+
+if(dim(x_ordered)[1]>1){
+heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = 1, offsetRow=0)
+}else{print("Not enough significant categories to print a heatmap!")}
+
+```
+
 
 ## GO enrichment 
 Cluster profiler used to call enichments of significantly differentially regulated genes that map to Entrez IDs. 
@@ -684,15 +783,11 @@ detach("package:biomaRt")
 ```
 
 # Cis vs Trans (locally)
-<<<<<<< HEAD
 
 log2 Foldchange and test statistic are calculated with the ratio of fpkm(KO)/fpkm(WT), thus the test_stat is positive if a gene is higher in the KO and negative if a gene has lower expression in the KO
 
 
 ``` {r cis_v_trans_table_and_pvalcalculation}
-=======
-``` {r cis_v_trans, cache=TRUE}
->>>>>>> 1515f1481dfa450887894156461df7527c16a908
 library(BSgenome.Mmusculus.UCSC.mm10)
 library(seqbias)
 library(stringr)
@@ -703,7 +798,7 @@ mm10.granges<-GRanges(seqnames = names(myLengths), ranges = IRanges(start = 1, e
 
 #Constants
 nIter<-1000
-windowSize<-2000000
+windowSize<-4000000
 set.seed()
 myRandom<-random.intervals(mm10.granges,n=nIter,ms=windowSize)
 
@@ -763,7 +858,7 @@ data$test_stat<-as.numeric(data$test_stat)
 The pvalue for `r nSig` genes significantly regulated in this region is: `r pval_for_region` 
 
 ```{r overlap_image, cache=TRUE}
-ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2))+labs(title=strain)+geom_text(data=subset(data, sig=='yes'))
+ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2),ylim=(-max(abs(data$test_stat)+1),max(abs(data$test_stat))+1))+labs(title=strain)+geom_text(data=subset(data, sig=='yes'))
 ```
 
 # Notes
