@@ -1,7 +1,7 @@
-[1] "Haunt_vs_WT_Embryonic"
-[1] "Haunt"
+[1] "linc-Enc1_vs_WT_Adult"
+[1] "linc-Enc1"
 Warning message:
-In dir.create(filename) : 'Haunt_vs_WT_Embryonic' already exists
+In dir.create(filename) : 'linc-Enc1_vs_WT_Adult' already exists
 Loading required package: BiocGenerics
 Loading required package: methods
 Loading required package: parallel
@@ -97,8 +97,3 @@ Read 217 records
 Read 4964 items
 Read 186 records
 Read 13247 items
-Scale for 'x' is already present. Adding another scale for 'x', which will replace the existing scale.
-geom_smooth: method="auto" and size of largest group is >=1000, so using gam with formula: y ~ s(x, bs = "cs"). Use 'method = x' to change the smoothing method.
-Scale for 'x' is already present. Adding another scale for 'x', which will replace the existing scale.
-geom_smooth: method="auto" and size of largest group is >=1000, so using gam with formula: y ~ s(x, bs = "cs"). Use 'method = x' to change the smoothing method.
-slurmstepd: error: *** JOB 12560487 CANCELLED AT 2014-07-01T18:09:12 ***

@@ -199,3 +199,24 @@ In addition: Warning messages:
 2: Removed 3861 rows containing missing values (geom_point). 
 Using tracking_id, rep_name as id variables
 No id variables; using all as measure variables
+
+
+
+Attaching package: 'DOSE'
+
+The following object is masked from 'package:ReactomePA':
+
+    gseAnalyzer
+
+Getting gene information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting isoforms information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+slurmstepd: error: *** JOB 12560477 CANCELLED AT 2014-07-01T18:08:48 ***

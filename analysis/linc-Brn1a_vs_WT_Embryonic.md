@@ -211,7 +211,7 @@ Barplot of isoform expression:
 
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
 
-Eif2s3y is a y-expressed gene 
+Eif2s3y is a y-expressed gene, Xist is an x-expressed gene 
 Expression plot (endogenous linc, lacZ, Y-expressed gene):
 
 
@@ -418,6 +418,12 @@ The following are significantly differentially spliced genes (relative portion o
 # Gene/Pathway Analysis
 
 ## GSEA
+
+Enrichment and zscores are calculated based on expression in KO vs WT (fpkmKO/fpkmWT), so genes that are down regulated in KO are shown in blue, while upregulation is shown in red. 
+
+KO/WT
+Blue = down in KO
+Red = Up in KO
 
 
 
@@ -714,6 +720,11 @@ Cluster profiler used to call enichments of significantly differentially regulat
 ```
 
 # Cis vs Trans (locally)
+
+log2 Foldchange and test statistic are calculated with the ratio of fpkm(KO)/fpkm(WT), thus the test_stat is positive if a gene is higher in the KO and negative if a gene has lower expression in the KO
+
+
+
 
 
 ```
