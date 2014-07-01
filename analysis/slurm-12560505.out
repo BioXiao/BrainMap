@@ -97,3 +97,8 @@ Read 217 records
 Read 4964 items
 Read 186 records
 Read 13247 items
+Scale for 'x' is already present. Adding another scale for 'x', which will replace the existing scale.
+geom_smooth: method="auto" and size of largest group is >=1000, so using gam with formula: y ~ s(x, bs = "cs"). Use 'method = x' to change the smoothing method.
+Scale for 'x' is already present. Adding another scale for 'x', which will replace the existing scale.
+geom_smooth: method="auto" and size of largest group is >=1000, so using gam with formula: y ~ s(x, bs = "cs"). Use 'method = x' to change the smoothing method.
+slurmstepd: error: *** JOB 12560505 CANCELLED AT 2014-07-01T18:13:52 ***

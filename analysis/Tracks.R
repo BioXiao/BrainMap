@@ -1,48 +1,29 @@
 # TRACKS
-
 library(cummeRbund)
+library(Gviz)
+library(RColorBrewer)
 
 analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
-diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/olddiffs"
-
-genome<-"mm10"
+diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
 GTF<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf"
-GTF_noLacZ<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/mm10_gencode_with_lincRNAS_NO_LACZ.gtf"
-#lincRNAsubsetGTF<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/BrainmapLincRNAs.gtf"
-
 
 setwd(diffdir)
-setwd('linc-Cox2_vs_WT_Adult/')
-cuff<-readCufflinks(gtfFile=GTF,genome=genome)
-name<-"linc-Cox2"
-myGene<-getGene(cuff,name)
+setwd('Peril_vs_WT_Adult/')
+cuff<-readCufflinks(gtfFile=GTF,genome="mm10")
 
+myID<-"Peril"
+myGene<-getGene(cuff,myID)
+genetrack <-makeGeneRegionTrack(myGene)
+plotTracks(genetrack)
+
+################# SCRIPT FROM LOYAL ##################
+
+library(rtracklayer)
+library(Gviz)
 library(RMySQL)
-library(RColorBrewer)
-library(GenomicFeatures)
-
-
-
-################# SCRIPT FROM LOYAL -- helper functions ### 
-#chromInfo<-read.table("/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/indexes/mm10/mm10_brainmap.chrom.info",header=TRUE)
-real_chromInfo<-read.table("/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/real_chromosomes_mm10_brainmap.chrom.info",header=TRUE)
-
-
-#makeTranscriptDbFromGFF
-#brainmap_lincs_mm10<-makeTranscriptDbFromGFF(lincRNAsubsetGTF,format="gtf",chrominfo=real_chromInfo,species="Mus musculus")
-#saveDb(brainmap_lincs_mm10,file="brainmap_lincsubset_db.sqlite")
-#brainmap_lincs_mm10<-loadDb("brainmap_lincsubset_db.sqlite")
-
-mm10DB<-loadDb("brainmap_lincsubset_db.sqlite")
-
-
-#mm10Db_nolacz<-makeTranscriptDbFromGFF(GTF_noLacZ,format="gtf",chrominfo=real_chromInfo, species="Mus musculus")
-setwd(analysisdir)
-#saveDb(mm10Db_nolacz,file="mm10gencode_brainmapDB_nolacz.sqlite")
-#mm10DB<-loadDb("mm10gencode_brainmapDB_nolacz.sqlite")
-
 
 #Need to install R-3.0.0 (Devel) for Gviz to deal with .bam files
+
 #Helper Functions
 movingAverage <- function(x, n=10, centered=TRUE) {
   
@@ -96,27 +77,31 @@ movingAverage <- function(x, n=10, centered=TRUE) {
   s/count
 }
 
-makeBamTrack<-function(bamFile,bamName,genome=genome,chromosome,color="steelblue",window=20,ylim=c(0,15)){
-  
-  track<-DataTrack(range=bamFile,name=bamName,genome=genome,type="h",transformation=function(x){movingAverage(x,window)},col=color,fill.histogram=color,col.histogram=color,chromosome=chromosome, ylim=ylim, lwd=1.5)
-  
-  return(track)
-}
+#TODO: get regions to plot
+#plotRegions<-read.table("plotRegions.txt",header=T,sep="\t",stringsAsFactors=FALSE)
 
-########## Constants #########
+#Constants
+genome<-"mm10"
+
+#name<-"Slc25a12"
+#chrom<-"chr2"
+#from<-71095513
+#to<-71215660
+
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Peril_vs_WT_Embryonic/"
+setwd(dir)
+cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
+name<-"Peril"
+myGene<-getGene(cuff,name)
 annot<-annotation(myGene)
-margin<-1000
+
 locus<-strsplit(annot$locus,":")
 locus<-unlist(locus)
 chrom<-locus[[1]]
 start_and_end<-strsplit(locus[[2]],"-")
 start_and_end<-unlist(start_and_end)
-from<-as.numeric(start_and_end[[1]])-margin
-to<-as.numeric(start_and_end[[2]])+margin
-
-
-#genetrack<-GeneRegionTrack(brainmap_lincs_mm10,rstarts=from,rends=to,chromosome=chrom,showId=TRUE,geneSymbol=TRUE,genome=genome,name="LincRNA Isoforms",fill="steelblue")
-genetrack<-GeneRegionTrack(mm10DB,rstarts=from,rends=to,chromosome=chrom,showId=TRUE,geneSymbol=TRUE,genome=genome,name="LincRNA Isoforms",fill="steelblue",stacking="squish")
+from<-as.numeric(start_and_end[[1]])
+to<-as.numeric(start_and_end[[2]])
 
 
 reps<-replicates(cuff)
@@ -124,38 +109,30 @@ files<-lapply(reps$file,function(x){strsplit(x, "/")})
 files<-as.data.frame(files)
 samples<-(t(files[10,]))
 rownames(samples)<-NULL
+
 JRs<-samples
 
-setwd(analysisdir)
-deletionCoords<-read.table("mm10DeletionCoords.txt",sep="\t",header=TRUE,stringsAsFactors=FALSE)
-colnames(deletionCoords)<-c("gene_name","gene_region","deletionRegion")
-koStrain<-name
-coords<-deletionCoords[which(deletionCoords$gene_name==koStrain),3]
-coords<-strsplit(coords,":")
-coords<-unlist(coords)
-koChr<-coords[1]
-positions<-strsplit(coords[[2]],"-")
-positions<-unlist(positions)
-koStart<-as.numeric(positions[1])
-koWidth<-abs(as.numeric(positions[2])-as.numeric(positions[1]))
 
-
-bamRoot<-'/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/oldbam/'
+bamRoot<-'/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/'
 
 bamFiles<-lapply(JRs,function(x){paste(bamRoot,x,"/accepted_hits.bam",sep="")})
 
 bamNames<-reps$rep_name
 
-specCols<-brewer.pal(3,"Paired")
-colPal<-colorRampPalette(specCols)
-bamColors<-colPal(length(bamFiles))
+bamColors<-brewer.pal(length(bamNames),"Spectral")
 
+makeBamTrack<-function(bamFile,bamName,genome=genome,chromosome,color="steelblue",window=20,ylim=c(0,15)){
+  track<-DataTrack(range=bamFile,name=bamName,genome=genome,type="h",transformation=function(x){movingAverage(x,window)},col=color,fill.histogram=color,col.histogram=color,chromosome=chromosome, ylim=ylim, lwd=1.5)
+  return(track)
+}
 
-doPlot<-function(genome=genome,name,myChr,from,to,window,bamFiles,bamNames,koStart,koWidth,koChr){
+require(TxDb.Mmusculus.UCSC.mm10.knownGene)
+
+doPlot<-function(genome=genome,name,myChr,from,to,window="auto",bamFiles,bamNames){
   #Make Tracks
-  axTrack<-GenomeAxisTrack(add53 = TRUE,add35 = TRUE, labelPos = "above")
-  idxTrack <- IdeogramTrack(genome = genome, chromosome = myChr)
-  koTrack<-AnnotationTrack(start=koStart,width=koWidth,chromosome=koChr,strand="*",id=koStrain,genome="mm10",name="KO Region")
+  #axTrack<-GenomeAxisTrack(add53 = TRUE,add35 = TRUE, labelPos = "above")
+  #idxTrack <- IdeogramTrack(genome = genome, chromosome = myChr)
+  
   #BamTracks
   write("\tBamTracks",stderr())
   bamTracks<-list()
@@ -169,29 +146,94 @@ doPlot<-function(genome=genome,name,myChr,from,to,window,bamFiles,bamNames,koSta
   #Plot Tracks
   write("\tplotting...",stderr())
   # myTracks<-c(bamTracks,knownGenes)
-  myTracks<-c(idxTrack,axTrack,genetrack,bamTracks,koTrack)
-  trackSizes<-c(1,1,4,rep(1,length(bamTracks)),1)
+  myTracks<-bamTracks
+  trackSizes<-c(rep(1,length(bamTracks)))
 
-  plotTracks(myTracks,from=from,to=to,chromosome=myChr,showAxis=FALSE,background.title="black",col.title="white",col.axis="black",sizes=trackSizes,geneSymbol=TRUE)
+  #pdf(paste(name,".pdf",sep=""),width=10,height=8)
+  plotTracks(myTracks,from=as.numeric(from),to=as.numeric(to),chrom=myChr,showAxis=FALSE,background.title="white",col.title="black",col.axis="black",sizes=trackSizes)
+  #dev.off()
+  #dbDisconnect(con)
+}
 
+genome<-"mm10"
+name<-"Peril"
+myChr<-chrom
+
+doPlot(genome=genome, name=name, myChr=chrom, from=from, to=to, window="auto",bamFiles, bamNames)
+
+for(i in 1:dim(plotRegions)[1]){
+  write(paste(plotRegions[i,]$name),stderr())
+  #print(paste(plotRegions[i,]$name,plotRegions[i,]$chrom))
+  doPlot(genome=genome,
+         name=plotRegions[i,]$name,
+         myChr=plotRegions[i,]$chrom,
+         from=as.numeric(plotRegions[i,]$start),
+         to=as.numeric(plotRegions[i,]$end),
+         window=as.numeric(plotRegions[i,]$window))
 }
 
 
-doPlot(genome=genome, name=name, myChr=chrom, from=from, to=to, window=20,bamFiles=bamFiles, bamNames=bamNames, koStart=koStart,koWidth=koWidth,koChr=koChr)
 
 
 
-detach(package:GenomicFeatures)
 
+######
+#Karyogram
+######
+library(biovizBase)
+library(ggbio)
 
-####################lots of plots! #########
-#for(i in 1:dim(plotRegions)[1]){
-#  write(paste(plotRegions[i,]$name),stderr())
-#  #print(paste(plotRegions[i,]$name,plotRegions[i,]$chrom))
-#  doPlot(genome=genome,
-#         name=plotRegions[i,]$name,
-#         myChr=plotRegions[i,]$chrom,
-#         from=as.numeric(plotRegions[i,]$start),
-#         to=as.numeric(plotRegions[i,]$end),
-#         window=as.numeric(plotRegions[i,]$window))
-#}
+myRanges<-GRanges(seqnames=Rle(plotRegions$chrom),IRanges(plotRegions$start,plotRegions$end),name=plotRegions$name)
+
+mm10 <- getIdeogram("mm10", cytoband = TRUE)
+seqlengths(mm10) <- seqlengths(mm10)[names(seqlengths(mm10))]
+mm10 <- keepSeqlevels(mm10, paste0("chr", c(1:19, "X","Y")))
+
+pdf("karyogram.pdf")
+autoplot(mm9,layout="karyogram",cytoband=TRUE) + layout_karyogram(myRanges,fill="red",color="red",geom="rect",ylim = c(11, 21),lwd=2)
+dev.off()
+
+#Full X-chromosome plot
+chrom<-"chrX"
+from<-1
+to<-166650296
+name<-"ChromosomeX"
+
+doPlotX<-function(genome,name,chrom,from,to,window=16666){
+  
+  
+  #Make Tracks
+  axTrack<-GenomeAxisTrack(add53 = TRUE,add35 = TRUE, labelPos = "above")
+  idxTrack <- IdeogramTrack(genome = genome, chromosome = chrom)
+  
+  #write("\tUCSC",stderr())
+  #knownGenes <- UcscTrack(genome = genome, chromosome = chrom,
+  #                       track = "refGene", from = from, to = to, trackType = "GeneRegionTrack",
+  #                        rstarts = "exonStarts", rends = "exonEnds", gene = "name",
+  #                        symbol = "name2", transcript = "name2", strand = "strand",
+  #                        fill = "black", col.line="black", name = "RefSeq Genes",showId=T,stacking="dense"
+  #                                                       )
+  
+  #BamTracks
+  #tmp<-DataTrack(range="/Volumes/Odyssey/seq/lgoff/CHART/linc-FIRRE/mESC/Rap1-R1.sorted.unique_alignment.bam",genome="mm9",type="h",name="RAP-R1",chromosome=chrom,transformation=function(x){movingAverage(x,200)})
+  write("\tBamTracks",stderr())
+  bamTracks<-list()
+  bamOrder<-c(1:6)
+  for (i in bamOrder){
+    track<-makeBamTrack(bamFiles[i],bamNames[i],genome=genome,chromosome=chrom,color=bamColors[i],window=window,ylim=c(0,15))
+    bamTracks<-c(bamTracks,track)
+  }
+  
+  #Plot Tracks
+  write("\tplotting...",stderr())
+  myTracks<-c(axTrack,bamTracks)
+  trackSizes<-c(1,rep(1,length(bamTracks)))
+  
+  
+  png(paste(name,".png",sep=""),width=1000,height=800)
+  plotTracks(myTracks,from=from,to=to,chrom=chrom,background.title="white",col.title="black",col.axis="black",sizes=trackSizes,showAxis=TRUE)
+  dev.off()
+  #dbDisconnect(con)
+}
+
+doPlotX(genome=genome,name=name,chrom=chrom,from=from,to=to,window=0)

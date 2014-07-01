@@ -1,24 +1,25 @@
-```{r standalone setup, echo=FALSE}
-strain<-"linc-Enc1"
-timepoint<-"Embryonic"
-filename<-"linc-Enc1_vs_WT_Embryonic"
-dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Enc1_vs_WT_Embryonic/"
-```
-
-`r strain` KO vs WT (`r timepoint`)
+`r strain` KO vs WT (Embryonic)
 ======================================
+
+# questions
+- overdispersion
+- get tables to work
+- counts
+
 
 ```{r init, echo=FALSE}
 # Set knitr opts
+path<-paste("figure/",strain,"/", sep="")
+opts_chunk$set(fig.path=path)
 
-#path<-paste(filename,"/figure/",sep="")
-opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE,fig.height=4, fig.width=4)
-alpha<-0.05 
+#for test
+#setwd("/n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf/Kidney/")
 
-analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
-diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
-GTF<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf"
-genome<-"mm10"
+
+### THINGS TO CACHE GO HERE AND NOWHERE ELSE 
+
+
+
 
 ```
 
@@ -29,64 +30,65 @@ library(limma)
 library(GSA)
 library(gplots)
 library(marray)
-library(ggplot2)
-
 
 reactome_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.reactome.v4.0.symbols.gmt")
 biocarta_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.biocarta.v4.0.symbols.gmt")
 
-setwd(analysisdir)
-deletionCoords<-read.table("mm10DeletionCoords.txt",sep="\t",header=TRUE,stringsAsFactors=FALSE)
-colnames(deletionCoords)<-c("gene_name","gene_region","deletionRegion")
-
+# Constant variables
+alpha<-0.05
 
 ```
 
 # Intialize
-```{r cummeRbund_and_data_setup, echo=FALSE}
+```{r cummeRbund and data setup, echo=FALSE}
 setwd(dir)
-cuff<-readCufflinks(gtfFile=GTF,genome=genome) #rebuild=T until all first rounds done! build sep though bc issues :-/
+cuff<-readCufflinks()
 reps<-replicates(cuff)
 files<-lapply(reps$file,function(x){strsplit(x, "/")})
 
 #field 9 will be JR number 
 files<-as.data.frame(files)
-samples<-(t(files[10,]))
-rownames(samples)<-NULL
+samples<-as.data.frame(t(files[9,]))
 
 #look up strain, litter, sex, notes in master sheet 
+
+LINCRNA<-strain
+
 ```
 
 # Design Overview
 
 This file shows the wt-v-ko comparison for `r strain`. 
 
-Cuff overview:
-```{r}
-cuff
+Samples used are:
+```{r, results='asis'}
+print(xtable(samples),type="html")
 ```
 
+
+Cuff overview:
+```{r}
+print(xtable(cuff),type="html")
+```
+
+## Replicates (MAKE TABLES PRETTY >:| )
+```{r replicates, results='asis'}
+print(xtable(replicates(cuff)),type="html")
+```
 
 # QC
 
 ## Dispersion
 
-Dispersion plot for genes in cuff:
-(Overdispersion can lead to innacurate quants)
+This shows count (WHAT IS COUNT? fragment counts? per gene?) vs dispersion (of those counts), or the spread in measurements for a particular gene across replicates. 
+
+from cummerbund manual: Overdispersion is a common problem in RNA-Seq data. As of cufflinks v2.0 mean counts, variance, and dispersion are all emitted, allowing you to visualize the estimated overdispersion for each sample as a quality control measure. - See more at: http://compbio.mit.edu/cummeRbund/manual_2_0.html#sthash.9YRYxwRV.dpuf
+
 
 ```{r dispersion}
-dispersionPlot(cuff)+theme_bw()
-```
+dispersionPlot(genes(cuff))
 
-## Cross-replicate variability (fpkmSCVplot)
-Differences in CV 2 can result in lower numbers of differentially expressed genes due to a higher degree of variability between replicate fpkm estimates.
+csDendro(genes(cuff),replicates=TRUE)
 
-Genes:
-```{r CV_genes}
-fpkmSCVPlot(genes(cuff))+theme_bw()
-```
 
-Isoforms: 
-```{r cv_iso}
-fpkmSCVPlot(isoforms(cuff))+theme_bw()
 ```

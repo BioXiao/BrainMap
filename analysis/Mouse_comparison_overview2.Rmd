@@ -23,107 +23,82 @@ GTF<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2
 
 alpha<-0.05
 
+
+
 setwd(diffdir)
 names<-list.files()
-names<-gsub("_vs_WT","",names)
+names<-gsub("-","",names)
 setwd(analysisdir)
 diffGeneSummary<-data.frame(t(names), row.names=NULL)
 colnames(diffGeneSummary)<-names
 diffGeneSummary$unit_test<-NULL
 diffGeneSummary$init<-NULL
-diffGeneSummary$Adult_full<-NULL
-diffGeneSummary$Embryonic_full<-NULL
-names<-colnames(diffGeneSummary)
-names<-gsub("-","",names)
 
-#lincs<-lapply(colnames(diffGeneSummary),function(x){unlist(strsplit(x,"_"))[1]})
-#lincs<-unlist(lincs)
-#lincs<-unique(lincs)
-
-linc_LZ_correlation<-data.frame(matrix(ncol=length(names),nrow=2))
-colnames(linc_LZ_correlation)=names
-rownames(linc_LZ_correlation)=c("LZ", "EndogenousLinc")
 ```
 
 # Adult Samples 
 - All have strange density plots: add pseudocount 
 
 # Adult Wildtypes Look Fine Now 
+
 - isoform fpkm distributions: WT smaller on whole, but replicates look fine 
 
 # ADULT KNOCKOUT STRAINS 
 
 ### Celrr
-Eif2s3y is a y-expressed gene 
-
 ```{r adult celr diff}
 dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Adult"
 setwd(dir)
 cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
 sig<-getSig(cuff, alpha=alpha)
-
-diffGeneSummary$Celrr_Adult<-length(sig)
-
-LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
-linc<-getGene(cuff,"Celrr")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
-linc_LZ_correlation$Celrr_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm)
-
-#genotypingGeneIDs<-c(strain,"LacZ","Eif2s3y")
-#genotypingGenes<-getGenes(cuff,genotypingGeneIDs)
-#csHeatmap(genotypingGenes,replicates=T)
-
+diffGeneSummary$Celrr_vs_WT_Adult<-length(sig)
 ```
 
 Number of differentially expressed genes:`r length(sig)`
 
 ### Crnde
 
+- Either wrong genotyping or isoform beyond KO region stabilized by LZ (need to see tracks)
+
 ```{r crnde adult}
 dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Crnde_vs_WT_Adult"
 setwd(dir)
 cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
 id<-"Crnde"
-#myGene<-getGene(cuff,id)
-#expressionBarplot(isoforms(myGene), replicates=T)
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
 ```
 
 
 ```{r adult crnde diff}
 sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$Crnde_Adult<-length(sig)
-
-LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
-linc<-getGene(cuff,"Crnde")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
-linc_LZ_correlation$Crnde_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm)
-
+diffGeneSummary$Crnde_vs_WT_Adult<-length(sig)
 ```
 
 Number of differentially expressed genes:`r length(sig)`
 
 ### Eldr
 
+- Either wrong genotyping or isoform beyond KO region stabilized by LZ (need to see tracks)
+
 ```{r eldr adult}
 dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Eldr_vs_WT_Adult"
 setwd(dir)
 cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
 id<-"Eldr"
-#myGene<-getGene(cuff,id)
-#expressionBarplot(isoforms(myGene), replicates=T)
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
 
 ```
 
 
 ```{r eldr lz adult}
 id<-"LacZ"
-#myGene<-getGene(cuff,id)
-#expressionBarplot(isoforms(myGene), replicates=T)
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
 ids<-c("Eldr","LacZ")
-#myGenes<-getGenes(cuff,ids)
-#csHeatmap(myGenes,replicates=TRUE)
+myGenes<-getGenes(cuff,ids)
+csHeatmap(myGenes,replicates=TRUE)
 ```
 
 Problem child is Eldr_0 (JR733)
@@ -131,14 +106,7 @@ Does Eldr_1 look like a het? (JR799)
 
 ```{r adult Eldr diff}
 sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$Eldr_Adult<-length(sig)
-
-LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
-linc<-getGene(cuff,"Eldr")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
-linc_LZ_correlation$Eldr_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm)
-
+diffGeneSummary$Eldr_vs_WT_Adult<-length(sig)
 ```
 
 Number of differentially expressed genes:`r length(sig)`
@@ -150,42 +118,26 @@ dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Haunt_vs_WT_Adult/"
 setwd(dir)
 cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
 sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$Haunt_Adult<-length(sig)
-
-
-LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
-linc<-getGene(cuff,"Haunt")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
-linc_LZ_correlation$Haunt_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm)
-
+diffGeneSummary$Haunt_vs_WT_Adult<-length(sig)
 ```
 
 Number of differentially expressed genes:`r length(sig)`
 
+
 ### Kantr (Jarid1C)
-
 YAY! They actually cluster!
-
 ```{r Kantr adult}
 dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Kantr_vs_WT_Adult"
 setwd(dir)
 cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
-#csDendro(genes(cuff),replicates=TRUE)
+csDendro(genes(cuff),replicates=TRUE)
 id<-"Kantr"
-#myGene<-getGene(cuff,id)
+myGene<-getGene(cuff,id)
 ```
 
 ```{r adult Kantr diff}
 sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$Kantr_Adult<-length(sig)
-
-LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
-linc<-getGene(cuff,"Kantr")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
-linc_LZ_correlation$Kantr_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm)
-
+diffGeneSummary$Kantr_vs_WT_Adult<-length(sig)
 ```
 
 Number of differentially expressed genes:`r length(sig)`
@@ -198,15 +150,7 @@ dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Brn1a_vs_WT_Adul
 setwd(dir)
 cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
 sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$lincBrn1a_Adult<-length(sig)
-
-
-LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
-linc<-getGene(cuff,"linc-Brn1a")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
-linc_LZ_correlation$lincBrn1a_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm)
-
+diffGeneSummary$lincBrn1a_vs_WT_Adult<-length(sig)
 ```
 
 Number of differentially expressed genes:`r length(sig)`
@@ -220,21 +164,15 @@ dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Brn1b_vs_WT_Adul
 setwd(dir)
 cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
 sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$lincBrn1b_Adult<-length(sig)
-
-
-LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
-linc<-getGene(cuff,"linc-Brn1b")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
-linc_LZ_correlation$lincBrn1b_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm)
-
+diffGeneSummary$lincBrn1b_vs_WT_Adult<-length(sig)
 ```
 
 Number of differentially expressed genes:`r length(sig)`
 
 
 ### linc-Cox2
+YAY! They cluster together! (is this a litter thing? sex difference thing?) -- Weird, in the other one they cluster together. Diff w/ having mm10/gtf specified? 
+
 
 ```{r lincCox2 adult}
 dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Cox2_vs_WT_Adult"
@@ -242,7 +180,7 @@ setwd(dir)
 cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
 csDendro(genes(cuff),replicates=TRUE)
 id<-"linc-Cox2"
-#myGene<-getGene(cuff,id)
+myGene<-getGene(cuff,id)
 ```
 
 Endogenous linc and LZ approx same expression levels 
@@ -252,16 +190,7 @@ dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Cox2_vs_WT_Adult
 setwd(dir)
 cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
 sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$lincCox2_Adult<-length(sig)
-
-
-
-LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
-linc<-getGene(cuff,"linc-Cox2")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
-linc_LZ_correlation$lincCox2_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm)
-
+diffGeneSummary$lincCox2_vs_WT_Adult<-length(sig)
 ```
 
 Number of differentially expressed genes:`r length(sig)`
@@ -276,32 +205,24 @@ dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Enc1_vs_WT_Adult
 setwd(dir)
 cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
 id<-"linc-Enc1"
-#myGene<-getGene(cuff,id)
-#expressionBarplot(isoforms(myGene), replicates=T)
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
 ```
 
 LacZ and genotyping heatmap
 
 ```{r lincEnc1a lz adult}
 id<-"LacZ"
-#myGene<-getGene(cuff,id)
-#expressionBarplot(isoforms(myGene), replicates=T)
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
 ids<-c("linc-Enc1","LacZ")
-#myGenes<-getGenes(cuff,ids)
-#csHeatmap(myGenes,replicates=TRUE)
+myGenes<-getGenes(cuff,ids)
+csHeatmap(myGenes,replicates=TRUE)
 ```
 
 ```{r adult lincEnc1a diff}
 sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$lincEnc1_Adult<-length(sig)
-
-LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
-linc<-getGene(cuff,"linc-Enc1")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
-linc_LZ_correlation$lincEnc1_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm)
-
-
+diffGeneSummary$lincEnc1_vs_WT_Adult<-length(sig)
 ```
 
 Number of differentially expressed genes:`r length(sig)`
@@ -315,32 +236,24 @@ dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Manr_vs_WT_Adult"
 setwd(dir)
 cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
 id<-"Manr"
-#myGene<-getGene(cuff,id)
-#expressionBarplot(isoforms(myGene), replicates=T)
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
 ```
 
 LacZ and genotyping heatmap
 
 ```{r MANR lz adult}
 lz<-"LacZ"
-#myGene<-getGene(cuff,lz)
-#expressionBarplot(isoforms(myGene), replicates=T)
+myGene<-getGene(cuff,lz)
+expressionBarplot(isoforms(myGene), replicates=T)
 ids<-c(id,lz)
-#myGenes<-getGenes(cuff,ids)
-#csHeatmap(myGenes,replicates=TRUE)
+myGenes<-getGenes(cuff,ids)
+csHeatmap(myGenes,replicates=TRUE)
 ```
 
 ```{r adult Manr diff}
 sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$Manr_Adult<-length(sig)
-
-
-LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
-linc<-getGene(cuff,"Manr")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
-linc_LZ_correlation$Manr_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm)
-
+diffGeneSummary$Manr_vs_WT_Adult<-length(sig)
 ```
 
 Number of differentially expressed genes:`r length(sig)`
@@ -355,32 +268,24 @@ dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Peril_vs_WT_Adult"
 setwd(dir)
 cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
 id<-"Peril"
-#myGene<-getGene(cuff,id)
-#expressionBarplot(isoforms(myGene), replicates=T)
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
 ```
 
 LacZ and genotyping heatmap
 
 ```{r Peril lz adult}
 lz<-"LacZ"
-#myGene<-getGene(cuff,lz)
+myGene<-getGene(cuff,lz)
 expressionBarplot(isoforms(myGene), replicates=T)
 ids<-c(id,lz)
-#myGenes<-getGenes(cuff,ids)
-#csHeatmap(myGenes,replicates=TRUE)
+myGenes<-getGenes(cuff,ids)
+csHeatmap(myGenes,replicates=TRUE)
 ```
 
 ```{r adult Peril diff}
 sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$Peril_Adult<-length(sig)
-
-
-LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
-linc<-getGene(cuff,"Peril")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
-linc_LZ_correlation$Peril_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm)
-
+diffGeneSummary$Peril_vs_WT_Adult<-length(sig)
 ```
 
 Number of differentially expressed genes:`r length(sig)`
@@ -395,15 +300,7 @@ dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Trp53cor1_vs_WT_Adult
 setwd(dir)
 cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
 sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$Trp53cor1_Adult<-length(sig)
-
-
-LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
-linc<-getGene(cuff,"Trp53cor1")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
-linc_LZ_correlation$Trp53cor1_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm)
-
+diffGeneSummary$Trp53cor1_vs_WT_Adult<-length(sig)
 ```
 
 Number of differentially expressed genes:`r length(sig)`
@@ -419,15 +316,7 @@ dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Tug1_vs_WT_Adult/"
 setwd(dir)
 cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
 sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$Tug1_Adult<-length(sig)
-
-
-LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
-linc<-getGene(cuff,"Tug1")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
-linc_LZ_correlation$Tug1_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm)
-
+diffGeneSummary$Tug1_vs_WT_Adult<-length(sig)
 ```
 
 Number of differentially expressed genes:`r length(sig)`
@@ -445,33 +334,28 @@ dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Embryonic
 setwd(dir)
 cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
 id<-"Celrr"
-#myGene<-getGene(cuff,id)
-#expressionBarplot(isoforms(myGene), replicates=T)
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
 ```
 
 
 ```{r Celrr embryonic diff}
 sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$Celrr_Embryonic<-length(sig)
-
-
-LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
-linc<-getGene(cuff,"Celrr")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
-linc_LZ_correlation$Celrr_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm)
-
+diffGeneSummary$Celrr_vs_WT_Embryonic<-length(sig)
 ```
 
 Number of differentially expressed genes:`r length(sig)`
 
+Cell compartment: lots of cytoplasmic stuff... is this linc cytoplasmic?? 
+
 ### Crnde
+- actually cluster together!
 
 ```{r Crnde embryonic dendro}
 dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Crnde_vs_WT_Embryonic"
 setwd(dir)
 cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
-#csDendro(genes(cuff),replicates=TRUE)
+csDendro(genes(cuff),replicates=TRUE)
 ```
 
 
@@ -479,27 +363,26 @@ Endogenous expression (isoforms)
 
 ```{r Crnde embryonic}
 id<-"Crnde"
-#myGene<-getGene(cuff,id)
-#expressionBarplot(isoforms(myGene), replicates=T)
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
 ```
 
 LacZ and genotyping heatmap
 
 ```{r Crnde embryonic diff}
 sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$Crnde_Embryonic<-length(sig)
-
-LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
-linc<-getGene(cuff,"Crnde")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
-linc_LZ_correlation$Crnde_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm)
-
+diffGeneSummary$Crnde_vs_WT_Embryonic<-length(sig)
 ```
 
 Number of differentially expressed genes:`r length(sig)`
 
+-ECM/collagen... 
+
 ### Eldr
+
+genotyping looks good!
+
+Kegg: huntingtons/alzheimers/cancer
 
 ```{r Eldr embryonic dendro}
 dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Eldr_vs_WT_Embryonic"
@@ -509,14 +392,7 @@ cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/anno
 
 ```{r Eldr embryonic diff}
 sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$Eldr_Embryonic<-length(sig)
-
-LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
-linc<-getGene(cuff,"Eldr")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
-linc_LZ_correlation$Eldr_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm)
-
+diffGeneSummary$Eldr_vs_WT_Embryonic<-length(sig)
 ```
 
 Number of differentially expressed genes:`r length(sig)`
@@ -533,14 +409,7 @@ cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/anno
 
 ```{r Haunt embryonic diff}
 sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$Haunt_Embryonic<-length(sig)
-
-LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
-linc<-getGene(cuff,"Haunt")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
-linc_LZ_correlation$Haunt_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm)
-
+diffGeneSummary$Haunt_vs_WT_Embryonic<-length(sig)
 ```
 
 Number of differentially expressed genes:`r length(sig)`
@@ -553,22 +422,15 @@ Yay! Cluster together!
 dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Kantr_vs_WT_Embryonic"
 setwd(dir)
 cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
-#csDendro(genes(cuff),replicates=TRUE)
-#id<-"Kantr"
-#myGene<-getGene(cuff,id)
+csDendro(genes(cuff),replicates=TRUE)
+id<-"Kantr"
+myGene<-getGene(cuff,id)
 ```
 
 
 ```{r Kantr embryonic diff}
 sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$Kantr_Embryonic<-length(sig)
-
-LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
-linc<-getGene(cuff,"Kantr")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
-linc_LZ_correlation$Kantr_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm)
-
+diffGeneSummary$Kantr_vs_WT_Embryonic<-length(sig)
 ```
 
 Number of differentially expressed genes:`r length(sig)`
@@ -576,7 +438,6 @@ Number of differentially expressed genes:`r length(sig)`
 ### Brn1a
 ```{r brn1a}
 diffGeneSummary$lincBrn1a_vs_WT_Embryonic<-NULL
-linc_LZ_correlation$lincBrn1a_Embryonic<-NULL
 ```
 
 ### Brn1b 
@@ -587,20 +448,13 @@ dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Brn1b_vs_WT_Embr
 setwd(dir)
 cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
 sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$lincBrn1b_Embryonic<-length(sig)
-
-LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
-linc<-getGene(cuff,"linc-Brn1b")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
-linc_LZ_correlation$lincBrn1b_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm)
-
+diffGeneSummary$lincBrn1b_vs_WT_Embryonic<-length(sig)
 ```
 Number of differentially expressed genes:`r length(sig)`
 
 
 
-```{r GO setup and functions,eval=FALSE}
+```{r GO setup and functions}
 
 library(ReactomePA)
 library(DOSE)
@@ -622,7 +476,8 @@ getEntrezIDs<-function (geneNames)
 
 ```
 
-```{r GO analysis,eval=FALSE}
+
+```{r GO analysis}
 sigGeneIDs<-getSig(cuff, alpha=alpha)
 sigGenes<-getGenes(cuff,sigGeneIDs)
 geneAnnot<-annotation(sigGenes)
@@ -646,7 +501,7 @@ pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T
 
 ```
 
-```{r GO figures,  fig.height=5, fig.width=8,eval=FALSE}
+```{r GO figures,  fig.height=5, fig.width=8}
 plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched BP")
 
 plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched MF")
@@ -671,22 +526,15 @@ Cluster together! Yay!
 dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Cox2_vs_WT_Embryonic/"
 setwd(dir)
 cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
-#csDendro(genes(cuff),replicates=TRUE)
-#id<-"linc-Cox2"
-#myGene<-getGene(cuff,id)
+csDendro(genes(cuff),replicates=TRUE)
+id<-"linc-Cox2"
+myGene<-getGene(cuff,id)
 ```
 
 
 ```{r lincCox2 embryonic diff}
 sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$lincCox2_Embryonic<-length(sig)
-
-LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
-linc<-getGene(cuff,"linc-Cox2")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
-linc_LZ_correlation$lincCox2_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm)
-
+diffGeneSummary$lincCox2_vs_WT_Embryonic<-length(sig)
 ```
 
 Number of differentially expressed genes:`r length(sig)`
@@ -699,21 +547,14 @@ dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Enc1_vs_WT_Embry
 setwd(dir)
 cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
 id<-"linc-Enc1"
-#myGene<-getGene(cuff,id)
-#expressionBarplot(isoforms(myGene), replicates=T)
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
 ```
 
 
 ```{r lincEnc1a embryonic diff}
 sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$lincEnc1_Embryonic<-length(sig)
-
-LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
-linc<-getGene(cuff,"linc-Enc1")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
-linc_LZ_correlation$lincEnc1_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm)
-
+diffGeneSummary$lincEnc1_vs_WT_Embryonic<-length(sig)
 ```
 
 Number of differentially expressed genes:`r length(sig)`
@@ -730,21 +571,14 @@ dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Manr_vs_WT_Embryonic/
 setwd(dir)
 cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
 id<-"Manr"
-#myGene<-getGene(cuff,id)
-#expressionBarplot(isoforms(myGene), replicates=T)
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
 ```
 
 
 ```{r Manr embryonic diff}
 sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$Manr_Embryonic<-length(sig)
-
-LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
-linc<-getGene(cuff,"Manr")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
-linc_LZ_correlation$Manr_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm)
-
+diffGeneSummary$Manr_vs_WT_Embryonic<-length(sig)
 ```
 
 Number of differentially expressed genes:`r length(sig)`
@@ -758,21 +592,14 @@ dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Peril_vs_WT_Embryonic
 setwd(dir)
 cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
 id<-"Peril"
-#myGene<-getGene(cuff,id)
-#expressionBarplot(isoforms(myGene), replicates=T)
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
 ```
 
 
 ```{r Peril embryonic diff}
 sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$Peril_Embryonic<-length(sig)
-
-LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
-linc<-getGene(cuff,"Peril")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
-linc_LZ_correlation$Peril_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm)
-
+diffGeneSummary$Peril_vs_WT_Embryonic<-length(sig)
 ```
 
 Number of differentially expressed genes:`r length(sig)`
@@ -787,21 +614,14 @@ dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Trp53cor1_vs_WT_Embry
 setwd(dir)
 cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
 id<-"Trp53cor1"
-#myGene<-getGene(cuff,id)
-#expressionBarplot(isoforms(myGene), replicates=T)
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
 ```
 
 
 ```{r Trp53 embryonic diff}
 sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$Trp53cor1_Embryonic<-length(sig)
-
-LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
-linc<-getGene(cuff,"Trp53cor1")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
-linc_LZ_correlation$Trp53cor1_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm)
-
+diffGeneSummary$Trp53cor1_vs_WT_Embryonic<-length(sig)
 ```
 
 Number of differentially expressed genes:`r length(sig)`
@@ -815,21 +635,14 @@ dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Tug1_vs_WT_Embryonic/
 setwd(dir)
 cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
 id<-"Tug1"
-#myGene<-getGene(cuff,id)
-#expressionBarplot(isoforms(myGene), replicates=T)
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
 ```
 
 
 ```{r tug1 embryonic diff}
 sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$Tug1_Embryonic<-length(sig)
-
-LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
-linc<-getGene(cuff,"Tug1")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
-linc_LZ_correlation$Tug1_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm)
-
+diffGeneSummary$Tug1_vs_WT_Embryonic<-length(sig)
 ```
 
 Number of differentially expressed genes:`r length(sig)`
@@ -854,34 +667,14 @@ colnames(xx)<-gsub("Embryonic","E",colnames(xx))
 colnames(xx)<-gsub("Adult","A",colnames(xx))
 xx_ordered<-xx[,order(colnames(xx))]
 rownames(xx_ordered)<-c("","")
-
-InputCols<-maPalette(low="white",high="green",k=10)
-
-heatmap.2(xx_ordered, Rowv=FALSE, dendrogram="none", Colv=FALSE, sepwidth=c(.9,.9),trace="none", col=InputCols, breaks=seq(0,max(x),length.out(k+1)),lhei=c(.5,.5))
+heatmap.2(xx_ordered, Rowv=FALSE, breaks=15, dendrogram="none", Colv=FALSE, sepwidth=c(.9,.9),trace="none", col=terrain.colors, lhei=c(.5,.5))
 
 barplot(x)
 #axes=TRUE,names.arg=colnames(diffGeneSummary)
 ```
 
-```{r lacZ correlation}
-
-linc_LZ_correlation<-as.data.frame(t(linc_LZ_correlation))
-type<-rownames(linc_LZ_correlation)
-timepoint<-unlist(lapply(type,function(x){unlist(strsplit(x,"_"))[2]}))
-name<-unlist(lapply(type,function(x){unlist(strsplit(x,"_"))[1]}))
-linc_LZ_correlation$timepoint<-timepoint
-linc_LZ_correlation$name<-name
-ggplot(linc_LZ_correlation, aes(LZ,EndogenousLinc,color=timepoint))+geom_point()+geom_text(aes(label=name))+scale_x_log10(limits=c(-20,50))+scale_y_log10(limits=c(-20,30))+geom_abline(intercept=0,slope=1)+ylab("Endogenous lincRNA expression log10(FPKM)")+xlab("LacZ expression log10(FPKM)")
-#+xlim(-.1,.5)+ylim(-.1,.5)
-
-#var(linc_LZ_correlation$LZ,linc_LZ_correlation$EndogenousLinc)
-cor(linc_LZ_correlation$LZ,linc_LZ_correlation$EndogenousLinc)
-#cov(linc_LZ_correlation$LZ,linc_LZ_correlation$EndogenousLinc)
-
-#+scale_x_log10(limits=c(-20,50))+scale_y_log10(limits=c(-20,30))
-
-```
-
-
-
 **Interesting or promising strains!**
+
+# TO DO
+- tracks!
+- fix gsea printing 

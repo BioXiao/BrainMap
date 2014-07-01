@@ -1,0 +1,7 @@
+[1] "Tug1_vs_WT_Embryonic"
+[1] "Tug1"
+Warning message:
+In dir.create(filename) : 'Tug1_vs_WT_Embryonic' already exists
+Error in parse_block(g, patterns) : duplicate label 'Digital_Genotyping'
+Calls: knit2html ... process_file -> split_file -> lapply -> FUN -> parse_block
+Execution halted

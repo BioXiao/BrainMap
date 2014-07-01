@@ -1,0 +1,133 @@
+BrainMap Adult Full Analysis
+=====================================
+
+#Setup and Imports
+```{r setwd}
+#basedir = "/Volumes/Odyssey/seq/lgoff/Projects/BrainMap/"
+basedir = "/n/rinn_data1/seq/lgoff/Projects/BrainMap/"
+setwd(paste(basedir,"analysis/Embryonic_full/",sep=""))
+```
+
+```{r init}
+library(cummeRbund)
+library(ggplot2)
+library(stringr)
+library(reshape2)
+
+brainmap_theme_opts <- function()
+{
+    theme(strip.background = element_rect(colour = 'white', fill = 'white')) +
+    theme(panel.border = element_blank(), axis.line = element_line()) +
+    theme(panel.grid.minor.x = element_blank(), panel.grid.minor.y = element_blank()) +
+    theme(panel.grid.major.x = element_blank(), panel.grid.major.y = element_blank()) + 
+    theme(panel.background = element_rect(fill='white'))
+}
+```
+
+## Initialize cuffData.db and establish connection
+```{r cuff}
+refGTF <- paste(basedir,"data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",sep="")
+cuffdir <- paste(basedir,"data/diffs/Embryonic_full/",sep="")
+
+cuffdir
+
+cuff<-readCufflinks(dir=cuffdir,gtfFile=refGTF,genome="mm10")
+
+samples(cuff)
+
+replicates(cuff)
+```
+
+## Quality Control
+
+## Overdispersion fit
+```{r QC_dispersion,fig.width=10,fig.height=10}
+dispersionPlot(cuff) + brainmap_theme_opts()
+```
+
+### Dendrogram
+```{r QC_dendro,fig.width=20,fig.height=10}
+csDendro(genes(cuff),rep=T) + brainmap_theme_opts()
+```
+
+### Squared Coefficient of Variation
+Evaluates cross-replicate variability across expression regime for gene- and isoform-level expression estimates per condition.
+```{r QC_SCV,fig.width=10,fig.height=10}
+fpkmSCVPlot(genes(cuff)) + brainmap_theme_opts()
+
+fpkmSCVPlot(isoforms(cuff)) + brainmap_theme_opts()
+```
+
+### Dimensionality reduction
+
+```{r QC_dimRedux,fig.width=10,fig.height=10}
+MDSplot(genes(cuff)) + brainmap_theme_opts()
+
+PCAplot(genes(cuff),"PC2","PC3",rep=TRUE) + brainmap_theme_opts()
+```
+
+## Significant gene expression differences (global)
+```{r sigGenes}
+alpha<-0.1
+sigGeneIDs<-getSig(cuff,alpha=alpha)
+sigGenes<-getGenes(cuff,sigGeneIDs)
+```
+
+
+## Global Analysis
+```{r global_heatmap,fig.width=15,fig.height=30}
+csHeatmap(sigGenes,rep=T,clustering="row") + brainmap_theme_opts()
+
+csFoldChangeHeatmap(sigGenes,control_condition="WT",replicate_num=0,clustering='row',replicates=TRUE,labRow=FALSE)
+```
+
+## Digital Genotyping
+```{r genotyping}
+KOgeneIDs<-samples(cuff)$sample_name
+
+KOgeneIDs<-c(KOgeneIDs,"LacZ")
+KOgeneIDs<-str_replace(KOgeneIDs,"_","-")
+KOgeneIDs<-str_replace(KOgeneIDs,"Trp53cor","Trp53cor1")
+
+KOGenes<-getGenes(cuff,KOgeneIDs)
+
+
+```
+
+### LacZ expression
+```{r LacZ, fig.width=8,fig.height=6}
+LacZ<-getGene(cuff,'LacZ')
+
+expressionBarplot(LacZ,rep=T) + brainmap_theme_opts()
+
+KOGenes_WT_only<-getGenes(cuff,KOgeneIDs,sampleIdList="WT")
+
+expressionBarplot(KOGenes_WT_only,rep=T) + brainmap_theme_opts()
+
+```
+### Male vs Femail
+
+### Correlation between LacZ expression and WT lncRNA (Stability?)
+```{r stability}
+
+
+fpkms<-fpkmMatrix(KOGenes,fullname=T)
+fpkms$gene_id<-rownames(fpkms)
+
+fpkms<-melt(fpkms)
+fpkms$gene<-str_split_fixed(fpkms$gene_id,"\\|",2)[,1]
+
+
+```
+
+## GSEA
+
+## Guilt-by-association on FC values
+
+
+## Session Info
+```{r sessionInfo}
+sessionInfo()
+```
+
+

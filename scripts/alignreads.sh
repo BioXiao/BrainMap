@@ -23,7 +23,7 @@ TMP_DIR=/n/regal/rinn_lab/lgoff/BrainMap
 
 BOWTIE_INDEX="$PROJECT_ROOT/data/indexes/mm10/mm10_brainmap"
 
-#REF_GTF="-G $PROJECT_ROOT/data/annotation/mm9_ucsc_and_linc_DB_2.0.gtf"
+#REF_GTF="-G $PROJECT_ROOT/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf"
 REF_GTF=""
 
 LOGBASE="$PROJECT_ROOT/logs"
@@ -45,7 +45,7 @@ SCRATCHDIR=$TMP_DIR/$SAMPLE_NAME
 mkdir -p $SCRATCHDIR
 
 echo "$SAMPLE_NAME"
-sbatch -J $SAMPLE_NAME -t $RUN_TIME --mem-per-cpu=$MAX_MEM -n $NUM_THREADS -p $QUEUE --mail-type=FAIL --wrap="tophat --no-coverage-search --tmp-dir $SCRATCHDIR $REF_GTF -p $NUM_THREADS -o $OUTDIR $BOWTIE_INDEX $READ1 $READ2 >$LOGDIR/$SAMPLE_NAME.out 2>$LOGDIR/$SAMPLE_NAME.err" >$LOGDIR/${SAMPLE_NAME}_align_slurm.out 2>$LOGDIR/${SAMPLE_NAME}_align_slurm.err
+sbatch -J $SAMPLE_NAME -t $RUN_TIME --mem-per-cpu=$MAX_MEM -n $NUM_THREADS -p $QUEUE --mail-type=FAIL --wrap="tophat --no-coverage-search --tmp-dir $SCRATCHDIR $REF_GTF --max-multihits 10 -p $NUM_THREADS -o $OUTDIR $BOWTIE_INDEX $READ1 $READ2 >$LOGDIR/$SAMPLE_NAME.out 2>$LOGDIR/$SAMPLE_NAME.err" >$LOGDIR/${SAMPLE_NAME}_align_slurm.out 2>$LOGDIR/${SAMPLE_NAME}_align_slurm.err
 
 #TODO
 # - remove coverage search (not necessary and probably wrong) ((--no-coverage-search))

@@ -1,4 +1,4 @@
-Master Script for PNAS BrainMap Study
+BrainMap Adult Full Analysis
 =====================================
 
 #Setup and Imports
@@ -11,14 +11,23 @@ setwd(basedir)
 ```{r init}
 library(cummeRbund)
 library(ggplot2)
+
+brainmap_theme_opts <- function()
+{
+    theme(strip.background = element_rect(colour = 'white', fill = 'white')) +
+    theme(panel.border = element_blank(), axis.line = element_line()) +
+    theme(panel.grid.minor.x = element_blank(), panel.grid.minor.y = element_blank()) +
+    theme(panel.grid.major.x = element_blank(), panel.grid.major.y = element_blank()) + 
+    theme(panel.background = element_rect(fill='white'))
+}
 ```
 
 ## Initialize cuffData.db and establish connection
 ```{r cuff}
-refGTF <- "../data/annotations/mm9_ucsc_and_lincs_DB2.0.gtf"
-cuffdir <- "../data/diffs/fulldiff"
+refGTF <- "../data/annotations/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf"
+cuffdir <- "../data/diffs/Adult_full"
 
-cuff<-readCufflinks(cuffdif,gtfFile=refGTF,genome="mm9")
+cuff<-readCufflinks(cuffdir,gtfFile=refGTF,genome="mm10")
 
 samples(cuff)
 
@@ -29,29 +38,29 @@ replicates(cuff)
 
 ## Overdispersion fit
 ```{r QC_dispersion,fig.width=20,fig.height=20}
-dispersionPlot(cuff)
+dispersionPlot(cuff) + brainmap_theme_opts()
 ```
 
 
 ### Dendrogram
 ```{r QC_dendro,fig.width=20,fig.height=10}
-csDendro(genes(cuff),rep=T)
+csDendro(genes(cuff),rep=T) + brainmap_theme_opts()
 ```
 
 ### Squared Coefficient of Variation
 Evaluates cross-replicate variability across expression regime for gene- and isoform-level expression estimates per condition.
 ```{r QC_SCV,fig.width=10,fig.height=10,cache=TRUE}
-fpkmSCVPlot(genes(cuff))
+fpkmSCVPlot(genes(cuff)) + brainmap_theme_opts()
 
-fpkmSCVPlot(isoforms(cuff))
+fpkmSCVPlot(isoforms(cuff)) + brainmap_theme_opts()
 ```
 
 ### Dimensionality reduction
 
 ```{r QC_dimRedux,fig.width=20,fig.height=20}
-MDSplot(genes(cuff))
+MDSplot(genes(cuff)) + brainmap_theme_opts()
 
-PCAplot(genes(cuff),rep=TRUE)
+PCAplot(genes(cuff),rep=TRUE) + brainmap_theme_opts()
 ```
 
 ## Significant gene expression differences (global)
@@ -63,13 +72,16 @@ sigGenes<-getSig(cuff,alpha=alpha)
 
 ## Global Analysis
 ```{r global_heatmap,fig.width=15,fig.height=30}
-csHeatmap(sigGenes,rep=T)
+csHeatmap(sigGenes,rep=T) + brainmap_theme_opts()
+
+#csFoldChangeHeatmap()
 ```
 
 
-## GSEA?
+## GSEA
 
-## Guilt-by-association on FC values?
+## Guilt-by-association on FC values
+
 
 ## Session Info
 ```{r sessionInfo}
