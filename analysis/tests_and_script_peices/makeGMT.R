@@ -14,14 +14,12 @@ gmt<-data.frame(forgmt)
 
 #gmt<-paste(forgmt,sep="\t")
 #write(t(gmt),file="/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/support/sexdiffs.gmt",sep="\t")
-
 #fileConn<-file("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/support/sexdiffs.gmt")
 #writeLines(paste(forgmt,sep="\t"), fileConn)
 #close(fileConn)
-
 #write(forgmt,file="/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/support/sexdiffs.gmt",ncolumns=length(forgmt),sep="\t")
 
 cat(forgmt,file="/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/support/sexdiffs.gmt",sep="\t")
 
 library(GSA)
-test<-GSA.read.gmt("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/support/sexdiffs.gmt")
+test<-GSA.read.gmt("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/support/sexdiffs_upper.gmt")

@@ -1,8 +1,8 @@
 ```{r standalone setup, echo=FALSE,eval=FALSE}
-strain<-"Kdm5c"
+strain<-"linc-Brn1b"
 timepoint<-"Adult"
-filename<-"Embryo_WT_male_v_female"
-dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/WT_Embryonic_Male_v_Female/"
+filename<-"linc-Brn1b_vs_WT_Embryonic"
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Brn1b_vs_WT_Embryonic/"
 
 
 ### THINGS TO REMEMBER: change oldbam to bam and olddiff to diff once new set done! 
@@ -278,8 +278,8 @@ genome<-"mm10"
 #mm10Db_nolacz<-makeTranscriptDbFromGFF(GTF_noLacZ,format="gtf",chrominfo=real_chromInfo, species="Mus musculus")
 #saveDb(mm10Db_nolacz,file="mm10gencode_brainmapDB_nolacz.sqlite")
 
-#mm10DB<-loadDb("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/mm10gencode_brainmapDB_nolacz.sqlite")
-mm10DB<-loadDb("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/brainmap_lincsubset_db.sqlite")
+mm10DB<-loadDb("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/mm10gencode_brainmapDB_nolacz.sqlite")
+#mm10DB<-loadDb("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/brainmap_lincsubset_db.sqlite")
 
 #Need to install R-3.0.0 (Devel) for Gviz to deal with .bam files
 #Helper Functions
