@@ -17,10 +17,6 @@ analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
 diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
 GTF<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf"
 
-#dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Adult"
-#setwd(dir)
-#cuff<-readCufflinks(gtfFile=GTF,genome="mm10")
-
 alpha<-0.05
 
 setwd(diffdir)
@@ -33,12 +29,11 @@ diffGeneSummary$unit_test<-NULL
 diffGeneSummary$init<-NULL
 diffGeneSummary$Adult_full<-NULL
 diffGeneSummary$Embryonic_full<-NULL
+diffGeneSummary$WT_Adult_Male_v_Female<-NULL
+diffGeneSummary$WT_Adult_Male_v_Female_balanced<-NULL
+diffGeneSummary$WT_Embryonic_Male_v_Female<-NULL
 names<-colnames(diffGeneSummary)
 names<-gsub("-","",names)
-
-#lincs<-lapply(colnames(diffGeneSummary),function(x){unlist(strsplit(x,"_"))[1]})
-#lincs<-unlist(lincs)
-#lincs<-unique(lincs)
 
 linc_LZ_correlation<-data.frame(matrix(ncol=length(names),nrow=2))
 colnames(linc_LZ_correlation)=names
@@ -55,7 +50,7 @@ cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/d
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Celrr_vs_WT_Adult<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-celrr_adult_DE<-annot(DEgenes)$gene_short_name
+celrr_adult_DE<-annotation(DEgenes)$gene_short_name
 rm(DEgenes)
 
 LZ<-getGene(cuff,"LacZ")
@@ -81,7 +76,7 @@ cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/d
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Crnde_vs_WT_Adult<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-crnde_adult_DE<-annot(DEgenes)$gene_short_name
+crnde_adult_DE<-annotation(DEgenes)$gene_short_name
 rm(DEgenes)
 
 
@@ -118,7 +113,7 @@ csHeatmap(myGenes,replicates=TRUE)
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Eldr_vs_WT_Adult<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-eldr_adult_DE<-annot(DEgenes)$gene_short_name
+eldr_adult_DE<-annotation(DEgenes)$gene_short_name
 rm(DEgenes)
 
 
@@ -139,7 +134,7 @@ cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/d
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Haunt_vs_WT_Adult<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-haunt_adult_DE<-annot(DEgenes)$gene_short_name
+haunt_adult_DE<-annotation(DEgenes)$gene_short_name
 rm(DEgenes)
 
 
@@ -167,7 +162,7 @@ cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/d
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Kantr_vs_WT_Adult<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-kantr_adult_DE<-annot(DEgenes)$gene_short_name
+kantr_adult_DE<-annotation(DEgenes)$gene_short_name
 rm(DEgenes)
 
 LZ<-getGene(cuff,"LacZ")
@@ -191,7 +186,7 @@ cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/d
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$lincBrn1a_vs_WT_Adult<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-brn1a_adult_DE<-annot(DEgenes)$gene_short_name
+brn1a_adult_DE<-annotation(DEgenes)$gene_short_name
 rm(DEgenes)
 
 
@@ -216,7 +211,7 @@ cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/d
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$lincBrn1b_vs_WT_Adult<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-brn1b_adult_DE<-annot(DEgenes)$gene_short_name
+brn1b_adult_DE<-annotation(DEgenes)$gene_short_name
 rm(DEgenes)
 
 
@@ -247,7 +242,7 @@ Endogenous linc and LZ approx same expression levels
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$lincCox2_vs_WT_Adult<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-lincCox2_adult_DE<-annot(DEgenes)$gene_short_name
+lincCox2_adult_DE<-annotation(DEgenes)$gene_short_name
 rm(DEgenes)
 
 
@@ -276,7 +271,7 @@ cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/d
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$lincEnc1_vs_WT_Adult<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-lincEnc1_adult_DE<-annot(DEgenes)$gene_short_name
+lincEnc1_adult_DE<-annotation(DEgenes)$gene_short_name
 rm(DEgenes)
 
 
@@ -304,7 +299,7 @@ cuff<-readCufflinks(dir=dir, gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Manr_vs_WT_Adult<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-manr_adult_DE<-annot(DEgenes)$gene_short_name
+manr_adult_DE<-annotation(DEgenes)$gene_short_name
 rm(DEgenes)
 
 
@@ -330,7 +325,7 @@ cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/d
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Peril_vs_WT_Adult<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-Peril_adult_DE<-annot(DEgenes)$gene_short_name
+Peril_adult_DE<-annotation(DEgenes)$gene_short_name
 rm(DEgenes)
 
 
@@ -355,7 +350,7 @@ cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/d
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Trp53cor1_vs_WT_Adult<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-trp53cor1_adult_DE<-annot(DEgenes)$gene_short_name
+trp53cor1_adult_DE<-annotation(DEgenes)$gene_short_name
 rm(DEgenes)
 
 
@@ -378,7 +373,7 @@ cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/d
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Tug1_vs_WT_Adult<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-tug1_adult_DE<-annot(DEgenes)$gene_short_name
+tug1_adult_DE<-annotation(DEgenes)$gene_short_name
 rm(DEgenes)
 
 
@@ -408,7 +403,7 @@ cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/d
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Celrr_vs_WT_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-cellr_embryo_DE<-annot(DEgenes)$gene_short_name
+cellr_embryo_DE<-annotation(DEgenes)$gene_short_name
 rm(DEgenes)
 
 
@@ -436,7 +431,7 @@ cuff<-readCufflinks(dir=dir, gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Crnde_vs_WT_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-crnde_embryo_DE<-annot(DEgenes)$gene_short_name
+crnde_embryo_DE<-annotation(DEgenes)$gene_short_name
 rm(DEgenes)
 
 
@@ -464,7 +459,7 @@ cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/d
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Eldr_vs_WT_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-eldr_embryo_DE<-annot(DEgenes)$gene_short_name
+eldr_embryo_DE<-annotation(DEgenes)$gene_short_name
 rm(DEgenes)
 
 
@@ -492,7 +487,7 @@ cuff<-readCufflinks(dir=dir, gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Haunt_vs_WT_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-haunt_embryo_DE<-annot(DEgenes)$gene_short_name
+haunt_embryo_DE<-annotation(DEgenes)$gene_short_name
 rm(DEgenes)
 
 
@@ -521,7 +516,7 @@ cuff<-readCufflinks(dir=dir, gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Kantr_vs_WT_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-kantr_embryo_DE<-annot(DEgenes)$gene_short_name
+kantr_embryo_DE<-annotation(DEgenes)$gene_short_name
 rm(DEgenes)
 
 
@@ -549,7 +544,7 @@ cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/d
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$lincBrn1b_vs_WT_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-lincbrn1b_embryo_DE<-annot(DEgenes)$gene_short_name
+lincbrn1b_embryo_DE<-annotation(DEgenes)$gene_short_name
 rm(DEgenes)
 
 
@@ -578,7 +573,7 @@ cuff<-readCufflinks(dir=dir, gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$lincCox2_vs_WT_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-lincCox2_embryo_DE<-annot(DEgenes)$gene_short_name
+lincCox2_embryo_DE<-annotation(DEgenes)$gene_short_name
 rm(DEgenes)
 
 
@@ -606,7 +601,7 @@ cuff<-readCufflinks(dir=dir, gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$lincEnc1_vs_WT_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-lincEnc1_embryo_DE<-annot(DEgenes)$gene_short_name
+lincEnc1_embryo_DE<-annotation(DEgenes)$gene_short_name
 rm(DEgenes)
 
 
@@ -635,7 +630,7 @@ cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/d
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Manr_vs_WT_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-manr_embryo_DE<-annot(DEgenes)$gene_short_name
+manr_embryo_DE<-annotation(DEgenes)$gene_short_name
 rm(DEgenes)
 
 
@@ -662,7 +657,7 @@ cuff<-readCufflinks(dir=dir, gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Peril_vs_WT_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-Peril_embryo_DE<-annot(DEgenes)$gene_short_name
+Peril_embryo_DE<-annotation(DEgenes)$gene_short_name
 rm(DEgenes)
 
 
@@ -690,7 +685,7 @@ cuff<-readCufflinks(dir=dir, gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Trp53cor1_vs_WT_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-trp53cor1_embryo_DE<-annot(DEgenes)$gene_short_name
+trp53cor1_embryo_DE<-annotation(DEgenes)$gene_short_name
 rm(DEgenes)
 
 
@@ -716,7 +711,7 @@ cuff<-readCufflinks(dir=dir, gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Tug1_vs_WT_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-tug1_embryo_DE<-annot(DEgenes)$gene_short_name
+tug1_embryo_DE<-annotation(DEgenes)$gene_short_name
 rm(DEgenes)
 
 
