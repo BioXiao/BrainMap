@@ -140,7 +140,7 @@ Barplot of isoform expression:
 
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
 
-Eif2s3y is a y-expressed gene 
+Eif2s3y is a y-expressed gene, Xist is an x-expressed gene 
 Expression plot (endogenous linc, lacZ, Y-expressed gene):
 
 ![plot of chunk Digital_Genotyping](figure/Digital_Genotyping.png) 
@@ -164,7 +164,7 @@ Expression heatmap:
 There are 42 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sun Jun 29 18:34:42 2014 -->
+<!-- Wed Jul  2 01:08:43 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Fosb </TD> </TR>
@@ -317,6 +317,13 @@ The following are significantly differentially spliced genes (relative portion o
 
 ## GSEA
 
+Enrichment and zscores are calculated based on expression in KO vs WT (fpkmKO/fpkmWT), so genes that are down regulated in KO are shown in blue, while upregulation is shown in red. 
+
+KO/WT
+Blue = down in KO
+Red = Up in KO
+
+
 
 
 
@@ -355,7 +362,19 @@ Kegg zscore:
 
 ![plot of chunk gsea_zscore_kegg](figure/gsea_zscore_kegg.png) 
 
+Interneuron enrichment:
 
+
+```
+## [1] "Not enough significant categories to print a heatmap!"
+```
+
+Interneuron zscore:
+
+
+```
+## [1] "Not enough significant categories to print a heatmap!"
+```
 
 
 
@@ -383,9 +402,14 @@ Cluster profiler used to call enichments of significantly differentially regulat
 
 # Cis vs Trans (locally)
 
+log2 Foldchange and test statistic are calculated with the ratio of fpkm(KO)/fpkm(WT), thus the test_stat is positive if a gene is higher in the KO and negative if a gene has lower expression in the KO
 
 
-The pvalue for 2 genes significantly regulated in a region this size  is: 0.112 
+
+
+
+
+The pvalue for 2 genes significantly regulated in a region this size  is: 0.109 
 
 
 ![plot of chunk cisreg_image](figure/cisreg_image.png) 
@@ -394,7 +418,7 @@ The pvalue for 2 genes significantly regulated in a region this size  is: 0.112
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sun Jun 29 19:04:57 2014 -->
+<!-- Wed Jul  2 01:29:38 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR729 </TD> </TR>
@@ -417,7 +441,7 @@ The pvalue for 2 genes significantly regulated in a region this size  is: 0.112
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sun Jun 29 19:04:57 2014 -->
+<!-- Wed Jul  2 01:29:38 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR729/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 26334400.00 </TD> <TD align="right"> 34590000.00 </TD> <TD align="right"> 0.76 </TD> <TD align="right"> 1.00 </TD> </TR>
@@ -506,7 +530,7 @@ The pvalue for 2 genes significantly regulated in a region this size  is: 0.112
 ## [22] KernSmooth_2.23-12     labeling_0.2           lattice_0.20-29       
 ## [25] latticeExtra_0.6-26    MASS_7.3-33            Matrix_1.1-3          
 ## [28] munsell_0.4.2          org.Hs.eg.db_2.10.1    proto_0.3-10          
-## [31] qvalue_1.36.0          Rcpp_0.11.1            RCurl_1.95-4.1        
+## [31] qvalue_1.36.0          Rcpp_0.11.2            RCurl_1.95-4.1        
 ## [34] reactome.db_1.46.1     Rsamtools_1.14.3       scales_0.2.4          
 ## [37] splines_3.0.2          stats4_3.0.2           survival_2.37-7       
 ## [40] tcltk_3.0.2            tools_3.0.2            XML_3.98-1.1          

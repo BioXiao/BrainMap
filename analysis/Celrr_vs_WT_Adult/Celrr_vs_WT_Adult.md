@@ -164,7 +164,7 @@ Expression heatmap:
 There are 54 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Tue Jul  1 23:03:08 2014 -->
+<!-- Wed Jul  2 01:07:36 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Chordc1 </TD> </TR>
@@ -278,7 +278,7 @@ Per isoform difference between conditions:
 These isoforms are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Tue Jul  1 23:03:58 2014 -->
+<!-- Wed Jul  2 01:08:25 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> isoAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Chordc1 </TD> </TR>
@@ -477,7 +477,7 @@ The pvalue for 0 genes significantly regulated in a region this size  is: 1
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Tue Jul  1 23:24:31 2014 -->
+<!-- Wed Jul  2 01:31:59 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR729 </TD> </TR>
@@ -501,7 +501,7 @@ The pvalue for 0 genes significantly regulated in a region this size  is: 1
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Tue Jul  1 23:24:31 2014 -->
+<!-- Wed Jul  2 01:32:00 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR729/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 26334400.00 </TD> <TD align="right"> 33868500.00 </TD> <TD align="right"> 0.78 </TD> <TD align="right"> 1.00 </TD> </TR>
