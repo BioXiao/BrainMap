@@ -9,5 +9,6 @@ dir.create(filename)
 setwd(filename)
 strain<-dat$strain[i]
 timepoint<-dat$timepoint[i]
+alpha<-0.05
 dir<-dat$dir[i]
 knit2html('/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/StrainTemplate.Rmd',output=paste(filename,".md",sep=""), quiet=TRUE)

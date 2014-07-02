@@ -12,6 +12,8 @@ library(ggplot2)
 opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE)
 ```
 
+Figure 1 strains: Kantr, Tug1, EGFR, Cellr 
+
 # Kantr
 
 ## Adult Kantr
@@ -161,438 +163,7 @@ detach("package:biomaRt")
 ```
 
 
-# Crnde
 
-## Adult Crnde 
-
-```{r crnde_adult}
-dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Crnde_vs_WT_Adult"
-setwd(dir)
-cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
-id<-"Crnde"
-myGene<-getGene(cuff,id)
-expressionBarplot(isoforms(myGene), replicates=T)
-```
-
-```{r adult_crnde_diff}
-sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$Crnde_vs_WT_Adult<-length(sig)
-```
-
-```{r Crnde_adult_GO_setup_and_functions}
-
-library(ReactomePA)
-library(DOSE)
-library(clusterProfiler)
-require(biomaRt)
-
-ensembl <- useMart("ENSEMBL_MART_ENSEMBL","mmusculus_gene_ensembl", 
-host="www.ensembl.org")
-```
-
-```{r Crnde_adult_GO_analysis}
-sigGeneIDs<-getSig(cuff, alpha=alpha)
-sigGenes<-getGenes(cuff,sigGeneIDs)
-geneAnnot<-annotation(sigGenes)
-geneNames<-geneAnnot$gene_short_name
-sigDiff<-diffData(sigGenes)
-sigEntrez<-getEntrezIDs(geneNames)
-sigEZ<-strsplit(as.character(sigEntrez), ", ")
-sigEZ<-unlist(sigEZ)
-require(org.Mm.eg.db) #mapping of entrez IDs to genbank
-
-goBP<-enrichGO(gene=sigEZ, organism="mouse",ont="BP",pvalueCutoff=0.01,readable=T)
-
-goMF<-enrichGO(gene=sigEZ, organism="mouse",ont="MF",pvalueCutoff=0.01,readable=T)
-
-#goCC<-enrichGO(gene=sigEZ, organism="mouse",ont="CC",pvalueCutoff=0.01,readable=T)
-
-#kegg<-enrichKEGG(gene=sigEZ, organism="mouse",pvalueCutoff=1, readable=T)
-
-#pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T)
-
-```
-
-```{r Crnde_adult_GO_figures,  fig.height=5, fig.width=8}
-plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched BP")
-
-plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched MF")
-
-#plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched CC")
-
-#plot(kegg, showCategory=10) + ggtitle("Kegg Pathways")
-
-#plot(pathway,showCategory=10) + ggtitle("Reactome pathway enrichment")
-detach("package:biomaRt")
-```
-
-## Embryo Crnde 
-
-```{r Crnde_embryonic_dendro}
-dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Crnde_vs_WT_Embryonic"
-setwd(dir)
-cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
-csDendro(genes(cuff),replicates=TRUE)
-```
-
-Endogenous expression (isoforms)
-
-```{r Crnde_embryonic}
-id<-"Crnde"
-myGene<-getGene(cuff,id)
-expressionBarplot(isoforms(myGene), replicates=T)
-```
-
-LacZ and genotyping heatmap
-
-```{r Crnde_embryonic_diff}
-sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$Crnde_vs_WT_Embryonic<-length(sig)
-```
-
-```{r crnde_embryo_GO_setup_and_functions}
-library(ReactomePA)
-library(DOSE)
-library(clusterProfiler)
-require(biomaRt)
-
-ensembl <- useMart("ENSEMBL_MART_ENSEMBL","mmusculus_gene_ensembl", 
-host="www.ensembl.org")
-
-#Get entrezIDs
-getEntrezIDs<-function (geneNames)
-{
-    tmp <- getBM(attributes = c("entrezgene"), filters = "mgi_symbol", values = geneNames, mart = ensembl)
-    tmp
-}
-
-```
-
-```{r crnde_embryo_GO_analysis}
-sigGeneIDs<-getSig(cuff, alpha=alpha)
-sigGenes<-getGenes(cuff,sigGeneIDs)
-geneAnnot<-annotation(sigGenes)
-geneNames<-geneAnnot$gene_short_name
-sigDiff<-diffData(sigGenes)
-
-sigEntrez<-getEntrezIDs(geneNames)
-sigEZ<-strsplit(as.character(sigEntrez), ", ")
-sigEZ<-unlist(sigEZ)
-require(org.Mm.eg.db) #mapping of entrez IDs to genbank
-
-goBP<-enrichGO(gene=sigEZ, organism="mouse",ont="BP",pvalueCutoff=0.01,readable=T)
-
-goMF<-enrichGO(gene=sigEZ, organism="mouse",ont="MF",pvalueCutoff=0.01,readable=T)
-
-goCC<-enrichGO(gene=sigEZ, organism="mouse",ont="CC",pvalueCutoff=0.01,readable=T)
-
-kegg<-enrichKEGG(gene=sigEZ, organism="mouse",pvalueCutoff=1, readable=T)
-
-pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T)
-
-```
-
-```{r crnde_embryo_GO_figures,  fig.height=5, fig.width=8}
-plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched BP")
-
-plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched MF")
-
-plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched CC")
-
-plot(kegg, showCategory=10) + ggtitle("Kegg Pathways")
-
-plot(pathway,showCategory=10) + ggtitle("Reactome pathway enrichment")
-detach("package:biomaRt")
-```
-
-# Brn1b
-
-## Adult Brn1b 
-
-```{r adult_lincBrn1b_diff}
-dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Brn1b_vs_WT_Adult/"
-setwd(dir)
-cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
-sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$lincBrn1b_vs_WT_Adult<-length(sig)
-```
-
-```{r brn1b_adult_GO_setup_and_functions}
-library(ReactomePA)
-library(DOSE)
-library(clusterProfiler)
-require(biomaRt)
-
-ensembl <- useMart("ENSEMBL_MART_ENSEMBL","mmusculus_gene_ensembl", 
-host="www.ensembl.org")
-
-#Get entrezIDs
-getEntrezIDs<-function (geneNames)
-{
-    tmp <- getBM(attributes = c("entrezgene"), filters = "mgi_symbol", values = geneNames, mart = ensembl)
-    tmp
-}
-
-```
-
-```{r brn1b_adult_GO_analysis}
-sigGeneIDs<-getSig(cuff, alpha=alpha)
-sigGenes<-getGenes(cuff,sigGeneIDs)
-geneAnnot<-annotation(sigGenes)
-geneNames<-geneAnnot$gene_short_name
-sigDiff<-diffData(sigGenes)
-
-sigEntrez<-getEntrezIDs(geneNames)
-sigEZ<-strsplit(as.character(sigEntrez), ", ")
-sigEZ<-unlist(sigEZ)
-require(org.Mm.eg.db) #mapping of entrez IDs to genbank
-
-goBP<-enrichGO(gene=sigEZ, organism="mouse",ont="BP",pvalueCutoff=0.01,readable=T)
-
-goMF<-enrichGO(gene=sigEZ, organism="mouse",ont="MF",pvalueCutoff=0.01,readable=T)
-
-goCC<-enrichGO(gene=sigEZ, organism="mouse",ont="CC",pvalueCutoff=0.01,readable=T)
-
-kegg<-enrichKEGG(gene=sigEZ, organism="mouse",pvalueCutoff=1, readable=T)
-
-pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T)
-
-```
-
-```{r brn1b_adult_GO_figures,  fig.height=5, fig.width=8}
-plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched BP")
-
-plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched MF")
-
-#plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched CC")
-
-plot(kegg, showCategory=10) + ggtitle("Kegg Pathways")
-
-plot(pathway,showCategory=10) + ggtitle("Reactome pathway enrichment")
-detach("package:biomaRt")
-```
-
-## Embryonic Brn1b
-
-```{r Brn1b_embryonic_diff}
-dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Brn1b_vs_WT_Embryonic"
-setwd(dir)
-cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
-sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$lincBrn1b_vs_WT_Embryonic<-length(sig)
-```
-
-Number of differentially expressed embryonic genes:`r length(sig)`
-
-```{r brn1b_embryonic_GO_setup_and_functions}
-library(ReactomePA)
-library(DOSE)
-library(clusterProfiler)
-require(biomaRt)
-
-ensembl <- useMart("ENSEMBL_MART_ENSEMBL","mmusculus_gene_ensembl", 
-host="www.ensembl.org")
-
-#Get entrezIDs
-getEntrezIDs<-function (geneNames)
-{
-    tmp <- getBM(attributes = c("entrezgene"), filters = "mgi_symbol", values = geneNames, mart = ensembl)
-    tmp
-}
-
-```
-
-```{r brn1b_embryonic_GO_analysis}
-sigGeneIDs<-getSig(cuff, alpha=alpha)
-sigGenes<-getGenes(cuff,sigGeneIDs)
-geneAnnot<-annotation(sigGenes)
-geneNames<-geneAnnot$gene_short_name
-sigDiff<-diffData(sigGenes)
-
-sigEntrez<-getEntrezIDs(geneNames)
-sigEZ<-strsplit(as.character(sigEntrez), ", ")
-sigEZ<-unlist(sigEZ)
-require(org.Mm.eg.db) #mapping of entrez IDs to genbank
-
-goBP<-enrichGO(gene=sigEZ, organism="mouse",ont="BP",pvalueCutoff=0.01,readable=T)
-
-goMF<-enrichGO(gene=sigEZ, organism="mouse",ont="MF",pvalueCutoff=0.01,readable=T)
-
-goCC<-enrichGO(gene=sigEZ, organism="mouse",ont="CC",pvalueCutoff=0.01,readable=T)
-
-# kegg<-enrichKEGG(gene=sigEZ, organism="mouse",pvalueCutoff=1, readable=T)
-
-# pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T)
-
-```
-
-```{r brn1b_embryonic_GO_figures,  fig.height=5, fig.width=8}
-plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched BP")
-
-plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched MF")
-
-plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched CC")
-
-plot(kegg, showCategory=10) + ggtitle("Kegg Pathways")
-
-plot(pathway,showCategory=10) + ggtitle("Reactome pathway enrichment")
-detach("package:biomaRt")
-```
-
-
-# Peril
-
-```{r Peril}
-dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Peril_vs_WT_Adult"
-setwd(dir)
-cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
-id<-"Peril"
-myGene<-getGene(cuff,id)
-expressionBarplot(isoforms(myGene), replicates=T)
-```
-
-LacZ and genotyping heatmap
-
-```{r Peril_lz_adult}
-lz<-"LacZ"
-myGene<-getGene(cuff,lz)
-expressionBarplot(isoforms(myGene), replicates=T)
-ids<-c(id,lz)
-myGenes<-getGenes(cuff,ids)
-csHeatmap(myGenes,replicates=TRUE)
-```
-
-```{r adult_Peril_diff}
-sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$Peril_vs_WT_Adult<-length(sig)
-```
-
-```{r Peril_adult_GO_setup_and_functions}
-library(ReactomePA)
-library(DOSE)
-library(clusterProfiler)
-require(biomaRt)
-
-ensembl <- useMart("ENSEMBL_MART_ENSEMBL","mmusculus_gene_ensembl", 
-host="www.ensembl.org")
-
-#Get entrezIDs
-getEntrezIDs<-function (geneNames)
-{
-    tmp <- getBM(attributes = c("entrezgene"), filters = "mgi_symbol", values = geneNames, mart = ensembl)
-    tmp
-}
-
-```
-
-```{r Peril_adult_GO_analysis}
-sigGeneIDs<-getSig(cuff, alpha=alpha)
-sigGenes<-getGenes(cuff,sigGeneIDs)
-geneAnnot<-annotation(sigGenes)
-geneNames<-geneAnnot$gene_short_name
-sigDiff<-diffData(sigGenes)
-
-sigEntrez<-getEntrezIDs(geneNames)
-sigEZ<-strsplit(as.character(sigEntrez), ", ")
-sigEZ<-unlist(sigEZ)
-require(org.Mm.eg.db) #mapping of entrez IDs to genbank
-
-goBP<-enrichGO(gene=sigEZ, organism="mouse",ont="BP",pvalueCutoff=0.01,readable=T)
-
-goMF<-enrichGO(gene=sigEZ, organism="mouse",ont="MF",pvalueCutoff=0.01,readable=T)
-
-goCC<-enrichGO(gene=sigEZ, organism="mouse",ont="CC",pvalueCutoff=0.01,readable=T)
-
- kegg<-enrichKEGG(gene=sigEZ, organism="mouse",pvalueCutoff=1, readable=T)
-
- pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T)
-
-```
-
-```{r Peril_adult_GO_figures,  fig.height=5, fig.width=8}
-plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched BP")
-
-plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched MF")
-
-plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched CC")
-
-plot(kegg, showCategory=10) + ggtitle("Kegg Pathways")
-
-plot(pathway,showCategory=10) + ggtitle("Reactome pathway enrichment")
-detach("package:biomaRt")
-```
-
-
-## Peril Embryonic 
-
-```{r Peril embryonic}
-dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Peril_vs_WT_Embryonic/"
-setwd(dir)
-cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
-id<-"Peril"
-myGene<-getGene(cuff,id)
-expressionBarplot(isoforms(myGene), replicates=T)
-```
-
-```{r Peril_embryonic_diff}
-sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$Peril_vs_WT_Embryonic<-length(sig)
-```
-
-```{r Peril_embryonic_GO_setup_and_functions}
-library(ReactomePA)
-library(DOSE)
-library(clusterProfiler)
-require(biomaRt)
-
-ensembl <- useMart("ENSEMBL_MART_ENSEMBL","mmusculus_gene_ensembl", 
-host="www.ensembl.org")
-
-#Get entrezIDs
-getEntrezIDs<-function (geneNames)
-{
-    tmp <- getBM(attributes = c("entrezgene"), filters = "mgi_symbol", values = geneNames, mart = ensembl)
-    tmp
-}
-
-```
-
-```{r Peril_embryonic_GO_analysis}
-sigGeneIDs<-getSig(cuff, alpha=alpha)
-sigGenes<-getGenes(cuff,sigGeneIDs)
-geneAnnot<-annotation(sigGenes)
-geneNames<-geneAnnot$gene_short_name
-sigDiff<-diffData(sigGenes)
-
-sigEntrez<-getEntrezIDs(geneNames)
-sigEZ<-strsplit(as.character(sigEntrez), ", ")
-sigEZ<-unlist(sigEZ)
-require(org.Mm.eg.db) #mapping of entrez IDs to genbank
-
-goBP<-enrichGO(gene=sigEZ, organism="mouse",ont="BP",pvalueCutoff=0.01,readable=T)
-
-goMF<-enrichGO(gene=sigEZ, organism="mouse",ont="MF",pvalueCutoff=0.01,readable=T)
-
-goCC<-enrichGO(gene=sigEZ, organism="mouse",ont="CC",pvalueCutoff=0.01,readable=T)
-
- kegg<-enrichKEGG(gene=sigEZ, organism="mouse",pvalueCutoff=1, readable=T)
-
- pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T)
-
-```
-
-```{r Peril_embryonic_GO_figures,  fig.height=5, fig.width=8}
-plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched BP")
-
-plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched MF")
-
-plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched CC")
-
-plot(kegg, showCategory=10) + ggtitle("Kegg Pathways")
-
-plot(pathway,showCategory=10) + ggtitle("Reactome pathway enrichment")
-detach("package:biomaRt")
-```
 
 
 # Tug1 
@@ -751,34 +322,459 @@ ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_
 ```
 
 
-Examples 
-========================================================
-
-# Adult
-
-## Kantr
-
-## Brn1a 
-
-## Trp53cor1
-
-## Tug1
 
 
+FIGURE 2: Brn1a/B, linc-cox2
 
-# Embryo
+# Brn1b
 
-## Crnde 
+## Adult Brn1b 
 
-## Eldr
+```{r adult_lincBrn1b_diff}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Brn1b_vs_WT_Adult/"
+setwd(dir)
+cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
+sig<-getSig(cuff, alpha=alpha)
+diffGeneSummary$lincBrn1b_vs_WT_Adult<-length(sig)
+```
 
-## Kantr 
+```{r brn1b_adult_GO_setup_and_functions}
+library(ReactomePA)
+library(DOSE)
+library(clusterProfiler)
+require(biomaRt)
 
-## Manr
+ensembl <- useMart("ENSEMBL_MART_ENSEMBL","mmusculus_gene_ensembl", 
+host="www.ensembl.org")
 
-## Peril
+#Get entrezIDs
+getEntrezIDs<-function (geneNames)
+{
+    tmp <- getBM(attributes = c("entrezgene"), filters = "mgi_symbol", values = geneNames, mart = ensembl)
+    tmp
+}
 
-## linc-Cox2
+```
 
-## linc-Enc1 
+```{r brn1b_adult_GO_analysis}
+sigGeneIDs<-getSig(cuff, alpha=alpha)
+sigGenes<-getGenes(cuff,sigGeneIDs)
+geneAnnot<-annotation(sigGenes)
+geneNames<-geneAnnot$gene_short_name
+sigDiff<-diffData(sigGenes)
+
+sigEntrez<-getEntrezIDs(geneNames)
+sigEZ<-strsplit(as.character(sigEntrez), ", ")
+sigEZ<-unlist(sigEZ)
+require(org.Mm.eg.db) #mapping of entrez IDs to genbank
+
+goBP<-enrichGO(gene=sigEZ, organism="mouse",ont="BP",pvalueCutoff=0.01,readable=T)
+
+goMF<-enrichGO(gene=sigEZ, organism="mouse",ont="MF",pvalueCutoff=0.01,readable=T)
+
+goCC<-enrichGO(gene=sigEZ, organism="mouse",ont="CC",pvalueCutoff=0.01,readable=T)
+
+kegg<-enrichKEGG(gene=sigEZ, organism="mouse",pvalueCutoff=1, readable=T)
+
+pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T)
+
+```
+
+```{r brn1b_adult_GO_figures,  fig.height=5, fig.width=8}
+plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched BP")
+
+plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched MF")
+
+#plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched CC")
+
+plot(kegg, showCategory=10) + ggtitle("Kegg Pathways")
+
+plot(pathway,showCategory=10) + ggtitle("Reactome pathway enrichment")
+detach("package:biomaRt")
+```
+
+## Embryonic Brn1b
+
+```{r Brn1b_embryonic_diff}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Brn1b_vs_WT_Embryonic"
+setwd(dir)
+cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
+sig<-getSig(cuff, alpha=alpha)
+diffGeneSummary$lincBrn1b_vs_WT_Embryonic<-length(sig)
+```
+
+Number of differentially expressed embryonic genes:`r length(sig)`
+
+```{r brn1b_embryonic_GO_setup_and_functions}
+library(ReactomePA)
+library(DOSE)
+library(clusterProfiler)
+require(biomaRt)
+
+ensembl <- useMart("ENSEMBL_MART_ENSEMBL","mmusculus_gene_ensembl", 
+host="www.ensembl.org")
+
+#Get entrezIDs
+getEntrezIDs<-function (geneNames)
+{
+    tmp <- getBM(attributes = c("entrezgene"), filters = "mgi_symbol", values = geneNames, mart = ensembl)
+    tmp
+}
+
+```
+
+```{r brn1b_embryonic_GO_analysis}
+sigGeneIDs<-getSig(cuff, alpha=alpha)
+sigGenes<-getGenes(cuff,sigGeneIDs)
+geneAnnot<-annotation(sigGenes)
+geneNames<-geneAnnot$gene_short_name
+sigDiff<-diffData(sigGenes)
+
+sigEntrez<-getEntrezIDs(geneNames)
+sigEZ<-strsplit(as.character(sigEntrez), ", ")
+sigEZ<-unlist(sigEZ)
+require(org.Mm.eg.db) #mapping of entrez IDs to genbank
+
+goBP<-enrichGO(gene=sigEZ, organism="mouse",ont="BP",pvalueCutoff=0.01,readable=T)
+
+goMF<-enrichGO(gene=sigEZ, organism="mouse",ont="MF",pvalueCutoff=0.01,readable=T)
+
+goCC<-enrichGO(gene=sigEZ, organism="mouse",ont="CC",pvalueCutoff=0.01,readable=T)
+
+# kegg<-enrichKEGG(gene=sigEZ, organism="mouse",pvalueCutoff=1, readable=T)
+
+# pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T)
+
+```
+
+```{r brn1b_embryonic_GO_figures,  fig.height=5, fig.width=8}
+plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched BP")
+
+plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched MF")
+
+plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched CC")
+
+plot(kegg, showCategory=10) + ggtitle("Kegg Pathways")
+
+plot(pathway,showCategory=10) + ggtitle("Reactome pathway enrichment")
+detach("package:biomaRt")
+```
+
+
+
+
+OTHER
+=======================
+
+
+
+
+
+# Crnde
+
+## Adult Crnde 
+
+```{r crnde_adult}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Crnde_vs_WT_Adult"
+setwd(dir)
+cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
+id<-"Crnde"
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
+```
+
+```{r adult_crnde_diff}
+sig<-getSig(cuff, alpha=alpha)
+diffGeneSummary$Crnde_vs_WT_Adult<-length(sig)
+```
+
+```{r Crnde_adult_GO_setup_and_functions}
+
+library(ReactomePA)
+library(DOSE)
+library(clusterProfiler)
+require(biomaRt)
+
+ensembl <- useMart("ENSEMBL_MART_ENSEMBL","mmusculus_gene_ensembl", 
+host="www.ensembl.org")
+```
+
+```{r Crnde_adult_GO_analysis}
+sigGeneIDs<-getSig(cuff, alpha=alpha)
+sigGenes<-getGenes(cuff,sigGeneIDs)
+geneAnnot<-annotation(sigGenes)
+geneNames<-geneAnnot$gene_short_name
+sigDiff<-diffData(sigGenes)
+sigEntrez<-getEntrezIDs(geneNames)
+sigEZ<-strsplit(as.character(sigEntrez), ", ")
+sigEZ<-unlist(sigEZ)
+require(org.Mm.eg.db) #mapping of entrez IDs to genbank
+
+goBP<-enrichGO(gene=sigEZ, organism="mouse",ont="BP",pvalueCutoff=0.01,readable=T)
+
+goMF<-enrichGO(gene=sigEZ, organism="mouse",ont="MF",pvalueCutoff=0.01,readable=T)
+
+#goCC<-enrichGO(gene=sigEZ, organism="mouse",ont="CC",pvalueCutoff=0.01,readable=T)
+
+#kegg<-enrichKEGG(gene=sigEZ, organism="mouse",pvalueCutoff=1, readable=T)
+
+#pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T)
+
+```
+
+```{r Crnde_adult_GO_figures,  fig.height=5, fig.width=8}
+plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched BP")
+
+plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched MF")
+
+#plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched CC")
+
+#plot(kegg, showCategory=10) + ggtitle("Kegg Pathways")
+
+#plot(pathway,showCategory=10) + ggtitle("Reactome pathway enrichment")
+detach("package:biomaRt")
+```
+
+## Embryo Crnde 
+
+```{r Crnde_embryonic_dendro}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Crnde_vs_WT_Embryonic"
+setwd(dir)
+cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
+csDendro(genes(cuff),replicates=TRUE)
+```
+
+Endogenous expression (isoforms)
+
+```{r Crnde_embryonic}
+id<-"Crnde"
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
+```
+
+LacZ and genotyping heatmap
+
+```{r Crnde_embryonic_diff}
+sig<-getSig(cuff, alpha=alpha)
+diffGeneSummary$Crnde_vs_WT_Embryonic<-length(sig)
+```
+
+```{r crnde_embryo_GO_setup_and_functions}
+library(ReactomePA)
+library(DOSE)
+library(clusterProfiler)
+require(biomaRt)
+
+ensembl <- useMart("ENSEMBL_MART_ENSEMBL","mmusculus_gene_ensembl", 
+host="www.ensembl.org")
+
+#Get entrezIDs
+getEntrezIDs<-function (geneNames)
+{
+    tmp <- getBM(attributes = c("entrezgene"), filters = "mgi_symbol", values = geneNames, mart = ensembl)
+    tmp
+}
+
+```
+
+```{r crnde_embryo_GO_analysis}
+sigGeneIDs<-getSig(cuff, alpha=alpha)
+sigGenes<-getGenes(cuff,sigGeneIDs)
+geneAnnot<-annotation(sigGenes)
+geneNames<-geneAnnot$gene_short_name
+sigDiff<-diffData(sigGenes)
+
+sigEntrez<-getEntrezIDs(geneNames)
+sigEZ<-strsplit(as.character(sigEntrez), ", ")
+sigEZ<-unlist(sigEZ)
+require(org.Mm.eg.db) #mapping of entrez IDs to genbank
+
+goBP<-enrichGO(gene=sigEZ, organism="mouse",ont="BP",pvalueCutoff=0.01,readable=T)
+
+goMF<-enrichGO(gene=sigEZ, organism="mouse",ont="MF",pvalueCutoff=0.01,readable=T)
+
+goCC<-enrichGO(gene=sigEZ, organism="mouse",ont="CC",pvalueCutoff=0.01,readable=T)
+
+kegg<-enrichKEGG(gene=sigEZ, organism="mouse",pvalueCutoff=1, readable=T)
+
+pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T)
+
+```
+
+```{r crnde_embryo_GO_figures,  fig.height=5, fig.width=8}
+plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched BP")
+
+plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched MF")
+
+plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched CC")
+
+plot(kegg, showCategory=10) + ggtitle("Kegg Pathways")
+
+plot(pathway,showCategory=10) + ggtitle("Reactome pathway enrichment")
+detach("package:biomaRt")
+```
+
+
+
+# Peril
+
+```{r Peril}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Peril_vs_WT_Adult"
+setwd(dir)
+cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
+id<-"Peril"
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
+```
+
+LacZ and genotyping heatmap
+
+```{r Peril_lz_adult}
+lz<-"LacZ"
+myGene<-getGene(cuff,lz)
+expressionBarplot(isoforms(myGene), replicates=T)
+ids<-c(id,lz)
+myGenes<-getGenes(cuff,ids)
+csHeatmap(myGenes,replicates=TRUE)
+```
+
+```{r adult_Peril_diff}
+sig<-getSig(cuff, alpha=alpha)
+diffGeneSummary$Peril_vs_WT_Adult<-length(sig)
+```
+
+```{r Peril_adult_GO_setup_and_functions}
+library(ReactomePA)
+library(DOSE)
+library(clusterProfiler)
+require(biomaRt)
+
+ensembl <- useMart("ENSEMBL_MART_ENSEMBL","mmusculus_gene_ensembl", 
+host="www.ensembl.org")
+
+#Get entrezIDs
+getEntrezIDs<-function (geneNames)
+{
+    tmp <- getBM(attributes = c("entrezgene"), filters = "mgi_symbol", values = geneNames, mart = ensembl)
+    tmp
+}
+
+```
+
+```{r Peril_adult_GO_analysis}
+sigGeneIDs<-getSig(cuff, alpha=alpha)
+sigGenes<-getGenes(cuff,sigGeneIDs)
+geneAnnot<-annotation(sigGenes)
+geneNames<-geneAnnot$gene_short_name
+sigDiff<-diffData(sigGenes)
+
+sigEntrez<-getEntrezIDs(geneNames)
+sigEZ<-strsplit(as.character(sigEntrez), ", ")
+sigEZ<-unlist(sigEZ)
+require(org.Mm.eg.db) #mapping of entrez IDs to genbank
+
+goBP<-enrichGO(gene=sigEZ, organism="mouse",ont="BP",pvalueCutoff=0.01,readable=T)
+
+goMF<-enrichGO(gene=sigEZ, organism="mouse",ont="MF",pvalueCutoff=0.01,readable=T)
+
+goCC<-enrichGO(gene=sigEZ, organism="mouse",ont="CC",pvalueCutoff=0.01,readable=T)
+
+ kegg<-enrichKEGG(gene=sigEZ, organism="mouse",pvalueCutoff=1, readable=T)
+
+ pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T)
+
+```
+
+```{r Peril_adult_GO_figures,  fig.height=5, fig.width=8}
+plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched BP")
+
+plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched MF")
+
+plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched CC")
+
+plot(kegg, showCategory=10) + ggtitle("Kegg Pathways")
+
+plot(pathway,showCategory=10) + ggtitle("Reactome pathway enrichment")
+detach("package:biomaRt")
+```
+
+
+## Peril Embryonic 
+
+```{r Peril embryonic}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Peril_vs_WT_Embryonic/"
+setwd(dir)
+cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
+id<-"Peril"
+myGene<-getGene(cuff,id)
+expressionBarplot(isoforms(myGene), replicates=T)
+```
+
+```{r Peril_embryonic_diff}
+sig<-getSig(cuff, alpha=alpha)
+diffGeneSummary$Peril_vs_WT_Embryonic<-length(sig)
+```
+
+```{r Peril_embryonic_GO_setup_and_functions}
+library(ReactomePA)
+library(DOSE)
+library(clusterProfiler)
+require(biomaRt)
+
+ensembl <- useMart("ENSEMBL_MART_ENSEMBL","mmusculus_gene_ensembl", 
+host="www.ensembl.org")
+
+#Get entrezIDs
+getEntrezIDs<-function (geneNames)
+{
+    tmp <- getBM(attributes = c("entrezgene"), filters = "mgi_symbol", values = geneNames, mart = ensembl)
+    tmp
+}
+
+```
+
+```{r Peril_embryonic_GO_analysis}
+sigGeneIDs<-getSig(cuff, alpha=alpha)
+sigGenes<-getGenes(cuff,sigGeneIDs)
+geneAnnot<-annotation(sigGenes)
+geneNames<-geneAnnot$gene_short_name
+sigDiff<-diffData(sigGenes)
+
+sigEntrez<-getEntrezIDs(geneNames)
+sigEZ<-strsplit(as.character(sigEntrez), ", ")
+sigEZ<-unlist(sigEZ)
+require(org.Mm.eg.db) #mapping of entrez IDs to genbank
+
+goBP<-enrichGO(gene=sigEZ, organism="mouse",ont="BP",pvalueCutoff=0.01,readable=T)
+
+goMF<-enrichGO(gene=sigEZ, organism="mouse",ont="MF",pvalueCutoff=0.01,readable=T)
+
+goCC<-enrichGO(gene=sigEZ, organism="mouse",ont="CC",pvalueCutoff=0.01,readable=T)
+
+ kegg<-enrichKEGG(gene=sigEZ, organism="mouse",pvalueCutoff=1, readable=T)
+
+ pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T)
+
+```
+
+```{r Peril_embryonic_GO_figures,  fig.height=5, fig.width=8}
+plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched BP")
+
+plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched MF")
+
+plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched CC")
+
+plot(kegg, showCategory=10) + ggtitle("Kegg Pathways")
+
+plot(pathway,showCategory=10) + ggtitle("Reactome pathway enrichment")
+detach("package:biomaRt")
+```
+
+
+
+
+
+
+
+
 

@@ -1,40 +1,27 @@
-
 ```{r standalone setup, echo=FALSE,eval=FALSE}
 strain<-"Kdm5c"
 timepoint<-"Adult"
-filename<-"Adult_WT_male_v_female"
-dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/WT_Adult_Male_v_Female/"
+filename<-"Embryo_WT_male_v_female"
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/WT_Embryonic_Male_v_Female/"
 
 
 ### THINGS TO REMEMBER: change oldbam to bam and olddiff to diff once new set done! 
 ```
 
-
 `r strain` KO vs WT (`r timepoint`)
-=============================================
-
+======================================
 
 ```{r init, echo=FALSE}
 # Set knitr opts
 
-path<-paste("figure/",strain,"/",timepoint,"/", sep="")
-cachepath<-paste("cache/",strain,"/",timepoint,"/", sep="")
-opts_chunk$set(fig.path=path, echo=FALSE, message=FALSE, warning=FALSE, cache.path=cachepath)
-
-### OPTIONAL VAR OVERRIDE (where are my variables!!?)
-#dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Enc1_vs_WT_Embryonic/"
-#strain<-"linc-Enc1"
+#path<-paste(filename,"/figure/",sep="")
+opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE,fig.height=4, fig.width=4,dev=c('png', 'pdf'))
 alpha<-0.05 
-setwd(dir)
-
 
 analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
 diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
-GTF<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf"
+GTF <- "/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf"
 genome<-"mm10"
-sexgenes<-c("Kdm5d","Egr2","Ddx3y","Xist","Myl6")
-
-### THINGS TO CACHE GO HERE AND NOWHERE ELSE 
 
 ```
 
@@ -48,6 +35,8 @@ library(marray)
 library(ggplot2)
 library(gtable)
 library(gridExtra)
+library(RColorBrewer)
+library(RMySQL)
 
 
 reactome_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.reactome.v4.0.symbols.gmt")
@@ -55,20 +44,17 @@ biocarta_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.biocarta.v4.0
 kegg_gs<-GSA.read.gmt("/n/rinn_data1/annotations/gsea/msigdb_v4.0_files_to_download_locally/msigdb_v4.0_GMTs/c2.cp.kegg.v4.0.symbols.gmt")
 interneuron_gs<-GSA.read.gmt("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/support/interneuron_genesets.gmt")
 
-sexdiffs_gs<-GSA.read.gmt("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/support/sexdiffs.gmt")
-
+#sexdiffs_gs<-GSA.read.gmt("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/support/sexdiffs.gmt")
 
 setwd(analysisdir)
 deletionCoords<-read.table("mm10DeletionCoords.txt",sep="\t",header=TRUE,stringsAsFactors=FALSE)
 colnames(deletionCoords)<-c("gene_name","gene_region","deletionRegion")
-
-
 ```
 
-# Intialize
+
 ```{r cummeRbund_and_data_setup, echo=FALSE}
-setwd(dir)
-cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") #rebuild=T until all first rounds done! build sep though bc issues :-/
+#setwd(dir)
+cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome=genome) #rebuild=T until all first rounds done! build sep though bc issues :-/
 reps<-replicates(cuff)
 files<-lapply(reps$file,function(x){strsplit(x, "/")})
 
@@ -78,18 +64,16 @@ samples<-(t(files[10,]))
 rownames(samples)<-NULL
 
 #look up strain, litter, sex, notes in master sheet 
-
 ```
 
-# Design Overview
 
 This file shows the wt-v-ko comparison for `r strain`. 
 
 Cuff overview:
+
 ```{r}
 cuff
 ```
-
 
 # QC
 
@@ -99,55 +83,43 @@ Dispersion plot for genes in cuff:
 (Overdispersion can lead to innacurate quants)
 
 ```{r dispersion}
-dispersionPlot(genes(cuff))
+dispersionPlot(cuff)+theme_bw()
 ```
 
 ## Cross-replicate variability (fpkmSCVplot)
 Differences in CV 2 can result in lower numbers of differentially expressed genes due to a higher degree of variability between replicate fpkm estimates.
 
 Genes:
-```{r CV_genes}
-fpkmSCVPlot(genes(cuff))
-```
 
+```{r CV_genes}
+fpkmSCVPlot(genes(cuff))+theme_bw()
+```
 
 Isoforms: 
+
 ```{r cv_iso}
-fpkmSCVPlot(isoforms(cuff))
+fpkmSCVPlot(isoforms(cuff))+theme_bw()
 ```
 
-## Volcano
-```{r volcano}
-#csVolcano(genes(cuff),"wt","ko")
-```
-
-### Volcano matrix (replicates)
-
-```{r volcano_matrix}
-csVolcanoMatrix(genes(cuff),replicates=T)
-```
 
 ## MvA plot
+
 ```{r MvA}
-#MAplot(genes(cuff),"wt","ko")
+strain_sample<-gsub("-","_",strain)#paste(strain,"_0",sep="")
+MAplot(genes(cuff),"WT",strain_sample)+theme_bw()
 ```
    
 ### MvA plot counts
+
 ```{r MvA_counts}
-#MAplot(genes(cuff),"wt","ko",useCount=T)
+MAplot(genes(cuff),"WT",strain_sample,useCount=T)+theme_bw()
 ```
 
-## Scatterplot
+## Scatterplot matrix
+
 ```{r scatterplot}
-csScatterMatrix(genes(cuff))
+csScatterMatrix(genes(cuff))+theme_bw()
 ```
-
-### Scatter matrix (replicates) -- SKIP FOR NOW CAUSING PROBLEMS 
-
-```{r scatterplot_matrix}
-#csScatterMatrix(genes(cuff),replicates=T)
-```
-
 
 ## Distributions
 
@@ -156,25 +128,25 @@ csScatterMatrix(genes(cuff))
 Boxplot (genes)
 
 ```{r boxplot_genes}
-csBoxplot(genes(cuff))
+csBoxplot(genes(cuff))+theme_bw()
 ```
 
 Boxplot (genes, replicates)
 
-```{r boxplot_genes_replicates}
-csBoxplot(genes(cuff),replicates=T)
+```{r boxplot_genes_replicates, fig.width=8}
+csBoxplot(genes(cuff),replicates=T)+theme_bw()
 ```
 
 Boxplot (isoforms)
 
 ```{r boxplot_isoforms}
-csBoxplot(isoforms(cuff))
+csBoxplot(isoforms(cuff))+theme_bw()
 ```
 
 Boxplot (isoforms, replicates)
 
-```{r boxplot_isoforms_replicates}
-csBoxplot(isoforms(cuff), replicates=T)
+```{r boxplot_isoforms_replicates, fig.width=8}
+csBoxplot(isoforms(cuff), replicates=T)+theme_bw()
 ```
 
 ### Density
@@ -182,37 +154,40 @@ csBoxplot(isoforms(cuff), replicates=T)
 Density (genes)
 
 ```{r density}
-csDensity(genes(cuff),pseudocount=0.001)
+csDensity(genes(cuff),pseudocount=0.001)+theme_bw()
 ```
 
 Density (genes, replicates)
 
 ```{r density_w_replicates}
-csDensity(genes(cuff),pseudocount=0.001,replicates=T)
+csDensity(genes(cuff),pseudocount=0.001,replicates=T)+theme_bw()
 ```
 
 
 ## Clustering
 
 ### Replicate Clusters
-```{r replicate_clusters}
-csDendro(genes(cuff),replicates=T)
+
+```{r replicate_clusters, fig.height=8,fig.width=8}
+csDendro(genes(cuff),replicates=T)+theme_bw()
 ```
 
 ### PCA (genes)
-```{r PCA}
-PCAplot(genes(cuff),"PC2","PC3", replicates=T)
+
+```{r PCA, fig.height=8, fig.width=8}
+PCAplot(genes(cuff),"PC2","PC3", replicates=T)+theme_bw()
 ```
 
 ### MDS (genes)
-```{r MDS}
-MDSplot(genes(cuff),replicates=T)
+
+```{r MDS,fig.height=8, fig.width=8}
+MDSplot(genes(cuff),replicates=T)+theme_bw()
 ```
 
 
 ```{r R_distance_heatmap, eval=FALSE }
 ### Distance Heat Map (genes)
-csDistHeat(genes(cuff), replicates=T)
+csDistHeat(genes(cuff), replicates=T)+theme_bw()
 ```
 
 
@@ -220,35 +195,35 @@ csDistHeat(genes(cuff), replicates=T)
 
 ## Endogenous lncRNA expression
 
-```{r Enodenous_lncRNA_tables, results='asis'}
+```{r Enodenous_lncRNA_tables, results='asis', fig.width=6, fig.height=6}
 myGeneID<-strain
 myGene<-getGene(cuff, myGeneID)
 #print(xtable(fpkm(myGene)),type="html")
 #print(xtable(fpkm(isoforms(myGene))), type="html")
        
 #expressionPlot(myGene)
-expressionPlot(myGene, replicates=TRUE)
+expressionPlot(myGene, replicates=TRUE)+theme_bw()
 ```
 
 Endogenous expression of `r strain` isoforms:
 
-```{r endogenous_iso}
+```{r endogenous_iso,fig.height=8, fig.width=8}
 #expressionPlot(isoforms(myGene))
-expressionPlot(isoforms(myGene), replicates=T)
+expressionPlot(isoforms(myGene), replicates=T)+theme_bw()
 ```
 
 Barplot of gene expression:
 
-```{r endogenous_barplot}
+```{r endogenous_barplot,fig.height=6,fig.width=6}
 #expressionBarplot(myGene)
-expressionBarplot(myGene,replicates=T)
+expressionBarplot(myGene,replicates=T)+theme_bw()
 ```
 
 Barplot of isoform expression:
 
-```{r endogenous_iso_barplot}
+```{r endogenous_iso_barplot,fig.height=8, fig.width=8}
 #expressionBarplot(isoforms(myGene))     
-expressionBarplot(isoforms(myGene), replicates=T)
+expressionBarplot(isoforms(myGene), replicates=T)+theme_bw()
 ```
 
 
@@ -261,31 +236,185 @@ myGene<-getGene(cuff, myGeneID)
 #print(xtable(fpkm(myGene)),type="html")
        
 #expressionPlot(myGene)
-expressionPlot(myGene, replicates=TRUE)
+expressionPlot(myGene, replicates=TRUE)+theme_bw()
              
 #expressionBarplot(myGene)
-expressionBarplot(myGene,replicates=T)
+expressionBarplot(myGene,replicates=T)+theme_bw()
 ```
 
 
 ## Digital Genotyping (LacZ vs Endogenous lncRNA and Sex)
-
 
 Eif2s3y is a y-expressed gene, Xist is an x-expressed gene 
 Expression plot (endogenous linc, lacZ, Y-expressed gene):
 
 ```{r Digital_Genotyping,fig.height=8, fig.width=8}
 genotypingGeneIDs<-c(strain,"LacZ","Eif2s3y","Xist")
-
-Expression plot (endogenous linc, lacZ, Y-expressed gene):
-
 genotypingGenes<-getGenes(cuff,genotypingGeneIDs)
-
+expressionBarplot(genotypingGenes,replicates=T)
 ```
 
 Expression heatmap:
-```{r digital_geno_heatmap}
+
+```{r digital_geno_heatmap, fig.height=4, fig.width=8}
 csHeatmap(genotypingGenes,replicates=T)
+```
+
+
+
+### Track visualization 
+
+```{r track_vis, fig.height=15, fig.width=10}
+name<-strain
+myGene<-getGene(cuff,name)
+
+library(GenomicFeatures)
+
+
+real_chromInfo<-read.table("/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/real_chromosomes_mm10_brainmap.chrom.info",header=TRUE)
+
+genome<-"mm10"
+#GTF_noLacZ<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/mm10_gencode_with_lincRNAS_NO_LACZ.gtf"
+#mm10Db_nolacz<-makeTranscriptDbFromGFF(GTF_noLacZ,format="gtf",chrominfo=real_chromInfo, species="Mus musculus")
+#saveDb(mm10Db_nolacz,file="mm10gencode_brainmapDB_nolacz.sqlite")
+
+#mm10DB<-loadDb("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/mm10gencode_brainmapDB_nolacz.sqlite")
+mm10DB<-loadDb("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/brainmap_lincsubset_db.sqlite")
+
+#Need to install R-3.0.0 (Devel) for Gviz to deal with .bam files
+#Helper Functions
+movingAverage <- function(x, n=10, centered=TRUE) {
+  
+  if (centered) {
+    before <- floor  ((n-1)/2)
+    after  <- ceiling((n-1)/2)
+  } else {
+    before <- n-1
+    after  <- 0
+  }
+  
+  # Track the sum and count of number of non-NA items
+  s     <- rep(0, length(x))
+  count <- rep(0, length(x))
+  
+  # Add the centered data
+  new <- x
+  # Add to count list wherever there isn't a
+  count <- count + !is.na(new)
+  # Now replace NA_s with 0_s and add to total
+  new[is.na(new)] <- 0
+  s <- s + new
+  
+  # Add the data from before
+  i <- 1
+  while (i <= before) {
+    # This is the vector with offset values to add
+    new   <- c(rep(NA, i), x[1:(length(x)-i)])
+    
+    count <- count + !is.na(new)
+    new[is.na(new)] <- 0
+    s <- s + new
+    
+    i <- i+1
+  }
+  
+  # Add the data from after
+  i <- 1
+  while (i <= after) {
+    # This is the vector with offset values to add
+    new   <- c(x[(i+1):length(x)], rep(NA, i))
+    
+    count <- count + !is.na(new)
+    new[is.na(new)] <- 0
+    s <- s + new
+    
+    i <- i+1
+  }
+  
+  # return sum divided by count
+  s/count
+}
+
+makeBamTrack<-function(bamFile,bamName,genome=genome,chromosome,color="steelblue",window=20,ylim=c(0,15)){
+  
+  track<-DataTrack(range=bamFile,name=bamName,genome=genome,type="h",transformation=function(x){movingAverage(x,window)},col=color,fill.histogram=color,col.histogram=color,chromosome=chromosome, ylim=ylim, lwd=1.5)
+  
+  return(track)
+}
+
+########## Constants #########
+annot<-annotation(myGene)
+margin<-1000
+locus<-strsplit(annot$locus,":")
+locus<-unlist(locus)
+chrom<-locus[[1]]
+start_and_end<-strsplit(locus[[2]],"-")
+start_and_end<-unlist(start_and_end)
+from<-as.numeric(start_and_end[[1]])-margin
+to<-as.numeric(start_and_end[[2]])+margin
+
+#genetrack<-GeneRegionTrack(brainmap_lincs_mm10,rstarts=from,rends=to,chromosome=chrom,showId=TRUE,geneSymbol=TRUE,genome=genome,name="LincRNA Isoforms",fill="steelblue")
+genetrack<-GeneRegionTrack(mm10DB,rstarts=from,rends=to,chromosome=chrom,showId=TRUE,geneSymbol=TRUE,genome=genome,name="LincRNA Isoforms",fill="steelblue")
+
+reps<-replicates(cuff)
+files<-lapply(reps$file,function(x){strsplit(x, "/")})
+files<-as.data.frame(files)
+samples<-(t(files[10,]))
+rownames(samples)<-NULL
+JRs<-samples
+
+setwd(analysisdir)
+deletionCoords<-read.table("mm10DeletionCoords.txt",sep="\t",header=TRUE,stringsAsFactors=FALSE)
+colnames(deletionCoords)<-c("gene_name","gene_region","deletionRegion")
+koStrain<-strain
+coords<-deletionCoords[which(deletionCoords$gene_name==koStrain),3]
+coords<-strsplit(coords,":")
+coords<-unlist(coords)
+koChr<-coords[1]
+positions<-strsplit(coords[[2]],"-")
+positions<-unlist(positions)
+koStart<-as.numeric(positions[1])
+koWidth<-abs(as.numeric(positions[2])-as.numeric(positions[1]))
+
+
+bamRoot<-'/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/'
+
+bamFiles<-lapply(JRs,function(x){paste(bamRoot,x,"/accepted_hits.bam",sep="")})
+
+bamNames<-reps$rep_name
+
+specCols<-brewer.pal(3,"Paired")
+colPal<-colorRampPalette(specCols)
+bamColors<-colPal(length(bamFiles))
+
+
+doPlot<-function(genome=genome,name,myChr,from,to,window,bamFiles,bamNames,koStart,koWidth,koChr){
+  #Make Tracks
+  axTrack<-GenomeAxisTrack(add53 = TRUE,add35 = TRUE, labelPos = "above")
+  idxTrack <- IdeogramTrack(genome = genome, chromosome = myChr)
+  koTrack<-AnnotationTrack(start=koStart,width=koWidth,chromosome=koChr,strand="*",id=koStrain,genome="mm10",name="KO Region")
+  #BamTracks
+  write("\tBamTracks",stderr())
+  bamTracks<-list()
+  bamOrder<-c(1:length(bamFiles))
+
+  for (i in bamOrder){
+    track<-makeBamTrack(bamFiles[[i]],bamNames[[i]],genome=genome,chromosome=myChr,color=bamColors[i],window=window)
+    bamTracks<-c(bamTracks,track)
+  }
+  
+  #Plot Tracks
+  write("\tplotting...",stderr())
+  # myTracks<-c(bamTracks,knownGenes)
+  myTracks<-c(idxTrack,axTrack,genetrack,bamTracks,koTrack)
+  trackSizes<-c(1,1,4,rep(1,length(bamTracks)),1)
+
+  plotTracks(myTracks,from=from,to=to,chromosome=myChr,showAxis=FALSE,background.title="black",col.title="white",col.axis="black",sizes=trackSizes,geneSymbol=TRUE)
+}
+
+doPlot(genome=genome, name=name, myChr=chrom, from=from, to=to, window=20,bamFiles=bamFiles, bamNames=bamNames, koStart=koStart,koWidth=koWidth,koChr=koChr)
+
+detach("package:GenomicFeatures")
 ```
 
 # Differential Analysis
@@ -301,7 +430,9 @@ geneAnnot<-annotation(sigGenes)
 There are `r length(sig)` significantly differentially expressed genes. They are:
 
 ```{r sigdiffGenetable, results="asis"}
-print(xtable(as.data.frame(geneAnnot$gene_short_name)),type="html")
+if(length(sig)>0){
+  print(xtable(as.data.frame(geneAnnot$gene_short_name)),type="html")
+}else{print("No sig genes!")}
 ```
 
 ### Matrix of gene significant differences between conditions
@@ -309,78 +440,116 @@ print(xtable(as.data.frame(geneAnnot$gene_short_name)),type="html")
 (skip for Brainmap wt-v-ko comparisons)
 
 ```{r sigMatrix}
-sigMatrix(cuff, level="genes", alpha=alpha)
+sigMatrix(cuff, level="genes", alpha=alpha)+theme_bw()
 ```
 
 ### Significant gene expression differences between conditions
 
-Expression plot (genes):
-```{r sigExpression, fig.height=20, fig.width=10}
-#RELABEL!
+Expression plot (genes):(turned off)
+
+```{r sigExpression, eval=FALSE, fig.height=10, fig.width=8}
 rowlabel<-geneAnnot$gene_short_name
-expressionPlot(sigGenes)
-csHeatmap(sigGenes, cluster="both",replicates=T)
+expressionPlot(sigGenes)+theme_bw()
+
 #Maybe do cluster="col"
 ```
 
-Significant genes with expression >50fpkm (any condition):
-```{r highly_expressed_sig}
+
+```{r sigExpression heatmap, fig.height=8, fig.width=10}
+csHeatmap(sigGenes, cluster="both",replicates=T, labRow=FALSE)+theme_bw()
+```
+
+Significant genes with expression >50fpkm (any condition):(turned off)
+
+```{r highly_expressed_sig, eval=FALSE, fig.height=8, fig.width=8}
 sigFPKMs<-fpkmMatrix(sigGenes)
 high<-sigFPKMs[which(sigFPKMs>50),]
 high<-high[complete.cases(high),]
 highIDs<-rownames(high)
 highGenes<-getGenes(cuff,highIDs)
 highNames<-annotation(highGenes)$gene_short_name
-expressionPlot(highGenes)+ylab(highNames)
+expressionPlot(highGenes)+ylab(highNames)+theme_bw()
 ```
 
 An individual look at each of the highly expressed significantly differentially regulated genes:
 (eval=false for first pass)
-```{r plot_ALL_OF_THE_SIGNIFICANT_GENES, eval=FALSE, fig.height=(20 + (1*(length(highIDs)))), fig.width=(20 + (1*length(highIDs)))}
-plots<-lapply(highIDs,function(x){
-  myGene<-getGene(cuff,x)
-  return(expressionPlot(myGene,replicates=T))
-  })
-do.call(grid.arrange, plots)
+
+```{r plot_ALL_OF_THE_SIGNIFICANT_GENES, eval=FALSE}
+#plots<-lapply(highIDs,function(x){
+#  myGene<-getGene(cuff,x)
+#  return(expressionPlot(myGene,replicates=T))
+#  })
+#do.call(grid.arrange, plots)
 ```
 
 
 ### Expression-level/significance relationship
 
 Scatter plot of significant genes only:
+
 ```{r expression-sig_relationship}
-csScatter(sigGenes, "wt", "ko", smooth=T)
+csScatter(sigGenes, "WT", strain_sample, smooth=T)+theme_bw()
+```
+
+Volcano Plot
+
+```{r volcano,eval=TRUE}
+csVolcano(genes(cuff),"WT",strain_sample,alpha=alpha,xlimits=c(-10,10),showSignificant=TRUE)+theme_bw()
 ```
 
 Volcano plot with significant genes only:
+
 ```{r sig_volcano}
-csVolcano(sigGenes, "wt", "ko")
+csVolcano(sigGenes, "WT", strain_sample,showSignificant=TRUE,alpha=alpha,xlimits=c(-10,10))+theme_bw()
+```
+
+FoldChange Heatmap
+
+```{r sigGenes logfoldchange_heatmap, fig.height=8, fig.width=12}
+csFoldChangeHeatmap(sigGenes,"WT",replicates=TRUE,replicate_num=0,clustering="both",labRow=FALSE)+theme_bw()
 ```
 
 
 ## Differential Splicing
 
 ### Differential Isoforms between conditions
+
 Per isoform difference between conditions:
+
 ```{r diff_iso}
-sigMatrix(cuff, level="isoforms",alpha=alpha)
+sigMatrix(cuff, level="isoforms",alpha=alpha)+theme_bw()
 
 isoformSigIDs<-getSig(cuff,level="isoforms",alpha=alpha)
-isoformSigGenes<-getGenes(cuff,isoformSigIDs)
-isoAnnot<-annotation(isoformSigGenes)
+if(length(isoformSigIDs)>0){
+  isoformSigGenes<-getGenes(cuff,isoformSigIDs)
+  isoAnnot<-annotation(isoformSigGenes)
+  }
 ```
 
 These isoforms are:
+
 ```{r diff_iso_annotations, results='asis'}
 if(length(isoformSigIDs)>0){
   print(xtable(as.data.frame(isoAnnot$gene_short_name)),type="html")
-}
+}else{print("no sig isoforms")}
 ```
 
+Gene-level DE isoform heatmap
 
-```{r isoform_heatmap, fig.height=20, fig.width=10}
-csHeatmap(isoforms(isoformSigGenes),cluster='both', replicates=T)
+```{r isoform_heatmap, fig.height=10, fig.width=10}
+if(length(isoformSigIDs)>0){
+  csHeatmap(isoformSigGenes,cluster='both', replicates=T,labRow=FALSE)+theme_bw()
+  } else{print("no sig isoforms")}
 ```
+
+Isoform foldchange heatmap by isoform:
+
+```{r isoform logfoldchange_heatmap, fig.height=8, fig.width=10}
+if(length(isoformSigIDs)>0){
+  csFoldChangeHeatmap(isoforms(isoformSigGenes),"WT",replicates=TRUE,replicate_num=0,clustering="both",labRow=FALSE)+theme_bw()
+}else{print("no sig isoforms")}
+```
+
 
 ### Differential Splicing between conditions
 
@@ -392,26 +561,29 @@ Per condition differences in isoforms (Does gene have diff piechart between cond
 splicingSigIDs<-getSig(cuff,level="splicing",alpha=alpha)
 splicingSigGenes<-getGenes(cuff,splicingSigIDs)
 
-sigMatrix(cuff, level='splicing', alpha=alpha)
+sigMatrix(cuff, level='splicing', alpha=alpha)+theme_bw()
 
 spliceAnnot<-annotation(splicingSigGenes)
 ```
 
 These genes are:
+
 ```{r diff_splicing_table_of_genes, results='asis', eval=FALSE}
 print(xtable(as.data.frame(spliceAnnot$gene_short_name)), type="html")
 ```
 
 Splicing heatmap by isoform:
+
 ```{r splicing_heatmap_by_isoform, eval=FALSE, fig.height=20, fig.width=10}
 #pdf("sigSplicing_heatmap.pdf",width=10,height=20)
-csHeatmap(isoforms(splicingSigGenes),cluster='both',method=dist)
+csHeatmap(isoforms(splicingSigGenes),cluster='both',method=dist, labRow=FALSE)+theme_bw()
 #dev.off()
 ```
 
 Splicing heatmap by gene
+
 ```{r splicing_heatmap_by_gene, eval=FALSE}
-csHeatmap(splicingSigGenes,cluster='both',method=dist)
+csHeatmap(splicingSigGenes,cluster='both',method=dist,labRow=FALSE)+theme_bw()
 ```
 
 The following are significantly differentially spliced genes (relative portion of isoform per condition): 
@@ -421,7 +593,7 @@ The following are significantly differentially spliced genes (relative portion o
 #csPiePlots<-lapply(splicingSigIDs,function(x){
 #  myGene<-getGene(cuff,x)
 #  annot<-annotation(myGene)
-#  csPie(myGene) + ggtitle(annot$gene_short_name)
+#  csPie(myGene) + ggtitle(annot$gene_short_name)+theme_bw()
 #})
 #do.call(grid.arrange,csPiePlots)
 ```
@@ -433,11 +605,11 @@ The following are significantly differentially spliced genes (relative portion o
 tssSigIDs<-getSig(cuff,alpha=alpha,level="TSS")
 tssSigGenes<-getGenes(cuff,tssSigIDs)
 
-csHeatmap(tssSigGenes,cluster='row',method=dist)
+csHeatmap(tssSigGenes,cluster='row',method=dist,labRow=FALSE)+theme_bw()
 
 csPiePlots<-lapply(tssSigIDs,function(x){
   myGene<-getGene(cuff,x)
-  csPie(myGene)
+  csPie(myGene)+theme_bw()
 })
 do.call(grid.arrange,csPiePlots)
 
@@ -450,7 +622,7 @@ promoterSigIDs<-getSig(cuff,alpha=alpha,level="promoters")
 promoterSigGenes<-getGenes(cuff,promoterSigIDs)
 
 pdf("sigPromoter_heatmap.pdf",width=10,height=20)
-csHeatmap(promoterSigGenes,cluster='row',method=dist)
+csHeatmap(promoterSigGenes,cluster='row',method=dist,labRow=FALSE)
 dev.off()
 
 csPiePlots<-lapply(promoterSigIDs,function(x){
@@ -472,11 +644,11 @@ relcdsSigGenes<-getGenes(cuff,relcdsSigIDs)
 
 
 pdf("sigCDS_heatmap.pdf",width=10,height=20)
-csHeatmap(cdsSigGenes,cluster='row',method=dist)
+csHeatmap(cdsSigGenes,cluster='row',method=dist,labRow=FALSE)+theme_bw()
 dev.off()
 
 pdf("sig_relCDS_heatmap.pdf",width=10,height=20)
-csHeatmap(relcdsSigGenes,cluster='row',method=dist)
+csHeatmap(relcdsSigGenes,cluster='row',method=dist,labRow=FALSE)+theme_bw()
 dev.off()
 ```
 
@@ -490,7 +662,9 @@ KO/WT
 Blue = down in KO
 Red = Up in KO
 
+
 ```{r gsea_helper_functions}
+
 population<-genes(cuff)
 population.diff<-diffData(population)
 annotation<-annotation(genes(cuff))
@@ -511,8 +685,8 @@ get_gene_set_p_vals <- function(input, gs, alternative){
 }
  
 get_gene_set_q_vals <- function(pvl_mat, method="bonferroni"){
-	comp_corrected <- matrix(p.adjust(pvl_mat, method=method), nrow=nrow(pvl_mat), ncol=ncol(pvl_mat))
-	colnames(comp_corrected) <- colnames(pvl_mat)
+  comp_corrected <- matrix(p.adjust(pvl_mat, method=method), nrow=nrow(pvl_mat), ncol=ncol(pvl_mat))
+  colnames(comp_corrected) <- colnames(pvl_mat)
 	rownames(comp_corrected) <- rownames(pvl_mat)
 	return(comp_corrected)
 }
@@ -525,33 +699,57 @@ rowMins<-function(x){
 }
  
 InputCols<-maPalette(low="white",high="red",k=100)
+
+
+ztest<-function(samp,pop){
+  (mean(samp,na.rm=T)-mean(pop,na.rm=T))/sd(pop,na.rm=T)
+}
+
+
+get_gene_set_ztest <- function(scoring_df, gs){  
+  gene_set_indices <- lapply(gs$genesets, function(genelist){
+    gene_set_index(genelist, scoring_df$short_name)
+    })
+  
+#  zscores <- apply(scoring_df$,2, function(mat_col){
+#			lapply(gene_set_indices,function(gsi){
+#					ztest(mat_col[gsi],mat_col)})
+ #     })
+  
+  zscores <- lapply(gene_set_indices,function(gsi){
+					ztest(scoring_df$test_stat[gsi],scoring_df$test_stat)
+          })  
+  
+	zscore_mat<-do.call(rbind,lapply(zscores,unlist))
+	rownames(zscore_mat) <- gs$geneset.names
+	colnames(zscore_mat) <- "zscore"
+	return(zscore_mat)
+}
 ```
 
 ```{r gsea}
 df.pop<-data.frame("short_name"=toupper(gene_names$gene_short_name),"test_stat"=gene_names$test_stat)
-#row.names(df.pop)=population.diff$gene_id
 df.pop.unique<-unique(df.pop)
 rownames(df.pop.unique)<-NULL
 df.pop.unique.ordered<-df.pop.unique[order(df.pop.unique$test_stat),]
 Input.df<-df.pop.unique.ordered
 Input.df$short_name<-as.character(Input.df$short_name)
 
-reactome_pvl_mat <- get_gene_set_p_vals(Input.df, reactome_gs,alternative="mixed")
+reactome_pvl_mat <- get_gene_set_p_vals(Input.df, reactome_gs,alternative="either")
 reactome_pvl_corrected <- get_gene_set_q_vals(reactome_pvl_mat)
 reactome_pvl_corrected<-rbind(reactome_pvl_corrected,reactome_pvl_corrected)
 
-biocarta_pvl_mat <- get_gene_set_p_vals(Input.df, biocarta_gs, alternative="mixed")
+biocarta_pvl_mat <- get_gene_set_p_vals(Input.df, biocarta_gs, alternative="either")
 biocarta_pvl_corrected <- get_gene_set_q_vals(biocarta_pvl_mat)
 biocarta_pvl_corrected<-rbind(biocarta_pvl_corrected,biocarta_pvl_corrected)
-
-interneuron_pvl_mat<-get_gene_set_p_vals(Input.df,interneuron_gs,alternative="either")
-interneuron_pvl_corrected<-get_gene_set_q_vals(interneuron_pvl_mat)
-interneuron_pvl_corrected<-rbind(interneuron_pvl_corrected,interneuron_pvl_corrected)
-
 
 kegg_pvl_mat <- get_gene_set_p_vals(Input.df, kegg_gs, alternative="either")
 kegg_pvl_corrected <- get_gene_set_q_vals(kegg_pvl_mat)
 kegg_pvl_corrected<-rbind(kegg_pvl_corrected,kegg_pvl_corrected)
+
+interneuron_pvl_mat<-get_gene_set_p_vals(Input.df,interneuron_gs,alternative="either")
+interneuron_pvl_corrected<-get_gene_set_q_vals(interneuron_pvl_mat)
+interneuron_pvl_corrected<-rbind(interneuron_pvl_corrected,interneuron_pvl_corrected)
 
 
 reactome_zscores<-get_gene_set_ztest(Input.df,reactome_gs)
@@ -566,14 +764,14 @@ kegg_zscores<-cbind(kegg_zscores,kegg_zscores)
 interneuron_zscores<-get_gene_set_ztest(Input.df,interneuron_gs)
 interneuron_zscores<-cbind(interneuron_zscores,interneuron_zscores)
 
+
+
 k <- 100
 myColors<-maPalette(low="blue",mid="white",high="red",k=k)
 #myBreaks<-seq(-max(abs(x)),max(abs(x)),k+1)
 myBreaks<-seq(-2,2,length.out=(k+1))
 enrichmentBreaks<-seq(0,6,length.out=(k+1))
-
 ```
-
 
 
 Biocarta enrichment: 
@@ -720,10 +918,11 @@ heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),d
 ```
 
 
+
 ## GO enrichment 
 Cluster profiler used to call enichments of significantly differentially regulated genes that map to Entrez IDs. 
 
-```{r GO_setup, echo=FALSE}
+```{r GO_setup}
 #source("http://bioconductor.org/biocLite.R")
 #biocLite("ReactomePA")
 
@@ -770,15 +969,15 @@ pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T
 ```
 
 ```{r GO_figures,  fig.height=5, fig.width=8}
-plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched BP")
+plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched BP")+theme_bw()
 
-plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched MF")
+plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched MF")+theme_bw()
 
-plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched CC")
+plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched CC")+theme_bw()
 
-plot(kegg, showCategory=10) + ggtitle("Kegg Pathways")
+plot(kegg, showCategory=10) + ggtitle("Kegg Pathways")+theme_bw()
 
-plot(pathway,showCategory=10) + ggtitle("Reactome pathway enrichment")
+plot(pathway,showCategory=10) + ggtitle("Reactome pathway enrichment")+theme_bw()
 detach("package:biomaRt")
 ```
 
@@ -799,7 +998,7 @@ mm10.granges<-GRanges(seqnames = names(myLengths), ranges = IRanges(start = 1, e
 #Constants
 nIter<-1000
 windowSize<-4000000
-set.seed()
+#set.seed()
 myRandom<-random.intervals(mm10.granges,n=nIter,ms=windowSize)
 
 getTable<-function(object){
@@ -815,7 +1014,9 @@ getTable<-function(object){
   fullTable$chromosome<-factor(fullTable$chromosome, levels=names(seqlengths(mm10.granges)))
   fullTable
 }
+```
 
+```{r computationally intensive part of cis trans image}
 fullTable<-getTable(cuff)
 
 myGene<-fullTable[which(fullTable$gene_short_name==strain),][1,] #any problems w this?
@@ -837,9 +1038,6 @@ for (i in 1:nIter){
   signeighbors[1,i]<-nSigIter
 }
 
-#ttest<-t.test(signeighbors,mu=nSig)
-#pval_for_region<-ttest$p.value
-
 pval_for_region<-score/nIter
 
 #first 	question, region enriched over genomic background for cis significance? (pvalue)
@@ -853,18 +1051,22 @@ colnames(genesInRegion)[35]<-"log2foldchange"
 colnames(genesInRegion)[36]<-"test_stat"
 data<-ddply(genesInRegion,.(gene_id),head,n=1)
 data$test_stat<-as.numeric(data$test_stat)
+
+
 ```
 
-The pvalue for `r nSig` genes significantly regulated in this region is: `r pval_for_region` 
+The pvalue for `r nSig` genes significantly regulated in a region this size  is: `r pval_for_region` 
 
-```{r overlap_image, cache=TRUE}
-ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2),ylim=(-max(abs(data$test_stat)+1),max(abs(data$test_stat))+1))+labs(title=strain)+geom_text(data=subset(data, sig=='yes'))
+
+```{r cisreg_image,  fig.height=8, fig.width=8}
+ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2),ylim=c(-max(abs(data$test_stat)+1),max(abs(data$test_stat))+1))+labs(title=strain)+geom_text(data=subset(data, sig=='yes'))
+
 ```
 
 # Notes
 
 ## Samples used are:
-```{r results='asis', echo=FALSE}
+```{r results='asis'}
 print(xtable(samples),type="html")
 ```
 
@@ -882,3 +1084,27 @@ sessionInfo()
 ```{r runInfo}
 runInfo(cuff)
 ```
+
+```{r clear environment}
+rm(sigGeneIDs)
+rm(isoformSigIDs)
+rm(sig)
+rm(splicingSigGenes)
+rm(sigGenes)
+rm(genotypingGenes)
+rm(isoformSigGenes)
+rm(goBP)
+rm(goMF)
+rm(goCC)
+rm(kegg)
+rm(pathway)
+rm(data)
+rm(fullTable)
+rm(cuff)
+rm(geneAnnot)
+rm(isoAnnot)
+rm(spliceAnnot)
+
+```
+
+
