@@ -777,3 +777,25 @@ cor(linc_LZ_correlation$LZ,linc_LZ_correlation$EndogenousLinc)
 ```
 
 
+```{r DE gene lists}
+list_names<-ls()[grep("_DE",ls())]
+DE_lists<-lapply(list_names,get)
+names(DE_lists)<-list_names
+
+intersectionNames<-lapply(seq(2,length(DE_lists)),function(i){
+  list1<-gsub("_DE","",names(DE_lists)[i-1])
+  list2<-gsub("_DE","",names(DE_lists)[i])
+  nameofintersect<-paste(list1,list2,sep="_")
+})
+intersections<-lapply(seq(2,length(DE_lists)),function(i){
+  intersectDE<-intersect(DE_lists[[i]],DE_lists[[i-1]])})
+names(intersections)<-unlist(intersectionNames)
+
+intersectSeveral <- function(...) { reduce(intersect, list(...)) } 
+#intersectSeveral(DE_lists) 
+Reduce(intersect,DE_lists)
+```
+
+
+
+
