@@ -1,7 +1,7 @@
 Mouse Data Overview DE genelists 
 ========================================================
 ```{r options, echo=FALSE}
-opts_chunk$set(echo=FALSE,message=FALSE, warning=FALSE,fig.path="figure/overview/")
+opts_chunk$set(echo=FALSE,message=FALSE, warning=FALSE,fig.path="figure/overview/",dev=c('png', 'pdf'))
 ```
 
 ```{r setup, results='hide'}
@@ -54,9 +54,9 @@ celrr_adult_DE<-annotation(DEgenes)$gene_short_name
 rm(DEgenes)
 
 LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
+LZ_avg_fpkm<-fpkm(LZ)$fpkm[2]
 linc<-getGene(cuff,"Celrr")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
+linc_avg_fpkm<-fpkm(linc)$fpkm[1]
 linc_LZ_correlation$Celrr_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm)
 
 ```
@@ -81,9 +81,9 @@ rm(DEgenes)
 
 
 LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
+LZ_avg_fpkm<-fpkm(LZ)$fpkm[2]
 linc<-getGene(cuff,"Crnde")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
+linc_avg_fpkm<-fpkm(linc)$fpkm[1]
 linc_LZ_correlation$Crnde_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm)
 ```
 
@@ -118,9 +118,9 @@ rm(DEgenes)
 
 
 LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
+LZ_avg_fpkm<-fpkm(LZ)$fpkm[2]
 linc<-getGene(cuff,"Eldr")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
+linc_avg_fpkm<-fpkm(linc)$fpkm[1]
 linc_LZ_correlation$Eldr_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm)
 ```
 
@@ -139,9 +139,9 @@ rm(DEgenes)
 
 
 LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
+LZ_avg_fpkm<-fpkm(LZ)$fpkm[2]
 linc<-getGene(cuff,"Haunt")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
+linc_avg_fpkm<-fpkm(linc)$fpkm[1]
 linc_LZ_correlation$Haunt_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm)
 
 ```
@@ -166,9 +166,9 @@ kantr_adult_DE<-annotation(DEgenes)$gene_short_name
 rm(DEgenes)
 
 LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
+LZ_avg_fpkm<-fpkm(LZ)$fpkm[2]
 linc<-getGene(cuff,"Kantr")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
+linc_avg_fpkm<-fpkm(linc)$fpkm[1]
 linc_LZ_correlation$Kantr_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm)
 
 
@@ -191,9 +191,9 @@ rm(DEgenes)
 
 
 LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
+LZ_avg_fpkm<-fpkm(LZ)$fpkm[2]
 linc<-getGene(cuff,"linc-Brn1a")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
+linc_avg_fpkm<-fpkm(linc)$fpkm[1]
 linc_LZ_correlation$lincBrn1a_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm)
 
 ```
@@ -217,9 +217,9 @@ rm(DEgenes)
 
 
 LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
+LZ_avg_fpkm<-fpkm(LZ)$fpkm[2]
 linc<-getGene(cuff,"linc-Brn1b")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
+linc_avg_fpkm<-fpkm(linc)$fpkm[1]
 linc_LZ_correlation$lincBrn1b_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm)
 
 ```
@@ -247,9 +247,9 @@ rm(DEgenes)
 
 
 LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
+LZ_avg_fpkm<-fpkm(LZ)$fpkm[2]
 linc<-getGene(cuff,"linc-Cox2")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
+linc_avg_fpkm<-fpkm(linc)$fpkm[1]
 linc_LZ_correlation$lincCox2_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm)
 ```
 
@@ -276,9 +276,9 @@ rm(DEgenes)
 
 
 LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
+LZ_avg_fpkm<-fpkm(LZ)$fpkm[2]
 linc<-getGene(cuff,"linc-Enc1")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
+linc_avg_fpkm<-fpkm(linc)$fpkm[1]
 linc_LZ_correlation$lincEnc1_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm)
 ```
 
@@ -304,9 +304,9 @@ rm(DEgenes)
 
 
 LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
+LZ_avg_fpkm<-fpkm(LZ)$fpkm[2]
 linc<-getGene(cuff,"Manr")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
+linc_avg_fpkm<-fpkm(linc)$fpkm[1]
 linc_LZ_correlation$Manr_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm)
 ```
 
@@ -330,9 +330,9 @@ rm(DEgenes)
 
 
 LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
+LZ_avg_fpkm<-fpkm(LZ)$fpkm[2]
 linc<-getGene(cuff,"Peril")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
+linc_avg_fpkm<-fpkm(linc)$fpkm[1]
 linc_LZ_correlation$Peril_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm)
 ```
 
@@ -355,9 +355,9 @@ rm(DEgenes)
 
 
 LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
+LZ_avg_fpkm<-fpkm(LZ)$fpkm[2]
 linc<-getGene(cuff,"Trp53cor1")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
+linc_avg_fpkm<-fpkm(linc)$fpkm[1]
 linc_LZ_correlation$Trp53cor1_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm)
 ```
 
@@ -378,9 +378,9 @@ rm(DEgenes)
 
 
 LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
+LZ_avg_fpkm<-fpkm(LZ)$fpkm[2]
 linc<-getGene(cuff,"Tug1")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
+linc_avg_fpkm<-fpkm(linc)$fpkm[1]
 linc_LZ_correlation$Tug1_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm)
 ```
 
@@ -408,9 +408,9 @@ rm(DEgenes)
 
 
 LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
+LZ_avg_fpkm<-fpkm(LZ)$fpkm[2]
 linc<-getGene(cuff,"Celrr")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
+linc_avg_fpkm<-fpkm(linc)$fpkm[1]
 linc_LZ_correlation$Celrr_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm)
 ```
 
@@ -437,9 +437,9 @@ rm(DEgenes)
 
 
 LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
+LZ_avg_fpkm<-fpkm(LZ)$fpkm[2]
 linc<-getGene(cuff,"Crnde")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
+linc_avg_fpkm<-fpkm(linc)$fpkm[1]
 linc_LZ_correlation$Crnde_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm)
 
 
@@ -464,9 +464,9 @@ rm(DEgenes)
 
 
 LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
+LZ_avg_fpkm<-fpkm(LZ)$fpkm[2]
 linc<-getGene(cuff,"Eldr")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
+linc_avg_fpkm<-fpkm(linc)$fpkm[1]
 linc_LZ_correlation$Eldr_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm)
 
 ```
@@ -492,9 +492,9 @@ rm(DEgenes)
 
 
 LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
+LZ_avg_fpkm<-fpkm(LZ)$fpkm[2]
 linc<-getGene(cuff,"Haunt")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
+linc_avg_fpkm<-fpkm(linc)$fpkm[1]
 linc_LZ_correlation$Haunt_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm)
 
 
@@ -521,9 +521,9 @@ rm(DEgenes)
 
 
 LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
+LZ_avg_fpkm<-fpkm(LZ)$fpkm[2]
 linc<-getGene(cuff,"Kantr")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
+linc_avg_fpkm<-fpkm(linc)$fpkm[1]
 linc_LZ_correlation$Kantr_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm)
 ```
 
@@ -549,9 +549,9 @@ rm(DEgenes)
 
 
 LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
+LZ_avg_fpkm<-fpkm(LZ)$fpkm[2]
 linc<-getGene(cuff,"linc-Brn1b")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
+linc_avg_fpkm<-fpkm(linc)$fpkm[1]
 linc_LZ_correlation$lincBrn1b_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm)
 
 
@@ -578,9 +578,9 @@ rm(DEgenes)
 
 
 LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
+LZ_avg_fpkm<-fpkm(LZ)$fpkm[2]
 linc<-getGene(cuff,"linc-Cox2")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
+linc_avg_fpkm<-fpkm(linc)$fpkm[1]
 linc_LZ_correlation$lincCox2_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm)
 ```
 
@@ -606,9 +606,9 @@ rm(DEgenes)
 
 
 LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
+LZ_avg_fpkm<-fpkm(LZ)$fpkm[2]
 linc<-getGene(cuff,"linc-Enc1")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
+linc_avg_fpkm<-fpkm(linc)$fpkm[1]
 linc_LZ_correlation$lincEnc1_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm)
 
 ```
@@ -635,9 +635,9 @@ rm(DEgenes)
 
 
 LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
+LZ_avg_fpkm<-fpkm(LZ)$fpkm[2]
 linc<-getGene(cuff,"Manr")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
+linc_avg_fpkm<-fpkm(linc)$fpkm[1]
 linc_LZ_correlation$Manr_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm)
 ```
 
@@ -662,9 +662,9 @@ rm(DEgenes)
 
 
 LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
+LZ_avg_fpkm<-fpkm(LZ)$fpkm[2]
 linc<-getGene(cuff,"Peril")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
+linc_avg_fpkm<-fpkm(linc)$fpkm[1]
 linc_LZ_correlation$Peril_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm)
 
 ```
@@ -690,9 +690,9 @@ rm(DEgenes)
 
 
 LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
+LZ_avg_fpkm<-fpkm(LZ)$fpkm[2]
 linc<-getGene(cuff,"Trp53cor1")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
+linc_avg_fpkm<-fpkm(linc)$fpkm[1]
 linc_LZ_correlation$Trp53cor1_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm)
 
 ```
@@ -716,9 +716,9 @@ rm(DEgenes)
 
 
 LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)$fpkm[1]
+LZ_avg_fpkm<-fpkm(LZ)$fpkm[2]
 linc<-getGene(cuff,"Tug1")
-linc_avg_fpkm<-fpkm(linc)$fpkm[2]
+linc_avg_fpkm<-fpkm(linc)$fpkm[1]
 linc_LZ_correlation$Tug1_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm)
 
 ```
@@ -738,7 +738,7 @@ Number of differentially expressed genes, by condition:
 
 ```{r diff summary}
 
-k <- 50
+k <- 100
 myColors<-maPalette(low="white",high="green",k=k)
 myBreaks<-seq(0,800,length.out=(k+1))
 
@@ -749,15 +749,13 @@ colnames(xx)<-gsub("Embryonic","E",colnames(xx))
 colnames(xx)<-gsub("Adult","A",colnames(xx))
 xx_ordered<-xx[,order(colnames(xx))]
 rownames(xx_ordered)<-c("","")
-heatmap.2(xx_ordered, Rowv=FALSE, breaks=15, dendrogram="none", Colv=FALSE, sepwidth=c(.9,.9),trace="none", col=myColors,breaks=myBreaks, lhei=c(.5,.5))
+heatmap.2(xx_ordered, Rowv=FALSE, dendrogram="none", Colv=FALSE, sepwidth=c(3,.9),trace="none", col=myColors,breaks=myBreaks, lhei=c(.5,.5))
 
-barplot(x)
-#axes=TRUE,names.arg=colnames(diffGeneSummary)
 ```
 
 
 
-```{r lacZ correlation}
+```{r lacZ_correlation}
 
 linc_LZ_correlation<-as.data.frame(t(linc_LZ_correlation))
 type<-rownames(linc_LZ_correlation)
@@ -765,8 +763,16 @@ timepoint<-unlist(lapply(type,function(x){unlist(strsplit(x,"_"))[2]}))
 name<-unlist(lapply(type,function(x){unlist(strsplit(x,"_"))[1]}))
 linc_LZ_correlation$timepoint<-timepoint
 linc_LZ_correlation$name<-name
-ggplot(linc_LZ_correlation, aes(LZ,EndogenousLinc,color=timepoint))+geom_point()+geom_text(aes(label=name))+scale_x_log10(limits=c(-20,50))+scale_y_log10(limits=c(-20,30))+geom_abline(intercept=0,slope=1)+ylab("Endogenous lincRNA expression log10(FPKM)")+xlab("LacZ expression log10(FPKM)")
-#+xlim(-.1,.5)+ylim(-.1,.5)
+
+ggplot(linc_LZ_correlation, aes(EndogenousLinc,LZ,color=timepoint))+geom_point()+geom_text(aes(label=name))+geom_abline(intercept=0,slope=1)+xlab("Endogenous lincRNA expression log10(FPKM)")+ylab("LacZ expression log10(FPKM)")+scale_x_log10(limits=c(-10,80))+scale_y_log10(limits=c(-10,40))
+
+#pdf("lacZcorrelation.pdf")
+ggplot(linc_LZ_correlation, aes(EndogenousLinc,LZ,color=timepoint))+geom_point()+geom_text(aes(label=name))+xlab("Endogenous lincRNA expression")+ylab("LacZ expression")+coord_cartesian(xlim=c(-.1,.1),ylim=c(-.1,.1))+ggtitle("Low-level expression correlation")+geom_abline(intercept=0,slope=1)
+#dev.off()
+
+fit<-lm(linc_LZ_correlation$LZ~ linc_LZ_correlation$EndogenousLinc)
+rsquared<-summary(fit)$r.squared
+
 
 #var(linc_LZ_correlation$LZ,linc_LZ_correlation$EndogenousLinc)
 cor(linc_LZ_correlation$LZ,linc_LZ_correlation$EndogenousLinc)
@@ -777,7 +783,10 @@ cor(linc_LZ_correlation$LZ,linc_LZ_correlation$EndogenousLinc)
 ```
 
 
-```{r DE gene lists}
+R squared for LZ-linc relationship is `r rsquared`
+
+
+```{r DE gene lists, echo=FALSE}
 list_names<-ls()[grep("_DE",ls())]
 DE_lists<-lapply(list_names,get)
 names(DE_lists)<-list_names
