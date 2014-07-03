@@ -782,6 +782,17 @@ list_names<-ls()[grep("_DE",ls())]
 DE_lists<-lapply(list_names,get)
 names(DE_lists)<-list_names
 
+sink("DE_lists.tab")
+for(i in seq(1,length(DE_lists))){
+  list<-paste(unlist(DE_lists[[i]]),sep=",")
+  name<-list_names[[i]]
+  final<-c(name,list)
+  cat(final,sep="\t")
+  cat("\n")
+}
+sink()
+
+
 intersectionNames<-lapply(seq(2,length(DE_lists)),function(i){
   list1<-gsub("_DE","",names(DE_lists)[i-1])
   list2<-gsub("_DE","",names(DE_lists)[i])
