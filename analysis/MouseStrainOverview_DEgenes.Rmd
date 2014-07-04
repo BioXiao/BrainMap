@@ -768,13 +768,19 @@ myColors<-maPalette(low="white",high="green",k=k)
 myBreaks<-seq(0,800,length.out=(k+1))
 
 x<-as.numeric(diffGeneSummary[1,])
-xx<-rbind(x,x)
-colnames(xx)<-gsub("_vs_WT","",colnames(diffGeneSummary))
-colnames(xx)<-gsub("Embryonic","E",colnames(xx))
-colnames(xx)<-gsub("Adult","A",colnames(xx))
-xx_ordered<-xx[,order(colnames(xx))]
-rownames(xx_ordered)<-c("","")
-heatmap.2(xx_ordered, Rowv=FALSE, dendrogram="none", Colv=FALSE, sepwidth=c(3,.9),trace="none", col=myColors,breaks=myBreaks, lhei=c(.5,.5))
+
+#print x
+write(x,file="diffGeneSummary.csv",sep=",")
+
+#xx<-rbind(x,x)
+#colnames(xx)<-gsub("_vs_WT","",colnames(diffGeneSummary))
+#colnames(xx)<-gsub("Embryonic","E",colnames(xx))
+#colnames(xx)<-gsub("Adult","A",colnames(xx))
+#xx_ordered<-xx[,order(colnames(xx))]
+#rownames(xx_ordered)<-c("","")
+#heatmap.2(xx_ordered, Rowv=FALSE, dendrogram="none", Colv=FALSE, sepwidth=c(3,.9),trace="none", col=myColors,breaks=myBreaks, lhei=c(.5,.5))
+
+ggplot(xx_ordered, aes(x=Var1, y=Var2, fill=value))+geom_tile(color='white')
 
 ```
 

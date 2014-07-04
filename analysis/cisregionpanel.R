@@ -23,10 +23,11 @@ getTable<-function(object){
 }
 
 dat<-read.csv("autoanalysisInfo.csv",header=TRUE,stringsAsFactors=FALSE)
-plots<-list()
+cisplots<-list()
 
 #start at 6 
-for (i in (seq(1,dim(dat)[1]))){
+#1:dim(dat)[1]
+for (i in 1:3){
   
   strain<-dat$strain[i]
   dir<-dat$dir[i]
@@ -68,7 +69,7 @@ for (i in (seq(1,dim(dat)[1]))){
   data$test_stat<-as.numeric(data$test_stat)
   
   currplot<-ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2),ylim=c(-max(abs(data$test_stat)+1),max(abs(data$test_stat))+1))+labs(title=strain)+geom_text(data=subset(data, sig=='yes'))+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
-  plots[[i]]<-currplot
+  cisplots[[i]]<-currplot
 }
 
 # Multiple plot function
@@ -116,5 +117,6 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
     }
   }
 }
-
-multiplot(plotlist=plots,cols=4)
+pdf("cis_plots_panel.pdf")
+multiplot(plotlist=cisplots,cols=4)
+dev.off()
