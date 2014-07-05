@@ -27,16 +27,16 @@ cisplots<-list()
 
 #start at 6 
 #1:dim(dat)[1]
-for (i in 1:3){
+for (i in 1:25){
   
   strain<-dat$strain[i]
   dir<-dat$dir[i]
   cuff<-readCufflinks(dir=dir,GTF="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10")
-
+  timepoint<-dat$timepoint
   myLengths<-seqlengths(Mmusculus)[!grepl("_random",names(seqlengths(Mmusculus)))]
   mm10.granges<-GRanges(seqnames = names(myLengths), ranges = IRanges(start = 1, end = myLengths),seqlengths=myLengths)
   myRandom<-random.intervals(mm10.granges,n=nIter,ms=windowSize)
-  
+  print(i,strain)
   fullTable<-getTable(cuff)
   
   myGene<-fullTable[which(fullTable$gene_short_name==strain),][1,] #any problems w this?
@@ -68,7 +68,7 @@ for (i in 1:3){
   data<-ddply(genesInRegion,.(gene_id),head,n=1)
   data$test_stat<-as.numeric(data$test_stat)
   
-  currplot<-ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2),ylim=c(-max(abs(data$test_stat)+1),max(abs(data$test_stat))+1))+labs(title=strain)+geom_text(data=subset(data, sig=='yes'))+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
+  currplot<-ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2),ylim=c(-max(abs(data$test_stat)+1),max(abs(data$test_stat))+1))+labs(title=paste(strain,timepoint,sep=" "))+geom_text(data=subset(data, sig=='yes'))+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
   cisplots[[i]]<-currplot
 }
 
@@ -117,6 +117,6 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
     }
   }
 }
-pdf("cis_plots_panel.pdf")
+pdf("cis_plots_panel.pdf", height=28,width=25)
 multiplot(plotlist=cisplots,cols=4)
 dev.off()
