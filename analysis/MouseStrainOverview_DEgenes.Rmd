@@ -47,11 +47,29 @@ rownames(linc_LZ_correlation)=c("LZ", "EndogenousLinc","ActinInKOs")
 ```{r adult celr diff}
 dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Adult"
 cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
+
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Celrr_Adult<-length(sig)
 DEgenes<-getGenes(cuff,sig)
 celrr_adult_DE<-annotation(DEgenes)$gene_short_name
+
+sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
+sigIsoforms<-getGenes(cuff,sigIso)
+celrr_adult_iso<-annotation(sigIsoforms)$gene_short_name
+
+sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
+sigCDSgenes<-getGenes(cuff,sigCDS)
+celrr_adult_CDS<-annotation(sigCDSgenes)$gene_short_name
+
+rm(sigCDSgenes)
+rm(sigIsoforms)
+rm(sig)
+rm(sigCDS)
+rm(sigIso)
+rm(dir)
+rm(cuff)
 rm(DEgenes)
+
 
 strain<-"Celrr"
 
@@ -81,6 +99,22 @@ sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Crnde_Adult<-length(sig)
 DEgenes<-getGenes(cuff,sig)
 crnde_adult_DE<-annotation(DEgenes)$gene_short_name
+
+sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
+sigIsoforms<-getGenes(cuff,sigIso)
+crnde_adult_iso<-annotation(sigIsoforms)$gene_short_name
+
+sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
+sigCDSgenes<-getGenes(cuff,sigCDS)
+crnde_adult_CDS<-annotation(sigCDSgenes)$gene_short_name
+
+rm(sigCDSgenes)
+rm(sigIsoforms)
+rm(sig)
+rm(sigCDS)
+rm(sigIso)
+rm(dir)
+rm(cuff)
 rm(DEgenes)
 
 strain<-"Crnde"
@@ -120,6 +154,22 @@ sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Eldr_Adult<-length(sig)
 DEgenes<-getGenes(cuff,sig)
 eldr_adult_DE<-annotation(DEgenes)$gene_short_name
+
+sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
+sigIsoforms<-getGenes(cuff,sigIso)
+eldr_adult_iso<-annotation(sigIsoforms)$gene_short_name
+
+sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
+sigCDSgenes<-getGenes(cuff,sigCDS)
+eldr_adult_CDS<-annotation(sigCDSgenes)$gene_short_name
+
+rm(sigCDSgenes)
+rm(sigIsoforms)
+rm(sig)
+rm(sigCDS)
+rm(sigIso)
+rm(dir)
+rm(cuff)
 rm(DEgenes)
 
 strain<-"Eldr"
@@ -144,6 +194,22 @@ sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Haunt_Adult<-length(sig)
 DEgenes<-getGenes(cuff,sig)
 haunt_adult_DE<-annotation(DEgenes)$gene_short_name
+
+sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
+sigIsoforms<-getGenes(cuff,sigIso)
+haunt_adult_iso<-annotation(sigIsoforms)$gene_short_name
+
+sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
+sigCDSgenes<-getGenes(cuff,sigCDS)
+haunt_adult_CDS<-annotation(sigCDSgenes)$gene_short_name
+
+rm(sigCDSgenes)
+rm(sigIsoforms)
+rm(sig)
+rm(sigCDS)
+rm(sigIso)
+rm(dir)
+rm(cuff)
 rm(DEgenes)
 
 strain<-"Haunt"
@@ -176,6 +242,22 @@ sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Kantr_Adult<-length(sig)
 DEgenes<-getGenes(cuff,sig)
 kantr_adult_DE<-annotation(DEgenes)$gene_short_name
+
+sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
+sigIsoforms<-getGenes(cuff,sigIso)
+kantr_adult_iso<-annotation(sigIsoforms)$gene_short_name
+
+sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
+sigCDSgenes<-getGenes(cuff,sigCDS)
+kantr_adult_CDS<-annotation(sigCDSgenes)$gene_short_name
+
+rm(sigCDSgenes)
+rm(sigIsoforms)
+rm(sig)
+rm(sigCDS)
+rm(sigIso)
+rm(dir)
+rm(cuff)
 rm(DEgenes)
 
 strain<-"Kantr"
@@ -204,6 +286,22 @@ sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$lincBrn1a_Adult<-length(sig)
 DEgenes<-getGenes(cuff,sig)
 brn1a_adult_DE<-annotation(DEgenes)$gene_short_name
+
+sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
+sigIsoforms<-getGenes(cuff,sigIso)
+brn1a_adult_iso<-annotation(sigIsoforms)$gene_short_name
+
+sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
+sigCDSgenes<-getGenes(cuff,sigCDS)
+brn1a_adult_CDS<-annotation(sigCDSgenes)$gene_short_name
+
+rm(sigCDSgenes)
+rm(sigIsoforms)
+rm(sig)
+rm(sigCDS)
+rm(sigIso)
+rm(dir)
+rm(cuff)
 rm(DEgenes)
 
 strain<-"linc_Brn1a"
@@ -231,6 +329,22 @@ sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$lincBrn1b_Adult<-length(sig)
 DEgenes<-getGenes(cuff,sig)
 brn1b_adult_DE<-annotation(DEgenes)$gene_short_name
+
+sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
+sigIsoforms<-getGenes(cuff,sigIso)
+brn1b_adult_iso<-annotation(sigIsoforms)$gene_short_name
+
+sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
+sigCDSgenes<-getGenes(cuff,sigCDS)
+brn1b_adult_CDS<-annotation(sigCDSgenes)$gene_short_name
+
+rm(sigCDSgenes)
+rm(sigIsoforms)
+rm(sig)
+rm(sigCDS)
+rm(sigIso)
+rm(dir)
+rm(cuff)
 rm(DEgenes)
 
 strain<-"linc_Brn1b"
@@ -264,6 +378,22 @@ sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$lincCox2_Adult<-length(sig)
 DEgenes<-getGenes(cuff,sig)
 lincCox2_adult_DE<-annotation(DEgenes)$gene_short_name
+
+sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
+sigIsoforms<-getGenes(cuff,sigIso)
+lincCox2_adult_iso<-annotation(sigIsoforms)$gene_short_name
+
+sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
+sigCDSgenes<-getGenes(cuff,sigCDS)
+lincCox2_adult_CDS<-annotation(sigCDSgenes)$gene_short_name
+
+rm(sigCDSgenes)
+rm(sigIsoforms)
+rm(sig)
+rm(sigCDS)
+rm(sigIso)
+rm(dir)
+rm(cuff)
 rm(DEgenes)
 
 strain<-"linc_Cox2"
@@ -295,6 +425,22 @@ sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$lincEnc1_Adult<-length(sig)
 DEgenes<-getGenes(cuff,sig)
 lincEnc1_adult_DE<-annotation(DEgenes)$gene_short_name
+
+sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
+sigIsoforms<-getGenes(cuff,sigIso)
+lincEnc1_adult_iso<-annotation(sigIsoforms)$gene_short_name
+
+sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
+sigCDSgenes<-getGenes(cuff,sigCDS)
+lincEnc1_adult_CDS<-annotation(sigCDSgenes)$gene_short_name
+
+rm(sigCDSgenes)
+rm(sigIsoforms)
+rm(sig)
+rm(sigCDS)
+rm(sigIso)
+rm(dir)
+rm(cuff)
 rm(DEgenes)
 
 strain<-"linc_Enc1"
@@ -327,6 +473,22 @@ sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Manr_Adult<-length(sig)
 DEgenes<-getGenes(cuff,sig)
 manr_adult_DE<-annotation(DEgenes)$gene_short_name
+
+sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
+sigIsoforms<-getGenes(cuff,sigIso)
+manr_adult_iso<-annotation(sigIsoforms)$gene_short_name
+
+sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
+sigCDSgenes<-getGenes(cuff,sigCDS)
+manr_adult_CDS<-annotation(sigCDSgenes)$gene_short_name
+
+rm(sigCDSgenes)
+rm(sigIsoforms)
+rm(sig)
+rm(sigCDS)
+rm(sigIso)
+rm(dir)
+rm(cuff)
 rm(DEgenes)
 
 strain<-"Manr"
@@ -355,7 +517,23 @@ cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/d
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Peril_Adult<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-Peril_adult_DE<-annotation(DEgenes)$gene_short_name
+peril_adult_DE<-annotation(DEgenes)$gene_short_name
+
+sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
+sigIsoforms<-getGenes(cuff,sigIso)
+peril_adult_iso<-annotation(sigIsoforms)$gene_short_name
+
+sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
+sigCDSgenes<-getGenes(cuff,sigCDS)
+peril_adult_CDS<-annotation(sigCDSgenes)$gene_short_name
+
+rm(sigCDSgenes)
+rm(sigIsoforms)
+rm(sig)
+rm(sigCDS)
+rm(sigIso)
+rm(dir)
+rm(cuff)
 rm(DEgenes)
 
 strain<-"Peril"
@@ -385,6 +563,22 @@ sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Trp53cor1_Adult<-length(sig)
 DEgenes<-getGenes(cuff,sig)
 trp53cor1_adult_DE<-annotation(DEgenes)$gene_short_name
+
+sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
+sigIsoforms<-getGenes(cuff,sigIso)
+trp53cor1_adult_iso<-annotation(sigIsoforms)$gene_short_name
+
+sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
+sigCDSgenes<-getGenes(cuff,sigCDS)
+trp53cor1_adult_CDS<-annotation(sigCDSgenes)$gene_short_name
+
+rm(sigCDSgenes)
+rm(sigIsoforms)
+rm(sig)
+rm(sigCDS)
+rm(sigIso)
+rm(dir)
+rm(cuff)
 rm(DEgenes)
 
 strain<-"Trp53cor"
@@ -411,6 +605,22 @@ sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Tug1_Adult<-length(sig)
 DEgenes<-getGenes(cuff,sig)
 tug1_adult_DE<-annotation(DEgenes)$gene_short_name
+
+sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
+sigIsoforms<-getGenes(cuff,sigIso)
+tug1_adult_iso<-annotation(sigIsoforms)$gene_short_name
+
+sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
+sigCDSgenes<-getGenes(cuff,sigCDS)
+tug1_adult_CDS<-annotation(sigCDSgenes)$gene_short_name
+
+rm(sigCDSgenes)
+rm(sigIsoforms)
+rm(sig)
+rm(sigCDS)
+rm(sigIso)
+rm(dir)
+rm(cuff)
 rm(DEgenes)
 
 strain<-"Tug1"
@@ -443,6 +653,22 @@ sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Celrr_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
 cellr_embryo_DE<-annotation(DEgenes)$gene_short_name
+
+sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
+sigIsoforms<-getGenes(cuff,sigIso)
+celrr_embryo_iso<-annotation(sigIsoforms)$gene_short_name
+
+sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
+sigCDSgenes<-getGenes(cuff,sigCDS)
+celrr_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
+
+rm(sigCDSgenes)
+rm(sigIsoforms)
+rm(sig)
+rm(sigCDS)
+rm(sigIso)
+rm(dir)
+rm(cuff)
 rm(DEgenes)
 
 strain<-"Celrr"
@@ -475,6 +701,22 @@ sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Crnde_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
 crnde_embryo_DE<-annotation(DEgenes)$gene_short_name
+
+sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
+sigIsoforms<-getGenes(cuff,sigIso)
+crnde_embryo_iso<-annotation(sigIsoforms)$gene_short_name
+
+sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
+sigCDSgenes<-getGenes(cuff,sigCDS)
+crnde_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
+
+rm(sigCDSgenes)
+rm(sigIsoforms)
+rm(sig)
+rm(sigCDS)
+rm(sigIso)
+rm(dir)
+rm(cuff)
 rm(DEgenes)
 
 
@@ -506,6 +748,22 @@ sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Eldr_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
 eldr_embryo_DE<-annotation(DEgenes)$gene_short_name
+
+sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
+sigIsoforms<-getGenes(cuff,sigIso)
+eldr_embryo_iso<-annotation(sigIsoforms)$gene_short_name
+
+sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
+sigCDSgenes<-getGenes(cuff,sigCDS)
+eldr_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
+
+rm(sigCDSgenes)
+rm(sigIsoforms)
+rm(sig)
+rm(sigCDS)
+rm(sigIso)
+rm(dir)
+rm(cuff)
 rm(DEgenes)
 
 strain<-"Eldr"
@@ -538,6 +796,22 @@ sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Haunt_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
 haunt_embryo_DE<-annotation(DEgenes)$gene_short_name
+
+sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
+sigIsoforms<-getGenes(cuff,sigIso)
+haunt_embryo_iso<-annotation(sigIsoforms)$gene_short_name
+
+sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
+sigCDSgenes<-getGenes(cuff,sigCDS)
+haunt_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
+
+rm(sigCDSgenes)
+rm(sigIsoforms)
+rm(sig)
+rm(sigCDS)
+rm(sigIso)
+rm(dir)
+rm(cuff)
 rm(DEgenes)
 
 strain<-"Haunt"
@@ -570,6 +844,22 @@ sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Kantr_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
 kantr_embryo_DE<-annotation(DEgenes)$gene_short_name
+
+sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
+sigIsoforms<-getGenes(cuff,sigIso)
+kantr_embryo_iso<-annotation(sigIsoforms)$gene_short_name
+
+sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
+sigCDSgenes<-getGenes(cuff,sigCDS)
+kantr_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
+
+rm(sigCDSgenes)
+rm(sigIsoforms)
+rm(sig)
+rm(sigCDS)
+rm(sigIso)
+rm(dir)
+rm(cuff)
 rm(DEgenes)
 
 
@@ -601,6 +891,22 @@ sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$lincBrn1b_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
 lincbrn1b_embryo_DE<-annotation(DEgenes)$gene_short_name
+
+sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
+sigIsoforms<-getGenes(cuff,sigIso)
+lincbrn1b_embryo_iso<-annotation(sigIsoforms)$gene_short_name
+
+sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
+sigCDSgenes<-getGenes(cuff,sigCDS)
+lincbrn1b_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
+
+rm(sigCDSgenes)
+rm(sigIsoforms)
+rm(sig)
+rm(sigCDS)
+rm(sigIso)
+rm(dir)
+rm(cuff)
 rm(DEgenes)
 
 strain<-"linc_Brn1b"
@@ -634,6 +940,22 @@ sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$lincCox2_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
 lincCox2_embryo_DE<-annotation(DEgenes)$gene_short_name
+
+sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
+sigIsoforms<-getGenes(cuff,sigIso)
+lincCox2_embryo_iso<-annotation(sigIsoforms)$gene_short_name
+
+sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
+sigCDSgenes<-getGenes(cuff,sigCDS)
+lincCox2_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
+
+rm(sigCDSgenes)
+rm(sigIsoforms)
+rm(sig)
+rm(sigCDS)
+rm(sigIso)
+rm(dir)
+rm(cuff)
 rm(DEgenes)
 
 strain<-"linc_Cox2"
@@ -665,6 +987,22 @@ sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$lincEnc1_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
 lincEnc1_embryo_DE<-annotation(DEgenes)$gene_short_name
+
+sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
+sigIsoforms<-getGenes(cuff,sigIso)
+lincEnc1_embryo_iso<-annotation(sigIsoforms)$gene_short_name
+
+sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
+sigCDSgenes<-getGenes(cuff,sigCDS)
+lincEnc1_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
+
+rm(sigCDSgenes)
+rm(sigIsoforms)
+rm(sig)
+rm(sigCDS)
+rm(sigIso)
+rm(dir)
+rm(cuff)
 rm(DEgenes)
 
 strain<-"linc_Enc1"
@@ -696,6 +1034,22 @@ sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Manr_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
 manr_embryo_DE<-annotation(DEgenes)$gene_short_name
+
+sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
+sigIsoforms<-getGenes(cuff,sigIso)
+manr_embryo_iso<-annotation(sigIsoforms)$gene_short_name
+
+sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
+sigCDSgenes<-getGenes(cuff,sigCDS)
+manr_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
+
+rm(sigCDSgenes)
+rm(sigIsoforms)
+rm(sig)
+rm(sigCDS)
+rm(sigIso)
+rm(dir)
+rm(cuff)
 rm(DEgenes)
 
 strain<-"Manr"
@@ -725,7 +1079,25 @@ cuff<-readCufflinks(dir=dir, gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Peril_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-Peril_embryo_DE<-annotation(DEgenes)$gene_short_name
+peril_embryo_DE<-annotation(DEgenes)$gene_short_name
+
+sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
+sigIsoforms<-getGenes(cuff,sigIso)
+peril_embryo_iso<-annotation(sigIsoforms)$gene_short_name
+
+sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
+sigCDSgenes<-getGenes(cuff,sigCDS)
+peril_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
+
+rm(sigCDSgenes)
+rm(sigIsoforms)
+rm(sig)
+rm(sigCDS)
+rm(sigIso)
+rm(dir)
+rm(cuff)
+
+
 rm(DEgenes)
 
 strain<-"Peril"
@@ -758,6 +1130,22 @@ sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Trp53cor1_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
 trp53cor1_embryo_DE<-annotation(DEgenes)$gene_short_name
+
+sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
+sigIsoforms<-getGenes(cuff,sigIso)
+trp53cor1_embryo_iso<-annotation(sigIsoforms)$gene_short_name
+
+sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
+sigCDSgenes<-getGenes(cuff,sigCDS)
+trp53cor1_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
+
+rm(sigCDSgenes)
+rm(sigIsoforms)
+rm(sig)
+rm(sigCDS)
+rm(sigIso)
+rm(dir)
+rm(cuff)
 rm(DEgenes)
 
 strain<-"Trp53cor"
@@ -786,6 +1174,22 @@ sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Tug1_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
 tug1_embryo_DE<-annotation(DEgenes)$gene_short_name
+
+sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
+sigIsoforms<-getGenes(cuff,sigIso)
+tug1_embryo_iso<-annotation(sigIsoforms)$gene_short_name
+
+sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
+sigCDSgenes<-getGenes(cuff,sigCDS)
+tug1_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
+
+rm(sigCDSgenes)
+rm(sigIsoforms)
+rm(sig)
+rm(sigCDS)
+rm(sigIso)
+rm(dir)
+rm(cuff)
 rm(DEgenes)
 
 strain<-"Tug1"
@@ -882,10 +1286,39 @@ list_names<-ls()[grep("_DE",ls())]
 DE_lists<-lapply(list_names,get)
 names(DE_lists)<-list_names
 
-sink("DE_lists.tab")
+sink("DEgenes_lists.tab")
 for(i in seq(1,length(DE_lists))){
   list<-paste(unlist(DE_lists[[i]]),sep=",")
   name<-list_names[[i]]
+  final<-c(name,list)
+  cat(final,sep="\t")
+  cat("\n")
+}
+sink()
+
+
+iso_list_names<-ls()[grep("_iso",ls())]
+iso_DE_lists<-lapply(iso_list_names,get)
+names(iso_DE_lists)<-iso_list_names
+
+sink("DEiso_lists.tab")
+for(i in seq(1,length(iso_DE_lists))){
+  list<-paste(unlist(iso_DE_lists[[i]]),sep=",")
+  name<-iso_list_names[[i]]
+  final<-c(name,list)
+  cat(final,sep="\t")
+  cat("\n")
+}
+sink()
+
+cds_list_names<-ls()[grep("_CDS",ls())]
+cds_DE_lists<-lapply(cds_list_names,get)
+names(cds_DE_lists)<-cds_list_names
+
+sink("DECDS_lists.tab")
+for(i in seq(1,length(cds_DE_lists))){
+  list<-paste(unlist(cds_DE_lists[[i]]),sep=",")
+  name<-cds_list_names[[i]]
   final<-c(name,list)
   cat(final,sep="\t")
   cat("\n")
