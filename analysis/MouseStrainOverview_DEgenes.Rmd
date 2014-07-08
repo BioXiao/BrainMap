@@ -537,8 +537,6 @@ rm(cuff)
 rm(DEgenes)
 
 strain<-"Peril"
-
-
 LZ<-getGene(cuff,"LacZ")
 LZ_avg_fpkm<-fpkm(LZ)[which(fpkm(LZ)$sample_name==strain),3] 
 linc<-getGene(cuff,"Peril")
@@ -1248,6 +1246,14 @@ ggplot(d, aes(fill=DEgenes))+geom_tile(color='white')
 
 ```{r lacZ_correlation}
 
+#write.csv(linc_LZ_correlation,"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/linc_lz_correlation.csv")
+dat<-read.csv("linc_lz_correlation.csv",header=TRUE)
+rownames<-dat$X
+rownames(dat)<-rownames
+dat$X<-NULL
+dat$lincBrn1a_Embryonic<-NULL
+linc_LZ_correlation<-dat
+
 linc_LZ_correlation<-as.data.frame(t(linc_LZ_correlation))
 type<-rownames(linc_LZ_correlation)
 timepoint<-unlist(lapply(type,function(x){unlist(strsplit(x,"_"))[2]}))
@@ -1255,18 +1261,45 @@ name<-unlist(lapply(type,function(x){unlist(strsplit(x,"_"))[1]}))
 linc_LZ_correlation$timepoint<-timepoint
 linc_LZ_correlation$name<-name
 
-ggplot(linc_LZ_correlation, aes(EndogenousLinc,LZ,color=timepoint))+geom_point()+geom_text(aes(label=name))+geom_abline(intercept=0,slope=1)+xlab("Endogenous lincRNA expression log10(FPKM)")+ylab("LacZ expression log10(FPKM)")+scale_x_log10(limits=c(-10,80))+scale_y_log10(limits=c(-10,40))
+lzlinc_fit<-lm(linc_LZ_correlation$LZ~ linc_LZ_correlation$EndogenousLinc)
+lzlinc_rsquared<-summary(lzlinc_fit)$r.squared
+
+lzactin_fit<-lm(linc_LZ_correlation$LZ~linc_LZ_correlation$ActinInKOs)
+lzactin_rsquared<-summary(lzactin_fit)$r.squared
+
+#linc_LZ<-ggplot(linc_LZ_correlation, aes(EndogenousLinc,LZ,color=timepoint))+geom_point()+geom_text(aes(label=name))+xlab("Endogenous lincRNA expression log10(FPKM)")+ylab("LacZ expression log10(FPKM)")+scale_x_log10(limits=c(-10,80))+scale_y_log10(limits=c(-10,40))+geom_smooth(aes(EndogenousLinc,LZ),method="lm")+geom_abline(intercept=0,slope=1)
+
+lm_eqn = function(df){
+    m = lm(y ~ x, df);
+    eq <- substitute(italic(y) == a + b %.% italic(x)*","~~italic(r)^2~"="~r2, 
+         list(a = format(coef(m)[1], digits = 2), 
+              b = format(coef(m)[2], digits = 2), 
+             r2 = format(summary(m)$r.squared, digits = 3)))
+    as.character(as.expression(eq));                 
+}
+#^ from interwebs http://stackoverflow.com/questions/7549694/ggplot2-adding-regression-line-equation-and-r2-on-graph
+
+
+ggplot(linc_LZ_correlation, aes(EndogenousLinc,LZ))+geom_point()+geom_text(aes(label=name))+xlab("Endogenous lincRNA expression log10(FPKM)")+ylab("LacZ expression log10(FPKM)")+scale_x_log10(limits=c(-10,80))+scale_y_log10(limits=c(-10,40))+geom_smooth(aes(EndogenousLinc,LZ, label=lm_eqn(linc_LZ_correlation)),method="lm",se=FALSE)+geom_abline(intercept=0,slope=1)
+
++geom_abline(fit)
+
+
+ggsave("linc_LZ_correlation.pdf",plot=linc_LZ)
 
 ggplot(linc_LZ_correlation, aes(EndogenousLinc,ActinInKOs,color=timepoint))+geom_point()+geom_text(aes(label=name))+geom_abline(intercept=0,slope=1)+xlab("Endogenous lincRNA expression log10(FPKM)")+ylab("Actin expression log10(FPKM)")+scale_x_log10(limits=c(-10,80))+scale_y_log10(limits=c(-10,800))
 
+ggsave("linc_Actin.pdf")
+
+
 ggplot(linc_LZ_correlation, aes(LZ,ActinInKOs,color=timepoint))+geom_point()+geom_text(aes(label=name))+geom_abline(intercept=0,slope=1)+xlab("LacZ expression log10(FPKM)")+ylab("Actin expression log10(FPKM)")+scale_x_log10(limits=c(-10,40))+scale_y_log10(limits=c(-10,800))
+
+ggsave("LZ_Actin.pdf")
 
 #pdf("lacZcorrelation.pdf")
 ggplot(linc_LZ_correlation, aes(EndogenousLinc,LZ,color=timepoint))+geom_point()+geom_text(aes(label=name))+xlab("Endogenous lincRNA expression")+ylab("LacZ expression")+coord_cartesian(xlim=c(-.1,.1),ylim=c(-.1,.1))+ggtitle("Low-level expression correlation")+geom_abline(intercept=0,slope=1)
 #dev.off()
 
-fit<-lm(linc_LZ_correlation$LZ~ linc_LZ_correlation$EndogenousLinc)
-rsquared<-summary(fit)$r.squared
 
 
 #var(linc_LZ_correlation$LZ,linc_LZ_correlation$EndogenousLinc)
@@ -1324,6 +1357,39 @@ for(i in seq(1,length(cds_DE_lists))){
   cat("\n")
 }
 sink()
+
+for(i in 1:length(DE_lists)){
+  genelist<-DE_lists[[i]]
+  name<-names(DE_lists[i])
+  hoxlist<-grep("Hox",genelist)
+  if(length(hoxlist)>0){   
+    print(paste(name,length(hoxlist),sep=":"))
+    print(genelist[hoxlist])
+  }
+}
+
+
+
+for(i in 1:length(iso_DE_lists)){
+  genelist<-iso_DE_lists[[i]]
+  name<-names(iso_DE_lists[i])
+  hoxlist<-grep("Hox",genelist)
+  if(length(hoxlist)>0){   
+    print(paste(name,length(hoxlist),sep=":"))
+    print(genelist[hoxlist])
+  }
+}
+
+
+for(i in 1:length(cds_DE_lists)){
+  genelist<-cds_DE_lists[[i]]
+  name<-names(cds_DE_lists[i])
+  hoxlist<-grep("Hox",genelist)
+  if(length(hoxlist)>0){   
+    print(paste(name,length(hoxlist),sep=":"))
+    print(genelist[hoxlist])
+  }
+}
 
 
 intersectionNames<-lapply(seq(2,length(DE_lists)),function(i){

@@ -36,7 +36,8 @@ for (i in 1:25){
   myLengths<-seqlengths(Mmusculus)[!grepl("_random",names(seqlengths(Mmusculus)))]
   mm10.granges<-GRanges(seqnames = names(myLengths), ranges = IRanges(start = 1, end = myLengths),seqlengths=myLengths)
   myRandom<-random.intervals(mm10.granges,n=nIter,ms=windowSize)
-  print(i,strain)
+  print(i)
+  print(strain)
   fullTable<-getTable(cuff)
   
   myGene<-fullTable[which(fullTable$gene_short_name==strain),][1,] #any problems w this?
@@ -70,6 +71,11 @@ for (i in 1:25){
   
   currplot<-ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2),ylim=c(-max(abs(data$test_stat)+1),max(abs(data$test_stat))+1))+labs(title=paste(strain,timepoint,sep=" "))+geom_text(data=subset(data, sig=='yes'))+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
   cisplots[[i]]<-currplot
+  name<-paste(strain,timepoint,sep="_")
+  #ggsave(currplot,paste(name,".pdf",sep=""))
+  pdf(paste(name,".pdf",sep=""))
+  currplot
+  dev.off()
 }
 
 # Multiple plot function
@@ -117,6 +123,10 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
     }
   }
 }
+save(file="cisregionplotlist.Rdata",cisplots)
+
+#load("cisregionplotlist.Rdata")
+
 pdf("cis_plots_panel.pdf", height=28,width=25)
 multiplot(plotlist=cisplots,cols=4)
 dev.off()
