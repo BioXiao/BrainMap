@@ -1263,9 +1263,17 @@ linc_LZ_correlation$name<-name
 
 lzlinc_fit<-lm(linc_LZ_correlation$LZ~ linc_LZ_correlation$EndogenousLinc)
 lzlinc_rsquared<-summary(lzlinc_fit)$r.squared
-
+lzlinc_rsquared
+lzlinc_fit$coefficients
+lzlinc_euclideandistance<-sqrt(sum((linc_LZ_correlation$LZ-linc_LZ_correlation$EndogenousLinc)^2))
+lzlinc_euclideandistance
+  
 lzactin_fit<-lm(linc_LZ_correlation$LZ~linc_LZ_correlation$ActinInKOs)
 lzactin_rsquared<-summary(lzactin_fit)$r.squared
+lzactin_rsquared
+lzactin_fit$coefficients
+lzactin_euclideandistance<-sqrt(sum((linc_LZ_correlation$LZ-linc_LZ_correlation$ActinInKOs)^2))
+lzactin_euclideandistance
 
 #linc_LZ<-ggplot(linc_LZ_correlation, aes(EndogenousLinc,LZ,color=timepoint))+geom_point()+geom_text(aes(label=name))+xlab("Endogenous lincRNA expression log10(FPKM)")+ylab("LacZ expression log10(FPKM)")+scale_x_log10(limits=c(-10,80))+scale_y_log10(limits=c(-10,40))+geom_smooth(aes(EndogenousLinc,LZ),method="lm")+geom_abline(intercept=0,slope=1)
 a
@@ -1273,10 +1281,12 @@ a
 
 ggplot(linc_LZ_correlation, aes(EndogenousLinc,LZ))+geom_point()+geom_text(aes(label=paste(name,timepoint,sep="_")))+xlab("Endogenous lincRNA expression log10(FPKM)")+ylab("LacZ expression log10(FPKM)")+scale_x_log10(limits=c(-10,80))+scale_y_log10(limits=c(-10,40))+geom_smooth(method="lm",se=FALSE)+geom_abline(intercept=0,slope=1)
 
-
 ggsave("linc_LZ_correlation.pdf",plot=linc_LZ)
 
-ggplot(linc_LZ_correlation, aes(EndogenousLinc,ActinInKOs,color=timepoint))+geom_point()+geom_text(aes(label=name))+geom_abline(intercept=0,slope=1)+xlab("Endogenous lincRNA expression log10(FPKM)")+ylab("Actin expression log10(FPKM)")+scale_x_log10(limits=c(-10,80))+scale_y_log10(limits=c(-10,800))
+ggplot(linc_LZ_correlation, aes(EndogenousLinc,ActinInKOs,color=timepoint))+geom_point()+geom_text(aes(label=name))+geom_abline(intercept=0,slope=1)+xlab("Endogenous lincRNA expression log10(FPKM)")+ylab("Actin expression log10(FPKM)")+geom_abline(intercept=0,slope=1)+coord_trans(x="log10",y="log10",limy=c(-100,800),limx=c(-100,800))
+
+scale_x_log10(limits=c(-100,800))+scale_y_log10(limits=c(-100,800))
++
 
 ggsave("linc_Actin.pdf")
 

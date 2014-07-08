@@ -88,7 +88,7 @@ for (i in 1:25){
   regions[[i]]<-genesInRegion
   nameofplot<-paste(strain,timepoint,sep="_")
   names(cisplots[i])<-nameofplot
-  name(regions[i])<-nameofplot
+  names(regions[i])<-nameofplot
   #ggsave(paste(name,".pdf",sep=""))
   pdf(paste(name,".pdf",sep=""))
   currplot
