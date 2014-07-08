@@ -148,3 +148,31 @@ Second Split
 [1] "Manr"
 First Split
 Second Split
+[1] 20
+[1] "Peril"
+First Split
+Second Split
+[1] 21
+[1] "Peril"
+First Split
+Second Split
+[1] 22
+[1] "Trp53cor1"
+First Split
+Second Split
+[1] 23
+[1] "Trp53cor1"
+First Split
+Second Split
+[1] 24
+[1] "Tug1"
+First Split
+Second Split
+[1] 25
+[1] "Tug1"
+First Split
+Second Split
+Error in if (zero_range(as.numeric(limits))) { : 
+  missing value where TRUE/FALSE needed
+Calls: multiplot ... scale_break_info.continuous -> scale_breaks -> scale_breaks.continuous
+Execution halted
