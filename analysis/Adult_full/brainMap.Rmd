@@ -124,8 +124,20 @@ fpkms$gene<-str_split_fixed(fpkms$gene_id,"\\|",2)[,1]
 
 ## Guilt-by-association on FC values
 
+# Figures
 
-## Session Info
+## Figure 1
+```{r Fig1_1}
+pdf("sigMatrix.pdf",width=6,height=3)
+sigMatrix(cuff,level='genes') + scale_fill_gradient(limits=c(0,300),low="white",high="darkgreen")
+sigMatrix(cuff,level='isoforms') + scale_fill_gradient(limits=c(0,300),low="white",high="darkred")
+sigMatrix(cuff,level='CDS') + scale_fill_gradient(limits=c(0,300),low="white",high="purple")
+dev.off()
+
+```
+
+
+ ## Session Info
 ```{r sessionInfo}
 sessionInfo()
 ```
