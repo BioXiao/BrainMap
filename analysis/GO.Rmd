@@ -1,0 +1,120 @@
+GO analysis 
+========================================================
+
+Description/explanation of what's here, and justify all choices. 
+
+```{r init}
+#source("http://bioconductor.org/biocLite.R")
+#biocLite("ReactomePA")
+
+
+library(cummeRbund)
+library(ReactomePA)
+library(DOSE)
+
+setwd('/n/rinn_data1/users/agroff/seq/PERIL/data/diffs/cuffdiff_v221_newgtf/whole_brain/')
+cuff<-readCufflinks()
+
+sigGeneIDs<-getSig(cuff, alpha=0.05)
+sigGenes<-getGenes(cuff,sigGeneIDs)
+geneAnnot<-annotation(sigGenes)
+geneNames<-geneAnnot$gene_short_name
+sigDiff<-diffData(sigGenes)
+sigDiff$foldChange<-sigDiff$value_1/sigDiff$value_2
+
+
+# Top genes by test stat
+#diff<-diffData(genes(cuff))
+#diff<-diff[order(abs(diff$test_stat),decreasing=TRUE),]
+#top_genes<-diff[which(diff$p_value<0.1),]
+#top_genes_annot<-merge(top_genes,population)
+#geneNames<-top_genes_annot$gene_short_name
+
+```
+
+biomart to get entrez gene IDS
+clusterProfiler does GO enrichment 
+
+BP, MF, CC
+
+enrichKEGG
+enrichDO
+enrichPathway
+groupGO
+
+
+```{r GO analysis setup and functions,cache=TRUE,fig.height=8,fig.width=8,echo=FALSE,eval=FALSE}
+
+require(biomaRt)
+#source("http://bioconductor.org/biocLite.R")
+#biocLite("clusterProfiler")
+#biocLite("org.Mm.eg.db")
+
+library(clusterProfiler)
+
+
+#http://www.bioconductor.org/packages/release/bioc/vignettes/biomaRt/inst/doc/biomaRt.pdf
+ensembl <- useMart("ENSEMBL_MART_ENSEMBL","mmusculus_gene_ensembl", 
+host="www.ensembl.org")
+
+#Get entrezIDs
+getEntrezIDs<-function (geneNames)
+{
+    tmp <- getBM(attributes = c("entrezgene"), filters = "mgi_symbol", values = geneNames, mart = ensembl)
+    tmp
+}
+
+
+sigEntrez<-getEntrezIDs(geneNames)
+sigEZ<-strsplit(as.character(sigEntrez), ", ")
+sigEZ<-unlist(sigEZ)
+
+require(org.Mm.eg.db) #mapping of entrez IDs to genbank
+
+```
+
+
+```{r GO enrichments}
+
+goBP<-enrichGO(gene=sigEZ, organism="mouse",ont="BP",pvalueCutoff=0.01,readable=T)
+
+goMF<-enrichGO(gene=sigEZ, organism="mouse",ont="MF",pvalueCutoff=0.01,readable=T)
+
+goCC<-enrichGO(gene=sigEZ, organism="mouse",ont="CC",pvalueCutoff=0.01,readable=T)
+
+kegg<-enrichKEGG(gene=sigEZ, organism="mouse",pvalueCutoff=1, readable=T)
+
+pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T)
+
+```
+
+```{r GO figures, fig.height=8,fig.width=8}
+#Simple method
+#plot(goBP)
+#plot(goMF)
+#plot(goCC)
+
+#Visualizing w clusterProfiler
+#barplot(goBP, drop = TRUE, showCategory = 12)
+#barplot(goBP, showCategory = 12)
+#barplot(goMF,showCategory=12)
+#barplot(goCC, showCategory=12)
+
+#WHY DONT THESE FUNCTIONS WORK? 
+#cnetplot(goBP, categorySize = "pvalue", foldChange = geneList) #NEEDS foldChange values which requres exact entrez gene mapping (cant lose values); this requires a map. too much hassle for now. 
+#cnetplot(goBP, categorySize = "geneNum", foldChange = geneList)
+
+#cluster.enrichKEGG<-compareCluster(sigEZ,fun="enrichKEGG",organism="mouse",qvalueCutoff=0.01)
+#require(ReactomePA)
+#cluster.enrichPathway<-compareCluster(sigEntrezNames,fun="enrichPathway",qvalueCutoff=0.01)
+
+plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched BP")
+plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched MF")
+plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched CC")
+
+#plot(cluster.enrichKEGG,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched KEGG")
+#plot(cluster.enrichPathway,showCategory=20) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched Reactome")
+
+detach("package:biomaRt")
+
+```
