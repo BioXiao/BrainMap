@@ -1309,6 +1309,32 @@ cor(linc_LZ_correlation$LZ,linc_LZ_correlation$EndogenousLinc)
 
 ```
 
+```{r digital northern}
+
+library(RColorBrewer)
+specCols<-brewer.pal(3,"Paired")
+colPal<-colorRampPalette(specCols)
+bamColors<-colPal(length(bamFiles))
+
+x<-seq.int(1,50,2)
+y<-1
+linc_LZ_correlation$x<-x
+linc_LZ_correlation$y<-y
+ggplot(linc_LZ_correlation, aes(x,y,fill=LZ,label=paste(name,timepoint,sep="_")))+geom_tile(width=1.5)+theme_bw()+coord_cartesian(ylim=c(0,50))+scale_fill_gradient2(low="white",high="black",midpoint=mean(linc_LZ_correlation$LZ))+geom_text(y=20,angle=90)
+#limits=c(0,max(linc_LZ_correlation$ActinInKOs)
+ggsave("lacz_digital_northern.pdf")
+
+ggplot(linc_LZ_correlation, aes(x,y,fill=ActinInKOs,label=paste(name,timepoint,sep="_")))+geom_tile(width=1.5)+theme_bw()+coord_cartesian(ylim=c(0,50))+scale_fill_gradient2(low="white",high="black",midpoint=mean(linc_LZ_correlation$LZ))+geom_text(y=20,angle=90)
+ggsave("actin_digital_northern.pdf")
+
+#+scale_fill_manual(values=c("white","black"))
+
+
+
+
+
+```
+
 
 R squared for LZ-linc relationship is `r rsquared`
 
