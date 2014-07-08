@@ -1268,21 +1268,10 @@ lzactin_fit<-lm(linc_LZ_correlation$LZ~linc_LZ_correlation$ActinInKOs)
 lzactin_rsquared<-summary(lzactin_fit)$r.squared
 
 #linc_LZ<-ggplot(linc_LZ_correlation, aes(EndogenousLinc,LZ,color=timepoint))+geom_point()+geom_text(aes(label=name))+xlab("Endogenous lincRNA expression log10(FPKM)")+ylab("LacZ expression log10(FPKM)")+scale_x_log10(limits=c(-10,80))+scale_y_log10(limits=c(-10,40))+geom_smooth(aes(EndogenousLinc,LZ),method="lm")+geom_abline(intercept=0,slope=1)
-
-lm_eqn = function(df){
-    m = lm(y ~ x, df);
-    eq <- substitute(italic(y) == a + b %.% italic(x)*","~~italic(r)^2~"="~r2, 
-         list(a = format(coef(m)[1], digits = 2), 
-              b = format(coef(m)[2], digits = 2), 
-             r2 = format(summary(m)$r.squared, digits = 3)))
-    as.character(as.expression(eq));                 
-}
-#^ from interwebs http://stackoverflow.com/questions/7549694/ggplot2-adding-regression-line-equation-and-r2-on-graph
+a
 
 
-ggplot(linc_LZ_correlation, aes(EndogenousLinc,LZ))+geom_point()+geom_text(aes(label=name))+xlab("Endogenous lincRNA expression log10(FPKM)")+ylab("LacZ expression log10(FPKM)")+scale_x_log10(limits=c(-10,80))+scale_y_log10(limits=c(-10,40))+geom_smooth(aes(EndogenousLinc,LZ, label=lm_eqn(linc_LZ_correlation)),method="lm",se=FALSE)+geom_abline(intercept=0,slope=1)
-
-+geom_abline(fit)
+ggplot(linc_LZ_correlation, aes(EndogenousLinc,LZ))+geom_point()+geom_text(aes(label=paste(name,timepoint,sep="_")))+xlab("Endogenous lincRNA expression log10(FPKM)")+ylab("LacZ expression log10(FPKM)")+scale_x_log10(limits=c(-10,80))+scale_y_log10(limits=c(-10,40))+geom_smooth(method="lm",se=FALSE)+geom_abline(intercept=0,slope=1)
 
 
 ggsave("linc_LZ_correlation.pdf",plot=linc_LZ)
