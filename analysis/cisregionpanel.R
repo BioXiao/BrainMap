@@ -24,6 +24,7 @@ getTable<-function(object){
 
 dat<-read.csv("autoanalysisInfo.csv",header=TRUE,stringsAsFactors=FALSE)
 cisplots<-list()
+regions<-list()
 
 #start at 6 
 #1:dim(dat)[1]
@@ -31,7 +32,7 @@ for (i in 1:25){
   
   strain<-dat$strain[i]
   dir<-dat$dir[i]
-  timepoint<-dat$timepoint
+  timepoint<-dat$timepoint[i]
   cuff<-readCufflinks(dir=dir,GTF="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10")
   
   myLengths<-seqlengths(Mmusculus)[!grepl("_random",names(seqlengths(Mmusculus)))]
@@ -69,23 +70,41 @@ for (i in 1:25){
   colnames(genesInRegion)[36]<-"test_stat"
   data<-ddply(genesInRegion,.(gene_id),head,n=1)
   data$test_stat<-as.numeric(data[,36])
+  data$was_na<-"no"
+  if(any(is.na(data$test_stat))){
+     #&& data$log2foldchange[which(is.na(data$test_stat))]=="-Inf"){
+    #print(data$test_stat[which(is.na(data$test_stat))])
+    data$was_na[which(is.na(data$test_stat))]<-"yes"
+    data$test_stat[which(is.na(data$test_stat))]<-0
+  }
   data$sig<-data[,39]
   
-  currplot<-ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2),ylim=c(-max(abs(data$test_stat),na.rm=TRUE)-1,max(abs(data$test_stat),na.rm=TRUE)+1))+labs(title=paste(strain,timepoint,sep=" "))+geom_text(data=subset(data, sig=='yes'))+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
+  currplot<-ggplot(data,aes(start,test_stat,color=sig, label=gene_name,shape=was_na))+geom_point(size=3)+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2),ylim=c(-max(abs(data$test_stat),na.rm=TRUE)-1,max(abs(data$test_stat),na.rm=TRUE)+1))+labs(title=paste(strain,timepoint,sep=" "))+geom_text(data=subset(data, sig=='yes'))+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
+  #add pvalue to this plot! s
+  
+  #ggplot(data,aes(start,test_stat,color=sig, label=gene_name,shape=was_na))+geom_point(size=3)+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2),ylim=c(-max(abs(data$test_stat),na.rm=TRUE)-1,max(abs(data$test_stat),na.rm=TRUE)+1))+labs(title=paste(strain,timepoint,sep=" "))+geom_text(data=subset(data, sig=='yes'))+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
+  
   cisplots[[i]]<-currplot
-  name<-paste(strain,timepoint,sep="_")
-  #ggsave(currplot,paste(name,".pdf",sep=""))
+  regions[[i]]<-genesInRegion
+  nameofplot<-paste(strain,timepoint,sep="_")
+  names(cisplots[i])<-nameofplot
+  name(regions[i])<-nameofplot
+  #ggsave(paste(name,".pdf",sep=""))
   pdf(paste(name,".pdf",sep=""))
   currplot
   dev.off()
 }
 
-save(file="cisregionplotlist.Rdata",cisplots)
+#save(file="cisregionplotlist.Rdata",cisplots)
 library(gridExtra)
-#load("cisregionplotlist.Rdata")
-
+load("cisregionplotlist.Rdata")
+plotnames<-paste("cisplots[[",1:25,"]]",sep="")
+names(cisplots)<-plotnames
+listnames<-c(cisplots,list(nrow=5,ncol=5))
+panel<-do.call(grid.arrange,listnames)  
 pdf("cis_plots_panel.pdf", height=28,width=25)
-grid.arrange(cisplots,ncol=5)
+
+#grid.arrange(cisplots,ncol=5)
 dev.off()
 
 
