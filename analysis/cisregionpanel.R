@@ -90,7 +90,7 @@ for (i in 1:25){
   names(cisplots[i])<-nameofplot
   names(regions[i])<-nameofplot
   #ggsave(paste(name,".pdf",sep=""))
-  pdf(paste(name,".pdf",sep=""))
+  pdf(paste(nameofplot,".pdf",sep=""))
   currplot
   dev.off()
 }
