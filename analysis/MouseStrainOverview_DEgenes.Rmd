@@ -1289,7 +1289,7 @@ ggsave("linc_LZ_correlation.pdf")
 
 #EXPRESSIONBARPLOT PLACEHOLDER 
 ggplot(linc_LZ_correlation, aes(row.names(linc_LZ_correlation),EndogenousLinc))+geom_bar(width=0.5,stat="identity")+theme_bw()+facet_grid(.~timepoint)+theme(axis.text.x=element_text(angle=-90))
-
+ggsave("expressionbarplot_placeholder.pdf")
 
 +geom_text(angle=90)
 
