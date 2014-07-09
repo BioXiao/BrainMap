@@ -1286,6 +1286,15 @@ ggplot(linc_LZ_correlation, aes(EndogenousLinc,LZ))+geom_point()+geom_text(aes(l
 
 ggsave("linc_LZ_correlation.pdf")
 
+
+#EXPRESSIONBARPLOT PLACEHOLDER 
+ggplot(linc_LZ_correlation, aes(row.names(linc_LZ_correlation),EndogenousLinc))+geom_bar(width=0.5,stat="identity")+theme_bw()+facet_grid(.~timepoint)+theme(axis.text.x=element_text(angle=-90))
+
+
++geom_text(angle=90)
+
++xlab("Endogenous lincRNA expression (FPKM)")+ylab("LacZ expression (FPKM)")+geom_abline(intercept=0,slope=1)
+
 ggplot(linc_LZ_correlation, aes(EndogenousLinc,ActinInKOs,color=timepoint))+geom_point()+geom_text(aes(label=name))+geom_abline(intercept=0,slope=1)+xlab("Endogenous lincRNA expression (FPKM)")+ylab("Actin expression (FPKM)")+coord_cartesian(xlim=c(-10,900))+ggtitle("Beta-Actin v Endogenous lincRNA expression")
 #+coord_trans(x="log10",y="log10")+
 ggsave("linc_Actin.pdf")
