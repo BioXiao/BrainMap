@@ -1327,6 +1327,9 @@ ggsave("lacz_digital_northern.pdf")
 ggplot(linc_LZ_correlation, aes(x,y,fill=ActinInKOs,label=paste(name,timepoint,sep="_")))+geom_tile(width=1.5)+theme_bw()+coord_cartesian(ylim=c(0,50))+scale_fill_gradient2(low="white",high="black",midpoint=mean(linc_LZ_correlation$LZ))+geom_text(y=20,angle=90)
 ggsave("actin_digital_northern.pdf")
 
+ggplot(linc_LZ_correlation, aes(x,y,fill=EndogenousLinc,label=paste(name,timepoint,sep="_")))+geom_tile(width=1.5)+theme_bw()+coord_cartesian(ylim=c(0,50))+scale_fill_gradient2(low="white",high="black",midpoint=mean(linc_LZ_correlation$LZ))+geom_text(y=20,angle=90)
+
+ggsave("endogenouslinc_digital_northern.pdf")
 #+scale_fill_manual(values=c("white","black"))
 
 
