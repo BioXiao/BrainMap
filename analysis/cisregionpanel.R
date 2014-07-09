@@ -93,11 +93,11 @@ for (i in 1:25){
   #dev.off()
 }
 
-save(file="cisregionplotlist.Rdata",cisplots)
-save(file="cisregion_geneRegionslist.Rdata",regions)
+#save(file="cisregionplotlist.Rdata",cisplots)
+#save(file="cisregion_geneRegionslist.Rdata",regions)
 
 library(gridExtra)
-load("cisregionplotlist.Rdata")
+#load("cisregionplotlist.Rdata")
 plotnames<-paste("cisplots[[",1:25,"]]",sep="")
 names(cisplots)<-plotnames
 listnames<-c(cisplots,list(nrow=5,ncol=5))
