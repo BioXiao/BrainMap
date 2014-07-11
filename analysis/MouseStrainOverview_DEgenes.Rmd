@@ -537,8 +537,6 @@ rm(cuff)
 rm(DEgenes)
 
 strain<-"Peril"
-
-
 LZ<-getGene(cuff,"LacZ")
 LZ_avg_fpkm<-fpkm(LZ)[which(fpkm(LZ)$sample_name==strain),3] 
 linc<-getGene(cuff,"Peril")
@@ -1248,6 +1246,14 @@ ggplot(d, aes(fill=DEgenes))+geom_tile(color='white')
 
 ```{r lacZ_correlation}
 
+#write.csv(linc_LZ_correlation,"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/linc_lz_correlation.csv")
+dat<-read.csv("linc_lz_correlation.csv",header=TRUE)
+rownames<-dat$X
+rownames(dat)<-rownames
+dat$X<-NULL
+dat$lincBrn1a_Embryonic<-NULL
+linc_LZ_correlation<-dat
+
 linc_LZ_correlation<-as.data.frame(t(linc_LZ_correlation))
 type<-rownames(linc_LZ_correlation)
 timepoint<-unlist(lapply(type,function(x){unlist(strsplit(x,"_"))[2]}))
@@ -1255,18 +1261,53 @@ name<-unlist(lapply(type,function(x){unlist(strsplit(x,"_"))[1]}))
 linc_LZ_correlation$timepoint<-timepoint
 linc_LZ_correlation$name<-name
 
-ggplot(linc_LZ_correlation, aes(EndogenousLinc,LZ,color=timepoint))+geom_point()+geom_text(aes(label=name))+geom_abline(intercept=0,slope=1)+xlab("Endogenous lincRNA expression log10(FPKM)")+ylab("LacZ expression log10(FPKM)")+scale_x_log10(limits=c(-10,80))+scale_y_log10(limits=c(-10,40))
+lzlinc_fit<-lm(linc_LZ_correlation$LZ~ linc_LZ_correlation$EndogenousLinc)
+lzlinc_rsquared<-summary(lzlinc_fit)$r.squared
+lzlinc_rsquared
+lzlinc_fit$coefficients
+lzlinc_euclideandistance<-sqrt(sum((linc_LZ_correlation$LZ-linc_LZ_correlation$EndogenousLinc)^2))
+lzlinc_euclideandistance
+  
+lzactin_fit<-lm(linc_LZ_correlation$LZ~linc_LZ_correlation$ActinInKOs)
+lzactin_rsquared<-summary(lzactin_fit)$r.squared
+lzactin_rsquared
+lzactin_fit$coefficients
+lzactin_euclideandistance<-sqrt(sum((linc_LZ_correlation$LZ-linc_LZ_correlation$ActinInKOs)^2))
+lzactin_euclideandistance
 
-ggplot(linc_LZ_correlation, aes(EndogenousLinc,ActinInKOs,color=timepoint))+geom_point()+geom_text(aes(label=name))+geom_abline(intercept=0,slope=1)+xlab("Endogenous lincRNA expression log10(FPKM)")+ylab("Actin expression log10(FPKM)")+scale_x_log10(limits=c(-10,80))+scale_y_log10(limits=c(-10,800))
+#linc_LZ<-ggplot(linc_LZ_correlation, aes(EndogenousLinc,LZ,color=timepoint))+geom_point()+geom_text(aes(label=name))+xlab("Endogenous lincRNA expression log10(FPKM)")+ylab("LacZ expression log10(FPKM)")+scale_x_log10(limits=c(-10,80))+scale_y_log10(limits=c(-10,40))+geom_smooth(aes(EndogenousLinc,LZ),method="lm")+geom_abline(intercept=0,slope=1)
 
-ggplot(linc_LZ_correlation, aes(LZ,ActinInKOs,color=timepoint))+geom_point()+geom_text(aes(label=name))+geom_abline(intercept=0,slope=1)+xlab("LacZ expression log10(FPKM)")+ylab("Actin expression log10(FPKM)")+scale_x_log10(limits=c(-10,40))+scale_y_log10(limits=c(-10,800))
+
+
+ggplot(linc_LZ_correlation, aes(EndogenousLinc,LZ))+geom_point()+geom_text(aes(label=name))+xlab("Endogenous lincRNA expression (FPKM)")+ylab("LacZ expression (FPKM)")+geom_abline(intercept=0,slope=1)+scale_x_log10(limits=c(-10,80))+scale_y_log10(limits=c(-10,40))+theme_bw()+facet_grid(.~timepoint)
+
+#+coord_trans(x="log10",y="log10")
+#+geom_smooth(method="lm",se=FALSE)
+
+ggsave("linc_LZ_correlation.pdf")
+
+
+#EXPRESSIONBARPLOT PLACEHOLDER 
+ggplot(linc_LZ_correlation, aes(row.names(linc_LZ_correlation),EndogenousLinc))+geom_bar(width=0.5,stat="identity")+theme_bw()+facet_grid(.~timepoint)+theme(axis.text.x=element_text(angle=-90))
+ggsave("expressionbarplot_placeholder.pdf")
+
++geom_text(angle=90)
+
++xlab("Endogenous lincRNA expression (FPKM)")+ylab("LacZ expression (FPKM)")+geom_abline(intercept=0,slope=1)
+
+ggplot(linc_LZ_correlation, aes(EndogenousLinc,ActinInKOs,color=timepoint))+geom_point()+geom_text(aes(label=name))+geom_abline(intercept=0,slope=1)+xlab("Endogenous lincRNA expression (FPKM)")+ylab("Actin expression (FPKM)")+coord_cartesian(xlim=c(-10,900))+ggtitle("Beta-Actin v Endogenous lincRNA expression")
+#+coord_trans(x="log10",y="log10")+
+ggsave("linc_Actin.pdf")
+
+
+ggplot(linc_LZ_correlation, aes(LZ,ActinInKOs,color=timepoint))+geom_point()+geom_text(aes(label=name))+geom_abline(intercept=0,slope=1)+xlab("LacZ expression (FPKM)")+ylab("Actin expression (FPKM)")+coord_cartesian(xlim=c(-10,900))+ggtitle("Beta-Actin v LacZ Expression")
+#+coord_trans(x="log10",y="log10")
+ggsave("LZ_Actin.pdf")
 
 #pdf("lacZcorrelation.pdf")
-ggplot(linc_LZ_correlation, aes(EndogenousLinc,LZ,color=timepoint))+geom_point()+geom_text(aes(label=name))+xlab("Endogenous lincRNA expression")+ylab("LacZ expression")+coord_cartesian(xlim=c(-.1,.1),ylim=c(-.1,.1))+ggtitle("Low-level expression correlation")+geom_abline(intercept=0,slope=1)
+#ggplot(linc_LZ_correlation, aes(EndogenousLinc,LZ,color=timepoint))+geom_point()+geom_text(aes(label=name))+xlab("Endogenous lincRNA expression")+ylab("LacZ expression")+coord_cartesian(xlim=c(-.1,.1),ylim=c(-.1,.1))+ggtitle("Low-level expression correlation")+geom_abline(intercept=0,slope=1)
 #dev.off()
 
-fit<-lm(linc_LZ_correlation$LZ~ linc_LZ_correlation$EndogenousLinc)
-rsquared<-summary(fit)$r.squared
 
 
 #var(linc_LZ_correlation$LZ,linc_LZ_correlation$EndogenousLinc)
@@ -1274,6 +1315,35 @@ cor(linc_LZ_correlation$LZ,linc_LZ_correlation$EndogenousLinc)
 #cov(linc_LZ_correlation$LZ,linc_LZ_correlation$EndogenousLinc)
 
 #+scale_x_log10(limits=c(-20,50))+scale_y_log10(limits=c(-20,30))
+
+```
+
+```{r digital northern}
+
+library(RColorBrewer)
+specCols<-brewer.pal(3,"Paired")
+colPal<-colorRampPalette(specCols)
+bamColors<-colPal(length(bamFiles))
+
+x<-seq.int(1,50,2)
+y<-1
+linc_LZ_correlation$x<-x
+linc_LZ_correlation$y<-y
+ggplot(linc_LZ_correlation, aes(x,y,fill=LZ,label=paste(name,timepoint,sep="_")))+geom_tile(width=1.5)+theme_bw()+coord_cartesian(ylim=c(0,50))+scale_fill_gradient2(low="white",high="black",midpoint=mean(linc_LZ_correlation$LZ))+geom_text(y=20,angle=90)
+#limits=c(0,max(linc_LZ_correlation$ActinInKOs)
+ggsave("lacz_digital_northern.pdf")
+
+ggplot(linc_LZ_correlation, aes(x,y,fill=ActinInKOs,label=paste(name,timepoint,sep="_")))+geom_tile(width=1.5)+theme_bw()+coord_cartesian(ylim=c(0,50))+scale_fill_gradient2(low="white",high="black",midpoint=mean(linc_LZ_correlation$LZ))+geom_text(y=20,angle=90)
+ggsave("actin_digital_northern.pdf")
+
+ggplot(linc_LZ_correlation, aes(x,y,fill=EndogenousLinc,label=paste(name,timepoint,sep="_")))+geom_tile(width=1.5)+theme_bw()+coord_cartesian(ylim=c(0,50))+scale_fill_gradient2(low="white",high="black",midpoint=mean(linc_LZ_correlation$LZ))+geom_text(y=20,angle=90)
+
+ggsave("endogenouslinc_digital_northern.pdf")
+#+scale_fill_manual(values=c("white","black"))
+
+
+
+
 
 ```
 
@@ -1324,6 +1394,39 @@ for(i in seq(1,length(cds_DE_lists))){
   cat("\n")
 }
 sink()
+
+for(i in 1:length(DE_lists)){
+  genelist<-DE_lists[[i]]
+  name<-names(DE_lists[i])
+  hoxlist<-grep("Hox",genelist)
+  if(length(hoxlist)>0){   
+    print(paste(name,length(hoxlist),sep=":"))
+    print(genelist[hoxlist])
+  }
+}
+
+
+
+for(i in 1:length(iso_DE_lists)){
+  genelist<-iso_DE_lists[[i]]
+  name<-names(iso_DE_lists[i])
+  hoxlist<-grep("Hox",genelist)
+  if(length(hoxlist)>0){   
+    print(paste(name,length(hoxlist),sep=":"))
+    print(genelist[hoxlist])
+  }
+}
+
+
+for(i in 1:length(cds_DE_lists)){
+  genelist<-cds_DE_lists[[i]]
+  name<-names(cds_DE_lists[i])
+  hoxlist<-grep("Hox",genelist)
+  if(length(hoxlist)>0){   
+    print(paste(name,length(hoxlist),sep=":"))
+    print(genelist[hoxlist])
+  }
+}
 
 
 intersectionNames<-lapply(seq(2,length(DE_lists)),function(i){

@@ -22,6 +22,7 @@ dir<-dir
 cuff<-readCufflinks(dir=dir,gtfFile=GTF,genome=genome)
 myGene<-getGene(cuff,strain)
 
+library(Gviz)
 library(RMySQL)
 library(RColorBrewer)
 library(GenomicFeatures)
