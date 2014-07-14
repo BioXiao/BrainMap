@@ -175,3 +175,5 @@ Writing CDSReplicateData table
 Indexing Tables...
 Scale for 'x' is already present. Adding another scale for 'x', which will replace the existing scale.
 geom_smooth: method="auto" and size of largest group is >=1000, so using gam with formula: y ~ s(x, bs = "cs"). Use 'method = x' to change the smoothing method.
+Scale for 'x' is already present. Adding another scale for 'x', which will replace the existing scale.
+geom_smooth: method="auto" and size of largest group is >=1000, so using gam with formula: y ~ s(x, bs = "cs"). Use 'method = x' to change the smoothing method.
