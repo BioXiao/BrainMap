@@ -281,3 +281,86 @@ In addition: Warning messages:
 8: Removed 3906 rows containing missing values (geom_point). 
 Using tracking_id, rep_name as id variables
 No id variables; using all as measure variables
+
+
+
+Attaching package: 'DOSE'
+
+The following object is masked from 'package:ReactomePA':
+
+    gseAnalyzer
+
+Getting gene information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting isoforms information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting CDS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting TSS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting promoter information:
+	distData
+Getting splicing information:
+	distData
+Getting relCDS information:
+	distData
+
+KEGG.db contains mappings based on older data because the original
+  resource was removed from the the public domain before the most
+  recent update was produced. This package should now be
+  considered deprecated and future versions of Bioconductor may
+  not have it available.  Users who want more current data are
+  encouraged to look at the KEGGREST or reactome.db packages
+
+Loading required package: biomaRt
+
+Attaching package: 'biomaRt'
+
+The following object is masked from 'package:cummeRbund':
+
+    getGene
+
+Loading required package: org.Mm.eg.db
+
+Loading required package: GO.db
+Loading required package: BSgenome
+Loading required package: Biostrings
+
+Attaching package: 'BSgenome'
+
+The following object is masked from 'package:AnnotationDbi':
+
+    species
+
+
+Attaching package: 'plyr'
+
+The following object is masked from 'package:cummeRbund':
+
+    count
+
+The following object is masked from 'package:XVector':
+
+    compact
+
+The following objects are masked from 'package:IRanges':
+
+    desc, rename
+
+First Split

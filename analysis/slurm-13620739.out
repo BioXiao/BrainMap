@@ -270,3 +270,238 @@ No id variables; using all as measure variables
 Using tracking_id, sample_name as id variables
 Using tracking_id, rep_name as id variables
 No id variables; using all as measure variables
+
+
+
+Attaching package: 'DOSE'
+
+The following object is masked from 'package:ReactomePA':
+
+    gseAnalyzer
+
+Getting gene information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting isoforms information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting CDS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting TSS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting promoter information:
+	distData
+Getting splicing information:
+	distData
+Getting relCDS information:
+	distData
+
+KEGG.db contains mappings based on older data because the original
+  resource was removed from the the public domain before the most
+  recent update was produced. This package should now be
+  considered deprecated and future versions of Bioconductor may
+  not have it available.  Users who want more current data are
+  encouraged to look at the KEGGREST or reactome.db packages
+
+Loading required package: biomaRt
+
+Attaching package: 'biomaRt'
+
+The following object is masked from 'package:cummeRbund':
+
+    getGene
+
+Loading required package: org.Mm.eg.db
+
+Loading required package: GO.db
+Loading required package: BSgenome
+Loading required package: Biostrings
+
+Attaching package: 'BSgenome'
+
+The following object is masked from 'package:AnnotationDbi':
+
+    species
+
+
+Attaching package: 'plyr'
+
+The following object is masked from 'package:cummeRbund':
+
+    count
+
+The following object is masked from 'package:XVector':
+
+    compact
+
+The following objects are masked from 'package:IRanges':
+
+    desc, rename
+
+First Split
+Second Split
+1
+0
+2
+0
+3
+1
+4
+0
+5
+0
+6
+0
+7
+0
+8
+0
+9
+0
+10
+0
+11
+0
+12
+0
+13
+0
+14
+0
+15
+0
+16
+0
+17
+0
+18
+0
+19
+0
+20
+0
+21
+0
+22
+0
+23
+0
+24
+0
+25
+0
+26
+0
+27
+0
+28
+0
+29
+0
+30
+0
+31
+0
+32
+0
+33
+0
+34
+0
+35
+0
+36
+0
+37
+0
+38
+0
+39
+0
+40
+0
+41
+0
+42
+0
+43
+0
+44
+0
+45
+0
+46
+0
+47
+0
+48
+0
+49
+0
+50
+0
+51
+0
+52
+0
+53
+0
+54
+0
+55
+0
+56
+0
+57
+0
+58
+0
+59
+0
+60
+0
+61
+0
+62
+0
+63
+0
+64
+0
+65
+0
+66
+0
+67
+0
+68
+0
+69
+0
+70
+0
+71
+0
+72
+0
+73
+0
+74
+0
+75
+0
+76
