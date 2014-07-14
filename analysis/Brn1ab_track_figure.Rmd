@@ -122,15 +122,18 @@ brn1bkoWidth<-abs(as.numeric(positions[2])-as.numeric(positions[1]))
 
 bamRoot<-'/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/'
 
-#wt_adult: JR781
-#brn1a_KO_adult: JR730
-#brn1b_KO_adult : JR835
+# wt_adult: JR781
+# wt_embryo: JR771
+# brn1a_KO_adult: JR730
+# brn1a_KO_embryo: JR858
+# brn1b_KO_adult : JR835
+# brn1b_KO_embryo: JR758
 
-JRs<-c("JR781","JR730","JR835")
+JRs<-c("JR781","JR771","JR730","JR858","JR835","JR758")
 
 bamFiles<-lapply(JRs,function(x){paste(bamRoot,x,"/accepted_hits.bam",sep="")})
 
-bamNames<-c("WT","Brn1aKO","Brn1bKO")
+bamNames<-c("WT_ADULT","WT_EMBRYONIC", "Brn1aKO_ADULT","Brn1a_EMBRYONIC","Brn1bKO_ADULT","Brn1bKO_EMBRYONIC")
 
 specCols<-brewer.pal(3,"Paired")
 colPal<-colorRampPalette(specCols)
@@ -159,8 +162,8 @@ bamColors<-colPal(length(bamFiles))
   
   #Plot Tracks
 
-  myTracks<-c(axTrack,genetrack,bamTracks,brn1akoTrack,brn1bkoTrack)
-  trackSizes<-c(1,4,rep(1,length(bamTracks)),1,1)
+  myTracks<-c(axTrack,idxTrack,genetrack,bamTracks,brn1akoTrack,brn1bkoTrack)
+  trackSizes<-c(1,1,4,rep(1,length(bamTracks)),1,1)
 
 pdf("Brn1abBrn1_figure_plot.pdf")
   plotTracks(myTracks,from=from,to=to,chromosome=chrom,showAxis=FALSE,background.title="black",col.title="white",col.axis="black",sizes=trackSizes,geneSymbol=TRUE)
