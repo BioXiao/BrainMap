@@ -98,12 +98,12 @@ save(file="cisregionplotlist.Rdata",cisplots)
 save(file="cisregion_geneRegionslist.Rdata",regions)
 
 library(gridExtra)
-#load("cisregionplotlist.Rdata")
+load("cisregionplotlist.Rdata")
 plotnames<-paste("cisplots[[",1:25,"]]",sep="")
 names(cisplots)<-plotnames
 listnames<-c(cisplots,list(nrow=5,ncol=5))
 
-pdf("cis_plots_panel.pdf", height=28,width=25)
+pdf("cis_plots_panel.pdf", height=30,width=30)
 do.call(grid.arrange,listnames)  
 #grid.arrange(cisplots,ncol=5)
 dev.off()
