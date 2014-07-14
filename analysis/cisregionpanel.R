@@ -196,12 +196,13 @@ smallsubset$orientation<-apply(smallsubset,1,function(x){
 
 
 
-summaryplot<-ggplot(smallsubset,aes(start,log2foldchange, label=gene_name, size=value1WT,shape=strand,color=orientation))
+summaryplot<-ggplot(smallsubset,aes(start,log2foldchange, label=gene_name,shape=strand,color=orientation))
 
-summaryplot<-summaryplot+geom_point(shape=62)+coord_cartesian(xlim=c(-max(smallsubset$start)-2000, max(smallsubset$start)+2000),ylim=c(-max(abs(smallsubset$log2foldchange),na.rm=TRUE)-1,max(abs(smallsubset$log2foldchange),na.rm=TRUE)+1))+labs(title="Cis Regulation Summary")
+summaryplot<-summaryplot+geom_point(shape=62)+coord_cartesian(xlim=c(-max(smallsubset$start)-30000, max(smallsubset$start)+30000),ylim=c(-max(abs(smallsubset$log2foldchange),na.rm=TRUE)-1,max(abs(smallsubset$log2foldchange),na.rm=TRUE)+1))+labs(title="Cis Regulation Summary")
 
 summaryplot+geom_text(data=subset(smallsubset, sig=='yes'),size=5)+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
 
+ggsave("cis_summary_plot.pdf")
 
 
 #lincsThatReg<-c("linc-Cox2","linc-Enc1","Kantr","Trp53cor1","Tug1","Eldr")
