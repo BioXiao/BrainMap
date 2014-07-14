@@ -49,19 +49,19 @@ for (i in 1:25){
   sigGenesRegion<-fullTable[which(fullTable[,40]==chromosome & fullTable[,39]=="yes" & fullTable[,9]>=start & fullTable[,10]<=end),]
   nSig<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
   
-  #score<-0
-  #signeighbors<-data.frame(rep(NULL,nIter))
+  score<-0
+  signeighbors<-data.frame(rep(NULL,nIter))
   
-  #for (j in 1:nIter){
-   # write(j,stderr())
-  #  sigGenesRegion<-fullTable[which(fullTable[,40]==seqnames(myRandom[j])@values & fullTable[,39]=="yes" & fullTable[,9]>=start(myRandom[j])-(windowSize/2) & fullTable[,10]<=end(myRandom[j])+(windowSize/2)),]
-  ##  nSigIter<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
-   # write(nSigIter,stderr())
-  #  if(nSigIter >= nSig-1) {score<-score+1}
-  #  signeighbors[1,j]<-nSigIter
-  #}
+  for (j in 1:nIter){
+    write(j,stderr())
+    sigGenesRegion<-fullTable[which(fullTable[,40]==seqnames(myRandom[j])@values & fullTable[,39]=="yes" & fullTable[,9]>=start(myRandom[j])-(windowSize/2) & fullTable[,10]<=end(myRandom[j])+(windowSize/2)),]
+    nSigIter<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
+    write(nSigIter,stderr())
+    if(nSigIter >= nSig-1) {score<-score+1}
+      signeighbors[1,j]<-nSigIter
+  }
   
-  #pval_for_region<-score/nIter
+  pval_for_region<-score/nIter
   
   genesInRegion<-fullTable[which(fullTable[,40]==chromosome & fullTable[,9]>=start & fullTable[,10]<=end),]
   genesInRegion$start<-myGene$start-genesInRegion$start
@@ -80,15 +80,14 @@ for (i in 1:25){
   data$sig<-data[,39]
   
   currplot<-ggplot(data,aes(start,test_stat,color=sig, label=gene_name,shape=was_na))+geom_point(size=3)+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2),ylim=c(-max(abs(data$test_stat),na.rm=TRUE)-1,max(abs(data$test_stat),na.rm=TRUE)+1))+labs(title=paste(strain,timepoint,sep=" "))+geom_text(data=subset(data, sig=='yes'))+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
-  
-  #+annotate("text",x=0,y=max(abs(data$test_stat),na.rm=TRUE)+.5,label=paste("pvalue for ",nSig," genes in a region this size is: ",pval_for_region,sep=""))
+  currplot<-currplot+annotate("text",x=0,y=max(abs(data$test_stat),na.rm=TRUE)+.5,label=paste("pvalue for ",nSig," genes in a region this size is: ",pval_for_region,sep=""))
   #add pvalue to this plot! 
   #ggplot(data,aes(start,test_stat,color=sig, label=gene_name,shape=was_na))+geom_point(size=3)+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2),ylim=c(-max(abs(data$test_stat),na.rm=TRUE)-1,max(abs(data$test_stat),na.rm=TRUE)+1))+labs(title=paste(strain,timepoint,sep=" "))+geom_text(data=subset(data, sig=='yes'))+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
   
   cisplots[[i]]<-currplot
   regions[[i]]<-genesInRegion
   nameofplot<-paste(strain,timepoint,sep="_")
-  #ggsave(paste(nameofplot,".pdf",sep=""),plot=currplot)
+  ggsave(paste(nameofplot,".pdf",sep=""),plot=currplot)
   #pdf(paste(nameofplot,".pdf",sep=""))
   #currplot
   #dev.off()
@@ -98,7 +97,7 @@ save(file="cisregionplotlist.Rdata",cisplots)
 save(file="cisregion_geneRegionslist.Rdata",regions)
 
 library(gridExtra)
-load("cisregionplotlist.Rdata")
+#load("cisregionplotlist.Rdata")
 plotnames<-paste("cisplots[[",1:25,"]]",sep="")
 names(cisplots)<-plotnames
 listnames<-c(cisplots,list(nrow=5,ncol=5))
@@ -113,7 +112,7 @@ library(plyr)
 library(ggplot2)
 
 windowSize<-4000000
-load("cisregion_geneRegionslist.Rdata")
+#load("cisregion_geneRegionslist.Rdata")
 dat<-read.csv("autoanalysisInfo.csv",header=TRUE,stringsAsFactors=FALSE)
 
 #regionData<-data.frame(regions)

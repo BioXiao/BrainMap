@@ -54,7 +54,7 @@ colnames(deletionCoords)<-c("gene_name","gene_region","deletionRegion")
 
 ```{r cummeRbund_and_data_setup, echo=FALSE}
 #setwd(dir)
-cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome=genome) #rebuild=T until all first rounds done! build sep though bc issues :-/
+cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome=genome,rebuild=T) #rebuild=T until all first rounds done! build sep though bc issues :-/
 reps<-replicates(cuff)
 files<-lapply(reps$file,function(x){strsplit(x, "/")})
 
