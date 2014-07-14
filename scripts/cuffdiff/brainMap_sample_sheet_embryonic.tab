@@ -1,4 +1,7 @@
 sample_id	group_label
+/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR858/abundances.cxb	linc-Brn1a
+/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR859/abundances.cxb	linc-Brn1a
+/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR860/abundances.cxb	linc-Brn1a
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR758/abundances.cxb	linc-Brn1b
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR764/abundances.cxb	linc-Brn1b
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR808/abundances.cxb	linc-Brn1b
@@ -19,6 +22,7 @@ sample_id	group_label
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR759/abundances.cxb	Haunt
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR773/abundances.cxb	Celrr
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR760/abundances.cxb	Celrr
+/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR763/abundances.cxb	Celrr
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR793/abundances.cxb	Crnde
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR790/abundances.cxb	Crnde
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR830/abundances.cxb	Crnde
@@ -27,12 +31,14 @@ sample_id	group_label
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR812/abundances.cxb	Kantr
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR749/abundances.cxb	Trp53cor
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR814/abundances.cxb	Trp53cor
+/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR862/abundances.cxb	Trp53cor
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR721/abundances.cxb	Peril
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR718/abundances.cxb	Peril
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR720/abundances.cxb	Peril
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR792/abundances.cxb	Peril
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR757/abundances.cxb	Tug1
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR857/abundances.cxb	Tug1
+/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR861/abundances.cxb	Tug1
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR753/abundances.cxb	WT
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR750/abundances.cxb	WT
 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR771/abundances.cxb	WT
