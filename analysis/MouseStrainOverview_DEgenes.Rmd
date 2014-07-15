@@ -875,8 +875,43 @@ Number of differentially expressed genes:`r length(sig)`
 
 ### Brn1a
 ```{r brn1a}
-diffGeneSummary$lincBrn1a_Embryonic<-NULL
-linc_LZ_correlation$lincBrn1a_Embryonic<-NULL
+#diffGeneSummary$lincBrn1a_Embryonic<-NULL
+#linc_LZ_correlation$lincBrn1a_Embryonic<-NULL
+
+
+sig<-getSig(cuff, alpha=alpha)
+diffGeneSummary$Kantr_Embryonic<-length(sig)
+DEgenes<-getGenes(cuff,sig)
+kantr_embryo_DE<-annotation(DEgenes)$gene_short_name
+
+sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
+sigIsoforms<-getGenes(cuff,sigIso)
+kantr_embryo_iso<-annotation(sigIsoforms)$gene_short_name
+
+sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
+sigCDSgenes<-getGenes(cuff,sigCDS)
+kantr_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
+
+rm(sigCDSgenes)
+rm(sigIsoforms)
+rm(sig)
+rm(sigCDS)
+rm(sigIso)
+rm(dir)
+rm(cuff)
+rm(DEgenes)
+
+
+strain<-"linc_Brn1a"
+LZ<-getGene(cuff,"LacZ")
+LZ_avg_fpkm<-fpkm(LZ)[which(fpkm(LZ)$sample_name==strain),3] 
+linc<-getGene(cuff,"linc-Brn1a")
+linc_avg_fpkm<-fpkm(linc)[which(fpkm(linc)$sample_name=="WT"),3]
+actin<-getGene(cuff,"Actb")
+actin_fpkm<-fpkm(actin)[which(fpkm(actin)$sample_name==strain),3]
+linc_LZ_correlation$lincBrn1a_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm, actin_fpkm)
+
+
 ```
 
 ### Brn1b 
