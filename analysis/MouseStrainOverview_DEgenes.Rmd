@@ -878,6 +878,10 @@ Number of differentially expressed genes:`r length(sig)`
 #diffGeneSummary$lincBrn1a_Embryonic<-NULL
 #linc_LZ_correlation$lincBrn1a_Embryonic<-NULL
 
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Brn1a_vs_WT_Embryonic/"
+
+cuff<-readCufflinks(dir=dir, gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
+
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$lincBrn1a_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
@@ -891,6 +895,16 @@ sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
 sigCDSgenes<-getGenes(cuff,sigCDS)
 lincBrn1a_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
 
+strain<-"linc_Brn1a"
+LZ<-getGene(cuff,"LacZ")
+LZ_avg_fpkm<-fpkm(LZ)[which(fpkm(LZ)$sample_name==strain),3] 
+linc<-getGene(cuff,"linc-Brn1a")
+linc_avg_fpkm<-fpkm(linc)[which(fpkm(linc)$sample_name=="WT"),3]
+actin<-getGene(cuff,"Actb")
+actin_fpkm<-fpkm(actin)[which(fpkm(actin)$sample_name==strain),3]
+linc_LZ_correlation$lincBrn1a_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm, actin_fpkm)
+
+
 rm(sigCDSgenes)
 rm(sigIsoforms)
 rm(sig)
@@ -901,14 +915,6 @@ rm(cuff)
 rm(DEgenes)
 
 
-strain<-"linc_Brn1a"
-LZ<-getGene(cuff,"LacZ")
-LZ_avg_fpkm<-fpkm(LZ)[which(fpkm(LZ)$sample_name==strain),3] 
-linc<-getGene(cuff,"linc-Brn1a")
-linc_avg_fpkm<-fpkm(linc)[which(fpkm(linc)$sample_name=="WT"),3]
-actin<-getGene(cuff,"Actb")
-actin_fpkm<-fpkm(actin)[which(fpkm(actin)$sample_name==strain),3]
-linc_LZ_correlation$lincBrn1a_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm, actin_fpkm)
 
 
 ```
@@ -1276,16 +1282,14 @@ ggplot(d, aes(fill=DEgenes))+geom_tile(color='white')
 
 ```
 
-
-
 ```{r lacZ_correlation}
 
 write.csv(linc_LZ_correlation,"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/linc_lz_correlation.csv")
-#dat<-read.csv("linc_lz_correlation.csv",header=TRUE)
+dat<-read.csv("linc_lz_correlation.csv",header=TRUE)
 rownames<-dat$X
 rownames(dat)<-rownames
 dat$X<-NULL
-dat$lincBrn1a_Embryonic<-NULL
+#dat$lincBrn1a_Embryonic<-NULL
 linc_LZ_correlation<-dat
 
 linc_LZ_correlation<-as.data.frame(t(linc_LZ_correlation))
@@ -1389,6 +1393,9 @@ R squared for LZ-linc relationship is `r rsquared`
 list_names<-ls()[grep("_DE",ls())]
 DE_lists<-lapply(list_names,get)
 names(DE_lists)<-list_names
+DE_lists[12]<-NULL
+DE_lists[3]<-NULL
+list_names<-names(DE_lists)
 
 sink("DEgenes_lists.tab")
 for(i in seq(1,length(DE_lists))){
