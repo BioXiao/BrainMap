@@ -170,6 +170,7 @@ smallsubset<-subset(data,data$targets=="yes")
 #dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Brn1a_vs_WT_Adult/"
 #gtf<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf"
 #gtf_table<-read.table("/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/BrainmapLincRNAs.gtf",header=TRUE,stringsAsFactors=FALSE)
+
 info<-read.table("/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/cis_reg_linc_strand_info.tab",stringsAsFactors=FALSE)
 info$V2<-NULL
 info$V4<-NULL
@@ -186,12 +187,13 @@ linc_strand_info$orientation<-apply(linc_strand_info,1,function(x){
 smallsubset$orientation<-apply(smallsubset,1,function(x){
   linc_strand_info[which(linc_strand_info$closest_pc==x[4]),6]
   })
-#smallsubset$strand_symbol<-apply(smallsubset,1,function(x){
-#  symbol<-""
-#  if(x[12]=="+"){symbol<-62}
-#  else{symbol<-60}
-#  symbol
-#})
+
+# smallsubset$strand_symbol<-apply(smallsubset,1,function(x){
+#   symbol<-""
+#   if(x[12]=="+"){symbol<-62}
+#   else{symbol<-60}
+#   symbol
+# })
 
 
 

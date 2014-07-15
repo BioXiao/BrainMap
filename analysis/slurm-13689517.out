@@ -109,3 +109,160 @@ Scale for 'x' is already present. Adding another scale for 'x', which will repla
 geom_smooth: method="auto" and size of largest group is >=1000, so using gam with formula: y ~ s(x, bs = "cs"). Use 'method = x' to change the smoothing method.
 Scale for 'x' is already present. Adding another scale for 'x', which will replace the existing scale.
 geom_smooth: method="auto" and size of largest group is >=1000, so using gam with formula: y ~ s(x, bs = "cs"). Use 'method = x' to change the smoothing method.
+Getting gene information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting isoforms information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting CDS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting TSS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting promoter information:
+	distData
+Getting splicing information:
+	distData
+Getting relCDS information:
+	distData
+Scale for 'colour' is already present. Adding another scale for 'colour', which will replace the existing scale.
+ymax not defined: adjusting position using y instead
+Using tracking_id, rep_name as id variables
+No id variables; using all as measure variables
+Loading required package: AnnotationDbi
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+
+Attaching package: 'Biobase'
+
+The following object is masked from 'package:cummeRbund':
+
+    samples
+
+
+Attaching package: 'GenomicFeatures'
+
+The following objects are masked from 'package:cummeRbund':
+
+    features, genes
+
+	BamTracks
+	plotting...
+Getting gene information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting isoforms information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting CDS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting TSS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting promoter information:
+	distData
+Getting splicing information:
+	distData
+Getting relCDS information:
+	distData
+Using tracking_id, rep_name as id variables
+No id variables; using all as measure variables
+Using tracking_id, sample_name as id variables
+Using tracking_id, rep_name as id variables
+No id variables; using all as measure variables
+Getting gene information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting isoforms information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting CDS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting TSS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting promoter information:
+	distData
+Getting splicing information:
+	distData
+Getting relCDS information:
+	distData
+Using tracking_id, rep_name as id variables
+No id variables; using all as measure variables
+Using tracking_id, rep_name as id variables
+No id variables; using all as measure variables
+Getting gene information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting isoforms information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting CDS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting TSS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting promoter information:
+	distData
+Getting splicing information:
+	distData
+Getting relCDS information:
+	distData
