@@ -878,7 +878,6 @@ Number of differentially expressed genes:`r length(sig)`
 #diffGeneSummary$lincBrn1a_Embryonic<-NULL
 #linc_LZ_correlation$lincBrn1a_Embryonic<-NULL
 
-
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$lincBrn1a_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
@@ -1281,8 +1280,8 @@ ggplot(d, aes(fill=DEgenes))+geom_tile(color='white')
 
 ```{r lacZ_correlation}
 
-#write.csv(linc_LZ_correlation,"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/linc_lz_correlation.csv")
-dat<-read.csv("linc_lz_correlation.csv",header=TRUE)
+write.csv(linc_LZ_correlation,"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/linc_lz_correlation.csv")
+#dat<-read.csv("linc_lz_correlation.csv",header=TRUE)
 rownames<-dat$X
 rownames(dat)<-rownames
 dat$X<-NULL
@@ -1462,7 +1461,6 @@ for(i in 1:length(cds_DE_lists)){
     print(genelist[hoxlist])
   }
 }
-
 
 intersectionNames<-lapply(seq(2,length(DE_lists)),function(i){
   list1<-gsub("_DE","",names(DE_lists)[i-1])

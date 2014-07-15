@@ -1,5 +1,5 @@
 Celrr_Adult,54
-Celrr_Embryonic,39
+Celrr_Embryonic,1516
 Crnde_Adult,42
 Crnde_Embryonic,80
 Eldr_Adult,27
@@ -9,6 +9,7 @@ Haunt_Embryonic,33
 Kantr_Adult,315
 Kantr_Embryonic,766
 lincBrn1a_Adult,74
+lincBrn1a_Embryonic,1
 lincBrn1b_Adult,193
 lincBrn1b_Embryonic,130
 lincCox2_Adult,94
@@ -21,5 +22,5 @@ Peril_Adult,215
 Peril_Embryonic,254
 Trp53cor1_Adult,69
 Trp53cor1_Embryonic,0
-Tug1_Adult,67
-Tug1_Embryonic,19
+Tug1_Adult,39
+Tug1_Embryonic,20
