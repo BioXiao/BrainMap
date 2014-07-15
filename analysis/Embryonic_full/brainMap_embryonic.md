@@ -13,110 +13,6 @@ setwd(paste(basedir, "analysis/Embryonic_full/", sep = ""))
 
 ```r
 library(cummeRbund)
-```
-
-```
-## Loading required package: BiocGenerics
-```
-
-```
-## Loading required package: parallel
-```
-
-```
-## Attaching package: 'BiocGenerics'
-```
-
-```
-## The following objects are masked from 'package:parallel':
-## 
-## clusterApply, clusterApplyLB, clusterCall, clusterEvalQ, clusterExport,
-## clusterMap, parApply, parCapply, parLapply, parLapplyLB, parRapply,
-## parSapply, parSapplyLB
-```
-
-```
-## The following object is masked from 'package:stats':
-## 
-## xtabs
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-## anyDuplicated, as.data.frame, cbind, colnames, duplicated, eval, Filter,
-## Find, get, intersect, lapply, Map, mapply, match, mget, order, paste,
-## pmax, pmax.int, pmin, pmin.int, Position, rank, rbind, Reduce, rep.int,
-## rownames, sapply, setdiff, sort, table, tapply, union, unique, unlist
-```
-
-```
-## Loading required package: RSQLite
-```
-
-```
-## Loading required package: DBI
-```
-
-```
-## Loading required package: ggplot2
-```
-
-```
-## Loading required package: reshape2
-```
-
-```
-## Loading required package: fastcluster
-```
-
-```
-## Attaching package: 'fastcluster'
-```
-
-```
-## The following object is masked from 'package:stats':
-## 
-## hclust
-```
-
-```
-## Loading required package: rtracklayer
-```
-
-```
-## Loading required package: GenomicRanges
-```
-
-```
-## Loading required package: IRanges
-```
-
-```
-## Loading required package: Gviz
-```
-
-```
-## Loading required package: grid
-```
-
-```
-## Attaching package: 'cummeRbund'
-```
-
-```
-## The following object is masked from 'package:GenomicRanges':
-## 
-## promoters
-```
-
-```
-## The following object is masked from 'package:IRanges':
-## 
-## promoters
-```
-
-```r
 library(ggplot2)
 library(stringr)
 library(reshape2)
@@ -164,9 +60,10 @@ samples(cuff)
 ## 8             8    Trp53cor        <NA>      <NA>  <NA>
 ## 9             9        Tug1        <NA>      <NA>  <NA>
 ## 10           10          WT        <NA>      <NA>  <NA>
-## 11           11  linc_Brn1b        <NA>      <NA>  <NA>
-## 12           12   linc_Cox2        <NA>      <NA>  <NA>
-## 13           13   linc_Enc1        <NA>      <NA>  <NA>
+## 11           11  linc_Brn1a        <NA>      <NA>  <NA>
+## 12           12  linc_Brn1b        <NA>      <NA>  <NA>
+## 13           13   linc_Cox2        <NA>      <NA>  <NA>
+## 14           14   linc_Enc1        <NA>      <NA>  <NA>
 ```
 
 ```r
@@ -178,107 +75,119 @@ replicates(cuff)
 ##                                                                          file
 ## 1  /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR773/abundances.cxb
 ## 2  /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR760/abundances.cxb
-## 3  /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR793/abundances.cxb
-## 4  /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR790/abundances.cxb
-## 5  /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR830/abundances.cxb
-## 6  /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR787/abundances.cxb
-## 7  /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR810/abundances.cxb
-## 8  /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR838/abundances.cxb
-## 9  /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR754/abundances.cxb
-## 10 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR767/abundances.cxb
-## 11 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR759/abundances.cxb
-## 12 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR775/abundances.cxb
-## 13 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR747/abundances.cxb
-## 14 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR812/abundances.cxb
-## 15 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR751/abundances.cxb
-## 16 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR772/abundances.cxb
-## 17 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR788/abundances.cxb
-## 18 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR721/abundances.cxb
-## 19 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR718/abundances.cxb
-## 20 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR720/abundances.cxb
-## 21 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR792/abundances.cxb
-## 22 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR749/abundances.cxb
-## 23 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR814/abundances.cxb
-## 24 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR757/abundances.cxb
-## 25 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR857/abundances.cxb
-## 26 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR753/abundances.cxb
-## 27 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR750/abundances.cxb
-## 28 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR771/abundances.cxb
-## 29 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR755/abundances.cxb
-## 30 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR811/abundances.cxb
-## 31 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR768/abundances.cxb
-## 32 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR761/abundances.cxb
-## 33 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR815/abundances.cxb
-## 34 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR789/abundances.cxb
-## 35 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR762/abundances.cxb
-## 36 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR774/abundances.cxb
-## 37 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR746/abundances.cxb
-## 38 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR748/abundances.cxb
-## 39 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR716/abundances.cxb
-## 40 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR717/abundances.cxb
-## 41 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR719/abundances.cxb
-## 42 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR756/abundances.cxb
-## 43 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR758/abundances.cxb
-## 44 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR764/abundances.cxb
-## 45 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR808/abundances.cxb
-## 46 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR809/abundances.cxb
-## 47 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR816/abundances.cxb
-## 48 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR829/abundances.cxb
-## 49 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR752/abundances.cxb
-## 50 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR770/abundances.cxb
-## 51 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR839/abundances.cxb
+## 3  /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR763/abundances.cxb
+## 4  /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR793/abundances.cxb
+## 5  /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR790/abundances.cxb
+## 6  /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR830/abundances.cxb
+## 7  /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR787/abundances.cxb
+## 8  /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR810/abundances.cxb
+## 9  /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR838/abundances.cxb
+## 10 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR754/abundances.cxb
+## 11 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR767/abundances.cxb
+## 12 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR759/abundances.cxb
+## 13 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR775/abundances.cxb
+## 14 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR747/abundances.cxb
+## 15 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR812/abundances.cxb
+## 16 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR751/abundances.cxb
+## 17 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR772/abundances.cxb
+## 18 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR788/abundances.cxb
+## 19 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR721/abundances.cxb
+## 20 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR718/abundances.cxb
+## 21 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR720/abundances.cxb
+## 22 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR792/abundances.cxb
+## 23 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR749/abundances.cxb
+## 24 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR814/abundances.cxb
+## 25 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR862/abundances.cxb
+## 26 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR757/abundances.cxb
+## 27 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR857/abundances.cxb
+## 28 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR861/abundances.cxb
+## 29 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR753/abundances.cxb
+## 30 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR750/abundances.cxb
+## 31 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR771/abundances.cxb
+## 32 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR755/abundances.cxb
+## 33 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR811/abundances.cxb
+## 34 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR768/abundances.cxb
+## 35 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR761/abundances.cxb
+## 36 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR815/abundances.cxb
+## 37 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR789/abundances.cxb
+## 38 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR762/abundances.cxb
+## 39 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR774/abundances.cxb
+## 40 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR746/abundances.cxb
+## 41 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR748/abundances.cxb
+## 42 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR716/abundances.cxb
+## 43 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR717/abundances.cxb
+## 44 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR719/abundances.cxb
+## 45 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR756/abundances.cxb
+## 46 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR858/abundances.cxb
+## 47 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR859/abundances.cxb
+## 48 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR860/abundances.cxb
+## 49 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR758/abundances.cxb
+## 50 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR764/abundances.cxb
+## 51 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR808/abundances.cxb
+## 52 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR809/abundances.cxb
+## 53 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR816/abundances.cxb
+## 54 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR829/abundances.cxb
+## 55 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR752/abundances.cxb
+## 56 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR770/abundances.cxb
+## 57 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR839/abundances.cxb
 ##    sample_name replicate     rep_name total_mass norm_mass internal_scale
-## 1        Celrr         0      Celrr_0   37950800  32431200         1.1244
-## 2        Celrr         1      Celrr_1   30671700  32431200         0.9352
-## 3        Crnde         0      Crnde_0   36520100  32431200         1.1387
-## 4        Crnde         1      Crnde_1   27555700  32431200         0.8518
-## 5        Crnde         2      Crnde_2   28630200  32431200         0.8943
-## 6         Eldr         0       Eldr_0   26894700  32431200         0.8379
-## 7         Eldr         1       Eldr_1   41828800  32431200         1.2948
-## 8         Eldr         2       Eldr_2   37002600  32431200         1.1552
-## 9        Haunt         0      Haunt_0   34277200  32431200         1.0607
-## 10       Haunt         1      Haunt_1   30963400  32431200         0.9699
-## 11       Haunt         2      Haunt_2   40179300  32431200         1.2613
-## 12       Kantr         0      Kantr_0   41486000  32431200         1.2845
-## 13       Kantr         1      Kantr_1   33582200  32431200         1.0236
-## 14       Kantr         2      Kantr_2   34934000  32431200         1.1067
-## 15        Manr         0       Manr_0   33259800  32431200         1.0152
-## 16        Manr         1       Manr_1   39063700  32431200         1.2259
-## 17        Manr         2       Manr_2   23795600  32431200         0.7322
-## 18       Peril         0      Peril_0   22593200  32431200         0.6973
-## 19       Peril         1      Peril_1   27635500  32431200         0.8500
-## 20       Peril         2      Peril_2   19589600  32431200         0.5942
-## 21       Peril         3      Peril_3   29654500  32431200         0.9224
-## 22    Trp53cor         0   Trp53cor_0   31241000  32431200         0.9280
-## 23    Trp53cor         1   Trp53cor_1   31403400  32431200         0.9840
-## 24        Tug1         0       Tug1_0   33398300  32431200         1.0492
-## 25        Tug1         1       Tug1_1   39157600  32431200         1.2438
-## 26          WT         0         WT_0   39331900  32431200         1.2525
-## 27          WT         1         WT_1   36031100  32431200         1.0928
-## 28          WT         2         WT_2   38857100  32431200         1.2195
-## 29          WT         3         WT_3   41811300  32431200         1.2772
-## 30          WT         4         WT_4   38172800  32431200         1.1998
-## 31          WT         5         WT_5   28375200  32431200         0.8860
-## 32          WT         6         WT_6   31706200  32431200         0.9677
-## 33          WT         7         WT_7   29733100  32431200         0.9163
-## 34          WT         8         WT_8   27681500  32431200         0.8546
-## 35          WT         9         WT_9   32218100  32431200         0.9519
-## 36          WT        10        WT_10   32505000  32431200         0.9548
-## 37          WT        11        WT_11   27986400  32431200         0.8381
-## 38          WT        12        WT_12   32367000  32431200         0.9549
-## 39          WT        13        WT_13   26144700  32431200         0.8066
-## 40          WT        14        WT_14   25565400  32431200         0.7927
-## 41          WT        15        WT_15   22697800  32431200         0.6808
-## 42          WT        16        WT_16   38948900  32431200         1.2085
-## 43  linc_Brn1b         0 linc_Brn1b_0   41595700  32431200         1.3097
-## 44  linc_Brn1b         1 linc_Brn1b_1   30294500  32431200         0.9539
-## 45  linc_Brn1b         2 linc_Brn1b_2   31223700  32431200         0.9757
-## 46   linc_Cox2         0  linc_Cox2_0   36051200  32431200         1.1030
-## 47   linc_Cox2         1  linc_Cox2_1   31829200  32431200         0.9763
-## 48   linc_Cox2         2  linc_Cox2_2   30833100  32431200         0.9485
-## 49   linc_Enc1         0  linc_Enc1_0   37182200  32431200         1.1543
-## 50   linc_Enc1         1  linc_Enc1_1   42845600  32431200         1.3253
-## 51   linc_Enc1         2  linc_Enc1_2   33810100  32431200         1.0542
+## 1        Celrr         0      Celrr_0   37950800  33337100         1.0964
+## 2        Celrr         1      Celrr_1   30671700  33337100         0.9109
+## 3        Celrr         2      Celrr_2   40167600  33337100         1.1610
+## 4        Crnde         0      Crnde_0   36520100  33337100         1.1100
+## 5        Crnde         1      Crnde_1   27555700  33337100         0.8298
+## 6        Crnde         2      Crnde_2   28630200  33337100         0.8722
+## 7         Eldr         0       Eldr_0   26894700  33337100         0.8174
+## 8         Eldr         1       Eldr_1   41828800  33337100         1.2623
+## 9         Eldr         2       Eldr_2   37002600  33337100         1.1268
+## 10       Haunt         0      Haunt_0   34277200  33337100         1.0331
+## 11       Haunt         1      Haunt_1   30963400  33337100         0.9449
+## 12       Haunt         2      Haunt_2   40179300  33337100         1.2279
+## 13       Kantr         0      Kantr_0   41486000  33337100         1.2519
+## 14       Kantr         1      Kantr_1   33582200  33337100         0.9978
+## 15       Kantr         2      Kantr_2   34934000  33337100         1.0784
+## 16        Manr         0       Manr_0   33259800  33337100         0.9899
+## 17        Manr         1       Manr_1   39063700  33337100         1.1948
+## 18        Manr         2       Manr_2   23795600  33337100         0.7133
+## 19       Peril         0      Peril_0   22593200  33337100         0.6796
+## 20       Peril         1      Peril_1   27635500  33337100         0.8276
+## 21       Peril         2      Peril_2   19589600  33337100         0.5797
+## 22       Peril         3      Peril_3   29654500  33337100         0.8992
+## 23    Trp53cor         0   Trp53cor_0   31241000  33337100         0.9051
+## 24    Trp53cor         1   Trp53cor_1   31403400  33337100         0.9578
+## 25    Trp53cor         2   Trp53cor_2   49659700  33337100         1.5310
+## 26        Tug1         0       Tug1_0   33398300  33337100         1.0222
+## 27        Tug1         1       Tug1_1   39157600  33337100         1.2128
+## 28        Tug1         2       Tug1_2   43124000  33337100         1.2619
+## 29          WT         0         WT_0   39331900  33337100         1.2212
+## 30          WT         1         WT_1   36031100  33337100         1.0661
+## 31          WT         2         WT_2   38857100  33337100         1.1883
+## 32          WT         3         WT_3   41811300  33337100         1.2459
+## 33          WT         4         WT_4   38172800  33337100         1.1673
+## 34          WT         5         WT_5   28375200  33337100         0.8636
+## 35          WT         6         WT_6   31706200  33337100         0.9425
+## 36          WT         7         WT_7   29733100  33337100         0.8938
+## 37          WT         8         WT_8   27681500  33337100         0.8334
+## 38          WT         9         WT_9   32218100  33337100         0.9279
+## 39          WT        10        WT_10   32505000  33337100         0.9323
+## 40          WT        11        WT_11   27986400  33337100         0.8171
+## 41          WT        12        WT_12   32367000  33337100         0.9311
+## 42          WT        13        WT_13   26144700  33337100         0.7857
+## 43          WT        14        WT_14   25565400  33337100         0.7732
+## 44          WT        15        WT_15   22697800  33337100         0.6637
+## 45          WT        16        WT_16   38948900  33337100         1.1784
+## 46  linc_Brn1a         0 linc_Brn1a_0   34867700  33337100         1.0722
+## 47  linc_Brn1a         1 linc_Brn1a_1   45282400  33337100         1.3009
+## 48  linc_Brn1a         2 linc_Brn1a_2   41604700  33337100         1.1971
+## 49  linc_Brn1b         0 linc_Brn1b_0   41595700  33337100         1.2751
+## 50  linc_Brn1b         1 linc_Brn1b_1   30294500  33337100         0.9295
+## 51  linc_Brn1b         2 linc_Brn1b_2   31223700  33337100         0.9510
+## 52   linc_Cox2         0  linc_Cox2_0   36051200  33337100         1.0748
+## 53   linc_Cox2         1  linc_Cox2_1   31829200  33337100         0.9512
+## 54   linc_Cox2         2  linc_Cox2_2   30833100  33337100         0.9245
+## 55   linc_Enc1         0  linc_Enc1_0   37182200  33337100         1.1257
+## 56   linc_Enc1         1  linc_Enc1_1   42845600  33337100         1.2922
+## 57   linc_Enc1         2  linc_Enc1_2   33810100  33337100         1.0271
 ##    external_scale
 ## 1               1
 ## 2               1
@@ -331,6 +240,12 @@ replicates(cuff)
 ## 49              1
 ## 50              1
 ## 51              1
+## 52              1
+## 53              1
+## 54              1
+## 55              1
+## 56              1
+## 57              1
 ```
 
 
@@ -392,14 +307,6 @@ fpkmSCVPlot(isoforms(cuff)) + brainmap_theme_opts()
 ## geom_smooth: method="auto" and size of largest group is >=1000, so using
 ## gam with formula: y ~ s(x, bs = "cs"). Use 'method = x' to change the
 ## smoothing method.
-```
-
-```
-## Warning: the matrix is either rank-deficient or indefinite
-```
-
-```
-## Warning: the matrix is either rank-deficient or indefinite
 ```
 
 ```
@@ -589,11 +496,11 @@ sessionInfo()
 ## [8] methods   base     
 ## 
 ## other attached packages:
-##  [1] mgcv_1.7-22          stringr_0.6.2        cummeRbund_2.7.3    
-##  [4] Gviz_1.4.1           rtracklayer_1.20.1   GenomicRanges_1.12.2
-##  [7] IRanges_1.18.0       fastcluster_1.1.9    reshape2_1.2.2      
-## [10] ggplot2_0.9.3.1      RSQLite_0.11.3       DBI_0.2-6           
-## [13] BiocGenerics_0.6.0   knitr_1.2            colorout_1.0-2      
+##  [1] mgcv_1.7-22          stringr_0.6.2        knitr_1.2           
+##  [4] cummeRbund_2.7.3     Gviz_1.4.1           rtracklayer_1.20.1  
+##  [7] GenomicRanges_1.12.2 IRanges_1.18.0       fastcluster_1.1.9   
+## [10] reshape2_1.2.2       ggplot2_0.9.3.1      RSQLite_0.11.3      
+## [13] DBI_0.2-6            BiocGenerics_0.6.0   colorout_1.0-2      
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] AnnotationDbi_1.22.3   Biobase_2.20.0         biomaRt_2.16.0        
