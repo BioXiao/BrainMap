@@ -880,17 +880,17 @@ Number of differentially expressed genes:`r length(sig)`
 
 
 sig<-getSig(cuff, alpha=alpha)
-diffGeneSummary$Kantr_Embryonic<-length(sig)
+diffGeneSummary$lincBrn1a_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-kantr_embryo_DE<-annotation(DEgenes)$gene_short_name
+lincBrn1a_embryo_DE<-annotation(DEgenes)$gene_short_name
 
 sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
 sigIsoforms<-getGenes(cuff,sigIso)
-kantr_embryo_iso<-annotation(sigIsoforms)$gene_short_name
+lincBrn1a_embryo_iso<-annotation(sigIsoforms)$gene_short_name
 
 sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
 sigCDSgenes<-getGenes(cuff,sigCDS)
-kantr_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
+lincBrn1a_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
 
 rm(sigCDSgenes)
 rm(sigIsoforms)
