@@ -164,7 +164,7 @@ Expression heatmap:
 There are 766 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jul 14 17:35:12 2014 -->
+<!-- Tue Jul 15 14:55:22 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> H19 </TD> </TR>
@@ -990,7 +990,7 @@ Per isoform difference between conditions:
 These isoforms are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jul 14 17:38:04 2014 -->
+<!-- Tue Jul 15 14:57:35 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> isoAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> H19 </TD> </TR>
@@ -1616,7 +1616,7 @@ log2 Foldchange and test statistic are calculated with the ratio of fpkm(KO)/fpk
 
 
 
-The pvalue for 4 genes significantly regulated in a region this size  is: 0.36 
+The pvalue for 4 genes significantly regulated in a region this size  is: 0.361 
 
 
 
@@ -1628,7 +1628,7 @@ The pvalue for 4 genes significantly regulated in a region this size  is: 0.36
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jul 14 18:05:50 2014 -->
+<!-- Tue Jul 15 15:23:55 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR762 </TD> </TR>
@@ -1641,7 +1641,7 @@ The pvalue for 4 genes significantly regulated in a region this size  is: 0.36
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Mon Jul 14 18:05:50 2014 -->
+<!-- Tue Jul 15 15:23:56 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR762/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 32218100.00 </TD> <TD align="right"> 33340200.00 </TD> <TD align="right"> 0.95 </TD> <TD align="right"> 1.00 </TD> </TR>

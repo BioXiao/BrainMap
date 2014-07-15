@@ -83,7 +83,7 @@ rm(DEgenes)
 
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 ### Crnde
 
@@ -129,7 +129,7 @@ rm(cuff)
 rm(DEgenes)
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 ### Eldr
 
@@ -187,7 +187,7 @@ rm(cuff)
 rm(DEgenes)
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 ### Haunt
 
@@ -230,7 +230,7 @@ rm(DEgenes)
 
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 ### Kantr (Jarid1C)
@@ -280,7 +280,7 @@ rm(DEgenes)
 
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 ### Brn1a
 3 isoforms expressed
@@ -325,7 +325,7 @@ rm(DEgenes)
 
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 ### Brn1b
@@ -371,7 +371,7 @@ rm(cuff)
 rm(DEgenes)
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 ### linc-Cox2
@@ -420,7 +420,7 @@ rm(cuff)
 rm(DEgenes)
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 ### linc-Enc1a
@@ -471,7 +471,7 @@ rm(cuff)
 rm(DEgenes)
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 ### Manr
@@ -520,7 +520,7 @@ rm(cuff)
 rm(DEgenes)
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 ### Peril
@@ -565,7 +565,7 @@ rm(cuff)
 rm(DEgenes)
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 
@@ -612,7 +612,7 @@ rm(cuff)
 rm(DEgenes)
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 ### Tug1
@@ -656,7 +656,7 @@ rm(cuff)
 rm(DEgenes)
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 # Embryonic Samples
@@ -708,7 +708,7 @@ rm(cuff)
 rm(DEgenes)
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 ### Crnde
@@ -760,7 +760,7 @@ rm(DEgenes)
 
 ```
 
-Number of differentially expressed genes:`r length(sig)` 
+ 
 
 ### Eldr
 
@@ -808,7 +808,7 @@ rm(cuff)
 rm(DEgenes)
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 ### Haunt
@@ -858,7 +858,7 @@ rm(DEgenes)
 
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 ### Kantr
@@ -907,7 +907,7 @@ rm(DEgenes)
 
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 ### Brn1a
 
@@ -999,7 +999,7 @@ rm(DEgenes)
 
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 ### linc-Cox2
 
@@ -1048,7 +1048,7 @@ rm(cuff)
 rm(DEgenes)
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 ### linc-Enc1a
@@ -1098,7 +1098,7 @@ rm(DEgenes)
 
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 ### Manr 
@@ -1147,7 +1147,7 @@ rm(cuff)
 rm(DEgenes)
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 ### Peril
 
@@ -1198,7 +1198,7 @@ rm(DEgenes)
 
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 ### Trp53cor1 (linc-p21)
@@ -1246,7 +1246,7 @@ rm(DEgenes)
 
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 ### Tug1
 
@@ -1293,7 +1293,7 @@ rm(DEgenes)
 
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 # SUMMARY
 

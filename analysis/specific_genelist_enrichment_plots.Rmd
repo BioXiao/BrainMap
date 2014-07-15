@@ -2,10 +2,7 @@ Specific Neuronal Subtype Enrichments
 ========================================================
 
 ```{r init, echo=FALSE}
-# Set knitr opts
 
-#path<-paste(filename,"/figure/",sep="")
-opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE,fig.height=4, fig.width=4,dev=c('png', 'pdf'))
 alpha<-0.05 
 
 analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
@@ -36,19 +33,198 @@ interneuron_gs<-GSA.read.gmt("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysi
 
 #sexdiffs_gs<-GSA.read.gmt("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/support/sexdiffs.gmt")
 
-setwd(analysisdir)
-deletionCoords<-read.table("mm10DeletionCoords.txt",sep="\t",header=TRUE,stringsAsFactors=FALSE)
-colnames(deletionCoords)<-c("gene_name","gene_region","deletionRegion")
+```
+
+```{r trial run}
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Celrr_vs_WT_Adult"
+cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
+
+strain<-"Celrr"
+
+```
+
+```{r set up marker analysis}
+library(gdata)
+markerfile<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/support/Markers.xlsx"
+sheetnames<-sheetNames(markerfile)
+neuronal_diff_markers<-read.xls(markerfile, sheet=sheetnames[1])
+
+neuralcelltype_markers<-read.xls(markerfile,sheet=sheetnames[3])
+
+cellcycle_markers<-read.xls(markerfile,sheet=sheetnames[4])
+cortical_markers<-read.xls(markerfile,sheet=sheetnames[2])
+
 ```
 
 
-```{r set up marker analysis}
+### Enrichment or depletion for stage-specific cell cycle markers 
 
-#library(xlxs)
-library(gdata)
-markerfile<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/support/Markers.xlsx"
+```{r cellcycle}
+
+cellcycle_genes<-getGenes(cuff,cellcycle_markers$gene_name)
+#cellcycle_genes_fpkm<-fpkmMatrix(cellcycle_genes)
+#cellcycle_genes_fpkm_logfc<-log2(cellcycle_genes_fpkm/cellcycle_genes_fpkm[["WT"]])
+annotation<-annotation(cellcycle_genes)
+diffDat<-diffData(cellcycle_genes)
+cellcycle<-merge(diffDat,annotation,by="gene_id")
+
+cellcycle.genes.levels<-cellcycle$gene_short_name[order(cellcycle$log2_fold_change,decreasing=T)]
+
+cellcycle<-merge(cellcycle,cellcycle_markers,by.x="gene_short_name",by.y="gene_name")
+cellcycle<-cellcycle[,!colnames(cellcycle) %in% c("p_value","q_value", "sample_1",  "sample_2",  "status",	"value_1",	"value_2","class_code","nearest_ref_id",	"locus",	"length",	"coverage","test_stat","gene_id")]
+
+limits=c(-2,2)
+cellcycle.melt<-melt(cellcycle)
+
+cellcycle.levels<-c("G1","S","G2","M","Checkpoint/Arrest","Regulation of Cell Cycle")
+
+cellcycle.melt$Stage<-factor(cellcycle.melt$Stage,levels=cellcycle.levels)
+
+cellcycle.melt$gene_short_name<-factor(cellcycle.melt$gene_short_name,levels=cellcycle.genes.levels)
 
 
 
 
+cellcycle.p<-ggplot(cellcycle.melt)+geom_tile(aes(x=variable,y=gene_short_name,fill=value))+facet_grid(Stage~.,space="free_y",scales="free")+theme_bw()+scale_fill_gradient2(low="blue",mid="white",high="red",limits=limits)
+
+cellcycple.p<-cellcycle.p+theme(axis.text.x=element_text(angle=-90,hjust=0))+guides(color=FALSE)
+
+
+cellcycle.p<-cellcycle.p+geom_tile(aes(x=variable,y=gene_short_name,color=significant),fill="#FFFFFF00",size=1)+scale_color_manual(values=c("#FFFFFF00","black"))+coord_equal(1)
+
+cellcycle.p
+
+#cellcycle_genes_fpkm_logfc$gene_id<-row.names(cellcycle_genes_fpkm_logfc)
+#cellcycle_genes_fpkm_logfc<-merge(cellcycle_genes_fpkm_logfc,annotation,by="gene_id")
+#colnames(cellcycle_genes_fpkm_logfc)[6]<-"gene_name"
+#cellcycle_genes_fpkm_logfc<-merge(cellcycle_genes_fpkm_logfc,cellcycle_markers,by="gene_name")
+#cellcycle_genes_fpkm_logfc<-merge(cellcycle_genes_fpkm_logfc,diffData(cellcycle_genes)[,c("gene_id","p_value")],by.x="gene_name",by.y="gene_id")
+
+
+rm(annotation)
+rm(diffDat)
+rm(cellcycle)
+rm(cellcycle_genes)
+
+```
+
+
+### Enrichment or depletion for markers of specific cortical layers
+
+```{r cortical layers}
+
+cortical_genes<-getGenes(cuff,cortical_markers$gene_name)
+annotation<-annotation(cortical_genes)
+diffDat<-diffData(cortical_genes)
+cortical<-merge(diffDat,annotation,by="gene_id")
+
+cortical.genes.levels<-cortical$gene_short_name[order(cortical$log2_fold_change,decreasing=T)]
+
+cortical<-merge(cortical,cortical_markers,by.x="gene_short_name",by.y="gene_name")
+cortical<-cortical[,!colnames(cortical) %in% c("p_value","q_value", "sample_1",  "sample_2",  "status",  "value_1",	"value_2","class_code","nearest_ref_id",	"locus",	"length",	"coverage","test_stat","gene_id")]
+
+limits=c(-2,2)
+cortical.melt<-melt(cortical)
+
+cortical.levels<-c("I","II/III","IV","Va","Vb","VI","SP")
+
+cortical.melt$Layer<-factor(cortical.melt$Layer,levels=cortical.levels)
+
+cortical.melt$gene_short_name<-factor(cortical.melt$gene_short_name,levels=cortical.genes.levels)
+
+
+
+
+cortical.p<-ggplot(cortical.melt)+geom_tile(aes(x=variable,y=gene_short_name,fill=value))+facet_grid(Layer~.,space="free_y",scales="free")+theme_bw()+scale_fill_gradient2(low="blue",mid="white",high="red",limits=limits)
+
+cortical.p<-cortical.p+theme(axis.text.x=element_text(angle=-90,hjust=0))+guides(color=FALSE)
+
+
+cortical.p<-cortical.p+geom_tile(aes(x=variable,y=gene_short_name,color=significant),fill="#FFFFFF00",size=1)+scale_color_manual(values=c("#FFFFFF00","black"))+coord_equal(1)
+
+cortical.p
+
+rm(annotation)
+rm(diffDat)
+rm(cortical)
+rm(cortical_genes)
+
+```
+
+
+### Enrichment or depletion for specific neural cell types 
+```{r neural cell types}
+
+neuralcell_genes<-getGenes(cuff,neuralcelltype_markers$gene_name)
+annotation<-annotation(neuralcell_genes)
+diffDat<-diffData(neuralcell_genes)
+neuralcelltype<-merge(diffDat,annotation,by="gene_id")
+
+neuralcelltype.genes.levels<-neuralcelltype$gene_short_name[order(neuralcelltype$log2_fold_change,decreasing=T)]
+
+neuralcelltype<-merge(neuralcelltype,neuralcelltype_markers,by.x="gene_short_name",by.y="gene_name")
+neuralcelltype<-neuralcelltype[,!colnames(neuralcelltype) %in% c("p_value","q_value", "sample_1",  "sample_2",  "status",  "value_1",  "value_2","class_code","nearest_ref_id",	"locus",	"length",	"coverage","test_stat","gene_id")]
+
+limits=c(-2,2)
+neuralcelltype.melt<-melt(neuralcelltype)
+
+neuralcelltype.levels<-c("Neuron","Glia","Oligo","Astrocyte","Microglia")
+
+neuralcelltype.melt$Cell_type<-factor(neuralcelltype$Cell_type,levels=neuralcelltype.levels)
+
+neuralcelltype.melt$gene_short_name<-factor(neuralcelltype.melt$gene_short_name,levels=neuralcelltype.genes.levels)
+
+
+
+
+neuralcelltype.p<-ggplot(neuralcelltype.melt)+geom_tile(aes(x=variable,y=gene_short_name,fill=value))+facet_grid(Cell_type~.,space="free_y",scales="free")+theme_bw()+scale_fill_gradient2(low="blue",mid="white",high="red",limits=limits)
+
+neuralcelltype.p<-neuralcelltype.p+theme(axis.text.x=element_text(angle=-90,hjust=0))+guides(color=FALSE)
+
+
+neuralcelltype.p<-neuralcelltype.p+geom_tile(aes(x=variable,y=gene_short_name,color=significant),fill="#FFFFFF00",size=1)+scale_color_manual(values=c("#FFFFFF00","black"))+coord_equal(1)
+
+neuralcelltype.p
+
+rm(annotation)
+rm(diffDat)
+rm(neuralcelltype)
+rm(neuralcell_genes)
+```
+
+
+
+### Enrichment or Depletion of neural differentiation markers 
+
+```{r neural diff markers}
+neural_diff_genes<-getGenes(cuff,neuronal_diff_markers$gene_name)
+annotation<-annotation(neural_diff_genes)
+diffDat<-diffData(neural_diff_genes)
+ndiff<-merge(diffDat,annotation,by="gene_id")
+
+ndiff.genes.levels<-ndiff$gene_short_name[order(ndiff$log2_fold_change,decreasing=T)]
+
+ndiff<-merge(ndiff,neuronal_diff_markers,by.x="gene_short_name",by.y="gene_name")
+ndiff<-ndiff[,!colnames(ndiff) %in% c("p_value","q_value", "sample_1",  "sample_2",  "status",  "value_1",  "value_2","class_code","nearest_ref_id",	"locus",	"length",	"coverage","test_stat","gene_id")]
+
+limits=c(-2,2)
+ndiff.melt<-melt(ndiff)
+
+ndiff.levels<-c("Progenitor markers","Dorsal and ventral progenitor markers ")
+
+ndiff.melt$Cell_type<-factor(ndiff.melt$Cell_type,levels=ndiff.levels)
+
+ndiff.melt$gene_short_name<-factor(ndiff.melt$gene_short_name,levels=ndiff.genes.levels)
+
+ndiff.p<-ggplot(ndiff.melt)+geom_tile(aes(x=variable,y=gene_short_name,fill=value))+facet_grid(Cell_type~.,space="free_y",scales="free")+theme_bw()+scale_fill_gradient2(low="blue",mid="white",high="red",limits=limits)
+
+ndiff.p<-ndiff.p+theme(axis.text.x=element_text(angle=-90,hjust=0))+guides(color=FALSE)
+
+ndiff.p<-ndiff.p+geom_tile(aes(x=variable,y=gene_short_name,color=significant),fill="#FFFFFF00",size=1)+scale_color_manual(values=c("#FFFFFF00","black"))+coord_equal(1)
+ndiff.p
+
+rm(annotation)
+rm(diffDat)
+rm(ndiff)
+rm(neural_diff_genes)
 ```
