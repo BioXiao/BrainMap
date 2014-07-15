@@ -74,3 +74,4 @@ The following objects are masked from ‘package:IRanges’:
 
 [1] 1
 [1] "Celrr"
+slurmstepd: error: *** JOB 13690759 CANCELLED AT 2014-07-15T18:52:58 ***

@@ -372,6 +372,30 @@ Interneuron zscore:
 ![plot of chunk gsea_zscore_interneuron](figure/gsea_zscore_interneuron.png) 
 
 
+Oncogene enrichment: 
+
+![plot of chunk gsea_enrich_onco](figure/gsea_enrich_onco.png) 
+
+Oncogene zscore:
+
+![plot of chunk gsea_zscore_onco](figure/gsea_zscore_onco.png) 
+
+Immuno enrichment:
+
+![plot of chunk gsea_enrich_immuno](figure/gsea_enrich_immuno.png) 
+
+Immuno zscore:
+
+![plot of chunk gsea_zscore_immuno](figure/gsea_zscore_immuno.png) 
+
+TF enrichment:
+
+![plot of chunk gsea_enrich_tf](figure/gsea_enrich_tf.png) 
+
+TF zscore:
+
+![plot of chunk gsea_zscore_tf](figure/gsea_zscore_tf.png) 
+
 
 ## GO enrichment 
 Cluster profiler used to call enichments of significantly differentially regulated genes that map to Entrez IDs. 
@@ -399,15 +423,7 @@ Cluster profiler used to call enichments of significantly differentially regulat
 
 
 ```
-## Request to BioMart web service failed. Verify if you are still connected to the internet.  Alternatively the BioMart web service is temporarily down.  Check http://www.biomart.org and verify if this website is available.
-```
-
-```
-## Error: XML content does not seem to be XML:
-```
-
-```
-## Error: object 'ensembl' not found
+## Error: object 'geneNames' not found
 ```
 
 ```
@@ -459,6 +475,30 @@ Cluster profiler used to call enichments of significantly differentially regulat
 ## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'pathway' not found
 ```
 
+
+
+
+
+### Enrichment or depletion for stage-specific cell cycle markers 
+
+![plot of chunk cellcycle](figure/cellcycle.png) 
+
+
+### Enrichment or depletion for markers of specific cortical layers
+
+![plot of chunk cortical layers](figure/cortical layers.png) 
+
+
+### Enrichment or depletion for specific neural cell types 
+![plot of chunk neural cell types](figure/neural cell types.png) 
+
+
+
+### Enrichment or Depletion of neural differentiation markers 
+
+![plot of chunk neural diff markers](figure/neural diff markers.png) 
+
+
 # Cis vs Trans (locally)
 
 log2 Foldchange and test statistic are calculated with the ratio of fpkm(KO)/fpkm(WT), thus the test_stat is positive if a gene is higher in the KO and negative if a gene has lower expression in the KO
@@ -477,7 +517,7 @@ The pvalue for 0 genes significantly regulated in a region this size  is: 1
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Tue Jul 15 15:38:03 2014 -->
+<!-- Tue Jul 15 19:16:50 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR753 </TD> </TR>
@@ -500,7 +540,7 @@ The pvalue for 0 genes significantly regulated in a region this size  is: 1
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Tue Jul 15 15:38:03 2014 -->
+<!-- Tue Jul 15 19:16:51 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR753/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 39331900.00 </TD> <TD align="right"> 31980100.00 </TD> <TD align="right"> 1.28 </TD> <TD align="right"> 1.00 </TD> </TR>
@@ -546,53 +586,54 @@ The pvalue for 0 genes significantly regulated in a region this size  is: 1
 ##  [4] BSgenome.Mmusculus.UCSC.mm10_1.3.19
 ##  [5] BSgenome_1.30.0                    
 ##  [6] Biostrings_2.30.1                  
-##  [7] org.Mm.eg.db_2.10.1                
-##  [8] clusterProfiler_1.13.1             
-##  [9] DOSE_2.0.0                         
-## [10] ReactomePA_1.6.1                   
-## [11] AnnotationDbi_1.24.0               
-## [12] Biobase_2.22.0                     
-## [13] mgcv_1.7-29                        
-## [14] nlme_3.1-117                       
-## [15] RMySQL_0.9-3                       
-## [16] RColorBrewer_1.0-5                 
-## [17] gridExtra_0.9.1                    
-## [18] gtable_0.1.2                       
-## [19] marray_1.40.0                      
-## [20] gplots_2.13.0                      
-## [21] GSA_1.03                           
-## [22] limma_3.18.13                      
-## [23] xtable_1.7-3                       
-## [24] cummeRbund_2.7.2                   
-## [25] Gviz_1.6.0                         
-## [26] rtracklayer_1.22.7                 
-## [27] GenomicRanges_1.14.4               
-## [28] XVector_0.2.0                      
-## [29] IRanges_1.20.7                     
-## [30] fastcluster_1.1.13                 
-## [31] reshape2_1.4                       
-## [32] ggplot2_1.0.0                      
-## [33] RSQLite_0.11.4                     
-## [34] DBI_0.2-7                          
-## [35] BiocGenerics_0.8.0                 
-## [36] knitr_1.6                          
+##  [7] gdata_2.13.3                       
+##  [8] org.Mm.eg.db_2.10.1                
+##  [9] clusterProfiler_1.13.1             
+## [10] DOSE_2.0.0                         
+## [11] ReactomePA_1.6.1                   
+## [12] AnnotationDbi_1.24.0               
+## [13] Biobase_2.22.0                     
+## [14] mgcv_1.7-29                        
+## [15] nlme_3.1-117                       
+## [16] RMySQL_0.9-3                       
+## [17] RColorBrewer_1.0-5                 
+## [18] gridExtra_0.9.1                    
+## [19] gtable_0.1.2                       
+## [20] marray_1.40.0                      
+## [21] gplots_2.13.0                      
+## [22] GSA_1.03                           
+## [23] limma_3.18.13                      
+## [24] xtable_1.7-3                       
+## [25] cummeRbund_2.7.2                   
+## [26] Gviz_1.6.0                         
+## [27] rtracklayer_1.22.7                 
+## [28] GenomicRanges_1.14.4               
+## [29] XVector_0.2.0                      
+## [30] IRanges_1.20.7                     
+## [31] fastcluster_1.1.13                 
+## [32] reshape2_1.4                       
+## [33] ggplot2_1.0.0                      
+## [34] RSQLite_0.11.4                     
+## [35] DBI_0.2-7                          
+## [36] BiocGenerics_0.8.0                 
+## [37] knitr_1.6                          
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] biomaRt_2.18.0         biovizBase_1.10.8      bitops_1.0-6          
 ##  [4] caTools_1.17           cluster_1.15.2         colorspace_1.2-4      
 ##  [7] dichromat_2.0-0        digest_0.6.4           DO.db_2.7             
 ## [10] evaluate_0.5.5         formatR_0.10           Formula_1.1-1         
-## [13] gdata_2.13.3           GenomicFeatures_1.14.5 GO.db_2.10.1          
-## [16] GOSemSim_1.20.3        graph_1.40.1           graphite_1.8.1        
-## [19] gtools_3.4.1           Hmisc_3.14-4           igraph_0.7.1          
-## [22] KEGG.db_2.10.1         KernSmooth_2.23-12     labeling_0.2          
-## [25] lattice_0.20-29        latticeExtra_0.6-26    MASS_7.3-33           
-## [28] Matrix_1.1-3           munsell_0.4.2          org.Hs.eg.db_2.10.1   
-## [31] proto_0.3-10           qvalue_1.36.0          Rcpp_0.11.2           
-## [34] RCurl_1.95-4.1         reactome.db_1.46.1     Rsamtools_1.14.3      
-## [37] scales_0.2.4           splines_3.0.2          stats4_3.0.2          
-## [40] survival_2.37-7        tcltk_3.0.2            tools_3.0.2           
-## [43] XML_3.98-1.1           zlibbioc_1.8.0
+## [13] GenomicFeatures_1.14.5 GO.db_2.10.1           GOSemSim_1.20.3       
+## [16] graph_1.40.1           graphite_1.8.1         gtools_3.4.1          
+## [19] Hmisc_3.14-4           igraph_0.7.1           KEGG.db_2.10.1        
+## [22] KernSmooth_2.23-12     labeling_0.2           lattice_0.20-29       
+## [25] latticeExtra_0.6-26    MASS_7.3-33            Matrix_1.1-3          
+## [28] munsell_0.4.2          org.Hs.eg.db_2.10.1    proto_0.3-10          
+## [31] qvalue_1.36.0          Rcpp_0.11.2            RCurl_1.95-4.1        
+## [34] reactome.db_1.46.1     Rsamtools_1.14.3       scales_0.2.4          
+## [37] splines_3.0.2          stats4_3.0.2           survival_2.37-7       
+## [40] tcltk_3.0.2            tools_3.0.2            XML_3.98-1.1          
+## [43] zlibbioc_1.8.0
 ```
 
 ## Run Info

@@ -117,7 +117,7 @@ dat<-read.csv("autoanalysisInfo.csv",header=TRUE,stringsAsFactors=FALSE)
 
 #regionData<-data.frame(regions)
 regionNames<-list()
-for (i in 1:25){
+for (i in 1:26){
   strain<-dat$strain[i]
   timepoint<-dat$timepoint[i]
   regionNames<-c(regionNames,paste(strain,timepoint,sep="_"))
