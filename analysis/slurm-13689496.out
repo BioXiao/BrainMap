@@ -198,3 +198,76 @@ Getting splicing information:
 Getting relCDS information:
 	distData
 Using tracking_id, rep_name as id variables
+No id variables; using all as measure variables
+Using tracking_id, sample_name as id variables
+Error in seq.default(range[1], range[2], length = n) : 
+  'from' cannot be NA, NaN or infinite
+In addition: Warning messages:
+1: Removed 5173 rows containing missing values (geom_point). 
+2: Removed 5168 rows containing missing values (geom_point). 
+Using tracking_id, rep_name as id variables
+No id variables; using all as measure variables
+Getting gene information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting isoforms information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting CDS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting TSS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting promoter information:
+	distData
+Getting splicing information:
+	distData
+Getting relCDS information:
+	distData
+Using tracking_id, rep_name as id variables
+No id variables; using all as measure variables
+Using tracking_id, rep_name as id variables
+No id variables; using all as measure variables
+Getting gene information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting isoforms information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting CDS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting TSS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting promoter information:
+	distData
+Getting splicing information:
+	distData
+Getting relCDS information:
+	distData
