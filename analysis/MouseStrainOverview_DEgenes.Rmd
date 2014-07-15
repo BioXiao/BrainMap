@@ -61,16 +61,6 @@ sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
 sigCDSgenes<-getGenes(cuff,sigCDS)
 celrr_adult_CDS<-annotation(sigCDSgenes)$gene_short_name
 
-rm(sigCDSgenes)
-rm(sigIsoforms)
-rm(sig)
-rm(sigCDS)
-rm(sigIso)
-rm(dir)
-rm(cuff)
-rm(DEgenes)
-
-
 strain<-"Celrr"
 
 LZ<-getGene(cuff,"LacZ")
@@ -80,6 +70,16 @@ linc_avg_fpkm<-fpkm(linc)[which(fpkm(linc)$sample_name=="WT"),3]
 actin<-getGene(cuff,"Actb")
 actin_fpkm<-fpkm(actin)[which(fpkm(actin)$sample_name==strain),3]
 linc_LZ_correlation$Celrr_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm,actin_fpkm)
+
+rm(sigCDSgenes)
+rm(sigIsoforms)
+rm(sig)
+rm(sigCDS)
+rm(sigIso)
+rm(dir)
+rm(cuff)
+rm(DEgenes)
+
 
 ```
 

@@ -644,7 +644,9 @@ Number of differentially expressed genes:`r length()`
 Range of number of differentially expressed genes:
 
 ```{r summary, results='asis'}
+
 print(xtable(summary(t(diffGeneSummary))), type="html")
+
 ```
 
 
@@ -668,11 +670,13 @@ fit<-lm(linc_LZ_correlation$LZ~ linc_LZ_correlation$EndogenousLinc)
 rsquared<-summary(fit)$r.squared
 
 
-#var(linc_LZ_correlation$LZ,linc_LZ_correlation$EndogenousLinc)
-cor(linc_LZ_correlation$LZ,linc_LZ_correlation$EndogenousLinc)
-#cov(linc_LZ_correlation$LZ,linc_LZ_correlation$EndogenousLinc)
+# var(linc_LZ_correlation$LZ,linc_LZ_correlation$EndogenousLinc)
 
-#+scale_x_log10(limits=c(-20,50))+scale_y_log10(limits=c(-20,30))
+cor(linc_LZ_correlation$LZ,linc_LZ_correlation$EndogenousLinc)
+
+# cov(linc_LZ_correlation$LZ,linc_LZ_correlation$EndogenousLinc)
+
+# +scale_x_log10(limits=c(-20,50))+scale_y_log10(limits=c(-20,30))
 
 ```
 
