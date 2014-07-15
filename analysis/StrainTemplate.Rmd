@@ -1159,7 +1159,7 @@ cortical_markers<-read.xls(markerfile,sheet=sheetnames[2])
 
 ### Enrichment or depletion for stage-specific cell cycle markers 
 
-```{r cellcycle}
+```{r cellcycle, fig.width=10, fig.height=12}
 
 cellcycle_genes<-getGenes(cuff,cellcycle_markers$gene_name)
 #cellcycle_genes_fpkm<-fpkmMatrix(cellcycle_genes)
@@ -1211,7 +1211,7 @@ rm(cellcycle_genes)
 
 ### Enrichment or depletion for markers of specific cortical layers
 
-```{r cortical layers}
+```{r cortical layers, fig.width=10, fig.height=12}
 
 cortical_genes<-getGenes(cuff,cortical_markers$gene_name)
 annotation<-annotation(cortical_genes)
@@ -1253,7 +1253,7 @@ rm(cortical_genes)
 
 
 ### Enrichment or depletion for specific neural cell types 
-```{r neural cell types}
+```{r neural cell types, fig.width=10, fig.height=12}
 
 neuralcell_genes<-getGenes(cuff,neuralcelltype_markers$gene_name)
 annotation<-annotation(neuralcell_genes)
@@ -1296,7 +1296,7 @@ rm(neuralcell_genes)
 
 ### Enrichment or Depletion of neural differentiation markers 
 
-```{r neural diff markers}
+```{r neural diff markers, fig.width=10, fig.height=12}
 neural_diff_genes<-getGenes(cuff,neuronal_diff_markers$gene_name)
 annotation<-annotation(neural_diff_genes)
 diffDat<-diffData(neural_diff_genes)
