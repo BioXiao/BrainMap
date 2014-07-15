@@ -13,110 +13,6 @@ setwd(paste(basedir, "analysis/Adult_full/", sep = ""))
 
 ```r
 library(cummeRbund)
-```
-
-```
-## Loading required package: BiocGenerics
-```
-
-```
-## Loading required package: parallel
-```
-
-```
-## Attaching package: 'BiocGenerics'
-```
-
-```
-## The following objects are masked from 'package:parallel':
-## 
-## clusterApply, clusterApplyLB, clusterCall, clusterEvalQ, clusterExport,
-## clusterMap, parApply, parCapply, parLapply, parLapplyLB, parRapply,
-## parSapply, parSapplyLB
-```
-
-```
-## The following object is masked from 'package:stats':
-## 
-## xtabs
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-## anyDuplicated, as.data.frame, cbind, colnames, duplicated, eval, Filter,
-## Find, get, intersect, lapply, Map, mapply, match, mget, order, paste,
-## pmax, pmax.int, pmin, pmin.int, Position, rank, rbind, Reduce, rep.int,
-## rownames, sapply, setdiff, sort, table, tapply, union, unique, unlist
-```
-
-```
-## Loading required package: RSQLite
-```
-
-```
-## Loading required package: DBI
-```
-
-```
-## Loading required package: ggplot2
-```
-
-```
-## Loading required package: reshape2
-```
-
-```
-## Loading required package: fastcluster
-```
-
-```
-## Attaching package: 'fastcluster'
-```
-
-```
-## The following object is masked from 'package:stats':
-## 
-## hclust
-```
-
-```
-## Loading required package: rtracklayer
-```
-
-```
-## Loading required package: GenomicRanges
-```
-
-```
-## Loading required package: IRanges
-```
-
-```
-## Loading required package: Gviz
-```
-
-```
-## Loading required package: grid
-```
-
-```
-## Attaching package: 'cummeRbund'
-```
-
-```
-## The following object is masked from 'package:GenomicRanges':
-## 
-## promoters
-```
-
-```
-## The following object is masked from 'package:IRanges':
-## 
-## promoters
-```
-
-```r
 library(ggplot2)
 library(stringr)
 library(reshape2)
@@ -199,91 +95,89 @@ replicates(cuff)
 ## 20 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR743/abundances.cxb
 ## 21 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR786/abundances.cxb
 ## 22 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR805/abundances.cxb
-## 23 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR828/abundances.cxb
-## 24 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR745/abundances.cxb
-## 25 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR807/abundances.cxb
-## 26 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR729/abundances.cxb
-## 27 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR728/abundances.cxb
-## 28 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR796/abundances.cxb
-## 29 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR797/abundances.cxb
-## 30 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR740/abundances.cxb
-## 31 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR800/abundances.cxb
-## 32 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR827/abundances.cxb
-## 33 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR778/abundances.cxb
-## 34 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR734/abundances.cxb
-## 35 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR802/abundances.cxb
-## 36 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR803/abundances.cxb
-## 37 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR735/abundances.cxb
-## 38 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR785/abundances.cxb
-## 39 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR824/abundances.cxb
-## 40 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR820/abundances.cxb
-## 41 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR821/abundances.cxb
-## 42 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR781/abundances.cxb
-## 43 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR730/abundances.cxb
-## 44 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR837/abundances.cxb
-## 45 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR731/abundances.cxb
-## 46 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR835/abundances.cxb
-## 47 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR836/abundances.cxb
-## 48 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR732/abundances.cxb
-## 49 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR776/abundances.cxb
-## 50 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR798/abundances.cxb
-## 51 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR736/abundances.cxb
-## 52 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR779/abundances.cxb
-## 53 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR825/abundances.cxb
+## 23 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR745/abundances.cxb
+## 24 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR807/abundances.cxb
+## 25 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR729/abundances.cxb
+## 26 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR728/abundances.cxb
+## 27 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR796/abundances.cxb
+## 28 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR797/abundances.cxb
+## 29 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR740/abundances.cxb
+## 30 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR800/abundances.cxb
+## 31 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR827/abundances.cxb
+## 32 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR778/abundances.cxb
+## 33 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR734/abundances.cxb
+## 34 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR802/abundances.cxb
+## 35 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR803/abundances.cxb
+## 36 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR735/abundances.cxb
+## 37 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR785/abundances.cxb
+## 38 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR824/abundances.cxb
+## 39 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR820/abundances.cxb
+## 40 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR821/abundances.cxb
+## 41 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR781/abundances.cxb
+## 42 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR730/abundances.cxb
+## 43 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR837/abundances.cxb
+## 44 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR731/abundances.cxb
+## 45 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR835/abundances.cxb
+## 46 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR836/abundances.cxb
+## 47 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR732/abundances.cxb
+## 48 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR776/abundances.cxb
+## 49 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR798/abundances.cxb
+## 50 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR736/abundances.cxb
+## 51 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR779/abundances.cxb
+## 52 /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR825/abundances.cxb
 ##    sample_name replicate     rep_name total_mass norm_mass internal_scale
-## 1        Celrr         0      Celrr_0   23325900  35128500         0.6659
-## 2        Celrr         1      Celrr_1   37161800  35128500         1.0607
-## 3        Celrr         2      Celrr_2   39715300  35128500         1.1135
-## 4        Crnde         0      Crnde_0   37686800  35128500         1.0760
-## 5        Crnde         1      Crnde_1   37652200  35128500         1.0681
-## 6         Eldr         0       Eldr_0   36453400  35128500         1.0232
-## 7         Eldr         1       Eldr_1   42739700  35128500         1.2180
-## 8        Haunt         0      Haunt_0   26084100  35128500         0.7458
-## 9        Haunt         1      Haunt_1   43523200  35128500         1.2458
-## 10       Haunt         2      Haunt_2   33775800  35128500         0.9639
-## 11       Kantr         0      Kantr_0   35615300  35128500         1.0057
-## 12       Kantr         1      Kantr_1   32408700  35128500         0.9202
-## 13       Kantr         2      Kantr_2   33428000  35128500         0.9505
-## 14        Manr         0       Manr_0   40782700  35128500         1.1612
-## 15        Manr         1       Manr_1   40835900  35128500         1.1760
-## 16        Manr         2       Manr_2   34495500  35128500         0.9569
-## 17       Peril         0      Peril_0   40528700  35128500         1.1532
-## 18       Peril         1      Peril_1   38767500  35128500         1.1178
-## 19       Peril         2      Peril_2   33329500  35128500         0.9563
-## 20    Trp53cor         0   Trp53cor_0   32358500  35128500         0.9245
-## 21    Trp53cor         1   Trp53cor_1   38185400  35128500         1.0833
-## 22    Trp53cor         2   Trp53cor_2   41355100  35128500         1.1724
-## 23        Tug1         0       Tug1_0   38774800  35128500         1.1086
-## 24        Tug1         1       Tug1_1   38091200  35128500         1.0866
-## 25        Tug1         2       Tug1_2   29979900  35128500         0.8502
-## 26          WT         0         WT_0   26334400  35128500         0.7492
-## 27          WT         1         WT_1   20329200  35128500         0.5773
-## 28          WT         2         WT_2   34089000  35128500         0.9670
-## 29          WT         3         WT_3   28103300  35128500         0.7903
-## 30          WT         4         WT_4   35808200  35128500         1.0213
-## 31          WT         5         WT_5   37012200  35128500         1.0552
-## 32          WT         6         WT_6   27786600  35128500         0.7952
-## 33          WT         7         WT_7   39541900  35128500         1.1399
-## 34          WT         8         WT_8   34480600  35128500         0.9958
-## 35          WT         9         WT_9   45467400  35128500         1.2808
-## 36          WT        10        WT_10   52130400  35128500         1.4851
-## 37          WT        11        WT_11   34994400  35128500         1.0008
-## 38          WT        12        WT_12   34173600  35128500         0.9589
-## 39          WT        13        WT_13   34306900  35128500         0.9907
-## 40          WT        14        WT_14   36256500  35128500         1.0387
-## 41          WT        15        WT_15   45848800  35128500         1.3209
-## 42          WT        16        WT_16   41538900  35128500         1.1899
-## 43  linc_Brn1a         0 linc_Brn1a_0   24947000  35128500         0.7140
-## 44  linc_Brn1a         1 linc_Brn1a_1   38529800  35128500         1.1132
-## 45  linc_Brn1b         0 linc_Brn1b_0   24288100  35128500         0.6913
-## 46  linc_Brn1b         1 linc_Brn1b_1   44561200  35128500         1.2741
-## 47  linc_Brn1b         2 linc_Brn1b_2   43675800  35128500         1.2495
-## 48   linc_Cox2         0  linc_Cox2_0   27439100  35128500         0.7833
-## 49   linc_Cox2         1  linc_Cox2_1   39517800  35128500         1.1039
-## 50   linc_Cox2         2  linc_Cox2_2   35636800  35128500         0.9997
-## 51   linc_Enc1         0  linc_Enc1_0   30101500  35128500         0.8553
-## 52   linc_Enc1         1  linc_Enc1_1   38936900  35128500         1.1095
-## 53   linc_Enc1         2  linc_Enc1_2   33174000  35128500         0.9309
+## 1        Celrr         0      Celrr_0   23325900  35062900         0.6671
+## 2        Celrr         1      Celrr_1   37161800  35062900         1.0628
+## 3        Celrr         2      Celrr_2   39715300  35062900         1.1157
+## 4        Crnde         0      Crnde_0   37686800  35062900         1.0782
+## 5        Crnde         1      Crnde_1   37652200  35062900         1.0700
+## 6         Eldr         0       Eldr_0   36453400  35062900         1.0253
+## 7         Eldr         1       Eldr_1   42739700  35062900         1.2205
+## 8        Haunt         0      Haunt_0   26084100  35062900         0.7473
+## 9        Haunt         1      Haunt_1   43523200  35062900         1.2486
+## 10       Haunt         2      Haunt_2   33775800  35062900         0.9660
+## 11       Kantr         0      Kantr_0   35615300  35062900         1.0078
+## 12       Kantr         1      Kantr_1   32408700  35062900         0.9218
+## 13       Kantr         2      Kantr_2   33428000  35062900         0.9522
+## 14        Manr         0       Manr_0   40782700  35062900         1.1635
+## 15        Manr         1       Manr_1   40835900  35062900         1.1785
+## 16        Manr         2       Manr_2   34495500  35062900         0.9590
+## 17       Peril         0      Peril_0   40528700  35062900         1.1555
+## 18       Peril         1      Peril_1   38767500  35062900         1.1200
+## 19       Peril         2      Peril_2   33329500  35062900         0.9582
+## 20    Trp53cor         0   Trp53cor_0   32358500  35062900         0.9265
+## 21    Trp53cor         1   Trp53cor_1   38185400  35062900         1.0853
+## 22    Trp53cor         2   Trp53cor_2   41355100  35062900         1.1746
+## 23        Tug1         0       Tug1_0   38091200  35062900         1.0886
+## 24        Tug1         1       Tug1_1   29979900  35062900         0.8518
+## 25          WT         0         WT_0   26334400  35062900         0.7505
+## 26          WT         1         WT_1   20329200  35062900         0.5785
+## 27          WT         2         WT_2   34089000  35062900         0.9689
+## 28          WT         3         WT_3   28103300  35062900         0.7921
+## 29          WT         4         WT_4   35808200  35062900         1.0233
+## 30          WT         5         WT_5   37012200  35062900         1.0574
+## 31          WT         6         WT_6   27786600  35062900         0.7966
+## 32          WT         7         WT_7   39541900  35062900         1.1420
+## 33          WT         8         WT_8   34480600  35062900         0.9977
+## 34          WT         9         WT_9   45467400  35062900         1.2834
+## 35          WT        10        WT_10   52130400  35062900         1.4882
+## 36          WT        11        WT_11   34994400  35062900         1.0026
+## 37          WT        12        WT_12   34173600  35062900         0.9608
+## 38          WT        13        WT_13   34306900  35062900         0.9927
+## 39          WT        14        WT_14   36256500  35062900         1.0407
+## 40          WT        15        WT_15   45848800  35062900         1.3234
+## 41          WT        16        WT_16   41538900  35062900         1.1918
+## 42  linc_Brn1a         0 linc_Brn1a_0   24947000  35062900         0.7154
+## 43  linc_Brn1a         1 linc_Brn1a_1   38529800  35062900         1.1155
+## 44  linc_Brn1b         0 linc_Brn1b_0   24288100  35062900         0.6926
+## 45  linc_Brn1b         1 linc_Brn1b_1   44561200  35062900         1.2765
+## 46  linc_Brn1b         2 linc_Brn1b_2   43675800  35062900         1.2519
+## 47   linc_Cox2         0  linc_Cox2_0   27439100  35062900         0.7850
+## 48   linc_Cox2         1  linc_Cox2_1   39517800  35062900         1.1061
+## 49   linc_Cox2         2  linc_Cox2_2   35636800  35062900         1.0017
+## 50   linc_Enc1         0  linc_Enc1_0   30101500  35062900         0.8569
+## 51   linc_Enc1         1  linc_Enc1_1   38936900  35062900         1.1113
+## 52   linc_Enc1         2  linc_Enc1_2   33174000  35062900         0.9326
 ##    external_scale
 ## 1               1
 ## 2               1
@@ -337,7 +231,6 @@ replicates(cuff)
 ## 50              1
 ## 51              1
 ## 52              1
-## 53              1
 ```
 
 
@@ -556,8 +449,53 @@ fpkms$gene <- str_split_fixed(fpkms$gene_id, "\\|", 2)[, 1]
 
 ## Guilt-by-association on FC values
 
+# Figures
 
-## Session Info
+## Figure 1
+
+```r
+pdf("sigMatrix.pdf", width = 6, height = 3)
+sigMatrix(cuff, level = "genes") + scale_fill_gradient(limits = c(0, 300), low = "white", 
+    high = "darkgreen")
+```
+
+```
+## Scale for 'fill' is already present. Adding another scale for 'fill',
+## which will replace the existing scale.
+```
+
+```r
+sigMatrix(cuff, level = "isoforms") + scale_fill_gradient(limits = c(0, 300), 
+    low = "white", high = "darkred")
+```
+
+```
+## Scale for 'fill' is already present. Adding another scale for 'fill',
+## which will replace the existing scale.
+```
+
+```r
+sigMatrix(cuff, level = "CDS") + scale_fill_gradient(limits = c(0, 300), low = "white", 
+    high = "purple")
+```
+
+```
+## Scale for 'fill' is already present. Adding another scale for 'fill',
+## which will replace the existing scale.
+```
+
+```r
+dev.off()
+```
+
+```
+## pdf 
+##   2
+```
+
+
+
+ ## Session Info
 
 ```r
 sessionInfo()
@@ -580,11 +518,11 @@ sessionInfo()
 ## [8] methods   base     
 ## 
 ## other attached packages:
-##  [1] mgcv_1.7-22          stringr_0.6.2        cummeRbund_2.7.3    
-##  [4] Gviz_1.4.1           rtracklayer_1.20.1   GenomicRanges_1.12.2
-##  [7] IRanges_1.18.0       fastcluster_1.1.9    reshape2_1.2.2      
-## [10] ggplot2_0.9.3.1      RSQLite_0.11.3       DBI_0.2-6           
-## [13] BiocGenerics_0.6.0   knitr_1.2            colorout_1.0-2      
+##  [1] mgcv_1.7-22          stringr_0.6.2        knitr_1.2           
+##  [4] cummeRbund_2.7.3     Gviz_1.4.1           rtracklayer_1.20.1  
+##  [7] GenomicRanges_1.12.2 IRanges_1.18.0       fastcluster_1.1.9   
+## [10] reshape2_1.2.2       ggplot2_0.9.3.1      RSQLite_0.11.3      
+## [13] DBI_0.2-6            BiocGenerics_0.6.0   colorout_1.0-2      
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] AnnotationDbi_1.22.3   Biobase_2.20.0         biomaRt_2.16.0        
