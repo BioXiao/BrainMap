@@ -979,7 +979,7 @@ Oncogene enrichment:
 ```{r gsea_enrich_onco, fig.width=10, fig.height=12}
 InputCols<-maPalette(low="white",high="red",k=100)
 
-x<-(-log10(t(interneuron_pvl_corrected[,which(colMins(interneuron_pvl_corrected) < 0.001)])))
+x<-(-log10(t(oncogene_pvl_corrected[,which(colMins(oncogene_pvl_corrected) < 0.001)])))
 x_ordered<-x[order(x[,1], decreasing=TRUE),]
 if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
 noinfinities_x<-x_ordered[which(x_ordered !="Inf")]
@@ -996,6 +996,17 @@ Oncogene zscore:
 
 ```{r gsea_zscore_onco, fig.width=10, fig.height=12}
 
+x<-oncogene_zscores[which(colMins(oncogene_pvl_corrected) < 0.001),]
+
+x_ordered<-x[order(x[,1], decreasing=TRUE),]
+
+if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
+x_ordered<-as.matrix(x_ordered)
+
+if(dim(x_ordered)[1]>1){
+heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = 1, offsetRow=0)
+}else{print("Not enough significant categories to print a heatmap!")}
+
 ```
 
 Immuno enrichment:
@@ -1004,7 +1015,7 @@ Immuno enrichment:
 
 InputCols<-maPalette(low="white",high="red",k=100)
 
-x<-(-log10(t(interneuron_pvl_corrected[,which(colMins(interneuron_pvl_corrected) < 0.001)])))
+x<-(-log10(t(immuno_pvl_corrected[,which(colMins(immuno_pvl_corrected) < 0.001)])))
 x_ordered<-x[order(x[,1], decreasing=TRUE),]
 if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
 noinfinities_x<-x_ordered[which(x_ordered !="Inf")]
@@ -1020,7 +1031,16 @@ if(dim(x_ordered)[1]>1){
 Immuno zscore:
 
 ```{r gsea_zscore_immuno, fig.width=10, fig.height=12}
+x<-immuno_zscores[which(colMins(immuno_pvl_corrected) < 0.001),]
 
+x_ordered<-x[order(x[,1], decreasing=TRUE),]
+
+if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
+x_ordered<-as.matrix(x_ordered)
+
+if(dim(x_ordered)[1]>1){
+heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = 1, offsetRow=0)
+}else{print("Not enough significant categories to print a heatmap!")}
 
 ```
 
@@ -1030,7 +1050,7 @@ TF enrichment:
 
 InputCols<-maPalette(low="white",high="red",k=100)
 
-x<-(-log10(t(interneuron_pvl_corrected[,which(colMins(interneuron_pvl_corrected) < 0.001)])))
+x<-(-log10(t(tf_pvl_corrected[,which(colMins(tf_pvl_corrected) < 0.001)])))
 x_ordered<-x[order(x[,1], decreasing=TRUE),]
 if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
 noinfinities_x<-x_ordered[which(x_ordered !="Inf")]
@@ -1046,7 +1066,16 @@ if(dim(x_ordered)[1]>1){
 TF zscore:
 
 ```{r gsea_zscore_tf, fig.width=10, fig.height=12}
+x<-tf_zscores[which(colMins(tf_pvl_corrected) < 0.001),]
 
+x_ordered<-x[order(x[,1], decreasing=TRUE),]
+
+if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
+x_ordered<-as.matrix(x_ordered)
+
+if(dim(x_ordered)[1]>1){
+heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = 1, offsetRow=0)
+}else{print("Not enough significant categories to print a heatmap!")}
 
 ```
 
