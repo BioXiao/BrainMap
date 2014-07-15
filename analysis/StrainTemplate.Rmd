@@ -54,7 +54,7 @@ colnames(deletionCoords)<-c("gene_name","gene_region","deletionRegion")
 
 ```{r cummeRbund_and_data_setup, echo=FALSE}
 #setwd(dir)
-cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome=genome)
+cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome=genome,rebuild=T)
 reps<-replicates(cuff)
 files<-lapply(reps$file,function(x){strsplit(x, "/")})
 
@@ -970,15 +970,15 @@ pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T
 ```
 
 ```{r GO_figures,  fig.height=5, fig.width=8}
-plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched BP")+theme_bw()
+plot(goBP,showCategory=20) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched BP")+theme_bw()
 
-plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched MF")+theme_bw()
+plot(goMF,showCategory=20) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched MF")+theme_bw()
 
-plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched CC")+theme_bw()
+plot(goCC,showCategory=20) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched CC")+theme_bw()
 
-plot(kegg, showCategory=10) + ggtitle("Kegg Pathways")+theme_bw()
+plot(kegg, showCategory=20) + ggtitle("Kegg Pathways")+theme_bw()
 
-plot(pathway,showCategory=10) + ggtitle("Reactome pathway enrichment")+theme_bw()
+plot(pathway,showCategory=20) + ggtitle("Reactome pathway enrichment")+theme_bw()
 detach("package:biomaRt")
 ```
 

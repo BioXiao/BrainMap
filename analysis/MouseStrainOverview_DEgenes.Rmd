@@ -1331,11 +1331,13 @@ colnames(d)<-c("DEgenes")
 ggplot(d, aes(fill=DEgenes))+geom_tile(color='white')
 #MAKE THIS WORK >:( >:(
 
+
+write.csv(linc_LZ_correlation,"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/linc_lz_correlation.csv")
+
 ```
 
-```{r lacZ_correlation}
-
-#write.csv(linc_LZ_correlation,"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/linc_lz_correlation.csv")
+```{r lacZ_correlation, eval=FALSE}
+write.csv(linc_LZ_correlation,"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/linc_lz_correlation.csv")
 dat<-read.csv("linc_lz_correlation.csv",header=TRUE)
 rownames<-dat$X
 rownames(dat)<-rownames
@@ -1351,6 +1353,16 @@ linc_LZ_correlation$timepoint<-timepoint
 linc_LZ_correlation$name<-name
 
 lzlinc_fit<-lm(linc_LZ_correlation$LZ~ linc_LZ_correlation$EndogenousLinc)
+
+emb<-subset(linc_LZ_correlation,timepoint=="Embryonic")
+emb.lzlinc_fit<-lm(emb$LZ~ emb$EndogenousLinc)
+summary(emb.lzlinc_fit)$r.squared
+
+adult<-subset(linc_LZ_correlation,timepoint=="Adult")
+adult.lzlinc_fit<-lm(adult$LZ~ adult$EndogenousLinc)
+summary(adult.lzlinc_fit)$r.squared
+
+
 lzlinc_rsquared<-summary(lzlinc_fit)$r.squared
 lzlinc_rsquared
 lzlinc_fit$coefficients
@@ -1533,7 +1545,4 @@ intersectSeveral <- function(...) { reduce(intersect, list(...)) }
 #intersectSeveral(DE_lists) 
 Reduce(intersect,DE_lists)
 ```
-
-
-
 

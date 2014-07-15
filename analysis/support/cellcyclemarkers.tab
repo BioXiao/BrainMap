@@ -1,0 +1,132 @@
+gene_name	Stage
+Anapc2	G1
+Ccnd1	G1
+Ccne1	G1
+Cdc34	G1
+Cdk4	G1
+Cdk6	G1
+Cdkn1b	G1
+Cdkn3	G1
+Cul1	G1
+Cul2	G1
+Cul3	G1
+Skp2	G1
+Abl1	S
+Mcm2	S
+Mcm3	S
+Mcm4	S
+Mcm5	S
+Pcna	S
+Rpa3	S
+Sumo1	S
+Uba1	S
+Anapc2	G2
+Anapc4	G2
+Diras3	G2
+Bccip	G2
+Birc5	G2
+Ccnb1	G2
+Ccng1	G2
+Ccnh	G2
+Ccnt1	G2
+Ccnt2	G2
+Cdk5r1	G2
+Cdk5rap1	G2
+Cdk7	G2
+Cdkn3	G2
+Cks1b	G2
+Cks2	G2
+Ddx11	G2
+Dnm2	G2
+Gtf2h1	G2
+Gtse1	G2
+Herc5	G2
+Kpna2	G2
+Mnat1	G2
+Sertad1	G2
+Ccnb2	M
+Ccnf	M
+Cdk1	M
+Cdc16	M
+Cdc20	M
+Mre11a	M
+Rad51	M
+Atm	Checkpoint/Arrest
+Atr	Checkpoint/Arrest
+Brca1	Checkpoint/Arrest
+Brca2	Checkpoint/Arrest
+Ccng2	Checkpoint/Arrest
+Cdc2	Checkpoint/Arrest
+Cdc34	Checkpoint/Arrest
+Cdk2	Checkpoint/Arrest
+Cdkn1a	Checkpoint/Arrest
+Cdkn1b	Checkpoint/Arrest
+Cdknsa	Checkpoint/Arrest
+Cdkn2b	Checkpoint/Arrest
+Cdkn3	Checkpoint/Arrest
+Chek1	Checkpoint/Arrest
+Chek2	Checkpoint/Arrest
+Cul1	Checkpoint/Arrest
+Cul2	Checkpoint/Arrest
+Cul3	Checkpoint/Arrest
+Gadd45a	Checkpoint/Arrest
+Hus1	Checkpoint/Arrest
+Kntc1	Checkpoint/Arrest
+Mad2l1	Checkpoint/Arrest
+Mad2l2	Checkpoint/Arrest
+Nbn	Checkpoint/Arrest
+Rad1	Checkpoint/Arrest
+Rad17	Checkpoint/Arrest
+Rad9a	Checkpoint/Arrest
+Rb1	Checkpoint/Arrest
+Rbbp8	Checkpoint/Arrest
+Tp53	Checkpoint/Arrest
+Abl1	Regulation of Cell Cycle
+Anapc2	Regulation of Cell Cycle
+Anapc4	Regulation of Cell Cycle
+Diras3	Regulation of Cell Cycle
+Atm	Regulation of Cell Cycle
+Atr	Regulation of Cell Cycle
+Bccip	Regulation of Cell Cycle
+Bcl2	Regulation of Cell Cycle
+Brca2	Regulation of Cell Cycle
+Ccnb1	Regulation of Cell Cycle
+Ccnb2	Regulation of Cell Cycle
+Ccnc	Regulation of Cell Cycle
+Ccnd1	Regulation of Cell Cycle
+Ccnd2	Regulation of Cell Cycle
+Ccne1	Regulation of Cell Cycle
+Ccnf	Regulation of Cell Cycle
+Ccnh	Regulation of Cell Cycle
+Ccnt1	Regulation of Cell Cycle
+Ccnt2	Regulation of Cell Cycle
+Cdc16	Regulation of Cell Cycle
+Cdc2	Regulation of Cell Cycle
+Cdc20	Regulation of Cell Cycle
+Cdk2	Regulation of Cell Cycle
+Cdk4	Regulation of Cell Cycle
+Cdk5r1	Regulation of Cell Cycle
+Cdk6	Regulation of Cell Cycle
+Cdk7	Regulation of Cell Cycle
+Cdk8	Regulation of Cell Cycle
+Cdkn1a	Regulation of Cell Cycle
+Cdkn1b	Regulation of Cell Cycle
+Cks1b	Regulation of Cell Cycle
+Ddx11	Regulation of Cell Cycle
+E2f4	Regulation of Cell Cycle
+Gadd45a	Regulation of Cell Cycle
+Kntc1	Regulation of Cell Cycle
+Mki67	Regulation of Cell Cycle
+Pcna	Regulation of Cell Cycle
+Rad9a	Regulation of Cell Cycle
+Rb1	Regulation of Cell Cycle
+Skp2	Regulation of Cell Cycle
+Tfdp1	Regulation of Cell Cycle
+Tfdp2	Regulation of Cell Cycle
+Atm	Negative Regulation of Cell Cycle
+Bax	Negative Regulation of Cell Cycle
+Brca1	Negative Regulation of Cell Cycle
+Cdkn2b	Negative Regulation of Cell Cycle
+Rbl1	Negative Regulation of Cell Cycle
+Rbl2	Negative Regulation of Cell Cycle
+Tp53	Negative Regulation of Cell Cycle
