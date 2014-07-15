@@ -451,8 +451,19 @@ Number of differentially expressed genes:`r length()`
 
 ### Brn1a
 ```{r brn1a}
-diffGeneSummary$lincBrn1a_vs_WT_Embryonic<-NULL
-linc_LZ_correlation$lincBrn1a_Embryonic<-NULL
+#diffGeneSummary$lincBrn1a_vs_WT_Embryonic<-NULL
+#linc_LZ_correlation$lincBrn1a_Embryonic<-NULL
+
+strain<-"linc_Brn1a"
+LZ<-getGene(cuff,"LacZ")
+LZ_avg_fpkm<-fpkm(LZ)[which(fpkm(LZ)$sample_name==strain),3] 
+linc<-getGene(cuff,"linc-Brn1a")
+linc_avg_fpkm<-fpkm(linc)[which(fpkm(linc)$sample_name=="WT"),3]
+#actin<-getGene(cuff,"Actb")
+#actin_fpkm<-fpkm(actin)[which(fpkm(actin)$sample_name==strain),3]
+linc_LZ_correlation$lincBrn1a_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm)
+
+
 ```
 
 ### Brn1b 
