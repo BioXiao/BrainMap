@@ -1357,18 +1357,18 @@ lzlinc_fit$coefficients
 lzlinc_euclideandistance<-sqrt(sum((linc_LZ_correlation$LZ-linc_LZ_correlation$EndogenousLinc)^2))
 lzlinc_euclideandistance
   
-lzactin_fit<-lm(linc_LZ_correlation$LZ~linc_LZ_correlation$ActinInKOs)
-lzactin_rsquared<-summary(lzactin_fit)$r.squared
-lzactin_rsquared
-lzactin_fit$coefficients
-lzactin_euclideandistance<-sqrt(sum((linc_LZ_correlation$LZ-linc_LZ_correlation$ActinInKOs)^2))
-lzactin_euclideandistance
+#lzactin_fit<-lm(linc_LZ_correlation$LZ~linc_LZ_correlation$ActinInKOs)
+#lzactin_rsquared<-summary(lzactin_fit)$r.squared
+#lzactin_rsquared
+#lzactin_fit$coefficients
+#lzactin_euclideandistance<-sqrt(sum((linc_LZ_correlation$LZ-linc_LZ_correlation$ActinInKOs)^2))
+#lzactin_euclideandistance
 
 #linc_LZ<-ggplot(linc_LZ_correlation, aes(EndogenousLinc,LZ,color=timepoint))+geom_point()+geom_text(aes(label=name))+xlab("Endogenous lincRNA expression log10(FPKM)")+ylab("LacZ expression log10(FPKM)")+scale_x_log10(limits=c(-10,80))+scale_y_log10(limits=c(-10,40))+geom_smooth(aes(EndogenousLinc,LZ),method="lm")+geom_abline(intercept=0,slope=1)
 
 
 
-ggplot(linc_LZ_correlation, aes(EndogenousLinc,LZ))+geom_point()+geom_text(aes(label=name))+xlab("Endogenous lincRNA expression (FPKM)")+ylab("LacZ expression (FPKM)")+geom_abline(intercept=0,slope=1)+scale_x_log10(limits=c(-10,80))+scale_y_log10(limits=c(-10,40))+theme_bw()+facet_grid(.~timepoint)
+ggplot(linc_LZ_correlation, aes(EndogenousLinc,LZ))+geom_point()+geom_text(aes(label=name))+xlab("Endogenous lincRNA expression (FPKM)")+ylab("LacZ expression (FPKM)")+geom_abline(intercept=0,slope=1)+scale_x_log10(limits=c(-10,200))+scale_y_log10(limits=c(-10,100))+theme_bw()+facet_grid(.~timepoint)
 
 #+coord_trans(x="log10",y="log10")
 #+geom_smooth(method="lm",se=FALSE)
