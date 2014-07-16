@@ -39,6 +39,11 @@ linc_LZ_correlation<-data.frame(matrix(ncol=length(names),nrow=3))
 colnames(linc_LZ_correlation)=names
 rownames(linc_LZ_correlation)=c("LZ", "EndogenousLinc","ActinInKOs")
 
+DE_genes_list<-list()
+DE_iso_list<-list()
+DE_cds_list<-list()
+
+
 ```
 
 # ADULT KNOCKOUT STRAINS 
@@ -69,7 +74,24 @@ linc<-getGene(cuff,"Celrr")
 linc_avg_fpkm<-fpkm(linc)[which(fpkm(linc)$sample_name=="WT"),3] 
 actin<-getGene(cuff,"Actb")
 actin_fpkm<-fpkm(actin)[which(fpkm(actin)$sample_name==strain),3]
-linc_LZ_correlation$Celrr_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm,actin_fpkm)
+linc_LZ_correlation$Celrr_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm,actin_fpkm) 
+
+i<-length(DE_genes_list)+1
+DE_genes_list[[i]]<-celrr_adult_DE
+names(DE_genes_list)[i]<-"celrr_adult_DE"
+
+i<-length(DE_iso_list)+1
+DE_iso_list[[i]]<-celrr_adult_iso
+names(DE_iso_list)[i]<-"celrr_adult_iso"
+
+i<-length(DE_cds_list)+1
+DE_cds_list[[i]]<-celrr_adult_CDS
+names(DE_cds_list)[i]<-"celrr_adult_CDS"
+
+
+save(file="DEgenes_list.Rdata",DE_genes_list) 
+save(file="DEiso_list.Rdata",DE_iso_list) 
+save(file="DEcds_list.Rdata",DE_cds_list)
 
 rm(sigCDSgenes)
 rm(sigIsoforms)
@@ -83,7 +105,7 @@ rm(DEgenes)
 
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 ### Crnde
 
@@ -109,6 +131,23 @@ sigCDSgenes<-getGenes(cuff,sigCDS)
 crnde_adult_CDS<-annotation(sigCDSgenes)$gene_short_name
 
 
+i<-length(DE_genes_list)+1
+DE_genes_list[[i]]<-crnde_adult_DE
+names(DE_genes_list)[i]<-"crnde_adult_DE"
+
+i<-length(DE_iso_list)+1
+DE_iso_list[[i]]<-crnde_adult_iso
+names(DE_iso_list)[i]<-"crnde_adult_iso"
+
+i<-length(DE_cds_list)+1
+DE_cds_list[[i]]<-crnde_adult_CDS
+names(DE_cds_list)[i]<-"crnde_adult_CDS"
+
+
+save(file="DEgenes_list.Rdata",DE_genes_list) 
+save(file="DEiso_list.Rdata",DE_iso_list) 
+save(file="DEcds_list.Rdata",DE_cds_list)
+
 
 strain<-"Crnde"
 LZ<-getGene(cuff,"LacZ")
@@ -117,7 +156,7 @@ linc<-getGene(cuff,"Crnde")
 linc_avg_fpkm<-fpkm(linc)[which(fpkm(linc)$sample_name=="WT"),3] 
 actin<-getGene(cuff,"Actb")
 actin_fpkm<-fpkm(actin)[which(fpkm(actin)$sample_name==strain),3]
-linc_LZ_correlation$Crnde_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm,actin_fpkm)
+linc_LZ_correlation$Crnde_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm,actin_fpkm) 
 
 rm(sigCDSgenes)
 rm(sigIsoforms)
@@ -129,7 +168,7 @@ rm(cuff)
 rm(DEgenes)
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 ### Eldr
 
@@ -138,16 +177,6 @@ dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Eldr_vs_WT_Adult"
 
 cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
 
-```
-
-
-```{r eldr lz adult,eval=FALSE}
-id<-"LacZ"
-myGene<-getGene(cuff,id)
-expressionBarplot(isoforms(myGene), replicates=T)
-ids<-c("Eldr","LacZ")
-myGenes<-getGenes(cuff,ids)
-#csHeatmap(myGenes,replicates=TRUE)
 ```
 
 
@@ -166,9 +195,24 @@ sigCDSgenes<-getGenes(cuff,sigCDS)
 eldr_adult_CDS<-annotation(sigCDSgenes)$gene_short_name
 
 
+i<-length(DE_genes_list)+1
+DE_genes_list[[i]]<-eldr_adult_DE
+names(DE_genes_list)[i]<-"eldr_adult_DE"
+i<-length(DE_iso_list)+1
+DE_iso_list[[i]]<-eldr_adult_iso
+names(DE_iso_list)[i]<-"eldr_adult_iso"
+i<-length(DE_cds_list)+1
+DE_cds_list[[i]]<-eldr_adult_CDS
+names(DE_cds_list)[i]<-"eldr_adult_CDS"
+
+
+
+save(file="DEgenes_list.Rdata",DE_genes_list) 
+save(file="DEiso_list.Rdata",DE_iso_list) 
+save(file="DEcds_list.Rdata",DE_cds_list)
+
 
 strain<-"Eldr"
-
 LZ<-getGene(cuff,"LacZ")
 LZ_avg_fpkm<-fpkm(LZ)[which(fpkm(LZ)$sample_name==strain),3] 
 linc<-getGene(cuff,"Eldr")
@@ -187,7 +231,7 @@ rm(cuff)
 rm(DEgenes)
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 ### Haunt
 
@@ -207,6 +251,22 @@ sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
 sigCDSgenes<-getGenes(cuff,sigCDS)
 haunt_adult_CDS<-annotation(sigCDSgenes)$gene_short_name
 
+i<-length(DE_genes_list)+1
+DE_genes_list[[i]]<-haunt_adult_DE
+names(DE_genes_list)[i]<-"haunt_adult_DE"
+i<-length(DE_iso_list)+1
+DE_iso_list[[i]]<-haunt_adult_iso
+names(DE_iso_list)[i]<-"haunt_adult_iso"
+i<-length(DE_cds_list)+1
+DE_cds_list[[i]]<-haunt_adult_CDS
+names(DE_cds_list)[i]<-"haunt_adult_CDS"
+
+
+
+save(file="DEgenes_list.Rdata",DE_genes_list) 
+save(file="DEiso_list.Rdata",DE_iso_list) 
+save(file="DEcds_list.Rdata",DE_cds_list)
+
 strain<-"Haunt"
 
 LZ<-getGene(cuff,"LacZ")
@@ -215,9 +275,7 @@ linc<-getGene(cuff,"Haunt")
 linc_avg_fpkm<-fpkm(linc)[which(fpkm(linc)$sample_name=="WT"),3] 
 actin<-getGene(cuff,"Actb")
 actin_fpkm<-fpkm(actin)[which(fpkm(actin)$sample_name==strain),3]
-
 linc_LZ_correlation$Haunt_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm,actin_fpkm)
-
 
 rm(sigCDSgenes)
 rm(sigIsoforms)
@@ -230,7 +288,7 @@ rm(DEgenes)
 
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 ### Kantr (Jarid1C)
@@ -256,9 +314,22 @@ sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
 sigCDSgenes<-getGenes(cuff,sigCDS)
 kantr_adult_CDS<-annotation(sigCDSgenes)$gene_short_name
 
+i<-length(DE_genes_list)+1
+DE_genes_list[[i]]<-kantr_adult_DE
+names(DE_genes_list)[i]<-"kantr_adult_DE"
+i<-length(DE_iso_list)+1
+DE_iso_list[[i]]<-kantr_adult_iso
+names(DE_iso_list)[i]<-"kantr_adult_iso"
+i<-length(DE_cds_list)+1
+DE_cds_list[[i]]<-kantr_adult_CDS
+names(DE_cds_list)[i]<-"kantr_adult_CDS"
+
+
+save(file="DEgenes_list.Rdata",DE_genes_list) 
+save(file="DEiso_list.Rdata",DE_iso_list) 
+save(file="DEcds_list.Rdata",DE_cds_list)
 
 strain<-"Kantr"
-
 LZ<-getGene(cuff,"LacZ")
 LZ_avg_fpkm<-fpkm(LZ)[which(fpkm(LZ)$sample_name==strain),3] 
 linc<-getGene(cuff,"Kantr")
@@ -266,7 +337,6 @@ linc_avg_fpkm<-fpkm(linc)[which(fpkm(linc)$sample_name=="WT"),3]
 actin<-getGene(cuff,"Actb")
 actin_fpkm<-fpkm(actin)[which(fpkm(actin)$sample_name==strain),3]
 linc_LZ_correlation$Kantr_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm,actin_fpkm)
-
 
 rm(sigCDSgenes)
 rm(sigIsoforms)
@@ -280,10 +350,9 @@ rm(DEgenes)
 
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 ### Brn1a
-3 isoforms expressed
 
 ```{r adult Brn1a diff}
 dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Brn1a_vs_WT_Adult/"
@@ -302,6 +371,20 @@ sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
 sigCDSgenes<-getGenes(cuff,sigCDS)
 brn1a_adult_CDS<-annotation(sigCDSgenes)$gene_short_name
 
+i<-length(DE_genes_list)+1
+DE_genes_list[[i]]<-brn1a_adult_DE
+names(DE_genes_list)[i]<-"brn1a_adult_DE"
+i<-length(DE_iso_list)+1
+DE_iso_list[[i]]<-brn1a_adult_iso
+names(DE_iso_list)[i]<-"brn1a_adult_iso"
+i<-length(DE_cds_list)+1
+DE_cds_list[[i]]<-brn1a_adult_CDS
+names(DE_cds_list)[i]<-"brn1a_adult_CDS"
+
+
+save(file="DEgenes_list.Rdata",DE_genes_list) 
+save(file="DEiso_list.Rdata",DE_iso_list) 
+save(file="DEcds_list.Rdata",DE_cds_list)
 
 
 strain<-"linc_Brn1a"
@@ -325,7 +408,7 @@ rm(DEgenes)
 
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 ### Brn1b
@@ -348,7 +431,21 @@ sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
 sigCDSgenes<-getGenes(cuff,sigCDS)
 brn1b_adult_CDS<-annotation(sigCDSgenes)$gene_short_name
 
+i<-length(DE_genes_list)+1
+DE_genes_list[[i]]<-brn1b_adult_DE
+names(DE_genes_list)[i]<-"brn1b_adult_DE"
+i<-length(DE_iso_list)+1
+DE_iso_list[[i]]<-brn1b_adult_iso
+names(DE_iso_list)[i]<-"brn1b_adult_iso"
+i<-length(DE_cds_list)+1
+DE_cds_list[[i]]<-brn1b_adult_CDS
+names(DE_cds_list)[i]<-"brn1b_adult_CDS"
 
+
+
+save(file="DEgenes_list.Rdata",DE_genes_list) 
+save(file="DEiso_list.Rdata",DE_iso_list) 
+save(file="DEcds_list.Rdata",DE_cds_list)
 
 strain<-"linc_Brn1b"
 
@@ -358,7 +455,9 @@ linc<-getGene(cuff,"linc-Brn1b")
 linc_avg_fpkm<-fpkm(linc)[which(fpkm(linc)$sample_name=="WT"),3] 
 actin<-getGene(cuff,"Actb")
 actin_fpkm<-fpkm(actin)[which(fpkm(actin)$sample_name==strain),3]
-linc_LZ_correlation$lincBrn1b_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm,actin_fpkm)
+linc_LZ_correlation$lincBrn1b_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm,actin_fpkm) 
+
+
 
 
 rm(sigCDSgenes)
@@ -371,7 +470,7 @@ rm(cuff)
 rm(DEgenes)
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 ### linc-Cox2
@@ -389,16 +488,31 @@ Endogenous linc and LZ approx same expression levels
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$lincCox2_Adult<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-lincCox2_adult_DE<-annotation(DEgenes)$gene_short_name
+cox2_adult_DE<-annotation(DEgenes)$gene_short_name
 
 sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
 sigIsoforms<-getGenes(cuff,sigIso)
-lincCox2_adult_iso<-annotation(sigIsoforms)$gene_short_name
+cox2_adult_iso<-annotation(sigIsoforms)$gene_short_name
 
 sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
 sigCDSgenes<-getGenes(cuff,sigCDS)
-lincCox2_adult_CDS<-annotation(sigCDSgenes)$gene_short_name
+cox2_adult_CDS<-annotation(sigCDSgenes)$gene_short_name
 
+i<-length(DE_genes_list)+1
+DE_genes_list[[i]]<-cox2_adult_DE
+names(DE_genes_list)[i]<-"cox2_adult_DE"
+i<-length(DE_iso_list)+1
+DE_iso_list[[i]]<-cox2_adult_iso
+names(DE_iso_list)[i]<-"cox2_adult_iso"
+i<-length(DE_cds_list)+1
+DE_cds_list[[i]]<-cox2_adult_CDS
+names(DE_cds_list)[i]<-"cox2_adult_CDS"
+
+
+
+save(file="DEgenes_list.Rdata",DE_genes_list) 
+save(file="DEiso_list.Rdata",DE_iso_list) 
+save(file="DEcds_list.Rdata",DE_cds_list)
 
 
 strain<-"linc_Cox2"
@@ -408,7 +522,7 @@ linc<-getGene(cuff,"linc-Cox2")
 linc_avg_fpkm<-fpkm(linc)[which(fpkm(linc)$sample_name=="WT"),3] 
 actin<-getGene(cuff,"Actb")
 actin_fpkm<-fpkm(actin)[which(fpkm(actin)$sample_name==strain),3]
-linc_LZ_correlation$lincCox2_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm,actin_fpkm)
+linc_LZ_correlation$lincCox2_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm,actin_fpkm) 
 
 rm(sigCDSgenes)
 rm(sigIsoforms)
@@ -420,7 +534,7 @@ rm(cuff)
 rm(DEgenes)
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 ### linc-Enc1a
@@ -449,6 +563,20 @@ sigCDSgenes<-getGenes(cuff,sigCDS)
 lincEnc1_adult_CDS<-annotation(sigCDSgenes)$gene_short_name
 
 
+i<-length(DE_genes_list)+1
+DE_genes_list[[i]]<-lincEnc1_adult_DE
+names(DE_genes_list)[i]<-"lincEnc1_adult_DE"
+i<-length(DE_iso_list)+1
+DE_iso_list[[i]]<-lincEnc1_adult_iso
+names(DE_iso_list)[i]<-"lincEnc1_adult_iso"
+i<-length(DE_cds_list)+1
+DE_cds_list[[i]]<-lincEnc1_adult_CDS
+names(DE_cds_list)[i]<-"lincEnc1_adult_CDS"
+
+
+save(file="DEgenes_list.Rdata",DE_genes_list) 
+save(file="DEiso_list.Rdata",DE_iso_list) 
+save(file="DEcds_list.Rdata",DE_cds_list)
 
 strain<-"linc_Enc1"
 
@@ -471,11 +599,10 @@ rm(cuff)
 rm(DEgenes)
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 ### Manr
-Same as with linc-Enc1a, may be extra-knockout region OR perhaps hets or some sort of artifact.. 
 
 ```{r MANR}
 dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Manr_vs_WT_Adult"
@@ -488,17 +615,29 @@ cuff<-readCufflinks(dir=dir, gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Manr_Adult<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-manr_adult_DE<-annotation(DEgenes)$gene_short_name
+mannr_adult_DE<-annotation(DEgenes)$gene_short_name
 
 sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
 sigIsoforms<-getGenes(cuff,sigIso)
-manr_adult_iso<-annotation(sigIsoforms)$gene_short_name
+mannr_adult_iso<-annotation(sigIsoforms)$gene_short_name
 
 sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
 sigCDSgenes<-getGenes(cuff,sigCDS)
-manr_adult_CDS<-annotation(sigCDSgenes)$gene_short_name
+mannr_adult_CDS<-annotation(sigCDSgenes)$gene_short_name
 
 
+i<-length(DE_genes_list)+1
+DE_genes_list[[i]]<-mannr_adult_DE
+names(DE_genes_list)[i]<-"mannr_adult_DE"
+i<-length(DE_iso_list)+1
+DE_iso_list[[i]]<-mannr_adult_iso
+names(DE_iso_list)[i]<-"mannr_adult_iso"
+i<-length(DE_cds_list)+1
+DE_cds_list[[i]]<-mannr_adult_CDS
+names(DE_cds_list)[i]<-"mannr_adult_CDS"
+save(file="DEgenes_list.Rdata",DE_genes_list) 
+save(file="DEiso_list.Rdata",DE_iso_list) 
+save(file="DEcds_list.Rdata",DE_cds_list)
 
 strain<-"Manr"
 
@@ -508,7 +647,8 @@ linc<-getGene(cuff,"Manr")
 linc_avg_fpkm<-fpkm(linc)[which(fpkm(linc)$sample_name=="WT"),3] 
 actin<-getGene(cuff,"Actb")
 actin_fpkm<-fpkm(actin)[which(fpkm(actin)$sample_name==strain),3]
-linc_LZ_correlation$Manr_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm,actin_fpkm)
+linc_LZ_correlation$Manr_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm,actin_fpkm) 
+
 
 rm(sigCDSgenes)
 rm(sigIsoforms)
@@ -520,7 +660,7 @@ rm(cuff)
 rm(DEgenes)
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 ### Peril
@@ -545,6 +685,20 @@ sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
 sigCDSgenes<-getGenes(cuff,sigCDS)
 peril_adult_CDS<-annotation(sigCDSgenes)$gene_short_name
 
+i<-length(DE_genes_list)+1
+DE_genes_list[[i]]<-peril_adult_DE
+names(DE_genes_list)[i]<-"peril_adult_DE"
+i<-length(DE_iso_list)+1
+DE_iso_list[[i]]<-peril_adult_iso
+names(DE_iso_list)[i]<-"peril_adult_iso"
+i<-length(DE_cds_list)+1
+DE_cds_list[[i]]<-peril_adult_CDS
+names(DE_cds_list)[i]<-"peril_adult_CDS"
+
+
+save(file="DEgenes_list.Rdata",DE_genes_list) 
+save(file="DEiso_list.Rdata",DE_iso_list) 
+save(file="DEcds_list.Rdata",DE_cds_list)
 
 strain<-"Peril"
 LZ<-getGene(cuff,"LacZ")
@@ -565,12 +719,11 @@ rm(cuff)
 rm(DEgenes)
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 
 ### Trp53cor1 (linc-p21)
-Everything very lowly expressed 
 
 ```{r adult Trp53cor diff}
 dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Trp53cor1_vs_WT_Adult/"
@@ -589,7 +742,20 @@ sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
 sigCDSgenes<-getGenes(cuff,sigCDS)
 trp53cor1_adult_CDS<-annotation(sigCDSgenes)$gene_short_name
 
+i<-length(DE_genes_list)+1
+DE_genes_list[[i]]<-trp53cor1_adult_DE
+names(DE_genes_list)[i]<-"trp53cor1_adult_DE"
+i<-length(DE_iso_list)+1
+DE_iso_list[[i]]<-trp53cor1_adult_iso
+names(DE_iso_list)[i]<-"trp53cor1_adult_iso"
+i<-length(DE_cds_list)+1
+DE_cds_list[[i]]<-trp53cor1_adult_CDS
+names(DE_cds_list)[i]<-"trp53cor1_adult_CDS"
 
+
+save(file="DEgenes_list.Rdata",DE_genes_list) 
+save(file="DEiso_list.Rdata",DE_iso_list) 
+save(file="DEcds_list.Rdata",DE_cds_list)
 
 strain<-"Trp53cor"
 
@@ -599,7 +765,7 @@ linc<-getGene(cuff,"Trp53cor1")
 linc_avg_fpkm<-fpkm(linc)[which(fpkm(linc)$sample_name=="WT"),3] 
 actin<-getGene(cuff,"Actb")
 actin_fpkm<-fpkm(actin)[which(fpkm(actin)$sample_name==strain),3]
-linc_LZ_correlation$Trp53cor1_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm,actin_fpkm)
+linc_LZ_correlation$Trp53cor1_Adult<-c(LZ_avg_fpkm,linc_avg_fpkm,actin_fpkm) 
 
 
 rm(sigCDSgenes)
@@ -612,7 +778,7 @@ rm(cuff)
 rm(DEgenes)
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 ### Tug1
@@ -634,6 +800,20 @@ sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
 sigCDSgenes<-getGenes(cuff,sigCDS)
 tug1_adult_CDS<-annotation(sigCDSgenes)$gene_short_name
 
+i<-length(DE_genes_list)+1
+DE_genes_list[[i]]<-tug1_adult_DE
+names(DE_genes_list)[i]<-"tug1_adult_DE"
+i<-length(DE_iso_list)+1
+DE_iso_list[[i]]<-tug1_adult_iso
+names(DE_iso_list)[i]<-"tug1_adult_iso"
+i<-length(DE_cds_list)+1
+DE_cds_list[[i]]<-tug1_adult_CDS
+names(DE_cds_list)[i]<-"tug1_adult_CDS"
+
+
+save(file="DEgenes_list.Rdata",DE_genes_list) 
+save(file="DEiso_list.Rdata",DE_iso_list) 
+save(file="DEcds_list.Rdata",DE_cds_list)
 
 
 strain<-"Tug1"
@@ -656,7 +836,7 @@ rm(cuff)
 rm(DEgenes)
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 # Embryonic Samples
@@ -675,7 +855,7 @@ cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/d
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Celrr_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-cellr_embryo_DE<-annotation(DEgenes)$gene_short_name
+celrr_embryo_DE<-annotation(DEgenes)$gene_short_name
 
 sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
 sigIsoforms<-getGenes(cuff,sigIso)
@@ -686,6 +866,19 @@ sigCDSgenes<-getGenes(cuff,sigCDS)
 celrr_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
 
 
+i<-length(DE_genes_list)+1
+DE_genes_list[[i]]<-celrr_embryo_DE
+names(DE_genes_list)[i]<-"celrr_embryo_DE"
+i<-length(DE_iso_list)+1
+DE_iso_list[[i]]<-celrr_embryo_iso
+names(DE_iso_list)[i]<-"celrr_embryo_iso"
+i<-length(DE_cds_list)+1
+DE_cds_list[[i]]<-celrr_embryo_CDS
+names(DE_cds_list)[i]<-"celrr_embryo_CDS"
+
+save(file="DEgenes_list.Rdata",DE_genes_list) 
+save(file="DEiso_list.Rdata",DE_iso_list) 
+save(file="DEcds_list.Rdata",DE_cds_list)
 
 strain<-"Celrr"
 
@@ -708,7 +901,7 @@ rm(cuff)
 rm(DEgenes)
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 ### Crnde
@@ -736,6 +929,20 @@ sigCDSgenes<-getGenes(cuff,sigCDS)
 crnde_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
 
 
+i<-length(DE_genes_list)+1
+DE_genes_list[[i]]<-crnde_embryo_DE
+names(DE_genes_list)[i]<-"crnde_embryo_DE"
+i<-length(DE_iso_list)+1
+DE_iso_list[[i]]<-crnde_embryo_iso
+names(DE_iso_list)[i]<-"crnde_embryo_iso"
+i<-length(DE_cds_list)+1
+DE_cds_list[[i]]<-crnde_embryo_CDS
+names(DE_cds_list)[i]<-"crnde_embryo_CDS"
+
+save(file="DEgenes_list.Rdata",DE_genes_list) 
+save(file="DEiso_list.Rdata",DE_iso_list) 
+save(file="DEcds_list.Rdata",DE_cds_list)
+
 
 strain<-"Crnde"
 
@@ -760,7 +967,7 @@ rm(DEgenes)
 
 ```
 
-Number of differentially expressed genes:`r length(sig)` 
+ 
 
 ### Eldr
 
@@ -784,6 +991,19 @@ sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
 sigCDSgenes<-getGenes(cuff,sigCDS)
 eldr_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
 
+i<-length(DE_genes_list)+1
+DE_genes_list[[i]]<-eldr_embryo_DE
+names(DE_genes_list)[i]<-"eldr_embryo_DE"
+i<-length(DE_iso_list)+1
+DE_iso_list[[i]]<-eldr_embryo_iso
+names(DE_iso_list)[i]<-"eldr_embryo_iso"
+i<-length(DE_cds_list)+1
+DE_cds_list[[i]]<-eldr_embryo_CDS
+names(DE_cds_list)[i]<-"eldr_embryo_CDS"
+
+save(file="DEgenes_list.Rdata",DE_genes_list) 
+save(file="DEiso_list.Rdata",DE_iso_list) 
+save(file="DEcds_list.Rdata",DE_cds_list)
 
 strain<-"Eldr"
 
@@ -808,7 +1028,7 @@ rm(cuff)
 rm(DEgenes)
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 ### Haunt
@@ -834,6 +1054,19 @@ sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
 sigCDSgenes<-getGenes(cuff,sigCDS)
 haunt_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
 
+i<-length(DE_genes_list)+1
+DE_genes_list[[i]]<-haunt_embryo_DE
+names(DE_genes_list)[i]<-"haunt_embryo_DE"
+i<-length(DE_iso_list)+1
+DE_iso_list[[i]]<-haunt_embryo_iso
+names(DE_iso_list)[i]<-"haunt_embryo_iso"
+i<-length(DE_cds_list)+1
+DE_cds_list[[i]]<-haunt_embryo_CDS
+names(DE_cds_list)[i]<-"haunt_embryo_CDS"
+
+save(file="DEgenes_list.Rdata",DE_genes_list) 
+save(file="DEiso_list.Rdata",DE_iso_list) 
+save(file="DEcds_list.Rdata",DE_cds_list)
 
 
 strain<-"Haunt"
@@ -858,7 +1091,7 @@ rm(DEgenes)
 
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 ### Kantr
@@ -885,6 +1118,20 @@ sigCDSgenes<-getGenes(cuff,sigCDS)
 kantr_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
 
 
+i<-length(DE_genes_list)+1
+DE_genes_list[[i]]<-kantr_embryo_DE
+names(DE_genes_list)[i]<-"kantr_embryo_DE"
+i<-length(DE_iso_list)+1
+DE_iso_list[[i]]<-kantr_embryo_iso
+names(DE_iso_list)[i]<-"kantr_embryo_iso"
+i<-length(DE_cds_list)+1
+DE_cds_list[[i]]<-kantr_embryo_CDS
+names(DE_cds_list)[i]<-"kantr_embryo_CDS"
+
+save(file="DEgenes_list.Rdata",DE_genes_list) 
+save(file="DEiso_list.Rdata",DE_iso_list) 
+save(file="DEcds_list.Rdata",DE_cds_list)
+
 strain<-"Kantr"
 LZ<-getGene(cuff,"LacZ")
 LZ_avg_fpkm<-fpkm(LZ)[which(fpkm(LZ)$sample_name==strain),3] 
@@ -907,7 +1154,7 @@ rm(DEgenes)
 
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 ### Brn1a
 
@@ -922,15 +1169,29 @@ cuff<-readCufflinks(dir=dir, gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$lincBrn1a_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-lincBrn1a_embryo_DE<-annotation(DEgenes)$gene_short_name
+brn1a_embryo_DE<-annotation(DEgenes)$gene_short_name
 
 sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
 sigIsoforms<-getGenes(cuff,sigIso)
-lincBrn1a_embryo_iso<-annotation(sigIsoforms)$gene_short_name
+brn1a_embryo_iso<-annotation(sigIsoforms)$gene_short_name
 
 sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
 sigCDSgenes<-getGenes(cuff,sigCDS)
-lincBrn1a_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
+brn1a_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
+
+i<-length(DE_genes_list)+1
+DE_genes_list[[i]]<-brn1a_embryo_DE
+names(DE_genes_list)[i]<-"brn1a_embryo_DE"
+i<-length(DE_iso_list)+1
+DE_iso_list[[i]]<-brn1a_embryo_iso
+names(DE_iso_list)[i]<-"brn1a_embryo_iso"
+i<-length(DE_cds_list)+1
+DE_cds_list[[i]]<-brn1a_embryo_CDS
+names(DE_cds_list)[i]<-"brn1a_embryo_CDS"
+
+save(file="DEgenes_list.Rdata",DE_genes_list) 
+save(file="DEiso_list.Rdata",DE_iso_list) 
+save(file="DEcds_list.Rdata",DE_cds_list)
 
 strain<-"linc_Brn1a"
 LZ<-getGene(cuff,"LacZ")
@@ -965,16 +1226,30 @@ cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/d
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$lincBrn1b_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-lincbrn1b_embryo_DE<-annotation(DEgenes)$gene_short_name
+brn1b_embryo_DE<-annotation(DEgenes)$gene_short_name
 
 sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
 sigIsoforms<-getGenes(cuff,sigIso)
-lincbrn1b_embryo_iso<-annotation(sigIsoforms)$gene_short_name
+brn1b_embryo_iso<-annotation(sigIsoforms)$gene_short_name
 
 sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
 sigCDSgenes<-getGenes(cuff,sigCDS)
-lincbrn1b_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
+brn1b_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
 
+
+i<-length(DE_genes_list)+1
+DE_genes_list[[i]]<-brn1b_embryo_DE
+names(DE_genes_list)[i]<-"brn1b_embryo_DE"
+i<-length(DE_iso_list)+1
+DE_iso_list[[i]]<-brn1b_embryo_iso
+names(DE_iso_list)[i]<-"brn1b_embryo_iso"
+i<-length(DE_cds_list)+1
+DE_cds_list[[i]]<-brn1b_embryo_CDS
+names(DE_cds_list)[i]<-"brn1b_embryo_CDS"
+
+save(file="DEgenes_list.Rdata",DE_genes_list) 
+save(file="DEiso_list.Rdata",DE_iso_list) 
+save(file="DEcds_list.Rdata",DE_cds_list)
 
 
 strain<-"linc_Brn1b"
@@ -999,7 +1274,7 @@ rm(DEgenes)
 
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 ### linc-Cox2
 
@@ -1015,17 +1290,30 @@ cuff<-readCufflinks(dir=dir, gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$lincCox2_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-lincCox2_embryo_DE<-annotation(DEgenes)$gene_short_name
+cox2_embryo_DE<-annotation(DEgenes)$gene_short_name
 
 sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
 sigIsoforms<-getGenes(cuff,sigIso)
-lincCox2_embryo_iso<-annotation(sigIsoforms)$gene_short_name
+cox2_embryo_iso<-annotation(sigIsoforms)$gene_short_name
 
 sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
 sigCDSgenes<-getGenes(cuff,sigCDS)
-lincCox2_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
+cox2_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
 
 
+i<-length(DE_genes_list)+1
+DE_genes_list[[i]]<-cox2_embryo_DE
+names(DE_genes_list)[i]<-"cox2_embryo_DE"
+i<-length(DE_iso_list)+1
+DE_iso_list[[i]]<-cox2_embryo_iso
+names(DE_iso_list)[i]<-"cox2_embryo_iso"
+i<-length(DE_cds_list)+1
+DE_cds_list[[i]]<-cox2_embryo_CDS
+names(DE_cds_list)[i]<-"cox2_embryo_CDS"
+
+save(file="DEgenes_list.Rdata",DE_genes_list) 
+save(file="DEiso_list.Rdata",DE_iso_list) 
+save(file="DEcds_list.Rdata",DE_cds_list)
 
 strain<-"linc_Cox2"
 
@@ -1048,7 +1336,7 @@ rm(cuff)
 rm(DEgenes)
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 ### linc-Enc1a
@@ -1076,6 +1364,20 @@ sigCDSgenes<-getGenes(cuff,sigCDS)
 lincEnc1_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
 
 
+i<-length(DE_genes_list)+1
+DE_genes_list[[i]]<-lincEnc1_embryo_DE
+names(DE_genes_list)[i]<-"lincEnc1_embryo_DE"
+i<-length(DE_iso_list)+1
+DE_iso_list[[i]]<-lincEnc1_embryo_iso
+names(DE_iso_list)[i]<-"lincEnc1_embryo_iso"
+i<-length(DE_cds_list)+1
+DE_cds_list[[i]]<-lincEnc1_embryo_CDS
+names(DE_cds_list)[i]<-"lincEnc1_embryo_CDS"
+
+save(file="DEgenes_list.Rdata",DE_genes_list) 
+save(file="DEiso_list.Rdata",DE_iso_list) 
+save(file="DEcds_list.Rdata",DE_cds_list)
+
 strain<-"linc_Enc1"
 LZ<-getGene(cuff,"LacZ")
 LZ_avg_fpkm<-fpkm(LZ)[which(fpkm(LZ)$sample_name==strain),3] 
@@ -1098,7 +1400,7 @@ rm(DEgenes)
 
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 ### Manr 
@@ -1115,17 +1417,29 @@ cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/d
 sig<-getSig(cuff, alpha=alpha)
 diffGeneSummary$Manr_Embryonic<-length(sig)
 DEgenes<-getGenes(cuff,sig)
-manr_embryo_DE<-annotation(DEgenes)$gene_short_name
+mannr_embryo_DE<-annotation(DEgenes)$gene_short_name
 
 sigIso<-getSig(cuff,level="isoforms",alpha=alpha)
 sigIsoforms<-getGenes(cuff,sigIso)
-manr_embryo_iso<-annotation(sigIsoforms)$gene_short_name
+mannr_embryo_iso<-annotation(sigIsoforms)$gene_short_name
 
 sigCDS<-getSig(cuff,level="CDS",alpha=alpha)
 sigCDSgenes<-getGenes(cuff,sigCDS)
-manr_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
+mannr_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
 
+i<-length(DE_genes_list)+1
+DE_genes_list[[i]]<-mannr_embryo_DE
+names(DE_genes_list)[i]<-"mannr_embryo_DE"
+i<-length(DE_iso_list)+1
+DE_iso_list[[i]]<-mannr_embryo_iso
+names(DE_iso_list)[i]<-"mannr_embryo_iso"
+i<-length(DE_cds_list)+1
+DE_cds_list[[i]]<-mannr_embryo_CDS
+names(DE_cds_list)[i]<-"mannr_embryo_CDS"
 
+save(file="DEgenes_list.Rdata",DE_genes_list) 
+save(file="DEiso_list.Rdata",DE_iso_list) 
+save(file="DEcds_list.Rdata",DE_cds_list)
 
 strain<-"Manr"
 
@@ -1147,7 +1461,7 @@ rm(cuff)
 rm(DEgenes)
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 ### Peril
 
@@ -1174,6 +1488,20 @@ sigCDSgenes<-getGenes(cuff,sigCDS)
 peril_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
 
 
+i<-length(DE_genes_list)+1
+DE_genes_list[[i]]<-peril_embryo_DE
+names(DE_genes_list)[i]<-"peril_embryo_DE"
+i<-length(DE_iso_list)+1
+DE_iso_list[[i]]<-peril_embryo_iso
+names(DE_iso_list)[i]<-"peril_embryo_iso"
+i<-length(DE_cds_list)+1
+DE_cds_list[[i]]<-peril_embryo_CDS
+names(DE_cds_list)[i]<-"peril_embryo_CDS"
+
+save(file="DEgenes_list.Rdata",DE_genes_list) 
+save(file="DEiso_list.Rdata",DE_iso_list) 
+save(file="DEcds_list.Rdata",DE_cds_list)
+
 
 strain<-"Peril"
 
@@ -1184,7 +1512,7 @@ linc_avg_fpkm<-fpkm(linc)[which(fpkm(linc)$sample_name=="WT"),3]
 
 actin<-getGene(cuff,"Actb")
 actin_fpkm<-fpkm(actin)[which(fpkm(actin)$sample_name==strain),3]
-linc_LZ_correlation$Peril_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm,actin_fpkm)
+linc_LZ_correlation$Peril_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm,actin_fpkm) save(file="DEgenes_list.Rdata",DE_genes_list) save(file="DEiso_list.Rdata",DE_iso_list) save(file="DEcds_list.Rdata",DE_cds_list)
 
 
 rm(sigCDSgenes)
@@ -1198,7 +1526,7 @@ rm(DEgenes)
 
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 
 ### Trp53cor1 (linc-p21)
@@ -1225,6 +1553,20 @@ sigCDSgenes<-getGenes(cuff,sigCDS)
 trp53cor1_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
 
 
+i<-length(DE_genes_list)+1
+DE_genes_list[[i]]<-trp53cor1_embryo_DE
+names(DE_genes_list)[i]<-"trp53cor1_embryo_DE"
+i<-length(DE_iso_list)+1
+DE_iso_list[[i]]<-trp53cor1_embryo_iso
+names(DE_iso_list)[i]<-"trp53cor1_embryo_iso"
+i<-length(DE_cds_list)+1
+DE_cds_list[[i]]<-trp53cor1_embryo_CDS
+names(DE_cds_list)[i]<-"trp53cor1_embryo_CDS"
+
+save(file="DEgenes_list.Rdata",DE_genes_list) 
+save(file="DEiso_list.Rdata",DE_iso_list) 
+save(file="DEcds_list.Rdata",DE_cds_list)
+
 strain<-"Trp53cor"
 LZ<-getGene(cuff,"LacZ")
 LZ_avg_fpkm<-fpkm(LZ)[which(fpkm(LZ)$sample_name==strain),3] 
@@ -1246,7 +1588,7 @@ rm(DEgenes)
 
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 ### Tug1
 
@@ -1271,6 +1613,20 @@ sigCDSgenes<-getGenes(cuff,sigCDS)
 tug1_embryo_CDS<-annotation(sigCDSgenes)$gene_short_name
 
 
+i<-length(DE_genes_list)+1
+DE_genes_list[[i]]<-tug1_embryo_DE
+names(DE_genes_list)[i]<-"tug1_embryo_DE"
+i<-length(DE_iso_list)+1
+DE_iso_list[[i]]<-tug1_embryo_iso
+names(DE_iso_list)[i]<-"tug1_embryo_iso"
+i<-length(DE_cds_list)+1
+DE_cds_list[[i]]<-tug1_embryo_CDS
+names(DE_cds_list)[i]<-"tug1_embryo_CDS"
+
+save(file="DEgenes_list.Rdata",DE_genes_list) 
+save(file="DEiso_list.Rdata",DE_iso_list) 
+save(file="DEcds_list.Rdata",DE_cds_list)
+
 
 strain<-"Tug1"
 
@@ -1281,6 +1637,10 @@ linc_avg_fpkm<-fpkm(linc)[which(fpkm(linc)$sample_name=="WT"),3]
 actin<-getGene(cuff,"Actb")
 actin_fpkm<-fpkm(actin)[which(fpkm(actin)$sample_name==strain),3]
 linc_LZ_correlation$Tug1_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm, actin_fpkm)
+
+save(file="DEgenes_list.Rdata",DE_genes_list)
+save(file="DEiso_list.Rdata",DE_iso_list)
+save(file="DEcds_list.Rdata",DE_cds_list)
 
 rm(sigCDSgenes)
 rm(sigIsoforms)
@@ -1293,7 +1653,7 @@ rm(DEgenes)
 
 ```
 
-Number of differentially expressed genes:`r length(sig)`
+
 
 # SUMMARY
 
@@ -1331,11 +1691,13 @@ colnames(d)<-c("DEgenes")
 ggplot(d, aes(fill=DEgenes))+geom_tile(color='white')
 #MAKE THIS WORK >:( >:(
 
+
+write.csv(linc_LZ_correlation,"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/linc_lz_correlation.csv")
+
 ```
 
-```{r lacZ_correlation}
-
-#write.csv(linc_LZ_correlation,"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/linc_lz_correlation.csv")
+```{r lacZ_correlation, eval=FALSE}
+write.csv(linc_LZ_correlation,"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/linc_lz_correlation.csv")
 dat<-read.csv("linc_lz_correlation.csv",header=TRUE)
 rownames<-dat$X
 rownames(dat)<-rownames
@@ -1351,24 +1713,34 @@ linc_LZ_correlation$timepoint<-timepoint
 linc_LZ_correlation$name<-name
 
 lzlinc_fit<-lm(linc_LZ_correlation$LZ~ linc_LZ_correlation$EndogenousLinc)
+
+emb<-subset(linc_LZ_correlation,timepoint=="Embryonic")
+emb.lzlinc_fit<-lm(emb$LZ~ emb$EndogenousLinc)
+summary(emb.lzlinc_fit)$r.squared
+
+adult<-subset(linc_LZ_correlation,timepoint=="Adult")
+adult.lzlinc_fit<-lm(adult$LZ~ adult$EndogenousLinc)
+summary(adult.lzlinc_fit)$r.squared
+
+
 lzlinc_rsquared<-summary(lzlinc_fit)$r.squared
 lzlinc_rsquared
 lzlinc_fit$coefficients
 lzlinc_euclideandistance<-sqrt(sum((linc_LZ_correlation$LZ-linc_LZ_correlation$EndogenousLinc)^2))
 lzlinc_euclideandistance
   
-lzactin_fit<-lm(linc_LZ_correlation$LZ~linc_LZ_correlation$ActinInKOs)
-lzactin_rsquared<-summary(lzactin_fit)$r.squared
-lzactin_rsquared
-lzactin_fit$coefficients
-lzactin_euclideandistance<-sqrt(sum((linc_LZ_correlation$LZ-linc_LZ_correlation$ActinInKOs)^2))
-lzactin_euclideandistance
+#lzactin_fit<-lm(linc_LZ_correlation$LZ~linc_LZ_correlation$ActinInKOs)
+#lzactin_rsquared<-summary(lzactin_fit)$r.squared
+#lzactin_rsquared
+#lzactin_fit$coefficients
+#lzactin_euclideandistance<-sqrt(sum((linc_LZ_correlation$LZ-linc_LZ_correlation$ActinInKOs)^2))
+#lzactin_euclideandistance
 
 #linc_LZ<-ggplot(linc_LZ_correlation, aes(EndogenousLinc,LZ,color=timepoint))+geom_point()+geom_text(aes(label=name))+xlab("Endogenous lincRNA expression log10(FPKM)")+ylab("LacZ expression log10(FPKM)")+scale_x_log10(limits=c(-10,80))+scale_y_log10(limits=c(-10,40))+geom_smooth(aes(EndogenousLinc,LZ),method="lm")+geom_abline(intercept=0,slope=1)
 
 
 
-ggplot(linc_LZ_correlation, aes(EndogenousLinc,LZ))+geom_point()+geom_text(aes(label=name))+xlab("Endogenous lincRNA expression (FPKM)")+ylab("LacZ expression (FPKM)")+geom_abline(intercept=0,slope=1)+scale_x_log10(limits=c(-10,80))+scale_y_log10(limits=c(-10,40))+theme_bw()+facet_grid(.~timepoint)
+ggplot(linc_LZ_correlation, aes(EndogenousLinc,LZ))+geom_point()+geom_text(aes(label=name))+xlab("Endogenous lincRNA expression (FPKM)")+ylab("LacZ expression (FPKM)")+geom_abline(intercept=0,slope=1)+scale_x_log10(limits=c(-10,200))+scale_y_log10(limits=c(-10,100))+theme_bw()+facet_grid(.~timepoint)
 
 #+coord_trans(x="log10",y="log10")
 #+geom_smooth(method="lm",se=FALSE)
@@ -1447,6 +1819,11 @@ names(DE_lists)<-list_names
 DE_lists[12]<-NULL
 DE_lists[3]<-NULL
 list_names<-names(DE_lists)
+
+
+save(file="DEgenes_list.Rdata",DE_genes_list)
+save(file="DEiso_list.Rdata",DE_iso_list)
+save(file="DEcds_list.Rdata",DE_cds_list)
 
 sink("DEgenes_lists.tab")
 for(i in seq(1,length(DE_lists))){
@@ -1533,7 +1910,4 @@ intersectSeveral <- function(...) { reduce(intersect, list(...)) }
 #intersectSeveral(DE_lists) 
 Reduce(intersect,DE_lists)
 ```
-
-
-
 
