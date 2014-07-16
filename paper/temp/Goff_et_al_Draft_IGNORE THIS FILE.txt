@@ -1,0 +1,355 @@
+Motivation/Context : Goal of Sackler Colloquium issue
+ 
+Epigenetic changes in the developing brain: Effects on behavior
+ 
+The earliest stages of brain development are susceptible to modification by epigenetic processes whose analyses have proceeded less comprehensively in neurons than in other cell types. Yet, a rapidly increasing number of studies have shown consequences of environmental perturbations very early in life, for behavioral events much later in life. Insofar, as altered regulation of transcription of specific genes are involved, epigenetic mechanisms can be invoked: DNA methylation, modification of histone N-termini, and one or more of a large number of non-coding RNA’s, as well as the fascinating field of genomic imprinting.
+ 
+This Sackler Colloquium brings together experts in DNA methylation, histone chemistry and the emerging field of non-coding RNAs with practicing neuroscientists.  The range of disciplines represented extends to clinical work, including a vision of what this field means for the future of psychiatry.
+ 
+ 
+
+
+Table of Contents
+Motivation/Context : Goal of Sackler Colloquium issue
+Abstract
+Significance Statement
+Introduction
+Results
+Temporal expression of lncRNAs during brain development
+Regional specificity of lncRNA expression in the adult brain
+One common feature that emerges from the LacZ staining profiles of our lncRNAs is the selective distribution of lncRNAs in the adult brain, where cell-type and region-specific patterns were observed. The majority of lncRNAs demonstrated some level of expression in the adult brain, and positive staining was observed for at least one strain in the olfactory bulb and select forebrain, midbrain, and hindbrain structures.
+Dynamics of regulation and cell-type specificity at the Brn1 genomic locus
+Global regulation of lncRNAs during brain development
+Table: Count of RNA-Seq samples passing filters by strain
+Talking Points
+Cis Transcriptional regulatory dynamics of lncRNA loci
+(Giulio, Martin, Zach, Loyal, Abbie) In vivo expression relative to transcriptional regulation
+Targets for this section
+Kantr:Embryonic
+Kantr:Adult
+Celrr:Embryonic
+Eldr vs Tug1 Interneurons
+Discussion
+Methods
+Mice
+Tissue collection and processing
+X-Gal staining and immunostaining.
+mRNA-Seq library preparation and sequencing.
+Alignment and quantitation
+Digital genotyping
+Differential analysis
+GSEA
+GO
+Cis region analysis
+References
+
+
+
+ 
+
+
+
+lncRNA expression and effects on neuronal development via knockout mouse models
+ 
+Goff, L.A.*, Sauvageau, M.*, Groff, A.F.*, Trayes-Gibson, Z., Gerhardinger, C., Sanchez-Gomez, D.B., Morse, M., Gonzalez-Celerio, M., Liapis, S., Olivia Plana, Eric Li, Elcavage, L.E., Mallard, W. Arlotta, P., Srubek Tomassy, G., Rinn, J.L.
+ 
+1.  Department of Stem Cells and Regenerative Biology, Harvard University, Cambridge, MA, USA.
+2. Computer Science and Artificial Intelligence Laboratory, Massachusetts Institute of Technology, Cambridge, MA, USA.
+3. The Broad Institute, Cambridge, MA, USA.
+4. Department of Systems Biology, Harvard Medical School, Boston, MA, USA.
+5. Department of Pathology, Beth Israel Deaconess Medical Center, Boston, MA, USA.
+6. Institute of Molecular Health Sciences, ETH Zurich, Zurich, Switzerland
+
+ 
+Abstract
+ 
+Long noncoding RNAs (lncRNA) have been implicated in numerous cellular processes including epigenetics and brain development. Yet the in vivo expression dynamics and regulatory pathways are less well understood. Here we leveraged a cohort of X mouse lncRNA mutant models to understand the spatio-temporal brain expression. We further explore the consequent alterations in transcription of lncRNA mutants during brain development. We find that lncRNAs exhibit a wide range of expression patterns in the brain. While some are differentially expressed both in time and space, suggesting a role in the development and function of selected brain regions and specific neuronal populations, the expression of other lncRNAs is restricted to specific stages of either pre- or post-natal life. 
+ 
+ Significance Statement
+
+ 
+
+
+Introduction
+
+Neuronal development relies on the ability of key transcription factors to induce global gene-expression changes that instruct cell fate specification, differentiation and integration into the circuitry of central nervous system (CNS) neurons (REF). This elegant process requires a complex spatio-temporal choreography of transcriptional and epigenetic regulation and results in the unique specification of an unparalleled variety of neuron subtypes, which have unique molecular, morphological and connectivity features and serve different functions (REF). However, one fundamental biological question still remains unanswered: how are otherwise ubiquitous epigenetic regulatory complexes repositioned around the genome to properly coordinate brain development and function? We have recently found a significant clue with the discovery of thousands of large intergenic non-coding RNAs (lncRNAs) [REF]. Intriguingly, hundreds of lncRNAs physically associate with and modulate epigenetic regulation during cell fate specification [REF 3, 7-16]. Thus, lncRNAs could represent a critical and heretofore missing layer of regulation critical for both brain development and function.  
+
+Several findings support this notion: (i) the brain has the largest repertoire and diversity of lncRNA expression [REF 17-23]; (ii) lncRNAs exhibit exquisite cell-specific localization in the developing brain [REF 20, 24]; (iii) genetic association studies have pointed to lncRNAs as indicative of brain disorders [REF 24-27]; (iv) genetic knockout of lncRNAs Evf2 or linc-Brn1b result in perturbations to neuronal development [REF 28, Sauvageau, Goff, Lodato et al]. With the growing evidence for a role of lncRNAs in brain development, better understanding of the genetic significance and physiological contributions of lncRNAs during neuronal development in vivo is needed.
+
+To address this challenge, we have developed a collection of 18 lncRNA knockout mouse models by replacing each gene with a lacZ reporter cassette {Sauvageau:2013dx} and took advantage of this resource to better understand the dynamics and regulatory roles of lncRNAs in the developing as well as in the mature brain. Towards this goal, we first used the knocked-in lacZ reporter to determine the spatio-temporal expression profiles of lncRNAs during neuronal development. We then performed massively-parallel RNA sequencing of whole brains from wild type and knockout strains at both embryonic and adult developmental stages to gain insights into the global transcriptional programs perturbed upon genetic ablation of lncRNAs in vivo. 
+-We find : X, Y, Z summary needed here
+
+
+Results
+We previously generated a collection of 18 lncRNA knockout mouse models by replacing the endogenous lncRNA with a LacZ reporter driven off the endogenous promoter {Sauvageau:2013dx}. Many of these lncRNAs were initially selected based on their expression in embryonic stem cell-derived neural stem cells {Guttman:2010io} and later determined to be expressed in the brain by RNA-seq {Sauvageau:2013dx}. The establishment of these particular mouse models allows us to begin to address questions regarding the precise spatio-temporal expression of specific lncRNAs in the brain, as well as assess the potential impact that the loss of these lncRNA loci can have on the transcriptome. In this study, we focus on 13 distinct mouse lncRNA knockout strains (Table XXX) ... 
+Temporal expression of lncRNAs during brain development
+To identify which of our selected lncRNAs displayed coordinated and biologically relevant expression during brain development, we began by extracting whole brains from heterozygous mutant E14.5 embryos as well as 8-13 week old adult mice for each of the 13 lncRNA mutant strains. Harvested brains were fixed in PFA, sectioned coronally (40µm thickness), and stained for X-gal expression. 
+Despite their initial identification in retinoic acid induced NPCs {Guttman:2009gw}, the observed profiles varied greatly between different lncRNAs, and were not restricted to neural stem cell populations. XXX/13 lncRNA strains were expression in both E14.5 and adult. Indeed, several lncRNAs demonstrated coordinated regulation between E14.5 and adult that correlated with known neuronal cell type development.
+In many instances cell-type-specific expression could be observed. The lncRNAs Eldr, and Tug1 are both expressed only in the forebrain, with a scattered profile in the neocortex suggestive of the neocortical GABAergic interneuron (IN) populations (Fig1 zzz).  Neocortical INs are typically subdivided into three main classes based on their physiological and neurochemical identity: fast-spiking parvalbumin (PV) INs,  burst-spiking somatostatin (Sst) INs and regular-spiking calretinin (CR) INs {Perrenoud:2012ih, Ciceri:2013dp, Katzel:2011fu}. All three classes are born during embryonic development in the ganglionic eminences (GEs) of the ventral telencephalon; from there they migrate tangentially to the emerging neocortical plate, where they populate different layers {Ciceri:2013dp}. For example CR+ IN are mostly located in the more superficial layers of the cortex, while SOM+ INs are mainly distributed in the deep cortical layers {Perrenoud:2012ih}. The expression of Eldr at E14.5 is restricted to the germinal and mantle zones of the GEs, strongly suggesting a role for this lncRNA in the development of cortical INs (Fig.1Z). TUG1 lacZ still ongoing, at the moment there is still no expression in the one E14.5 brain that Zak is processing, soon updates!
+
+******* Compare those that are not expressed in embryo but it is adults 
+--- 
+
+In the adult, the spatial location of Eldr+ and Tug1+ cells suggests that these two lncRNAs are specifically expressed in upper and deep layer INs, respectively (Fig.1X,Y). Indeed, double immunofluorescence (IF) of B-Gal with markers of different classes of INs, confirmed that  XXXXXXX, and that YYYYYY.  Eldr is also expressed in a group of cortical layer VI cells lining along the subcortical white matter (Fig.1 ZYX, arrowheads). These cells may represent a group of excitatory pyramidal neurons that are the remnants of the developmental subplate (REFs).
+Thus, lncRNAs can be expressed in the developing as well as in the adult brain, with very distinct patterns of expression. 
+
+Not all lncRNAs analyzed, however, show expression in all ages examined. For example, Kantr (Jarid1c) (Fig.1ZZ), a lncRNA located ~20.5 Kb downstream of Kdm5c, is almost completely absent in the embryonic brain, where its expression can be detected only in the developing choroid plexus (Fig.1 ZA). However, its expression pattern is very distinct and specific in the adult brain, where a high number of Kantr+ (Jarid1c) cells can be found in the neocortex, hippocampus, thalamus and hypothalamus (Fig.1 YZ). This is suggestive of a functional role in the physiology of the mature brain but not during its embryonic formation. Interestingly, the expression of Kantr within each of the regions in the adult brain is spatially restricted to defined subregions: for example, in the hippocampus it is expressed mostly in the CA1 and CA3 stratum pyramidale (Ref). Since these regions contain excitatory pyramidal  neurons with different physiological and molecular identities {Lein:2004ip, deNo:1934un, Corsellis:1983uh}, it is possible that Kantr may play a role in the physiology and activity of these cells.
+If e14.5 stainings work (in progress) we will also add Peril (Sox2) as an example of a lncRNA with high expression in the embryo but not in the adult. In this way we would have 2 examples of lincs with both embryonic and adult expression, 1 example of a linc with adult but not embryonic expression and 1 more with the opposite (sox2). This would be a nice way for us to focus on the temporal aspect of these profiles and also, a way to “group” them. Basically the theme of the grouping would be “differential expression between developing and mature brain regions”
+
+Regional specificity of lncRNA expression in the adult brain
+A common feature that emerges from the LacZ staining profiles of our mutant strains is the selective distribution of lncRNAs in the adult brain, where cell-type and region-specific patterns were observed. The majority of lncRNAs demonstrated some level of expression in the adult brain, and positive staining was observed for at least one strain in the olfactory bulb and select forebrain, midbrain, and hindbrain structures. Specific examples of this include the lncRNAs Ptgs2os2 (linc-Cox2), lincenc1, and Crnde (linc-Irx5)  (Fig.2 ABC). 
+Ptgs2os2 (linc-Cox2) is expressed only in the neocortex and hippocampus in the adult mouse brain. In the cortex, its expression profile resembles the distribution of excitatory pyramidal neurons in layers II-III and  IV (Refs) (Fig2 A). These cells constitute a heterogeneous group of callosal projection neurons with strong molecular and physiological differences (Arlotta et al J Neurosci; Tomassy et al 2014; other 2 refs). While Ptgs2os2 (linc-Cox2) seems to be ubiquitously expressed in all upper layer pyramidal neurons (Fig.2 X), lincenc1 shows a very peculiar pattern with clear laminar and areal boundaries: indeed, lincenc1 is expressed at higher levels in layers II/III and IV of the primary somatosensory (S1) area of the cortex. However, whereas in the S1 region of the trunk (S1Tr, Fig.2 Bx) lincenc1 is restricted to layers II/III, it is distributed in layer IV in the S1 barrel field (S1BF, Fig.2 Bx). Notably, this area- and laminar-specific profile of expression is typical of several transcription factors that are known to play fundamental roles in the development and function of the neocortex (Refs). These two lncRNAs are also both expressed in the hippocampus; however, while Ptgs2os2 (linc-Cox2) is expressed only in the CA1 and CA3 stratum pyramidale, lincenc1 is also expressed in the dentate gyrus, both in the granular and molecular cell layer as well as in the hilus (REFs) (Fig.2 By). Thus, lncRNAs spatial expression can be as precise and selective as the temporal expression, being restricted to specific regions, subregions or even single cell types. 
+The lncRNA Crnde (Irx5) is another good example of this is since it cannot be found in any region of the forebrain, but is very highly expressed in distinct regions of the hypothalamus (Fig.2 Cx). Specifically LacZ expression was observed in the Crnde+/- mouse brain in the premammilary nucleus and the parasubthalamic nucleus of the posterior hypothalamus. In addition we observed selective LacZ expression in the ependymal layer of the 3rd ventricle; a particular region associated with adult neurogenesis in mammals {Xu:2005jn}. 
+
+Collectively, these results demonstrate the level of spatio-temporal specificity observed for some lncRNAs. A common feature shared by all lncRNAs examined is their extremely restricted profile of expression in the adult brain, suggestive of very specific functions. 
+
+Dynamics of regulation and cell-type specificity at the Brn1 genomic locus
+We have previously demonstrated a functional role for the Pantr2 lncRNA locus in regulating the proper lamination and development of the neocortex in mice {Sauvageau:2013dx}, yet the mechanism by which this locus mediates this effect remains unclear. It has been suggested that this particular locus may be acting as a proximal cis enhancer to regulate the expression of neighboring genes including the cortically-expressed POU-domain gene family member Pou3f3. 
+
+- Description of the genomic locus
+	- Pantr1 bidirectional to Pou3f3
+- Expand to other Pou3 loci for similarity/orthology?
+- Distinct patterns of expression for Pou3f3, Pantr1, and Pantr2
+- Antithetic expression of Pantr1 in Pantr2 knockout
+- Effect on other loci in trans? Direct/indirect?
+
+The previous results show how different lncRNAs can be differentially regulated during the development and specification of the central nervous system. 
+
+The highly restricted expression profile of some lncRNAs suggests very specific roles during development and in the mature brain. This discretized expression suggests the existence of distinct transcriptional programs that allow spatio-temporal segregation of lncRNAs throughout the brain. An example of this is observed in the LacZ expression of two closely related strains of reporter mice, Pantr1 (linc-Brn1a) and Pantr2 (linc-Brn1b) (Fig.3). These two lncRNAs reside on each side of and in opposite orientation to the protein-coding gene Pou3f3 (Brn1), a key transcription factor involved in cortical development (Fig.3X) (REF). We previously showed that deletion of Pantr2 (linc-Brn1b) affects the expression of the neighboring Pou3f3 in the developing cortex. Similarly, another group showed that modulation of Pantr1 (linc-Brn1a) also affects Pou3f3 levels in cancer cells {Sauvageau:2013dx}, Li W et al, 2014). Although Pantr1 (linc-Brn1a) and Pantr2 (linc-Brn1b) lie within the same genomic locus, the distribution of these two lncRNAs in the adult brain is dramatically different. Both lncRNAs are expressed in the neocortex. However, while Pantr1 (linc-Brn1a) is strongly expressed in layers II/III and IV and at lower levels in layers V and VI, Pantr2+ (linc-Brn1b) cells are only present in low numbers in layer V (Fig.3 x). Similar differences are found in the hippocampus, where Pantr1 (linc-Brn1a) is strongly expressed and Pantr2 (linc-Brn1b) is only faintly present in few scattered cells (Fig.3 Y). Conversely, Pantr2 (linc-Brn1b) is very strongly expressed in the medial habenular nucleus, where Pantr1 (linc-Brn1a) is almost completely absent (Fig.3 z). These results show that……..
+
+Global regulation of lncRNAs during brain development
+We next asked whether the deletion of these lncRNA genomic loci contributed significantly to changes in gene expression. To address this, a minimum of 3 KO whole brains were collected for each strain at E14.5 and from adults ranging in age from 8-14 weeks (KO range 7.9-13.6 ±1.7 weeks). In addition, whole brains were collected from WT E14.5 Het x Het crossing littermates and from adults within a similar age range as KO (7.9-14 ±2.1 weeks). Samples were chosen for each KO strain and WT so as to maintain a balanced experimental design with respect to sex, litter (E14.5), and genetic background to avoid potential sources of bias in sample collection and preparation. RNA was isolated from each sample as detailed in methods, and used as input for the Illumina TruSeq library preparation kit. A total of 119 libraries were barcoded and sequenced on an Illumina HiSeq 2500 across multiple flowcells. 1.41x1010 50bp paired-end reads were generated at a median depth of 1.19x108 aligned reads per sample (Supplemental File X). Reads were mapped to the mouse genome (mm10) using Tophat v2.0.8 and each sample alignment file was individually quantified, using cuffquant v2.2.1 (REF), against a modified version of the Gencode vM2 {Stamatoyannopoulos:2012ku, Harrow:2012cx} reference transcriptome that included additional records from a selected set of cloned target lncRNA sequences that were not already represented (Supplemental File X). A preliminary expression analysis was conducted on all samples as a quality control measure using cuffnorm. 
+We began by confirming the genotype and sex of each KO and WT comparison through a combination of expression analysis and visual inspection of the RNA-Seq read alignments to the presumptive deleted regions in each KO. This resulted in the exclusion of 10 samples that had been mis-genotyped. The remaining 109 samples (Table XXX) were subjected to differential analysis using cuffdiff. This analysis was performed on a) all pairwise KO vs WT comparisons across all strains at E14.5 or adult time points, and b) individual KO vs WT comparisons for each strain at both E14.5 and adult time points. For both E14.5 and adult timepoints, we observed exceptionally low variability across all conditions with a moderate increase in cross-replicate variability (Figure S4), and a greater number of differentially expressed genes observed at E14.5 (XXXXX) than in the adult comparisons (XXXXX) (Figure 4A). This increase in the number of significant genes results from a select few of the lncRNA strains demonstrating a high degree of transcriptional divergence from WT at E14.5. By contrast in adult, a greater number of lncRNA strains demonstrated significant gene changes, but the number of genes with differential expression per strain was lower. 
+
+Table: Count of RNA-Seq samples passing filters by strain
+
+
+Adult
+
+
+E14.5
+
+
+Total
+Strain
+KO
+WT
+KO
+WT
+
+
+Celrr
+3
+0
+2
+1
+6
+Crnde
+2
+1
+3
+2
+8
+Eldr
+2
+1
+3
+0
+6
+Haunt
+3
+2
+3
+3
+11
+Kantr
+3
+3
+3
+3
+12
+Pantr1
+2
+3
+3
+0
+8
+Pantr2
+3
+1
+3
+0
+7
+linc-Cox2
+3
+0
+3
+0
+6
+lincEnc1
+3
+3
+3
+1
+10
+Manr
+3
+2
+3
+2
+10
+Peril
+3
+0
+4
+3
+10
+Trp53cor
+3
+1
+3
+1
+8
+Tug1
+3
+0
+3
+1
+7
+Total
+36
+17
+39
+17
+109
+
+We first determined the superset of genes in E14.5 or adult, with significant differential regulation between a KO strain and WT. Dendrogram results (still waiting on final Embryonic master cuffdiff to complete).
+	--Global analysis of replicates etc, general results from analysis?
+--range of gene change differences, some have very few changes?
+• Greater differential expression is observed during embryonic development than in adult brain.
+• Variability and QC plots?
+• Little overlap among DE genes/isoforms/CDS between E14.5 and adult
+• GO analysis of differential gene superset
+
+Summary of individual reports
+To determine gene expression pathways and programs that are perturbed between wild-type and knockout lncRNA strains, we analyzed the RNA-Seq using the Tuxedo suite of tools ( Tophat2, Cufflinks2.1, and CummeRbund). QC summary sentence here!! Next, we performed differential expression analysis to determine those protein-coding and lncRNA genes that significantly change in the knockout versus wild-type strains. Finally, we conducted pathway analyses using publicly available tools and annotation databases such as GSEA, mSigDB, Gene Ontology, and KEGG to determine the more general pathways that are perturbed in knockout strains.
+Clustering by knockout strain was only observed for a few different strains at each timepoint (Figure SX), suggesting the majority of lncRNA knockouts had a minimal impact on the transcriptome of the whole brain. (Something about relative abundance of cell types, etc, etc)
+(digital genotyping) (XIST in male female wts?)
+-- Highlight examples of confirmed results from Brn1a/b? Kantr? other vignettes?
+Clustering by knockout strain was only observed for a few different strains at each timepoint (Figure SX), suggesting that in the majority of comparisons, parameters other than genotype were more strongly influencing global gene expression profiles in whole brain. (Something about relative abundance of cell types, etc, etc). Despite this, we were able to identify some consistent themes...
+
+Consistent themes regarding GSEA and/or common GO terms in global DE list(s)?
+
+Perturbed pathways in either embryonic or adult knockout samples tended to involve cell cycle, cell adhesion, neurotransmitter synthesis or receptors, cytoskeletal reconstruction/axon guidance, cellular migration, oxidative phosphorylation, and genes involved in neurodegeneration, as well as differential expression of classical markers for neural differentiation.
+
+Talking Points
+• Greater differential expression is observed during embryonic development than in adult brain.
+• Variability and QC plots?
+• Digital genotyping
+• No ‘clear’ separation of KO vs WT by strains.
+ 
+FIGURE 4. Global, heatmap sorted by differential expression  // 
+Table with general terms , number of genes associated with each strain
+
+Cis Transcriptional regulatory dynamics of lncRNA loci 
+Since many lncRNAs have been implicated in cis-regulatory functions (CITE), We next asked whether we could observe any preference or bias for neighboring protein-coding genes to be significantly affected after deletion of our lncRNA loci. We expected to find that many of our lncRNA knockout strains demonstrated a significant effect on the expression of neighboring genes. 
+We began by assessing promoter strength at each locus. To query the extent to which lacZ mRNA expression levels faithfully track endogenous lncRNA expression, we averaged lncRNA expression across all wild type samples, and lacZ expression level across the knockout samples for each strain (figure X). The knocked-in  lacZ reporter is driven off the endogenous lncRNA promoter; however, as an mRNA it might experience different stabilizing or destabilizing dynamics, or could be mis-regulated if the endogenous lncRNA participates in promoter-dependent autoregulation.
+ 	Overall, lacZ mRNA expression is positively but not strongly correlated with endogenous lncRNA expression in WT (r2=0.4555; E14.5=0.47; Adult=0.29). Our strains represent a variety of knockout strategies. In some cases the entire gene body was ablated, while in others the first or last exon remains intact. Amongst those conditions in which lacZ is not as strongly correlated with wild type lncRNA levels, we found no obvious trend in the gene targeting design, suggesting that other factors lead to the differences between lacZ and wild type lncRNA levels. For example, in most strains, lacZ expression levels tend to be slightly higher than those of the endogenous lncRNA, which may be explained by the stabilizing effect of translation machinery binding to the mRNA. 
+ 	To further assess the effect of each lncRNA on its local genomic context, we next determined whether lncRNA ablation had a significant effect on the expression of the closest protein-coding neighbor. Of the strains investigated, deletion of 6/13 lncRNAs significantly affected their protein coding neighbor (figure X) at one or both timepoints (Figure 5B). Of those cases where the closest protein coding neighbor was significantly differentially regulated, the lncRNA was usually located upstream of the protein coding gene (4/6 loci) and was always oriented in the opposite direction (figure X). 
+In most cases, deletion of a lncRNA resulted in a decrease in expression levels of the nearest protein coding gene (figure X). The only exception to this finding is the relationship between Kantr and the neighboring histone demethylase gene, Kdm5c. The locus encompassing Kdm5c is known to escape X inactivation and as such is generally more highly expressed in female brain tissue. For this analysis, we compared two females and one male knockout brain to three wild type male brains. The significant regulation of Kdm5c may thus be due to a sex bias rather than an effect of the lncRNA.  
+ 
+Cis-acting lncRNAs may regulate more than one neighboring gene. To investigate each lncRNA’s effect on the entire local gene neighborhood, we compared the number of differentially expressed genes in a four-megabase window surrounding our target lncRNA to 1,000 randomly selected size-matched windows from the same differential analysis. We generated a bootstrapped p-value for the likelihood that the same number of genes would be differentially regulated by chance in a similarly sized region in this dataset.  Only 4/25 (Tug1 embryonic, Tug1 adult, Lincenc1 embryonic, Trp53cor1 adult) of the conditions we sequenced had a significant regional effect, and only one strain (Tug1) maintained this effect across developmental time from E14.5 to adulthood (SFIG X).
+ 
+-       Interpretation? In discussion section…
+o   Those genes that have significant regional effects may be acting in cis, or locally in trans, to organize gene expression. Alternatively, this local regulation could indicate a dual enhancer function for these loci. ? what else…
+	- Could also be disruption of the underlying primary sequence (removal of TF binding site that either activates or negatively regulates transcription rate)
+o   Generally, argument against acting in cis…if we wanna go there…
+
+Figure 5. Local regional effects (lacZ scatter plot embryo/adult, WT fpkm levels embryo/adult, cis plot summary figure(?) and/or panels of the 8 + two that dont reg neighbor) 
+
+
+
+
+
+(Giulio, Martin, Zach, Loyal, Abbie) In vivo expression relative to transcriptional regulation
+
+-Bring the vignettes in figure 1 to figure 4 with respect to regulation and expression comparisons.
+-Pick a subset of the 5 strains in figure 1 to focus on how their individual expression patterns change in time, the genes they regulate in time, and any other connections we can make to in vivo expression patterns and genes being regulated, bring back in cis if relevant to the types of expression perturbations in KOs (albeit limited by correlation)
+-Try and bring a theme of location and regulation together and importance in general theme of colloquium goals, if possible….
+ 
+Figure 5. In vivo expression and regulation
+
+Targets for this section
+• Neural subtypes (Interneurons, excitatory neurons, glia, oligos, etc) (In progress now 07/15/14 1:25:57 AM)
+• Antagonistic activities between lncRNAs?
+• Kantr
+• Celrr
+• Eldr vs Tug1 interneurons
+
+Outline of interesting findings from transcriptional analysis
+
+Kantr:Embryonic
+• KO results in a significant increase in Jarid1c (Kdm5c).
+	- This may be associated with Male/Female differences...
+• Significant increase in gene sets involved in extracellular matrix organization, Ncam1 and L1cam interactions/signaling, Notch signaling, NGF and PDGF signaling, Axon guidance, and neuronal development
+• Significant decrease in gene sets associated with cell cycle regulation and progression, DNA synthesis (cell cycle associated), and apoptosis
+• Differential transcriptome suggest premature development at the expense of proliferation (similar to lnc-Brn1b story from eLife paper).
+• Significant enrichment for neurodegeneration-associated gene sets (Ox-Phos, Alzheimers, Huntington’s, Parkinson’s, etc). Consistent with previous observations Re: linc-Brn1b KO
+
+Kantr:Adult
+• Maintains significant increase in Jarid1c (Kdm5c) expression.
+• Samples continue to cluster appropriately suggesting reproducible differences in transcriptional profile.
+• Kantr vs WT is still 1st principle component
+• Maintains a significant increase in gene sets associated with axon guidance and PDGF signaling.
+• Increased PDGF signaling is associated with glioblastoma.
+Celrr:Embryonic
+• Increase in glucose-sensitive transcription factor Chrebp2 pathway genes
+	- http://www.ncbi.nlm.nih.gov/pubmed/19995986
+• Nos1
+• Significant increase in expression of electron transport chain associated genes
+• CK1 pathway is significantly increased as well
+	- Associated with glucose sensing.
+• Cacam pathway is DIRECTLY involved with glucose metabolism.
+• Significant increase in Ox-Phos and neurodegeneration-associated gene sets.
+• LOOK CAREFULLY AT THESE GSEA RESULTS!  I’m not happy with the short list of DE genes in both adult and emb.
+• Look at Allen for expression of adjacent PC genes.
+Eldr vs Tug1 Interneurons
+
+Discussion
+
+Methods
+
+Mice
+lncRNA knockout mice were generated by replacing the selected lncRNA gene with a LacZ cassette (Sauvageau et al., 2013). To remove the loxP-flanked neomycin resistance gene included in the lncRNA targeting constructs for the initial selection, each of the mutant strains (N1) was crossed once with the cre-recombinase strain B6.C-Tg(CMV-cre)1Cgn/J, and subsequently backcrossed once with C57BL/6J. For each strain, mice free of both the neomycin-resistance and cre-recombinase genes were then selected for colony expansion. The strains (N3) were maintained by heterozygous breeding and mutant mice were identified by genotyping for loss of lncRNA allele and gain of the lacZ cassette (Transnetyx, Cordova, TN). Heterozygous mice at embryonic day 14.5 (E14.5) and 2-3 months of age (adult) were used to determine the brain expression pattern of each lncRNA (knocked-in LacZ reporter gene). E14.5 and adult knockout and wild type littermate mice were used to determine the effects of lncRNA deletion on global gene-expression (RNA-Seq). Mice were euthanized either by CO2 inhalation followed by cervical dislocation (adults for RNA isolation and all pregnant females) or by transcardial perfusion-fixation performed under avertin anesthesia. Mice were housed under controlled pathogen-free conditions (Harvard University’s Biological Research Infrastructure) and all procedures were carried out in accordance with the guidelines of the National Institute of Health for the care and use of laboratory animals and were approved by the Harvard University Committee on the Use of Animals in Research and Teaching. 
+
+Tissue collection and processing
+Brains used for lacZ expression were perfused and cut as previously described (Arlotta et al., 2005). For lacZ expression, E14.5 whole brains were dissected immediately following the embryos collection and fixed by immersion in 4% paraformaldehyde (PFA) at 4oC overnight (12 hours). Unfixed tissue samples were collected for genotyping (Transnetyx) and fixed brains from heterozygous embryos were processed for lacZ expression. Whole brains from heterozygous adult mice were dissected after transcardial perfusion with PBS followed by4% PFA, and post-fixed overnight (12 hours) in 4% PFA at 4oC. Fixed brains were stored in PBS at 4oC prior to further processing. For RNA isolation, E14.5 whole brains, dissected immediately following the embryos collection, were immediately homogenized in TRIzol (Life Technology, Carlsbad, CA) (1 ml/brain) and stored at -80oC. Tissue samples were collected for genotyping and TRIzol lysates from KO and WT embryos were processed for RNA isolation. Whole brains from adult KO and WT mice were dissected immediately after euthanasia, snap frozen in liquid nitrogen, and stored at -80oC. Frozen whole brains were pulverized in liquid nitrogen, homogenized in TRIzol (5 ml/brain), and stored at -80oC. 1 ml aliquots of the TRIzol lysates were used for RNA isolation.
+
+X-Gal staining and immunostaining.
+X-Gal staining was performed either on the whole brain prior to sectioning (E14.5 brains) or on sections (P7 and adult brains). Thick (40 μm) coronal sections were cut using a vibrating microtome and mounted on superfrost plus slides (VistaVision HistoBond, VWR, Radnor, PA). Staining was performed as previously described (Sauvageau et al., 2013). To ensure consistency across samples, E14.5 whole brains and adult brain sections were incubated in X-gal staining solution for 24 hours. The post-fixed stained brains and sections were stored in PBS at 4°C. 
+
+ADD double immunofluorescence (IF) of B-Gal with markers
+
+ADD Antibody list...
+
+Sections were imaged either using a Nikon 90i microscope equipped with a Retiga Exi camera (QIMAGING) and analyzed with Volocity image analysis software v4.0.1 (Improvision), or with a Zeiss Axio Scan.Z1 and analyzed with Zen (Zeiss).
+
+mRNA-Seq library preparation and sequencing. 
+RNA-seq was performed for 2-4 KO adult and 2-4 KO E14.5 embryos (Table XXX) of each mutant strain, obtained from 2 or more litters per strain, and a total of 17 WT adult and 17 WT embryos, balanced across the different strains, litters, and genomic backgrounds. Whole brain total RNA isolation and mRNA-Seq libraries construction (TruSeq RNA Sample Preparation Kit v2, Illumina) were performed as previously described {Sauvageau:2013dx}.. The libraries were prepared using 500 ng of total RNA as input and a 10-cycles PCR enrichment to minimize PCR artifacts. KO and WT samples from different strains and age group were processed within each library preparation to dilute any operator or batch biases. The indexed libraries were sequenced in pools of 6, each pool including KO and WT samples from different strains and ages, on the Illumina HiSeq 2500 platform using the rapid-full flow cell, paired-end, 50 bp read-length sequencing protocol (NWL Bauer Core, Harvard University FAS Center for System Biology). 
+Alignment and quantitation
+Sequencing reads were aligned to mm10 using Tophat2 {Kim:2013eo} using the following additional parameters: --no-coverage-search --max-multihits 10 -p 8.  No reference transcriptome was used during alignment but Tophat2 was not prevented from identifying novel splice junctions. Each aligned sample was quantified agains a modified version of the GENCODE (version M2) transcriptome as a reference (cite). Each bam was then quantified using cuffquant (cite). 
+Digital genotyping
+Genotypes were further confirmed after sequencing by isoform-level expression plots for each lncRNA and the lacZ reporter in each replicate. Gene tracks were also constructed from indexed bam files after alignment of sequencing reads with tophat2 to mm10. These tracks validated that any isoform-level expression of a lncRNA in a KO was due either to repetitive-region-based mapping error or incomplete targetting of the genebody (supplemental figure?). 
+Differential analysis 
+Differential analysis was performed for each strain at both embryonic and adult timepoints using cuffdiff2 on 2-3 replicates from each knockout strain against a set of 14 wildtype whole brains. Importantly, the wildtypes were not pooled at sequencing. Each replicate wildtype bam file represents an individual mouse. An all-sample differential analysis was also performed in which every strain was compared to wildtype for the purpose of global analysis. 
+GSEA
+Gene set enrichment analysis (GSEA) was performed on the set of all expressed genes using curated biocarta, kegg, and reactome genesets as well as in-house curated interneuron marker and neuronal subtype marker genesets (do we need to publish these?).
+
+GO
+Gene ontology (GO) enrichments were performed on the set of differentially expressed genes for each strain, and for the universe of differentially expressed genes between any knockout and wildtype at both embryonic and adult timepoints. 
+
+Cis region analysis
+The number of genes differentially regulated within a 4 megabase window of each targeted lncRNA was gathered and compared to the number of differentially regulated genes in 1000 randomly selected size-matched windows across the same dataset. 
+
+References
+

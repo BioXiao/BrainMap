@@ -290,6 +290,11 @@ dev.off()
 ############
 # Brn1 locus
 ############
-Brn1GeneIDs<-c("Pou3f3",'linc-Brn1a','linc-Brn1b')
+Brn1GeneIDs<-c("Pou3f3",'linc-Brn1a','linc-Brn1b','Pou3f2','Pou3f1','Pou3f4','Oct6')
 Brn1Genes_emb<-getGenes(embryonic_cuff,Brn1GeneIDs,sampleIdList=c("WT","linc_Brn1a","linc_Brn1b"))
 Brn1Genes_adult<-getGenes(adult_cuff,Brn1GeneIDs,sampleIdList=c("WT","linc_Brn1a","linc_Brn1b"))
+
+pdf("Pou3_family_genes_barplot.pdf",height=5,width=10)
+expressionBarplot(Brn1Genes_adult,rep=T) + theme_bw() + scale_y_log10(limits=c(1,300)) + scale_fill_manual(values=c("#DDDDFF","#8888DD","#2222BB")) + theme(legend.justification=c(1,0), legend.position=c(1,0.8))
+expressionBarplot(Brn1Genes_emb,rep=T) + theme_bw() + scale_y_log10(limits=c(1,300)) + scale_fill_manual(values=c("#FFDDDD","#DD8888","#BB2222")) + theme(legend.justification=c(1,0), legend.position=c(1,0.8))
+dev.off()
