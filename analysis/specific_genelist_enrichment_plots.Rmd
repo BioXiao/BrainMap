@@ -22,16 +22,6 @@ library(marray)
 library(ggplot2)
 library(gtable)
 library(gridExtra)
-library(RColorBrewer)
-library(RMySQL)
-
-
-reactome_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.reactome.v4.0.symbols.gmt")
-biocarta_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.biocarta.v4.0.symbols.gmt")
-kegg_gs<-GSA.read.gmt("/n/rinn_data1/annotations/gsea/msigdb_v4.0_files_to_download_locally/msigdb_v4.0_GMTs/c2.cp.kegg.v4.0.symbols.gmt")
-interneuron_gs<-GSA.read.gmt("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/support/interneuron_genesets.gmt")
-
-#sexdiffs_gs<-GSA.read.gmt("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/support/sexdiffs.gmt")
 
 ```
 
@@ -85,12 +75,9 @@ cellcycle.melt$gene_short_name<-factor(cellcycle.melt$gene_short_name,levels=cel
 
 
 
-cellcycle.p<-ggplot(cellcycle.melt)+geom_tile(aes(x=variable,y=gene_short_name,fill=value))+facet_grid(Stage~.,space="free_y",scales="free")+theme_bw()+scale_fill_gradient2(low="blue",mid="white",high="red",limits=limits)
+cellcycle.p<-ggplot(cellcycle.melt)+geom_tile(aes(x=variable,y=gene_short_name,fill=value))+facet_grid(Stage~.,space="free_y",scales="free")+scale_fill_gradient2(low="blue",mid="white",high="red",limits=limits)+theme_bw()+theme(axis.text.x=element_blank(),axis.ticks.x=element_blank())+xlab("")+ylab("")
 
-cellcycple.p<-cellcycle.p+theme(axis.text.x=element_text(angle=-90,hjust=0))+guides(color=FALSE)
-
-
-cellcycle.p<-cellcycle.p+geom_tile(aes(x=variable,y=gene_short_name,color=significant),fill="#FFFFFF00",size=1)+scale_color_manual(values=c("#FFFFFF00","black"))+coord_equal(1)
+cellcycle.p<-cellcycle.p+geom_tile(aes(x=variable,y=gene_short_name,color=significant),fill="#FFFFFF00",size=1)+scale_color_manual(values=c("#FFFFFF00","black"))+guides(color=FALSE)+coord_equal()
 
 cellcycle.p
 
@@ -135,14 +122,18 @@ cortical.melt$gene_short_name<-factor(cortical.melt$gene_short_name,levels=corti
 
 
 
-cortical.p<-ggplot(cortical.melt)+geom_tile(aes(x=variable,y=gene_short_name,fill=value))+facet_grid(Layer~.,space="free_y",scales="free")+theme_bw()+scale_fill_gradient2(low="blue",mid="white",high="red",limits=limits)
+cortical.p<-ggplot(cortical.melt)+geom_tile(aes(x=variable,y=gene_short_name,fill=value))+facet_grid(Layer~.,space="free_y",scales="free")+theme_bw()+scale_fill_gradient2(low="blue",mid="white",high="red",limits=limits)+theme(axis.text.x=element_blank(),axis.ticks.x=element_blank())+xlab("")+ylab("")
 
-cortical.p<-cortical.p+theme(axis.text.x=element_text(angle=-90,hjust=0))+guides(color=FALSE)
+cortical.p<-cortical.p+guides(color=FALSE)
 
-
-cortical.p<-cortical.p+geom_tile(aes(x=variable,y=gene_short_name,color=significant),fill="#FFFFFF00",size=1)+scale_color_manual(values=c("#FFFFFF00","black"))+coord_equal(1)
+cortical.p<-cortical.p+geom_tile(aes(x=variable,y=gene_short_name,color=significant),fill="#FFFFFF00",size=1)+scale_color_manual(values=c("#FFFFFF00","black"))+coord_equal()
 
 cortical.p
+
+
+
+
+
 
 rm(annotation)
 rm(diffDat)
@@ -177,12 +168,12 @@ neuralcelltype.melt$gene_short_name<-factor(neuralcelltype.melt$gene_short_name,
 
 
 
-neuralcelltype.p<-ggplot(neuralcelltype.melt)+geom_tile(aes(x=variable,y=gene_short_name,fill=value))+facet_grid(Cell_type~.,space="free_y",scales="free")+theme_bw()+scale_fill_gradient2(low="blue",mid="white",high="red",limits=limits)
+neuralcelltype.p<-ggplot(neuralcelltype.melt)+geom_tile(aes(x=variable,y=gene_short_name,fill=value))+facet_grid(Cell_type~.,space="free_y",scales="free")+theme_bw()+scale_fill_gradient2(low="blue",mid="white",high="red",limits=limits)+theme(axis.text.x=element_blank(),axis.ticks.x=element_blank())+xlab("")+ylab("")
 
-neuralcelltype.p<-neuralcelltype.p+theme(axis.text.x=element_text(angle=-90,hjust=0))+guides(color=FALSE)
+neuralcelltype.p<-neuralcelltype.p+guides(color=FALSE)
 
 
-neuralcelltype.p<-neuralcelltype.p+geom_tile(aes(x=variable,y=gene_short_name,color=significant),fill="#FFFFFF00",size=1)+scale_color_manual(values=c("#FFFFFF00","black"))+coord_equal(1)
+neuralcelltype.p<-neuralcelltype.p+geom_tile(aes(x=variable,y=gene_short_name,color=significant),fill="#FFFFFF00",size=1)+scale_color_manual(values=c("#FFFFFF00","black"))+coord_equal()
 
 neuralcelltype.p
 
@@ -216,11 +207,11 @@ ndiff.melt$Cell_type<-factor(ndiff.melt$Cell_type,levels=ndiff.levels)
 
 ndiff.melt$gene_short_name<-factor(ndiff.melt$gene_short_name,levels=ndiff.genes.levels)
 
-ndiff.p<-ggplot(ndiff.melt)+geom_tile(aes(x=variable,y=gene_short_name,fill=value))+facet_grid(Cell_type~.,space="free_y",scales="free")+theme_bw()+scale_fill_gradient2(low="blue",mid="white",high="red",limits=limits)
+ndiff.p<-ggplot(ndiff.melt)+geom_tile(aes(x=variable,y=gene_short_name,fill=value))+facet_grid(Cell_type~.,space="free_y",scales="free")+theme_bw()+scale_fill_gradient2(low="blue",mid="white",high="red",limits=limits)+theme(axis.text.x=element_blank(),axis.ticks.x=element_blank())+xlab("")+ylab("")
 
-ndiff.p<-ndiff.p+theme(axis.text.x=element_text(angle=-90,hjust=0))+guides(color=FALSE)
+ndiff.p<-ndiff.p+guides(color=FALSE)
 
-ndiff.p<-ndiff.p+geom_tile(aes(x=variable,y=gene_short_name,color=significant),fill="#FFFFFF00",size=1)+scale_color_manual(values=c("#FFFFFF00","black"))+coord_equal(1)
+ndiff.p<-ndiff.p+geom_tile(aes(x=variable,y=gene_short_name,color=significant),fill="#FFFFFF00",size=1)+scale_color_manual(values=c("#FFFFFF00","black"))+coord_equal()
 ndiff.p
 
 rm(annotation)
