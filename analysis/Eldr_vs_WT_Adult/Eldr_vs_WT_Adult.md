@@ -164,7 +164,7 @@ Expression heatmap:
 There are 27 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Tue Jul 15 18:33:09 2014 -->
+<!-- Tue Jul 15 20:58:20 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Nes </TD> </TR>
@@ -474,7 +474,7 @@ The pvalue for 1 genes significantly regulated in a region this size  is: 1
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Tue Jul 15 19:04:00 2014 -->
+<!-- Tue Jul 15 21:37:04 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR729 </TD> </TR>
@@ -497,7 +497,7 @@ The pvalue for 1 genes significantly regulated in a region this size  is: 1
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Tue Jul 15 19:04:01 2014 -->
+<!-- Tue Jul 15 21:37:05 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR729/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 26334400.00 </TD> <TD align="right"> 34779900.00 </TD> <TD align="right"> 0.76 </TD> <TD align="right"> 1.00 </TD> </TR>
