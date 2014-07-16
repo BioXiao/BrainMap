@@ -25,16 +25,16 @@ RUN_TIME=1200
 
 #Adult
 #Log directory
-LOGDIR=$LOGBASE/diffs/Adult_full
-mkdir -p $LOGDIR
+#LOGDIR=$LOGBASE/diffs/Adult_full
+#mkdir -p $LOGDIR
 
 #Output director
-OUTDIR=$DIFF_ROOT/Adult_full
-mkdir -p $OUTDIR
+#OUTDIR=$DIFF_ROOT/Adult_full
+#mkdir -p $OUTDIR
 
-SAMPLESHEET="brainMap_sample_sheet_adult.tab"
-CONTRASTFILE="brainMap_contrasts_full_adult.tab"
-cuffdiff -p $NUM_THREADS -C $CONTRASTFILE -o $OUTDIR --use-sample-sheet $REF_GTF $SAMPLESHEET >$LOGDIR/cuffdiff.out &
+#SAMPLESHEET="brainMap_sample_sheet_adult.tab"
+#CONTRASTFILE="brainMap_contrasts_full_adult.tab"
+#cuffdiff -p $NUM_THREADS -C $CONTRASTFILE -o $OUTDIR --use-sample-sheet $REF_GTF $SAMPLESHEET >$LOGDIR/cuffdiff.out &
 
 #Embryonic
 #Log directory
