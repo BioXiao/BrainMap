@@ -1698,7 +1698,7 @@ write.csv(linc_LZ_correlation,"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analys
 
 ```{r lacZ_correlation, eval=FALSE}
 write.csv(linc_LZ_correlation,"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/linc_lz_correlation.csv")
-dat<-read.csv("linc_lz_correlation.csv",header=TRUE)
+#dat<-read.csv("linc_lz_correlation.csv",header=TRUE)
 rownames<-dat$X
 rownames(dat)<-rownames
 dat$X<-NULL

@@ -28,7 +28,7 @@ regions<-list()
 
 #start at 6 
 #1:dim(dat)[1]
-for (i in 1:25){
+for (i in 1:26){
   
   strain<-dat$strain[i]
   dir<-dat$dir[i]
@@ -98,7 +98,7 @@ save(file="cisregion_geneRegionslist.Rdata",regions)
 
 library(gridExtra)
 #load("cisregionplotlist.Rdata")
-plotnames<-paste("cisplots[[",1:25,"]]",sep="")
+plotnames<-paste("cisplots[[",1:26,"]]",sep="")
 names(cisplots)<-plotnames
 listnames<-c(cisplots,list(nrow=5,ncol=5))
 
@@ -133,7 +133,7 @@ dfcolnames[34]<-"value2KO"
 dfcolnames[37]<-"pvalue"
 dfcolnames[38]<-"qvalue"
 dat<-data.frame()
-for(i in 1:25){
+for(i in 1:26){
   df<-data.frame(regions[[i]])
   colnames(df)<-dfcolnames
   dat<-rbind(dat,df)

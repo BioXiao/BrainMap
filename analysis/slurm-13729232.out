@@ -1,0 +1,1028 @@
+[1] "Kantr_vs_WT_Embryonic"
+[1] "Kantr"
+Warning message:
+In dir.create(filename) : 'Kantr_vs_WT_Embryonic' already exists
+Loading required package: BiocGenerics
+Loading required package: methods
+Loading required package: parallel
+
+Attaching package: 'BiocGenerics'
+
+The following objects are masked from 'package:parallel':
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following object is masked from 'package:stats':
+
+    xtabs
+
+The following objects are masked from 'package:base':
+
+    anyDuplicated, append, as.data.frame, as.vector, cbind,
+    colnames, duplicated, eval, evalq, Filter, Find, get,
+    intersect, is.unsorted, lapply, Map, mapply, match, mget,
+    order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+    rbind, Reduce, rep.int, rownames, sapply, setdiff, sort,
+    table, tapply, union, unique, unlist
+
+Loading required package: RSQLite
+Loading required package: DBI
+Loading required package: ggplot2
+Loading required package: reshape2
+Loading required package: fastcluster
+
+Attaching package: 'fastcluster'
+
+The following object is masked from 'package:stats':
+
+    hclust
+
+Loading required package: rtracklayer
+Loading required package: GenomicRanges
+Loading required package: IRanges
+Loading required package: XVector
+Loading required package: Gviz
+Loading required package: grid
+
+Attaching package: 'cummeRbund'
+
+The following object is masked from 'package:GenomicRanges':
+
+    promoters
+
+The following object is masked from 'package:IRanges':
+
+    promoters
+
+The following object is masked from 'package:BiocGenerics':
+
+    conditions
+
+
+Attaching package: 'limma'
+
+The following object is masked from 'package:BiocGenerics':
+
+    plotMA
+
+KernSmooth 2.23 loaded
+Copyright M. P. Wand 1997-2009
+
+Attaching package: 'gplots'
+
+The following object is masked from 'package:rtracklayer':
+
+    space
+
+The following object is masked from 'package:IRanges':
+
+    space
+
+The following object is masked from 'package:stats':
+
+    lowess
+
+
+Attaching package: 'RMySQL'
+
+The following objects are masked from 'package:RSQLite':
+
+    dbBuildTableDefinition, isIdCurrent, safe.write
+
+Read 674 records
+Read 38949 items
+Read 217 records
+Read 4964 items
+Read 186 records
+Read 13247 items
+Read 2 records
+Read 1004 items
+Read 189 records
+Read 31697 items
+Read 1910 records
+Read 385167 items
+Read 615 records
+Read 165360 items
+Scale for 'x' is already present. Adding another scale for 'x', which will replace the existing scale.
+geom_smooth: method="auto" and size of largest group is >=1000, so using gam with formula: y ~ s(x, bs = "cs"). Use 'method = x' to change the smoothing method.
+Scale for 'x' is already present. Adding another scale for 'x', which will replace the existing scale.
+geom_smooth: method="auto" and size of largest group is >=1000, so using gam with formula: y ~ s(x, bs = "cs"). Use 'method = x' to change the smoothing method.
+Getting gene information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting isoforms information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting CDS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting TSS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting promoter information:
+	distData
+Getting splicing information:
+	distData
+Getting relCDS information:
+	distData
+Scale for 'colour' is already present. Adding another scale for 'colour', which will replace the existing scale.
+ymax not defined: adjusting position using y instead
+Using tracking_id, rep_name as id variables
+No id variables; using all as measure variables
+Loading required package: AnnotationDbi
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+
+Attaching package: 'Biobase'
+
+The following object is masked from 'package:cummeRbund':
+
+    samples
+
+
+Attaching package: 'GenomicFeatures'
+
+The following objects are masked from 'package:cummeRbund':
+
+    features, genes
+
+	BamTracks
+	plotting...
+Getting gene information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting isoforms information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting CDS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting TSS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting promoter information:
+	distData
+Getting splicing information:
+	distData
+Getting relCDS information:
+	distData
+Using tracking_id, rep_name as id variables
+No id variables; using all as measure variables
+Using tracking_id, sample_name as id variables
+Error in seq.default(range[1], range[2], length = n) : 
+  'from' cannot be NA, NaN or infinite
+In addition: Warning messages:
+1: Removed 5173 rows containing missing values (geom_point). 
+2: Removed 5168 rows containing missing values (geom_point). 
+Using tracking_id, rep_name as id variables
+No id variables; using all as measure variables
+Getting gene information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting isoforms information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting CDS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting TSS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting promoter information:
+	distData
+Getting splicing information:
+	distData
+Getting relCDS information:
+	distData
+Using tracking_id, rep_name as id variables
+No id variables; using all as measure variables
+Using tracking_id, rep_name as id variables
+No id variables; using all as measure variables
+Getting gene information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting isoforms information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting CDS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting TSS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting promoter information:
+	distData
+Getting splicing information:
+	distData
+Getting relCDS information:
+	distData
+
+
+
+Attaching package: 'DOSE'
+
+The following object is masked from 'package:ReactomePA':
+
+    gseAnalyzer
+
+Getting gene information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting isoforms information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting CDS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting TSS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting promoter information:
+	distData
+Getting splicing information:
+	distData
+Getting relCDS information:
+	distData
+
+KEGG.db contains mappings based on older data because the original
+  resource was removed from the the public domain before the most
+  recent update was produced. This package should now be
+  considered deprecated and future versions of Bioconductor may
+  not have it available.  Users who want more current data are
+  encouraged to look at the KEGGREST or reactome.db packages
+
+Loading required package: biomaRt
+
+Attaching package: 'biomaRt'
+
+The following object is masked from 'package:cummeRbund':
+
+    getGene
+
+Loading required package: org.Mm.eg.db
+
+Loading required package: GO.db
+gdata: read.xls support for 'XLS' (Excel 97-2004) files ENABLED.
+
+gdata: read.xls support for 'XLSX' (Excel 2007+) files ENABLED.
+
+Attaching package: 'gdata'
+
+The following object is masked from 'package:Biobase':
+
+    combine
+
+The following object is masked from 'package:IRanges':
+
+    trim
+
+The following object is masked from 'package:BiocGenerics':
+
+    combine
+
+The following object is masked from 'package:stats':
+
+    nobs
+
+The following object is masked from 'package:utils':
+
+    object.size
+
+Getting gene information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting isoforms information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting CDS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting TSS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting promoter information:
+	distData
+Getting splicing information:
+	distData
+Getting relCDS information:
+	distData
+Using gene_short_name, significant, Stage as id variables
+Getting gene information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting isoforms information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting CDS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting TSS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting promoter information:
+	distData
+Getting splicing information:
+	distData
+Getting relCDS information:
+	distData
+Using gene_short_name, significant, Layer as id variables
+Getting gene information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting isoforms information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting CDS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting TSS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting promoter information:
+	distData
+Getting splicing information:
+	distData
+Getting relCDS information:
+	distData
+Using gene_short_name, significant, Cell_type as id variables
+Getting gene information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting isoforms information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting CDS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting TSS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting promoter information:
+	distData
+Getting splicing information:
+	distData
+Getting relCDS information:
+	distData
+Using gene_short_name, significant, Cell_type as id variables
+Loading required package: BSgenome
+Loading required package: Biostrings
+
+Attaching package: 'BSgenome'
+
+The following object is masked from 'package:AnnotationDbi':
+
+    species
+
+
+Attaching package: 'plyr'
+
+The following object is masked from 'package:cummeRbund':
+
+    count
+
+The following object is masked from 'package:XVector':
+
+    compact
+
+The following objects are masked from 'package:IRanges':
+
+    desc, rename
+
+First Split
+Second Split
+1
+6
+2
+3
+3
+1
+4
+3
+5
+3
+6
+2
+7
+1
+8
+2
+9
+0
+10
+3
+11
+3
+12
+0
+13
+0
+14
+2
+15
+13
+16
+2
+17
+3
+18
+2
+19
+0
+20
+2
+21
+1
+22
+2
+23
+0
+24
+3
+25
+0
+26
+2
+27
+3
+28
+2
+29
+3
+30
+2
+31
+2
+32
+0
+33
+2
+34
+4
+35
+2
+36
+3
+37
+2
+38
+4
+39
+1
+40
+3
+41
+0
+42
+1
+43
+2
+44
+1
+45
+2
+46
+1
+47
+6
+48
+2
+49
+5
+50
+1
+51
+0
+52
+4
+53
+4
+54
+3
+55
+2
+56
+2
+57
+1
+58
+0
+59
+7
+60
+2
+61
+2
+62
+2
+63
+0
+64
+3
+65
+1
+66
+8
+67
+1
+68
+3
+69
+3
+70
+0
+71
+0
+72
+2
+73
+2
+74
+3
+75
+0
+76
+3
+77
+2
+78
+5
+79
+5
+80
+1
+81
+3
+82
+0
+83
+1
+84
+3
+85
+1
+86
+4
+87
+0
+88
+1
+89
+7
+90
+0
+91
+1
+92
+1
+93
+2
+94
+0
+95
+4
+96
+4
+97
+1
+98
+1
+99
+0
+100
+3
+101
+2
+102
+0
+103
+2
+104
+0
+105
+0
+106
+4
+107
+0
+108
+4
+109
+4
+110
+4
+111
+0
+112
+2
+113
+6
+114
+0
+115
+0
+116
+0
+117
+0
+118
+1
+119
+0
+120
+2
+121
+0
+122
+4
+123
+2
+124
+0
+125
+3
+126
+0
+127
+2
+128
+2
+129
+1
+130
+2
+131
+3
+132
+1
+133
+0
+134
+5
+135
+2
+136
+1
+137
+0
+138
+1
+139
+3
+140
+0
+141
+3
+142
+3
+143
+0
+144
+1
+145
+1
+146
+3
+147
+4
+148
+4
+149
+1
+150
+0
+151
+4
+152
+11
+153
+1
+154
+0
+155
+4
+156
+5
+157
+2
+158
+2
+159
+1
+160
+7
+161
+3
+162
+0
+163
+0
+164
+1
+165
+3
+166
+4
+167
+3
+168
+1
+169
+2
+170
+0
+171
+2
+172
+4
+173
+4
+174
+1
+175
+2
+176
+0
+177
+2
+178
+2
+179
+3
+180
+9
+181
+0
+182
+4
+183
+2
+184
+5
+185
+2
+186
+1
+187
+4
+188
+1
+189
+0
+190
+3
+191
+1
+192
+1
+193
+2
+194
+1
+195
+3
+196
+1
+197
+4
+198
+1
+199
+5
+200
+2
+201
+4
+202
+1
+203
+2
+204
+3
+205
+3
+206
+0
+207
+2
+208
+3
+209
+1
+210
+1
+211
+4
+212
+1
+213
+3
+214
+1
+215
+2
+216
+0
+217
+6
+218
+3
+219
+0
+220
+2
+221
+1
+222
+2
+223
+6
+224
+2
+225
+0
+226
+3
+227
+0
+228
+2
+229
+2
+230
+3
+231
+4
+232
+8
+233
+2
+234
+2
+235
+3
+236
+4
+237
+8
+238
+2
+239
+2
+240
+2
+241
+1
+242
+4
+243
+11
+244
+4
+245
+3
+246
+2
+247
+0
+248
+0
+249
+0
+250
+2
+251
+1
+252
+2
+253
+0
+254
+0
+255
+0
+256
+4
+257
+0
+258
+3
+259
+1
+260
+4
+261
