@@ -23,13 +23,18 @@ getTable<-function(object){
 }
 
 dat<-read.csv("autoanalysisInfo.csv",header=TRUE,stringsAsFactors=FALSE)
-cisplots<-list()
-regions<-list()
+#cisplots<-list()
+#regions<-list()
 
+save(file="cisregionplotlist.Rdata",cisplots)
+save(file="cisregion_geneRegionslist.Rdata",regions)
+
+load("cisregionplotlist.Rdata")
+load("cisregion_geneRegionslist.Rdata")
 #start at 6 
 #1:dim(dat)[1]
 for (i in 1:26){
-  
+  if(i %in% c(1,2,7,13,14,16,19,20,24)){next} #indecies of ones with 0 DE genes in region (dont need to be redone)
   strain<-dat$strain[i]
   dir<-dat$dir[i]
   timepoint<-dat$timepoint[i]
@@ -46,18 +51,21 @@ for (i in 1:26){
   chromosome<-myGene$chromosome
   start<-myGene$start-(windowSize/2)
   end<-myGene$end+(windowSize/2)
-  sigGenesRegion<-fullTable[which(fullTable[,40]==chromosome & fullTable[,39]=="yes" & fullTable[,9]>=start & fullTable[,10]<=end),]
+  
+  #exclude lincRNA in significance calc...
+  if(strain=="linc-Enc1"){strain<-"Gm2373"}
+  sigGenesRegion<-fullTable[which(fullTable[,40]==chromosome & fullTable[,39]=="yes" & fullTable[,9]>=start & fullTable[,10]<=end & fullTable[,4]!=strain),]
   nSig<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
   
   score<-0
   signeighbors<-data.frame(rep(NULL,nIter))
-  
+
   for (j in 1:nIter){
     write(j,stderr())
     sigGenesRegion<-fullTable[which(fullTable[,40]==seqnames(myRandom[j])@values & fullTable[,39]=="yes" & fullTable[,9]>=start(myRandom[j])-(windowSize/2) & fullTable[,10]<=end(myRandom[j])+(windowSize/2)),]
     nSigIter<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
     write(nSigIter,stderr())
-    if(nSigIter >= nSig-1) {score<-score+1}
+    if(nSigIter >= nSig) {score<-score+1}
       signeighbors[1,j]<-nSigIter
   }
   
