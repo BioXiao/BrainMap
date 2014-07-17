@@ -1368,8 +1368,14 @@ myGene<-fullTable[which(fullTable$gene_short_name==strain),][1,] #any problems w
 chromosome<-myGene$chromosome
 start<-myGene$start-(windowSize/2)
 end<-myGene$end+(windowSize/2)
-sigGenesRegion<-fullTable[which(fullTable[,40]==chromosome & fullTable[,39]=="yes" & fullTable[,9]>=start & fullTable[,10]<=end),]
-nSig<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
+#sigGenesRegion<-fullTable[which(fullTable[,40]==chromosome & fullTable[,39]=="yes" & fullTable[,9]>=start & fullTable[,10]<=end),]
+#nSig<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
+
+
+#exclude lincRNA in significance calc...
+  if(strain=="linc-Enc1"){strain<-"Gm2373"}
+  sigGenesRegion<-fullTable[which(fullTable[,40]==chromosome & fullTable[,39]=="yes" & fullTable[,9]>=start & fullTable[,10]<=end & fullTable[,4]!=strain),]
+  nSig<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
 
 score<-0
 signeighbors<-data.frame(rep(NULL,nIter))
@@ -1379,7 +1385,7 @@ for (i in 1:nIter){
   sigGenesRegion<-fullTable[which(fullTable[,40]==seqnames(myRandom[i])@values & fullTable[,39]=="yes" & fullTable[,9]>=start(myRandom[i])-(windowSize/2) & fullTable[,10]<=end(myRandom[i])+(windowSize/2)),]
   nSigIter<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
   write(nSigIter,stderr())
-  if(nSigIter >= nSig-1) {score<-score+1}
+  if(nSigIter >= nSig) {score<-score+1}
   signeighbors[1,i]<-nSigIter
 }
 
