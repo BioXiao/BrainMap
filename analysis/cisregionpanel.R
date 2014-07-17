@@ -26,9 +26,6 @@ dat<-read.csv("autoanalysisInfo.csv",header=TRUE,stringsAsFactors=FALSE)
 #cisplots<-list()
 #regions<-list()
 
-save(file="cisregionplotlist.Rdata",cisplots)
-save(file="cisregion_geneRegionslist.Rdata",regions)
-
 load("cisregionplotlist.Rdata")
 load("cisregion_geneRegionslist.Rdata")
 #start at 6 
