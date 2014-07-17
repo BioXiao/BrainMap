@@ -1512,8 +1512,7 @@ linc_avg_fpkm<-fpkm(linc)[which(fpkm(linc)$sample_name=="WT"),3]
 
 actin<-getGene(cuff,"Actb")
 actin_fpkm<-fpkm(actin)[which(fpkm(actin)$sample_name==strain),3]
-linc_LZ_correlation$Peril_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm,actin_fpkm) save(file="DEgenes_list.Rdata",DE_genes_list) save(file="DEiso_list.Rdata",DE_iso_list) save(file="DEcds_list.Rdata",DE_cds_list)
-
+linc_LZ_correlation$Peril_Embryonic<-c(LZ_avg_fpkm,linc_avg_fpkm,actin_fpkm) 
 
 rm(sigCDSgenes)
 rm(sigIsoforms)
@@ -1697,7 +1696,7 @@ write.csv(linc_LZ_correlation,"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analys
 ```
 
 ```{r lacZ_correlation, eval=FALSE}
-write.csv(linc_LZ_correlation,"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/linc_lz_correlation.csv")
+#write.csv(linc_LZ_correlation,"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/linc_lz_correlation.csv")
 #dat<-read.csv("linc_lz_correlation.csv",header=TRUE)
 rownames<-dat$X
 rownames(dat)<-rownames
@@ -1739,6 +1738,7 @@ summary(adult.lzlinc_fit)$r.squared
 #linc_LZ<-ggplot(linc_LZ_correlation, aes(EndogenousLinc,LZ,color=timepoint))+geom_point()+geom_text(aes(label=name))+xlab("Endogenous lincRNA expression log10(FPKM)")+ylab("LacZ expression log10(FPKM)")+scale_x_log10(limits=c(-10,80))+scale_y_log10(limits=c(-10,40))+geom_smooth(aes(EndogenousLinc,LZ),method="lm")+geom_abline(intercept=0,slope=1)
 
 save(file="linc_LZ_correlation.Rdata",linc_LZ_correlation)
+write.table(linc_LZ_correlation,file="lincLZtable_forMartin.tab",sep="/t")
 
 ggplot(linc_LZ_correlation, aes(EndogenousLinc,LZ))+geom_point()+geom_text(aes(label=name))+xlab("Endogenous lincRNA expression (FPKM)")+ylab("LacZ expression (FPKM)")+geom_abline(intercept=0,slope=1)+scale_x_log10(limits=c(-10,200))+scale_y_log10(limits=c(-10,100))+theme_bw()+facet_grid(.~timepoint)
 
@@ -1801,10 +1801,6 @@ ggplot(linc_LZ_correlation, aes(x,y,fill=EndogenousLinc,label=paste(name,timepoi
 
 ggsave("endogenouslinc_digital_northern.pdf")
 #+scale_fill_manual(values=c("white","black"))
-
-
-
-
 
 ```
 

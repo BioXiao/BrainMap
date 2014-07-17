@@ -88,9 +88,7 @@ for (i in 1:26){
   regions[[i]]<-genesInRegion
   nameofplot<-paste(strain,timepoint,sep="_")
   ggsave(paste(nameofplot,".pdf",sep=""),plot=currplot)
-  #pdf(paste(nameofplot,".pdf",sep=""))
-  #currplot
-  #dev.off()
+
 }
 
 save(file="cisregionplotlist.Rdata",cisplots)
@@ -100,7 +98,7 @@ library(gridExtra)
 #load("cisregionplotlist_25.Rdata")
 plotnames<-paste("cisplots[[",1:26,"]]",sep="")
 names(cisplots)<-plotnames
-listnames<-c(cisplots,list(nrow=5,ncol=5))
+listnames<-c(cisplots,list(nrow=5,ncol=6))
 
 pdf("cis_plots_panel.pdf", height=30,width=30)
 do.call(grid.arrange,listnames)  
