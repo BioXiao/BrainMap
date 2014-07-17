@@ -23,15 +23,13 @@ getTable<-function(object){
 }
 
 dat<-read.csv("autoanalysisInfo.csv",header=TRUE,stringsAsFactors=FALSE)
-#cisplots<-list()
-#regions<-list()
+cisplots<-list()
+regions<-list()
 
-load("cisregionplotlist.Rdata")
-load("cisregion_geneRegionslist.Rdata")
 #start at 6 
 #1:dim(dat)[1]
 for (i in 1:26){
-  if(i %in% c(1,2,7,13,14,16,19,20,24)){next} #indecies of ones with 0 DE genes in region (dont need to be redone)
+  
   strain<-dat$strain[i]
   dir<-dat$dir[i]
   timepoint<-dat$timepoint[i]
@@ -48,21 +46,18 @@ for (i in 1:26){
   chromosome<-myGene$chromosome
   start<-myGene$start-(windowSize/2)
   end<-myGene$end+(windowSize/2)
-  
-  #exclude lincRNA in significance calc...
-  if(strain=="linc-Enc1"){strain<-"Gm2373"}
-  sigGenesRegion<-fullTable[which(fullTable[,40]==chromosome & fullTable[,39]=="yes" & fullTable[,9]>=start & fullTable[,10]<=end & fullTable[,4]!=strain),]
+  sigGenesRegion<-fullTable[which(fullTable[,40]==chromosome & fullTable[,39]=="yes" & fullTable[,9]>=start & fullTable[,10]<=end),]
   nSig<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
   
   score<-0
   signeighbors<-data.frame(rep(NULL,nIter))
-
+  
   for (j in 1:nIter){
     write(j,stderr())
     sigGenesRegion<-fullTable[which(fullTable[,40]==seqnames(myRandom[j])@values & fullTable[,39]=="yes" & fullTable[,9]>=start(myRandom[j])-(windowSize/2) & fullTable[,10]<=end(myRandom[j])+(windowSize/2)),]
     nSigIter<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
     write(nSigIter,stderr())
-    if(nSigIter >= nSig) {score<-score+1}
+    if(nSigIter >= nSig-1) {score<-score+1}
       signeighbors[1,j]<-nSigIter
   }
   
@@ -93,17 +88,19 @@ for (i in 1:26){
   regions[[i]]<-genesInRegion
   nameofplot<-paste(strain,timepoint,sep="_")
   ggsave(paste(nameofplot,".pdf",sep=""),plot=currplot)
-
+  #pdf(paste(nameofplot,".pdf",sep=""))
+  #currplot
+  #dev.off()
 }
 
 save(file="cisregionplotlist.Rdata",cisplots)
 save(file="cisregion_geneRegionslist.Rdata",regions)
 
 library(gridExtra)
-#load("cisregionplotlist.Rdata")
+#load("cisregionplotlist_25.Rdata")
 plotnames<-paste("cisplots[[",1:26,"]]",sep="")
 names(cisplots)<-plotnames
-listnames<-c(cisplots,list(nrow=5,ncol=6))
+listnames<-c(cisplots,list(nrow=5,ncol=5))
 
 pdf("cis_plots_panel.pdf", height=30,width=30)
 do.call(grid.arrange,listnames)  
@@ -115,7 +112,7 @@ library(plyr)
 library(ggplot2)
 
 windowSize<-4000000
-#load("cisregion_geneRegionslist.Rdata")
+load("cisregion_geneRegionslist.Rdata")
 dat<-read.csv("autoanalysisInfo.csv",header=TRUE,stringsAsFactors=FALSE)
 
 #regionData<-data.frame(regions)
@@ -165,9 +162,11 @@ smallsubset<-subset(data,data$targets=="yes")
 
 summaryplot<-ggplot(data,aes(start,log2foldchange, label=gene_name, color==sig))
 summaryplot<-summaryplot+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2),ylim=c(-max(abs(data$log2foldchange),na.rm=TRUE)-1,max(abs(data$log2foldchange),na.rm=TRUE)+1))+labs(title="Cis Regulation Summary")
+summaryplot+geom_text(data=subset(data, sig=='yes'),size=5)+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
+
+
 
 +geom_point(data=subset(data, (targets=='yes' & sig=='yes')))
-summaryplot+geom_text(data=subset(data, sig=='yes'),size=5)+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
 
 
 
@@ -212,7 +211,7 @@ summaryplot<-ggplot(smallsubset,aes(start,log2foldchange, label=gene_name))
 
 summaryplot<-summaryplot+coord_cartesian(xlim=c(-max(smallsubset$start)-30000, max(smallsubset$start)+30000),ylim=c(-max(abs(smallsubset$log2foldchange),na.rm=TRUE)-1,max(abs(smallsubset$log2foldchange),na.rm=TRUE)+1))+labs(title="Cis Regulation Summary")
 
-summaryplot+geom_text(size=5)+geom_point(size=3)+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
+summaryplot+geom_text(size=5)+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
 
 ggsave("cis_summary_plot.pdf")
 
