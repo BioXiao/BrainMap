@@ -100,7 +100,7 @@ save(file="cisregionplotlist.Rdata",cisplots)
 save(file="cisregion_geneRegionslist.Rdata",regions)
 
 library(gridExtra)
-#load("cisregionplotlist_25.Rdata")
+#load("cisregionplotlist.Rdata")
 plotnames<-paste("cisplots[[",1:26,"]]",sep="")
 names(cisplots)<-plotnames
 listnames<-c(cisplots,list(nrow=5,ncol=6))
