@@ -215,7 +215,7 @@ summaryplot<-ggplot(smallsubset,aes(start,log2foldchange, label=gene_name))
 
 summaryplot<-summaryplot+coord_cartesian(xlim=c(-max(smallsubset$start)-30000, max(smallsubset$start)+30000),ylim=c(-max(abs(smallsubset$log2foldchange),na.rm=TRUE)-1,max(abs(smallsubset$log2foldchange),na.rm=TRUE)+1))+labs(title="Cis Regulation Summary")
 
-summaryplot+geom_text(size=5)+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
+summaryplot+geom_text(size=5)+geom_point(size=3)+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
 
 ggsave("cis_summary_plot.pdf")
 
