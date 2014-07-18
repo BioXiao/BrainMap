@@ -284,3 +284,6 @@ Getting gene information:
 Getting isoforms information:
 	FPKM
 	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
