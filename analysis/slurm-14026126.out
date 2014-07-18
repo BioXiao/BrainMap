@@ -266,3 +266,20 @@ Getting splicing information:
 	distData
 Getting relCDS information:
 	distData
+
+
+
+Attaching package: 'DOSE'
+
+The following object is masked from 'package:ReactomePA':
+
+    gseAnalyzer
+
+Getting gene information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting isoforms information:
+	FPKM

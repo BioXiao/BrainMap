@@ -846,6 +846,9 @@ x_ordered<-as.matrix(x_ordered)
 if(dim(x_ordered)[1]>1){
   heatmap.2(x_ordered, trace="none",col=InputCols,breaks=enrichmentBreaks, margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = 1, offsetRow=0)
 }else{print("Not enough significant categories to print a heatmap!")}
+
+rm(x_ordered)
+rm(x)
 ```
 
 Biocarta zscore: 
@@ -859,6 +862,8 @@ x_ordered<-as.matrix(x_ordered)
 if(dim(x_ordered)[1]>1){
 heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow =1, offsetRow=0)
 }else{print("Not enough significant categories to print a heatmap!")}
+rm(x_ordered)
+rm(x)
 ```
 
 
@@ -879,6 +884,8 @@ x_ordered[x_ordered=="Inf"]<-x_max
 if(dim(x_ordered)[1]>1){
   heatmap.2(x_ordered, trace="none",col=InputCols,breaks=enrichmentBreaks, margins=c(1,20),dendrogram="both",labCol=c(""),cexRow =1, offsetRow=0)
 }else{print("Not enough significant categories to print a heatmap!")}
+rm(x_ordered)
+rm(x)
 
 #dev.off()
 ```
@@ -898,6 +905,9 @@ x_ordered<-as.matrix(x_ordered)
 if(dim(x_ordered)[1]>1){
 heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = 1, offsetRow=0)
 }else{print("Not enough significant categories to print a heatmap!")}
+
+rm(x_ordered)
+rm(x)
 ```
 
 
@@ -917,7 +927,8 @@ if(dim(x_ordered)[1]>1){
   heatmap.2(x_ordered, trace="none",col=InputCols,breaks=enrichmentBreaks, margins=c(1,20),dendrogram="both",labCol=c(""),cexRow =1, offsetRow=0)
 }else{print("Not enough significant categories to print a heatmap!")}
 
-
+rm(x_ordered)
+rm(x)
 ```
 
 Kegg zscore: 
@@ -934,7 +945,8 @@ x_ordered<-as.matrix(x_ordered)
 if(dim(x_ordered)[1]>1){
 heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = 1, offsetRow=0)
 }else{print("Not enough significant categories to print a heatmap!")}
-
+rm(x_ordered)
+rm(x)
 ```
 
 Interneuron enrichment:
@@ -952,7 +964,8 @@ x_ordered[x_ordered=="Inf"]<-x_max
 if(dim(x_ordered)[1]>1){
   heatmap.2(x_ordered, trace="none",col=InputCols,breaks=enrichmentBreaks, margins=c(1,20),dendrogram="both",labCol=c(""),cexRow =1, offsetRow=0)
 }else{print("Not enough significant categories to print a heatmap!")}
-
+rm(x_ordered)
+rm(x)
 
 ```
 
@@ -970,7 +983,8 @@ x_ordered<-as.matrix(x_ordered)
 if(dim(x_ordered)[1]>1){
 heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = 1, offsetRow=0)
 }else{print("Not enough significant categories to print a heatmap!")}
-
+rm(x_ordered)
+rm(x)
 ```
 
 
@@ -989,7 +1003,8 @@ x_ordered[x_ordered=="Inf"]<-x_max
 if(dim(x_ordered)[1]>1){
   heatmap.2(x_ordered, trace="none",col=InputCols,breaks=enrichmentBreaks, margins=c(1,20),dendrogram="both",labCol=c(""),cexRow =1, offsetRow=0)
 }else{print("Not enough significant categories to print a heatmap!")}
-
+rm(x_ordered)
+rm(x)
 ```
 
 Oncogene zscore:
@@ -1006,7 +1021,8 @@ x_ordered<-as.matrix(x_ordered)
 if(dim(x_ordered)[1]>1){
 heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = 1, offsetRow=0)
 }else{print("Not enough significant categories to print a heatmap!")}
-
+rm(x_ordered)
+rm(x)
 ```
 
 Immuno enrichment:
@@ -1025,7 +1041,8 @@ x_ordered[x_ordered=="Inf"]<-x_max
 if(dim(x_ordered)[1]>1){
   heatmap.2(x_ordered, trace="none",col=InputCols,breaks=enrichmentBreaks, margins=c(1,20),dendrogram="both",labCol=c(""),cexRow =1, offsetRow=0)
 }else{print("Not enough significant categories to print a heatmap!")}
-
+rm(x_ordered)
+rm(x)
 ```
 
 Immuno zscore:
@@ -1041,7 +1058,8 @@ x_ordered<-as.matrix(x_ordered)
 if(dim(x_ordered)[1]>1){
 heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = 1, offsetRow=0)
 }else{print("Not enough significant categories to print a heatmap!")}
-
+rm(x_ordered)
+rm(x)
 ```
 
 TF enrichment:
@@ -1060,7 +1078,8 @@ x_ordered[x_ordered=="Inf"]<-x_max
 if(dim(x_ordered)[1]>1){
   heatmap.2(x_ordered, trace="none",col=InputCols,breaks=enrichmentBreaks, margins=c(1,20),dendrogram="both",labCol=c(""),cexRow =1, offsetRow=0)
 }else{print("Not enough significant categories to print a heatmap!")}
-
+rm(x_ordered)
+rm(x)
 ```
 
 TF zscore:
@@ -1076,7 +1095,8 @@ x_ordered<-as.matrix(x_ordered)
 if(dim(x_ordered)[1]>1){
 heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = 1, offsetRow=0)
 }else{print("Not enough significant categories to print a heatmap!")}
-
+rm(x)
+rm(x_ordered)
 ```
 
 
@@ -1201,6 +1221,7 @@ rm(annotation)
 rm(diffDat)
 rm(cellcycle)
 rm(cellcycle_genes)
+rm(cellcycle.melt)
 
 ```
 
@@ -1244,6 +1265,7 @@ rm(annotation)
 rm(diffDat)
 rm(cortical)
 rm(cortical_genes)
+rm(cortical.melt)
 
 ```
 
@@ -1284,6 +1306,7 @@ neuralcelltype.p
 rm(annotation)
 rm(diffDat)
 rm(neuralcelltype)
+rm(neuralcelltype.melt)
 rm(neuralcell_genes)
 ```
 
@@ -1323,6 +1346,7 @@ rm(annotation)
 rm(diffDat)
 rm(ndiff)
 rm(neural_diff_genes)
+rm(ndiff.melt)
 ```
 
 
@@ -1456,6 +1480,18 @@ rm(cuff)
 rm(geneAnnot)
 rm(isoAnnot)
 rm(spliceAnnot)
+rm(reactome_pvl_mat)
+rm(reactome_zscores)
+rm(biocarta_pvl_mat)
+rm(biocarta_zscores)
+rm(interneuron_pvl_mat)
+rm(interneuron_zscores)
+rm(oncogene_pvl_mat)
+rm(oncogene_zscores)
+rm(tf_pvl_mat)
+rm(tf_zscores)
+rm(immuno_pvl_mat)
+rm(immuno_zscores)
 
 ```
 
