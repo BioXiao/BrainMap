@@ -370,3 +370,102 @@ Getting CDS information:
 	Annotation Data
 	Replicate FPKMs
 	Counts
+Getting TSS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting promoter information:
+	distData
+Getting splicing information:
+	distData
+Getting relCDS information:
+	distData
+Using gene_short_name, significant, Layer as id variables
+Getting gene information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting isoforms information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting CDS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting TSS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting promoter information:
+	distData
+Getting splicing information:
+	distData
+Getting relCDS information:
+	distData
+Using gene_short_name, significant, Cell_type as id variables
+Getting gene information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting isoforms information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting CDS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting TSS information:
+	FPKM
+	Differential Expression Data
+	Annotation Data
+	Replicate FPKMs
+	Counts
+Getting promoter information:
+	distData
+Getting splicing information:
+	distData
+Getting relCDS information:
+	distData
+Using gene_short_name, significant, Cell_type as id variables
+Loading required package: BSgenome
+Loading required package: Biostrings
+
+Attaching package: 'BSgenome'
+
+The following object is masked from 'package:AnnotationDbi':
+
+    species
+
+
+Attaching package: 'plyr'
+
+The following object is masked from 'package:cummeRbund':
+
+    count
+
+The following object is masked from 'package:XVector':
+
+    compact
+
+The following objects are masked from 'package:IRanges':
+
+    desc, rename
+
