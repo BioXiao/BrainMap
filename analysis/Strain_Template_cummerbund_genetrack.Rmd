@@ -1,8 +1,8 @@
 ```{r standalone setup, echo=FALSE,eval=FALSE}
-strain<-"linc-Cox2"
+strain<-"linc-Brn1b"
 timepoint<-"Adult"
-filename<-"linc-Cox2_vs_WT_Adult"
-dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Cox2_vs_WT_Adult/"
+filename<-"linc-Brn1b_vs_WT_Embryonic"
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Brn1b_vs_WT_Embryonic/"
 
 
 ### THINGS TO REMEMBER: change oldbam to bam and olddiff to diff once new set done! 
@@ -20,7 +20,7 @@ alpha<-0.05
 
 analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
 diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
-GTF<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf"
+GTF <- "/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf"
 genome<-"mm10"
 
 ```
@@ -42,19 +42,29 @@ library(RMySQL)
 reactome_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.reactome.v4.0.symbols.gmt")
 biocarta_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.biocarta.v4.0.symbols.gmt")
 kegg_gs<-GSA.read.gmt("/n/rinn_data1/annotations/gsea/msigdb_v4.0_files_to_download_locally/msigdb_v4.0_GMTs/c2.cp.kegg.v4.0.symbols.gmt")
+interneuron_gs<-GSA.read.gmt("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/support/interneuron_genesets.gmt")
 
+#sexdiffs_gs<-GSA.read.gmt("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/support/sexdiffs.gmt")
+
+
+#Oncogenic signatures
+oncogene_gs<-GSA.read.gmt("/n/rinn_data1/annotations/gsea/msigdb_v4.0_files_to_download_locally/msigdb_v4.0_GMTs/c6.all.v4.0.symbols.gmt")
+
+#Immunologic signatures
+immuno_gs<-GSA.read.gmt("/n/rinn_data1/annotations/gsea/msigdb_v4.0_files_to_download_locally/msigdb_v4.0_GMTs/c7.all.v4.0.symbols.gmt")
+
+#Transcription factor targets
+tf_gs<-GSA.read.gmt("/n/rinn_data1/annotations/gsea/msigdb_v4.0_files_to_download_locally/msigdb_v4.0_GMTs/c3.tft.v4.0.symbols.gmt")
 
 setwd(analysisdir)
 deletionCoords<-read.table("mm10DeletionCoords.txt",sep="\t",header=TRUE,stringsAsFactors=FALSE)
 colnames(deletionCoords)<-c("gene_name","gene_region","deletionRegion")
-
-
 ```
 
 
 ```{r cummeRbund_and_data_setup, echo=FALSE}
 #setwd(dir)
-cuff<-readCufflinks(dir=dir,gtfFile=GTF,genome=genome) #rebuild=T until all first rounds done! build sep though bc issues :-/
+cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome=genome)
 reps<-replicates(cuff)
 files<-lapply(reps$file,function(x){strsplit(x, "/")})
 
@@ -251,7 +261,7 @@ Expression plot (endogenous linc, lacZ, Y-expressed gene):
 ```{r Digital_Genotyping,fig.height=8, fig.width=8}
 genotypingGeneIDs<-c(strain,"LacZ","Eif2s3y","Xist")
 genotypingGenes<-getGenes(cuff,genotypingGeneIDs)
-expressionBarplot(genotypingGenes,replicates=T)+theme_bw()
+expressionBarplot(genotypingGenes,replicates=T)
 ```
 
 Expression heatmap:
@@ -259,7 +269,6 @@ Expression heatmap:
 ```{r digital_geno_heatmap, fig.height=4, fig.width=8}
 csHeatmap(genotypingGenes,replicates=T)
 ```
-
 
 ### Track visualization 
 
@@ -418,6 +427,9 @@ doPlot(genome=genome, name=name, myChr=chrom, from=from, to=to, window=20,bamFil
 detach(package:GenomicFeatures)
 ```
 
+
+
+
 # Differential Analysis
 
 ## Differential Genes 
@@ -433,6 +445,10 @@ There are `r length(sig)` significantly differentially expressed genes. They are
 ```{r sigdiffGenetable, results="asis"}
 if(length(sig)>0){
   print(xtable(as.data.frame(geneAnnot$gene_short_name)),type="html")
+  strainname<-paste(strain,timepoint,sep="_")
+  out_dir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/DE_lists/genes"
+  filetowrite<-paste(out_dir,strainname,sep="/")
+  write.csv(paste(strainname,geneAnnot$gene_short_name,sep=","),filetowrite)
 }else{print("No sig genes!")}
 ```
 
@@ -524,6 +540,7 @@ isoformSigIDs<-getSig(cuff,level="isoforms",alpha=alpha)
 if(length(isoformSigIDs)>0){
   isoformSigGenes<-getGenes(cuff,isoformSigIDs)
   isoAnnot<-annotation(isoformSigGenes)
+  
   }
 ```
 
@@ -532,6 +549,10 @@ These isoforms are:
 ```{r diff_iso_annotations, results='asis'}
 if(length(isoformSigIDs)>0){
   print(xtable(as.data.frame(isoAnnot$gene_short_name)),type="html")
+  strainname<-paste(strain,timepoint,sep="_")
+  out_dir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/DE_lists/iso"
+  filetowrite<-paste(out_dir,strainname,sep="/")
+  write.csv(paste(strainname,isoAnnot$gene_short_name,sep=","),filetowrite)
 }else{print("no sig isoforms")}
 ```
 
@@ -635,22 +656,25 @@ do.call(grid.arrange,csPiePlots)
 
 ```
 
-```{r diff.CDS,eval=FALSE, echo=FALSE, results='hide'}
-## Differential CDS? (unique protein coding isoforms) <-NOT IN BRAINMAP
+```{r diff.CDS, echo=FALSE, results='hide'}
 cdsSigIDs<-getSig(cuff,alpha=alpha,level="CDS")
-cdsSigGenes<-getGenes(cuff,cdsSigIDs)
-
-relcdsSigIDs<-getSig(cuff,alpha=alpha,level="relCDS")
-relcdsSigGenes<-getGenes(cuff,relcdsSigIDs)
 
 
-pdf("sigCDS_heatmap.pdf",width=10,height=20)
-csHeatmap(cdsSigGenes,cluster='row',method=dist,labRow=FALSE)+theme_bw()
-dev.off()
+if(length(cdsSigIDs)>0){
+  cdsSigGenes<-getGenes(cuff,cdsSigIDs)
+  cdsAnnot<-annotation(cdsSigGenes)
+  strainname<-paste(strain,timepoint,sep="_")
+  out_dir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/DE_lists/cds"
+  filetowrite<-paste(out_dir,strainname,sep="/")
+  write.csv(paste(strainname,cdsAnnot$gene_short_name,sep=","),filetowrite)
+  }
 
-pdf("sig_relCDS_heatmap.pdf",width=10,height=20)
-csHeatmap(relcdsSigGenes,cluster='row',method=dist,labRow=FALSE)+theme_bw()
-dev.off()
+#relcdsSigIDs<-getSig(cuff,alpha=alpha,level="relCDS")
+#relcdsSigGenes<-getGenes(cuff,relcdsSigIDs)
+
+
+
+
 ```
 
 # Gene/Pathway Analysis
@@ -662,6 +686,7 @@ Enrichment and zscores are calculated based on expression in KO vs WT (fpkmKO/fp
 KO/WT
 Blue = down in KO
 Red = Up in KO
+
 
 ```{r gsea_helper_functions}
 
@@ -687,7 +712,7 @@ get_gene_set_p_vals <- function(input, gs, alternative){
 get_gene_set_q_vals <- function(pvl_mat, method="bonferroni"){
   comp_corrected <- matrix(p.adjust(pvl_mat, method=method), nrow=nrow(pvl_mat), ncol=ncol(pvl_mat))
   colnames(comp_corrected) <- colnames(pvl_mat)
-	rownames(comp_corrected) <- rownames(pvl_mat)
+  rownames(comp_corrected) <- rownames(pvl_mat)
 	return(comp_corrected)
 }
 
@@ -747,6 +772,33 @@ kegg_pvl_mat <- get_gene_set_p_vals(Input.df, kegg_gs, alternative="either")
 kegg_pvl_corrected <- get_gene_set_q_vals(kegg_pvl_mat)
 kegg_pvl_corrected<-rbind(kegg_pvl_corrected,kegg_pvl_corrected)
 
+interneuron_pvl_mat<-get_gene_set_p_vals(Input.df,interneuron_gs,alternative="either")
+interneuron_pvl_corrected<-get_gene_set_q_vals(interneuron_pvl_mat)
+interneuron_pvl_corrected<-rbind(interneuron_pvl_corrected,interneuron_pvl_corrected)
+
+
+
+oncogene_pvl_mat<- get_gene_set_p_vals(Input.df, oncogene_gs,alternative="either")
+oncogene_pvl_corrected <- get_gene_set_q_vals(oncogene_pvl_mat)
+oncogene_pvl_corrected<-rbind(oncogene_pvl_corrected,oncogene_pvl_corrected)
+
+
+immuno_pvl_mat<- get_gene_set_p_vals(Input.df, immuno_gs,alternative="either")
+immuno_pvl_corrected <- get_gene_set_q_vals(immuno_pvl_mat)
+immuno_pvl_corrected<-rbind(immuno_pvl_corrected,immuno_pvl_corrected)
+
+
+tf_pvl_mat <- get_gene_set_p_vals(Input.df, tf_gs,alternative="either")
+tf_pvl_corrected <- get_gene_set_q_vals(tf_pvl_mat)
+tf_pvl_corrected<-rbind(tf_pvl_corrected,tf_pvl_corrected)
+
+
+
+
+
+
+
+
 
 reactome_zscores<-get_gene_set_ztest(Input.df,reactome_gs)
 reactome_zscores<-cbind(reactome_zscores,reactome_zscores)
@@ -757,6 +809,19 @@ biocarta_zscores<-cbind(biocarta_zscores,biocarta_zscores)
 kegg_zscores<-get_gene_set_ztest(Input.df,kegg_gs)
 kegg_zscores<-cbind(kegg_zscores,kegg_zscores)
 
+interneuron_zscores<-get_gene_set_ztest(Input.df,interneuron_gs)
+interneuron_zscores<-cbind(interneuron_zscores,interneuron_zscores)
+
+oncogene_zscores<-get_gene_set_ztest(Input.df,oncogene_gs)
+oncogene_zscores<-cbind(oncogene_zscores,oncogene_zscores)
+
+
+immuno_zscores<-get_gene_set_ztest(Input.df,immuno_gs)
+immuno_zscores<-cbind(immuno_zscores,immuno_zscores)
+
+
+tf_zscores<-get_gene_set_ztest(Input.df,tf_gs)
+tf_zscores<-cbind(tf_zscores,tf_zscores)
 
 
 k <- 100
@@ -874,8 +939,147 @@ heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),d
 
 ```
 
+Interneuron enrichment:
+
+```{r gsea_enrichment_interneuron, fig.width=10, fig.height=12}
+InputCols<-maPalette(low="white",high="red",k=100)
+
+x<-(-log10(t(interneuron_pvl_corrected[,which(colMins(interneuron_pvl_corrected) < 0.001)])))
+x_ordered<-x[order(x[,1], decreasing=TRUE),]
+if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
+noinfinities_x<-x_ordered[which(x_ordered !="Inf")]
+x_max<-max(noinfinities_x)+100
+x_ordered[x_ordered=="Inf"]<-x_max
+
+if(dim(x_ordered)[1]>1){
+  heatmap.2(x_ordered, trace="none",col=InputCols,breaks=enrichmentBreaks, margins=c(1,20),dendrogram="both",labCol=c(""),cexRow =1, offsetRow=0)
+}else{print("Not enough significant categories to print a heatmap!")}
 
 
+```
+
+Interneuron zscore:
+
+```{r gsea_zscore_interneuron, fig.width=10, fig.height=12}
+
+x<-interneuron_zscores[which(colMins(interneuron_pvl_corrected) < 0.001),]
+
+x_ordered<-x[order(x[,1], decreasing=TRUE),]
+
+if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
+x_ordered<-as.matrix(x_ordered)
+
+if(dim(x_ordered)[1]>1){
+heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = 1, offsetRow=0)
+}else{print("Not enough significant categories to print a heatmap!")}
+
+```
+
+
+Oncogene enrichment: 
+
+```{r gsea_enrich_onco, fig.width=10, fig.height=12}
+InputCols<-maPalette(low="white",high="red",k=100)
+
+x<-(-log10(t(oncogene_pvl_corrected[,which(colMins(oncogene_pvl_corrected) < 0.001)])))
+x_ordered<-x[order(x[,1], decreasing=TRUE),]
+if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
+noinfinities_x<-x_ordered[which(x_ordered !="Inf")]
+x_max<-max(noinfinities_x)+100
+x_ordered[x_ordered=="Inf"]<-x_max
+
+if(dim(x_ordered)[1]>1){
+  heatmap.2(x_ordered, trace="none",col=InputCols,breaks=enrichmentBreaks, margins=c(1,20),dendrogram="both",labCol=c(""),cexRow =1, offsetRow=0)
+}else{print("Not enough significant categories to print a heatmap!")}
+
+```
+
+Oncogene zscore:
+
+```{r gsea_zscore_onco, fig.width=10, fig.height=12}
+
+x<-oncogene_zscores[which(colMins(oncogene_pvl_corrected) < 0.001),]
+
+x_ordered<-x[order(x[,1], decreasing=TRUE),]
+
+if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
+x_ordered<-as.matrix(x_ordered)
+
+if(dim(x_ordered)[1]>1){
+heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = 1, offsetRow=0)
+}else{print("Not enough significant categories to print a heatmap!")}
+
+```
+
+Immuno enrichment:
+
+```{r gsea_enrich_immuno, fig.width=10, fig.height=12}
+
+InputCols<-maPalette(low="white",high="red",k=100)
+
+x<-(-log10(t(immuno_pvl_corrected[,which(colMins(immuno_pvl_corrected) < 0.001)])))
+x_ordered<-x[order(x[,1], decreasing=TRUE),]
+if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
+noinfinities_x<-x_ordered[which(x_ordered !="Inf")]
+x_max<-max(noinfinities_x)+100
+x_ordered[x_ordered=="Inf"]<-x_max
+
+if(dim(x_ordered)[1]>1){
+  heatmap.2(x_ordered, trace="none",col=InputCols,breaks=enrichmentBreaks, margins=c(1,20),dendrogram="both",labCol=c(""),cexRow =1, offsetRow=0)
+}else{print("Not enough significant categories to print a heatmap!")}
+
+```
+
+Immuno zscore:
+
+```{r gsea_zscore_immuno, fig.width=10, fig.height=12}
+x<-immuno_zscores[which(colMins(immuno_pvl_corrected) < 0.001),]
+
+x_ordered<-x[order(x[,1], decreasing=TRUE),]
+
+if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
+x_ordered<-as.matrix(x_ordered)
+
+if(dim(x_ordered)[1]>1){
+heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = 1, offsetRow=0)
+}else{print("Not enough significant categories to print a heatmap!")}
+
+```
+
+TF enrichment:
+
+```{r gsea_enrich_tf, fig.width=10, fig.height=12}
+
+InputCols<-maPalette(low="white",high="red",k=100)
+
+x<-(-log10(t(tf_pvl_corrected[,which(colMins(tf_pvl_corrected) < 0.001)])))
+x_ordered<-x[order(x[,1], decreasing=TRUE),]
+if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
+noinfinities_x<-x_ordered[which(x_ordered !="Inf")]
+x_max<-max(noinfinities_x)+100
+x_ordered[x_ordered=="Inf"]<-x_max
+
+if(dim(x_ordered)[1]>1){
+  heatmap.2(x_ordered, trace="none",col=InputCols,breaks=enrichmentBreaks, margins=c(1,20),dendrogram="both",labCol=c(""),cexRow =1, offsetRow=0)
+}else{print("Not enough significant categories to print a heatmap!")}
+
+```
+
+TF zscore:
+
+```{r gsea_zscore_tf, fig.width=10, fig.height=12}
+x<-tf_zscores[which(colMins(tf_pvl_corrected) < 0.001),]
+
+x_ordered<-x[order(x[,1], decreasing=TRUE),]
+
+if(length(x_ordered)>50){x_ordered<-x_ordered[1:50,]}
+x_ordered<-as.matrix(x_ordered)
+
+if(dim(x_ordered)[1]>1){
+heatmap.2(x_ordered, trace="none",col=myColors,breaks=myBreaks,margins=c(1,20),dendrogram="both",labCol=c(""),cexRow = 1, offsetRow=0)
+}else{print("Not enough significant categories to print a heatmap!")}
+
+```
 
 
 ## GO enrichment 
@@ -928,17 +1132,201 @@ pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T
 ```
 
 ```{r GO_figures,  fig.height=5, fig.width=8}
-plot(goBP,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched BP")+theme_bw()
+plot(goBP,showCategory=20) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched BP")+theme_bw()
 
-plot(goMF,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched MF")+theme_bw()
+plot(goMF,showCategory=20) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched MF")+theme_bw()
 
-plot(goCC,showCategory=10) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched CC")+theme_bw()
+plot(goCC,showCategory=20) + theme(axis.text.x=element_text(angle=-90,hjust=0)) + ggtitle("Enriched CC")+theme_bw()
 
-plot(kegg, showCategory=10) + ggtitle("Kegg Pathways")+theme_bw()
+plot(kegg, showCategory=20) + ggtitle("Kegg Pathways")+theme_bw()
 
-plot(pathway,showCategory=10) + ggtitle("Reactome pathway enrichment")+theme_bw()
+plot(pathway,showCategory=20) + ggtitle("Reactome pathway enrichment")+theme_bw()
 detach("package:biomaRt")
 ```
+
+
+```{r set up marker analysis}
+library(gdata)
+markerfile<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/support/Markers.xlsx"
+sheetnames<-sheetNames(markerfile)
+neuronal_diff_markers<-read.xls(markerfile, sheet=sheetnames[1])
+
+neuralcelltype_markers<-read.xls(markerfile,sheet=sheetnames[3])
+
+cellcycle_markers<-read.xls(markerfile,sheet=sheetnames[4])
+cortical_markers<-read.xls(markerfile,sheet=sheetnames[2])
+
+```
+
+
+### Enrichment or depletion for stage-specific cell cycle markers 
+
+```{r cellcycle, fig.width=6, fig.height=12}
+
+cellcycle_genes<-getGenes(cuff,cellcycle_markers$gene_name)
+#cellcycle_genes_fpkm<-fpkmMatrix(cellcycle_genes)
+#cellcycle_genes_fpkm_logfc<-log2(cellcycle_genes_fpkm/cellcycle_genes_fpkm[["WT"]])
+annotation<-annotation(cellcycle_genes)
+diffDat<-diffData(cellcycle_genes)
+cellcycle<-merge(diffDat,annotation,by="gene_id")
+
+cellcycle.genes.levels<-cellcycle$gene_short_name[order(cellcycle$log2_fold_change,decreasing=T)]
+
+cellcycle<-merge(cellcycle,cellcycle_markers,by.x="gene_short_name",by.y="gene_name")
+cellcycle<-cellcycle[,!colnames(cellcycle) %in% c("p_value","q_value", "sample_1",  "sample_2",  "status",  "value_1",	"value_2","class_code","nearest_ref_id",	"locus",	"length",	"coverage","test_stat","gene_id")]
+
+limits=c(-2,2)
+cellcycle.melt<-melt(cellcycle)
+
+cellcycle.levels<-c("G1","S","G2","M","Checkpoint/Arrest","Regulation of Cell Cycle")
+
+cellcycle.melt$Stage<-factor(cellcycle.melt$Stage,levels=cellcycle.levels)
+
+cellcycle.melt$gene_short_name<-factor(cellcycle.melt$gene_short_name,levels=cellcycle.genes.levels)
+
+
+
+cellcycle.p<-ggplot(cellcycle.melt)+geom_tile(aes(x=variable,y=gene_short_name,fill=value))+facet_grid(Stage~.,space="free_y",scales="free")+scale_fill_gradient2(low="blue",mid="white",high="red",limits=limits)+theme_bw()+theme(axis.text.x=element_blank(),axis.ticks.x=element_blank())+xlab("")+ylab("")
+
+cellcycle.p<-cellcycle.p+geom_tile(aes(x=variable,y=gene_short_name,color=significant),fill="#FFFFFF00",size=1)+scale_color_manual(values=c("#FFFFFF00","black"))+guides(color=FALSE)+coord_equal()
+
+cellcycle.p
+
+#cellcycle_genes_fpkm_logfc$gene_id<-row.names(cellcycle_genes_fpkm_logfc)
+#cellcycle_genes_fpkm_logfc<-merge(cellcycle_genes_fpkm_logfc,annotation,by="gene_id")
+#colnames(cellcycle_genes_fpkm_logfc)[6]<-"gene_name"
+#cellcycle_genes_fpkm_logfc<-merge(cellcycle_genes_fpkm_logfc,cellcycle_markers,by="gene_name")
+#cellcycle_genes_fpkm_logfc<-merge(cellcycle_genes_fpkm_logfc,diffData(cellcycle_genes)[,c("gene_id","p_value")],by.x="gene_name",by.y="gene_id")
+
+
+rm(annotation)
+rm(diffDat)
+rm(cellcycle)
+rm(cellcycle_genes)
+
+```
+
+
+### Enrichment or depletion for markers of specific cortical layers
+
+```{r cortical layers, fig.width=6, fig.height=12}
+
+cortical_genes<-getGenes(cuff,cortical_markers$gene_name)
+annotation<-annotation(cortical_genes)
+diffDat<-diffData(cortical_genes)
+cortical<-merge(diffDat,annotation,by="gene_id")
+
+cortical.genes.levels<-cortical$gene_short_name[order(cortical$log2_fold_change,decreasing=T)]
+
+cortical<-merge(cortical,cortical_markers,by.x="gene_short_name",by.y="gene_name")
+cortical<-cortical[,!colnames(cortical) %in% c("p_value","q_value", "sample_1",  "sample_2",  "status",  "value_1",	"value_2","class_code","nearest_ref_id",	"locus",	"length",	"coverage","test_stat","gene_id")]
+
+limits=c(-2,2)
+cortical.melt<-melt(cortical)
+
+cortical.levels<-c("I","II/III","IV","Va","Vb","VI","SP")
+
+cortical.melt$Layer<-factor(cortical.melt$Layer,levels=cortical.levels)
+
+cortical.melt$gene_short_name<-factor(cortical.melt$gene_short_name,levels=cortical.genes.levels)
+
+
+cortical.p<-ggplot(cortical.melt)+geom_tile(aes(x=variable,y=gene_short_name,fill=value))+facet_grid(Layer~.,space="free_y",scales="free")+theme_bw()+scale_fill_gradient2(low="blue",mid="white",high="red",limits=limits)+theme(axis.text.x=element_blank(),axis.ticks.x=element_blank())+xlab("")+ylab("")
+
+cortical.p<-cortical.p+guides(color=FALSE)
+
+cortical.p<-cortical.p+geom_tile(aes(x=variable,y=gene_short_name,color=significant),fill="#FFFFFF00",size=1)+scale_color_manual(values=c("#FFFFFF00","black"))+coord_equal()
+
+cortical.p
+
+
+
+
+rm(annotation)
+rm(diffDat)
+rm(cortical)
+rm(cortical_genes)
+
+```
+
+
+### Enrichment or depletion for specific neural cell types 
+```{r neural cell types, fig.width=6, fig.height=12}
+
+neuralcell_genes<-getGenes(cuff,neuralcelltype_markers$gene_name)
+annotation<-annotation(neuralcell_genes)
+diffDat<-diffData(neuralcell_genes)
+neuralcelltype<-merge(diffDat,annotation,by="gene_id")
+
+neuralcelltype.genes.levels<-neuralcelltype$gene_short_name[order(neuralcelltype$log2_fold_change,decreasing=T)]
+
+neuralcelltype<-merge(neuralcelltype,neuralcelltype_markers,by.x="gene_short_name",by.y="gene_name")
+neuralcelltype<-neuralcelltype[,!colnames(neuralcelltype) %in% c("p_value","q_value", "sample_1",  "sample_2",  "status",  "value_1",  "value_2","class_code","nearest_ref_id",	"locus",	"length",	"coverage","test_stat","gene_id")]
+
+limits=c(-2,2)
+neuralcelltype.melt<-melt(neuralcelltype)
+
+neuralcelltype.levels<-c("Neuron","Glia","Oligo","Astrocyte","Microglia")
+
+neuralcelltype.melt$Cell_type<-factor(neuralcelltype$Cell_type,levels=neuralcelltype.levels)
+
+neuralcelltype.melt$gene_short_name<-factor(neuralcelltype.melt$gene_short_name,levels=neuralcelltype.genes.levels)
+
+
+
+neuralcelltype.p<-ggplot(neuralcelltype.melt)+geom_tile(aes(x=variable,y=gene_short_name,fill=value))+facet_grid(Cell_type~.,space="free_y",scales="free")+theme_bw()+scale_fill_gradient2(low="blue",mid="white",high="red",limits=limits)+theme(axis.text.x=element_blank(),axis.ticks.x=element_blank())+xlab("")+ylab("")
+
+neuralcelltype.p<-neuralcelltype.p+guides(color=FALSE)
+
+
+neuralcelltype.p<-neuralcelltype.p+geom_tile(aes(x=variable,y=gene_short_name,color=significant),fill="#FFFFFF00",size=1)+scale_color_manual(values=c("#FFFFFF00","black"))+coord_equal()
+
+neuralcelltype.p
+
+rm(annotation)
+rm(diffDat)
+rm(neuralcelltype)
+rm(neuralcell_genes)
+```
+
+
+
+### Enrichment or Depletion of neural differentiation markers 
+
+```{r neural diff markers, fig.width=6, fig.height=12}
+neural_diff_genes<-getGenes(cuff,neuronal_diff_markers$gene_name)
+annotation<-annotation(neural_diff_genes)
+diffDat<-diffData(neural_diff_genes)
+ndiff<-merge(diffDat,annotation,by="gene_id")
+
+ndiff.genes.levels<-ndiff$gene_short_name[order(ndiff$log2_fold_change,decreasing=T)]
+
+ndiff<-merge(ndiff,neuronal_diff_markers,by.x="gene_short_name",by.y="gene_name")
+ndiff<-ndiff[,!colnames(ndiff) %in% c("p_value","q_value", "sample_1",  "sample_2",  "status",  "value_1",  "value_2","class_code","nearest_ref_id",	"locus",	"length",	"coverage","test_stat","gene_id")]
+
+limits=c(-2,2)
+ndiff.melt<-melt(ndiff)
+
+ndiff.levels<-c("Progenitor markers","Dorsal and ventral progenitor markers ")
+
+ndiff.melt$Cell_type<-factor(ndiff.melt$Cell_type,levels=ndiff.levels)
+
+ndiff.melt$gene_short_name<-factor(ndiff.melt$gene_short_name,levels=ndiff.genes.levels)
+
+
+ndiff.p<-ggplot(ndiff.melt)+geom_tile(aes(x=variable,y=gene_short_name,fill=value))+facet_grid(Cell_type~.,space="free_y",scales="free")+theme_bw()+scale_fill_gradient2(low="blue",mid="white",high="red",limits=limits)+theme(axis.text.x=element_blank(),axis.ticks.x=element_blank())+xlab("")+ylab("")
+
+ndiff.p<-ndiff.p+guides(color=FALSE)
+
+ndiff.p<-ndiff.p+geom_tile(aes(x=variable,y=gene_short_name,color=significant),fill="#FFFFFF00",size=1)+scale_color_manual(values=c("#FFFFFF00","black"))+coord_equal()
+ndiff.p
+
+rm(annotation)
+rm(diffDat)
+rm(ndiff)
+rm(neural_diff_genes)
+```
+
 
 # Cis vs Trans (locally)
 
@@ -950,6 +1338,8 @@ library(BSgenome.Mmusculus.UCSC.mm10)
 library(seqbias)
 library(stringr)
 library(plyr)
+
+strain_name<-strain
 
 myLengths<-seqlengths(Mmusculus)[!grepl("_random",names(seqlengths(Mmusculus)))]
 mm10.granges<-GRanges(seqnames = names(myLengths), ranges = IRanges(start = 1, end = myLengths),seqlengths=myLengths)
@@ -973,15 +1363,23 @@ getTable<-function(object){
   fullTable$chromosome<-factor(fullTable$chromosome, levels=names(seqlengths(mm10.granges)))
   fullTable
 }
+```
 
+```{r computationally intensive part of cis trans image}
 fullTable<-getTable(cuff)
 
 myGene<-fullTable[which(fullTable$gene_short_name==strain),][1,] #any problems w this?
 chromosome<-myGene$chromosome
 start<-myGene$start-(windowSize/2)
 end<-myGene$end+(windowSize/2)
-sigGenesRegion<-fullTable[which(fullTable[,40]==chromosome & fullTable[,39]=="yes" & fullTable[,9]>=start & fullTable[,10]<=end),]
-nSig<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
+#sigGenesRegion<-fullTable[which(fullTable[,40]==chromosome & fullTable[,39]=="yes" & fullTable[,9]>=start & fullTable[,10]<=end),]
+#nSig<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
+
+
+#exclude lincRNA in significance calc...
+  if(strain=="linc-Enc1"){strain<-"Gm2373"}
+  sigGenesRegion<-fullTable[which(fullTable[,40]==chromosome & fullTable[,39]=="yes" & fullTable[,9]>=start & fullTable[,10]<=end & fullTable[,4]!=strain),]
+  nSig<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
 
 score<-0
 signeighbors<-data.frame(rep(NULL,nIter))
@@ -991,7 +1389,7 @@ for (i in 1:nIter){
   sigGenesRegion<-fullTable[which(fullTable[,40]==seqnames(myRandom[i])@values & fullTable[,39]=="yes" & fullTable[,9]>=start(myRandom[i])-(windowSize/2) & fullTable[,10]<=end(myRandom[i])+(windowSize/2)),]
   nSigIter<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
   write(nSigIter,stderr())
-  if(nSigIter >= nSig-1) {score<-score+1}
+  if(nSigIter >= nSig) {score<-score+1}
   signeighbors[1,i]<-nSigIter
 }
 
@@ -1009,15 +1407,14 @@ colnames(genesInRegion)[36]<-"test_stat"
 data<-ddply(genesInRegion,.(gene_id),head,n=1)
 data$test_stat<-as.numeric(data$test_stat)
 
+
 ```
 
 The pvalue for `r nSig` genes significantly regulated in a region this size  is: `r pval_for_region` 
 
 
-
 ```{r cisreg_image,  fig.height=8, fig.width=8}
-ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2), ylim=c(-(max(abs(data$test_stat)+1)),(max(abs(data$test_stat)+1)))+labs(title=strain)+
-                                                                                                                                         geom_text(data=subset(data, sig=='yes'))+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
+ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2), ylim=c(-max(abs(data$test_stat),na.rm=TRUE)-1,max(abs(data$test_stat),na.rm=TRUE)+1))+labs(title=strain_name)+geom_text(data=subset(data, sig=='yes'))
 ```
 
 # Notes
@@ -1063,5 +1460,4 @@ rm(isoAnnot)
 rm(spliceAnnot)
 
 ```
-
 

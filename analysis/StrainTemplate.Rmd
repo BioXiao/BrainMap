@@ -1337,6 +1337,8 @@ library(seqbias)
 library(stringr)
 library(plyr)
 
+strain_name<-strain
+
 myLengths<-seqlengths(Mmusculus)[!grepl("_random",names(seqlengths(Mmusculus)))]
 mm10.granges<-GRanges(seqnames = names(myLengths), ranges = IRanges(start = 1, end = myLengths),seqlengths=myLengths)
 
@@ -1410,8 +1412,7 @@ The pvalue for `r nSig` genes significantly regulated in a region this size  is:
 
 
 ```{r cisreg_image,  fig.height=8, fig.width=8}
-ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2),ylim=c(-max(abs(data$test_stat)+1),max(abs(data$test_stat))+1))+labs(title=strain)+geom_text(data=subset(data, sig=='yes'))
-
+ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2), ylim=c(-max(abs(data$test_stat),na.rm=TRUE)-1,max(abs(data$test_stat),na.rm=TRUE)+1))+labs(title=strain_name)+geom_text(data=subset(data, sig=='yes'))
 ```
 
 # Notes
