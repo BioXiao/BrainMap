@@ -19,6 +19,8 @@ sbatch -J R_auto -t 600 --mem-per-cpu=7000 -n 4 -p general --wrap="Rscript runSc
 
 #haunt 7
 sbatch -J R_auto -t 600 --mem-per-cpu=7000 -n 4 -p general --wrap="Rscript runScript_cummerbund_genetracking.R 7"
+#fixed haunt embryonic cis plot print
+#sbatch -J R_auto -t 600 --mem-per-cpu=7000 -n 4 -p general --wrap="Rscript runScript.R 8"
 
 
 

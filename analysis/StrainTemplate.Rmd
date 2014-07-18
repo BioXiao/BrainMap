@@ -1,8 +1,8 @@
 ```{r standalone setup, echo=FALSE,eval=FALSE}
-strain<-"linc-Brn1b"
-timepoint<-"Adult"
-filename<-"linc-Brn1b_vs_WT_Embryonic"
-dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Brn1b_vs_WT_Embryonic/"
+strain<-"Haunt"
+timepoint<-"Embryonic"
+filename<-"Haunt_vs_WT_Embryonic"
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Haunt_vs_WT_Embryonic/"
 
 
 ### THINGS TO REMEMBER: change oldbam to bam and olddiff to diff once new set done! 
@@ -1430,13 +1430,35 @@ data<-ddply(genesInRegion,.(gene_id),head,n=1)
 data$test_stat<-as.numeric(data$test_stat)
 
 
+#data<-ddply(genesInRegion,.(gene_id),head,n=1)
+  data$test_stat<-as.numeric(data[,36])
+  data$was_na<-"no"
+  if(any(is.na(data$test_stat))){
+     #&& data$log2foldchange[which(is.na(data$test_stat))]=="-Inf"){
+    #print(data$test_stat[which(is.na(data$test_stat))])
+    data$was_na[which(is.na(data$test_stat))]<-"yes"
+    data$test_stat[which(is.na(data$test_stat))]<-0
+  }
+  data$sig<-data[,39]
+  
+  currplot<-ggplot(data,aes(start,test_stat,color=sig, label=gene_name,shape=was_na))+geom_point(size=3)+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2),ylim=c(-max(abs(data$test_stat),na.rm=TRUE)-1,max(abs(data$test_stat),na.rm=TRUE)+1))+labs(title=paste(strain_name,timepoint,sep=" "))+geom_text(data=subset(data, sig=='yes'))+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
+
+
+  currplot
+
+#<-currplot+annotate("text",x=0,y=max(abs(data$test_stat),na.rm=TRUE)+.5,label=paste("pvalue for ",nSig," genes in a region this size is: ",pval_for_region,sep=""))
+  
+
 ```
 
 The pvalue for `r nSig` genes significantly regulated in a region this size  is: `r pval_for_region` 
 
 
 ```{r cisreg_image,  fig.height=8, fig.width=8}
-ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2), ylim=c(-max(abs(data$test_stat),na.rm=TRUE)-1,max(abs(data$test_stat),na.rm=TRUE)+1))+labs(title=strain_name)+geom_text(data=subset(data, sig=='yes'))
+
+#ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2), ylim=c(-max(abs(data$test_stat),na.rm=TRUE)-1,max(abs(data$test_stat),na.rm=TRUE)+1))
+#+labs(title=strain_name)+geom_text(data=subset(data, sig=='yes'))
+currplot
 ```
 
 # Notes
