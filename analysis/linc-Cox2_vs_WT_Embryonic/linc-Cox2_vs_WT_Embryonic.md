@@ -149,17 +149,11 @@ Expression heatmap:
 
 ![plot of chunk digital_geno_heatmap](figure/digital_geno_heatmap.png) 
 
+
+
 ### Track visualization 
 
-
-```
-## Error: dims [product 9] do not match the length of object [10]
-```
-
 ![plot of chunk track_vis](figure/track_vis.png) 
-
-
-
 
 # Differential Analysis
 
@@ -170,7 +164,7 @@ Expression heatmap:
 There are 97 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jul 18 13:01:42 2014 -->
+<!-- Tue Jul 22 00:22:20 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Col1a1 </TD> </TR>
@@ -327,7 +321,7 @@ Per isoform difference between conditions:
 These isoforms are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jul 18 13:03:46 2014 -->
+<!-- Tue Jul 22 00:23:57 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> isoAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Dynlt1c </TD> </TR>
@@ -505,7 +499,15 @@ Interneuron zscore:
 ```
 
 ```
-## Error: `x' must have at least 2 rows and 2 columns
+## Error: object 'x_ordered' not found
+```
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'as.matrix': Error: object 'x_ordered' not found
+```
+
+```
+## Error: object 'x_ordered' not found
 ```
 
 
@@ -579,7 +581,7 @@ log2 Foldchange and test statistic are calculated with the ratio of fpkm(KO)/fpk
 
 
 
-
+![plot of chunk computationally intensive part of cis trans image](figure/computationally intensive part of cis trans image.png) 
 
 The pvalue for 0 genes significantly regulated in a region this size  is: 1 
 
@@ -590,7 +592,7 @@ The pvalue for 0 genes significantly regulated in a region this size  is: 1
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jul 18 14:40:58 2014 -->
+<!-- Tue Jul 22 00:52:41 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR753 </TD> </TR>
@@ -614,7 +616,7 @@ The pvalue for 0 genes significantly regulated in a region this size  is: 1
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jul 18 14:40:59 2014 -->
+<!-- Tue Jul 22 00:52:41 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR753/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 39331900.00 </TD> <TD align="right"> 32194900.00 </TD> <TD align="right"> 1.27 </TD> <TD align="right"> 1.00 </TD> </TR>
@@ -727,6 +729,7 @@ The pvalue for 0 genes significantly regulated in a region this size  is: 1
 ## 4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            104700
 ## 5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              mm10
 ```
+
 
 
 
