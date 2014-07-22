@@ -1,8 +1,8 @@
 ```{r standalone setup, echo=FALSE,eval=FALSE}
-strain<-"linc-Cox2"
+strain<-"Haunt"
 timepoint<-"Embryonic"
 filename<-"linc-Cox2_vs_WT_Embryonic"
-dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Cox2_vs_WT_Embryonic"
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Haunt_vs_WT_Adult"
 
 
 ### THINGS TO REMEMBER: change oldbam to bam and olddiff to diff once new set done! 
@@ -354,7 +354,7 @@ makeBamTrack<-function(bamFile,bamName,genome=genome,chromosome,color="steelblue
 
 ########## Constants #########
 annot<-annotation(myGene)
-margin<-5000
+margin<-8000
 locus<-strsplit(annot$locus,":")
 locus<-unlist(locus)
 chrom<-locus[[1]]
