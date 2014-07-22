@@ -7,13 +7,20 @@ analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
 diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
 GTF<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf"
 
-setwd(diffdir)
-setwd('Haunt_vs_WT_Adult/')
-cuff<-readCufflinks(gtfFile=GTF,genome="mm10")
+dir<-paste(diffdir,'Haunt_vs_WT_Adult/',sep="/")
+dirnorm<-paste(diffdir,"linc-Brn1b_vs_WT_Adult/",sep="/")
+cuff<-readCufflinks(dir=dir,gtfFile=GTF[1],genome="mm10")
+cuffnorm<-readCufflinks(dir=dirnorm,gtfFile=GTF[1],genome="mm10")
 
-myID<-"Peril"
+myID<-"Haunt"
 myGene<-getGene(cuff,myID)
 genetrack <-makeGeneRegionTrack(myGene)
+
+myID<-"linc-Brn1b"
+brn1b<-getGene(cuff,myID)
+myGene<-brn1b
+genetrack<-makeGeneRegionTrack(brn1b)
+
 plotTracks(genetrack)
 
 ################# SCRIPT FROM LOYAL ##################
@@ -25,7 +32,7 @@ library(RMySQL)
 #Need to install R-3.0.0 (Devel) for Gviz to deal with .bam files
 
 #Helper Functions
-movingAverage <- function(x, n=10, centered=TRUE) {
+movingAverage <- function(x, n=50, centered=TRUE) {
   
   if (centered) {
     before <- floor  ((n-1)/2)
@@ -88,10 +95,11 @@ genome<-"mm10"
 #from<-71095513
 #to<-71215660
 
-dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Peril_vs_WT_Embryonic/"
-setwd(dir)
-cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
-name<-"Peril"
+#dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Peril_vs_WT_Embryonic/"
+#setwd(dir)
+#cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
+#name<-"Peril"
+name<-"Haunt"
 myGene<-getGene(cuff,name)
 annot<-annotation(myGene)
 
@@ -126,40 +134,51 @@ makeBamTrack<-function(bamFile,bamName,genome=genome,chromosome,color="steelblue
   return(track)
 }
 
-require(TxDb.Mmusculus.UCSC.mm10.knownGene)
+#require(TxDb.Mmusculus.UCSC.mm10.knownGene)
 
-doPlot<-function(genome=genome,name,myChr,from,to,window="auto",bamFiles,bamNames){
+doPlot<-function(genome=genome,name,myChr,from,to,window=50,bamFiles,bamNames){
   #Make Tracks
-  #axTrack<-GenomeAxisTrack(add53 = TRUE,add35 = TRUE, labelPos = "above")
-  #idxTrack <- IdeogramTrack(genome = genome, chromosome = myChr)
+  axTrack<-GenomeAxisTrack(add53 = TRUE,add35 = TRUE, labelPos = "above")
+  idxTrack <- IdeogramTrack(genome = genome, chromosome = myChr)
   
   #BamTracks
   write("\tBamTracks",stderr())
   bamTracks<-list()
-  bamOrder<-c(1:length(bamFiles))
+  bamOrder<-c(1:(length(bamFiles)-4))
 
   for (i in bamOrder){
-    track<-makeBamTrack(bamFiles[[i]],bamNames[[i]],genome=genome,chromosome=myChr,color=bamColors[i],window=window)
+    track<-makeBamTrack(bamFiles[[i]],bamNames[[i]],genome=genome,chromosome=myChr,color=bamColors[i],window=50)
     bamTracks<-c(bamTracks,track)
   }
   
   #Plot Tracks
   write("\tplotting...",stderr())
-  # myTracks<-c(bamTracks,knownGenes)
-  myTracks<-bamTracks
-  trackSizes<-c(rep(1,length(bamTracks)))
 
-  #pdf(paste(name,".pdf",sep=""),width=10,height=8)
+  myTracks<-bamTracks[1:3]
+  trackSizes<-c(rep(1,3))
+  
   plotTracks(myTracks,from=as.numeric(from),to=as.numeric(to),chrom=myChr,showAxis=FALSE,background.title="white",col.title="black",col.axis="black",sizes=trackSizes)
-  #dev.off()
-  #dbDisconnect(con)
+  
+  #plotTracks(bamTracks,from=as.numeric(from),to=as.numeric(to),chrom=chrom,showAxis=FALSE,background.title="white",col.title="black",col.axis="black",sizes=trackSizes)
 }
 
-genome<-"mm10"
-name<-"Peril"
-myChr<-chrom
 
-doPlot(genome=genome, name=name, myChr=chrom, from=from, to=to, window="auto",bamFiles, bamNames)
+doPlot(genome=genome, name=name, myChr=chrom, from=from, to=to, window=50,bamFiles, bamNames)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 for(i in 1:dim(plotRegions)[1]){
   write(paste(plotRegions[i,]$name),stderr())

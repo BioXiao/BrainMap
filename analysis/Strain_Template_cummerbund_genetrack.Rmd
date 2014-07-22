@@ -1,8 +1,8 @@
 ```{r standalone setup, echo=FALSE,eval=FALSE}
-strain<-"linc-Brn1b"
+strain<-"Haunt"
 timepoint<-"Adult"
-filename<-"linc-Brn1b_vs_WT_Embryonic"
-dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Brn1b_vs_WT_Embryonic/"
+filename<-"Haunt_vs_WT_Adult"
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Haunt_vs_WT_Adult/"
 
 
 ### THINGS TO REMEMBER: change oldbam to bam and olddiff to diff once new set done! 
@@ -284,16 +284,10 @@ library(RColorBrewer)
 real_chromInfo<-read.table("/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/real_chromosomes_mm10_brainmap.chrom.info",header=TRUE)
 
 genome<-"mm10"
-#GTF_noLacZ<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/mm10_gencode_with_lincRNAS_NO_LACZ.gtf"
-#mm10Db_nolacz<-makeTranscriptDbFromGFF(GTF_noLacZ,format="gtf",chrominfo=real_chromInfo, species="Mus musculus")
-#saveDb(mm10Db_nolacz,file="mm10gencode_brainmapDB_nolacz.sqlite")
-
 #mm10DB<-loadDb("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/mm10gencode_brainmapDB_nolacz.sqlite")
-mm10DB<-loadDb("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/brainmap_lincsubset_db.sqlite")
 
-#Need to install R-3.0.0 (Devel) for Gviz to deal with .bam files
 #Helper Functions
-movingAverage <- function(x, n=20, centered=TRUE) {
+movingAverage <- function(x, n=10, centered=TRUE) {
   
   if (centered) {
     before <- floor  ((n-1)/2)
@@ -354,7 +348,7 @@ makeBamTrack<-function(bamFile,bamName,genome=genome,chromosome,color="steelblue
 
 ########## Constants #########
 annot<-annotation(myGene)
-margin<-100
+margin<-10000
 locus<-strsplit(annot$locus,":")
 locus<-unlist(locus)
 chrom<-locus[[1]]
@@ -373,7 +367,6 @@ samples<-(t(files[10,]))
 rownames(samples)<-NULL
 JRs<-samples
 
-setwd(analysisdir)
 deletionCoords<-read.table("mm10DeletionCoords.txt",sep="\t",header=TRUE,stringsAsFactors=FALSE)
 colnames(deletionCoords)<-c("gene_name","gene_region","deletionRegion")
 koStrain<-strain
@@ -403,26 +396,31 @@ doPlot<-function(genome=genome,name,myChr,from,to,window,bamFiles,bamNames,koSta
   axTrack<-GenomeAxisTrack(add53 = TRUE,add35 = TRUE, labelPos = "above")
   idxTrack <- IdeogramTrack(genome = genome, chromosome = myChr)
   koTrack<-AnnotationTrack(start=koStart,width=koWidth,chromosome=koChr,strand="*",id=koStrain,genome="mm10",name="KO Region")
+  
   #BamTracks
   write("\tBamTracks",stderr())
   bamTracks<-list()
   bamOrder<-c(1:length(bamFiles))
 
   for (i in bamOrder){
-    track<-makeBamTrack(bamFiles[[i]],bamNames[[i]],genome=genome,chromosome=myChr,color=bamColors[i],window=window)
+    track<-makeBamTrack(bamFiles[[i]],bamNames[[i]],genome=genome,chromosome=myChr,color=bamColors[i],window=20)
     bamTracks<-c(bamTracks,track)
   }
   
   #Plot Tracks
   write("\tplotting...",stderr())
+  
   # myTracks<-c(bamTracks,knownGenes)
   myTracks<-c(idxTrack,axTrack,genetrack,bamTracks,koTrack)
   trackSizes<-c(1,1,4,rep(1,length(bamTracks)),1)
+  
+  myTracks<-c(idxTrack,axTrack,genetrack,koTrack)
+  trackSizes<-c(1,1,2,1)
 
   plotTracks(myTracks,from=from,to=to,chromosome=myChr,showAxis=FALSE,background.title="black",col.title="white",col.axis="black",sizes=trackSizes,geneSymbol=TRUE)
 }
 
-doPlot(genome=genome, name=name, myChr=chrom, from=from, to=to, window=20,bamFiles=bamFiles, bamNames=bamNames, koStart=koStart,koWidth=koWidth,koChr=koChr)
+doPlot(genome="mm10", name=name, myChr=chrom, from=from, to=to, window=20,bamFiles=bamFiles, bamNames=bamNames, koStart=koStart,koWidth=koWidth,koChr=koChr)
 
 detach(package:GenomicFeatures)
 ```
