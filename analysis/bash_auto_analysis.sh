@@ -15,12 +15,12 @@
 
 #linc-cox2 15 and 16
 sbatch -J R_auto -t 600 --mem-per-cpu=7000 -n 4 -p general --wrap="Rscript runScript.R 15" #adult tracks work in rstudio w margin 8000 
-#sbatch -J R_auto -t 600 --mem-per-cpu=7000 -n 4 -p general --wrap="Rscript runScript.R 16" #embryonic worked w margin 5000
+sbatch -J R_auto -t 600 --mem-per-cpu=7000 -n 4 -p general --wrap="Rscript runScript.R 16" #embryonic worked w margin 5000
 
 #haunt 7
 sbatch -J R_auto -t 600 --mem-per-cpu=7000 -n 4 -p general --wrap="Rscript runScript.R 7" #adult tracks work in rstudio w margin 8000
 #fixed haunt embryonic cis plot print
-#sbatch -J R_auto -t 600 --mem-per-cpu=7000 -n 4 -p general --wrap="Rscript runScript.R 8"
+sbatch -J R_auto -t 600 --mem-per-cpu=7000 -n 4 -p general --wrap="Rscript runScript.R 8"
 
 
 
