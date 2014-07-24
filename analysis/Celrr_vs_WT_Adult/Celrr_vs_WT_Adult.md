@@ -164,7 +164,7 @@ Expression heatmap:
 There are 54 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jul 18 12:45:54 2014 -->
+<!-- Thu Jul 24 15:35:05 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Chordc1 </TD> </TR>
@@ -278,7 +278,7 @@ Per isoform difference between conditions:
 These isoforms are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jul 18 12:47:31 2014 -->
+<!-- Thu Jul 24 15:36:44 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> isoAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Chordc1 </TD> </TR>
@@ -416,7 +416,15 @@ Kegg zscore:
 ```
 
 ```
-## Error: `x' must have at least 2 rows and 2 columns
+## Error: object 'x_ordered' not found
+```
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'as.matrix': Error: object 'x_ordered' not found
+```
+
+```
+## Error: object 'x_ordered' not found
 ```
 
 Interneuron enrichment:
@@ -434,7 +442,15 @@ Interneuron zscore:
 ```
 
 ```
-## Error: `x' must have at least 2 rows and 2 columns
+## Error: object 'x_ordered' not found
+```
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'as.matrix': Error: object 'x_ordered' not found
+```
+
+```
+## Error: object 'x_ordered' not found
 ```
 
 
@@ -531,7 +547,7 @@ The pvalue for 0 genes significantly regulated in a region this size  is: 1
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jul 18 13:19:09 2014 -->
+<!-- Thu Jul 24 17:01:24 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR729 </TD> </TR>
@@ -555,7 +571,7 @@ The pvalue for 0 genes significantly regulated in a region this size  is: 1
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jul 18 13:19:10 2014 -->
+<!-- Thu Jul 24 17:01:24 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR729/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 26334400.00 </TD> <TD align="right"> 33868500.00 </TD> <TD align="right"> 0.78 </TD> <TD align="right"> 1.00 </TD> </TR>

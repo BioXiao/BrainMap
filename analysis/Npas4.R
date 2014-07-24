@@ -76,3 +76,9 @@ dir<-paste(diffdir,"linc-Brn1a_vs_WT_Adult",sep="/")
 cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome=genome)
 Npas4<-getGene(cuff,"Npas4")
 expressionPlot(Npas4,replicates=T) #up 
+
+
+
+
+
+

@@ -164,7 +164,7 @@ Expression heatmap:
 There are 20 significantly differentially expressed genes. They are:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jul 18 12:59:21 2014 -->
+<!-- Thu Jul 24 16:43:49 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> geneAnnot$gene_short_name </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Rec8 </TD> </TR>
@@ -349,7 +349,15 @@ Interneuron zscore:
 ```
 
 ```
-## Error: `x' must have at least 2 rows and 2 columns
+## Error: object 'x_ordered' not found
+```
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'as.matrix': Error: object 'x_ordered' not found
+```
+
+```
+## Error: object 'x_ordered' not found
 ```
 
 
@@ -441,7 +449,7 @@ log2 Foldchange and test statistic are calculated with the ratio of fpkm(KO)/fpk
 
 
 
-The pvalue for 5 genes significantly regulated in a region this size  is: 0.002 
+The pvalue for 5 genes significantly regulated in a region this size  is: 0.0023 
 
 
 ![plot of chunk cisreg_image](figure/cisreg_image.png) 
@@ -450,7 +458,7 @@ The pvalue for 5 genes significantly regulated in a region this size  is: 0.002
 
 ## Samples used are:
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jul 18 13:26:36 2014 -->
+<!-- Thu Jul 24 18:13:05 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 10 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> JR753 </TD> </TR>
@@ -474,7 +482,7 @@ The pvalue for 5 genes significantly regulated in a region this size  is: 0.002
 
 ## Replicates
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Fri Jul 18 13:26:36 2014 -->
+<!-- Thu Jul 24 18:13:06 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> file </TH> <TH> sample_name </TH> <TH> replicate </TH> <TH> rep_name </TH> <TH> total_mass </TH> <TH> norm_mass </TH> <TH> internal_scale </TH> <TH> external_scale </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> /n/rinn_data1/seq/lgoff/Projects/BrainMap/data/quants/JR753/abundances.cxb </TD> <TD> WT </TD> <TD align="right">   0 </TD> <TD> WT_0 </TD> <TD align="right"> 39331900.00 </TD> <TD align="right"> 33091500.00 </TD> <TD align="right"> 1.23 </TD> <TD align="right"> 1.00 </TD> </TR>
