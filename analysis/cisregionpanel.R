@@ -5,7 +5,7 @@ library(seqbias)
 library(stringr)
 library(plyr)
 library(ggplot2)
-nIter<-1000
+nIter<-10000
 windowSize<-4000000
 
 getTable<-function(object){
@@ -26,12 +26,12 @@ dat<-read.csv("autoanalysisInfo.csv",header=TRUE,stringsAsFactors=FALSE)
 #cisplots<-list()
 #regions<-list()
 
-load("cisregionplotlist.Rdata")
-load("cisregion_geneRegionslist.Rdata")
+#load("cisregionplotlist.Rdata")
+#load("cisregion_geneRegionslist.Rdata")
 #start at 6 
 #1:dim(dat)[1]
 for (i in 1:26){
-  if(i %in% c(1,2,7,13,14,16,19,20,24)){next} #indecies of ones with 0 DE genes in region (dont need to be redone)
+  #if(i %in% c(1,2,7,13,14,16,19,20,24)){next} #indecies of ones with 0 DE genes in region (dont need to be redone)
   strain<-dat$strain[i]
   dir<-dat$dir[i]
   timepoint<-dat$timepoint[i]
@@ -116,7 +116,7 @@ library(ggplot2)
 
 windowSize<-4000000
 #load("cisregion_geneRegionslist.Rdata")
-dat<-read.csv("autoanalysisInfo.csv",header=TRUE,stringsAsFactors=FALSE)
+#dat<-read.csv("autoanalysisInfo.csv",header=TRUE,stringsAsFactors=FALSE)
 
 #regionData<-data.frame(regions)
 regionNames<-list()
@@ -163,11 +163,11 @@ smallsubset<-subset(data,data$targets=="yes")
 #summaryplot<-summaryplot+geom_point(data=subset(data, (targets=='yes' & sig=='yes')))+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2),ylim=c(-max(abs(data$log2foldchange),na.rm=TRUE)-1,max(abs(data$log2foldchange),na.rm=TRUE)+1))+labs(title="Cis Regulation Summary")
 #summaryplot+geom_text(data=subset(data, sig=='yes'),size=5)+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
 
-summaryplot<-ggplot(data,aes(start,log2foldchange, label=gene_name, color==sig))
-summaryplot<-summaryplot+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2),ylim=c(-max(abs(data$log2foldchange),na.rm=TRUE)-1,max(abs(data$log2foldchange),na.rm=TRUE)+1))+labs(title="Cis Regulation Summary")
+#summaryplot<-ggplot(data,aes(start,log2foldchange, label=gene_name, color==sig))
+#summaryplot<-summaryplot+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2),ylim=c(-max(abs(data$log2foldchange),na.rm=TRUE)-1,max(abs(data$log2foldchange),na.rm=TRUE)+1))+labs(title="Cis Regulation Summary")
 
-+geom_point(data=subset(data, (targets=='yes' & sig=='yes')))
-summaryplot+geom_text(data=subset(data, sig=='yes'),size=5)+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
+#+geom_point(data=subset(data, (targets=='yes' & sig=='yes')))
+#summaryplot+geom_text(data=subset(data, sig=='yes'),size=5)+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
 
 
 
@@ -182,22 +182,26 @@ summaryplot+geom_text(data=subset(data, sig=='yes'),size=5)+theme_bw()+geom_vlin
 #gtf<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf"
 #gtf_table<-read.table("/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/BrainmapLincRNAs.gtf",header=TRUE,stringsAsFactors=FALSE)
 
-info<-read.table("/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/cis_reg_linc_strand_info.tab",stringsAsFactors=FALSE)
-info$V2<-NULL
-info$V4<-NULL
-info$V3[67:87]<-"linc-Enc1"
-linc_strand_info<-ddply(info,.(V3),head,n=1)
-linc_strand_info$closest_pc<-c("Egfr","Kdm5c","Ptgs2","Enc1","Cdkn1a","Morc2a")
-linc_strand_info$PC_strand<-smallsubset$strand[which(smallsubset$gene_short_name %in% linc_strand_info$closest_pc)]
-linc_strand_info$orientation<-apply(linc_strand_info,1,function(x){
-  val<-""
-  if(x[3]==x[5]){val<-"SAME"}
-  else{val<-"OPPOSITE"}
-  val
-})
-smallsubset$orientation<-apply(smallsubset,1,function(x){
-  linc_strand_info[which(linc_strand_info$closest_pc==x[4]),6]
-  })
+#info<-read.table("/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/cis_reg_linc_strand_info.tab",stringsAsFactors=FALSE)
+#info$V2<-NULL
+#info$V4<-NULL
+#info$V3[67:87]<-"linc-Enc1"
+#linc_strand_info<-ddply(info,.(V3),head,n=1)
+#linc_strand_info$closest_pc<-c("Egfr","Kdm5c","Ptgs2","Enc1","Cdkn1a","Morc2a")
+#linc_strand_info$PC_strand<-smallsubset$strand[which(smallsubset$gene_short_name %in% linc_strand_info$closest_pc)]
+#linc_strand_info$orientation<-apply(linc_strand_info,1,function(x){
+#  val<-""
+#  if(x[3]==x[5]){val<-"SAME"}
+#  else{val<-"OPPOSITE"}
+#  val
+#})
+#smallsubset$orientation<-apply(smallsubset,1,function(x){
+#  linc_strand_info[which(linc_strand_info$closest_pc==x[4]),6]
+#  })
+
+
+
+
 
 # smallsubset$strand_symbol<-apply(smallsubset,1,function(x){
 #   symbol<-""
@@ -208,17 +212,16 @@ smallsubset$orientation<-apply(smallsubset,1,function(x){
 
 
 
-summaryplot<-ggplot(smallsubset,aes(start,log2foldchange, label=gene_name))
+#summaryplot<-ggplot(smallsubset,aes(start,log2foldchange, label=gene_name))
 
-summaryplot<-summaryplot+coord_cartesian(xlim=c(-max(smallsubset$start)-30000, max(smallsubset$start)+30000),ylim=c(-max(abs(smallsubset$log2foldchange),na.rm=TRUE)-1,max(abs(smallsubset$log2foldchange),na.rm=TRUE)+1))+labs(title="Cis Regulation Summary")
+#summaryplot<-summaryplot+coord_cartesian(xlim=c(-max(smallsubset$start)-30000, max(smallsubset$start)+30000),ylim=c(-max(abs(smallsubset$log2foldchange),na.rm=TRUE)-1,max(abs(smallsubset$log2foldchange),na.rm=TRUE)+1))+labs(title="Cis Regulation Summary")
 
-summaryplot+geom_text(size=5)+geom_point(size=3)+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
+#summaryplot+geom_text(size=5)+geom_point(size=3)+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
 
-ggsave("cis_summary_plot.pdf")
+#ggsave("cis_summary_plot.pdf")
+
+
 
 
 #lincsThatReg<-c("linc-Cox2","linc-Enc1","Kantr","Trp53cor1","Tug1","Eldr")
-
-
-
 #Ptgs2, Egfr, Enc1, Kdm5c, Cdnk1a, Morc2a

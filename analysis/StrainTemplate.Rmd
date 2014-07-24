@@ -1,8 +1,8 @@
 ```{r standalone setup, echo=FALSE,eval=FALSE}
-strain<-"Haunt"
-timepoint<-"Embryonic"
-filename<-"Haunt_vs_WT_Embryonic"
-dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Haunt_vs_WT_Embryonic"
+strain<-"Peril"
+timepoint<-"GEOB"
+filename<-"Peril_GEOB"
+dir<-"/n/rinn_data1/users/agroff/seq/PERIL/data/diffs/PERIL_GEOB"
 
 
 ### THINGS TO REMEMBER: change oldbam to bam and olddiff to diff once new set done! 
@@ -1367,7 +1367,7 @@ myLengths<-seqlengths(Mmusculus)[!grepl("_random",names(seqlengths(Mmusculus)))]
 mm10.granges<-GRanges(seqnames = names(myLengths), ranges = IRanges(start = 1, end = myLengths),seqlengths=myLengths)
 
 #Constants
-nIter<-1000
+nIter<-10000
 windowSize<-4000000
 #set.seed()
 myRandom<-random.intervals(mm10.granges,n=nIter,ms=windowSize)
