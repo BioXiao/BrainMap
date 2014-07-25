@@ -23,8 +23,8 @@ getTable<-function(object){
 }
 
 dat<-read.csv("autoanalysisInfo.csv",header=TRUE,stringsAsFactors=FALSE)
-#cisplots<-list()
-#regions<-list()
+cisplots<-list()
+regions<-list()
 
 #load("cisregionplotlist.Rdata")
 #load("cisregion_geneRegionslist.Rdata")
