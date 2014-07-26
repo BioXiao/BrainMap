@@ -1,8 +1,8 @@
 ```{r standalone setup, echo=FALSE,eval=FALSE}
-strain<-"Kantr"
-timepoint<-"Adult"
-filename<-"Kantr_vs_WT_Adult"
-dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Kantr_vs_WT_Adult/"
+strain<-"Crnde"
+timepoint<-"Embryonic"
+filename<-"Crnde_vs_WT_Embryonic"
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Crnde_vs_WT_Embryonic/"
 
 
 ### THINGS TO REMEMBER: change oldbam to bam and olddiff to diff once new set done! 
@@ -426,6 +426,7 @@ doPlot<-function(genome=genome,name,myChr,from,to,window,bamFiles,bamNames,koSta
 doPlot(genome=genome, name=name, myChr=chrom, from=from, to=to, window=20,bamFiles=bamFiles, bamNames=bamNames, koStart=koStart,koWidth=koWidth,koChr=koChr)
 
 detach("package:GenomicFeatures")
+
 ```
 
 # Differential Analysis

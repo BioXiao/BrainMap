@@ -1818,6 +1818,9 @@ save(file="DEgenes_list.Rdata",DE_genes_list)
 save(file="DEiso_list.Rdata",DE_iso_list)
 save(file="DEcds_list.Rdata",DE_cds_list)
 
+
+
+
 sink("DEgenes_lists.tab")
 for(i in seq(1,length(DE_lists))){
   list<-paste(unlist(DE_lists[[i]]),sep=",")

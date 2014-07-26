@@ -93,3 +93,45 @@ expressionBarplot(kdm5c,replicates=TRUE)
 csHeatmap(genes,replicates=TRUE)
 
 
+
+
+
+load("DEgenes_list.Rdata")
+load("DEiso_list.Rdata")
+load("DEcds_list.Rdata")
+
+#GENES 
+#5 kantr adult
+#18 kantr embryo 
+names(DE_genes_list)[18]
+
+kantr_adult_genes<-DE_genes_list[[5]] #315
+kantr_embryo_genes<-DE_genes_list[[18]] #766
+genes_overlap<-intersect(kantr_adult_genes,kantr_embryo_genes) #27
+
+
+#ISO 
+names(DE_iso_list)[10]
+#kantr adult 2
+#kantr embryo 10
+kantr_adult_iso<-DE_iso_list[[2]] #285
+kantr_embryo_iso<-DE_iso_list[[10]] #500
+iso_overlap<-intersect(kantr_adult_iso,kantr_embryo_iso) #20
+
+
+#CDS
+names(DE_cds_list)[18]
+#5 kantr adult
+#18 kantr embryo 
+kantr_adult_cds<-DE_cds_list[[5]] #329
+kantr_embryo_cds<-DE_cds_list[[18]] #648
+cds_overlap<-intersect(kantr_adult_cds,kantr_embryo_cds) #25
+
+#intersections<-lapply(seq(2,length(DE_lists)),function(i){
+#  intersectDE<-intersect(DE_lists[[i]],DE_lists[[i-1]])})
+#names(intersections)<-unlist(intersectionNames)
+
+
+
+
+
