@@ -4,6 +4,7 @@ diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
 library(cummeRbund)
 genome="mm10"
 
+detach("package:GenomicFeatures")
 
 #Peril Adult
 dir<-paste(diffdir,"Peril_vs_WT_Adult",sep="/")
@@ -18,6 +19,51 @@ cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/d
 embryo<-getGene(cuff,"Peril")
 expressionBarplot(embryo,replicates=TRUE)+theme_bw()+scale_y_continuous(limits=c(0,.20))
 ggsave("Peril_expression_embryo.pdf")
+
+
+
+#Notch1-3, Pax3 and Nestin
+notch1<-getGene(cuff,"Notch1")
+notch2<-getGene(cuff,"Notch2")
+notch3<-getGene(cuff,"Notch3")
+pax<-getGene(cuff,"Pax3")
+nestin<-getGene(cuff,"Nes")
+
+n1<-expressionBarplot(notch1,replicates=TRUE)+theme_bw()
+n2<-expressionBarplot(notch2,replicates=TRUE)+theme_bw()
+n3<-expressionBarplot(notch3,replicates=TRUE)+theme_bw()
+p<-expressionBarplot(pax,replicates=TRUE)+theme_bw()
+nes<-expressionBarplot(nestin,replicates=TRUE)+theme_bw()
+
+library(gridExtra)
+plots<-list(n1,n2,n3,p,nes)
+names(plots)<-c("n1","n2","n3","p","nes")
+listnames<-c(plots,list(nrow=3,ncol=3))
+
+pdf("Peril_embryo_notch_nestin.pdf", height=10,width=10)
+do.call(grid.arrange,listnames)  
+dev.off()
+
+
+#Dlx1, Dlx2, Dlx5, and Wnt3a 
+dlx1<-getGene(cuff,"Dlx1")
+dlx2<-getGene(cuff,"Dlx2")
+dlx5<-getGene(cuff,"Dlx5")
+wnt3a<-getGene(cuff,"Wnt3a")
+
+d1<-expressionBarplot(dlx1,replicates=TRUE)+theme_bw()
+d2<-expressionBarplot(dlx2,replicates=TRUE)+theme_bw()
+d5<-expressionBarplot(dlx5,replicates=TRUE)+theme_bw()
+wnt<-expressionBarplot(wnt3a,replicates=TRUE)+theme_bw()
+
+plots2<-list(d1,d2,d5,wnt)
+names(plots2)<-c("d1","d2","d5","wnt")
+listnames2<-c(plots2,list(nrow=2,ncol=2))
+
+pdf("Peril_embryo_dlx_wnt.pdf", height=10,width=10)
+do.call(grid.arrange,listnames2)  
+dev.off()
+
 
 
 
