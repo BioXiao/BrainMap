@@ -85,7 +85,7 @@ for (i in 1:26){
   data$sig<-data[,39]
   
   currplot<-ggplot(data,aes(start,test_stat,color=sig, label=gene_name,shape=was_na))+geom_point(size=3)+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2),ylim=c(-max(abs(data$test_stat),na.rm=TRUE)-1,max(abs(data$test_stat),na.rm=TRUE)+1))+labs(title=paste(strain,timepoint,sep=" "))+geom_text(data=subset(data, sig=='yes'))+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
-  currplot<-currplot+annotate("text",x=0,y=max(abs(data$test_stat),na.rm=TRUE)+.5,label=paste("pvalue for ",nSig," genes in a region this size is: ",pval_for_region,sep=""))
+  currplot<-currplot+annotate("text",x=0,y=max(abs(data$test_stat),na.rm=TRUE)+.5,label=paste("pvalue:",pval_for_region,sep=""))
   #add pvalue to this plot! 
   #ggplot(data,aes(start,test_stat,color=sig, label=gene_name,shape=was_na))+geom_point(size=3)+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2),ylim=c(-max(abs(data$test_stat),na.rm=TRUE)-1,max(abs(data$test_stat),na.rm=TRUE)+1))+labs(title=paste(strain,timepoint,sep=" "))+geom_text(data=subset(data, sig=='yes'))+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
   
@@ -110,7 +110,7 @@ do.call(grid.arrange,listnames)
 #grid.arrange(cisplots,ncol=5)
 dev.off()
 
-####### UPON RELOAD ###########
+`####### UPON RELOAD ###########
 library(plyr)
 library(ggplot2)
 
