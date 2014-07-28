@@ -154,7 +154,7 @@ if(any(is.infinite(data$log2foldchange))){
 }
 
 data$targets<-"no"
-siggeneneighbors<-c("Ptgs2","Egfr","Enc1","Kdm5c","Cdkn1a","Morc2a")
+siggeneneighbors<-c("Ptgs2","Fbxo48","Enc1","Tspyl2","Cdkn1a","Morc2a") #c("Ptgs2","Egfr","Enc1","Kdm5c","Cdkn1a","Morc2a")
 data$targets[which(data$gene_name %in% siggeneneighbors)]<-"yes"
 #check #data$gene_name[which(data$targets=="yes")]
 smallsubset<-subset(data,data$targets=="yes")
@@ -162,18 +162,16 @@ smallsubset<-subset(data,data$targets=="yes")
 #summaryplot<-ggplot(data,aes(start,log2foldchange, label=gene_name, size=value1WT,shape=strand))
 #summaryplot<-summaryplot+geom_point(data=subset(data, (targets=='yes' & sig=='yes')))+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2),ylim=c(-max(abs(data$log2foldchange),na.rm=TRUE)-1,max(abs(data$log2foldchange),na.rm=TRUE)+1))+labs(title="Cis Regulation Summary")
 #summaryplot+geom_text(data=subset(data, sig=='yes'),size=5)+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
-
 #summaryplot<-ggplot(data,aes(start,log2foldchange, label=gene_name, color==sig))
 #summaryplot<-summaryplot+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2),ylim=c(-max(abs(data$log2foldchange),na.rm=TRUE)-1,max(abs(data$log2foldchange),na.rm=TRUE)+1))+labs(title="Cis Regulation Summary")
-
 #+geom_point(data=subset(data, (targets=='yes' & sig=='yes')))
 #summaryplot+geom_text(data=subset(data, sig=='yes'),size=5)+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
 
 
 
-#summaryplot<-ggplot(smallsubset,aes(start,log2foldchange, label=gene_name, size=value1WT,shape=strand))
-#summaryplot<-summaryplot+geom_point()+coord_cartesian(xlim=c(-max(smallsubset$start)-2000, max(smallsubset$start)+2000),ylim=c(-max(abs(smallsubset$log2foldchange),na.rm=TRUE)-1,max(abs(smallsubset$log2foldchange),na.rm=TRUE)+1))+labs(title="Cis Regulation Summary")
-#summaryplot+geom_text(data=subset(smallsubset, sig=='yes'),size=5)+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
+summaryplot<-ggplot(smallsubset,aes(start,log2foldchange, label=gene_name, size=value1WT,shape=strand))
+summaryplot<-summaryplot+geom_point()+coord_cartesian(xlim=c(-max(smallsubset$start)-2000, max(smallsubset$start)+2000),ylim=c(-max(abs(smallsubset$log2foldchange),na.rm=TRUE)-1,max(abs(smallsubset$log2foldchange),na.rm=TRUE)+1))+labs(title="Cis Regulation Summary")
+summaryplot+geom_text(data=subset(smallsubset, sig=='yes'),size=5)+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
 
 #HOW TO SHOW ORIENTATION RELATIVE TO LINC? 
 # grab info on these lincs and compare strands. if same, same oritentation.
@@ -212,13 +210,13 @@ smallsubset<-subset(data,data$targets=="yes")
 
 
 
-#summaryplot<-ggplot(smallsubset,aes(start,log2foldchange, label=gene_name))
+summaryplot<-ggplot(smallsubset,aes(start,log2foldchange, label=gene_name))
 
-#summaryplot<-summaryplot+coord_cartesian(xlim=c(-max(smallsubset$start)-30000, max(smallsubset$start)+30000),ylim=c(-max(abs(smallsubset$log2foldchange),na.rm=TRUE)-1,max(abs(smallsubset$log2foldchange),na.rm=TRUE)+1))+labs(title="Cis Regulation Summary")
+summaryplot<-summaryplot+coord_cartesian(xlim=c(-max(smallsubset$start)-30000, max(smallsubset$start)+30000),ylim=c(-max(abs(smallsubset$log2foldchange),na.rm=TRUE)-1,max(abs(smallsubset$log2foldchange),na.rm=TRUE)+1))+labs(title="Cis Regulation Summary")
 
-#summaryplot+geom_text(size=5)+geom_point(size=3)+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
+summaryplot+geom_text(size=5)+geom_point(size=3)+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
 
-#ggsave("cis_summary_plot.pdf")
+ggsave("cis_summary_plot.pdf")
 
 
 
