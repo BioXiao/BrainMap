@@ -1819,7 +1819,9 @@ save(file="DEiso_list.Rdata",DE_iso_list)
 save(file="DEcds_list.Rdata",DE_cds_list)
 
 
-
+#load("DEgenes_list.Rdata")
+a<-DE_genes_list[[19]]
+b<-DE_genes_list[[20]]
 
 sink("DEgenes_lists.tab")
 for(i in seq(1,length(DE_lists))){

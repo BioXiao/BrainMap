@@ -5,12 +5,12 @@ library(cummeRbund)
 #Eldr Embryonic 
 dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Eldr_vs_WT_Embryonic"
 cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
-egfr<-getGene(cuff,"Egfr")
-egfr_fpkms<-fpkm(egfr)
-egfr_fpkms$sample_name<-as.character(egfr_fpkms$sample_name)
-egfr_fpkms[egfr_fpkms$sample_name=="Eldr",2]<-"KO"
-egfr_fpkms$gene_name<-"Egfr"
-egfr_fpkms$timepoint<-"Embryonic"
+f<-getGene(cuff,"Fbxo48")
+f_fpkms<-fpkm(f)
+f_fpkms$sample_name<-as.character(f_fpkms$sample_name)
+f_fpkms[f_fpkms$sample_name=="Eldr",2]<-"KO"
+f_fpkms$gene_name<-"Fbxo48"
+f_fpkms$timepoint<-"Embryonic"
 
 
 
@@ -35,7 +35,7 @@ ptgs2_fpkms$gene_name<-"Ptgs2"
 ptgs2_fpkms$timepoint<-"Adult"
 
 
-dat<-rbind(egfr_fpkms,kdm5c_fpkms,ptgs2_fpkms)
+dat<-rbind(f_fpkms,kdm5c_fpkms,ptgs2_fpkms)
 
 #LincEnc1 embryonic
 dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/linc-Enc1_vs_WT_Embryonic/"
@@ -59,6 +59,8 @@ enc1_adult_fpkms$gene_name<-"Enc1"
 enc1_adult_fpkms$timepoint<-"Adult"
 
 dat<-rbind(dat,enc1_adult_fpkms)
+
+
 
 #Trp53cor1 adult
 dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Trp53cor1_vs_WT_Adult/"

@@ -138,9 +138,11 @@ dfcolnames[38]<-"qvalue"
 dat<-data.frame()
 for(i in 1:26){
   df<-data.frame(regions[[i]])
+  df<-df[which(df$sig=="yes"),]
   colnames(df)<-dfcolnames
   dat<-rbind(dat,df)
 }
+
 data<-ddply(dat,.(gene_id),head,n=1)
 data$test_stat<-as.numeric(data[,36])
 data$log2foldchange<-as.numeric(data[,35])
@@ -154,7 +156,7 @@ if(any(is.infinite(data$log2foldchange))){
 }
 
 data$targets<-"no"
-siggeneneighbors<-c("Ptgs2","Fbxo48","Enc1","Tspyl2","Cdkn1a","Morc2a") #c("Ptgs2","Egfr","Enc1","Kdm5c","Cdkn1a","Morc2a")
+siggeneneighbors<-c("Ptgs2","Fbxo48","Enc1","Cdkn1a","Morc2a") #c("Ptgs2","Egfr","Enc1","Kdm5c","Cdkn1a","Morc2a")#Tspyl2
 data$targets[which(data$gene_name %in% siggeneneighbors)]<-"yes"
 #check #data$gene_name[which(data$targets=="yes")]
 smallsubset<-subset(data,data$targets=="yes")
@@ -169,9 +171,9 @@ smallsubset<-subset(data,data$targets=="yes")
 
 
 
-summaryplot<-ggplot(smallsubset,aes(start,log2foldchange, label=gene_name, size=value1WT,shape=strand))
-summaryplot<-summaryplot+geom_point()+coord_cartesian(xlim=c(-max(smallsubset$start)-2000, max(smallsubset$start)+2000),ylim=c(-max(abs(smallsubset$log2foldchange),na.rm=TRUE)-1,max(abs(smallsubset$log2foldchange),na.rm=TRUE)+1))+labs(title="Cis Regulation Summary")
-summaryplot+geom_text(data=subset(smallsubset, sig=='yes'),size=5)+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
+#summaryplot<-ggplot(smallsubset,aes(start,log2foldchange, label=gene_name, size=value1WT,shape=strand))
+#summaryplot<-summaryplot+geom_point()+coord_cartesian(xlim=c(-max(smallsubset$start)-2000, max(smallsubset$start)+2000),ylim=c(-max(abs(smallsubset$log2foldchange),na.rm=TRUE)-1,max(abs(smallsubset$log2foldchange),na.rm=TRUE)+1))+labs(title="Cis Regulation Summary")
+#summaryplot+geom_text(data=subset(smallsubset, sig=='yes'),size=5)+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
 
 #HOW TO SHOW ORIENTATION RELATIVE TO LINC? 
 # grab info on these lincs and compare strands. if same, same oritentation.
