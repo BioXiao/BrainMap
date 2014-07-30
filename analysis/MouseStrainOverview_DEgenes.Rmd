@@ -1823,6 +1823,17 @@ save(file="DEcds_list.Rdata",DE_cds_list)
 a<-DE_genes_list[[19]]
 b<-DE_genes_list[[20]]
 
+
+
+names<-names(DE_genes_list)
+comparisons<-matrix(data=NA,rnow=25,ncol=25)
+
+
+
+
+
+
+
 sink("DEgenes_lists.tab")
 for(i in seq(1,length(DE_lists))){
   list<-paste(unlist(DE_lists[[i]]),sep=",")

@@ -9,17 +9,35 @@ detach("package:GenomicFeatures")
 #Peril Adult
 dir<-paste(diffdir,"Peril_vs_WT_Adult",sep="/")
 cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome=genome)
-adult<-getGene(cuff,"Peril")
-expressionBarplot(adult, replicates=TRUE)+theme_bw()+scale_y_continuous(limits=c(0,.20))
-ggsave("Peril_expression_adult.pdf")
+
+#Cdkn1a
+cdkn1a_adult<-getGene(cuff,"Cdkn1a")
+ca<-expressionBarplot(cdkn1a_adult,replicates=TRUE)+theme_bw()
+
+#nestin
+nestin_adult<-getGene(cuff,"Nes")
+na<-expressionBarplot(nestin_adult,replicates=TRUE)+theme_bw()
+ggsave("Peril_adult_nes.pdf")
+
+#adult<-getGene(cuff,"Peril")
+#expressionBarplot(adult, replicates=TRUE)+theme_bw()+scale_y_continuous(limits=c(0,.20))
+#ggsave("Peril_expression_adult.pdf")
 
 #Peril Embryo
 dir<-paste(diffdir,"Peril_vs_WT_Embryonic",sep="/")
 cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome=genome)
-embryo<-getGene(cuff,"Peril")
-expressionBarplot(embryo,replicates=TRUE)+theme_bw()+scale_y_continuous(limits=c(0,.20))
-ggsave("Peril_expression_embryo.pdf")
+#embryo<-getGene(cuff,"Peril")
+##expressionBarplot(embryo,replicates=TRUE)+theme_bw()+scale_y_continuous(limits=c(0,.20))
+#ggsave("Peril_expression_embryo.pdf")
 
+
+#Cdkn1a
+cdkn1a_embryo<-getGene(cuff,"Cdkn1a")
+ce<-expressionBarplot(cdkn1a_embryo,replicates=TRUE)+theme_bw()
+
+#Nestin
+nestin_embryo<-getGene(cuff,"Nestin")
+ne<-expressionBarplot(nestin_embryo,replicates=TRUE)+theme_bw()
 
 
 #Notch1-3, Pax3 and Nestin
