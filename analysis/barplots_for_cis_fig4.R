@@ -118,3 +118,6 @@ p<-p+geom_bar(stat="identity")+geom_errorbar(limits)+scale_fill_manual(values = 
 p+facet_wrap(timepoint~gene_name,scales="free",nrow=2)
   #facet_grid(timepoint~gene_name,scales="free",space="free")
 ggsave("Barplots_fig4_neighborgenes.pdf")
+
+
+

@@ -1826,11 +1826,20 @@ b<-DE_genes_list[[20]]
 
 
 names<-names(DE_genes_list)
-comparisons<-matrix(data=NA,rnow=25,ncol=25)
-
-
-
-
+comparisons<-matrix(names,nrow=25,ncol=25)
+#comparisons<-data.frame(comparisons)
+colnames(comparisons)<-names
+rownames(comparisons)<-names
+for(i in 1:25){
+  for(j in 1:25){
+    if(i==j){next}
+    a<-DE_genes_list[[i]]
+    b<-DE_genes_list[[j]]
+    overlap<-as.numeric(length(intersect(a,b)))
+    comparisons[i,j]<-overlap
+  }
+}
+comparisons[lower.tri(comparisons)]<-NA
 
 
 
