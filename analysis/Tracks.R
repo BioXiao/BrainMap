@@ -7,12 +7,12 @@ analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
 diffdir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs"
 GTF<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf"
 
-dir<-paste(diffdir,'Haunt_vs_WT_Adult/',sep="/")
-dirnorm<-paste(diffdir,"linc-Brn1b_vs_WT_Adult/",sep="/")
+dir<-paste(diffdir,'Trp53cor1_vs_WT_Embryonic/',sep="/")
+#dirnorm<-paste(diffdir,"linc-Brn1b_vs_WT_Adult/",sep="/")
 cuff<-readCufflinks(dir=dir,gtfFile=GTF[1],genome="mm10")
-cuffnorm<-readCufflinks(dir=dirnorm,gtfFile=GTF[1],genome="mm10")
+#cuffnorm<-readCufflinks(dir=dirnorm,gtfFile=GTF[1],genome="mm10")
 
-myID<-"Haunt"
+myID<-"Trp53cor1"
 myGene<-getGene(cuff,myID)
 genetrack <-makeGeneRegionTrack(myGene)
 
@@ -99,7 +99,8 @@ genome<-"mm10"
 #setwd(dir)
 #cuff<-readCufflinks(gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome="mm10") 
 #name<-"Peril"
-name<-"Haunt"
+
+name<-"Trp53cor1"
 myGene<-getGene(cuff,name)
 annot<-annotation(myGene)
 
@@ -129,7 +130,7 @@ bamNames<-reps$rep_name
 
 bamColors<-brewer.pal(length(bamNames),"Spectral")
 
-makeBamTrack<-function(bamFile,bamName,genome=genome,chromosome,color="steelblue",window=20,ylim=c(0,15)){
+makeBamTrack<-function(bamFile,bamName,genome=genome,chromosome,color="steelblue",window=20,ylim=c(0,5)){
   track<-DataTrack(range=bamFile,name=bamName,genome=genome,type="h",transformation=function(x){movingAverage(x,window)},col=color,fill.histogram=color,col.histogram=color,chromosome=chromosome, ylim=ylim, lwd=1.5)
   return(track)
 }
@@ -140,7 +141,7 @@ doPlot<-function(genome=genome,name,myChr,from,to,window=50,bamFiles,bamNames){
   #Make Tracks
   axTrack<-GenomeAxisTrack(add53 = TRUE,add35 = TRUE, labelPos = "above")
   idxTrack <- IdeogramTrack(genome = genome, chromosome = myChr)
-  
+  koTrack<-AnnotationTrack(start=koStart,width=koWidth,chromosome=koChr,strand="*",id=koStrain,genome="mm10",name="KO Region")
   #BamTracks
   write("\tBamTracks",stderr())
   bamTracks<-list()
@@ -153,12 +154,10 @@ doPlot<-function(genome=genome,name,myChr,from,to,window=50,bamFiles,bamNames){
   
   #Plot Tracks
   write("\tplotting...",stderr())
-
-  myTracks<-bamTracks[1:3]
-  trackSizes<-c(rep(1,3))
+  myTracks<-c(idxTrack,axTrack,genetrack,bamTracks,koTrack)
+  trackSizes<-c(1,1,4,rep(1,length(bamTracks)),1)
   
-  plotTracks(myTracks,from=as.numeric(from),to=as.numeric(to),chrom=myChr,showAxis=FALSE,background.title="white",col.title="black",col.axis="black",sizes=trackSizes)
-  
+  plotTracks(myTracks,from=from,to=to,chromosome=myChr,showAxis=FALSE,background.title="black",col.title="white",col.axis="black",sizes=trackSizes,geneSymbol=TRUE)
   #plotTracks(bamTracks,from=as.numeric(from),to=as.numeric(to),chrom=chrom,showAxis=FALSE,background.title="white",col.title="black",col.axis="black",sizes=trackSizes)
 }
 
