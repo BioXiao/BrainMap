@@ -9,11 +9,16 @@ dir<-paste(diffdir,"Trp53cor1_vs_WT_Adult",sep="/")
 cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome=genome)
 
 
+
 #Col4A5
 col<-getGene(cuff,"Col4a5")
 expressionBarplot(col,replicates=TRUE)+theme_bw()
 
-
+#lacZ
+lz<-getGene(cuff,"LacZ")
+lz_a<-expressionBarplot(lz,replicates=TRUE)+theme_bw()+scale_y_continuous(limits=c(0,.6))
+lz_a
+ggsave("Trp53cor1_LZ_adult.pdf")
 
 
 #lincp21
@@ -31,6 +36,13 @@ trp<-trp + ggtitle("Trp53cor1 in Adult") # 0-0.4
 #Trp53cor1 embryo 
 dir<-paste(diffdir,"Trp53cor1_vs_WT_Embryonic",sep="/")
 cuffe<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome=genome)
+
+
+lze<-getGene(cuffe,"LacZ")
+lz_e<-expressionBarplot(lze,replicates=TRUE)+theme_bw()+scale_y_continuous(limits=c(0,.6))
+lz_e
+ggsave("trp53cor1_LZ_embryo.pdf")
+
 
 #lincp21
 trp53cor1_e<-getGene(cuffe,"Trp53cor1")

@@ -1,8 +1,8 @@
 ```{r standalone setup, echo=FALSE,eval=FALSE}
-strain<-"Crnde"
-timepoint<-"Embryonic"
-filename<-"Crnde_vs_WT_Embryonic"
-dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Crnde_vs_WT_Embryonic/"
+strain<-"Trp53cor1"
+timepoint<-"Adult"
+filename<-"Trp53cor1_vs_WT_Adult"
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Trp53cor1_vs_WT_Adult/"
 
 
 ### THINGS TO REMEMBER: change oldbam to bam and olddiff to diff once new set done! 
@@ -279,7 +279,7 @@ name<-strain
 myGene<-getGene(cuff,name)
 
 library(GenomicFeatures)
-
+library(Gviz)
 
 real_chromInfo<-read.table("/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/real_chromosomes_mm10_brainmap.chrom.info",header=TRUE)
 
@@ -374,7 +374,7 @@ samples<-(t(files[10,]))
 rownames(samples)<-NULL
 JRs<-samples
 
-#setwd(analysisdir)
+setwd(analysisdir)
 deletionCoords<-read.table("mm10DeletionCoords.txt",sep="\t",header=TRUE,stringsAsFactors=FALSE)
 colnames(deletionCoords)<-c("gene_name","gene_region","deletionRegion")
 koStrain<-strain
