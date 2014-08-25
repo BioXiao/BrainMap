@@ -1,0 +1,175 @@
+`r strain` `r timepoint` track visualization 
+========================================================
+
+```{r opts}
+path<-paste(filename,"/figure/",sep="")
+opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE,fig.height=12, fig.width=10,fig.path=path,dev=c('png', 'pdf'))
+alpha<-0.05 
+```
+
+```{r setup and functions}
+
+analysisdir<-"/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/"
+library(cummeRbund)
+library(Gviz)
+
+library(RMySQL)
+library(RColorBrewer)
+library(GenomicFeatures)
+
+real_chromInfo<-read.table("/n/rinn_data1/users/agroff/GITHUB/BrainMap/abbie_annotation/real_chromosomes_mm10_brainmap.chrom.info",header=TRUE)
+
+mm10DB<-loadDb("mm10gencode_brainmapDB_nolacz.sqlite")
+
+movingAverage <- function(x, n=20, centered=TRUE) {
+  
+  if (centered) {
+    before <- floor  ((n-1)/2)
+    after  <- ceiling((n-1)/2)
+  } else {
+    before <- n-1
+    after  <- 0
+  }
+  
+  # Track the sum and count of number of non-NA items
+  s     <- rep(0, length(x))
+  count <- rep(0, length(x))
+  
+  # Add the centered data
+  new <- x
+  # Add to count list wherever there isn't a
+  count <- count + !is.na(new)
+  # Now replace NA_s with 0_s and add to total
+  new[is.na(new)] <- 0
+  s <- s + new
+  
+  # Add the data from before
+  i <- 1
+  while (i <= before) {
+    # This is the vector with offset values to add
+    new   <- c(rep(NA, i), x[1:(length(x)-i)])
+    
+    count <- count + !is.na(new)
+    new[is.na(new)] <- 0
+    s <- s + new
+    
+    i <- i+1
+  }
+  
+  # Add the data from after
+  i <- 1
+  while (i <= after) {
+    # This is the vector with offset values to add
+    new   <- c(x[(i+1):length(x)], rep(NA, i))
+    
+    count <- count + !is.na(new)
+    new[is.na(new)] <- 0
+    s <- s + new
+    
+    i <- i+1
+  }
+  
+  # return sum divided by count
+  s/count
+}
+
+makeBamTrack<-function(bamFile,bamName,genome=genome,chromosome,color="steelblue",window=20,ylim=c(0,60)){
+  
+  track<-DataTrack(range=bamFile,name=bamName,genome=genome,type="h",transformation=function(x){movingAverage(x,window)},col=color,fill.histogram=color,col.histogram=color,chromosome=chromosome, ylim=ylim, lwd=1.5)
+  
+  return(track)
+}
+
+```
+
+```{r region setup}
+
+#region: chr1:42,640,881-42,717,420
+
+chrom<-"chr1"
+from<-42640881
+to<-42717420
+genome="mm10"
+
+genetrack<-GeneRegionTrack(mm10DB,rstarts=from,rends=to,chromosome=chrom,showId=TRUE,geneSymbol=TRUE,genome=genome,name="LincRNA Isoforms",fill="steelblue",stacking="squish")
+
+
+coordfile<-paste(analysisdir,"mm10DeletionCoords.txt",sep="/")
+deletionCoords<-read.table(file=coordfile,sep="\t",header=TRUE,stringsAsFactors=FALSE)
+colnames(deletionCoords)<-c("gene_name","gene_region","deletionRegion")
+
+brn1a<-"linc-Brn1a"
+brn1acoords<-deletionCoords[which(deletionCoords$gene_name==brn1a),3]
+brn1acoords<-strsplit(brn1acoords,":")
+brn1acoords<-unlist(brn1acoords)
+brn1akoChr<-brn1acoords[1]
+positions<-strsplit(brn1acoords[[2]],"-")
+positions<-unlist(positions)
+brn1akoStart<-as.numeric(positions[1])
+brn1akoWidth<-abs(as.numeric(positions[2])-as.numeric(positions[1]))
+
+
+brn1b<-"linc-Brn1b"
+brn1bcoords<-deletionCoords[which(deletionCoords$gene_name==brn1b),3]
+brn1bcoords<-strsplit(brn1bcoords,":")
+brn1bcoords<-unlist(brn1bcoords)
+brn1bkoChr<-brn1bcoords[1]
+positions<-strsplit(brn1bcoords[[2]],"-")
+positions<-unlist(positions)
+brn1bkoStart<-as.numeric(positions[1])
+brn1bkoWidth<-abs(as.numeric(positions[2])-as.numeric(positions[1]))
+
+
+bamRoot<-'/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/bam/'
+
+# wt_adult: JR781
+# wt_embryo: JR771
+# brn1a_KO_adult: JR730
+# brn1a_KO_embryo: JR858
+# brn1b_KO_adult : JR835
+# brn1b_KO_embryo: JR758
+
+JRs<-c("JR781","JR771","JR730","JR858","JR835","JR758")
+
+bamFiles<-lapply(JRs,function(x){paste(bamRoot,x,"/accepted_hits.bam",sep="")})
+
+bamNames<-c("WT_ADULT","WT_EMBRYONIC", "Brn1aKO_ADULT","Brn1a_EMBRYONIC","Brn1bKO_ADULT","Brn1bKO_EMBRYONIC")
+
+specCols<-brewer.pal(3,"Paired")
+colPal<-colorRampPalette(specCols)
+bamColors<-colPal(length(bamFiles))
+```
+
+```{r strain_track_vis}
+
+  #Make Tracks
+  axTrack<-GenomeAxisTrack(add53 = TRUE,add35 = TRUE, labelPos = "above")
+
+  idxTrack <- IdeogramTrack(genome = "mm10", chromosome = "chr1")
+
+  brn1akoTrack<-AnnotationTrack(start=brn1akoStart,width=brn1akoWidth,chromosome=brn1akoChr,strand="*",id=brn1a,genome="mm10",name="Brn1a KO Region")
+
+  brn1bkoTrack<-AnnotationTrack(start=brn1bkoStart,width=brn1bkoWidth,chromosome=brn1bkoChr,strand="*",id=brn1b,genome="mm10",name="Brn1b KO Region")
+
+  #BamTracks
+  bamTracks<-list()
+  bamOrder<-c(1:length(bamFiles))
+  window<-20
+  for (i in bamOrder){
+    track<-makeBamTrack(bamFiles[[i]],bamNames[[i]],genome=genome,chromosome=chrom,color=bamColors[i],window=window)
+    bamTracks<-c(bamTracks,track)
+  }
+  
+  #Plot Tracks
+
+  myTracks<-c(axTrack,idxTrack,genetrack,bamTracks,brn1akoTrack,brn1bkoTrack)
+  trackSizes<-c(1,1,4,rep(1,length(bamTracks)),1,1)
+
+pdf("Brn1abBrn1_figure_plot.pdf")
+  plotTracks(myTracks,from=from,to=to,chromosome=chrom,showAxis=FALSE,background.title="black",col.title="white",col.axis="black",sizes=trackSizes,geneSymbol=TRUE)
+dev.off()
+}
+
+detach(package:GenomicFeatures)
+```
+
