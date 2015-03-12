@@ -1,11 +1,8 @@
 ```{r standalone setup, echo=FALSE,eval=FALSE}
-strain<-"Crnde"
-timepoint<-"Embryo"
-filename<-"Crnde_vs_WT_Embryo"
-dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Crnde_vs_WT_Embryonic/"
-
-
-### THINGS TO REMEMBER: change oldbam to bam and olddiff to diff once new set done! 
+#strain<-"Crnde"
+#timepoint<-"Embryo"
+#filename<-"Crnde_vs_WT_Embryo"
+#dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Crnde_vs_WT_Embryonic/"
 ```
 
 `r strain` KO vs WT (`r timepoint`)
@@ -13,7 +10,6 @@ dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Crnde_vs_WT_Embryonic
 
 ```{r init, echo=FALSE}
 # Set knitr opts
-#path<-paste(filename,"/figure/",sep="")
 opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE,fig.height=4, fig.width=4,dev=c('png', 'pdf'))
 alpha<-0.05 
 
@@ -43,9 +39,6 @@ biocarta_gs <- GSA.read.gmt("/n/rinn_data1/users/agroff/GSEA/c2.cp.biocarta.v4.0
 kegg_gs<-GSA.read.gmt("/n/rinn_data1/annotations/gsea/msigdb_v4.0_files_to_download_locally/msigdb_v4.0_GMTs/c2.cp.kegg.v4.0.symbols.gmt")
 interneuron_gs<-GSA.read.gmt("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/support/interneuron_genesets.gmt")
 
-#sexdiffs_gs<-GSA.read.gmt("/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/support/sexdiffs.gmt")
-
-
 #Oncogenic signatures
 oncogene_gs<-GSA.read.gmt("/n/rinn_data1/annotations/gsea/msigdb_v4.0_files_to_download_locally/msigdb_v4.0_GMTs/c6.all.v4.0.symbols.gmt")
 
@@ -62,8 +55,8 @@ colnames(deletionCoords)<-c("gene_name","gene_region","deletionRegion")
 
 
 ```{r cummeRbund_and_data_setup, echo=FALSE}
-#setwd(dir)
 cuff<-readCufflinks(dir=dir,gtfFile="/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/annotation/mm10_gencode_vM2_with_lncRNAs_and_LacZ.gtf",genome=genome)
+
 reps<-replicates(cuff)
 files<-lapply(reps$file,function(x){strsplit(x, "/")})
 
@@ -71,8 +64,6 @@ files<-lapply(reps$file,function(x){strsplit(x, "/")})
 files<-as.data.frame(files)
 samples<-(t(files[10,]))
 rownames(samples)<-NULL
-
-#look up strain, litter, sex, notes in master sheet 
 ```
 
 
@@ -207,31 +198,24 @@ csDistHeat(genes(cuff), replicates=T)+theme_bw()
 ```{r Enodenous_lncRNA_tables, results='asis', fig.width=6, fig.height=6}
 myGeneID<-strain
 myGene<-getGene(cuff, myGeneID)
-#print(xtable(fpkm(myGene)),type="html")
-#print(xtable(fpkm(isoforms(myGene))), type="html")
-       
-#expressionPlot(myGene)
 expressionPlot(myGene, replicates=TRUE)+theme_bw()
 ```
 
 Endogenous expression of `r strain` isoforms:
 
 ```{r endogenous_iso,fig.height=8, fig.width=8}
-#expressionPlot(isoforms(myGene))
 expressionPlot(isoforms(myGene), replicates=T)+theme_bw()
 ```
 
 Barplot of gene expression:
 
 ```{r endogenous_barplot,fig.height=6,fig.width=6}
-#expressionBarplot(myGene)
 expressionBarplot(myGene,replicates=T)+theme_bw()
 ```
 
 Barplot of isoform expression:
 
 ```{r endogenous_iso_barplot,fig.height=8, fig.width=8}
-#expressionBarplot(isoforms(myGene))     
 expressionBarplot(isoforms(myGene), replicates=T)+theme_bw()
 ```
 
@@ -241,13 +225,7 @@ expressionBarplot(isoforms(myGene), replicates=T)+theme_bw()
 ```{r LacZ_expression, results='asis'}
 myGeneID<-"LacZ"
 myGene<-getGene(cuff, myGeneID)
-
-#print(xtable(fpkm(myGene)),type="html")
-       
-#expressionPlot(myGene)
 expressionPlot(myGene, replicates=TRUE)+theme_bw()
-             
-#expressionBarplot(myGene)
 expressionBarplot(myGene,replicates=T)+theme_bw()
 ```
 
