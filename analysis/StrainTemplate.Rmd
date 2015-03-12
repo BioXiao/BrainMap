@@ -1,8 +1,8 @@
 ```{r standalone setup, echo=FALSE,eval=FALSE}
-strain<-"Trp53cor1"
-timepoint<-"Adult"
-filename<-"Trp53cor1_vs_WT_Adult"
-dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Trp53cor1_vs_WT_Adult/"
+strain<-"Crnde"
+timepoint<-"Embryo"
+filename<-"Crnde_vs_WT_Embryo"
+dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Crnde_vs_WT_Embryonic/"
 
 
 ### THINGS TO REMEMBER: change oldbam to bam and olddiff to diff once new set done! 
@@ -13,7 +13,6 @@ dir<-"/n/rinn_data1/seq/lgoff/Projects/BrainMap/data/diffs/Trp53cor1_vs_WT_Adult
 
 ```{r init, echo=FALSE}
 # Set knitr opts
-
 #path<-paste(filename,"/figure/",sep="")
 opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE,fig.height=4, fig.width=4,dev=c('png', 'pdf'))
 alpha<-0.05 
@@ -808,6 +807,8 @@ biocarta_zscores<-cbind(biocarta_zscores,biocarta_zscores)
 kegg_zscores<-get_gene_set_ztest(Input.df,kegg_gs)
 kegg_zscores<-cbind(kegg_zscores,kegg_zscores)
 
+#write.table(kegg_zscores,file="/n/rinn_data1/users/agroff/GITHUB/BrainMap/analysis/Crnde_vs_WT_Embryonic/kegg_zscore_embryo.tab")
+
 interneuron_zscores<-get_gene_set_ztest(Input.df,interneuron_gs)
 interneuron_zscores<-cbind(interneuron_zscores,interneuron_zscores)
 
@@ -1144,7 +1145,7 @@ goMF<-enrichGO(gene=sigEZ, organism="mouse",ont="MF",pvalueCutoff=0.01,readable=
 
 goCC<-enrichGO(gene=sigEZ, organism="mouse",ont="CC",pvalueCutoff=0.01,readable=T)
 
-kegg<-enrichKEGG(gene=sigEZ, organism="mouse",pvalueCutoff=1, readable=T)
+kegg<-enrichKEGG(gene=sigEZ, organism="mouse",pvalueCutoff=0.01, readable=T)
 
 pathway<-enrichPathway(gene=sigEZ,organism="mouse",pvalueCutoff=0.01, readable=T)
 
@@ -1181,10 +1182,7 @@ cortical_markers<-read.xls(markerfile,sheet=sheetnames[2])
 ### Enrichment or depletion for stage-specific cell cycle markers 
 
 ```{r cellcycle, fig.width=6, fig.height=12}
-
 cellcycle_genes<-getGenes(cuff,cellcycle_markers$gene_name)
-#cellcycle_genes_fpkm<-fpkmMatrix(cellcycle_genes)
-#cellcycle_genes_fpkm_logfc<-log2(cellcycle_genes_fpkm/cellcycle_genes_fpkm[["WT"]])
 annotation<-annotation(cellcycle_genes)
 diffDat<-diffData(cellcycle_genes)
 cellcycle<-merge(diffDat,annotation,by="gene_id")
@@ -1210,13 +1208,6 @@ cellcycle.p<-ggplot(cellcycle.melt)+geom_tile(aes(x=variable,y=gene_short_name,f
 cellcycle.p<-cellcycle.p+geom_tile(aes(x=variable,y=gene_short_name,color=significant),fill="#FFFFFF00",size=1)+scale_color_manual(values=c("#FFFFFF00","black"))+guides(color=FALSE)+coord_equal()
 
 cellcycle.p
-
-#cellcycle_genes_fpkm_logfc$gene_id<-row.names(cellcycle_genes_fpkm_logfc)
-#cellcycle_genes_fpkm_logfc<-merge(cellcycle_genes_fpkm_logfc,annotation,by="gene_id")
-#colnames(cellcycle_genes_fpkm_logfc)[6]<-"gene_name"
-#cellcycle_genes_fpkm_logfc<-merge(cellcycle_genes_fpkm_logfc,cellcycle_markers,by="gene_name")
-#cellcycle_genes_fpkm_logfc<-merge(cellcycle_genes_fpkm_logfc,diffData(cellcycle_genes)[,c("gene_id","p_value")],by.x="gene_name",by.y="gene_id")
-
 
 rm(annotation)
 rm(diffDat)
@@ -1258,9 +1249,6 @@ cortical.p<-cortical.p+guides(color=FALSE)
 cortical.p<-cortical.p+geom_tile(aes(x=variable,y=gene_short_name,color=significant),fill="#FFFFFF00",size=1)+scale_color_manual(values=c("#FFFFFF00","black"))+coord_equal()
 
 cortical.p
-
-
-
 
 rm(annotation)
 rm(diffDat)
