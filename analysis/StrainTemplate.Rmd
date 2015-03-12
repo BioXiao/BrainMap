@@ -1379,13 +1379,10 @@ getTable<-function(object){
 ```{r computationally intensive part of cis trans image}
 fullTable<-getTable(cuff)
 
-myGene<-fullTable[which(fullTable$gene_short_name==strain),][1,] #any problems w this?
+myGene<-fullTable[which(fullTable$gene_short_name==strain),][1,]
 chromosome<-myGene$chromosome
 start<-myGene$start-(windowSize/2)
 end<-myGene$end+(windowSize/2)
-#sigGenesRegion<-fullTable[which(fullTable[,40]==chromosome & fullTable[,39]=="yes" & fullTable[,9]>=start & fullTable[,10]<=end),]
-#nSig<-nrow(ddply(sigGenesRegion,.(gene_name),head,n=1))
-
 
 #exclude lincRNA in significance calc...
   if(strain=="linc-Enc1"){strain<-"Gm2373"}
@@ -1407,6 +1404,7 @@ for (i in 1:nIter){
 pval_for_region<-score/nIter
 
 #first 	question, region enriched over genomic background for cis significance? (pvalue)
+
 #second task:
 #plot all genes in region according to start position in region. color code red=yes, black=no
 
@@ -1423,30 +1421,18 @@ data$test_stat<-as.numeric(data$test_stat)
   data$test_stat<-as.numeric(data[,36])
   data$was_na<-"no"
   if(any(is.na(data$test_stat))){
-     #&& data$log2foldchange[which(is.na(data$test_stat))]=="-Inf"){
-    #print(data$test_stat[which(is.na(data$test_stat))])
     data$was_na[which(is.na(data$test_stat))]<-"yes"
     data$test_stat[which(is.na(data$test_stat))]<-0
   }
   data$sig<-data[,39]
   
   currplot<-ggplot(data,aes(start,test_stat,color=sig, label=gene_name,shape=was_na))+geom_point(size=3)+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2),ylim=c(-max(abs(data$test_stat),na.rm=TRUE)-1,max(abs(data$test_stat),na.rm=TRUE)+1))+labs(title=paste(strain_name,timepoint,sep=" "))+geom_text(data=subset(data, sig=='yes'))+theme_bw()+geom_vline(xintercept=0, color="blue")+geom_hline(yintercept=0,color="blue")
-
-
-  #currplot
-
-#<-currplot+annotate("text",x=0,y=max(abs(data$test_stat),na.rm=TRUE)+.5,label=paste("pvalue for ",nSig," genes in a region this size is: ",pval_for_region,sep=""))
-  
-
 ```
 
 The pvalue for `r nSig` genes significantly regulated in a region this size  is: `r pval_for_region` 
 
 
 ```{r cisreg_image,  fig.height=8, fig.width=8}
-
-#ggplot(data,aes(start,test_stat,color=sig, label=gene_name))+geom_point()+scale_color_manual(values=c("black", "red"))+coord_cartesian(xlim=c(-windowSize/2, windowSize/2), ylim=c(-max(abs(data$test_stat),na.rm=TRUE)-1,max(abs(data$test_stat),na.rm=TRUE)+1))
-#+labs(title=strain_name)+geom_text(data=subset(data, sig=='yes'))
 currplot
 ```
 
