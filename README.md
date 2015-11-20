@@ -29,3 +29,4 @@ Mouse lncRNA Brain Map Project Data and Analysis
 To view the wt-v-ko sequencing reports for each timepoint for each strain, click "analysis" and then the appropriate folder. 
 
 Click the ".md" file to view the report in your browser. Print as a pdf to take it to go! If you'd like the individual images, those are located in the "figure" folder in each directory. 
+
